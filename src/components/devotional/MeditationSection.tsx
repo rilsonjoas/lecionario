@@ -18,10 +18,10 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
               <Lightbulb className="w-5 h-5 text-liturgical-accent-foreground" />
             </div>
             <div>
-              <CardTitle className="text-xl font-serif text-card-foreground">
+              <CardTitle className="text-xl font-semibold text-card-foreground">
                 Meditação
               </CardTitle>
-              <CardDescription className="text-sm font-sans text-muted-foreground">
+              <CardDescription className="text-sm text-muted-foreground">
                 Reflexão para o dia
               </CardDescription>
             </div>
@@ -39,10 +39,10 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
       <CardContent className="space-y-6">
         {/* Main Meditation Prompt */}
         <div className="space-y-3">
-          <h4 className="font-semibold text-card-foreground font-serif">
+          <h4 className="font-semibold text-card-foreground">
             Reflexão do Dia
           </h4>
-          <p className="text-sm leading-relaxed text-card-foreground/90 font-serif bg-card/50 rounded-lg p-4 border border-primary/10">
+          <p className="text-sm leading-relaxed text-card-foreground/90 font-scripture bg-card/50 rounded-lg p-4 border border-primary/10">
             {meditation.prompt}
           </p>
         </div>
@@ -67,7 +67,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
                       <span className="flex-shrink-0 w-6 h-6 bg-liturgical-accent text-liturgical-accent-foreground rounded-full flex items-center justify-center text-xs font-bold">
                         {index + 1}
                       </span>
-                      <p className="text-sm text-card-foreground font-serif leading-relaxed">
+                      <p className="text-sm text-card-foreground font-scripture leading-relaxed">
                         {question}
                       </p>
                     </div>
@@ -81,7 +81,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
         {/* Audio Player (if available) */}
         {meditation.audioUrl && (
           <div className="space-y-2">
-            <h5 className="text-sm font-medium text-card-foreground font-sans">
+            <h5 className="text-sm font-medium text-card-foreground">
               Áudio de Meditação Guiada
             </h5>
             <audio 
@@ -96,7 +96,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
         )}
         
         <div className="text-center pt-4 border-t border-primary/10">
-          <p className="text-xs text-muted-foreground font-sans italic">
+          <p className="text-xs text-muted-foreground italic">
             "Seja ainda, e saiba que eu sou Deus" - Salmo 46:10
           </p>
         </div>

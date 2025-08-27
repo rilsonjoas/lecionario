@@ -28,10 +28,10 @@ export function Header({ liturgicalDay }: HeaderProps) {
               <BookOpen className="w-8 h-8 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-3xl md:text-4xl font-serif font-semibold text-primary-foreground drop-shadow-md">
+              <h1 className="text-3xl md:text-4xl font-bold text-primary-foreground drop-shadow-md">
                 Luz Litúrgica
               </h1>
-              <p className="text-sm text-primary-foreground/90 font-sans">
+              <p className="text-sm text-primary-foreground/90">
                 Devocional diário reformado
               </p>
             </div>
@@ -43,17 +43,17 @@ export function Header({ liturgicalDay }: HeaderProps) {
               <Calendar className="w-4 h-4 text-primary-foreground/80" />
               <time 
                 dateTime={liturgicalDay.date}
-                className="text-sm font-medium text-primary-foreground/95 font-sans"
+                className="text-sm font-medium text-primary-foreground/95"
               >
                 {format(currentDate, "EEEE, d 'de' MMMM 'de' yyyy", { locale: ptBR })}
               </time>
             </div>
             
             <div className="space-y-1">
-              <p className="text-lg font-serif font-medium text-primary-foreground drop-shadow-sm">
+              <p className="text-lg font-medium text-primary-foreground drop-shadow-sm">
                 {liturgicalDay.dayName}
               </p>
-              <div className="flex items-center justify-end gap-3 text-xs text-primary-foreground/80 font-sans">
+              <div className="flex items-center justify-end gap-3 text-xs text-primary-foreground/80">
                 <span>Ano {liturgicalDay.cycle}</span>
                 <span className="w-1 h-1 bg-primary-foreground/60 rounded-full"></span>
                 <span className="capitalize">{liturgicalDay.season}</span>

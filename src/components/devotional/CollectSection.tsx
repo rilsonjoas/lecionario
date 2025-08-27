@@ -14,10 +14,10 @@ export function CollectSection({ collect }: CollectSectionProps) {
             <Crown className="w-5 h-5 text-liturgical-primary-foreground" />
           </div>
           <div>
-            <CardTitle className="text-lg font-serif text-card-foreground">
+            <CardTitle className="text-lg font-semibold text-card-foreground">
               Coleta do Dia
             </CardTitle>
-            <CardDescription className="text-sm font-sans text-muted-foreground">
+            <CardDescription className="text-sm text-muted-foreground">
               Oração tradicional da liturgia
             </CardDescription>
           </div>
@@ -26,12 +26,12 @@ export function CollectSection({ collect }: CollectSectionProps) {
       
       <CardContent>
         <div className="bg-card/60 rounded-lg p-4 border border-primary/10">
-          <p className="text-sm leading-relaxed font-serif text-card-foreground italic">
+          <p className="text-sm leading-relaxed font-scripture text-card-foreground italic">
             {collect}
           </p>
           
           <div className="mt-4 pt-4 border-t border-primary/10">
-            <p className="text-right text-xs text-muted-foreground font-sans">
+            <p className="text-right text-xs text-muted-foreground">
               Por Jesus Cristo, nosso Senhor. Amém.
             </p>
           </div>

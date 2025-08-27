@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
 /* Lecionário Design System - Liturgical Season Themes */
 
@@ -36,8 +35,8 @@
     --liturgical-gradient-end: 142 50% 60%;
 
     /* Typography */
-    --font-serif: 'Crimson Text', serif;
     --font-sans: 'Inter', sans-serif;
+    --font-serif: 'Crimson Pro', serif;
 
     /* Shadows */
     --shadow-liturgical: 0 10px 30px -10px hsl(var(--liturgical-primary) / 0.2);
@@ -149,11 +148,18 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
     font-family: var(--font-sans), system-ui, sans-serif;
   }
   
+  /* Keep headings modern with sans-serif, but allow serif for special content */
   h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans), system-ui, sans-serif;
+    font-weight: 600;
+  }
+  
+  /* Use serif only for biblical text and prayers */
+  .font-scripture {
     font-family: var(--font-serif), serif;
   }
 }

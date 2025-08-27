@@ -16,7 +16,7 @@ export function Footer() {
             <span>para a comunidade reformada</span>
           </div>
           
-          <p className="text-xs text-muted-foreground max-w-md mx-auto">
+          <p className="text-xs text-muted-foreground max-w-md mx-auto font-scripture italic">
             "Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmo 119:105
           </p>
           

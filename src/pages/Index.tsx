@@ -36,10 +36,10 @@ const Index = () => {
         <div className="space-y-8">
           {/* Welcome Section */}
           <section className="text-center space-y-4 animate-fade-in">
-            <h2 className="text-2xl md:text-3xl font-serif font-semibold text-foreground">
+            <h2 className="text-2xl md:text-3xl font-semibold text-foreground">
               Bem-vindo ao devocional de hoje
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto font-sans leading-relaxed">
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Conecte-se com a tradição cristã através das leituras diárias do Lecionário Comum Revisado. 
               Cada dia oferece uma jornada espiritual através das Escrituras, oração e meditação.
             </p>
@@ -53,10 +53,10 @@ const Index = () => {
           {/* Daily Readings */}
           <section className="space-y-6">
             <div className="text-center space-y-2">
-              <h3 className="text-xl font-serif font-semibold text-foreground">
+              <h3 className="text-xl font-semibold text-foreground">
                 Leituras Bíblicas do Dia
               </h3>
-              <p className="text-sm text-muted-foreground font-sans">
+              <p className="text-sm text-muted-foreground">
                 Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length} leituras
               </p>
             </div>
@@ -80,12 +80,12 @@ const Index = () => {
           
           {/* Inspiration Quote */}
           <section className="text-center py-8 animate-fade-in">
-            <blockquote className="text-lg font-serif italic text-muted-foreground max-w-3xl mx-auto">
+            <blockquote className="text-lg font-scripture italic text-muted-foreground max-w-3xl mx-auto">
               "Toda Escritura é inspirada por Deus e útil para o ensino, para a repreensão, 
               para a correção, para a educação na justiça, a fim de que o homem de Deus seja 
               perfeito e perfeitamente habilitado para toda boa obra."
             </blockquote>
-            <cite className="text-sm text-muted-foreground font-sans block mt-2">
+            <cite className="text-sm text-muted-foreground block mt-2">
               — 2 Timóteo 3:16-17
             </cite>
           </section>

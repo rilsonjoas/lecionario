@@ -19,8 +19,9 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				serif: ['var(--font-serif)', 'serif'],
-				sans: ['var(--font-sans)', 'sans-serif'],
+				sans: ['var(--font-sans)', 'Inter', 'system-ui', 'sans-serif'],
+				serif: ['var(--font-serif)', 'Crimson Pro', 'serif'],
+				scripture: ['var(--font-serif)', 'Crimson Pro', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

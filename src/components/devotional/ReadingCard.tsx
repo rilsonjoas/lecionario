@@ -12,22 +12,22 @@ const readingTypeConfig = {
   first_reading: {
     label: 'Primeira Leitura',
     icon: BookOpen,
-    color: 'bg-liturgical-primary text-liturgical-primary-foreground'
+    color: 'bg-liturgical-primary text-liturgical-primary-foreground hover:bg-liturgical-primary/90 transition-colors'
   },
   psalm: {
     label: 'Salmo',
     icon: Heart,
-    color: 'bg-liturgical-accent text-liturgical-accent-foreground'
+    color: 'bg-liturgical-accent text-liturgical-accent-foreground hover:bg-liturgical-accent/90 transition-colors'
   },
   second_reading: {
     label: 'Segunda Leitura',
     icon: ScrollText,
-    color: 'bg-liturgical-secondary text-liturgical-secondary-foreground'
+    color: 'bg-liturgical-secondary text-liturgical-secondary-foreground hover:bg-liturgical-secondary/90 transition-colors'
   },
   gospel: {
     label: 'Evangelho',
     icon: Sparkles,
-    color: 'bg-gradient-to-r from-liturgical-primary to-liturgical-accent text-white'
+    color: 'bg-gradient-to-r from-liturgical-primary to-liturgical-accent text-white hover:from-liturgical-primary/90 hover:to-liturgical-accent/90 transition-all'
   }
 };
 
@@ -43,15 +43,15 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
       <CardHeader className="pb-4">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
-            <CardTitle className="text-lg font-serif text-card-foreground">
+            <CardTitle className="text-lg font-semibold text-card-foreground">
               {reading.reference}
             </CardTitle>
-            <CardDescription className="text-sm font-sans text-muted-foreground">
+            <CardDescription className="text-sm text-muted-foreground">
               {reading.citation}
             </CardDescription>
           </div>
           
-          <Badge className={`${config.color} shadow-sm flex items-center gap-1.5 px-3 py-1`}>
+          <Badge className={`${config.color} shadow-sm flex items-center gap-1.5 px-3 py-1 border-0`}>
             <IconComponent className="w-3.5 h-3.5" />
             <span className="text-xs font-medium">{config.label}</span>
           </Badge>
@@ -60,7 +60,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
       
       {reading.text && (
         <CardContent className="pt-0">
-          <blockquote className="text-sm leading-relaxed font-serif text-card-foreground/90 italic border-l-4 border-liturgical-accent pl-4 bg-liturgical-secondary/20 rounded-r-md p-4">
+          <blockquote className="text-sm leading-relaxed font-scripture text-card-foreground/90 italic border-l-4 border-liturgical-accent pl-4 bg-liturgical-secondary/20 rounded-r-md p-4">
             "{reading.text}"
           </blockquote>
           
@@ -70,7 +70,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
                 href={reading.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-liturgical-primary hover:text-liturgical-accent transition-colors underline font-sans"
+                className="text-xs text-liturgical-primary hover:text-liturgical-accent transition-colors underline"
               >
                 Ler texto completo →
               </a>

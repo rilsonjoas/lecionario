@@ -20,10 +20,10 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             <Flame className="w-5 h-5 text-liturgical-primary-foreground" />
           </div>
           <div className="flex-1">
-            <CardTitle className="text-xl font-serif text-card-foreground">
+            <CardTitle className="text-xl font-semibold text-card-foreground">
               Oração do Dia
             </CardTitle>
-            <CardDescription className="text-sm font-sans text-muted-foreground">
+            <CardDescription className="text-sm text-muted-foreground">
               {prayer.title}
             </CardDescription>
           </div>
@@ -37,7 +37,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
               variant="ghost" 
               className="w-full justify-between p-0 h-auto text-left hover:bg-transparent group"
             >
-              <span className="text-sm text-card-foreground/70 font-sans">
+              <span className="text-sm text-card-foreground/70">
                 {isOpen ? 'Ocultar oração' : 'Mostrar oração completa'}
               </span>
               <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${
@@ -48,12 +48,12 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
           
           <CollapsibleContent className="space-y-4">
             <div className="pt-4">
-              <blockquote className="text-base leading-relaxed font-serif text-card-foreground bg-liturgical-secondary/30 rounded-lg p-6 border-l-4 border-liturgical-accent">
+              <blockquote className="text-base leading-relaxed font-scripture text-card-foreground bg-liturgical-secondary/30 rounded-lg p-6 border-l-4 border-liturgical-accent">
                 {prayer.text}
               </blockquote>
               
               {(prayer.author || prayer.source) && (
-                <div className="flex items-center gap-2 mt-4 text-xs text-muted-foreground font-sans">
+                <div className="flex items-center gap-2 mt-4 text-xs text-muted-foreground">
                   <User className="w-3 h-3" />
                   <span>
                     {prayer.author}
@@ -67,7 +67,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
         </Collapsible>
         
         <div className="text-center">
-          <p className="text-xs text-muted-foreground font-sans italic">
+          <p className="text-xs text-muted-foreground italic">
             "Oremos com coração sincero e espírito humilde"
           </p>
         </div>
