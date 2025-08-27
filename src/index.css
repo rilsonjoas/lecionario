@@ -1,97 +1,146 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap');
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Lecionário Design System - Liturgical Season Themes */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base System Colors */
+    --background: 45 15% 97%;
+    --foreground: 220 15% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 15% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 15% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --muted: 45 10% 95%;
+    --muted-foreground: 220 10% 50%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --border: 45 10% 88%;
+    --input: 45 10% 88%;
+    --ring: 220 15% 25%;
+    --radius: 0.75rem;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Liturgical Season Variables - Default: Ordinary Time */
+    --liturgical-primary: 142 76% 36%;
+    --liturgical-primary-foreground: 0 0% 98%;
+    --liturgical-secondary: 142 25% 90%;
+    --liturgical-secondary-foreground: 142 76% 25%;
+    --liturgical-accent: 142 60% 45%;
+    --liturgical-accent-foreground: 0 0% 98%;
+    --liturgical-gradient-start: 142 70% 40%;
+    --liturgical-gradient-end: 142 50% 60%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Typography */
+    --font-serif: 'Crimson Text', serif;
+    --font-sans: 'Inter', sans-serif;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Shadows */
+    --shadow-liturgical: 0 10px 30px -10px hsl(var(--liturgical-primary) / 0.2);
+    --shadow-card: 0 4px 20px -8px hsl(220 15% 15% / 0.1);
+    --shadow-elevated: 0 20px 40px -15px hsl(var(--liturgical-primary) / 0.3);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Animations */
+    --transition-liturgical: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  /* Advent Season - Purple & Rose */
+  .season-advent {
+    --liturgical-primary: 262 83% 58%;
+    --liturgical-primary-foreground: 0 0% 98%;
+    --liturgical-secondary: 262 30% 92%;
+    --liturgical-secondary-foreground: 262 83% 25%;
+    --liturgical-accent: 330 81% 60%;
+    --liturgical-accent-foreground: 0 0% 98%;
+    --liturgical-gradient-start: 262 70% 50%;
+    --liturgical-gradient-end: 330 65% 55%;
   }
+
+  /* Christmas Season - White & Gold */
+  .season-christmas {
+    --liturgical-primary: 45 93% 58%;
+    --liturgical-primary-foreground: 45 15% 15%;
+    --liturgical-secondary: 45 20% 95%;
+    --liturgical-secondary-foreground: 45 15% 15%;
+    --liturgical-accent: 0 0% 100%;
+    --liturgical-accent-foreground: 45 93% 40%;
+    --liturgical-gradient-start: 45 85% 65%;
+    --liturgical-gradient-end: 50 90% 75%;
+  }
+
+  /* Epiphany Season - White & Green */
+  .season-epiphany {
+    --liturgical-primary: 0 0% 100%;
+    --liturgical-primary-foreground: 142 76% 25%;
+    --liturgical-secondary: 142 25% 90%;
+    --liturgical-secondary-foreground: 142 76% 25%;
+    --liturgical-accent: 142 76% 36%;
+    --liturgical-accent-foreground: 0 0% 98%;
+    --liturgical-gradient-start: 0 0% 98%;
+    --liturgical-gradient-end: 142 30% 85%;
+  }
+
+  /* Lent Season - Purple & Ash */
+  .season-lent {
+    --liturgical-primary: 270 50% 40%;
+    --liturgical-primary-foreground: 0 0% 98%;
+    --liturgical-secondary: 270 15% 88%;
+    --liturgical-secondary-foreground: 270 50% 25%;
+    --liturgical-accent: 0 0% 60%;
+    --liturgical-accent-foreground: 0 0% 98%;
+    --liturgical-gradient-start: 270 45% 35%;
+    --liturgical-gradient-end: 0 0% 70%;
+  }
+
+  /* Easter Season - White & Gold */
+  .season-easter {
+    --liturgical-primary: 0 0% 100%;
+    --liturgical-primary-foreground: 45 93% 40%;
+    --liturgical-secondary: 45 25% 92%;
+    --liturgical-secondary-foreground: 45 93% 30%;
+    --liturgical-accent: 45 93% 58%;
+    --liturgical-accent-foreground: 45 15% 15%;
+    --liturgical-gradient-start: 0 0% 98%;
+    --liturgical-gradient-end: 45 80% 80%;
+  }
+
+  /* Pentecost - Red */
+  .season-pentecost {
+    --liturgical-primary: 0 84% 60%;
+    --liturgical-primary-foreground: 0 0% 98%;
+    --liturgical-secondary: 0 30% 92%;
+    --liturgical-secondary-foreground: 0 84% 25%;
+    --liturgical-accent: 15 90% 65%;
+    --liturgical-accent-foreground: 0 0% 98%;
+    --liturgical-gradient-start: 0 80% 55%;
+    --liturgical-gradient-end: 15 85% 60%;
+  }
+
+  /* Ordinary Time - Green */
+  .season-ordinary {
+    --liturgical-primary: 142 76% 36%;
+    --liturgical-primary-foreground: 0 0% 98%;
+    --liturgical-secondary: 142 25% 90%;
+    --liturgical-secondary-foreground: 142 76% 25%;
+    --liturgical-accent: 142 60% 45%;
+    --liturgical-accent-foreground: 0 0% 98%;
+    --liturgical-gradient-start: 142 70% 40%;
+    --liturgical-gradient-end: 142 50% 60%;
+  }
+
+  /* Updated semantic colors */
+  --primary: var(--liturgical-primary);
+  --primary-foreground: var(--liturgical-primary-foreground);
+  --secondary: var(--liturgical-secondary);
+  --secondary-foreground: var(--liturgical-secondary-foreground);
+  --accent: var(--liturgical-accent);
+  --accent-foreground: var(--liturgical-accent-foreground);
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
 }
 
 @layer base {
@@ -100,6 +149,11 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: var(--font-sans), system-ui, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif), serif;
   }
 }
