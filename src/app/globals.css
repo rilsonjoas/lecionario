@@ -1,0 +1,240 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+ * Guia de Identidade Visual — Código & Credo 
+ * "Tradição e Devoção"
+ */
+
+@layer base {
+  :root {
+    /* Código & Credo - Fundação */
+    --canela: 25 45% 33%;      /* #7A4E2D */
+    --laranja-queimado: 21 60% 47%; /* #C26430 */
+    --bege-areia: 33 22% 87%;    /* #EAE0D5 */
+
+    /* Código & Credo - Destaques */
+    --dourado: 42 35% 54%;     /* #B49A60 */
+    --vinho: 336 24% 24%;       /* #4B2E39 */
+    --grafite: 0 0% 11%;        /* #1C1C1C */
+
+    /* Código & Credo - Fundos Alternativos */
+    --cinza-pedra: 207 4% 56%;  /* #8B9094 */
+    --preto-ébano: 0 0% 4%;     /* #0A0A0A */
+    --creme: 41 33% 94%;        /* #F5F1E8 */
+
+    /* Mapping to Shadcn/UI scale */
+    --background: var(--bege-areia);
+    --foreground: var(--grafite);
+
+    --card: var(--creme);
+    --card-foreground: var(--grafite);
+
+    --popover: var(--creme);
+    --popover-foreground: var(--grafite);
+
+    --primary: var(--laranja-queimado);
+    --primary-foreground: var(--bege-areia);
+
+    --secondary: var(--canela);
+    --secondary-foreground: var(--bege-areia);
+
+    --muted: 33 15% 82%;
+    --muted-foreground: 25 15% 40%;
+
+    --accent: var(--dourado);
+    --accent-foreground: var(--preto-ébano);
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: var(--dourado);
+    --input: var(--bege-areia);
+    --ring: var(--laranja-queimado);
+
+    --radius: 0.25rem;
+
+    /* Liturgical Season Variables - Default: Ordinary Time */
+    /* We use these as ACCENTS now */
+    --liturgical-primary: 142 76% 36%;
+    --liturgical-primary-foreground: 0 0% 98%;
+    --liturgical-secondary: 142 25% 90%;
+    --liturgical-secondary-foreground: 142 76% 25%;
+    --liturgical-accent: 142 60% 45%;
+    --liturgical-accent-foreground: 0 0% 98%;
+    --liturgical-gradient-start: var(--canela);
+    --liturgical-gradient-end: var(--laranja-queimado);
+
+    /* Typography */
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'EB Garamond', serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  /* Advent Season */
+  .season-advent {
+    --liturgical-primary: 262 83% 58%;
+    --liturgical-accent: 330 81% 60%;
+    --liturgical-gradient-start: 262 70% 50%;
+    --liturgical-gradient-end: 330 65% 55%;
+  }
+
+  /* Christmas Season */
+  .season-christmas {
+    --liturgical-primary: 45 93% 58%;
+    --liturgical-accent: 0 0% 100%;
+    --liturgical-gradient-start: 45 85% 65%;
+    --liturgical-gradient-end: 50 90% 75%;
+  }
+
+  /* Epiphany Season */
+  .season-epiphany {
+    --liturgical-primary: 0 0% 100%;
+    --liturgical-accent: 142 76% 36%;
+    --liturgical-gradient-start: 0 0% 98%;
+    --liturgical-gradient-end: 142 30% 85%;
+  }
+
+  /* Lent Season */
+  .season-lent {
+    --liturgical-primary: 270 50% 40%;
+    --liturgical-accent: 0 0% 60%;
+    --liturgical-gradient-start: 270 45% 35%;
+    --liturgical-gradient-end: 0 0% 70%;
+  }
+
+  /* Easter Season */
+  .season-easter {
+    --liturgical-primary: 0 0% 100%;
+    --liturgical-accent: 45 93% 58%;
+    --liturgical-gradient-start: 0 0% 98%;
+    --liturgical-gradient-end: 45 80% 80%;
+  }
+
+  /* Pentecost */
+  .season-pentecost {
+    --liturgical-primary: 0 84% 60%;
+    --liturgical-accent: 15 90% 65%;
+    --liturgical-gradient-start: 0 80% 55%;
+    --liturgical-gradient-end: 15 85% 60%;
+  }
+
+  /* Ordinary Time */
+  .season-ordinary {
+    --liturgical-primary: 142 76% 36%;
+    --liturgical-accent: 142 60% 45%;
+    --liturgical-gradient-start: var(--canela);
+    --liturgical-gradient-end: var(--laranja-queimado);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border/20;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body), serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Textures */
+  .texture-paper {
+    background-color: hsl(var(--bege-areia));
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        hsla(var(--canela), 0.03) 2px,
+        hsla(var(--canela), 0.03) 4px
+      );
+  }
+
+  .texture-leather {
+    background-color: hsl(var(--canela));
+    background-image:
+      radial-gradient(circle at 20% 50%, hsla(0, 0%, 100%, 0.05) 1px, transparent 1px),
+      radial-gradient(circle at 80% 80%, hsla(0, 0%, 0%, 0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .texture-parchment {
+    @apply bg-creme relative overflow-hidden;
+  }
+
+  .texture-parchment::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none opacity-5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  /* Classic Frame Motif */
+  .classic-frame {
+    @apply relative border-2 border-primary/20 p-8 bg-card/40 backdrop-blur-sm;
+  }
+
+  .classic-frame::before {
+    content: '✦';
+    @apply absolute -top-3 -left-3 text-accent text-xl leading-none bg-background px-1;
+  }
+
+  .classic-frame::after {
+    content: '✦';
+    @apply absolute -top-3 -right-3 text-accent text-xl leading-none bg-background px-1;
+  }
+
+  .classic-frame-footer::before {
+    content: '✦';
+    @apply absolute -bottom-3 -left-3 text-accent text-xl leading-none bg-background px-1;
+  }
+
+  .classic-frame-footer::after {
+    content: '✦';
+    @apply absolute -bottom-3 -right-3 text-accent text-xl leading-none bg-background px-1;
+  }
+
+  /* Divider Clássico */
+  .divider-ornate {
+    @apply flex items-center justify-center gap-4 my-8 text-accent;
+  }
+
+  .divider-line {
+    @apply h-px flex-1;
+    background: linear-gradient(90deg, transparent, hsl(var(--dourado)), transparent);
+  }
+
+  /* Typography Utilities */
+  .heading-hero {
+    @apply font-display font-bold leading-tight tracking-tighter text-secondary;
+    font-size: clamp(1.75rem, 6vw, 4rem);
+  }
+
+  .font-scripture {
+    @apply font-body italic leading-relaxed;
+    font-size: clamp(0.875rem, 3vw, 1.25rem);
+  }
+
+  /* Mobile-specific padding utilities */
+  @media (max-width: 640px) {
+    .classic-frame {
+      @apply px-4 py-6;
+    }
+    
+    .container {
+      @apply px-3;
+    }
+  }
+
+  /* Liturgical Dynamic Theme Helpers */
+  .bg-liturgical-gradient {
+    background: linear-gradient(135deg, hsl(var(--liturgical-gradient-start)), hsl(var(--liturgical-gradient-end)));
+  }
+}

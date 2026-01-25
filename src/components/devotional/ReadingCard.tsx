@@ -36,48 +36,57 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
   const IconComponent = config.icon;
   
   return (
-    <Card 
-      className="group hover:shadow-elevated transition-all duration-300 animate-fade-in border-primary/20 bg-card/80 backdrop-blur-sm"
-      style={{ animationDelay: `${index * 100}ms` }}
+    <div 
+      className="group relative animate-fade-in"
+      style={{ animationDelay: `${index * 150}ms` }}
     >
-      <CardHeader className="pb-4">
-        <div className="flex items-start justify-between gap-3">
-          <div className="flex-1">
-            <CardTitle className="text-lg font-semibold text-card-foreground">
-              {reading.reference}
-            </CardTitle>
-            <CardDescription className="text-sm text-muted-foreground">
-              {reading.citation}
-            </CardDescription>
+      <div className="classic-frame texture-parchment shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 !m-0 overflow-hidden">
+        {/* Liturgical accent bar */}
+        <div className="absolute top-0 left-0 w-full h-1 bg-liturgical-primary opacity-60" />
+        
+        <div className="relative z-10">
+          <div className="flex items-start justify-between gap-4 mb-6">
+            <div className="flex-1">
+              <h3 className="text-xl md:text-2xl font-display text-secondary group-hover:text-primary transition-colors italic">
+                {reading.reference}
+              </h3>
+              <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground mt-1">
+                {reading.citation}
+              </p>
+            </div>
+            
+            <Badge className="bg-accent/10 text-accent border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2">
+              <IconComponent className="w-3 h-3" />
+              <span className="text-[9px] uppercase tracking-[0.2em] font-bold">{config.label}</span>
+            </Badge>
           </div>
           
-          <Badge className={`${config.color} shadow-sm flex items-center gap-1.5 px-3 py-1 border-0`}>
-            <IconComponent className="w-3.5 h-3.5" />
-            <span className="text-xs font-medium">{config.label}</span>
-          </Badge>
-        </div>
-      </CardHeader>
-      
-      {reading.text && (
-        <CardContent className="pt-0">
-          <blockquote className="text-sm leading-relaxed font-scripture text-card-foreground/90 italic border-l-4 border-liturgical-accent pl-4 bg-liturgical-secondary/20 rounded-r-md p-4">
-            "{reading.text}"
-          </blockquote>
+          {reading.text && (
+            <div className="relative py-3 md:py-4">
+              <div className="absolute top-0 left-0 w-8 h-px bg-accent/30" />
+              <p className="text-sm md:text-base lg:text-lg leading-relaxed font-scripture text-foreground/90 pl-3 md:pl-4 border-l-2 border-accent/20">
+                {reading.text}
+              </p>
+              <div className="absolute bottom-0 right-0 w-8 h-px bg-accent/30" />
+            </div>
+          )}
           
           {reading.sourceUrl && (
-            <div className="mt-4">
+            <div className="mt-8 flex justify-end">
               <a
                 href={reading.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-liturgical-primary hover:text-liturgical-accent transition-colors underline"
+                className="text-[9px] uppercase tracking-[0.3em] font-bold text-canela hover:text-laranja-queimado transition-colors flex items-center gap-2 group/link"
               >
-                Ler texto completo →
+                Scriptura Integra 
+                <span className="group-hover/link:translate-x-1 transition-transform">→</span>
               </a>
             </div>
           )}
-        </CardContent>
-      )}
-    </Card>
+        </div>
+        <div className="classic-frame-footer" />
+      </div>
+    </div>
   );
 }

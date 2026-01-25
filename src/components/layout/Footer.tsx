@@ -2,26 +2,25 @@ import { Heart, BookOpen } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer className="bg-muted/30 border-t border-primary/10 mt-12">
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center space-y-4">
-          <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
+    <footer className="bg-secondary border-t border-accent/10 mt-16 texture-leather">
+      <div className="container mx-auto px-4 py-12">
+        <div className="text-center space-y-6">
+          <div className="flex items-center justify-center gap-4 text-xs uppercase tracking-[0.3em] font-bold text-dourado/60">
             <BookOpen className="w-4 h-4" />
-            <span>Baseado no Lecionário Comum Revisado</span>
+            <span>Lecionário Comum Revisado</span>
           </div>
-          
-          <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
-            <span>Feito com</span>
-            <Heart className="w-3 h-3 text-red-500 fill-current" />
-            <span>para a comunidade reformada</span>
-          </div>
-          
-          <p className="text-xs text-muted-foreground max-w-md mx-auto font-scripture italic">
-            "Lâmpada para os meus pés é tua palavra, e luz para o meu caminho." - Salmo 119:105
+                    
+          <p className="text-lg md:text-xl text-bege-areia/80 max-w-xl mx-auto font-scripture italic">
+            "Lâmpada para os meus pés é tua palavra, e luz para o meu caminho."
+          </p>
+          <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-dourado/40">
+            Salmo 119:105
           </p>
           
-          <div className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Luz Litúrgica. Todos os direitos reservados.
+          <div className="pt-8 border-t border-accent/5">
+            <div className="text-[10px] uppercase tracking-[0.4em] font-bold text-bege-areia/40">
+              © {new Date().getFullYear()} — Tradição e Devoção
+            </div>
           </div>
         </div>
       </div>

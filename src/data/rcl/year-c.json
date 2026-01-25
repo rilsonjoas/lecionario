@@ -1,0 +1,31 @@
+{
+  "cycle": "C",
+  "seasons": {
+    "advent": [
+      {
+        "week": 1,
+        "day": "Sunday",
+        "name": "Primeiro Domingo do Advento",
+        "readings": [
+          { "type": "first_reading", "ref": "Jeremias 33:14-16", "text": "Naqueles dias e naquele tempo farei brotar a Davi um Renovo de justiça, e ele executará juízo e justiça na terra." },
+          { "type": "psalm", "ref": "Salmo 25:1-10", "text": "A ti, Senhor, levanto a minha alma. Deus meu, em ti confio; não me deixes confundido, nem que os meus inimigos triunfem sobre mim." },
+          { "type": "second_reading", "ref": "1 Tessalonicenses 3:9-13", "text": "Que o Senhor faça crescer e transbordar o amor entre vocês e para com todos, como também ocorre o nosso amor por vocês." },
+          { "type": "gospel", "ref": "Lucas 21:25-36", "text": "Haverá sinais no sol, na lua e nas estrelas. Na terra, as nações ficarão em angústia e perplexas com o bramido e a agitação do mar." }
+        ],
+        "collect": "Amado Deus, desperta o teu poder e vem; para que, pela tua proteção, possamos ser libertos dos pecados que nos ameaçam, e pela tua misericórdia possamos ser salvos; tu que vives e reinas com o Pai e o Espírito Santo, um só Deus, agora e para sempre."
+      },
+      {
+        "week": 2,
+        "day": "Sunday",
+        "name": "Segundo Domingo do Advento",
+        "readings": [
+          { "type": "first_reading", "ref": "Malaquias 3:1-4", "text": "Eis que eu envio o meu mensageiro, que preparará o caminho diante de mim; e de repente virá ao seu templo o Senhor, a quem vós buscais." },
+          { "type": "psalm", "ref": "Lucas 1:68-79", "text": "Bendito seja o Senhor Deus de Israel, porque visitou e remiu o seu povo, e para nós levantou uma plena salvação na casa de Davi." },
+          { "type": "second_reading", "ref": "Filipenses 1:3-11", "text": "Dou graças ao meu Deus todas as vezes que me lembro de vós, fazendo sempre com alegria oração por vós todos em todas as minhas súplicas." },
+          { "type": "gospel", "ref": "Lucas 3:1-6", "text": "No décimo quinto ano do reinado de Tibério César... a palavra de Deus veio a João, filho de Zacarias, no deserto." }
+        ],
+        "collect": "Deus misericordioso, que enviaste os teus mensageiros, os profetas, para pregar o arrependimento e preparar o caminho para a nossa salvação: Concede-nos graça para dar ouvidos às suas advertências e abandonar os nossos pecados, para que possamos saudar com alegria a vinda de Jesus Cristo, nosso Redentor."
+      }
+    ]
+  }
+}

@@ -1,73 +1,71 @@
-# Welcome to your Lovable project
+# Lecionário — Tradição e Devoção
 
-## Project info
+> **"A Palavra de Deus para o Povo de Deus"**
+> Uma plataforma devocional imersiva que une a tradição litúrgica cristã, a erudição clássica e a excelência técnica do desenvolvimento front-end moderno.
 
-**URL**: https://lovable.dev/projects/a0879979-1474-4b9b-b3dd-fd222e7a842b
+---
 
-## How can I edit this code?
+## 🏛️ Filosofia: Devoção e Tradição
 
-There are several ways of editing your application.
+O **Lecionário** é um convite à oração e reflexão profunda. Inspirado na riqueza da tradição eclesiástica e na piedade cristã reformada, buscamos trazer sobriedade, beleza e propósito ao espaço digital.
 
-**Use Lovable**
+- **Fé e Espiritualidade**: Conexão diária com as Escrituras através do Lecionário Comum Revisado (RCL).
+- **Estética Clássica**: Um design que evoca bibliotecas ao entardecer, pergaminhos antigos e a sobriedade da liturgia histórica.
+- **Excelência Técnica**: Construído com as tecnologias mais modernas para garantir uma experiência fluida, acessível e duradoura.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/a0879979-1474-4b9b-b3dd-fd222e7a842b) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📅 Funcionalidades
 
-**Use your preferred IDE**
+- **Calendário Litúrgico Dinâmico**: Cálculo automático de estações (Advento, Quaresma, Páscoa) e cores litúrgicas.
+- **Ciclos RCL (Ano A, B, C)**: Rotação automática das leituras bíblicas.
+- **Temas Sazonais**: A interface reflete visualmente a estação da Igreja.
+- **Experiência Imersiva**: Tipografia serifada nobre (*Cormorant Garamond* e *EB Garamond*) e texturas táteis.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🛠️ Tecnologias
 
-Follow these steps:
+- **Framework**: Next.js 14 (App Router)
+- **Linguagem**: TypeScript
+- **Estilização**: Tailwind CSS
+- **Componentes**: shadcn/ui + Lucide Icons
+- **Tipografia**: Google Fonts (Garamond)
+
+---
+
+## 🚀 Como Iniciar
+
+### Pré-requisitos
+- Node.js 18+
+- npm ou bun
+
+### Instalação
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone o repositório
+git clone <URL_DO_REPOSITORIO>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Entre no diretório
+cd lecionario
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Instale as dependências
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+---
 
-**Use GitHub Codespaces**
+## 🙏 Oração do Subcriador
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+> *"Que cada pixel seja intencional, cada palavra seja verdadeira, e cada interface reflita a ordem, a beleza e o propósito do Criador. Que este trabalho seja um ato de adoração, apontando sempre para a Grande Narrativa."*
 
-## What technologies are used for this project?
+---
 
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/a0879979-1474-4b9b-b3dd-fd222e7a842b) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+**Licença:** MIT
+**Desenvolvido por:** [Seu Nome/Projeto]
+✦ ✧ ✦

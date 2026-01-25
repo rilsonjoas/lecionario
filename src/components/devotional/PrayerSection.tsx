@@ -1,7 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { Button } from '@/components/ui/button';
-import { ChevronDown, Flame, User } from 'lucide-react';
+import { Flame } from 'lucide-react';
 import { useState } from 'react';
 import type { DailyPrayer } from '@/types';
 
@@ -13,65 +10,53 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
   
   return (
-    <Card className="bg-liturgical-radial border-primary/20 shadow-card-custom animate-fade-in">
-      <CardHeader>
-        <div className="flex items-center gap-3">
-          <div className="p-2 bg-liturgical-primary rounded-lg shadow-sm">
-            <Flame className="w-5 h-5 text-liturgical-primary-foreground" />
-          </div>
-          <div className="flex-1">
-            <CardTitle className="text-xl font-semibold text-card-foreground">
-              Oração do Dia
-            </CardTitle>
-            <CardDescription className="text-sm text-muted-foreground">
-              {prayer.title}
-            </CardDescription>
-          </div>
-        </div>
-      </CardHeader>
-      
-      <CardContent className="space-y-4">
-        <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-          <CollapsibleTrigger asChild>
-            <Button 
-              variant="ghost" 
-              className="w-full justify-between p-0 h-auto text-left hover:bg-transparent group"
-            >
-              <span className="text-sm text-card-foreground/70">
-                {isOpen ? 'Ocultar oração' : 'Mostrar oração completa'}
-              </span>
-              <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform duration-200 ${
-                isOpen ? 'rotate-180' : ''
-              }`} />
-            </Button>
-          </CollapsibleTrigger>
-          
-          <CollapsibleContent className="space-y-4">
-            <div className="pt-4">
-              <blockquote className="text-base leading-relaxed font-scripture text-card-foreground bg-liturgical-secondary/30 rounded-lg p-6 border-l-4 border-liturgical-accent">
-                {prayer.text}
-              </blockquote>
-              
-              {(prayer.author || prayer.source) && (
-                <div className="flex items-center gap-2 mt-4 text-xs text-muted-foreground">
-                  <User className="w-3 h-3" />
-                  <span>
-                    {prayer.author}
-                    {prayer.author && prayer.source && ' • '}
-                    {prayer.source}
-                  </span>
-                </div>
-              )}
+    <div className="relative animate-fade-in group">
+      <div className="classic-frame bg-vinho border-dourado shadow-2xl texture-leather">
+        <div className="relative z-10 border-b border-dourado/20 pb-10">
+          <div className="flex items-center justify-center gap-6 mb-4">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-dourado/40" />
+            <div className="p-4 bg-laranja-queimado rounded-full shadow-liturgical group-hover:scale-110 transition-transform duration-1000">
+              <Flame className="w-8 h-8 text-bege-areia" />
             </div>
-          </CollapsibleContent>
-        </Collapsible>
-        
-        <div className="text-center">
-          <p className="text-xs text-muted-foreground italic">
-            "Oremos com coração sincero e espírito humilde"
-          </p>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-dourado/40" />
+          </div>
+          <div className="text-center space-y-2">
+            <h2 className="text-3xl md:text-5xl font-display text-bege-areia tracking-tight">
+              Oração do Dia
+            </h2>
+            <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-dourado">
+              {prayer.title}
+            </p>
+          </div>
         </div>
-      </CardContent>
-    </Card>
+        
+        <div className="space-y-8 md:space-y-12 pt-8 md:pt-12 relative z-10">
+          <div className="max-w-4xl mx-auto">
+            <blockquote className="text-base md:text-lg lg:text-2xl xl:text-3xl leading-relaxed font-scripture text-bege-areia italic text-center px-3 md:px-4 lg:px-16 drop-shadow-sm">
+              {prayer.text}
+            </blockquote>
+            
+            {(prayer.author || prayer.source) && (
+              <div className="flex items-center justify-center gap-4 mt-12 text-[10px] font-bold uppercase tracking-[0.3em] text-dourado/60">
+                <span className="w-10 h-px bg-dourado/20" />
+                <span>
+                  {prayer.author}
+                  {prayer.author && prayer.source && ' • '}
+                  {prayer.source}
+                </span>
+                <span className="w-10 h-px bg-dourado/20" />
+              </div>
+            )}
+          </div>
+          
+          <div className="pt-10 text-center border-t border-dourado/10">
+            <p className="text-[10px] uppercase tracking-[0.5em] text-dourado/40 font-bold shimmer-gold">
+              "SURSUM CORDA — CORAÇÕES AO ALTO"
+            </p>
+          </div>
+        </div>
+        <div className="classic-frame-footer" />
+      </div>
+    </div>
   );
 }

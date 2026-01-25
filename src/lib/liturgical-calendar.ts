@@ -24,21 +24,34 @@ export function calculateEaster(year: number): Date {
 }
 
 /**
- * Calculate the first Sunday of Advent for a given year
+ * Calculate the first Sunday of Advent for a given year.
+ * The first Sunday of Advent is the four Sundays before Christmas.
  */
 export function calculateAdventStart(year: number): Date {
-  const christmas = new Date(year, 11, 25); // December 25
-  const christmasDay = christmas.getDay();
-  const daysToSunday = christmasDay === 0 ? 0 : 7 - christmasDay;
-  const fourthAdvent = addDays(christmas, daysToSunday);
-  return addDays(fourthAdvent, -21); // 3 weeks before fourth Advent
+  const christmas = new Date(year, 11, 25);
+  const dayOfWeek = christmas.getDay(); // 0 is Sunday
+  
+  // The fourth Sunday of Advent is the Sunday on or before Dec 24
+  // If Dec 25 is Sunday (0), the Sunday on or before Dec 24 is Dec 18 (7 days before)
+  // If Dec 25 is Monday (1), the Sunday on or before Dec 24 is Dec 24 (1 day before)
+  const daysBeforeChristmas = dayOfWeek === 0 ? 7 : dayOfWeek;
+  const fourthSundayOfAdvent = addDays(christmas, -daysBeforeChristmas);
+  
+  return addDays(fourthSundayOfAdvent, -21); // First Sunday is 3 weeks before the fourth
 }
 
 /**
- * Determine liturgical cycle (A, B, C) based on year
+ * Determine liturgical cycle (A, B, C) based on year.
+ * The liturgical year starts with the first Sunday of Advent in the previous calendar year.
  */
-export function getLiturgicalCycle(year: number): LiturgicalCycle {
-  const remainder = year % 3;
+export function getLiturgicalCycle(date: Date): LiturgicalCycle {
+  const year = getYear(date);
+  const adventStart = calculateAdventStart(year);
+  
+  // If the date is after the first Sunday of Advent, it belongs to the NEXT liturgical year
+  const liturgicalYear = date >= adventStart ? year + 1 : year;
+  
+  const remainder = liturgicalYear % 3;
   switch (remainder) {
     case 1: return 'A';
     case 2: return 'B';
@@ -52,46 +65,48 @@ export function getLiturgicalCycle(year: number): LiturgicalCycle {
  */
 export function getLiturgicalSeason(date: Date): LiturgicalSeason {
   const year = getYear(date);
-  const currentYearAdvent = calculateAdventStart(year);
-  const nextYearAdvent = calculateAdventStart(year + 1);
   const easter = calculateEaster(year);
+  const ashWednesday = addDays(easter, -46);
+  const pentecost = addDays(easter, 49);
+  const epiphanyStart = new Date(year, 0, 6);
+  const christmasStart = new Date(year, 11, 25);
+  const currentAdventStart = calculateAdventStart(year);
   
-  // Advent (starts ~4 weeks before Christmas)
-  if (date >= currentYearAdvent || date < new Date(year, 0, 6)) {
-    // If we're past this year's Advent or before Epiphany, we're in Advent season
-    if (date >= currentYearAdvent) {
-      return date <= new Date(year, 11, 31) ? 'advent' : 'christmas';
-    }
-  }
-  
-  // Christmas Season (December 25 - January 5)
-  if (date >= new Date(year, 11, 25) && date <= new Date(year + 1, 0, 5)) {
+  // Check Jan 1 to Epiphany (usually belongs to previous year's Christmas season)
+  if (date < epiphanyStart) {
     return 'christmas';
   }
   
-  // Epiphany Season (January 6 - Tuesday before Ash Wednesday)
-  const ashWednesday = addDays(easter, -46);
-  if (date >= new Date(year, 0, 6) && date < addDays(ashWednesday, -1)) {
+  // Epiphany season (Jan 6 until Ash Wednesday)
+  if (date >= epiphanyStart && date < ashWednesday) {
     return 'epiphany';
   }
   
-  // Lent (Ash Wednesday - Saturday before Easter)
+  // Lent (Ash Wednesday to Holy Saturday)
   if (date >= ashWednesday && date < easter) {
     return 'lent';
   }
   
-  // Easter Season (Easter - Pentecost, 50 days)
-  const pentecost = addDays(easter, 49);
+  // Easter season (Easter Sunday to Pentecost)
   if (date >= easter && date <= pentecost) {
     return 'easter';
   }
   
-  // Day of Pentecost
-  if (format(date, 'yyyy-MM-dd') === format(pentecost, 'yyyy-MM-dd')) {
-    return 'pentecost';
+  // Ordinary Time (Pentecost to Advent)
+  if (date > pentecost && date < currentAdventStart) {
+    return 'ordinary';
   }
   
-  // Ordinary Time (everything else)
+  // Advent (Advent Start to Dec 24)
+  if (date >= currentAdventStart && date < christmasStart) {
+    return 'advent';
+  }
+  
+  // Christmas (Dec 25 to end of year)
+  if (date >= christmasStart) {
+    return 'christmas';
+  }
+  
   return 'ordinary';
 }
 
@@ -101,7 +116,6 @@ export function getLiturgicalSeason(date: Date): LiturgicalSeason {
 export function getLiturgicalColor(season: LiturgicalSeason, date?: Date): LiturgicalColor {
   switch (season) {
     case 'advent':
-      // Third Sunday of Advent (Gaudete Sunday) uses rose
       if (date) {
         const year = getYear(date);
         const adventStart = calculateAdventStart(year);
@@ -114,13 +128,10 @@ export function getLiturgicalColor(season: LiturgicalSeason, date?: Date): Litur
     
     case 'christmas':
     case 'easter':
-      return 'white';
-    
     case 'epiphany':
       return 'white';
     
     case 'lent':
-      // Fourth Sunday of Lent (Laetare Sunday) uses rose
       if (date) {
         const year = getYear(date);
         const easter = calculateEaster(year);
@@ -132,7 +143,15 @@ export function getLiturgicalColor(season: LiturgicalSeason, date?: Date): Litur
       return 'purple';
     
     case 'pentecost':
-      return 'red';
+      if (date) {
+        const year = getYear(date);
+        const easter = calculateEaster(year);
+        const pentecost = addDays(easter, 49);
+        if (format(date, 'yyyy-MM-dd') === format(pentecost, 'yyyy-MM-dd')) {
+          return 'red';
+        }
+      }
+      return 'white'; // Easter season color
     
     case 'ordinary':
     default:
@@ -140,12 +159,15 @@ export function getLiturgicalColor(season: LiturgicalSeason, date?: Date): Litur
   }
 }
 
+const weekdayNames = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+
 /**
  * Get formatted liturgical day name
  */
 export function getLiturgicalDayName(date: Date, season: LiturgicalSeason): string {
   const dayOfWeek = date.getDay();
   const isSunday = dayOfWeek === 0;
+  const epiphanyStart = new Date(date.getFullYear(), 0, 6);
   
   switch (season) {
     case 'advent': {
@@ -157,14 +179,26 @@ export function getLiturgicalDayName(date: Date, season: LiturgicalSeason): stri
         const ordinals = ['Primeiro', 'Segundo', 'Terceiro', 'Quarto'];
         return `${ordinals[weekOfAdvent - 1]} Domingo do Advento`;
       }
-      return `${format(date, 'EEEE')} da ${weekOfAdvent}ª Semana do Advento`;
+      return `${weekdayNames[dayOfWeek]} da ${weekOfAdvent}ª Semana do Advento`;
     }
     
     case 'christmas': {
       if (format(date, 'MM-dd') === '12-25') return 'Natal do Senhor';
       if (format(date, 'MM-dd') === '01-01') return 'Circuncisão de Jesus / Ano Novo';
       if (format(date, 'MM-dd') === '01-06') return 'Epifania';
-      return `${format(date, 'EEEE')} do Tempo do Natal`;
+      return `${weekdayNames[dayOfWeek]} do Tempo do Natal`;
+    }
+    
+    case 'epiphany': {
+      const year = getYear(date);
+      const epiphanyStart = new Date(year, 0, 6);
+      const weekOfEpiphany = Math.floor(differenceInDays(date, epiphanyStart) / 7) + 1;
+      
+      if (isSunday) {
+        const ordinals = ['Primeiro', 'Segundo', 'Terceiro', 'Quarto', 'Quinto', 'Sexto', 'Sétimo', 'Oitavo'];
+        return `${ordinals[weekOfEpiphany - 1]} Domingo após a Epifania`;
+      }
+      return `${weekdayNames[dayOfWeek]} após a Epifania`;
     }
     
     case 'lent': {
@@ -176,21 +210,27 @@ export function getLiturgicalDayName(date: Date, season: LiturgicalSeason): stri
         return 'Quarta-feira de Cinzas';
       }
       
+      const daysSinceAsh = differenceInDays(date, ashWednesday);
       if (isSunday) {
-        const weekOfLent = Math.floor(differenceInDays(date, ashWednesday) / 7);
-        const ordinals = ['Primeiro', 'Segundo', 'Terceiro', 'Quarto', 'Quinto', 'Domingo de Ramos'];
+        const weekOfLent = Math.floor(daysSinceAsh / 7);
+        const ordinals = ['Primeiro', 'Segundo', 'Terceiro', 'Quarto', 'Quinto', 'Sexto'];
+        if (weekOfLent === 5) return 'Domingo de Ramos';
         return `${ordinals[weekOfLent]} Domingo da Quaresma`;
       }
       
-      return `${format(date, 'EEEE')} da Quaresma`;
+      return `${weekdayNames[dayOfWeek]} da Quaresma`;
     }
     
     case 'easter': {
       const year = getYear(date);
       const easter = calculateEaster(year);
+      const pentecost = addDays(easter, 49);
       
       if (format(date, 'yyyy-MM-dd') === format(easter, 'yyyy-MM-dd')) {
         return 'Domingo da Ressurreição';
+      }
+      if (format(date, 'yyyy-MM-dd') === format(pentecost, 'yyyy-MM-dd')) {
+        return 'Pentecostes';
       }
       
       const weekOfEaster = Math.floor(differenceInDays(date, easter) / 7) + 1;
@@ -199,36 +239,23 @@ export function getLiturgicalDayName(date: Date, season: LiturgicalSeason): stri
         return `${ordinals[weekOfEaster]} Domingo da Páscoa`;
       }
       
-      return `${format(date, 'EEEE')} da ${weekOfEaster}ª Semana da Páscoa`;
-    }
-    
-    case 'pentecost': {
-      return 'Pentecostes';
+      return `${weekdayNames[dayOfWeek]} da ${weekOfEaster}ª Semana da Páscoa`;
     }
     
     case 'ordinary':
     default: {
+      const year = getYear(date);
+      const easter = calculateEaster(year);
+      const pentecost = addDays(easter, 49);
+      const adventStart = calculateAdventStart(year);
+      
       if (isSunday) {
-        // Calculate which Sunday of Ordinary Time
-        const year = getYear(date);
-        const epiphanyEnd = addDays(calculateEaster(year), -47);
-        let sundayNumber = 1;
-        
-        if (date > epiphanyEnd) {
-          // After Lent/Easter season
-          const pentecost = addDays(calculateEaster(year), 49);
-          const sundaysAfterPentecost = Math.floor(differenceInDays(date, pentecost) / 7);
-          sundayNumber = sundaysAfterPentecost + 1;
-        } else {
-          // Between Epiphany and Lent
-          const epiphanyStart = new Date(year, 0, 6);
-          sundayNumber = Math.floor(differenceInDays(date, epiphanyStart) / 7) + 1;
-        }
-        
-        return `${sundayNumber}º Domingo do Tempo Comum`;
+        // We are strictly in Ordinary Time between Pentecost and Advent
+        const sundaysAfterPentecost = Math.floor(differenceInDays(date, pentecost) / 7);
+        return `${sundaysAfterPentecost + 1}º Domingo do Tempo Comum`;
       }
       
-      return `${format(date, 'EEEE')} do Tempo Comum`;
+      return `${weekdayNames[dayOfWeek]} do Tempo Comum`;
     }
   }
 }
@@ -241,7 +268,7 @@ export function getLiturgicalDayInfo(date: Date): LiturgicalDayInfo {
   const color = getLiturgicalColor(season, date);
   const dayName = getLiturgicalDayName(date, season);
   const year = getYear(date);
-  const cycle = getLiturgicalCycle(year);
+  const cycle = getLiturgicalCycle(date);
   
   return {
     date: format(date, 'yyyy-MM-dd'),
