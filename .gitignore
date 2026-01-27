@@ -13,6 +13,12 @@ dist-ssr
 *.local
 .next
 
+# PWA generated files (built at deploy time)
+public/sw.js
+public/sw.js.map
+public/workbox-*.js
+public/workbox-*.js.map
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

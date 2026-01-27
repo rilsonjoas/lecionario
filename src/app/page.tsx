@@ -12,6 +12,7 @@ import { ReadingCard } from '@/components/devotional/ReadingCard';
 import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
+import { DatePicker } from '@/components/layout/DatePicker';
 import { getSampleDevotional } from '@/data/sample-devotional';
 import { applySeasonTheme } from '@/lib/theme';
 import type { DailyDevotional } from '@/types';
@@ -38,7 +39,8 @@ function DateSync({ onDateChange }: DateSyncProps) {
   return null;
 }
 
-export default function Home() {
+
+function HomeContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   
@@ -83,7 +85,7 @@ export default function Home() {
   }
 
   return (
-    <Suspense fallback={<div className="min-h-screen bg-background animate-pulse" />}>
+    <>
       <DateSync onDateChange={setCurrentDate} />
       <div className="min-h-screen bg-background transition-all duration-700">
       <Header liturgicalDay={devotional.liturgicalInfo} />
@@ -102,13 +104,7 @@ export default function Home() {
           </Button>
 
           <div className="flex flex-col items-center">
-             <div className="flex items-center gap-1.5 md:gap-2 text-dourado font-bold text-[8px] md:text-[10px] uppercase tracking-wider md:tracking-widest">
-               <CalendarIcon className="w-2.5 h-2.5 md:w-3 md:h-3" />
-               <span>Devocional Diário</span>
-             </div>
-             <span className="text-secondary font-display text-xs md:text-sm italic">
-               {format(currentDate, "d 'de' MMMM", { locale: ptBR })}
-             </span>
+             <DatePicker date={currentDate} onDateChange={handleDateChange} />
           </div>
 
           <Button 
@@ -199,6 +195,14 @@ export default function Home() {
 
       <Footer />
     </div>
+    </>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-background animate-pulse" />}>
+      <HomeContent />
     </Suspense>
   );
 }
