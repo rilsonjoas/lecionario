@@ -67,5 +67,3 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o 
 ---
 
 **Licença:** MIT
-**Desenvolvido por:** [Seu Nome/Projeto]
-✦ ✧ ✦
