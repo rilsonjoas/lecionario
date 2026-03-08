@@ -17,8 +17,9 @@ export default function App() {
         .eq('date', today);
       if (error) throw error;
       setReadings(data || []);
-    } catch (error) {
-      console.error('Erro:', error);
+    } catch (error: any) {
+      console.error('Erro detalhado:', JSON.stringify(error, null, 2));
+      console.error('Mensagem:', error.message);
     } finally {
       setLoading(false);
     }
