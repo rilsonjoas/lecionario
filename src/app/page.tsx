@@ -160,9 +160,9 @@ function HomeContent() {
             
             <div className="grid gap-8 md:gap-12">
               {devotional.readings.map((reading, index) => (
-                <ReadingCard 
-                  key={`${reading.type}-${index}`}
-                  reading={reading} 
+                <ReadingCard
+                  key={`${reading.type}-${reading.reference}`}
+                  reading={reading}
                   index={index}
                 />
               ))}

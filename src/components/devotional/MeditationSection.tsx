@@ -58,8 +58,8 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
               
               <div className="grid gap-6">
                 {meditation.questions.map((question, index) => (
-                  <div 
-                    key={index}
+                  <div
+                    key={question}
                     className="group/q flex gap-6 p-6 bg-bege-areia/20 hover:bg-bege-areia/40 rounded-none border-l-2 border-accent/20 transition-all duration-300"
                   >
                     <span className="flex-shrink-0 w-8 h-8 bg-vinho/5 text-secondary rounded-full flex items-center justify-center text-xs font-display italic border border-accent/10 group-hover/q:scale-110 transition-transform">
