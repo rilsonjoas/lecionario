@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint & Type Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: lecionario-web/package-lock.json
+
+      - name: Install dependencies
+        working-directory: lecionario-web
+        run: npm ci --legacy-peer-deps
+
+      - name: TypeScript check
+        working-directory: lecionario-web
+        run: npx tsc --noEmit
+
+      - name: ESLint
+        working-directory: lecionario-web
+        run: npm run lint
+
+      - name: Prettier check
+        working-directory: lecionario-web
+        run: npx prettier --check "src/**/*.{ts,tsx,json,css,md}"

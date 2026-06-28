@@ -20,7 +20,7 @@ O **Lecionário** é um convite à oração e reflexão profunda. Inspirado na r
 - **Calendário Litúrgico Dinâmico**: Cálculo automático de estações (Advento, Quaresma, Páscoa) e cores litúrgicas.
 - **Ciclos RCL (Ano A, B, C)**: Rotação automática das leituras bíblicas.
 - **Temas Sazonais**: A interface reflete visualmente a estação da Igreja.
-- **Experiência Imersiva**: Tipografia serifada nobre (*Cormorant Garamond* e *EB Garamond*) e texturas táteis.
+- **Experiência Imersiva**: Tipografia serifada nobre (_Cormorant Garamond_ e _EB Garamond_) e texturas táteis.
 
 ---
 
@@ -37,8 +37,9 @@ O **Lecionário** é um convite à oração e reflexão profunda. Inspirado na r
 ## 🚀 Como Iniciar
 
 ### Pré-requisitos
+
 - Node.js 18+
-- npm ou bun
+- npm
 
 ### Instalação
 
@@ -47,10 +48,14 @@ O **Lecionário** é um convite à oração e reflexão profunda. Inspirado na r
 git clone <URL_DO_REPOSITORIO>
 
 # Entre no diretório
-cd lecionario
+cd lecionario/lecionario-web
 
 # Instale as dependências
 npm install
+
+# Configure as variáveis de ambiente
+cp .env.example .env.local
+# Edite .env.local com suas credenciais do Supabase
 
 # Inicie o servidor de desenvolvimento
 npm run dev
@@ -58,11 +63,19 @@ npm run dev
 
 Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
 
+### Comandos úteis
+
+```sh
+npm run lint        # Verifica código com ESLint
+npm run format      # Formata código com Prettier
+npm run format:check # Verifica formatação sem alterar
+```
+
 ---
 
 ## 🙏 Oração do Subcriador
 
-> *"Que cada pixel seja intencional, cada palavra seja verdadeira, e cada interface reflita a ordem, a beleza e o propósito do Criador. Que este trabalho seja um ato de adoração, apontando sempre para a Grande Narrativa."*
+> _"Que cada pixel seja intencional, cada palavra seja verdadeira, e cada interface reflita a ordem, a beleza e o propósito do Criador. Que este trabalho seja um ato de adoração, apontando sempre para a Grande Narrativa."_
 
 ---
 
