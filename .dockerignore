@@ -1,0 +1,14 @@
+node_modules
+.next
+.expo
+dist
+build
+.git
+.gitignore
+*.md
+.vscode
+.idea
+*.local
+.env
+.env.local
+.env.*.local

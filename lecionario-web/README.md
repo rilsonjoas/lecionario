@@ -66,9 +66,20 @@ Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o 
 ### Comandos úteis
 
 ```sh
-npm run lint        # Verifica código com ESLint
-npm run format      # Formata código com Prettier
+npm run lint         # Verifica código com ESLint
+npm run format       # Formata código com Prettier
 npm run format:check # Verifica formatação sem alterar
+npm run test         # Executa testes
+```
+
+### Docker
+
+```sh
+# Construir e iniciar
+cp .env.example .env.local
+docker compose up --build
+
+# Acessar em http://localhost:3000
 ```
 
 ---
