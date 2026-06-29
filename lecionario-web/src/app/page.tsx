@@ -50,11 +50,20 @@ function HomeContent() {
   );
 
   const [devotional, setDevotional] = useState<DailyDevotional | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function loadDevotional() {
-      const data = await getSampleDevotional(currentDate);
-      setDevotional(data);
+      setError(null);
+      setDevotional(null);
+      try {
+        const data = await getSampleDevotional(currentDate);
+        setDevotional(data);
+      } catch (err) {
+        const message = err instanceof Error ? err.message : 'Erro ao carregar devocional';
+        console.error('Erro ao carregar devocional:', err);
+        setError(message);
+      }
     }
     loadDevotional();
   }, [currentDate]);
@@ -71,6 +80,21 @@ function HomeContent() {
     setCurrentDate(newDate);
     router.push(`/?date=${dateStr}`, { scroll: false });
   };
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center px-4">
+        <div className="text-center space-y-6 max-w-md">
+          <div className="text-accent text-6xl">⛪</div>
+          <h1 className="text-3xl font-display text-secondary">Não foi possível carregar</h1>
+          <p className="text-foreground/70 font-body leading-relaxed text-sm">{error}</p>
+          <Button variant="outline" onClick={() => window.location.reload()}>
+            Tentar Novamente
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   if (!devotional) {
     return (
