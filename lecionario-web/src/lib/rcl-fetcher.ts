@@ -1,16 +1,29 @@
 import type { Reading, LiturgicalCycle, LiturgicalSeason } from '@/types';
 import yearCData from '@/data/rcl/year-c.json';
 
+interface JsonReading {
+  type: string;
+  ref: string;
+  text: string;
+}
+
 interface SeasonEntry {
+  week: number;
   day: string;
-  readings: Reading[];
+  name: string;
+  readings: JsonReading[];
   collect?: string;
 }
 
-const lectionaryData: Record<LiturgicalCycle, { seasons: Record<string, SeasonEntry[]> }> = {
-  A: { seasons: {} },
-  B: { seasons: {} },
-  C: yearCData,
+interface LectionaryJson {
+  cycle: string;
+  seasons: Record<string, SeasonEntry[]>;
+}
+
+const lectionaryData: Record<LiturgicalCycle, LectionaryJson> = {
+  A: { cycle: 'A', seasons: {} },
+  B: { cycle: 'B', seasons: {} },
+  C: yearCData as LectionaryJson,
 };
 
 export function getRCLReadings(
@@ -21,22 +34,19 @@ export function getRCLReadings(
   const seasonData = lectionaryData[cycle]?.seasons[season];
   if (!seasonData) return null;
 
-  // For Sundays, we match the week. For weekdays, we might need more complex mapping.
-  // For now, we'll implement matches for Sundays as a start.
   const isSunday = date.getDay() === 0;
 
   if (isSunday) {
-    // Basic week calculation (needs to match liturgical-calendar logic)
-    // For simplicity in this demo, we'll try to find the match by name or week
-    // In a prod app, we'd have a strictly indexed mapping.
-    const dayOfWeek = date.getDay();
-    // Simplified: find by index for the demo if it's the right season
-    // (Actual logic would be much more robust)
     const match = seasonData.find((d: SeasonEntry) => d.day === 'Sunday');
 
     if (match) {
       return {
-        readings: match.readings,
+        readings: match.readings.map((r) => ({
+          type: r.type as Reading['type'],
+          reference: r.ref,
+          citation: r.ref,
+          text: r.text,
+        })),
         collect: match.collect,
       };
     }
