@@ -8,7 +8,7 @@ interface PrayerSectionProps {
 
 export function PrayerSection({ prayer }: PrayerSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <div className="relative animate-fade-in group">
       <div className="classic-frame bg-vinho border-dourado shadow-2xl texture-leather">
@@ -29,13 +29,13 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             </p>
           </div>
         </div>
-        
+
         <div className="space-y-8 md:space-y-12 pt-8 md:pt-12 relative z-10">
           <div className="max-w-4xl mx-auto">
             <blockquote className="text-base md:text-lg lg:text-2xl xl:text-3xl leading-relaxed font-scripture text-bege-areia italic text-center px-3 md:px-4 lg:px-16 drop-shadow-sm">
               {prayer.text}
             </blockquote>
-            
+
             {(prayer.author || prayer.source) && (
               <div className="flex items-center justify-center gap-4 mt-12 text-[10px] font-bold uppercase tracking-[0.3em] text-dourado/60">
                 <span className="w-10 h-px bg-dourado/20" />
@@ -48,7 +48,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
               </div>
             )}
           </div>
-          
+
           <div className="pt-10 text-center border-t border-dourado/10">
             <p className="text-[10px] uppercase tracking-[0.5em] text-dourado/40 font-bold shimmer-gold">
               "SURSUM CORDA — CORAÇÕES AO ALTO"

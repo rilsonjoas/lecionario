@@ -1,5 +1,4 @@
-
-"use client";
+'use client';
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
@@ -18,7 +17,7 @@ export default function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [email, setEmail] = useState('');
   const [magicLinkSent, setMagicLinkSent] = useState(false);
-  
+
   // Dashboard state
   const [selectedMonth, setSelectedMonth] = useState<Date>(new Date()); // Start at current month
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
@@ -30,9 +29,12 @@ export default function AdminPage() {
     const checkUser = async () => {
       try {
         console.log('Checking auth session...');
-        const { data: { session }, error } = await supabase.auth.getSession();
+        const {
+          data: { session },
+          error,
+        } = await supabase.auth.getSession();
         if (error) throw error;
-        
+
         console.log('Session found:', !!session);
         setUser(session?.user ?? null);
       } catch (error) {
@@ -41,7 +43,7 @@ export default function AdminPage() {
         setLoading(false);
       }
     };
-    
+
     checkUser();
 
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
@@ -84,21 +86,27 @@ export default function AdminPage() {
   };
 
   const fetchStats = async () => {
-    const { count: readings } = await supabase.from('readings').select('*', { count: 'exact', head: true });
-    const { count: prayers } = await supabase.from('prayers').select('*', { count: 'exact', head: true });
-    const { count: collects } = await supabase.from('collects').select('*', { count: 'exact', head: true });
-    
+    const { count: readings } = await supabase
+      .from('readings')
+      .select('*', { count: 'exact', head: true });
+    const { count: prayers } = await supabase
+      .from('prayers')
+      .select('*', { count: 'exact', head: true });
+    const { count: collects } = await supabase
+      .from('collects')
+      .select('*', { count: 'exact', head: true });
+
     setStats({
       totalReadings: readings || 0,
       totalPrayers: prayers || 0,
-      totalCollects: collects || 0
+      totalCollects: collects || 0,
     });
   };
 
   const fetchMonthData = async (date: Date) => {
     const start = format(startOfMonth(date), 'yyyy-MM-dd');
     const end = format(endOfMonth(date), 'yyyy-MM-dd');
-    
+
     console.log(`Fetching data for ${start} to ${end}`);
 
     // Fetch days that have readings
@@ -110,7 +118,7 @@ export default function AdminPage() {
 
     if (data) {
       // Unique dates
-      const days = Array.from(new Set(data.map(d => d.date)));
+      const days = Array.from(new Set(data.map((d) => d.date)));
       setPopulatedDays(days);
     }
   };
@@ -136,18 +144,22 @@ export default function AdminPage() {
             {magicLinkSent ? (
               <div className="text-center space-y-4">
                 <CheckCircle2 className="w-12 h-12 text-green-500 mx-auto" />
-                <p>Link mágico enviado para <strong>{email}</strong></p>
+                <p>
+                  Link mágico enviado para <strong>{email}</strong>
+                </p>
                 <p className="text-sm text-muted-foreground">Verifique sua caixa de entrada.</p>
-                <Button variant="ghost" onClick={() => setMagicLinkSent(false)}>Voltar</Button>
+                <Button variant="ghost" onClick={() => setMagicLinkSent(false)}>
+                  Voltar
+                </Button>
               </div>
             ) : (
               <form onSubmit={handleLogin} className="space-y-4">
                 <div className="space-y-2">
-                  <Input 
-                    type="email" 
-                    placeholder="seu@email.com" 
+                  <Input
+                    type="email"
+                    placeholder="seu@email.com"
                     value={email}
-                    onChange={e => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                     className="bg-background"
                   />
@@ -170,7 +182,9 @@ export default function AdminPage() {
           <h1 className="font-display text-xl text-secondary">Painel Administrativo</h1>
           <div className="flex items-center gap-4">
             <span className="text-sm text-muted-foreground hidden md:inline">{user.email}</span>
-            <Button variant="ghost" size="sm" onClick={handleLogout}>Sair</Button>
+            <Button variant="ghost" size="sm" onClick={handleLogout}>
+              Sair
+            </Button>
           </div>
         </div>
       </header>
@@ -227,12 +241,12 @@ export default function AdminPage() {
                       populated: (date) => populatedDays.includes(format(date, 'yyyy-MM-dd')),
                     }}
                     modifiersStyles={{
-                      populated: { 
-                        fontWeight: 'bold', 
+                      populated: {
+                        fontWeight: 'bold',
                         color: 'var(--primary)',
                         backgroundColor: 'var(--accent)',
-                        opacity: 0.8
-                      }
+                        opacity: 0.8,
+                      },
                     }}
                   />
                 </div>
@@ -247,8 +261,8 @@ export default function AdminPage() {
           <Card>
             <CardHeader>
               <CardTitle>
-                {selectedDate 
-                  ? `Editando: ${format(selectedDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}` 
+                {selectedDate
+                  ? `Editando: ${format(selectedDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}`
                   : 'Selecione um dia'}
               </CardTitle>
             </CardHeader>
@@ -258,7 +272,9 @@ export default function AdminPage() {
               ) : (
                 <div className="p-12 text-center text-muted-foreground flex flex-col items-center gap-2">
                   <AlertCircle className="w-8 h-8 opacity-20" />
-                  <p>Selecione uma data no calendário para visualizar ou editar o conteúdo litúrgico.</p>
+                  <p>
+                    Selecione uma data no calendário para visualizar ou editar o conteúdo litúrgico.
+                  </p>
                 </div>
               )}
             </CardContent>

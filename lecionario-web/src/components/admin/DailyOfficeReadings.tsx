@@ -21,7 +21,7 @@ export function DailyOfficeReadings({ date }: DailyOfficeReadingsProps) {
   const loadReadings = async () => {
     setLoading(true);
     setError(null);
-    
+
     try {
       const data = await getDailyOfficeReadings(date);
       setReadings(data);
@@ -45,10 +45,7 @@ export function DailyOfficeReadings({ date }: DailyOfficeReadingsProps) {
     return (
       <div className="text-center p-8 text-muted-foreground">
         <p>{error}</p>
-        <button 
-          onClick={loadReadings}
-          className="mt-4 text-sm text-primary hover:underline"
-        >
+        <button onClick={loadReadings} className="mt-4 text-sm text-primary hover:underline">
           Tentar novamente
         </button>
       </div>
@@ -101,18 +98,22 @@ export function DailyOfficeReadings({ date }: DailyOfficeReadingsProps) {
           <CardContent className="space-y-3">
             {readings.lessons.first && (
               <div>
-                <h4 className="font-semibold text-sm text-muted-foreground mb-1">Primeira Leitura</h4>
+                <h4 className="font-semibold text-sm text-muted-foreground mb-1">
+                  Primeira Leitura
+                </h4>
                 <p className="text-foreground">{readings.lessons.first}</p>
               </div>
             )}
-            
+
             {readings.lessons.second && (
               <div>
-                <h4 className="font-semibold text-sm text-muted-foreground mb-1">Segunda Leitura</h4>
+                <h4 className="font-semibold text-sm text-muted-foreground mb-1">
+                  Segunda Leitura
+                </h4>
                 <p className="text-foreground">{readings.lessons.second}</p>
               </div>
             )}
-            
+
             {readings.lessons.gospel && (
               <div>
                 <h4 className="font-semibold text-sm text-muted-foreground mb-1">Evangelho</h4>
@@ -141,15 +142,15 @@ export function DailyOfficeReadings({ date }: DailyOfficeReadingsProps) {
       {/* Source attribution */}
       <p className="text-xs text-muted-foreground text-center">
         Leituras do Ofício Diário via{' '}
-        <a 
-          href="https://lectserve.com" 
-          target="_blank" 
+        <a
+          href="https://lectserve.com"
+          target="_blank"
           rel="noopener noreferrer"
           className="hover:underline"
         >
           LectServe
-        </a>
-        {' '}(ACNA Daily Office Lectionary)
+        </a>{' '}
+        (ACNA Daily Office Lectionary)
       </p>
     </div>
   );

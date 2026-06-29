@@ -5,10 +5,6 @@ export const metadata: Metadata = {
   description: 'Painel administrativo do Lecionário. Gerencie leituras, orações e devocionais.',
 };
 
-export default function AdminLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
   return children;
 }

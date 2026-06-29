@@ -1,20 +1,8 @@
 // Liturgical Calendar Types
-export type LiturgicalSeason = 
-  | 'advent' 
-  | 'christmas' 
-  | 'epiphany' 
-  | 'lent' 
-  | 'easter' 
-  | 'pentecost' 
-  | 'ordinary';
+export type LiturgicalSeason =
+  'advent' | 'christmas' | 'epiphany' | 'lent' | 'easter' | 'pentecost' | 'ordinary';
 
-export type LiturgicalColor = 
-  | 'purple' 
-  | 'white' 
-  | 'green' 
-  | 'red' 
-  | 'rose' 
-  | 'gold';
+export type LiturgicalColor = 'purple' | 'white' | 'green' | 'red' | 'rose' | 'gold';
 
 export type LiturgicalCycle = 'A' | 'B' | 'C';
 

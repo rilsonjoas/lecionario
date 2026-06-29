@@ -51,7 +51,7 @@ function setCachedReadings(dateStr: string, data: DailyOfficeReading): void {
  */
 export async function getDailyOfficeReadings(date: Date): Promise<DailyOfficeReading> {
   const dateStr = format(date, 'yyyy-MM-dd');
-  
+
   // Check cache first
   const cached = getCachedReadings(dateStr);
   if (cached) {
@@ -60,16 +60,16 @@ export async function getDailyOfficeReadings(date: Date): Promise<DailyOfficeRea
   }
 
   console.log(`[LectServe] Fetching readings for ${dateStr}`);
-  
+
   try {
     const response = await fetch(`https://lectserve.com/date/${dateStr}`);
-    
+
     if (!response.ok) {
       throw new Error(`LectServe API error: ${response.status} ${response.statusText}`);
     }
 
     const data = await response.json();
-    
+
     // Transform API response to our format
     const readings: DailyOfficeReading = {
       date: dateStr,
@@ -86,11 +86,11 @@ export async function getDailyOfficeReadings(date: Date): Promise<DailyOfficeRea
 
     // Cache the result
     setCachedReadings(dateStr, readings);
-    
+
     return readings;
   } catch (error) {
     console.error('[LectServe] Error fetching readings:', error);
-    
+
     // Return empty readings on error
     return {
       date: dateStr,

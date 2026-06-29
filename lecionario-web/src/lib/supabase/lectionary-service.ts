@@ -1,11 +1,16 @@
 import { supabase } from './client';
-import type { DailyDevotional, Reading, DailyPrayer, MeditationResource } from '@/types';
-import type { LiturgicalCycle } from '@/types';
+import type {
+  DailyDevotional,
+  Reading,
+  DailyPrayer,
+  MeditationResource,
+  LiturgicalCycle,
+} from '@/types';
 import { format } from 'date-fns';
 
 export async function fetchDailyDevotional(
   date: Date,
-  cycle: LiturgicalCycle
+  cycle: LiturgicalCycle,
 ): Promise<Partial<DailyDevotional> | null> {
   const dateStr = format(date, 'yyyy-MM-dd');
 
@@ -41,13 +46,15 @@ export async function fetchDailyDevotional(
     // Buscar meditação com questões
     const { data: meditationData } = await supabase
       .from('meditations')
-      .select(`
+      .select(
+        `
         *,
         meditation_questions (
           question,
           order_index
         )
-      `)
+      `,
+      )
       .eq('date', dateStr)
       .eq('cycle', cycle)
       .maybeSingle();
@@ -58,33 +65,39 @@ export async function fetchDailyDevotional(
     }
 
     // Converter para formato do app
-    const readings: Reading[] = readingsData?.map(r => ({
-      type: r.reading_type as any,
-      reference: r.reference,
-      citation: r.citation || r.reference,
-      text: r.text
-    })) || [];
+    const readings: Reading[] =
+      readingsData?.map((r) => ({
+        type: r.reading_type as Reading['type'],
+        reference: r.reference,
+        citation: r.citation || r.reference,
+        text: r.text,
+      })) || [];
 
-    const prayer: DailyPrayer | undefined = prayerData ? {
-      title: prayerData.title,
-      text: prayerData.text,
-      author: prayerData.author || undefined,
-      source: prayerData.source || undefined
-    } : undefined;
+    const prayer: DailyPrayer | undefined = prayerData
+      ? {
+          title: prayerData.title,
+          text: prayerData.text,
+          author: prayerData.author || undefined,
+          source: prayerData.source || undefined,
+        }
+      : undefined;
 
-    const meditation: MeditationResource | undefined = meditationData ? {
-      prompt: meditationData.prompt,
-      questions: (meditationData.meditation_questions as any[])
-        ?.sort((a, b) => a.order_index - b.order_index)
-        .map(q => q.question) || [],
-      duration: meditationData.duration || undefined
-    } : undefined;
+    const meditation: MeditationResource | undefined = meditationData
+      ? {
+          prompt: meditationData.prompt,
+          questions:
+            (meditationData.meditation_questions as { question: string; order_index: number }[])
+              ?.sort((a, b) => a.order_index - b.order_index)
+              .map((q) => q.question) || [],
+          duration: meditationData.duration || undefined,
+        }
+      : undefined;
 
     return {
       readings: readings.length > 0 ? readings : undefined,
       prayer,
       meditation,
-      collect: collectData?.text
+      collect: collectData?.text,
     };
   } catch (error) {
     console.error('Erro ao buscar dados do Supabase:', error);

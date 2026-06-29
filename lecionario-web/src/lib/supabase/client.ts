@@ -6,7 +6,7 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 if (!supabaseUrl || !supabaseAnonKey) {
   console.warn(
     '⚠️ Supabase environment variables are missing. ' +
-    'Prerendering might fail if it depends on actual Supabase data.'
+      'Prerendering might fail if it depends on actual Supabase data.',
   );
 }
 
@@ -17,5 +17,5 @@ export const supabase = createClient(
     auth: {
       persistSession: false,
     },
-  }
+  },
 );

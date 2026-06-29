@@ -35,3 +35,7 @@ jobs:
       - name: Prettier check
         working-directory: lecionario-web
         run: npx prettier --check "src/**/*.{ts,tsx,json,css,md}"
+
+      - name: Tests
+        working-directory: lecionario-web
+        run: npm run test

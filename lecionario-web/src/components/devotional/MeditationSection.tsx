@@ -11,7 +11,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
     <div className="relative animate-slide-up group">
       <div className="classic-frame texture-paper border-accent/10 shadow-xl overflow-hidden">
         <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 blur-3xl -mr-16 -mt-16 rounded-full" />
-        
+
         <div className="relative z-10">
           <div className="flex items-start justify-between gap-3 mb-6">
             <div className="flex items-center gap-4">
@@ -27,25 +27,32 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
                 </p>
               </div>
             </div>
-            
+
             {meditation.duration && (
-              <Badge variant="outline" className="flex items-center gap-2 border-accent/20 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-none">
+              <Badge
+                variant="outline"
+                className="flex items-center gap-2 border-accent/20 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-none"
+              >
                 <Clock className="w-3 h-3 text-dourado" />
-                <span className="text-[9px] font-bold uppercase tracking-[0.2em]">{meditation.duration}</span>
+                <span className="text-[9px] font-bold uppercase tracking-[0.2em]">
+                  {meditation.duration}
+                </span>
               </Badge>
             )}
           </div>
         </div>
-        
+
         <div className="space-y-10 pt-6 relative z-10">
           {/* Main Meditation Prompt */}
           <div className="relative">
-            <span className="absolute -top-6 -left-4 text-6xl text-accent/10 font-display leading-none">"</span>
+            <span className="absolute -top-6 -left-4 text-6xl text-accent/10 font-display leading-none">
+              "
+            </span>
             <p className="text-base md:text-lg lg:text-xl leading-relaxed text-foreground/90 font-body indent-8 text-justify px-2">
               {meditation.prompt}
             </p>
           </div>
-          
+
           {/* Meditation Questions */}
           {meditation.questions && meditation.questions.length > 0 && (
             <div className="space-y-6">
@@ -55,7 +62,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
                   Questões para Silenciar
                 </h4>
               </div>
-              
+
               <div className="grid gap-6">
                 {meditation.questions.map((question, index) => (
                   <div
@@ -73,23 +80,19 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
               </div>
             </div>
           )}
-          
+
           {/* Audio Player (if available) */}
           {meditation.audioUrl && (
             <div className="p-8 bg-preto-ébano/5 rounded-none border border-accent/10">
               <h5 className="text-[9px] uppercase tracking-[0.4em] font-bold text-secondary mb-6 text-center">
                 Meditação Guiada
               </h5>
-              <audio 
-                controls 
-                className="w-full h-10 filter sepia-[.3]"
-                preload="metadata"
-              >
+              <audio controls className="w-full h-10 filter sepia-[.3]" preload="metadata">
                 <source src={meditation.audioUrl} type="audio/mpeg" />
               </audio>
             </div>
           )}
-          
+
           <div className="text-center pt-8 border-t border-accent/10">
             <p className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground/60 font-bold italic">
               "Aquietai-vos e sabei que eu sou Deus"

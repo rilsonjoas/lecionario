@@ -25,13 +25,13 @@ export function CollectSection({ collect }: CollectSectionProps) {
               </div>
             </div>
           </CardHeader>
-          
+
           <div className="space-y-8">
             <div className="bg-card/30 rounded-none p-8 border-l-4 border-accent/20">
               <p className="text-xl md:text-2xl leading-relaxed font-scripture text-foreground/90 italic">
                 {collect}
               </p>
-              
+
               <div className="mt-8 pt-6 border-t border-accent/10">
                 <p className="text-right text-[10px] uppercase tracking-[0.3em] font-bold text-accent/60 italic">
                   Por Jesus Cristo, nosso Senhor. Amém.
