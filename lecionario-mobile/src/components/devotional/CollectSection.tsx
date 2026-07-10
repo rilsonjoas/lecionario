@@ -63,8 +63,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     color: '#333',
-    fontFamily: 'serif',
-    fontStyle: 'italic',
+    fontFamily: 'Lora_400Regular_Italic',
   },
   subtitle: {
     fontSize: 9,
@@ -88,8 +87,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 30,
     color: '#444',
-    fontFamily: 'serif',
-    fontStyle: 'italic',
+    fontFamily: 'Lora_400Regular_Italic',
   },
   amenSection: {
     borderTopWidth: 1,

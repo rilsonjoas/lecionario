@@ -34,7 +34,11 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
         {meditation.questions && meditation.questions.length > 0 && (
           <View style={styles.questionsSection}>
             <View style={styles.questionsHeader}>
-              <MaterialCommunityIcons name="help-circle-outline" size={14} color="rgba(139,105,20,0.4)" />
+              <MaterialCommunityIcons
+                name="help-circle-outline"
+                size={14}
+                color="rgba(139,105,20,0.4)"
+              />
               <Text style={styles.questionsTitle}>Questões para Silenciar</Text>
             </View>
 
@@ -85,8 +89,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     color: '#333',
-    fontFamily: 'serif',
-    fontStyle: 'italic',
+    fontFamily: 'Lora_400Regular_Italic',
   },
   subtitle: {
     fontSize: 10,
@@ -128,13 +131,13 @@ const styles = StyleSheet.create({
     left: -8,
     fontSize: 48,
     color: 'rgba(139,105,20,0.1)',
-    fontFamily: 'serif',
+    fontFamily: 'Lora_400Regular',
   },
   promptText: {
     fontSize: 16,
     lineHeight: 26,
     color: '#444',
-    fontFamily: 'serif',
+    fontFamily: 'Lora_400Regular',
     textAlign: 'justify',
     paddingLeft: 8,
   },
@@ -179,15 +182,14 @@ const styles = StyleSheet.create({
   questionNumberText: {
     fontSize: 13,
     color: '#666',
-    fontFamily: 'serif',
-    fontStyle: 'italic',
+    fontFamily: 'Lora_400Regular_Italic',
   },
   questionText: {
     flex: 1,
     fontSize: 15,
     lineHeight: 24,
     color: '#555',
-    fontFamily: 'serif',
+    fontFamily: 'Lora_400Regular',
     paddingTop: 4,
   },
 });

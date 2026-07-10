@@ -38,10 +38,14 @@ export function getLiturgicalCycle(date: Date): LiturgicalCycle {
   const liturgicalYear = date >= adventStart ? year + 1 : year;
   const remainder = liturgicalYear % 3;
   switch (remainder) {
-    case 1: return 'A';
-    case 2: return 'B';
-    case 0: return 'C';
-    default: return 'A';
+    case 1:
+      return 'A';
+    case 2:
+      return 'B';
+    case 0:
+      return 'C';
+    default:
+      return 'A';
   }
 }
 
@@ -101,8 +105,13 @@ export function getLiturgicalColor(season: LiturgicalSeason, date?: Date): Litur
 }
 
 const weekdayNames = [
-  'Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira',
-  'Quinta-feira', 'Sexta-feira', 'Sábado',
+  'Domingo',
+  'Segunda-feira',
+  'Terça-feira',
+  'Quarta-feira',
+  'Quinta-feira',
+  'Sexta-feira',
+  'Sábado',
 ];
 
 export function getLiturgicalDayName(date: Date, season: LiturgicalSeason): string {
@@ -130,7 +139,16 @@ export function getLiturgicalDayName(date: Date, season: LiturgicalSeason): stri
       const year = getYear(date);
       const weekOfEpiphany = Math.floor(differenceInDays(date, new Date(year, 0, 6)) / 7) + 1;
       if (isSunday) {
-        const ordinals = ['Primeiro', 'Segundo', 'Terceiro', 'Quarto', 'Quinto', 'Sexto', 'Sétimo', 'Oitavo'];
+        const ordinals = [
+          'Primeiro',
+          'Segundo',
+          'Terceiro',
+          'Quarto',
+          'Quinto',
+          'Sexto',
+          'Sétimo',
+          'Oitavo',
+        ];
         return `${ordinals[weekOfEpiphany - 1]} Domingo após a Epifania`;
       }
       return `${weekdayNames[dayOfWeek]} após a Epifania`;
@@ -139,7 +157,8 @@ export function getLiturgicalDayName(date: Date, season: LiturgicalSeason): stri
       const year = getYear(date);
       const easter = calculateEaster(year);
       const ashWednesday = addDays(easter, -46);
-      if (format(date, 'yyyy-MM-dd') === format(ashWednesday, 'yyyy-MM-dd')) return 'Quarta-feira de Cinzas';
+      if (format(date, 'yyyy-MM-dd') === format(ashWednesday, 'yyyy-MM-dd'))
+        return 'Quarta-feira de Cinzas';
       const daysSinceAsh = differenceInDays(date, ashWednesday);
       if (isSunday) {
         const weekOfLent = Math.floor(daysSinceAsh / 7);
@@ -153,7 +172,8 @@ export function getLiturgicalDayName(date: Date, season: LiturgicalSeason): stri
       const year = getYear(date);
       const easter = calculateEaster(year);
       const pentecost = addDays(easter, 49);
-      if (format(date, 'yyyy-MM-dd') === format(easter, 'yyyy-MM-dd')) return 'Domingo da Ressurreição';
+      if (format(date, 'yyyy-MM-dd') === format(easter, 'yyyy-MM-dd'))
+        return 'Domingo da Ressurreição';
       if (format(date, 'yyyy-MM-dd') === format(pentecost, 'yyyy-MM-dd')) return 'Pentecostes';
       const weekOfEaster = Math.floor(differenceInDays(date, easter) / 7) + 1;
       if (isSunday) {

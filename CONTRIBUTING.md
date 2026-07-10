@@ -10,7 +10,7 @@ Este projeto segue o [Código de Conduta](https://www.contributor-covenant.org/v
 
 ### Pré-requisitos
 
-- Node.js 18+
+- Node.js 22+
 - npm
 
 ### Setup

@@ -5,40 +5,40 @@
 
 ## Estado do Projeto
 
-| Dimensão             | Web                                                             | Mobile                         |
-| -------------------- | --------------------------------------------------------------- | ------------------------------ |
-| **Maturidade**       | Alpha (~60%)                                                    | Prova de conceito (~10%)       |
-| **Engine litúrgico** | Completo (Páscoa, Advento, cores, ciclos A/B/C, nomes em PT-BR) | Inexistente                    |
-| **Dados RCL**        | Parcial (Ano C, Advento semanas 1-2)                            | Inexistente                    |
-| **UI**               | 49 componentes shadcn/ui + devocionais + admin                  | 1 tela básica sem navegação    |
-| **Supabase**         | Cliente + tipos + serviço de dados + migrations                 | Query básica (leituras do dia) |
-| **Testes**           | 42 testes (Vitest)                                              | Nenhum                         |
-| **CI/CD**            | GitHub Actions (lint + typecheck + format + testes)             | Nenhum                         |
-| **Infra**            | Docker, PWA, Error Boundaries, Prettier, Husky                  | Nenhum                         |
-| **Offline**          | Service Worker com runtime caching                              | Nenhum                         |
-| **Admin**            | Painel com auth, editor, estatísticas                           | Inexistente                    |
+| Dimensão             | Web                                                             | Mobile                                              |
+| -------------------- | --------------------------------------------------------------- | --------------------------------------------------- |
+| **Maturidade**       | Alpha                                                           | Beta                                                |
+| **Engine litúrgico** | Completo (Páscoa, Advento, cores, ciclos A/B/C, nomes em PT-BR) | Completo (portado do web)                           |
+| **Dados RCL**        | Ciclos A/B/C completos com textos bíblicos (ARC, ~4337 textos)  | Mesmos dados (JSONs copiados)                       |
+| **Devocionais**      | 2152 orações + meditações (2025–2030)                           | Mesmos dados (JSONs copiados)                       |
+| **UI**               | 49 componentes shadcn/ui + devocionais + admin                  | Home, Calendário, Configurações                     |
+| **Supabase**         | Apenas admin panel (opcional)                                   | Removido — dados 100% locais                        |
+| **Testes**           | 42 testes (Vitest) — motor litúrgico + utils                    | 38 testes (Vitest) — motor litúrgico                |
+| **CI/CD**            | GitHub Actions (lint + typecheck + format + testes)             | GitHub Actions (lint + typecheck + format + testes) |
+| **Offline**          | Service Worker com runtime caching + dados estáticos bundlados  | AsyncStorage com TTL 24h + JSONs bundlados          |
+| **Admin**            | Painel com auth, editor, estatísticas (requer Supabase)         | Inexistente                                         |
 
 ## 🗺️ Roadmap
 
-### Curto prazo (dias)
+### Curto prazo
 
-- [ ] Popular dados RCL (Anos A, B, C completos)
-- [ ] Adicionar mais testes (serviços Supabase, helpers)
+- [ ] Conteúdo específico para Semana Santa (Quinta-Feira Santa, Sexta-Feira Santa, Sábado Santo)
+- [ ] Adicionar mais testes (rcl-fetcher, cache, devotional-service)
 - [ ] Corrigir warnings do ESLint nos hooks
 
-### Médio prazo (semanas)
+### Médio prazo
 
-- [ ] Portar engine litúrgico para o mobile
-- [ ] Adicionar navegação e telas no mobile
-- [ ] Deploy da web (Vercel ou Docker em produção)
-- [ ] Estratégia de cache offline-first no mobile
+- [ ] Notificações push diárias (expo-notifications)
+- [ ] Compartilhamento nativo (expo-sharing)
+- [ ] Config screen completa (fonte, tema claro/escuro, notificações)
+- [ ] Melhorar cobertura de testes (70%+ em src/lib/)
 
-### Longo prazo (meses)
+### Longo prazo
 
-- [ ] App mobile completo (leituras, orações, meditações, offline)
-- [ ] Push notifications para o devocional diário
-- [ ] Suporte a múltiplos idiomas
-- [ ] Versão Android e iOS nas stores
+- [ ] App mobile completo nas stores (Android + iOS)
+- [ ] Suporte a múltiplas traduções bíblicas
+- [ ] Widget de tela inicial
+- [ ] Favoritos e marcadores
 
 ---
 
@@ -57,7 +57,8 @@ O **Lecionário** é um convite à oração e reflexão profunda. Inspirado na r
 - **Calendário Litúrgico Dinâmico**: Cálculo automático de estações (Advento, Quaresma, Páscoa) e cores litúrgicas.
 - **Ciclos RCL (Ano A, B, C)**: Rotação automática das leituras bíblicas.
 - **Temas Sazonais**: A interface reflete visualmente a estação da Igreja.
-- **Experiência Imersiva**: Tipografia serifada nobre (Cormorant Garamond e EB Garamond) e texturas táteis.
+- **Dados 100% offline**: Todos os textos bíblicos e devocionais embutidos — sem dependência de rede.
+- **Cache inteligente**: AsyncStorage no mobile, Service Worker no web.
 
 ---
 
@@ -69,7 +70,7 @@ O **Lecionário** é um convite à oração e reflexão profunda. Inspirado na r
 - **Linguagem**: TypeScript (strict)
 - **Estilização**: Tailwind CSS
 - **Componentes**: shadcn/ui + Lucide Icons
-- **Backend/Dados**: Supabase (PostgreSQL)
+- **Dados**: JSON bundlados (sem backend)
 - **Estado**: TanStack React Query
 - **Testes**: Vitest
 - **Infra**: Docker, Husky, GitHub Actions
@@ -78,7 +79,8 @@ O **Lecionário** é um convite à oração e reflexão profunda. Inspirado na r
 
 - **Framework**: Expo 54 / React Native 0.81
 - **Linguagem**: TypeScript
-- **Backend/Dados**: Supabase
+- **Cache**: AsyncStorage
+- **Navegação**: Expo Router
 
 ---
 
@@ -92,24 +94,12 @@ O **Lecionário** é um convite à oração e reflexão profunda. Inspirado na r
 ### Instalação
 
 ```sh
-# Clone o repositório
-git clone <URL_DO_REPOSITORIO>
-
-# Entre no diretório
-cd lecionario/lecionario-web
-
-# Instale as dependências
+cd lecionario-web
 npm install
-
-# Configure as variáveis de ambiente
-cp .env.example .env.local
-# Edite .env.local com suas credenciais do Supabase
-
-# Inicie o servidor de desenvolvimento
 npm run dev
 ```
 
-Abra [http://localhost:3000](http://localhost:3000) no seu navegador para ver o resultado.
+Abra [http://localhost:3000](http://localhost:3000) para ver o resultado.
 
 ### Comandos úteis
 
@@ -118,15 +108,19 @@ npm run lint         # Verifica código com ESLint
 npm run format       # Formata código com Prettier
 npm run format:check # Verifica formatação sem alterar
 npm run test         # Executa testes (42 testes)
-npm run test:watch   # Testes em modo watch
 ```
 
-### Docker
+### Geração de dados
 
 ```sh
-cp .env.example .env.local
-docker compose up --build
-# Acessar em http://localhost:3000
+# Gerar RCL (se precisar regenerar)
+npx tsx scripts/generate-rcl-data.ts
+
+# Popular textos bíblicos
+npx tsx scripts/lookup-bible-text.ts
+
+# Gerar devocionais
+npx tsx scripts/generate-devotionals.ts
 ```
 
 ---

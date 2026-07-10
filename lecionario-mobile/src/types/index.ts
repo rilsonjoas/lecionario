@@ -1,5 +1,5 @@
 export type LiturgicalSeason =
-  | 'advent' | 'christmas' | 'epiphany' | 'lent' | 'easter' | 'pentecost' | 'ordinary';
+  'advent' | 'christmas' | 'epiphany' | 'lent' | 'easter' | 'pentecost' | 'ordinary';
 
 export type LiturgicalColor = 'purple' | 'white' | 'green' | 'red' | 'rose' | 'gold';
 
@@ -47,3 +47,9 @@ export interface SeasonTheme {
   secondaryColor: string;
   accentColor: string;
 }
+
+export type RootTabParamList = {
+  Hoje: { date?: string } | undefined;
+  Calendário: undefined;
+  Config: undefined;
+};

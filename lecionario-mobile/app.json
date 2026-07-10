@@ -3,6 +3,7 @@
     "name": "lecionario-mobile",
     "slug": "lecionario-mobile",
     "version": "1.0.0",
+    "scheme": "lecionario",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",

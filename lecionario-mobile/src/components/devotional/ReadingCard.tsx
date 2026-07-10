@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Share } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import type { Reading } from '@/types';
 
@@ -7,7 +7,10 @@ interface ReadingCardProps {
   index: number;
 }
 
-const readingTypeConfig: Record<string, { label: string; icon: keyof typeof MaterialCommunityIcons.glyphMap; color: string }> = {
+const readingTypeConfig: Record<
+  string,
+  { label: string; icon: keyof typeof MaterialCommunityIcons.glyphMap; color: string }
+> = {
   first_reading: { label: 'Primeira Leitura', icon: 'book-open-variant', color: '#8B6914' },
   psalm: { label: 'Salmo', icon: 'heart', color: '#4A2C6D' },
   second_reading: { label: 'Segunda Leitura', icon: 'script-text-outline', color: '#6B3A3A' },
@@ -17,6 +20,13 @@ const readingTypeConfig: Record<string, { label: string; icon: keyof typeof Mate
 export function ReadingCard({ reading, index }: ReadingCardProps) {
   const config = readingTypeConfig[reading.type] || readingTypeConfig.first_reading;
 
+  const handleShare = async () => {
+    const lines = [`${config.label} — ${reading.reference}`];
+    if (reading.text) lines.push('', reading.text);
+    lines.push('', '— Lecionário');
+    await Share.share({ message: lines.join('\n') });
+  };
+
   return (
     <View style={[styles.card, { marginTop: index > 0 ? 16 : 0 }]}>
       <View style={styles.accentBar} />
@@ -24,13 +34,21 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
         <View style={styles.headerRow}>
           <View style={styles.referenceContainer}>
             <Text style={styles.reference}>{reading.reference}</Text>
-            {reading.citation && (
-              <Text style={styles.citation}>{reading.citation}</Text>
-            )}
+            {reading.citation && <Text style={styles.citation}>{reading.citation}</Text>}
           </View>
-          <View style={styles.badge}>
-            <MaterialCommunityIcons name={config.icon} size={12} color={config.color} />
-            <Text style={[styles.badgeText, { color: config.color }]}>{config.label}</Text>
+          <View style={styles.rightActions}>
+            <TouchableOpacity
+              onPress={handleShare}
+              style={styles.shareButton}
+              accessibilityLabel={`Compartilhar ${config.label} ${reading.reference}`}
+              accessibilityRole="button"
+            >
+              <MaterialCommunityIcons name="share-outline" size={18} color="#8B6914" />
+            </TouchableOpacity>
+            <View style={styles.badge}>
+              <MaterialCommunityIcons name={config.icon} size={12} color={config.color} />
+              <Text style={[styles.badgeText, { color: config.color }]}>{config.label}</Text>
+            </View>
           </View>
         </View>
         {reading.text && (
@@ -73,12 +91,23 @@ const styles = StyleSheet.create({
     flex: 1,
     marginRight: 12,
   },
+  rightActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  shareButton: {
+    padding: 4,
+    minWidth: 32,
+    minHeight: 32,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   reference: {
     fontSize: 20,
     fontWeight: '600',
     color: '#333',
-    fontFamily: 'serif',
-    fontStyle: 'italic',
+    fontFamily: 'Lora_600SemiBold_Italic',
   },
   citation: {
     fontSize: 10,
@@ -119,7 +148,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     lineHeight: 24,
     color: '#444',
-    fontFamily: 'serif',
+    fontFamily: 'Lora_400Regular',
     paddingLeft: 2,
   },
 });

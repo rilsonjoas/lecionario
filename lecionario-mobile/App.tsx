@@ -1,61 +1,114 @@
+import { useEffect } from 'react';
+import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
+import type { LinkingOptions } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import * as SplashScreen from 'expo-splash-screen';
+import {
+  useFonts,
+  Lora_400Regular,
+  Lora_400Regular_Italic,
+  Lora_600SemiBold_Italic,
+  Lora_700Bold,
+} from '@expo-google-fonts/lora';
+import ErrorBoundary from '@/components/ErrorBoundary';
 import HomeScreen from '@/screens/HomeScreen';
+import CalendarScreen from '@/screens/CalendarScreen';
+import ConfigScreen from '@/screens/ConfigScreen';
+import type { RootTabParamList } from '@/types';
 
-const Tab = createBottomTabNavigator();
+SplashScreen.preventAutoHideAsync();
+
+const Tab = createBottomTabNavigator<RootTabParamList>();
+
+const linking: LinkingOptions<RootTabParamList> = {
+  prefixes: ['lecionario://'],
+  config: {
+    screens: {
+      Hoje: 'dia/:date',
+      Calendário: 'calendario',
+      Config: 'config',
+    },
+  },
+};
 
 export default function App() {
+  const [fontsLoaded] = useFonts({
+    Lora_400Regular,
+    Lora_400Regular_Italic,
+    Lora_600SemiBold_Italic,
+    Lora_700Bold,
+  });
+
+  useEffect(() => {
+    if (fontsLoaded) SplashScreen.hideAsync();
+  }, [fontsLoaded]);
+
+  if (!fontsLoaded) return null;
+
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarStyle: {
-            backgroundColor: '#2C1810',
-            borderTopColor: 'rgba(184,134,11,0.3)',
-            paddingBottom: 8,
-            paddingTop: 8,
-            height: 60,
-          },
-          tabBarActiveTintColor: '#B8860B',
-          tabBarInactiveTintColor: 'rgba(255,255,255,0.4)',
-          tabBarLabelStyle: {
-            fontSize: 10,
-            textTransform: 'uppercase',
-            letterSpacing: 1,
-            fontWeight: '600',
-          },
-        }}
-      >
-        <Tab.Screen
-          name="Hoje"
-          component={HomeScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="book-open-variant" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Calendário"
-          component={HomeScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Config"
-          component={HomeScreen}
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="cog-outline" size={size} color={color} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <ErrorBoundary>
+        <NavigationContainer linking={linking}>
+          <StatusBar style="light" />
+          <Tab.Navigator
+            screenOptions={{
+              headerShown: false,
+              tabBarStyle: {
+                backgroundColor: '#1A1A1A',
+                borderTopColor: 'rgba(184,134,11,0.2)',
+                borderTopWidth: 0.5,
+                paddingBottom: 8,
+                paddingTop: 8,
+                height: 60,
+                elevation: 0,
+                shadowOpacity: 0,
+              },
+              tabBarActiveTintColor: '#B8860B',
+              tabBarInactiveTintColor: 'rgba(255,255,255,0.35)',
+              tabBarLabelStyle: {
+                fontSize: 10,
+                textTransform: 'uppercase',
+                letterSpacing: 1,
+                fontWeight: '600',
+              },
+              tabBarItemStyle: {
+                minHeight: 48,
+              },
+            }}
+          >
+            <Tab.Screen
+              name="Hoje"
+              component={HomeScreen}
+              options={{
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons name="book-open-variant" size={size} color={color} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Calendário"
+              component={CalendarScreen}
+              options={{
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Config"
+              component={ConfigScreen}
+              options={{
+                tabBarIcon: ({ color, size }) => (
+                  <MaterialCommunityIcons name="cog-outline" size={size} color={color} />
+                ),
+              }}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </ErrorBoundary>
+    </SafeAreaProvider>
   );
 }

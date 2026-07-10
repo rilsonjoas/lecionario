@@ -1,0 +1,243 @@
+# Roadmap — Lecionário
+
+Este documento descreve o que falta para o app se tornar maduro, profissional e completo. Cada fase tem critérios claros de "feito" e prioridade baseada no impacto para o usuário final.
+
+---
+
+## Situação atual (2026-06-28)
+
+### O que está funcionando
+
+- Motor litúrgico completo: cálculo de Páscoa, estações, cores, ciclos A/B/C, nomes dos dias em PT-BR
+- Dados RCL em JSON para os três ciclos (leituras por data + coletas)
+- **Textos bíblicos completos** (Almeida ARC) — 4337 textos inseridos, 0 referências canônicas faltando
+- **Devocionais gerados** — 2152 orações + meditações (2025–2030) com templates sazonais
+- App mobile com três telas: Hoje, Calendário Litúrgico, Configurações
+- **Dados 100% locais** — Supabase removido do app principal, sem dependência de backend
+- Cache offline com AsyncStorage e TTL de 24h
+- Temas sazonais (cor de fundo, acento, primária por estação)
+- ErrorBoundary global
+- CI com TypeScript, ESLint, Prettier e testes (GitHub Actions)
+
+### O que está incompleto ou ausente
+
+- Conteúdo específico para Semana Santa (Quinta-Feira Santa, Sexta-Feira Santa, Sábado Santo)
+- Notificações push ausentes
+- Compartilhamento nativo ausente
+- Config screen com apenas limpar cache
+- Cobertura de testes baixa (só motor litúrgico)
+- Ícones e splash screen com assets placeholder
+- Sem crash reporting, sem analytics
+- Admin panel depende de Supabase (inativo atualmente)
+- Web app não usa os dados locais — `sample-devotional.ts` recém-adaptado, falta atualizar componentes
+
+---
+
+## Fase 1 — Pré-lançamento (v1.0)
+
+*Tudo que bloqueia uma versão usável por terceiros.*
+
+### 1.1 Conteúdo Semana Santa
+
+- [x] Adicionar `triduumContent` com entradas fixas para Domingo de Ramos, Quinta-Feira Santa, Sexta-Feira Santa e Sábado Santo
+- [x] Orações originais: Lava-pés (Quinta), Crucificação (Sexta), Descida ao Hades/Grande Silêncio (Sábado)
+- [x] Meditações guiadas com 3 perguntas para cada dia do Tríduo
+- [x] Override aplicado após o loop em `generateYear()` — garante conteúdo correto independente do seededPick
+- [x] JSONs regenerados e copiados para mobile (2025–2030 validados)
+
+**Validado:** Páscoa 2026 (5/abr) → Ramos=29/mar, Quinta=2/abr, Sexta=3/abr, Sábado=4/abr — todos com título e oração corretos.
+
+---
+
+### 1.2 Conteúdo devocional
+
+- [ ] Revisar orações do Tempo Comum (atualmente genéricas demais)
+- [ ] Adicionar variação de conteúdo (mesma oração repete por 7 dias seguidos)
+- [ ] Considerar Devocionais Feriados Nacionais (Natal, Ano Novo, Páscoa)
+
+---
+
+### 1.3 Correção de build (mobile)
+
+- [ ] Verificar que o app abre sem `NoSuchMethodError`
+- [ ] Testar em dispositivo físico (Android/iOS)
+
+---
+
+### 1.4 Web — Atualizar componentes para dados locais
+
+- [ ] `page.tsx` — já usa `getSampleDevotional` (agora sync), mas o `useEffect` ainda tem async desnecessário
+- [ ] Verificar que todos os componentes consomem dados corretamente com o novo formato RCL (date-based)
+- [ ] Remover dependência `@supabase/supabase-js` do build de produção (tree-shake admin)
+
+---
+
+### 1.5 Indicadores de loading
+
+- [ ] Adicionar estado de loading na CalendarScreen enquanto calcula dias do mês
+- [ ] Manter loading mínimo de UX: não mostrar conteúdo em flash antes de ter dados
+
+---
+
+### 1.6 Ícone e splash screen reais (mobile)
+
+- [ ] Criar ícone final do app (1024×1024 PNG, sem transparência)
+- [ ] Criar adaptive icon para Android (foreground 108×108dp)
+- [ ] Criar splash screen
+- [ ] Atualizar `app.json` com os novos assets
+
+---
+
+## Fase 2 — Features essenciais (v1.1)
+
+*O que transforma o app de utilitário em produto.*
+
+### 2.1 Notificações push diárias
+
+- [ ] Instalar `expo-notifications`
+- [ ] Implementar notificação local às 6h com o nome do dia litúrgico e referências
+- [ ] Adicionar toggle nas Configurações: ativar/desativar notificações
+- [ ] Adicionar seletor de horário (padrão 6h)
+- [ ] Solicitar permissão de notificação no primeiro uso, com explicação clara
+
+**Exemplo da notificação:**
+```
+Título: Quinta após o Pentecostes
+Corpo: Rm 8,14-17 · Jo 8,31-47
+```
+
+---
+
+### 2.2 Compartilhamento nativo
+
+- [x] Instalar `expo-clipboard` (Share de texto usa RN built-in `Share`)
+- [x] Adicionar botão "Compartilhar" no `ReadingCard` (ícone no header do card)
+- [x] Adicionar botão "Copiar" na `PrayerSection` (com feedback visual "Copiado!")
+- [x] Compartilhar o dia inteiro como texto formatado (botão ao lado do título "Lecionário")
+- [ ] Testar no Android (Intent) e iOS (Share Sheet)
+
+---
+
+### 2.3 Config screen completa
+
+A tela atual tem apenas "Limpar cache". Adicionar:
+
+- [ ] **Notificações** — toggle on/off + seletor de horário
+- [ ] **Tamanho da fonte** — pequeno / médio / grande
+- [ ] **Tema** — claro / escuro / seguir sistema
+- [ ] **Sobre** — versão atual, link para repositório, licença
+
+---
+
+### 2.4 Deep links
+
+- [ ] Permitir que a notificação push abra diretamente o devocional do dia ao ser tocada (depende de 2.1)
+
+---
+
+## Fase 3 — Qualidade e polimento (v1.2)
+
+*O que separa um app de v1 de um app que as pessoas recomendam.*
+
+### 3.1 Acessibilidade
+
+- [ ] Auditar todos os componentes com `accessibilityLabel`, `accessibilityRole`, `accessibilityHint`
+- [ ] `ReadingCard` — label descrevendo tipo e referência da leitura
+- [ ] `CalendarScreen` — cada célula de dia com label completo
+- [ ] Testar com TalkBack (Android) e VoiceOver (iOS)
+- [ ] Garantir contraste mínimo 4.5:1 em todo texto sobre fundo
+
+---
+
+### 3.2 Cobertura de testes
+
+- [ ] Testes para `rcl-fetcher.ts` — busca por data, ciclo, texto bíblico
+- [ ] Testes para `cache.ts` — TTL expirado, cache miss, clear
+- [ ] Testes para `devotional-content.ts` — lookup por data, ano sem dados
+- [ ] Testes para `getSampleDevotional` — fallback chain
+- [ ] Testes de snapshot para `ReadingCard`, `PrayerSection`, `CollectSection`
+- [ ] Meta: 70%+ de cobertura no `src/lib/`
+
+---
+
+### 3.3 Crash reporting
+
+- [ ] Instalar `@sentry/react-native`
+- [ ] Inicializar Sentry no `App.tsx` com DSN de produção
+- [ ] Configurar source maps no EAS
+
+---
+
+### 3.4 CI/CD para mobile
+
+- [ ] Adicionar job EAS Build no GitHub Actions em push para `main`
+- [ ] Adicionar `eas update` para OTA updates
+
+---
+
+### 3.5 Estados de erro com UI dedicada
+
+- [ ] Criar componente `EmptyState` (ícone + título + subtítulo + ação opcional)
+- [ ] Criar componente `ErrorState` para falhas (distinto do ErrorBoundary)
+- [ ] Adicionar pull-to-refresh com feedback visual
+
+---
+
+## Fase 4 — Features avançadas (v2.0)
+
+### 4.1 Favoritos e marcadores
+
+- [ ] Persistir dias favoritos em AsyncStorage
+- [ ] Aba "Favoritos" na CalendarScreen
+- [ ] Botão de favoritar no HomeScreen
+
+### 4.2 Busca
+
+- [ ] Busca por referência bíblica (ex: "João 3")
+- [ ] Busca por data
+- [ ] Busca por palavra-chave nas leituras
+
+### 4.3 Widget (Android 12+ / iOS 14+)
+
+- [ ] Widget de tela inicial com leitura do dia e estação litúrgica
+- [ ] Atualização diária automática
+
+### 4.4 Versões bíblicas múltiplas
+
+- [ ] Permitir escolha de tradução (ARC, NVI, NTLH, ACF)
+- [ ] Configuração por leitura ou global
+
+---
+
+## Pipeline de dados (referência)
+
+```
+generate-rcl-data.ts       →  cycle-{A,B,C}.json  (datas + referências + coletas)
+lookup-bible-text.ts       →  popula textos ARC nos JSONs
+generate-devotionals.ts    →  devotionals-{2025..2030}.json
+```
+
+Os JSONs são copiados do `lecionario-web/src/data/rcl/` para `lecionario-mobile/src/data/rcl/` e bundlados em ambos apps.
+
+---
+
+## Dependências a instalar (resumo)
+
+| Pacote | Finalidade | Fase |
+|---|---|---|
+| `expo-notifications` | Notificações locais diárias | 2.1 |
+| `expo-sharing` | Compartilhamento nativo | 2.2 |
+| `expo-clipboard` | Copiar texto | 2.2 |
+| `@sentry/react-native` | Crash reporting | 3.3 |
+
+---
+
+## Débito técnico conhecido
+
+| Item | Localização | Impacto |
+|---|---|---|
+| `getSampleDevotional` agora síncrono mas chamado com `await` | `page.tsx` | Cosmético — funciona |
+| RCL JSONs com 2MB+ cada | `src/data/rcl/` | Pode impactar tempo de build/bundle |
+| Admin panel quebrado (Supabase inativo) | `src/app/admin/` | Funcionalidade admin indisponível |
+| Devocionais repetem mesma oração 7 dias seguidos | `generate-devotionals.ts` | Conteúdo pouco variado |
+| Sem testes para a camada de dados local | `src/lib/*.ts` | Confiança menor em refactors |

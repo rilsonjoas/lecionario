@@ -19,19 +19,6 @@ const withPWA = withPWAInit({
       },
     },
     {
-      // Cache de API do Supabase - Network First
-      urlPattern: /^https:\/\/.*\.supabase\.co\/.*/i,
-      handler: 'NetworkFirst',
-      options: {
-        cacheName: 'supabase-cache',
-        expiration: {
-          maxEntries: 64,
-          maxAgeSeconds: 60 * 60, // 1 hora
-        },
-        networkTimeoutSeconds: 10,
-      },
-    },
-    {
       // Cache de API LectServe - Cache First (dados mudam raramente)
       urlPattern: /^https:\/\/.*lectserve.*/i,
       handler: 'CacheFirst',

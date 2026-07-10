@@ -4,7 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { format, addDays, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, CalendarDays } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -13,6 +13,7 @@ import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
 import { DatePicker } from '@/components/layout/DatePicker';
+import { LiturgicalCalendar } from '@/components/layout/LiturgicalCalendar';
 import { getSampleDevotional } from '@/data/sample-devotional';
 import { applySeasonTheme } from '@/lib/theme';
 import type { DailyDevotional } from '@/types';
@@ -51,6 +52,7 @@ function HomeContent() {
 
   const [devotional, setDevotional] = useState<DailyDevotional | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [showCalendar, setShowCalendar] = useState(false);
 
   useEffect(() => {
     async function loadDevotional() {
@@ -78,6 +80,7 @@ function HomeContent() {
   const handleDateChange = (newDate: Date) => {
     const dateStr = format(newDate, 'yyyy-MM-dd');
     setCurrentDate(newDate);
+    setShowCalendar(false);
     router.push(`/?date=${dateStr}`, { scroll: false });
   };
 
@@ -133,6 +136,17 @@ function HomeContent() {
             <Button
               variant="ghost"
               size="sm"
+              onClick={() => setShowCalendar((p) => !p)}
+              className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
+              title="Calendário Litúrgico"
+            >
+              <CalendarDays className="w-3.5 h-3.5 md:w-4 md:h-4" />
+              <span className="hidden sm:inline">Calendário</span>
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="sm"
               onClick={() => handleDateChange(addDays(currentDate, 1))}
               className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
             >
@@ -141,6 +155,12 @@ function HomeContent() {
             </Button>
           </div>
         </div>
+
+        {showCalendar && (
+          <div className="container mx-auto px-3 md:px-4 py-6 max-w-4xl animate-fade-in">
+            <LiturgicalCalendar currentDate={currentDate} onDateChange={handleDateChange} />
+          </div>
+        )}
 
         <main className="container mx-auto px-3 md:px-4 py-12 md:py-16 max-w-6xl">
           <div className="space-y-16 md:space-y-20">

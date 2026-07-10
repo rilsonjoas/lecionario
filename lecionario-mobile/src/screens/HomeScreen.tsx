@@ -1,104 +1,167 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import {
-  View, Text, ScrollView, StyleSheet, TouchableOpacity, RefreshControl,
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  TouchableOpacity,
+  RefreshControl,
+  ActivityIndicator,
+  Share,
+  Platform,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { addDays, format } from 'date-fns';
-import { supabase } from '../../lib/supabase';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useRoute, useFocusEffect } from '@react-navigation/native';
+import type { RouteProp } from '@react-navigation/native';
+import { addDays, format, parse } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 import { getLiturgicalDayInfo } from '@/lib/liturgical-calendar';
 import { getThemeForSeason } from '@/lib/theme';
+import { fetchDevotionalFromNetwork } from '@/lib/devotional-service';
+import { getCached, setCached, cacheKey } from '@/lib/cache';
 import { ReadingCard } from '@/components/devotional/ReadingCard';
 import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
-import type { DailyDevotional, Reading } from '@/types';
+import type { DailyDevotional, RootTabParamList } from '@/types';
+
+type HojeRouteProp = RouteProp<RootTabParamList, 'Hoje'>;
 
 export default function HomeScreen() {
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const insets = useSafeAreaInsets();
+  const route = useRoute<HojeRouteProp>();
+  const [currentDate, setCurrentDate] = useState(() => {
+    if (route.params?.date) {
+      return parse(route.params.date, 'yyyy-MM-dd', new Date());
+    }
+    return new Date();
+  });
   const [devotional, setDevotional] = useState<DailyDevotional | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
+  const abortRef = useRef(false);
 
   const liturgicalInfo = getLiturgicalDayInfo(currentDate);
   const theme = getThemeForSeason(liturgicalInfo.season);
 
-  const fetchDevotional = useCallback(async (date: Date) => {
-    try {
-      const dateStr = format(date, 'yyyy-MM-dd');
-      const info = getLiturgicalDayInfo(date);
+  const loadDevotional = useCallback(async (date: Date, forceNetwork = false) => {
+    const dateStr = format(date, 'yyyy-MM-dd');
+    abortRef.current = false;
+    let loaded = false;
 
-      const { data: readingsData } = await supabase
-        .from('readings')
-        .select('*')
-        .eq('date', dateStr);
-
-      const { data: collectData } = await supabase
-        .from('collects')
-        .select('text')
-        .eq('date', dateStr)
-        .maybeSingle();
-
-      const { data: prayerData } = await supabase
-        .from('prayers')
-        .select('*')
-        .eq('date', dateStr)
-        .maybeSingle();
-
-      interface DbReading {
-        reading_type: string;
-        reference: string;
-        text?: string;
-        citation?: string;
+    if (!forceNetwork) {
+      const cached = await getCached<DailyDevotional>(cacheKey(dateStr));
+      if (cached && !abortRef.current) {
+        setDevotional(cached);
+        setLoading(false);
+        setIsOffline(false);
+        loaded = true;
       }
+    }
 
-      const readings: Reading[] = (readingsData || []).map((r: DbReading) => ({
-        type: r.reading_type as Reading['type'],
-        reference: r.reference,
-        text: r.text,
-        citation: r.citation || r.reference,
-      }));
+    if (abortRef.current) return;
 
-      setDevotional({
-        liturgicalInfo: info,
-        readings,
-        prayer: prayerData
-          ? { title: prayerData.title, text: prayerData.text, author: prayerData.author }
-          : { title: 'Oração do Dia', text: 'Que a paz de Cristo habite em vosso coração.' },
-        meditation: { prompt: 'Medite na Palavra...', questions: ['O que esta leitura revela sobre Deus?', 'Como posso aplicar isso hoje?'] },
-        collect: collectData?.text || 'Deus eterno e todo-poderoso...',
-      });
-    } catch (error) {
-      console.error('Erro ao buscar devocional:', error);
+    try {
+      const fresh = await fetchDevotionalFromNetwork(date);
+      if (abortRef.current) return;
+
+      if (fresh) {
+        setDevotional(fresh);
+        setIsOffline(false);
+        await setCached(cacheKey(dateStr), fresh);
+      } else if (!loaded) {
+        setDevotional(null);
+      }
+    } catch {
+      if (!loaded) {
+        setIsOffline(true);
+      }
     } finally {
-      setLoading(false);
-      setRefreshing(false);
+      if (!abortRef.current) {
+        setLoading(false);
+        setRefreshing(false);
+      }
     }
   }, []);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    fetchDevotional(currentDate);
-  }, [currentDate, fetchDevotional]);
+    setLoading(true);
+    setIsOffline(false);
+    loadDevotional(currentDate);
+    return () => {
+      abortRef.current = true;
+    };
+  }, [currentDate, loadDevotional]);
+
+  const initialParams = useRef(route.params);
+
+  useFocusEffect(
+    useCallback(() => {
+      if (route.params?.date && route.params !== initialParams.current) {
+        initialParams.current = route.params;
+        const newDate = parse(route.params.date, 'yyyy-MM-dd', new Date());
+        setLoading(true);
+        setCurrentDate(newDate);
+      }
+    }, [route.params]),
+  );
 
   const navigateDay = (delta: number) => {
     setLoading(true);
+    setIsOffline(false);
     setCurrentDate((prev) => addDays(prev, delta));
   };
 
   const onRefresh = () => {
     setRefreshing(true);
-    fetchDevotional(currentDate).finally(() => setRefreshing(false));
+    loadDevotional(currentDate, true);
+  };
+
+  const handleShareDay = async () => {
+    if (!devotional) return;
+    const dateStr = format(currentDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR });
+    const refs = devotional.readings.map((r) => r.reference).join(' • ');
+    const lines = [
+      `Lecionário — ${liturgicalInfo.dayName}`,
+      `${dateStr} • Ano ${liturgicalInfo.cycle}`,
+      '',
+      `📖 ${refs}`,
+    ];
+    if (devotional.collect) {
+      lines.push('', 'Coleta:', devotional.collect);
+    }
+    lines.push('', `🕯 ${devotional.prayer.title}`, devotional.prayer.text);
+    lines.push('', '— Lecionário App');
+    await Share.share({ message: lines.join('\n') });
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.primaryColor }]}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: theme.primaryColor, paddingTop: insets.top + 16 },
+      ]}
+    >
       <View style={styles.header}>
-        <Text style={[styles.title, { color: theme.accentColor }]}>Lecionário</Text>
+        <View style={styles.titleRow}>
+          <Text style={[styles.title, { color: theme.accentColor }]}>Lecionário</Text>
+          {devotional && (
+            <TouchableOpacity
+              onPress={handleShareDay}
+              style={styles.shareDayButton}
+              accessibilityLabel="Compartilhar devocional do dia"
+              accessibilityRole="button"
+            >
+              <MaterialCommunityIcons name="share-outline" size={20} color={theme.accentColor} />
+            </TouchableOpacity>
+          )}
+        </View>
         <Text style={styles.dayName}>{liturgicalInfo.dayName}</Text>
         <View style={styles.cycleRow}>
-          <Text style={styles.cycleText}>
-            Ano Litúrgico {liturgicalInfo.cycle}
-          </Text>
+          <Text style={styles.cycleText}>Ano Litúrgico {liturgicalInfo.cycle}</Text>
           <View style={[styles.colorDot, { backgroundColor: theme.secondaryColor }]} />
         </View>
       </View>
@@ -112,7 +175,7 @@ export default function HomeScreen() {
         <View style={styles.dateContainer}>
           <MaterialCommunityIcons name="calendar-month-outline" size={16} color="#8B6914" />
           <Text style={styles.dateText}>
-            {format(currentDate, "dd 'de' MMMM 'de' yyyy")}
+            {format(currentDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
           </Text>
         </View>
 
@@ -122,17 +185,27 @@ export default function HomeScreen() {
         </TouchableOpacity>
       </View>
 
+      {isOffline && (
+        <View style={styles.offlineBanner}>
+          <MaterialCommunityIcons name="wifi-off" size={14} color="#F5F5F0" />
+          <Text style={styles.offlineText}>Modo offline — dados podem estar desatualizados</Text>
+        </View>
+      )}
+
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
       >
         {loading ? (
           <View style={styles.loadingContainer}>
-            <Text style={styles.loadingText}>Carregando devocional...</Text>
+            <ActivityIndicator size="large" color="rgba(255,255,255,0.6)" />
           </View>
         ) : !devotional ? (
           <View style={styles.loadingContainer}>
-            <Text style={styles.loadingText}>Nenhum dado encontrado para hoje.</Text>
+            <Text style={styles.loadingText}>Nenhum dado encontrado para esta data.</Text>
+            <TouchableOpacity onPress={onRefresh} style={styles.retryButton}>
+              <Text style={styles.retryText}>Tentar novamente</Text>
+            </TouchableOpacity>
           </View>
         ) : (
           <>
@@ -146,7 +219,8 @@ export default function HomeScreen() {
               <View style={styles.sectionHeader}>
                 <Text style={styles.sectionHeaderTitle}>Lectio Divina</Text>
                 <Text style={styles.sectionHeaderSub}>
-                  Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length} Estações da Palavra
+                  Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length}{' '}
+                  Estações da Palavra
                 </Text>
               </View>
               {devotional.readings.map((reading, index) => (
@@ -171,23 +245,34 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 60,
   },
   header: {
     alignItems: 'center',
     paddingHorizontal: 20,
     paddingBottom: 12,
   },
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 10,
+  },
+  shareDayButton: {
+    padding: 4,
+    minWidth: 36,
+    minHeight: 36,
+    justifyContent: 'center',
+    alignItems: 'center',
+    opacity: 0.8,
+  },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    fontFamily: 'serif',
+    fontFamily: 'Lora_700Bold',
   },
   dayName: {
     fontSize: 16,
     color: 'rgba(255,255,255,0.9)',
-    fontFamily: 'serif',
-    fontStyle: 'italic',
+    fontFamily: 'Lora_400Regular_Italic',
     marginTop: 4,
   },
   cycleRow: {
@@ -222,7 +307,8 @@ const styles = StyleSheet.create({
   navButton: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 4,
+    padding: Platform.select({ android: 12, default: 4 }),
+    minHeight: 44,
   },
   navText: {
     fontSize: 13,
@@ -236,7 +322,22 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 12,
     color: 'rgba(255,255,255,0.9)',
-    fontFamily: 'serif',
+    fontFamily: 'Lora_400Regular',
+  },
+  offlineBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 6,
+    backgroundColor: 'rgba(255,100,100,0.2)',
+    marginHorizontal: 12,
+    borderRadius: 6,
+    marginBottom: 8,
+  },
+  offlineText: {
+    fontSize: 11,
+    color: 'rgba(255,255,255,0.8)',
   },
   scrollContent: {
     padding: 16,
@@ -251,7 +352,19 @@ const styles = StyleSheet.create({
   loadingText: {
     fontSize: 16,
     color: 'rgba(255,255,255,0.8)',
-    fontFamily: 'serif',
+    fontFamily: 'Lora_400Regular',
+  },
+  retryButton: {
+    marginTop: 16,
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    backgroundColor: 'rgba(255,255,255,0.15)',
+    borderRadius: 8,
+  },
+  retryText: {
+    fontSize: 14,
+    color: '#F5F5F0',
+    fontFamily: 'Lora_400Regular',
   },
   section: {
     marginBottom: 24,
@@ -263,8 +376,7 @@ const styles = StyleSheet.create({
   sectionHeaderTitle: {
     fontSize: 24,
     color: '#fff',
-    fontFamily: 'serif',
-    fontStyle: 'italic',
+    fontFamily: 'Lora_400Regular_Italic',
   },
   sectionHeaderSub: {
     fontSize: 9,
