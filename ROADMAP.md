@@ -316,8 +316,17 @@ depois.
 
 ### P4 — Monitoramento
 
-- Sentry já está planejado na Fase 3.3 deste roadmap, não implementado
-  ainda. Sem mudança aqui, só linkando pro contexto de infra
+- [ ] **Sentry no mobile** (`@sentry/react-native`) — já estava
+      planejado na Fase 3.3 deste roadmap
+- [ ] **Sentry no web também** (`@sentry/nextjs`, não `@sentry/node` —
+      pacote específico do framework) — não estava no roadmap original,
+      adicionado em 2026-08-08 pra igualar o padrão do meus-remedios
+      (que ganhou Sentry nos dois lados, backend e mobile, na mesma
+      sessão). Um projeto só no sentry.io cobre os dois lados daqui —
+      não precisa conta separada por app
+- DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
+  com `enabled: !!dsn` deixa tudo rodando normal sem a chave (mesmo
+  padrão usado no meus-remedios)
 
 ### O que reaproveitar de biblia-na-arte/meus-remedios
 
