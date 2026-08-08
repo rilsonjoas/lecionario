@@ -241,3 +241,85 @@ Os JSONs são copiados do `lecionario-web/src/data/rcl/` para `lecionario-mobile
 | Admin panel quebrado (Supabase inativo) | `src/app/admin/` | Funcionalidade admin indisponível |
 | Devocionais repetem mesma oração 7 dias seguidos | `generate-devotionals.ts` | Conteúdo pouco variado |
 | Sem testes para a camada de dados local | `src/lib/*.ts` | Confiança menor em refactors |
+
+---
+
+## Infraestrutura, segurança e produção (2026-08-08)
+
+Levantamento feito na mesma sessão em que biblia-na-arte e meus-remedios
+foram pro VPS Hetzner próprio. Este projeto é, dos quatro (junto com
+biblia-na-arte, meus-remedios e scriptorium-divinum), **o mais pronto pra
+subir** — já tem Dockerfile, `docker-compose.yml` e CI reais, e o app
+principal **não depende de banco** (dados 100% locais/bundlados), então o
+deploy não exige Postgres nem migração nenhuma, diferente dos outros três.
+
+Segue o mesmo padrão de fases usado no roadmap de engenharia do
+meus-remedios — risco real primeiro, polimento depois.
+
+### P0 — Segurança
+
+- [ ] **Decidir o destino do admin panel.** Hoje ele existe no bundle
+      (`src/app/admin/`), depende de Supabase, e está "inativo" (débito
+      técnico já listado acima). Duas opções: remover do build de
+      produção (já está na Fase 1.4 deste roadmap:
+      "Remover dependência `@supabase/supabase-js` do build de
+      produção") ou reconstruir com auth própria — mas só faz sentido
+      reconstruir se o admin panel for realmente necessário pra alguma
+      operação (parece que não, já que o conteúdo é gerado por script,
+      não editado manualmente)
+- [ ] Headers de segurança no self-host (CSP, HSTS, `X-Frame-Options`) —
+      hoje o `next start`/container não define nenhum
+- [ ] `npm audit` — não está no `ci.yml` atual, fácil de adicionar
+
+### P1 — Docker & VPS
+
+- [x] Dockerfile multi-stage já existe e é bom (`node:22-alpine`,
+      usuário não-root, `next build` standalone)
+- [x] `docker-compose.yml` já existe na raiz do monorepo
+- [ ] **Remover as env vars `NEXT_PUBLIC_SUPABASE_*` do compose** se a
+      decisão do P0 for descartar o admin panel — hoje ficam
+      injetadas sem uso real
+- [ ] Registrar o serviço em `hetzner-infra/` (mesmo processo já rodado
+      duas vezes nesta sessão: entrada no `docker-compose.yml` raiz,
+      Makefile, roteamento Traefik, registro DNS). Domínio
+      `lecionario.com.br` já está disponível, segundo anotação no vault
+- [ ] Como não precisa de banco, este é o deploy mais simples dos
+      quatro — só o container web atrás do Traefik
+
+### P2 — CI/CD
+
+- [x] `ci.yml` já roda TypeScript, ESLint, Prettier e testes (Vitest)
+      pro web **e** pro mobile em cada push/PR — mais avançado que
+      biblia-na-arte e meus-remedios nesse quesito, que ainda não têm
+      CI nenhum
+- [x] Já builda e publica imagem Docker no GHCR em cada tag `v*` — um
+      pipeline de release real, não só lint
+- [ ] **Confirmar se o CI está passando de fato.** Há um registro no
+      vault (2026-07-09) dizendo que o run estava falhando, mas este
+      próprio `ROADMAP.md` (atualizado depois, 2026-06-28) lista CI
+      como "funcionando" — as datas não batem e isso não foi
+      re-verificado nesta sessão. Rodar `git log` do workflow ou abrir
+      o Actions do GitHub antes de assumir qualquer um dos dois
+- [ ] CI/CD do mobile via EAS Build — já está na Fase 3.4 deste
+      roadmap, ainda não feito
+
+### P3 — Testes
+
+- Cobertura hoje é baixa (só motor litúrgico) — já mapeado na Fase 3.2
+  deste roadmap, meta de 70%+ em `src/lib/`. Sem mudança aqui, só
+  linkando pro contexto de infra
+
+### P4 — Monitoramento
+
+- Sentry já está planejado na Fase 3.3 deste roadmap, não implementado
+  ainda. Sem mudança aqui, só linkando pro contexto de infra
+
+### O que reaproveitar de biblia-na-arte/meus-remedios
+
+- O padrão de `docker-compose.yml` + Traefik + `make deploy
+  service=<nome>` do `hetzner-infra/` é genérico — só adicionar
+  entrada nova, não inventar de novo
+- Como não tem banco, não precisa do passo de criar role/usuário
+  Postgres que os outros dois exigiram
+- `RECUPERACAO.md` e o backup automático do `hetzner-infra/` — só
+  adicionar a linha do lecionário quando for pro ar
