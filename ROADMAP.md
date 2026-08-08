@@ -253,8 +253,10 @@ subir** — já tem Dockerfile, `docker-compose.yml` e CI reais, e o app
 principal **não depende de banco** (dados 100% locais/bundlados), então o
 deploy não exige Postgres nem migração nenhuma, diferente dos outros três.
 
-Segue o mesmo padrão de fases usado no roadmap de engenharia do
-meus-remedios — risco real primeiro, polimento depois.
+Segue o mesmo padrão de fases usado em todos os projetos pessoais —
+categorias e justificativa completa em
+`hetzner-infra/PADRAO-DE-ENGENHARIA.md`, risco real primeiro, polimento
+depois.
 
 ### P0 — Segurança
 
