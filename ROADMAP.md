@@ -296,12 +296,15 @@ depois.
       CI nenhum
 - [x] Já builda e publica imagem Docker no GHCR em cada tag `v*` — um
       pipeline de release real, não só lint
-- [ ] **Confirmar se o CI está passando de fato.** Há um registro no
-      vault (2026-07-09) dizendo que o run estava falhando, mas este
-      próprio `ROADMAP.md` (atualizado depois, 2026-06-28) lista CI
-      como "funcionando" — as datas não batem e isso não foi
-      re-verificado nesta sessão. Rodar `git log` do workflow ou abrir
-      o Actions do GitHub antes de assumir qualquer um dos dois
+- [x] **CI confirmada passando (2026-08-08).** Estava quebrada de
+      verdade desde antes desta sessão (o registro do vault de
+      2026-07-09 estava certo, o "funcionando" deste próprio arquivo
+      estava desatualizado). Duas causas raiz reais, não sintoma único:
+      `tsconfig.json` do web com `target: "es5"` (não suporta a flag
+      `s` de regex usada em `scripts/lookup-bible-text.ts`) e o mobile
+      sem `.prettierignore` pros JSONs gerados por script em
+      `src/data/rcl/`. Corrigido, verificado local e no Actions real
+      (run `712f2b9`, sucesso, 48s)
 - [ ] CI/CD do mobile via EAS Build — já está na Fase 3.4 deste
       roadmap, ainda não feito
 
