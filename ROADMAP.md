@@ -328,6 +328,22 @@ depois.
   com `enabled: !!dsn` deixa tudo rodando normal sem a chave (mesmo
   padrão usado no meus-remedios)
 
+### P5 — UI/UX, acessibilidade e SEO
+
+- [x] **SEO do web já implementado**: `lecionario-web/src/app/layout.tsx`
+      exporta `metadata` (Next.js App Router) com `openGraph` — mais
+      maduro que o padrão estático de index.html, gerado por página.
+      `public/robots.txt` também já existe
+- [ ] `sitemap.xml` — não existe (`app/sitemap.ts` do Next.js resolveria
+      isso nativamente, sem lib extra)
+- [x] Já responsivo (breakpoint 768px, hook `useIsMobile`)
+- [ ] **Acessibilidade do mobile** já está na Fase 3.1 deste roadmap
+      (accessibilityLabel, TalkBack/VoiceOver, contraste)
+- [ ] **Acessibilidade do web nunca foi mencionada** — a Fase 3.1
+      original só cobre o app mobile, o `lecionario-web` (Next.js) não
+      tem nenhum item de a11y no roadmap. Achado ao padronizar com os
+      outros projetos, 2026-08-08
+
 ### O que reaproveitar de biblia-na-arte/meus-remedios
 
 - O padrão de `docker-compose.yml` + Traefik + `make deploy
