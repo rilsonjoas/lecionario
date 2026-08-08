@@ -344,6 +344,54 @@ depois.
       tem nenhum item de a11y no roadmap. Achado ao padronizar com os
       outros projetos, 2026-08-08
 
+## L — Lançamento e crescimento (2026-08-08)
+
+Mesmo exercício feito pro meus-remedios ("quanto falta pra milhares de
+usuários"), mas a resposta aqui é estruturalmente diferente — o Rilson
+já esperava isso, e checagem real confirma: **zero estratégia de
+monetização documentada** (diferente do biblia-na-arte, que já tem
+AdSense/Amazon Associates planejados desde a concepção) e **público-alvo
+muito mais restrito por natureza**.
+
+### Por que o teto é mais baixo, de propósito
+
+- Segue o **calendário litúrgico anglicano/ACNA** (RCL + BCP 1979) — é
+  uma tradição específica dentro do cristianismo, minoria mesmo dentro
+  do protestantismo brasileiro (que é majoritariamente
+  evangélico/pentecostal, não litúrgico). O público real é a
+  interseção de "cristão praticante" + "tradição litúrgica" +
+  "português" — bem menor que "quem toma remédio" (público do
+  meus-remedios, universal)
+- Isso não é defeito — é o propósito do projeto. Não faz sentido forçar
+  "milhares de usuários" num app que existe pra servir uma tradição
+  específica bem, não pra maximizar instalação
+
+### O que muda no plano, então
+
+- **Publicação web**: já é PWA funcional, sem fricção de loja — a
+  distribuição real já está no ar (`lecionario.narniano.com` +
+  Vercel), sem depender de review de app store pra alcançar gente
+- **Publicação mobile**: `DEPLOY.md` já documenta o comando
+  (`eas submit --platform android`), mas **não há confirmação de que já
+  foi rodado de verdade** — conferir antes de assumir que está
+  publicado
+- **Monetização**: não mapeada. Se fizer sentido algum dia, o caminho
+  mais coerente com o propósito do projeto não é ads/assinatura
+  agressiva — mais provável fazer sentido como doação voluntária
+  (Pix/link) do que freemium, dado o perfil da audiência (comunidade
+  religiosa, não consumidor de app comum)
+- **Aquisição**: diferente de competir em ASO genérico — o canal real
+  aqui é comunidade (paróquias, grupos anglicanos/litúrgicos, indicação
+  direta), não tráfego de busca de app store
+
+### Resumo honesto
+
+Não é "meus-remedios com público menor" — é um projeto de propósito
+diferente, e está tudo bem ter um teto de centenas/poucos milhares de
+usuários muito engajados em vez de milhões superficiais. Se algum dia
+quiser crescer de propósito, o gargalo real não é técnico (já está no
+ar, já é PWA) — é achar e servir bem essa comunidade específica.
+
 ### O que reaproveitar de biblia-na-arte/meus-remedios
 
 - O padrão de `docker-compose.yml` + Traefik + `make deploy
