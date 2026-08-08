@@ -1,0 +1,4 @@
+# Dados gerados por script (generate-rcl-data.ts etc.) — não são
+# hand-formatted, reformatar aqui só pra passar no CI vai desalinhar de
+# novo no próximo `generate-rcl-data.ts` rodado.
+src/data/rcl/**/*.json
