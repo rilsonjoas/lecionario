@@ -256,7 +256,8 @@ deploy não exige Postgres nem migração nenhuma, diferente dos outros três.
 Segue o mesmo padrão de fases usado em todos os projetos pessoais —
 categorias e justificativa completa em
 `hetzner-infra/PADRAO-DE-ENGENHARIA.md`, risco real primeiro, polimento
-depois.
+depois. Numeração renumerada em 2026-08-09 (fusão com o SHIELD) — P2 e
+P6 são categorias novas.
 
 ### P0 — Segurança
 
@@ -273,7 +274,7 @@ depois.
       hoje o `next start`/container não define nenhum
 - [ ] `npm audit` — não está no `ci.yml` atual, fácil de adicionar
 
-### P1 — Docker & VPS
+### P1 — Infra & Deploy
 
 - [x] Dockerfile multi-stage já existe e é bom (`node:22-alpine`,
       usuário não-root, `next build` standalone)
@@ -281,14 +282,18 @@ depois.
 - [ ] **Remover as env vars `NEXT_PUBLIC_SUPABASE_*` do compose** se a
       decisão do P0 for descartar o admin panel — hoje ficam
       injetadas sem uso real
-- [ ] Registrar o serviço em `hetzner-infra/` (mesmo processo já rodado
-      duas vezes nesta sessão: entrada no `docker-compose.yml` raiz,
-      Makefile, roteamento Traefik, registro DNS). Domínio
-      `lecionario.com.br` já está disponível, segundo anotação no vault
-- [ ] Como não precisa de banco, este é o deploy mais simples dos
+- [x] Registrado em `hetzner-infra/` — já no ar em
+      `lecionario.narniano.com`
+- [x] Como não precisa de banco, este foi o deploy mais simples dos
       quatro — só o container web atrás do Traefik
 
-### P2 — CI/CD
+### P2 — Saúde & Resiliência
+
+- [ ] Não auditado — categoria nova (fusão com o SHIELD, 2026-08-09).
+      Next.js não tem `SIGTERM`/health check no mesmo sentido que uma
+      API tradicional; vale confirmar como o container reage a restart
+
+### P3 — CI/CD
 
 - [x] `ci.yml` já roda TypeScript, ESLint, Prettier e testes (Vitest)
       pro web **e** pro mobile em cada push/PR — mais avançado que
@@ -308,13 +313,13 @@ depois.
 - [ ] CI/CD do mobile via EAS Build — já está na Fase 3.4 deste
       roadmap, ainda não feito
 
-### P3 — Testes
+### P4 — Testes
 
 - Cobertura hoje é baixa (só motor litúrgico) — já mapeado na Fase 3.2
   deste roadmap, meta de 70%+ em `src/lib/`. Sem mudança aqui, só
   linkando pro contexto de infra
 
-### P4 — Monitoramento
+### P5 — Monitoramento & Logs
 
 - [ ] **Sentry no mobile** (`@sentry/react-native`) — já estava
       planejado na Fase 3.3 deste roadmap
@@ -327,8 +332,17 @@ depois.
 - DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
   com `enabled: !!dsn` deixa tudo rodando normal sem a chave (mesmo
   padrão usado no meus-remedios)
+- [ ] Rotação de log não se aplica do mesmo jeito aqui (Next.js/Vercel-
+      style, não processo de longa duração com log em disco) — conferir
+      se o log do container no VPS tem algum limite de tamanho mesmo assim
 
-### P5 — UI/UX, acessibilidade e SEO
+### P6 — Backups & Recuperação
+
+- [ ] Não precisa de banco próprio (dados 100% locais/bundlados) — só o
+      código no GitHub já é o "backup" de verdade aqui. Categoria nova,
+      mas de baixo risco pra este projeto especificamente
+
+### P7 — UI/UX, acessibilidade e SEO
 
 - [x] **SEO do web já implementado**: `lecionario-web/src/app/layout.tsx`
       exporta `metadata` (Next.js App Router) com `openGraph` — mais
