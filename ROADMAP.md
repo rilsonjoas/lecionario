@@ -279,9 +279,7 @@ P6 são categorias novas.
 - [x] Dockerfile multi-stage já existe e é bom (`node:22-alpine`,
       usuário não-root, `next build` standalone)
 - [x] `docker-compose.yml` já existe na raiz do monorepo
-- [ ] **Remover as env vars `NEXT_PUBLIC_SUPABASE_*` do compose** se a
-      decisão do P0 for descartar o admin panel — hoje ficam
-      injetadas sem uso real
+- [x] **Remover as env vars `NEXT_PUBLIC_SUPABASE_*` do compose** (Concluído em 2026-08-14: variáveis obsoletas do Supabase removidas de `docker-compose.yml`, já que a base de código do web não referencia mais o Supabase).
 - [x] Registrado em `hetzner-infra/` — já no ar em
       `lecionario.narniano.com`
 - [x] Como não precisa de banco, este foi o deploy mais simples dos
@@ -295,21 +293,9 @@ P6 são categorias novas.
 
 ### P3 — CI/CD
 
-- [x] `ci.yml` já roda TypeScript, ESLint, Prettier e testes (Vitest)
-      pro web **e** pro mobile em cada push/PR — mais avançado que
-      biblia-na-arte e meus-remedios nesse quesito, que ainda não têm
-      CI nenhum
-- [x] Já builda e publica imagem Docker no GHCR em cada tag `v*` — um
-      pipeline de release real, não só lint
-- [x] **CI confirmada passando (2026-08-08).** Estava quebrada de
-      verdade desde antes desta sessão (o registro do vault de
-      2026-07-09 estava certo, o "funcionando" deste próprio arquivo
-      estava desatualizado). Duas causas raiz reais, não sintoma único:
-      `tsconfig.json` do web com `target: "es5"` (não suporta a flag
-      `s` de regex usada em `scripts/lookup-bible-text.ts`) e o mobile
-      sem `.prettierignore` pros JSONs gerados por script em
-      `src/data/rcl/`. Corrigido, verificado local e no Actions real
-      (run `712f2b9`, sucesso, 48s)
+- [x] `ci.yml` já roda TypeScript, ESLint, Prettier e testes (Vitest) pro web **e** pro mobile em cada push/PR.
+- [x] Já builda e publica imagem Docker no GHCR em cada tag `v*`.
+- [x] **CI e push do Docker corrigidos (2026-08-14).** Resolvido o erro de push para o GHCR (`denied: installation not allowed to Create organization package`) ajustando as permissões do workflow e o escopo da imagem no GitHub para `github.repository_owner`.
 - [ ] CI/CD do mobile via EAS Build — já está na Fase 3.4 deste
       roadmap, ainda não feito
 
@@ -321,14 +307,8 @@ P6 são categorias novas.
 
 ### P5 — Monitoramento & Logs
 
-- [ ] **Sentry no mobile** (`@sentry/react-native`) — já estava
-      planejado na Fase 3.3 deste roadmap
-- [ ] **Sentry no web também** (`@sentry/nextjs`, não `@sentry/node` —
-      pacote específico do framework) — não estava no roadmap original,
-      adicionado em 2026-08-08 pra igualar o padrão do meus-remedios
-      (que ganhou Sentry nos dois lados, backend e mobile, na mesma
-      sessão). Um projeto só no sentry.io cobre os dois lados daqui —
-      não precisa conta separada por app
+- [ ] **Sentry no mobile (`@sentry/react-native`) — instalado e inicializado (2026-08-14), falta terminar a configuração**: SDK instalado, `Sentry.init` em `App.tsx` (lê `EXPO_PUBLIC_SENTRY_DSN`), raiz embrulhada com `Sentry.wrap(App)`. **Pendente**: criar o DSN no sentry.io, definir `EXPO_PUBLIC_SENTRY_DSN` no build do app e configurar source maps no EAS (Fase 3.3)
+- [ ] **Sentry no web (`@sentry/nextjs`) — instalado e inicializado (2026-08-14), falta terminar a configuração**: SDK instalado, arquivos `sentry.client.config.ts`, `sentry.server.config.ts` e `sentry.edge.config.ts` criados, `next.config.mjs` embrulhado com `withSentryConfig` (typecheck passou). **Pendente**: criar o DSN no sentry.io, definir `NEXT_PUBLIC_SENTRY_DSN` no `docker-compose.yml` do deploy e validar que eventos chegam
 - DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
   com `enabled: !!dsn` deixa tudo rodando normal sem a chave (mesmo
   padrão usado no meus-remedios)

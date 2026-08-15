@@ -13,11 +13,20 @@ import {
   Lora_600SemiBold_Italic,
   Lora_700Bold,
 } from '@expo-google-fonts/lora';
+import * as Sentry from '@sentry/react-native';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import HomeScreen from '@/screens/HomeScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 import ConfigScreen from '@/screens/ConfigScreen';
 import type { RootTabParamList } from '@/types';
+
+Sentry.init({
+  dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
+  // Em produção usa amostragem menor pra não estourar a cota.
+  tracesSampleRate: __DEV__ ? 1.0 : 0.1,
+  debug: __DEV__,
+  environment: __DEV__ ? 'development' : 'production',
+});
 
 SplashScreen.preventAutoHideAsync();
 
@@ -34,7 +43,7 @@ const linking: LinkingOptions<RootTabParamList> = {
   },
 };
 
-export default function App() {
+function App() {
   const [fontsLoaded] = useFonts({
     Lora_400Regular,
     Lora_400Regular_Italic,
@@ -112,3 +121,5 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
+
+export default Sentry.wrap(App);

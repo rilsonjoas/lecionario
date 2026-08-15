@@ -1,4 +1,5 @@
 import withPWAInit from 'next-pwa';
+import { withSentryConfig } from '@sentry/nextjs';
 
 const withPWA = withPWAInit({
   dest: 'public',
@@ -75,4 +76,11 @@ const nextConfig = {
   output: 'standalone',
 };
 
-export default withPWA(nextConfig);
+export default withSentryConfig(withPWA(nextConfig), {
+  // Upload de source maps em silêncio — evita logs verbosos no build do CI.
+  silent: true,
+  // Desabilita o Sentry CLI no build local (sem SENTRY_AUTH_TOKEN definido).
+  // Em produção/CI, definir SENTRY_AUTH_TOKEN no ambiente do runner pra ativar.
+  disableClientWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+  disableServerWebpackPlugin: !process.env.SENTRY_AUTH_TOKEN,
+});
