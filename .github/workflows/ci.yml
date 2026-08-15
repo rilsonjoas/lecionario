@@ -60,7 +60,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: lecionario-mobile
-        run: npm ci
+        run: npm ci --legacy-peer-deps
 
       - name: TypeScript check
         working-directory: lecionario-mobile
