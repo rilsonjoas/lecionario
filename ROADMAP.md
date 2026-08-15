@@ -88,6 +88,25 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ---
 
+### 1.7 Logo sazonal e assets (web + mobile) — registrado 2026-08-14
+
+*Levantado numa sessão de infra/deploy, ainda não iniciado — fica pra
+uma sessão com mais fôlego. Junta com 1.6 quando for executado
+(splash/ícone mobile e a parte de assets sazonais se sobrepõem).*
+
+- [ ] Escrever script de geração de assets (recoloração por estação
+      litúrgica) e gerar ícones web + favicon + manifests
+- [ ] Web: atualizar `manifest.json`, `layout.tsx` (icons/metadata) e
+      Header/Footer/loading/error com a nova logo
+- [ ] Web: troca dinâmica da logo/favicon/manifest por estação
+      (`lib/theme` + `page.tsx`)
+- [ ] Mobile: gerar assets (icon, adaptive, splash, favicon, android
+      res) e atualizar `app.json`
+- [ ] Mobile: logo sazonal no `HomeScreen`
+- [ ] Verificar com typecheck/lint nos dois apps
+
+---
+
 ## Fase 2 — Features essenciais (v1.1)
 
 *O que transforma o app de utilitário em produto.*
