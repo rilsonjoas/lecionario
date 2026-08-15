@@ -15,7 +15,7 @@ import { CollectSection } from '@/components/devotional/CollectSection';
 import { DatePicker } from '@/components/layout/DatePicker';
 import { LiturgicalCalendar } from '@/components/layout/LiturgicalCalendar';
 import { getSampleDevotional } from '@/data/sample-devotional';
-import { applySeasonTheme } from '@/lib/theme';
+import { applySeasonTheme, applySeasonBranding } from '@/lib/theme';
 import type { DailyDevotional } from '@/types';
 
 interface DateSyncProps {
@@ -73,6 +73,7 @@ function HomeContent() {
   useEffect(() => {
     if (devotional) {
       applySeasonTheme(devotional.liturgicalInfo.season);
+      applySeasonBranding(devotional.liturgicalInfo.season);
     }
   }, [devotional]);
 
@@ -237,7 +238,7 @@ function HomeContent() {
           </div>
         </main>
 
-        <Footer />
+        <Footer season={devotional.liturgicalInfo.season} />
       </div>
     </>
   );

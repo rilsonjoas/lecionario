@@ -1,8 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { Calendar, BookOpen } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import type { LiturgicalDayInfo } from '@/types';
-import liturgicalHero from '@/assets/liturgical-hero.jpg';
 
 interface HeaderProps {
   liturgicalDay: LiturgicalDayInfo;
@@ -24,8 +23,14 @@ export function Header({ liturgicalDay }: HeaderProps) {
           {/* Site Title */}
           <div className="space-y-4 md:space-y-6">
             <div className="flex items-center gap-4 md:gap-6 group cursor-default">
-              <div className="p-3 md:p-4 bg-bege-areia/10 backdrop-blur-md rounded-2xl shadow-xl border border-bege-areia/20 group-hover:scale-105 transition-transform duration-700">
-                <BookOpen className="w-8 h-8 md:w-12 md:h-12 text-dourado" />
+              <div className="p-2 md:p-2.5 bg-creme rounded-2xl shadow-xl group-hover:scale-105 transition-transform duration-700">
+                <img
+                  src={`/icons/logo/season-${liturgicalDay.season}.png`}
+                  alt="Logomarca Lecionário"
+                  width={64}
+                  height={64}
+                  className="w-10 h-10 md:w-14 md:h-14"
+                />
               </div>
               <div className="space-y-1">
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-display text-bege-areia drop-shadow-2xl">

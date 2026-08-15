@@ -1,5 +1,16 @@
 import type { LiturgicalSeason, SeasonTheme } from '@/types';
 
+/** Cor de marca (corpo da logo) usada no theme-color do browser por estação. */
+export const seasonBrandColors: Record<LiturgicalSeason, string> = {
+  advent: '#7C3BED',
+  christmas: '#8B6914',
+  epiphany: '#0F7033',
+  lent: '#663399',
+  easter: '#8B6914',
+  pentecost: '#C02626',
+  ordinary: '#16A249',
+};
+
 export const seasonThemes: Record<LiturgicalSeason, SeasonTheme> = {
   advent: {
     season: 'advent',
@@ -72,4 +83,30 @@ export function applySeasonTheme(season: LiturgicalSeason): void {
 
   // Add the new season class
   document.documentElement.classList.add(theme.className);
+}
+
+/**
+ * Atualiza a identidade de marca do browser (favicon, manifest e theme-color)
+ * conforme a estação litúrgica do dia em exibição.
+ */
+export function applySeasonBranding(season: LiturgicalSeason): void {
+  if (typeof document === 'undefined') return;
+
+  const seasonLogo = `/icons/logo/season-${season}.png`;
+  document.querySelectorAll('link[rel="icon"]').forEach((el) => {
+    const href = el.getAttribute('href');
+    if (href && href !== seasonLogo) el.setAttribute('href', seasonLogo);
+  });
+
+  const manifest = document.querySelector<HTMLLinkElement>('link[rel="manifest"]');
+  if (manifest) {
+    const href = `/manifest-${season}.json`;
+    if (manifest.getAttribute('href') !== href) manifest.setAttribute('href', href);
+  }
+
+  const themeColor = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+  if (themeColor) {
+    const color = seasonBrandColors[season];
+    if (themeColor.getAttribute('content') !== color) themeColor.setAttribute('content', color);
+  }
 }

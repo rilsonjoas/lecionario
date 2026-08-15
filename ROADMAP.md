@@ -88,22 +88,37 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ---
 
-### 1.7 Logo sazonal e assets (web + mobile) — registrado 2026-08-14
+### 1.7 Logo sazonal e assets (web + mobile) — 2026-08-14/15
 
-*Levantado numa sessão de infra/deploy, ainda não iniciado — fica pra
-uma sessão com mais fôlego. Junta com 1.6 quando for executado
-(splash/ícone mobile e a parte de assets sazonais se sobrepõem).*
+*Registrado como pendência às 2026-08-14, mas na verdade já estava
+majoritariamente feito e só não commitado — corrigido em 2026-08-15
+após conferir `git status` (a nota anterior dizia "não iniciado", o
+que era falso).*
 
-- [ ] Escrever script de geração de assets (recoloração por estação
-      litúrgica) e gerar ícones web + favicon + manifests
-- [ ] Web: atualizar `manifest.json`, `layout.tsx` (icons/metadata) e
-      Header/Footer/loading/error com a nova logo
-- [ ] Web: troca dinâmica da logo/favicon/manifest por estação
-      (`lib/theme` + `page.tsx`)
-- [ ] Mobile: gerar assets (icon, adaptive, splash, favicon, android
-      res) e atualizar `app.json`
-- [ ] Mobile: logo sazonal no `HomeScreen`
-- [ ] Verificar com typecheck/lint nos dois apps
+- [x] Script `scripts/generate-logos.py` gerando os assets a partir de
+      `Logo.png`: recoloração por estação (corpo+chama, paleta web e
+      mobile), ícones PWA, favicon, maskable icons, manifests
+      sazonais, assets Expo e Android res por densidade
+- [x] Web: `manifest.json`, `layout.tsx` (favicon/apple-touch-icon
+      corrigido pra 180×180, `themeColor`) e Header/Footer/loading/error
+      usando a nova logo
+- [x] Web: troca dinâmica da logo/favicon/manifest por estação —
+      `applySeasonBranding()` em `lib/theme.ts`, chamado de `page.tsx`
+- [x] Mobile: assets gerados (icon, adaptive, splash, favicon, android
+      res) e `app.json` atualizado (nome "Lecionário", cores de fundo
+      `#F5F1E8`)
+- [x] Mobile: logo sazonal no `HomeScreen` (`SEASON_LOGOS` por
+      `require()` estático — necessário pro Metro resolver o asset;
+      exceção de lint escopada em `eslint.config.cjs`)
+- [x] Typecheck/lint limpos nos dois apps (corrigidos nesta sessão:
+      comentários `eslint-disable` órfãos referenciando uma regra do
+      `@next/eslint-plugin-next` que este projeto não usa; `Image`/
+      `SEASON_LOGOS` declarados mas nunca renderizados no mobile)
+- [ ] **Pendente de verdade**: novo build EAS pro ícone/nome valerem
+      no app instalado — o app já instalado só atualiza JS via
+      `eas update`/mesma rede de dev; ícone nativo exige rebuild
+      completo. Fica pra quando fizer sentido publicar uma nova
+      versão.
 
 ---
 

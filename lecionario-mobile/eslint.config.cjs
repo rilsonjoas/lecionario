@@ -28,6 +28,14 @@ module.exports = tseslint.config(
     },
   },
   {
+    // Mapas de asset por chave dinâmica (ex.: logo por estação litúrgica)
+    // exigem require() estático — Metro não resolve import de caminho variável.
+    files: ['src/screens/HomeScreen.tsx'],
+    rules: {
+      '@typescript-eslint/no-require-imports': 'off',
+    },
+  },
+  {
     ignores: ['node_modules', 'dist', '.expo', 'android', 'ios'],
   },
 );

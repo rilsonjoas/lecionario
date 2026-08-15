@@ -9,6 +9,7 @@ import {
   ActivityIndicator,
   Share,
   Platform,
+  Image,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -27,6 +28,16 @@ import { CollectSection } from '@/components/devotional/CollectSection';
 import type { DailyDevotional, RootTabParamList } from '@/types';
 
 type HojeRouteProp = RouteProp<RootTabParamList, 'Hoje'>;
+
+const SEASON_LOGOS: Record<string, number> = {
+  advent: require('../../assets/logo/season-advent.png'),
+  christmas: require('../../assets/logo/season-christmas.png'),
+  epiphany: require('../../assets/logo/season-epiphany.png'),
+  lent: require('../../assets/logo/season-lent.png'),
+  easter: require('../../assets/logo/season-easter.png'),
+  pentecost: require('../../assets/logo/season-pentecost.png'),
+  ordinary: require('../../assets/logo/season-ordinary.png'),
+};
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
@@ -147,6 +158,11 @@ export default function HomeScreen() {
     >
       <View style={styles.header}>
         <View style={styles.titleRow}>
+          <Image
+            source={SEASON_LOGOS[liturgicalInfo.season]}
+            style={styles.logo}
+            accessibilityLabel="Logomarca Lecionário"
+          />
           <Text style={[styles.title, { color: theme.accentColor }]}>Lecionário</Text>
           {devotional && (
             <TouchableOpacity
@@ -255,6 +271,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
+  },
+  logo: {
+    width: 32,
+    height: 32,
   },
   shareDayButton: {
     padding: 4,

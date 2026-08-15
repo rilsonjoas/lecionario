@@ -1,12 +1,19 @@
-import { Heart, BookOpen } from 'lucide-react';
+import { Heart } from 'lucide-react';
+import type { LiturgicalSeason } from '@/types';
 
-export function Footer() {
+export function Footer({ season = 'ordinary' }: { season?: LiturgicalSeason }) {
   return (
     <footer className="bg-secondary border-t border-accent/10 mt-16 texture-leather">
       <div className="container mx-auto px-4 py-12">
         <div className="text-center space-y-6">
           <div className="flex items-center justify-center gap-4 text-xs uppercase tracking-[0.3em] font-bold text-dourado/60">
-            <BookOpen className="w-4 h-4" />
+            <img
+              src={`/icons/logo/season-${season}.png`}
+              alt="Logomarca Lecionário"
+              width={28}
+              height={28}
+              className="w-6 h-6 md:w-7 md:h-7 rounded bg-creme/90 p-0.5"
+            />
             <span>Lecionário Comum Revisado</span>
           </div>
 
