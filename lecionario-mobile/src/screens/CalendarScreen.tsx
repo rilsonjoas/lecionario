@@ -18,19 +18,18 @@ import {
 } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { getLiturgicalDayInfo } from '@/lib/liturgical-calendar';
+import { seasonThemes } from '@/lib/theme';
 import type { LiturgicalSeason, RootTabParamList } from '@/types';
 
 type NavProp = BottomTabNavigationProp<RootTabParamList, 'Calendário'>;
 
-const seasonColors: Record<LiturgicalSeason, string> = {
-  advent: '#7B4EA8',
-  christmas: '#C4A44A',
-  epiphany: '#2E7D32',
-  lent: '#8B4A4A',
-  easter: '#B8860B',
-  pentecost: '#CC3333',
-  ordinary: '#4A8B4A',
-};
+// Consolidado (2026-08-16): antes era paleta própria, nunca sincronizada
+// com lib/theme.ts — causou bug real (Advento continuava roxo na legenda
+// mesmo depois de virar azul em todo o resto do app). Agora deriva direto
+// de seasonThemes, uma fonte só — não pode mais divergir.
+const seasonColors: Record<LiturgicalSeason, string> = Object.fromEntries(
+  Object.entries(seasonThemes).map(([season, theme]) => [season, theme.primaryColor]),
+) as Record<LiturgicalSeason, string>;
 
 const seasonLabels: Record<LiturgicalSeason, string> = {
   advent: 'Advento',
@@ -74,6 +73,18 @@ export default function CalendarScreen() {
       <View style={styles.header}>
         <MaterialCommunityIcons name="calendar-text" size={24} color="#B8860B" />
         <Text style={styles.title}>Calendário Litúrgico</Text>
+        {!isSameMonth(currentMonth, new Date()) && (
+          <TouchableOpacity
+            style={styles.todayButton}
+            onPress={() => setCurrentMonth(startOfMonth(new Date()))}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            accessibilityRole="button"
+            accessibilityLabel="Voltar para hoje"
+          >
+            <MaterialCommunityIcons name="calendar-today" size={14} color="#B8860B" />
+            <Text style={styles.todayButtonText}>Hoje</Text>
+          </TouchableOpacity>
+        )}
       </View>
 
       <View style={styles.monthNav}>
@@ -177,6 +188,21 @@ const styles = StyleSheet.create({
     color: '#F5F5F0',
     fontFamily: 'Lora_700Bold',
   },
+  todayButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 16,
+    borderWidth: 1,
+    borderColor: 'rgba(184,134,11,0.4)',
+  },
+  todayButtonText: {
+    fontSize: 11,
+    color: '#B8860B',
+    fontFamily: 'Lora_600SemiBold_Italic',
+  },
   monthNav: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -211,6 +237,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 1,
     fontWeight: '600',
+    fontFamily: 'Lora_600SemiBold_Italic',
   },
   daysGrid: {
     flexDirection: 'row',
@@ -257,6 +284,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 2,
     fontWeight: '700',
+    fontFamily: 'Lora_700Bold',
     marginBottom: 12,
   },
   legendGrid: {

@@ -31,28 +31,23 @@ BEIGE = (234, 224, 213)  # --bege-areia / #EAE0D5
 REF_VIOLET = (64, 16, 144)
 REF_GOLD = (176, 128, 16)
 
-# Paleta web: cores derivadas das variáveis CSS de cada estação (globals.css).
-# (corpo, chama) — sempre legível sobre o fundo creme do app.
+# Paleta unificada (2026-08-15) — alinhada aos tokens do Design Narniano
+# e às cores litúrgicas reais (Advento = azul Sarum, não roxo/rosa).
+# (corpo, chama) — chama fica dourada/clara na maioria das estações de
+# propósito (a Palavra continua acesa); só muda de sentido na Quaresma
+# (cinza, quase se apagando) e no Pentecostes (fogo — Atos 2). Web e
+# mobile usam os mesmos valores agora; antes divergiam (ex. Quaresma).
 WEB_PALETTE = {
-    "advent": ("#7C3BED", "#EC4699"),
-    "christmas": ("#8B6914", "#D4A017"),
-    "epiphany": ("#0F7033", "#2EB860"),
-    "lent": ("#663399", "#999999"),
-    "easter": ("#8B6914", "#D4A017"),
-    "pentecost": ("#C02626", "#F67E55"),
-    "ordinary": ("#16A249", "#2EB860"),
+    "advent": ("#4A6FA5", "#B49A60"),
+    "christmas": ("#B49A60", "#F4EFE1"),
+    "epiphany": ("#7A9178", "#B49A60"),
+    "lent": ("#4B2E39", "#8B9094"),
+    "easter": ("#B49A60", "#F4EFE1"),
+    "pentecost": ("#B7332B", "#C26430"),
+    "ordinary": ("#7A9178", "#B49A60"),
 }
 
-# Paleta mobile: cores do tema React Native (src/lib/theme.ts).
-MOBILE_PALETTE = {
-    "advent": ("#4A2C6D", "#C4A4E8"),
-    "christmas": ("#8B6914", "#D4A017"),
-    "epiphany": ("#1B5E20", "#4CAF50"),
-    "lent": ("#4A2525", "#A0A0A0"),
-    "easter": ("#8B6914", "#B8860B"),
-    "pentecost": ("#8B0000", "#FF6347"),
-    "ordinary": ("#1B5E20", "#4CAF50"),
-}
+MOBILE_PALETTE = dict(WEB_PALETTE)
 
 SEASONS = list(WEB_PALETTE)
 

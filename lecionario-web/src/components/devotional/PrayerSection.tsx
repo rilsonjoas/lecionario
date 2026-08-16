@@ -24,7 +24,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             <h2 className="text-3xl md:text-5xl font-display text-bege-areia tracking-tight">
               Oração do Dia
             </h2>
-            <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-dourado">
+            <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-dourado-texto">
               {prayer.title}
             </p>
           </div>
@@ -37,7 +37,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             </blockquote>
 
             {(prayer.author || prayer.source) && (
-              <div className="flex items-center justify-center gap-4 mt-12 text-[10px] font-bold uppercase tracking-[0.3em] text-dourado/60">
+              <div className="flex items-center justify-center gap-4 mt-12 text-[10px] font-bold uppercase tracking-[0.3em] text-dourado-texto">
                 <span className="w-10 h-px bg-dourado/20" />
                 <span>
                   {prayer.author}
@@ -50,7 +50,11 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
           </div>
 
           <div className="pt-10 text-center border-t border-dourado/10">
-            <p className="text-[10px] uppercase tracking-[0.5em] text-dourado/40 font-bold shimmer-gold">
+            {/* `shimmer-gold` era classe morta (não existia no CSS deste
+                projeto, só na nota de identidade do vault) — removida.
+                Cor trocada pra dourado-texto (achado 2026-08-15: dourado/40
+                sobre vinho dava 2.79:1, reprovado). */}
+            <p className="text-[10px] uppercase tracking-[0.5em] text-dourado-texto font-bold">
               "SURSUM CORDA — CORAÇÕES AO ALTO"
             </p>
           </div>

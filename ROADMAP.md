@@ -59,8 +59,14 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ### 1.3 Correção de build (mobile)
 
-- [ ] Verificar que o app abre sem `NoSuchMethodError`
-- [ ] Testar em dispositivo físico (Android/iOS)
+- [x] **`NoSuchMethodError` resolvido (2026-08-15)** — não era teórico,
+      aconteceu de verdade no primeiro build EAS real. Causa raiz e
+      correção completas na seção "Identidade aplicada aqui" abaixo
+      ("Achado crítico, primeiro build EAS real")
+- [x] **Testado em dispositivo físico Android (2026-08-15/16)** — via
+      `adb logcat` real, não simulação. iOS ainda não testado (decisão
+      consciente, foco Android por enquanto — ver "Ainda pendente"
+      abaixo)
 
 ---
 
@@ -81,10 +87,12 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ### 1.6 Ícone e splash screen reais (mobile)
 
-- [ ] Criar ícone final do app (1024×1024 PNG, sem transparência)
-- [ ] Criar adaptive icon para Android (foreground 108×108dp)
-- [ ] Criar splash screen
-- [ ] Atualizar `app.json` com os novos assets
+- [x] **Superada pela 1.7 abaixo** — ícone final (livro+chama), adaptive
+      icon, splash screen e `app.json` já cobertos por
+      `scripts/generate-logos.py`, rodando de verdade desde 2026-08-14/15
+      e regenerado hoje com a paleta corrigida. Item antigo de 28/06
+      ficou órfão sem ser marcado quando o trabalho real foi feito —
+      corrigido agora ao revisar o roadmap
 
 ---
 
@@ -175,11 +183,24 @@ A tela atual tem apenas "Limpar cache". Adicionar:
 
 ### 3.1 Acessibilidade
 
-- [ ] Auditar todos os componentes com `accessibilityLabel`, `accessibilityRole`, `accessibilityHint`
-- [ ] `ReadingCard` — label descrevendo tipo e referência da leitura
-- [ ] `CalendarScreen` — cada célula de dia com label completo
+- [x] **Auditoria de `accessibilityLabel`/`accessibilityRole` — feita (2026-08-15)**:
+      todos os `TouchableOpacity` interativos dos 6 arquivos que tinham
+      (Prayer/Reading/Home/Calendar/Config/ErrorBoundary) agora têm os
+      dois. Faltavam: retry do `ErrorBoundary`, navegação de dia
+      (anterior/próximo) e retry de erro no `HomeScreen` — corrigidos.
+      `Meditation`/`CollectSection` não têm elemento interativo, não se
+      aplica
+- [x] `ReadingCard` — já tem (`accessibilityLabel` no botão de
+      compartilhar, com tipo + referência)
+- [x] `CalendarScreen` — já tem, label completo por célula (data por
+      extenso + dia litúrgico) + navegação de mês (achado ao conferir,
+      2026-08-15 — estava marcado pendente por engano)
 - [ ] Testar com TalkBack (Android) e VoiceOver (iOS)
-- [ ] Garantir contraste mínimo 4.5:1 em todo texto sobre fundo
+- [x] **Contraste mínimo 4.5:1 em todo texto sobre fundo — feito (2026-08-15)**:
+      achado real em `PrayerSection`/`MeditationSection`/`CollectSection`/
+      `ReadingCard` (gold sobre fundo escuro e claro reprovando WCAG AA,
+      inclusive com opacidade reduzindo ainda mais); todos corrigidos e
+      verificados com `tsc --noEmit`
 
 ---
 
@@ -240,6 +261,83 @@ A tela atual tem apenas "Limpar cache". Adicionar:
 
 - [ ] Permitir escolha de tradução (ARC, NVI, NTLH, ACF)
 - [ ] Configuração por leitura ou global
+
+---
+
+### 4.5 Pintura do Dia — integração com Bíblia na Arte (2026-08-16)
+
+Ideia do Rilson: card opcional no dia mostrando uma obra de arte
+relacionada à leitura principal, linkando pro Bíblia na Arte pra ver
+mais. Conferido antes de registrar — a base técnica já existe dos dois
+lados, não é especulação:
+
+- Bíblia na Arte já tem `GET /api/v1/artworks?bookSlug=luke&chapter=10`
+  (endpoint real, com teste de integração cobrindo)
+- Lecionário já tem `reference: string` em cada leitura (ex. "Lucas
+  10:25-37")
+
+**O que falta construir:**
+- [ ] Parser de referência → extrair livro + capítulo do texto livre
+      (cuidado com casos como "Gênesis 1:1–2:4", que cruza capítulo)
+- [ ] Tabela de tradução nome-do-livro-em-português → `bookSlug` em
+      inglês (lista fechada, 66 livros, trabalho de fazer uma vez)
+- [ ] Card "Pintura do Dia" — thumbnail + título + artista, toque abre
+      o Bíblia na Arte (link externo, sem WebView)
+
+**Decisão de arquitetura, não negociável sem repensar tudo:** Lecionário
+é offline-first de propósito — o card **só aparece quando online**
+(reaproveitar o `isOffline` que o `HomeScreen` já rastreia) e fica
+ausente com graça quando não tem rede. Núcleo do app continua
+funcionando 100% sem internet; isso é enriquecimento, não dependência.
+
+Ver também: `biblia-na-arte/docs/ROADMAP.md`, seção "Fase 5 — Produto"
+(lado recíproco desta integração).
+
+---
+
+### 4.6 "Leia mais sobre isso" — integração com Scriptorium Divinum (2026-08-16)
+
+Mesmo espírito da 4.5, mais simples de implementar: `GET
+/api/v1/search?q=` do Scriptorium já é real e testado (busca full-text
+em português). O Lecionário busca por palavra-chave da meditação/leitura
+do dia e sugere um trecho relacionado de um clássico (Agostinho, Kempis
+etc.), com link pro Scriptorium. Mesma regra do card anterior: só
+online, ausente com graça offline, reaproveitando `isOffline`.
+
+- [ ] Extrair 1-2 palavras-chave relevantes da meditação/leitura do dia
+- [ ] Card "Leia mais" — trecho + autor + link, mesmo lugar visual da
+      Pintura do Dia (ou junto, num só bloco "Biblioteca do dia")
+
+Ver também: `scriptorium-divinum/ROADMAP.md`, seção "Estratégia" (lado
+recíproco).
+
+---
+
+### 4.7 Citação do dia — Gerador C.S. Lewis (2026-08-16)
+
+Citação aleatória (não ligada à data, só rotativa) do mesmo pool de
+dados do Gerador C.S. Lewis, com link "mais citações" pro gerador. Baixo
+custo se os dados do Gerador forem exportáveis como JSON simples —
+verificar formato antes de estimar esforço real.
+
+- [ ] Confirmar se o Gerador tem os dados de citação num formato
+      reaproveitável (JSON estático seria ideal)
+- [ ] Espaço pequeno no `ConfigScreen` ou rodapé do dia, não competir
+      com o conteúdo litúrgico principal
+
+Ver também: `GeradorCSLewis/README.md` (lado recíproco).
+
+---
+
+### 4.8 Rodapé/menu cruzado — cluster "A Biblioteca" (2026-08-16)
+
+Nunca virou item de roadmap em nenhum dos 4 projetos, só foi discutido
+em conceito. Rodapé simples com link pros outros 3 (Bíblia na Arte,
+Scriptorium, Gerador C.S. Lewis) — ajuda SEO (autoridade cruzada de
+domínio) e retenção, sem depender de nenhuma integração de dado, só
+link estático. Mesmo item registrado nos outros 3.
+
+- [ ] Componente de rodapé "parte da mesma biblioteca" com os 4 links
 
 ---
 
@@ -339,8 +437,180 @@ P6 são categorias novas.
   deste roadmap, meta de 70%+ em `src/lib/`. Sem mudança aqui, só
   linkando pro contexto de infra
 
+### Identidade aplicada aqui (2026-08-15, revisado)
+
+> Fonte: `Identidade visual geral.md` e `Identidade Visual - Guia Técnico
+> (Código).md` no vault. **Achado ao conferir o ícone real (2026-08-15):**
+> o símbolo (livro + chama irradiando, `Logo.png`) já tem essa cara —
+> livro cobre A Biblioteca, chama com raios já gesticula pra Os Céus. E
+> `scripts/generate-logos.py` já implementa "um grammar, registros
+> diferentes" de verdade (recolore por estação, gera todos os assets
+> web/mobile/Android). **Não mexer no símbolo nem no estilo do ícone** —
+> plano/geométrico está certo pra legibilidade em tamanho pequeno; a
+> textura mais ornamentada (capitular, halo, moldura) é pra superfícies
+> maiores (splash, hero, tela cheia), não pro ícone.
+
+- [x] **Cor do Advento corrigida (2026-08-15)**: era roxo+rosa
+      (`#EC4699`/`#C4A4E8`, "Rosa da Esperança" — decisão estética, não
+      erro, mas o Rilson preferiu convenção real); agora é azul Sarum
+      (`--graca-azul` #4A6FA5) com chama dourada, tradição anglicana/BCP
+      1979 que o projeto já segue
+- [x] **Paleta de estação unificada com os tokens compartilhados
+      (2026-08-15)**: `WEB_PALETTE`/`MOBILE_PALETTE` eram hex soltos e
+      **divergentes entre si** (achado real: Quaresma era roxa no web,
+      marrom-avermelhada no mobile) — agora os dois usam exatamente os
+      mesmos valores, alinhados aos tokens do Design Narniano. Rodado
+      `generate-logos.py` de verdade, ícones/manifests/splash das 7
+      estações regenerados e conferidos visualmente
+- [x] **Capitular implementada nos dois lados (2026-08-15)**: web via
+      `.capitular::first-letter` em `MeditationSection.tsx` (substituiu
+      uma aspas decorativa simulada); mobile via aproximação nativa
+      (RN não tem `::first-letter`/float — primeira letra como `<Text>`
+      aninhado maior, mesma função, mecanismo diferente)
+- [x] **Easing litúrgico — web (2026-08-15)**: `--ease-liturgico`/`--ease-vela`
+      em `tailwind.config.ts`, aplicado nos 3 pontos que mudam de cor por
+      estação (`ReadingCard`, `Header`)
+- [~] **Easing — mobile: não aplicável, decisão consciente (2026-08-15)**:
+      `HomeScreen.tsx` só lê `getThemeForSeason()` uma vez no render, sem
+      observador nem transição ao vivo — não existe o momento de troca
+      que isso animaria. App também não tem nenhuma lib de animação
+      instalada; adicionar uma agora só pra isso seria dependência nativa
+      nova sem ganho real, bem na véspera de gerar o APK. Reavaliar só se
+      o app ganhar essa transição ao vivo no futuro
+
+**Achado crítico, primeiro build EAS real (2026-08-15):** primeiro APK
+gerado crashava na abertura, sempre — "Lecionário apresenta falhas
+contínuas". Diagnosticado com `adb logcat` de verdade (não achismo):
+`java.lang.NoSuchMethodError` em `expo.modules.kotlin.types.ReturnTypeKt`,
+disparado por `FontLoaderModule.kt:98`. Causa raiz: `npm ls expo-font`
+mostrou **duas versões** resolvidas — `57.0.1` (via `@expo/vector-icons`)
+e `14.0.12` (via `expo@54.0.35`, a versão que o SDK realmente exige,
+`~14.0.12`). O `npm install` que rodei mais cedo pra corrigir o lockfile
+preencheu a entrada quebrada com `57.0.1` em vez de dedupar pra
+`14.0.12` — módulo nativo Kotlin com duas versões JS não convive bem,
+resultado é `NoSuchMethodError` num método que só existe numa das duas.
+**Corrigido** com `overrides.expo-font: "~14.0.12"` no `package.json`,
+forçando dedupe pra uma versão só. `npm ls expo-font` confirma: as duas
+dependências agora resolvem pra `14.0.12`. Lição: depois de qualquer
+`npm install` num projeto Expo, rodar `npx expo install --check` — ele
+teria mostrado o built-in de compatibilidade de SDK que o `npm` sozinho
+não sabe calcular.
+
+**Sessão de teste real no aparelho (2026-08-16)** — 9 pontos levantados,
+todos investigados no código antes de responder:
+
+- [x] **EAS Update configurado**: `expo-updates` instalado + `eas
+      update:configure` rodado — `runtimeVersion` por `appVersion`,
+      canais `development`/`preview`/`production` em `eas.json`. A
+      partir deste build, ajustes só-JS não precisam mais de build
+      nativo completo — `eas update` publica em segundos
+- [x] **Fonte do título/menus não batia com o design**: `navText`
+      ("Anterior"/"Próximo") não tinha `fontFamily` nenhuma, caía no
+      Roboto do sistema. Auditoria completa: **53 `<Text>` no mobile, só
+      26 tinham `fontFamily`** — corrigido em 8 arquivos (pior caso:
+      `ConfigScreen`, 9 de 12 sem fonte)
+- [x] **"Lecionário" ilegível**: achado real, `theme.accentColor` como
+      cor do título presumia fundo sempre escuro — Natal/Páscoa
+      (dourado) e Epifania/Tempo Comum (sálvia) quase apagavam o texto.
+      Criado `getHeaderTextColors(season)` em `lib/theme.ts`, adaptativo
+      por estação (preto quente em fundo claro, creme em fundo escuro),
+      aplicado em título/dia/ano/navegação/data
+- [x] **Toque na data não navegava pro calendário**: era `View` sem
+      `onPress`. Agora é `TouchableOpacity` com `navigation.navigate('Calendário')`
+- [x] **"Voltar para hoje"**: botão novo no `HomeScreen` (só aparece
+      fora do dia atual, volta a data) e no `CalendarScreen` (só aparece
+      fora do mês atual, volta o mês)
+- [x] **Fontes grandes demais**: `prayerText`/`collectText` em 18px +
+      padding empilhado deixavam poucas palavras por linha. Reduzido
+      pra 16px/lineHeight 26
+- [x] **Ícones de Salmo (coração) e Evangelho (estrela)**: trocados por
+      música (Salmos eram cantados) e cruz — nos dois lados (web +
+      mobile), inclusive um `text-white` fixo no badge do Evangelho web
+      que tinha o mesmo bug de contraste dos outros badges
+- [x] **Texto não selecionável**: `selectable` adicionado nos 4
+      componentes de conteúdo (Prayer/Meditation/Collect/Reading)
+- [x] **"Limpar cache" confuso**: reescrito pra deixar claro que as
+      leituras já vêm no app (nada de rede) — é só um cache técnico de
+      cálculo, não um download. Renomeado "Limpar dados temporários"
+- [x] **Achado extra, não fazia parte dos 9 pontos**: `CalendarScreen`
+      (mobile) e `LiturgicalCalendar` (web) tinham **paleta de cor
+      própria, nunca sincronizada** com `lib/theme.ts` — Advento
+      continuava roxo na legenda de cores mesmo depois de virar azul em
+      todo o resto do app. Terceira/quarta fonte de cor duplicada
+      encontrada nesta investigação (depois de `theme.ts` x2 e o gerador
+      de ícone) — ver item de arquitetura abaixo
+
+**Segunda rodada, adiantado antes do próximo build (2026-08-16, foco
+Android — iOS não tocado):**
+- [x] **Cores de estação consolidadas**: `CalendarScreen` (mobile) e
+      `LiturgicalCalendar` (web) agora **importam** de `lib/theme.ts` em
+      vez de manter cópia própria — elimina a causa raiz do bug do
+      Advento roxo (não tem mais como divergir, porque não existe mais
+      cópia pra divergir). `generate-logos.py` continua com valores
+      próprios de propósito — unificar com JSON compartilhado arriscava
+      quebrar o Metro bundler bem na véspera do build; documentado como
+      pendência de baixo risco, não urgente
+- [x] **Densidade de leitura — auditoria completa do mobile**: conferido
+      todo `fontSize` do app (14 valores distintos, de 9 a 34px) — os 2
+      já corrigidos (`prayerText`/`collectText`) eram os únicos casos
+      reais de texto corrido grande demais; resto é cabeçalho/label,
+      tamanho correto pro papel. Web fica pendente (não testado nesta
+      rodada, foco foi Android)
+- [x] **Área de toque — auditoria completa (padrão 48dp)**: achados reais
+      abaixo do mínimo — `shareButton` (32×32), `shareDayButton`
+      (36×36), `copyButton` (altura 36), `navButton` (44), + os 2 botões
+      "Voltar para hoje" novos. Corrigido com `hitSlop` em 8 pontos (não
+      muda o visual, só a área clicável — mesmo padrão que já existia
+      no `monthButton`)
+- [x] **Halo-glow no ícone da vela** (`PrayerSection`) — Design Narniano;
+      Android ignora `shadowColor` em `View` (só iOS respeita sombra
+      colorida nativa), então é uma camada própria atrás do ícone
+      (`rgba(212,160,23,0.25)`, 76×76 atrás do círculo de 56×56), sem
+      dependência nova
+
+**Ainda pendente, fica pra depois do build (retomar via `eas update`,
+mais rápido agora):**
+- [ ] Consolidar `generate-logos.py` (Python) com a fonte JS de cor —
+      baixo risco, não urgente, documentado acima
+- [ ] Densidade de leitura no **web** — não auditado nesta rodada
+- [ ] Mais Design Narniano no resto do app (moldura em mais lugares,
+      halo-glow só foi aplicado num ponto)
+- [ ] Benchmark de UI/UX contra padrões de mercado — avaliação
+      qualitativa feita em conversa, sem checklist formal registrado
+- [ ] **iOS não foi tocado em nenhuma das duas rodadas** — safe-area,
+      sombra nativa (que se comporta diferente lá) e teste geral ainda
+      em aberto, por decisão consciente (foco Android por enquanto)
+- [ ] TalkBack/VoiceOver — teste real com leitor de tela ligado, nunca
+      feito
+
+**Achado extra, fora do escopo original (2026-08-15):** ao conferir
+contraste da capitular, achei que **todo uso de `--dourado` como cor de
+texto/ícone no app reprovava WCAG AA** — 12 ocorrências no web (2.0-4.4:1,
+mínimo é 4.5:1), e o mesmo padrão em 4 componentes do mobile (Prayer/
+Meditation/Collect/ReadingCard, com cores hardcoded próprias, nem
+compartilhadas com o web). Incluindo os badges de leitura por estação
+(`ReadingCard`), onde texto branco fixo sobre Natal/Páscoa (dourado) e
+Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
+- [x] Web: token novo `--dourado-texto` (fundo escuro) + reuso de
+      `--vinho` (fundo claro) nas 12 ocorrências + foreground adaptativo
+      por estação nos badges (antes fixo em branco)
+- [x] Mobile: mesma lógica, cores próprias corrigidas nos 4 componentes
+      devocionais
+- [x] Vault (`Identidade Visual - Guia Técnico`) também corrigido, pra
+      não repetir o mesmo erro quando Bíblia na Arte/Scriptorium/CS
+      Lewis implementarem a capitular
+- Verificado com `tsc --noEmit` (limpo nos dois) e `next build` completo
+  (web, sucesso) — não é só cálculo teórico de contraste, o código
+  compila e builda de verdade
+
 ### P5 — Monitoramento & Logs
 
+- [ ] **Uptime Kuma** — ainda não aplicável: o app não está no ar no VPS,
+      então não existe monitor pra ele ainda. Assim que o deploy (P1)
+      sair, é só adicionar o monitor — o canal de alerta (**Telegram +
+      e-mail**) já está configurado centralmente no Uptime Kuma do VPS
+      (mesmo usado por bancada, biblia-na-arte e scriptorium), não exige
+      nenhuma configuração nova, só cadastrar a URL.
 - [ ] **Sentry no mobile (`@sentry/react-native`) — instalado e inicializado (2026-08-14), falta terminar a configuração**: SDK instalado, `Sentry.init` em `App.tsx` (lê `EXPO_PUBLIC_SENTRY_DSN`), raiz embrulhada com `Sentry.wrap(App)`. **Pendente**: criar o DSN no sentry.io, definir `EXPO_PUBLIC_SENTRY_DSN` no build do app e configurar source maps no EAS (Fase 3.3)
 - [ ] **Sentry no web (`@sentry/nextjs`) — instalado e inicializado (2026-08-14), falta terminar a configuração**: SDK instalado, arquivos `sentry.client.config.ts`, `sentry.server.config.ts` e `sentry.edge.config.ts` criados, `next.config.mjs` embrulhado com `withSentryConfig` (typecheck passou). **Pendente**: criar o DSN no sentry.io, definir `NEXT_PUBLIC_SENTRY_DSN` no `docker-compose.yml` do deploy e validar que eventos chegam
 - DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
@@ -358,6 +628,25 @@ P6 são categorias novas.
 
 ### P7 — UI/UX, acessibilidade e SEO
 
+- [~] **Internacionalização (i18n) — decisão consciente de adiar
+      (2026-08-16)**: hoje zero infra (`grep` confirma: sem `i18next`,
+      sem `expo-localization`, nenhum arquivo de locale, tudo string PT
+      direto no JSX). Comparado ao Meus Remédios (i18n real, pt/en/es
+      completo) porque a natureza dos dois projetos é diferente: Meus
+      Remédios é interface neutra, tradução é troca de string. Lecionário
+      é **100% conteúdo** — Bíblia em Almeida ARC, 2152 devocionais
+      gerados em português. Traduzir só a UI sem traduzir o conteúdo
+      bíblico/devocional seria teatro, não internacionalização de
+      verdade — exigiria trocar a tradução bíblica de base (ESV/KJV em
+      inglês, RVR em espanhol) **e regenerar todo o conteúdo devocional**
+      por idioma, ordem de grandeza maior que instalar uma lib. Público
+      definido (cristão litúrgico brasileiro) já é pequeno de propósito;
+      expandir idioma sem expandir conteúdo não resolve nada. **Não
+      prioridade agora.** Se um dia fizer sentido, inglês é candidato
+      mais natural que espanhol (a tradição RCL/BCP 1979 que o app
+      segue é mais comum no mundo anglicano de língua inglesa que no
+      Brasil) — mas isso é decisão de expansão estratégica, não
+      pendência técnica esquecida
 - [x] **SEO do web já implementado**: `lecionario-web/src/app/layout.tsx`
       exporta `metadata` (Next.js App Router) com `openGraph` — mais
       maduro que o padrão estático de index.html, gerado por página.
@@ -365,12 +654,23 @@ P6 são categorias novas.
 - [ ] `sitemap.xml` — não existe (`app/sitemap.ts` do Next.js resolveria
       isso nativamente, sem lib extra)
 - [x] Já responsivo (breakpoint 768px, hook `useIsMobile`)
-- [ ] **Acessibilidade do mobile** já está na Fase 3.1 deste roadmap
-      (accessibilityLabel, TalkBack/VoiceOver, contraste)
-- [ ] **Acessibilidade do web nunca foi mencionada** — a Fase 3.1
-      original só cobre o app mobile, o `lecionario-web` (Next.js) não
-      tem nenhum item de a11y no roadmap. Achado ao padronizar com os
-      outros projetos, 2026-08-08
+- [x] **Contraste de cor (web + mobile) — resolvido de verdade (2026-08-15)**:
+      auditoria real encontrou e corrigiu falha sistêmica de WCAG AA em
+      todo uso de dourado como texto/ícone, nos dois lados. Detalhe
+      completo na seção "Identidade aplicada aqui" acima
+- [x] **Acessibilidade do mobile — contraste + labels feitos (2026-08-15)**:
+      auditoria completa de `accessibilityLabel`/`accessibilityRole` em
+      todos os componentes com elemento interativo (ver Fase 3.1). Falta
+      só o teste real com TalkBack/VoiceOver num aparelho físico — isso
+      exige mão humana, não dá pra verificar por código
+- [x] **Acessibilidade do web — contraste + aria-label feitos (2026-08-15)**:
+      era "nunca foi mencionada"; contraste de cor resolvido, e auditados
+      os botões só-com-ícone: `LiturgicalCalendar` (navegação de mês +
+      célula de dia, sem `aria-label` nenhum antes) e os 3 botões de
+      navegação de `page.tsx` (achado real: `hidden sm:inline` no texto
+      removia da árvore de acessibilidade também, não só visualmente —
+      no mobile web viravam ícone puro sem nome). Falta navegação por
+      teclado (não testada) e teste com leitor de tela de verdade
 
 ## L — Lançamento e crescimento (2026-08-08)
 
@@ -383,9 +683,11 @@ muito mais restrito por natureza**.
 
 ### Por que o teto é mais baixo, de propósito
 
-- Segue o **calendário litúrgico anglicano/ACNA** (RCL + BCP 1979) — é
-  uma tradição específica dentro do cristianismo, minoria mesmo dentro
-  do protestantismo brasileiro (que é majoritariamente
+- Segue o **calendário litúrgico anglicano/ACNA** (RCL + BCP 1979) —
+  escolha pessoal de prática devocional do Rilson (que não é de
+  tradição litúrgica), não indica filiação denominacional. É uma
+  tradição específica dentro do cristianismo, minoria mesmo dentro do
+  protestantismo brasileiro (que é majoritariamente
   evangélico/pentecostal, não litúrgico). O público real é a
   interseção de "cristão praticante" + "tradição litúrgica" +
   "português" — bem menor que "quem toma remédio" (público do
@@ -393,6 +695,15 @@ muito mais restrito por natureza**.
 - Isso não é defeito — é o propósito do projeto. Não faz sentido forçar
   "milhares de usuários" num app que existe pra servir uma tradição
   específica bem, não pra maximizar instalação
+- **Estimativa de potencial (2026-08-15, teto plausível, não medição
+  real):** cristãos litúrgicos praticantes no Brasil (anglicanos,
+  luteranos, presbiterianos/reformados de linha mais litúrgica,
+  metodistas) somam uma fração pequena do protestantismo brasileiro —
+  ordem de grandeza de dezenas de milhares de praticantes reais, não
+  milhões. Sucesso aqui é capturar algumas centenas a poucos milhares
+  de usuários **ativos e fiéis** desse recorte, não uma fatia de
+  mercado grande — já seria um resultado excelente pro propósito do
+  projeto.
 
 ### O que muda no plano, então
 

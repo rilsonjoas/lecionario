@@ -26,8 +26,13 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
       <View style={styles.headerSection}>
         <View style={styles.iconRow}>
           <View style={styles.line} />
-          <View style={styles.iconCircle}>
-            <MaterialCommunityIcons name="candle" size={28} color="#F5F5F0" />
+          {/* Halo-glow (Design Narniano) — Android ignora shadowColor em
+              View, então o brilho é uma camada própria atrás do ícone,
+              não sombra nativa */}
+          <View style={styles.iconGlow}>
+            <View style={styles.iconCircle}>
+              <MaterialCommunityIcons name="candle" size={28} color="#F5F5F0" />
+            </View>
           </View>
           <View style={styles.line} />
         </View>
@@ -36,18 +41,21 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
       </View>
 
       <View style={styles.bodySection}>
-        <Text style={styles.prayerText}>{prayer.text}</Text>
+        <Text style={styles.prayerText} selectable>
+          {prayer.text}
+        </Text>
 
         <TouchableOpacity
           onPress={handleCopy}
           style={styles.copyButton}
+          hitSlop={{ top: 8, bottom: 8, left: 12, right: 12 }}
           accessibilityLabel={copied ? 'Oração copiada' : 'Copiar oração'}
           accessibilityRole="button"
         >
           <MaterialCommunityIcons
             name={copied ? 'check' : 'content-copy'}
             size={16}
-            color={copied ? '#4A8B4A' : 'rgba(184,134,11,0.6)'}
+            color={copied ? '#7ED17E' : '#EDDFB8'}
           />
           <Text style={[styles.copyText, copied && styles.copyTextDone]}>
             {copied ? 'Copiado!' : 'Copiar'}
@@ -101,6 +109,14 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: 'rgba(184,134,11,0.3)',
   },
+  iconGlow: {
+    width: 76,
+    height: 76,
+    borderRadius: 38,
+    backgroundColor: 'rgba(212,160,23,0.25)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   iconCircle: {
     width: 56,
     height: 56,
@@ -117,10 +133,13 @@ const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 10,
-    color: '#B8860B',
+    // Achado 2026-08-15: #B8860B sobre #6B3A3A dava 2.82:1, reprovado
+    // (WCAG AA precisa 4.5:1 em texto pequeno). #EDDFB8 dá 6.92:1.
+    color: '#EDDFB8',
     textTransform: 'uppercase',
     letterSpacing: 3,
     fontWeight: '700',
+    fontFamily: 'Lora_600SemiBold_Italic',
     marginTop: 8,
   },
   bodySection: {
@@ -128,8 +147,10 @@ const styles = StyleSheet.create({
     paddingTop: 28,
   },
   prayerText: {
-    fontSize: 18,
-    lineHeight: 30,
+    // Achado real 2026-08-16: 18px + padding empilhado (20+8) deixava
+    // poucas palavras por linha numa tela de celular, leitura "picotada"
+    fontSize: 16,
+    lineHeight: 26,
     color: '#F5F5F0',
     fontFamily: 'Lora_400Regular_Italic',
     textAlign: 'center',
@@ -146,13 +167,14 @@ const styles = StyleSheet.create({
   },
   copyText: {
     fontSize: 11,
-    color: 'rgba(184,134,11,0.6)',
+    color: '#EDDFB8',
     fontWeight: '600',
+    fontFamily: 'Lora_600SemiBold_Italic',
     textTransform: 'uppercase',
     letterSpacing: 2,
   },
   copyTextDone: {
-    color: '#4A8B4A',
+    color: '#7ED17E',
   },
   sourceRow: {
     flexDirection: 'row',
@@ -168,8 +190,9 @@ const styles = StyleSheet.create({
   },
   sourceText: {
     fontSize: 9,
-    color: 'rgba(184,134,11,0.6)',
+    color: '#EDDFB8',
     fontWeight: '700',
+    fontFamily: 'Lora_600SemiBold_Italic',
     textTransform: 'uppercase',
     letterSpacing: 3,
   },

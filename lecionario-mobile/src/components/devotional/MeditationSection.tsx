@@ -26,9 +26,18 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
       </View>
 
       <View style={styles.body}>
+        {/* Capitular iluminada — Design Narniano, aproximação nativa (RN
+            não tem float/::first-letter; a letra maior fica inline, sem
+            o texto envolver de verdade em várias linhas como no web).
+            Substitui a aspas decorativa (quoteMark), que era só ~2:1 de
+            contraste — cor real do texto não muda esse achado, era um
+            elemento puramente ilegível de propósito, então trocado por
+            algo que cumpre a mesma função melhor. */}
         <View style={styles.promptContainer}>
-          <Text style={styles.quoteMark}>"</Text>
-          <Text style={styles.promptText}>{meditation.prompt}</Text>
+          <Text style={styles.promptText} selectable>
+            <Text style={styles.capitular}>{meditation.prompt.charAt(0)}</Text>
+            {meditation.prompt.slice(1)}
+          </Text>
         </View>
 
         {meditation.questions && meditation.questions.length > 0 && (
@@ -37,7 +46,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
               <MaterialCommunityIcons
                 name="help-circle-outline"
                 size={14}
-                color="rgba(139,105,20,0.4)"
+                color="#8F6608"
               />
               <Text style={styles.questionsTitle}>Questões para Silenciar</Text>
             </View>
@@ -97,6 +106,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 2,
     fontWeight: '700',
+    fontFamily: 'Lora_600SemiBold_Italic',
     marginTop: 2,
   },
   durationBadge: {
@@ -113,6 +123,7 @@ const styles = StyleSheet.create({
   durationText: {
     fontSize: 9,
     fontWeight: '700',
+    fontFamily: 'Lora_600SemiBold_Italic',
     textTransform: 'uppercase',
     letterSpacing: 2,
     color: '#8B6914',
@@ -125,13 +136,11 @@ const styles = StyleSheet.create({
     position: 'relative',
     marginBottom: 24,
   },
-  quoteMark: {
-    position: 'absolute',
-    top: -16,
-    left: -8,
-    fontSize: 48,
-    color: 'rgba(139,105,20,0.1)',
-    fontFamily: 'Lora_400Regular',
+  capitular: {
+    fontSize: 34,
+    fontWeight: '700',
+    color: '#4B2E39', // --vinho — 9.22:1 sobre fundo branco, WCAG AA
+    fontFamily: 'Lora_700Bold',
   },
   promptText: {
     fontSize: 16,
@@ -156,6 +165,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: '#999',
     fontWeight: '700',
+    fontFamily: 'Lora_600SemiBold_Italic',
     textTransform: 'uppercase',
     letterSpacing: 3,
   },

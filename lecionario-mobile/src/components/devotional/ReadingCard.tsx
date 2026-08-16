@@ -12,9 +12,14 @@ const readingTypeConfig: Record<
   { label: string; icon: keyof typeof MaterialCommunityIcons.glyphMap; color: string }
 > = {
   first_reading: { label: 'Primeira Leitura', icon: 'book-open-variant', color: '#8B6914' },
-  psalm: { label: 'Salmo', icon: 'heart', color: '#4A2C6D' },
+  // Achado real (2026-08-16): coração pra Salmo e estrela pra Evangelho
+  // não comunicavam nada específico — trocado por música (Salmos eram
+  // cantados) e cruz (o centro do Evangelho)
+  psalm: { label: 'Salmo', icon: 'music-note-outline', color: '#4A2C6D' },
   second_reading: { label: 'Segunda Leitura', icon: 'script-text-outline', color: '#6B3A3A' },
-  gospel: { label: 'Evangelho', icon: 'star', color: '#B8860B' },
+  // Achado 2026-08-15: #B8860B sobre branco dava 3.25:1, reprovado
+  // (mínimo 4.5:1 pra texto pequeno). #8F6608 dá 5.16:1.
+  gospel: { label: 'Evangelho', icon: 'cross', color: '#8F6608' },
 };
 
 export function ReadingCard({ reading, index }: ReadingCardProps) {
@@ -40,6 +45,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
             <TouchableOpacity
               onPress={handleShare}
               style={styles.shareButton}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
               accessibilityLabel={`Compartilhar ${config.label} ${reading.reference}`}
               accessibilityRole="button"
             >
@@ -54,7 +60,9 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
         {reading.text && (
           <View style={styles.textContainer}>
             <View style={styles.textBorder} />
-            <Text style={styles.text}>{reading.text}</Text>
+            <Text style={styles.text} selectable>
+              {reading.text}
+            </Text>
           </View>
         )}
       </View>
@@ -114,6 +122,7 @@ const styles = StyleSheet.create({
     color: '#999',
     textTransform: 'uppercase',
     letterSpacing: 2,
+    fontFamily: 'Lora_600SemiBold_Italic',
     marginTop: 4,
   },
   badge: {

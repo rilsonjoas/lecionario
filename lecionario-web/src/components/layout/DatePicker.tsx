@@ -26,7 +26,7 @@ export function DatePicker({ date, onDateChange }: DatePickerProps) {
             !date && 'text-muted-foreground',
           )}
         >
-          <div className="flex items-center gap-1.5 md:gap-2 text-dourado font-bold text-[8px] md:text-[10px] uppercase tracking-wider md:tracking-widest group-hover:text-accent transition-colors">
+          <div className="flex items-center gap-1.5 md:gap-2 text-vinho font-bold text-[8px] md:text-[10px] uppercase tracking-wider md:tracking-widest group-hover:text-accent transition-colors">
             <CalendarIcon className="w-2.5 h-2.5 md:w-3 md:h-3" />
             <span>Devocional Diário</span>
           </div>

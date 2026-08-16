@@ -19,6 +19,15 @@
     --vinho: 336 24% 24%; /* #4B2E39 */
     --grafite: 0 0% 11%; /* #1C1C1C */
 
+    /* Dourado seguro pra texto/ícone sobre fundo escuro (canela/vinho) —
+       achado 2026-08-15: --dourado como texto falha WCAG AA em todo lugar
+       que era usado (2.0-4.4:1, mínimo é 4.5:1 pra texto pequeno). Esta
+       versão dá 5.36:1 sobre canela e 9.06:1 sobre vinho. --dourado
+       continua valendo pra fundo/borda/preenchimento grande (não é texto,
+       não precisa desse contraste). Em fundo claro (creme/bege-areia),
+       usar --vinho como texto, não este token. */
+    --dourado-texto: 44 60% 83%; /* #EDDFB8 */
+
     /* Código & Credo - Fundos Alternativos */
     --cinza-pedra: 207 4% 56%; /* #8B9094 */
     --preto-ébano: 0 0% 4%; /* #0A0A0A */
@@ -72,60 +81,88 @@
     --font-mono: 'JetBrains Mono', monospace;
   }
 
-  /* Advent Season */
+  /* Achado 2026-08-15: --liturgical-primary-foreground/accent-foreground
+     eram fixos em branco pra todas as estações — mas Natal/Páscoa
+     (dourado) e Epifania/Tempo Comum (sálvia) são claras, texto branco
+     dava 2.6-3.27:1, reprovado. Solução não é trocar a cor da estação
+     (correta liturgicamente) — é cada estação definir seu próprio
+     -foreground, claro ou escuro, igual a cor de fundo já muda. Testado:
+     nenhum accent (chama) passa com branco em nenhuma estação, por isso
+     accent-foreground é sempre preto aqui. */
+
+  /* Advent Season — Azul (Sarum), tradição anglicana/BCP 1979, distinto
+     do roxo da Quaresma. Registro Céus: esperar a luz na escuridão. */
   .season-advent {
-    --liturgical-primary: 262 83% 58%;
-    --liturgical-accent: 330 81% 60%;
-    --liturgical-gradient-start: 262 70% 50%;
-    --liturgical-gradient-end: 330 65% 55%;
+    --liturgical-primary: 216 38% 47%; /* --graca-azul */
+    --liturgical-primary-foreground: 0 0% 98%;
+    --liturgical-accent: 41 36% 54%; /* --dourado (chama) */
+    --liturgical-accent-foreground: 0 0% 0%;
+    --liturgical-gradient-start: 216 38% 47%;
+    --liturgical-gradient-end: 41 36% 54%;
   }
 
-  /* Christmas Season */
+  /* Christmas Season — Branco e dourado */
   .season-christmas {
-    --liturgical-primary: 45 93% 58%;
-    --liturgical-accent: 0 0% 100%;
-    --liturgical-gradient-start: 45 85% 65%;
-    --liturgical-gradient-end: 50 90% 75%;
+    --liturgical-primary: 41 36% 54%; /* --dourado */
+    --liturgical-primary-foreground: 0 0% 0%;
+    --liturgical-accent: 44 46% 92%; /* --luz-estelar (chama) */
+    --liturgical-accent-foreground: 0 0% 0%;
+    --liturgical-gradient-start: 41 36% 54%;
+    --liturgical-gradient-end: 44 46% 92%;
   }
 
-  /* Epiphany Season */
+  /* Epiphany Season — tempo depois: verde, chama dourada (a luz
+     revelada às nações continua acesa mesmo fora do dia da festa) */
   .season-epiphany {
-    --liturgical-primary: 0 0% 100%;
-    --liturgical-accent: 142 76% 36%;
-    --liturgical-gradient-start: 0 0% 98%;
-    --liturgical-gradient-end: 142 30% 85%;
+    --liturgical-primary: 115 10% 52%; /* --salvia */
+    --liturgical-primary-foreground: 0 0% 0%;
+    --liturgical-accent: 41 36% 54%; /* --dourado (chama) */
+    --liturgical-accent-foreground: 0 0% 0%;
+    --liturgical-gradient-start: 115 10% 52%;
+    --liturgical-gradient-end: 41 36% 54%;
   }
 
-  /* Lent Season */
+  /* Lent Season — Roxo/violeta penitencial, chama quase se apagando
+     (cinza) — a única estação em que a chama muda de propósito */
   .season-lent {
-    --liturgical-primary: 270 50% 40%;
-    --liturgical-accent: 0 0% 60%;
-    --liturgical-gradient-start: 270 45% 35%;
-    --liturgical-gradient-end: 0 0% 70%;
+    --liturgical-primary: 337 24% 24%; /* --vinho */
+    --liturgical-primary-foreground: 0 0% 98%;
+    --liturgical-accent: 207 4% 56%; /* --cinza-pedra (chama tênue) */
+    --liturgical-accent-foreground: 0 0% 0%;
+    --liturgical-gradient-start: 337 24% 24%;
+    --liturgical-gradient-end: 207 4% 56%;
   }
 
-  /* Easter Season */
+  /* Easter Season — Branco e dourado, o registro Céus mais radiante */
   .season-easter {
-    --liturgical-primary: 0 0% 100%;
-    --liturgical-accent: 45 93% 58%;
-    --liturgical-gradient-start: 0 0% 98%;
-    --liturgical-gradient-end: 45 80% 80%;
+    --liturgical-primary: 41 36% 54%; /* --dourado */
+    --liturgical-primary-foreground: 0 0% 0%;
+    --liturgical-accent: 44 46% 92%; /* --luz-estelar (chama) */
+    --liturgical-accent-foreground: 0 0% 0%;
+    --liturgical-gradient-start: 41 36% 54%;
+    --liturgical-gradient-end: 44 46% 92%;
   }
 
-  /* Pentecost */
+  /* Pentecost — Vermelho fogo, línguas de fogo (Atos 2) — única estação
+     em que o motivo da chama já é literalmente o que a liturgia pede */
   .season-pentecost {
-    --liturgical-primary: 0 84% 60%;
-    --liturgical-accent: 15 90% 65%;
-    --liturgical-gradient-start: 0 80% 55%;
-    --liturgical-gradient-end: 15 85% 60%;
+    --liturgical-primary: 3 62% 44%; /* --vermelho-pentecostes */
+    --liturgical-primary-foreground: 0 0% 98%;
+    --liturgical-accent: 21 60% 47%; /* --laranja-queimado (chama) */
+    --liturgical-accent-foreground: 0 0% 0%;
+    --liturgical-gradient-start: 3 62% 44%;
+    --liturgical-gradient-end: 21 60% 47%;
   }
 
-  /* Ordinary Time */
+  /* Ordinary Time — Verde, chama dourada constante (mesmo em tempo
+     comum a Palavra continua acesa, por isso a chama não vira verde) */
   .season-ordinary {
-    --liturgical-primary: 142 76% 36%;
-    --liturgical-accent: 142 60% 45%;
-    --liturgical-gradient-start: var(--canela);
-    --liturgical-gradient-end: var(--laranja-queimado);
+    --liturgical-primary: 115 10% 52%; /* --salvia */
+    --liturgical-primary-foreground: 0 0% 0%;
+    --liturgical-accent: 41 36% 54%; /* --dourado (chama) */
+    --liturgical-accent-foreground: 0 0% 0%;
+    --liturgical-gradient-start: 115 10% 52%;
+    --liturgical-gradient-end: 41 36% 54%;
   }
 }
 
@@ -224,6 +261,23 @@
   .font-scripture {
     @apply font-body italic leading-relaxed;
     font-size: clamp(0.875rem, 3vw, 1.25rem);
+  }
+
+  /* Capitular iluminada — técnica de manuscrito medieval, zero asset.
+     Design Narniano, ver Guia Técnico no vault. Usar no primeiro
+     parágrafo de textos longos (oração do dia, devocional).
+     Cor: --vinho, não --dourado — achado 2026-08-15, dourado sobre
+     bege-areia (fundo real da MeditationSection) dá só 2.09:1 de
+     contraste, falha WCAG AA (mínimo 3:1 mesmo em texto grande). Vinho
+     sobre bege-areia dá 9.22:1. */
+  .capitular::first-letter {
+    font-family: theme('fontFamily.display');
+    font-size: 3.2em;
+    font-weight: 700;
+    line-height: 0.75;
+    float: left;
+    margin: 0.05em 0.12em 0 0;
+    color: hsl(var(--vinho));
   }
 
   /* Mobile-specific padding utilities */

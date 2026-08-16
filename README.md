@@ -6,6 +6,14 @@ Monorepo com aplicativo web (Next.js PWA) e mobile (Expo / React Native), compar
 
 ---
 
+## Por que isto existe
+
+Não existe em português um app devocional que siga o calendário litúrgico com fidelidade real, funcione offline, seja instalável sem loja e não peça login pra nada — as opções ou são genéricas (sem noção de estação litúrgica) ou dependem de conta/assinatura pra algo que devia ser simplesmente aberto e ler.
+
+Este é o projeto mais diretamente ligado à minha própria disciplina espiritual: leitura e meditação bíblica diária, Coram Deo, viver conscientemente na presença de Deus. Eu não venho de tradição litúrgica — uso o Lecionário Comum Revisado por escolha de prática devocional, não por filiação — mas construí a ferramenta que eu mesmo uso todo dia, e por isso ela é sem fricção de propósito: sem conta, sem paywall no conteúdo litúrgico, dados locais.
+
+Hoje o motor litúrgico está completo e testado (cálculo de Páscoa, ciclos A/B/C, cores e estações, ~4300 textos bíblicos, 2152 devocionais gerados) — falta só o último passo, subir pro VPS. A visão de futuro não é escala grande — é ser o companheiro diário confiável de um público menor mas fiel: notificação no horário certo, modo de leitura mais robusto, talvez memorização de versículo. Sucesso aqui é ser usado todo dia por quem usa, não ser instalado por muita gente uma vez.
+
 ## Estrutura do monorepo
 
 ```

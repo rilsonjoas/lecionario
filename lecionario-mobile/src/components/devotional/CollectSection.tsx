@@ -20,7 +20,9 @@ export function CollectSection({ collect }: CollectSectionProps) {
 
       <View style={styles.body}>
         <View style={styles.collectBox}>
-          <Text style={styles.collectText}>{collect}</Text>
+          <Text style={styles.collectText} selectable>
+            {collect}
+          </Text>
           <View style={styles.amenSection}>
             <View style={styles.amenLine} />
             <Text style={styles.amenText}>Por Jesus Cristo, nosso Senhor. Amém.</Text>
@@ -71,6 +73,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 2,
     fontWeight: '700',
+    fontFamily: 'Lora_600SemiBold_Italic',
     marginTop: 2,
   },
   body: {
@@ -84,8 +87,10 @@ const styles = StyleSheet.create({
     borderLeftColor: 'rgba(139,105,20,0.2)',
   },
   collectText: {
-    fontSize: 18,
-    lineHeight: 30,
+    // Achado real 2026-08-16: 18px deixava poucas palavras por linha
+    // numa tela de celular, leitura "picotada"
+    fontSize: 16,
+    lineHeight: 26,
     color: '#444',
     fontFamily: 'Lora_400Regular_Italic',
   },
@@ -105,11 +110,12 @@ const styles = StyleSheet.create({
   },
   amenText: {
     fontSize: 10,
-    color: 'rgba(139,105,20,0.6)',
+    color: '#8F6608', // achado 2026-08-15: gold a 60% de opacidade sobre
+    // fundo claro reprovava WCAG AA; sólido dá 5.16:1
     textTransform: 'uppercase',
     letterSpacing: 3,
     fontWeight: '700',
     textAlign: 'right',
-    fontStyle: 'italic',
+    fontFamily: 'Lora_600SemiBold_Italic',
   },
 });

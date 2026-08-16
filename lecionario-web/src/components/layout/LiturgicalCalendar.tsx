@@ -17,17 +17,8 @@ import { ptBR } from 'date-fns/locale';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { getLiturgicalDayInfo } from '@/lib/liturgical-calendar';
+import { seasonBrandColors as seasonColors } from '@/lib/theme';
 import type { LiturgicalSeason } from '@/types';
-
-const seasonColors: Record<LiturgicalSeason, string> = {
-  advent: '#7B4EA8',
-  christmas: '#C4A44A',
-  epiphany: '#2E7D32',
-  lent: '#8B4A4A',
-  easter: '#B8860B',
-  pentecost: '#CC3333',
-  ordinary: '#4A8B4A',
-};
 
 const seasonLabels: Record<LiturgicalSeason, string> = {
   advent: 'Advento',
@@ -70,6 +61,7 @@ export function LiturgicalCalendar({ currentDate, onDateChange }: LiturgicalCale
           size="icon"
           onClick={() => setViewMonth((p: Date) => subMonths(p, 1))}
           className="text-accent hover:text-primary hover:bg-accent/10"
+          aria-label="Mês anterior"
         >
           <ChevronLeft className="w-4 h-4" />
         </Button>
@@ -81,6 +73,7 @@ export function LiturgicalCalendar({ currentDate, onDateChange }: LiturgicalCale
           size="icon"
           onClick={() => setViewMonth((p: Date) => addMonths(p, 1))}
           className="text-accent hover:text-primary hover:bg-accent/10"
+          aria-label="Próximo mês"
         >
           <ChevronRight className="w-4 h-4" />
         </Button>
@@ -115,6 +108,7 @@ export function LiturgicalCalendar({ currentDate, onDateChange }: LiturgicalCale
                 ${isSelected ? 'bg-accent/20 rounded-lg' : 'hover:bg-accent/10 rounded-lg'}
               `}
               title={`${format(d, 'dd/MM/yyyy')} — ${info.dayName}`}
+              aria-label={`${format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })} — ${info.dayName}`}
             >
               <span
                 className="absolute top-1 w-1.5 h-1.5 rounded-full"

@@ -10,8 +10,8 @@ export default function ConfigScreen() {
 
   const handleClearCache = () => {
     Alert.alert(
-      'Limpar cache',
-      'Os dados offline serão removidos. O app buscará dados novos na próxima conexão.',
+      'Limpar dados temporários',
+      'Isso não afeta as leituras — elas já vêm no app. É só um cache técnico que se recalcula sozinho.',
       [
         { text: 'Cancelar', style: 'cancel' },
         {
@@ -41,13 +41,16 @@ export default function ConfigScreen() {
           style={styles.row}
           onPress={handleClearCache}
           disabled={clearing}
-          accessibilityLabel="Limpar cache offline"
+          accessibilityLabel="Limpar dados temporários"
           accessibilityRole="button"
         >
           <MaterialCommunityIcons name="delete-outline" size={22} color="#CC3333" />
           <View style={styles.rowContent}>
-            <Text style={styles.rowLabel}>Limpar cache offline</Text>
-            <Text style={styles.rowHint}>Remove dados salvos para leitura offline</Text>
+            <Text style={styles.rowLabel}>Limpar dados temporários</Text>
+            <Text style={styles.rowHint}>
+              As leituras já vêm no app, não precisam de internet — isso só limpa um cache
+              técnico de curta duração
+            </Text>
           </View>
           <MaterialCommunityIcons name="chevron-right" size={20} color="rgba(255,255,255,0.3)" />
         </TouchableOpacity>
@@ -119,6 +122,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 2,
     fontWeight: '700',
+    fontFamily: 'Lora_700Bold',
     marginBottom: 12,
   },
   row: {
@@ -142,6 +146,7 @@ const styles = StyleSheet.create({
   rowHint: {
     fontSize: 12,
     color: 'rgba(255,255,255,0.45)',
+    fontFamily: 'Lora_400Regular',
     marginTop: 2,
   },
   footer: {

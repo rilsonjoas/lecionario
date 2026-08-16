@@ -120,11 +120,17 @@ function HomeContent() {
         {/* Navigation Controls */}
         <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-accent/10 py-3 md:py-4 shadow-sm">
           <div className="container mx-auto px-3 md:px-4 flex items-center justify-between max-w-4xl">
+            {/* Achado 2026-08-15: `hidden sm:inline` remove o texto da
+                árvore de acessibilidade também, não só visualmente — no
+                mobile (onde a maioria acessa) esses 3 botões viravam
+                ícone puro sem nome nenhum pra leitor de tela.
+                `aria-label` explícito corrige, independente de breakpoint. */}
             <Button
               variant="ghost"
               size="sm"
               onClick={() => handleDateChange(addDays(currentDate, -1))}
               className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
+              aria-label="Dia anterior"
             >
               <ChevronLeft className="w-3 h-3 md:w-4 md:h-4" />
               <span className="hidden sm:inline">Dia Anterior</span>
@@ -140,6 +146,7 @@ function HomeContent() {
               onClick={() => setShowCalendar((p) => !p)}
               className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
               title="Calendário Litúrgico"
+              aria-label="Abrir calendário litúrgico"
             >
               <CalendarDays className="w-3.5 h-3.5 md:w-4 md:h-4" />
               <span className="hidden sm:inline">Calendário</span>
@@ -150,6 +157,7 @@ function HomeContent() {
               size="sm"
               onClick={() => handleDateChange(addDays(currentDate, 1))}
               className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
+              aria-label="Próximo dia"
             >
               <span className="hidden sm:inline">Próximo Dia</span>
               <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />

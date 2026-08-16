@@ -1,22 +1,27 @@
 import type { LiturgicalSeason, SeasonTheme } from '@/types';
 
 /** Cor de marca (corpo da logo) usada no theme-color do browser por estação. */
+/** Cor de marca (corpo da logo/tema) por estação — alinhada aos tokens
+ * do Design Narniano (ver `Identidade Visual - Guia Técnico` no vault).
+ * Corrigido 2026-08-15: Advento passa a azul (Sarum, tradição BCP 1979),
+ * não mais roxo+rosa — segue a convenção litúrgica real, não preferência
+ * pessoal. */
 export const seasonBrandColors: Record<LiturgicalSeason, string> = {
-  advent: '#7C3BED',
-  christmas: '#8B6914',
-  epiphany: '#0F7033',
-  lent: '#663399',
-  easter: '#8B6914',
-  pentecost: '#C02626',
-  ordinary: '#16A249',
+  advent: '#4A6FA5',
+  christmas: '#B49A60',
+  epiphany: '#7A9178',
+  lent: '#4B2E39',
+  easter: '#B49A60',
+  pentecost: '#B7332B',
+  ordinary: '#7A9178',
 };
 
 export const seasonThemes: Record<LiturgicalSeason, SeasonTheme> = {
   advent: {
     season: 'advent',
-    primaryColor: 'Roxo do Advento',
-    secondaryColor: 'Rosa da Esperança',
-    accentColor: 'Violeta Profundo',
+    primaryColor: 'Azul do Advento',
+    secondaryColor: 'Dourado da Chama',
+    accentColor: 'Espaço Profundo',
     className: 'season-advent',
   },
   christmas: {

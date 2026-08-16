@@ -12,7 +12,7 @@ export function CollectSection({ collect }: CollectSectionProps) {
         <div className="relative z-10">
           <CardHeader className="pb-6">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-dourado/10 rounded-2xl shadow-sm text-dourado group-hover:scale-110 transition-transform duration-500">
+              <div className="p-3 bg-dourado/10 rounded-2xl shadow-sm text-vinho group-hover:scale-110 transition-transform duration-500">
                 <Crown className="w-8 h-8" />
               </div>
               <div className="space-y-1">

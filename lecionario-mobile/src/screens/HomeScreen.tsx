@@ -13,12 +13,13 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useRoute, useFocusEffect } from '@react-navigation/native';
+import { useRoute, useFocusEffect, useNavigation } from '@react-navigation/native';
 import type { RouteProp } from '@react-navigation/native';
-import { addDays, format, parse } from 'date-fns';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
+import { addDays, format, parse, isToday as isDateToday } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { getLiturgicalDayInfo } from '@/lib/liturgical-calendar';
-import { getThemeForSeason } from '@/lib/theme';
+import { getThemeForSeason, getHeaderTextColors } from '@/lib/theme';
 import { fetchDevotionalFromNetwork } from '@/lib/devotional-service';
 import { getCached, setCached, cacheKey } from '@/lib/cache';
 import { ReadingCard } from '@/components/devotional/ReadingCard';
@@ -42,6 +43,7 @@ const SEASON_LOGOS: Record<string, number> = {
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const route = useRoute<HojeRouteProp>();
+  const navigation = useNavigation<BottomTabNavigationProp<RootTabParamList, 'Hoje'>>();
   const [currentDate, setCurrentDate] = useState(() => {
     if (route.params?.date) {
       return parse(route.params.date, 'yyyy-MM-dd', new Date());
@@ -56,6 +58,8 @@ export default function HomeScreen() {
 
   const liturgicalInfo = getLiturgicalDayInfo(currentDate);
   const theme = getThemeForSeason(liturgicalInfo.season);
+  const headerColors = getHeaderTextColors(liturgicalInfo.season);
+  const showTodayButton = !isDateToday(currentDate);
 
   const loadDevotional = useCallback(async (date: Date, forceNetwork = false) => {
     const dateStr = format(date, 'yyyy-MM-dd');
@@ -163,43 +167,88 @@ export default function HomeScreen() {
             style={styles.logo}
             accessibilityLabel="Logomarca Lecionário"
           />
-          <Text style={[styles.title, { color: theme.accentColor }]}>Lecionário</Text>
+          <Text style={[styles.title, { color: headerColors.title }]}>Lecionário</Text>
           {devotional && (
             <TouchableOpacity
               onPress={handleShareDay}
               style={styles.shareDayButton}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               accessibilityLabel="Compartilhar devocional do dia"
               accessibilityRole="button"
             >
-              <MaterialCommunityIcons name="share-outline" size={20} color={theme.accentColor} />
+              <MaterialCommunityIcons name="share-outline" size={20} color={headerColors.title} />
             </TouchableOpacity>
           )}
         </View>
-        <Text style={styles.dayName}>{liturgicalInfo.dayName}</Text>
+        <Text style={[styles.dayName, { color: headerColors.body }]}>
+          {liturgicalInfo.dayName}
+        </Text>
         <View style={styles.cycleRow}>
-          <Text style={styles.cycleText}>Ano Litúrgico {liturgicalInfo.cycle}</Text>
+          <Text style={[styles.cycleText, { color: headerColors.bodyMuted }]}>
+            Ano Litúrgico {liturgicalInfo.cycle}
+          </Text>
           <View style={[styles.colorDot, { backgroundColor: theme.secondaryColor }]} />
         </View>
       </View>
 
       <View style={styles.navBar}>
-        <TouchableOpacity onPress={() => navigateDay(-1)} style={styles.navButton}>
-          <MaterialCommunityIcons name="chevron-left" size={24} color="#666" />
-          <Text style={styles.navText}>Anterior</Text>
+        <TouchableOpacity
+          onPress={() => navigateDay(-1)}
+          style={styles.navButton}
+          hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+          accessibilityRole="button"
+          accessibilityLabel="Dia anterior"
+        >
+          <MaterialCommunityIcons name="chevron-left" size={24} color={headerColors.bodyMuted} />
+          <Text style={[styles.navText, { color: headerColors.bodyMuted }]}>Anterior</Text>
         </TouchableOpacity>
 
-        <View style={styles.dateContainer}>
-          <MaterialCommunityIcons name="calendar-month-outline" size={16} color="#8B6914" />
-          <Text style={styles.dateText}>
+        {/* Achado real (2026-08-16): tocar na data não fazia nada — vira
+            botão que leva pro calendário, que é o comportamento esperado */}
+        <TouchableOpacity
+          style={styles.dateContainer}
+          onPress={() => navigation.navigate('Calendário')}
+          hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+          accessibilityRole="button"
+          accessibilityLabel="Abrir calendário litúrgico"
+        >
+          <MaterialCommunityIcons
+            name="calendar-month-outline"
+            size={16}
+            color={headerColors.body}
+          />
+          <Text style={[styles.dateText, { color: headerColors.body }]}>
             {format(currentDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
           </Text>
-        </View>
+        </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => navigateDay(1)} style={styles.navButton}>
-          <Text style={styles.navText}>Próximo</Text>
-          <MaterialCommunityIcons name="chevron-right" size={24} color="#666" />
+        <TouchableOpacity
+          onPress={() => navigateDay(1)}
+          style={styles.navButton}
+          hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+          accessibilityRole="button"
+          accessibilityLabel="Próximo dia"
+        >
+          <Text style={[styles.navText, { color: headerColors.bodyMuted }]}>Próximo</Text>
+          <MaterialCommunityIcons name="chevron-right" size={24} color={headerColors.bodyMuted} />
         </TouchableOpacity>
       </View>
+
+      {/* "Voltar para hoje" — só aparece quando navegando fora do dia atual */}
+      {showTodayButton && (
+        <TouchableOpacity
+          style={[styles.todayButton, { borderColor: headerColors.bodyMuted }]}
+          onPress={() => setCurrentDate(new Date())}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          accessibilityRole="button"
+          accessibilityLabel="Voltar para hoje"
+        >
+          <MaterialCommunityIcons name="calendar-today" size={14} color={headerColors.body} />
+          <Text style={[styles.todayButtonText, { color: headerColors.body }]}>
+            Voltar para hoje
+          </Text>
+        </TouchableOpacity>
+      )}
 
       {isOffline && (
         <View style={styles.offlineBanner}>
@@ -219,7 +268,13 @@ export default function HomeScreen() {
         ) : !devotional ? (
           <View style={styles.loadingContainer}>
             <Text style={styles.loadingText}>Nenhum dado encontrado para esta data.</Text>
-            <TouchableOpacity onPress={onRefresh} style={styles.retryButton}>
+            <TouchableOpacity
+              onPress={onRefresh}
+              style={styles.retryButton}
+              hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+              accessibilityRole="button"
+              accessibilityLabel="Tentar novamente"
+            >
               <Text style={styles.retryText}>Tentar novamente</Text>
             </TouchableOpacity>
           </View>
@@ -332,12 +387,29 @@ const styles = StyleSheet.create({
   },
   navText: {
     fontSize: 13,
-    color: 'rgba(255,255,255,0.8)',
+    fontFamily: 'Lora_400Regular',
   },
   dateContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 6,
+    minHeight: 44,
+    paddingHorizontal: 4,
+  },
+  todayButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'center',
+    gap: 6,
+    marginTop: 10,
+    paddingVertical: 6,
+    paddingHorizontal: 14,
+    borderRadius: 20,
+    borderWidth: 1,
+  },
+  todayButtonText: {
+    fontSize: 12,
+    fontFamily: 'Lora_600SemiBold_Italic',
   },
   dateText: {
     fontSize: 12,

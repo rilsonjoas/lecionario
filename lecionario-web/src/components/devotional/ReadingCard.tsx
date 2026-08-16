@@ -1,6 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ScrollText, BookOpen, Heart, Sparkles } from 'lucide-react';
+import { ScrollText, BookOpen, Music, Cross } from 'lucide-react';
 import type { Reading } from '@/types';
 
 interface ReadingCardProps {
@@ -8,30 +8,40 @@ interface ReadingCardProps {
   index: number;
 }
 
+// Design Narniano: duration-700 ease-liturgico substitui o timing padrão
+// do Tailwind (150ms, cubic-bezier(0.4,0,0.2,1)) especificamente pra troca
+// de estação litúrgica — mais lento e deliberado, não bounce/spring. Ver
+// `transitionTimingFunction.liturgico` em tailwind.config.ts.
 const readingTypeConfig = {
   first_reading: {
     label: 'Primeira Leitura',
     icon: BookOpen,
     color:
-      'bg-liturgical-primary text-liturgical-primary-foreground hover:bg-liturgical-primary/90 transition-colors',
+      'bg-liturgical-primary text-liturgical-primary-foreground hover:bg-liturgical-primary/90 transition-colors duration-700 ease-liturgico',
   },
+  // Achado real (2026-08-16): coração pra Salmo e estrela pra Evangelho
+  // não comunicavam nada específico — trocado por música (Salmos eram
+  // cantados) e cruz (o centro do Evangelho)
   psalm: {
     label: 'Salmo',
-    icon: Heart,
+    icon: Music,
     color:
-      'bg-liturgical-accent text-liturgical-accent-foreground hover:bg-liturgical-accent/90 transition-colors',
+      'bg-liturgical-accent text-liturgical-accent-foreground hover:bg-liturgical-accent/90 transition-colors duration-700 ease-liturgico',
   },
   second_reading: {
     label: 'Segunda Leitura',
     icon: ScrollText,
     color:
-      'bg-liturgical-secondary text-liturgical-secondary-foreground hover:bg-liturgical-secondary/90 transition-colors',
+      'bg-liturgical-secondary text-liturgical-secondary-foreground hover:bg-liturgical-secondary/90 transition-colors duration-700 ease-liturgico',
   },
   gospel: {
     label: 'Evangelho',
-    icon: Sparkles,
+    icon: Cross,
+    // Achado real (2026-08-16): `text-white` fixo aqui tinha o mesmo bug
+    // de contraste já corrigido nos outros badges — Natal/Páscoa (dourado)
+    // reprovava. Trocado pro foreground adaptativo por estação.
     color:
-      'bg-gradient-to-r from-liturgical-primary to-liturgical-accent text-white hover:from-liturgical-primary/90 hover:to-liturgical-accent/90 transition-all',
+      'bg-gradient-to-r from-liturgical-primary to-liturgical-accent text-liturgical-primary-foreground hover:from-liturgical-primary/90 hover:to-liturgical-accent/90 transition-all duration-700 ease-liturgico',
   },
 };
 
@@ -43,7 +53,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
     <div className="group relative animate-fade-in" style={{ animationDelay: `${index * 150}ms` }}>
       <div className="classic-frame texture-parchment shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 !m-0 overflow-hidden">
         {/* Liturgical accent bar */}
-        <div className="absolute top-0 left-0 w-full h-1 bg-liturgical-primary opacity-60" />
+        <div className="absolute top-0 left-0 w-full h-1 bg-liturgical-primary opacity-60 transition-colors duration-700 ease-liturgico" />
 
         <div className="relative z-10">
           <div className="flex items-start justify-between gap-4 mb-6">
