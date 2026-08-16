@@ -48,8 +48,8 @@ export default function ConfigScreen() {
           <View style={styles.rowContent}>
             <Text style={styles.rowLabel}>Limpar dados temporários</Text>
             <Text style={styles.rowHint}>
-              As leituras já vêm no app, não precisam de internet — isso só limpa um cache
-              técnico de curta duração
+              As leituras já vêm no app, não precisam de internet — isso só limpa um cache técnico
+              de curta duração
             </Text>
           </View>
           <MaterialCommunityIcons name="chevron-right" size={20} color="rgba(255,255,255,0.3)" />

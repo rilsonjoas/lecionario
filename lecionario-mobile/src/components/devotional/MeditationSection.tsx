@@ -43,11 +43,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
         {meditation.questions && meditation.questions.length > 0 && (
           <View style={styles.questionsSection}>
             <View style={styles.questionsHeader}>
-              <MaterialCommunityIcons
-                name="help-circle-outline"
-                size={14}
-                color="#8F6608"
-              />
+              <MaterialCommunityIcons name="help-circle-outline" size={14} color="#8F6608" />
               <Text style={styles.questionsTitle}>Questões para Silenciar</Text>
             </View>
 

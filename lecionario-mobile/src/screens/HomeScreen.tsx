@@ -180,9 +180,7 @@ export default function HomeScreen() {
             </TouchableOpacity>
           )}
         </View>
-        <Text style={[styles.dayName, { color: headerColors.body }]}>
-          {liturgicalInfo.dayName}
-        </Text>
+        <Text style={[styles.dayName, { color: headerColors.body }]}>{liturgicalInfo.dayName}</Text>
         <View style={styles.cycleRow}>
           <Text style={[styles.cycleText, { color: headerColors.bodyMuted }]}>
             Ano Litúrgico {liturgicalInfo.cycle}
