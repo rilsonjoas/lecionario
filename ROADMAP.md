@@ -4,7 +4,10 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ---
 
-## Situação atual (2026-06-28)
+## Situação atual (atualizado 2026-08-16 — a versão de 28/06 abaixo
+ficou desatualizada por quase 2 meses; vários itens listados como
+"incompleto" já foram feitos nesse intervalo e não estavam refletidos
+aqui, achado ao auditar os roadmaps de todos os projetos)
 
 ### O que está funcionando
 
@@ -12,24 +15,37 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 - Dados RCL em JSON para os três ciclos (leituras por data + coletas)
 - **Textos bíblicos completos** (Almeida ARC) — 4337 textos inseridos, 0 referências canônicas faltando
 - **Devocionais gerados** — 2152 orações + meditações (2025–2030) com templates sazonais
+- **Conteúdo de Semana Santa** (2026-08-15/16) — Domingo de Ramos,
+  Quinta/Sexta-Feira Santa, Sábado Santo, com orações e meditações
+  originais pro Tríduo (ver 1.1) — estava listado como ausente na
+  versão de 28/06, já não é mais o caso
 - App mobile com três telas: Hoje, Calendário Litúrgico, Configurações
 - **Dados 100% locais** — Supabase removido do app principal, sem dependência de backend
 - Cache offline com AsyncStorage e TTL de 24h
 - Temas sazonais (cor de fundo, acento, primária por estação)
+- **Logo real + identidade sazonal aplicada** (web e mobile, 2026-08-14/15)
+  — ícones, splash screen, favicon, manifests recoloridos por estação
+  (ver 1.6/1.7); a versão de 28/06 ainda listava isso como "placeholder"
+- **Build mobile corrigido e testado em dispositivo Android físico**
+  (2026-08-15/16, `NoSuchMethodError` resolvido — ver 1.3)
 - ErrorBoundary global
 - CI com TypeScript, ESLint, Prettier e testes (GitHub Actions)
 
 ### O que está incompleto ou ausente
 
-- Conteúdo específico para Semana Santa (Quinta-Feira Santa, Sexta-Feira Santa, Sábado Santo)
+- Conteúdo devocional do Tempo Comum ainda genérico (mesma oração repete por 7 dias seguidos — ver 1.2)
+- **iOS nunca testado em dispositivo físico** (foco consciente em Android por enquanto — ver 1.3)
 - Notificações push ausentes
 - Compartilhamento nativo ausente
 - Config screen com apenas limpar cache
 - Cobertura de testes baixa (só motor litúrgico)
-- Ícones e splash screen com assets placeholder
 - Sem crash reporting, sem analytics
 - Admin panel depende de Supabase (inativo atualmente)
-- Web app não usa os dados locais — `sample-devotional.ts` recém-adaptado, falta atualizar componentes
+- Web app ainda não totalmente limpo dos dados antigos — `useEffect`
+  async desnecessário, dependência `@supabase/supabase-js` ainda no
+  build de produção (ver 1.4)
+- Ícone/nome novos exigem um novo build EAS pra valerem no app já
+  instalado — o trabalho em si está pronto, falta só empacotar (ver 1.7)
 
 ---
 
