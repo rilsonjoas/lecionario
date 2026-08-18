@@ -21,6 +21,9 @@ import cycleCData from '../src/data/rcl/cycle-C.json';
 import ordinaryA, { trinityWeekA } from './grounded-content/ordinary-A';
 import ordinaryB, { trinityWeekB } from './grounded-content/ordinary-B';
 import ordinaryC, { trinityWeekC } from './grounded-content/ordinary-C';
+import adventA from './grounded-content/advent-A';
+import adventB from './grounded-content/advent-B';
+import adventC from './grounded-content/advent-C';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -1544,6 +1547,18 @@ const trinityWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry[]>> = 
   C: trinityWeekC,
 };
 
+// Advento — mesma lógica de `groundedOrdinary`, mas sempre exatamente
+// 4 semanas fixas (1-4) em vez de Próprios variáveis — a primeira
+// semana do Advento sempre começa no domingo entre 27/nov e 3/dez,
+// então `getWeekOfSeason` já produz 1-4 de forma estável, sem
+// precisar de um "domingo regente" calculado por data como no Tempo
+// Comum. Ver scripts/grounded-content/advent-*.ts.
+const groundedAdvent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+  A: adventA,
+  B: adventB,
+  C: adventC,
+};
+
 // ─── Tríduo Pascal — Conteúdo Fixo ──────────────────────────────────
 //
 // Estes quatro dias são o ápice do ano litúrgico. O script de geração
@@ -1716,6 +1731,17 @@ function generateForDate(
     }
   }
 
+  // Advento: 4 semanas fixas, ancoradas nas leituras reais de cada
+  // ciclo (ver scripts/grounded-content/advent-*.ts). `week` aqui já
+  // vem de getWeekOfSeason, que produz 1-4 de forma estável (a
+  // primeira semana do Advento sempre cai no domingo certo).
+  if (season === 'advent') {
+    const groundedWeek = groundedAdvent[cycle]?.[week];
+    if (groundedWeek) {
+      return groundedWeek[date.getDay()];
+    }
+  }
+
   const seasonTemplates = templates[season];
   if (!seasonTemplates) return null;
 
@@ -1752,6 +1778,8 @@ function generateYear(year: number): Record<string, DevotionalEntry> {
   const entries: Record<string, DevotionalEntry> = {};
   const easter = calculateEaster(year);
   const cycle = getLiturgicalCycle(year);
+  const nextCycle = getLiturgicalCycle(year + 1);
+  const adventThisYear = calculateAdventStart(year);
 
   // Generate from Dec 1 of previous year (Advent) to Nov 30 of current year
   const startDate = new Date(year - 1, 11, 1);
@@ -1765,7 +1793,15 @@ function generateYear(year: number): Record<string, DevotionalEntry> {
       const season = getLiturgicalSeasonForLiturgicalYear(year, current);
       const week = getWeekOfSeason(current, season, year, easter);
 
-      const devotional = generateForDate(current, season, week, cycle);
+      // Achado em 2026-08-18 (ver ROADMAP.md 1.2c): o Advento que abre
+      // o PRÓXIMO ano litúrgico às vezes começa em novembro (27-30),
+      // ainda dentro do intervalo Dez-Nov deste bloco — mas pertence
+      // ao ciclo do ANO SEGUINTE, não ao ciclo `year` usado no resto
+      // do laço. Sem isso, esses últimos dias de novembro mostravam
+      // conteúdo do Advento do ciclo errado.
+      const effectiveCycle = season === 'advent' && current >= adventThisYear ? nextCycle : cycle;
+
+      const devotional = generateForDate(current, season, week, effectiveCycle);
       if (devotional) {
         entries[dateStr] = devotional;
       }

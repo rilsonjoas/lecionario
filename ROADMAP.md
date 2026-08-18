@@ -399,6 +399,47 @@ precisa ser feita direto no arquivo final publicado
 
 ---
 
+### 1.2d Advento ancorado no RCL, 3 ciclos (2026-08-18)
+
+Estendendo o mesmo tratamento do Tempo Comum pro Advento — primeira
+das estações genéricas restantes (Natal, Epifania, Quaresma, Páscoa
+ainda pendentes).
+
+- [x] `advent-A.ts`, `advent-B.ts`, `advent-C.ts` escritos —
+      4 semanas fixas por ciclo (o Advento sempre tem exatamente 4
+      domingos, ao contrário do Tempo Comum), 28 orações + 28
+      meditações por ciclo, todas ancoradas no texto real das
+      leituras (já verificadas corretas nas 3 tabelas — Isaías/Romanos/
+      Mateus no Ciclo A, Isaías/1-2 Pedro/Marcos no Ciclo B, Jeremias-
+      Malaquias-Sofonias-Miquéias/Filipenses-Hebreus/Lucas no Ciclo C)
+- [x] `groundedAdvent` ligado em `generate-devotionals.ts`, mesmo
+      padrão de `groundedOrdinary`
+- [x] **Dois bugs de infraestrutura achados e corrigidos no caminho:**
+      1. A fronteira 25/dez era tratada como "mês inteiro de dezembro
+         = Advento", então o Natal e a semana seguinte nunca
+         apareciam como estação "christmas" — sempre caíam no
+         Advento. Trocado por comparação de data exata.
+      2. Nos anos em que o Advento seguinte começa em novembro
+         (27-30/nov, antes de 1/dez), esses últimos dias de novembro
+         usavam o ciclo litúrgico do ano ATUAL em vez do PRÓXIMO —
+         mostrando conteúdo de Advento do ciclo errado (ex: Ciclo C
+         em vez de A). Corrigido calculando o ciclo efetivo por data,
+         não só por ano.
+- [x] Validado programaticamente nos 6 anos gerados (2025-2030): zero
+      repetição, zero lacuna no Advento inteiro de cada ciclo, e
+      confirmado que o ciclo certo aparece em cada domingo (checado
+      contra `getLiturgicalCycle` independentemente)
+- [x] Regressão do Tempo Comum reconfirmada — continua zero
+      repetição/zero lacuna nos 6 anos. `tsc`, `prettier` e os 42
+      testes passando; sincronizado pro mobile
+
+**Ainda faltam:** Natal, Epifania, Quaresma, Páscoa — mesma
+metodologia, estruturas de semana diferentes (o Natal e a Epifania não
+começam sempre num domingo, então não dá pra reusar o índice simples
+por `date.getDay()` do Advento/Tempo Comum sem adaptação).
+
+---
+
 ### 1.3 Correção de build (mobile)
 
 - [x] **`NoSuchMethodError` resolvido (2026-08-15)** — não era teórico,
