@@ -4121,7 +4121,7 @@ const proper29: DevotionalEntry[] = [
   },
   {
     prayer: {
-      title: 'Antes de Todas as Coisas',
+      title: 'Rei Antes de Todos os Tronos',
       text: t(`Senhor Jesus, ao encerrar o ano litúrgico celebrando
         tua realeza, Paulo declara: "ele é antes de todas as coisas,
         e nele subsistem todas as coisas." Não é realeza limitada a

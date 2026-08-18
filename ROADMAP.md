@@ -342,6 +342,63 @@ mesmo tratamento ancorado no RCL que o Tempo Comum já tem.
 
 ---
 
+### 1.2c Achado crítico: Ciclos B e C do Tempo Comum nunca estavam
+sendo usados de verdade (achado e corrigido em 2026-08-18)
+
+**Isto precisa ser dito com todas as letras: as validações "zero
+repetição, zero lacuna" reportadas anteriormente pra `ordinary-B.ts` e
+`ordinary-C.ts` (seções 1.2/1.2a) estavam checando o arquivo errado.**
+Elas confirmaram que o CONTEÚDO escrito nesses arquivos era completo e
+correto — mas nunca confirmaram que esse conteúdo realmente aparecia
+nos `devotionals-*.json` publicados, que é o que o app de fato lê.
+
+Ao investigar as outras estações, rodei a mesma checagem de repetição
+só que desta vez direto no `devotionals-2027.json` (ocorrência real do
+Ciclo B) — e o resultado foi devastador: o título "Deus Amou o Mundo
+de Tal Maneira" (um dos 6 títulos de `trinityWeekB`) repetia **25
+vezes** num único ano; outros títulos da mesma semana repetiam 24
+vezes cada. Ou seja: apesar de `ordinary-B.ts` e `ordinary-C.ts`
+estarem completos, corretos e testados isoladamente, **eles nunca
+eram de fato consultados** na geração real dos devocionais — o Tempo
+Comum inteiro dos Ciclos B e C caía no fallback de `trinityWeekByCycle`
+(só 6 dias de conteúdo) repetido por toda a estação.
+
+**Causa raiz:** em `generate-devotionals.ts`, o mapa `rclDataByCycle`
+— usado por `findGoverningOrdinarySunday()` pra achar o domingo real
+que rege cada semana — só tinha o Ciclo A importado e ligado
+(`cycleAData`). Pra B e C, a função sempre retornava `null`, o que
+fazia o código cair no branch de fallback da Trindade pra qualquer
+dia de semana (segunda a sábado) e não achar nenhum domingo "regente"
+pros domingos em si.
+
+**O conserto:**
+- [x] `cycle-B.json` e `cycle-C.json` importados e ligados em
+      `rclDataByCycle` (antes só tinha `A: cycleAData`)
+- [x] Regenerei `devotionals-2025.json` a `devotionals-2030.json` e
+      validei de novo — desta vez direto nos arquivos publicados, com
+      as datas exatas de Trindade+1 até o fim da semana do Próprio 29,
+      calculadas independentemente (não hardcoded): **zero repetição,
+      zero lacuna** nos 6 anos gerados (A: 2026/2029, B: 2027/2030, C:
+      2025/2028)
+- [x] Ao fazer essa varredura completa, achei e corrigi 2 títulos
+      duplicados dentro dos próprios arquivos (`ordinary-A.ts` tinha
+      "Eis-Me Aqui" usado em 2 semanas diferentes — Abraão e Moisés;
+      `ordinary-C.ts` tinha "Antes de Todas as Coisas" em 2 semanas —
+      Próprio 11 e Próprio 29, ambos sobre Colossenses 1:15-20). O
+      conteúdo de cada dia já era diferente; só o título colidia.
+      Renomeados pra ficarem únicos nos 195/188/188 títulos de cada
+      ciclo (confirmado programaticamente, sem duplicata nenhuma)
+- [x] `tsc`, `prettier` e os 42 testes passando; `devotionals-*.json`
+      sincronizados pro mobile
+
+**Lição pra próxima vez:** validar "o conteúdo que escrevi está
+correto" não é o mesmo que validar "o conteúdo que escrevi está sendo
+usado". A partir de agora, qualquer validação de repetição/lacuna
+precisa ser feita direto no arquivo final publicado
+(`devotionals-*.json`), nunca só no módulo de conteúdo isolado.
+
+---
+
 ### 1.3 Correção de build (mobile)
 
 - [x] **`NoSuchMethodError` resolvido (2026-08-15)** — não era teórico,

@@ -16,6 +16,8 @@ import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import cycleAData from '../src/data/rcl/cycle-A.json';
+import cycleBData from '../src/data/rcl/cycle-B.json';
+import cycleCData from '../src/data/rcl/cycle-C.json';
 import ordinaryA, { trinityWeekA } from './grounded-content/ordinary-A';
 import ordinaryB, { trinityWeekB } from './grounded-content/ordinary-B';
 import ordinaryC, { trinityWeekC } from './grounded-content/ordinary-C';
@@ -1391,8 +1393,19 @@ function getLiturgicalCycle(liturgicalYear: number): 'A' | 'B' | 'C' {
 // numeração de semana calculada localmente (getWeekOfSeason) e a
 // numeração usada nos dados do RCL (cycle-A.json etc.): a busca é por
 // data, não por número de semana.
+// Achado em 2026-08-18 (ver ROADMAP.md 1.2c): este mapa só tinha o
+// Ciclo A ligado — B e C nunca foram importados aqui. Resultado:
+// `findGoverningOrdinarySunday('B'|'C', ...)` sempre retornava null, e
+// o Tempo Comum inteiro dos Ciclos B e C caía inteiro no fallback de
+// `trinityWeekByCycle` (só 6 títulos) repetido por todas as ~26
+// semanas — apesar de `ordinaryB.ts`/`ordinaryC.ts` estarem completos
+// e corretos, eles nunca eram de fato consultados na geração real dos
+// devocionais. Confirmado nos JSONs já publicados: título de semana
+// da Trindade repetindo 24-25 vezes num único ano de Tempo Comum.
 const rclDataByCycle: Partial<Record<'A' | 'B' | 'C', { seasons: Record<string, RclEntry[]> }>> = {
   A: cycleAData as { seasons: Record<string, RclEntry[]> },
+  B: cycleBData as { seasons: Record<string, RclEntry[]> },
+  C: cycleCData as { seasons: Record<string, RclEntry[]> },
 };
 
 function findGoverningOrdinarySunday(cycle: 'A' | 'B' | 'C', date: Date): RclEntry | null {
@@ -1417,8 +1430,6 @@ function findGoverningOrdinarySunday(cycle: 'A' | 'B' | 'C', date: Date): RclEnt
 
 function getLiturgicalSeasonForLiturgicalYear(liturgicalYear: number, date: Date): string {
   const d = date;
-  const m = d.getMonth();
-  const dom = d.getDate();
 
   // The liturgical year runs from Advent (Dec prev year) through Nov
   // Easter belongs to the liturgical year, e.g. Easter 2026 is in liturgical year 2026
@@ -1427,16 +1438,22 @@ function getLiturgicalSeasonForLiturgicalYear(liturgicalYear: number, date: Date
   const pentecost = new Date(easter.getTime() + 49 * 86400000);
   const adventThisYear = calculateAdventStart(liturgicalYear);
   const adventPrevYear = calculateAdventStart(liturgicalYear - 1);
+  const christmasStart = new Date(liturgicalYear - 1, 11, 25);
+  const epiphanyStart = new Date(liturgicalYear, 0, 6);
 
-  // Advent (either from prev year or this year)
-  if (d >= adventPrevYear && m === 11) return 'advent';
-  if (d >= adventThisYear && m >= 10) return 'advent';
+  // Advento que abre este ano litúrgico — achado em 2026-08-18 (ver
+  // ROADMAP.md 1.2c): o teste antigo (`m === 11`, ou seja "mês é
+  // dezembro") não tinha limite superior, então capturava o mês
+  // inteiro, inclusive 25-31/dez — Natal e a semana seguinte nunca
+  // eram classificados como 'christmas', só como 'advent' (que vinha
+  // primeiro na cadeia de ifs). O limite certo é a data do Natal, não
+  // o mês civil.
+  if (d >= adventPrevYear && d < christmasStart) return 'advent';
 
-  // Christmas (Dec 25 - Jan 5)
-  if ((m === 11 && dom >= 25) || (m === 0 && dom <= 5)) return 'christmas';
+  // Christmas (25/dez do ano anterior até 5/jan deste ano)
+  if (d >= christmasStart && d < epiphanyStart) return 'christmas';
 
   // Epiphany (Jan 6 - Ash Wednesday) - in the liturgical year's Jan/Feb
-  const epiphanyStart = new Date(liturgicalYear, 0, 6);
   if (d >= epiphanyStart && d < ashWednesday) return 'epiphany';
 
   // Lent (Ash Wednesday - day before Easter)
@@ -1452,15 +1469,32 @@ function getLiturgicalSeasonForLiturgicalYear(liturgicalYear: number, date: Date
   // Ordinary Time (after Pentecost to Advent)
   if (d > pentecostEnd && d < adventThisYear) return 'ordinary';
 
+  // Advento que abre o PRÓXIMO ano litúrgico — só alcançado no fim de
+  // novembro deste ano civil (o laço de generateYear() termina em
+  // 30/nov, antes da virada pro próximo ano litúrgico). Sem este
+  // caso, esses últimos dias caíam no fallback final de 'ordinary'
+  // em vez de 'advent'.
+  if (d >= adventThisYear) return 'advent';
+
   return 'ordinary';
 }
 
-function getWeekOfSeason(date: Date, season: string, adventStart: Date, easter: Date): number {
+function getWeekOfSeason(date: Date, season: string, liturgicalYear: number, easter: Date): number {
   let seasonStart: Date;
   switch (season) {
-    case 'advent':
-      seasonStart = adventStart;
+    case 'advent': {
+      // Achado em 2026-08-18 (ver ROADMAP.md 1.2c): generateYear() cobre
+      // dois períodos de Advento diferentes no mesmo laço — o que abre
+      // este ano litúrgico (dez do ano anterior) e o que abre o
+      // PRÓXIMO (fim de novembro deste ano civil). Usar sempre o mesmo
+      // `adventStart` fixo fazia a segunda pontinha de novembro
+      // calcular uma semana absurda (~52), que caía no fallback de
+      // semana 1 por acidente, não por estar correta.
+      const adventThisYear = calculateAdventStart(liturgicalYear);
+      const adventPrevYear = calculateAdventStart(liturgicalYear - 1);
+      seasonStart = date >= adventThisYear ? adventThisYear : adventPrevYear;
       break;
+    }
     case 'christmas':
       seasonStart = new Date(date.getFullYear() - (date.getMonth() < 6 ? 1 : 0), 11, 25);
       break;
@@ -1716,7 +1750,6 @@ function generateForDate(
 
 function generateYear(year: number): Record<string, DevotionalEntry> {
   const entries: Record<string, DevotionalEntry> = {};
-  const adventStart = calculateAdventStart(year - 1);
   const easter = calculateEaster(year);
   const cycle = getLiturgicalCycle(year);
 
@@ -1730,7 +1763,7 @@ function generateYear(year: number): Record<string, DevotionalEntry> {
 
     if (!entries[dateStr]) {
       const season = getLiturgicalSeasonForLiturgicalYear(year, current);
-      const week = getWeekOfSeason(current, season, adventStart, easter);
+      const week = getWeekOfSeason(current, season, year, easter);
 
       const devotional = generateForDate(current, season, week, cycle);
       if (devotional) {

@@ -2198,7 +2198,7 @@ const ordinaryA: Record<number, DevotionalEntry[]> = {
     },
     {
       prayer: {
-        title: 'Eis-Me Aqui',
+        title: 'Quem Sou Eu, Para Que Vá?',
         text: t(`Deus que te revelas como "EU SOU O QUE SOU", chamaste
           Moisés para libertar um povo inteiro, e a primeira reação dele
           foi insegurança: "Quem sou eu, para que vá a Faraó?" Tu não
