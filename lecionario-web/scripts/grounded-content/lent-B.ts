@@ -52,21 +52,23 @@ const week1: DevotionalEntry[] = [
   },
   {
     prayer: {
-      title: 'Faze-me Saber os Teus Caminhos',
-      text: t(`Senhor, o salmista pede: "faze-me saber os teus
-        caminhos, Senhor; ensina-me as tuas veredas." Um pedido de
-        aprendizado contínuo, não de conhecimento já completo. Que eu
-        entre nesta Quaresma com essa mesma disposição de aprendiz.
-        Amém.`),
+      title: 'Não Te Lembres dos Pecados da Minha Mocidade',
+      text: t(`Senhor, o salmista pede: "lembra-te, ó Senhor, das
+        tuas misericórdias... não te lembres dos pecados da minha
+        mocidade, nem das minhas transgressões." Um pedido de memória
+        seletiva — que tua lembrança recaia sobre tua fidelidade, não
+        sobre meus erros antigos. Que eu entre nesta Quaresma sem o
+        peso de culpas já perdoadas há muito. Amém.`),
     },
     meditation: {
-      prompt: t(`O salmo usa linguagem de aprendizado contínuo —
-        "faze-me saber", "ensina-me" — apropriada para alguém em
-        processo, não para quem já domina completamente o caminho.`),
+      prompt: t(`O salmista não nega ter pecados de juventude — ele
+        pede especificamente que Deus escolha lembrar de outra coisa:
+        sua própria misericórdia e benignidade, "desde a eternidade",
+        em vez das transgressões antigas.`),
       questions: [
-        'Você entra nesta Quaresma com disposição de aprendiz, ou já sente que "sabe" tudo sobre essa estação?',
-        'Que caminho específico de Deus você ainda precisa que ele te ensine?',
-        'Como cultivar humildade genuína de aprendizado, mesmo depois de anos de fé?',
+        'Que "pecado da mocidade" você ainda carrega como se Deus continuasse se lembrando dele com o mesmo peso que você?',
+        'Como pedir, concretamente, que Deus "não se lembre" — ou seja, aceitar que ele já esqueceu — de algo que você mesmo não consegue esquecer?',
+        'O que significaria entrar nesta Quaresma confiando mais na memória da misericórdia de Deus do que na sua própria memória da falha?',
       ],
     },
   },
@@ -135,22 +137,23 @@ const week1: DevotionalEntry[] = [
   },
   {
     prayer: {
-      title: 'O Tempo Está Cumprido',
-      text: t(`Senhor Jesus, iniciaste teu ministério declarando: "o
-        tempo está cumprido, e é chegado o reino de Deus.
-        Arrependei-vos, e crede no evangelho." Um anúncio de urgência
-        e oportunidade simultâneas. Que eu responda a esse anúncio
-        hoje, não apenas o reconheça intelectualmente. Amém.`),
+      title: 'Viu os Céus Se Abrirem',
+      text: t(`Senhor Jesus, ao saíres da água do batismo, "viu os
+        céus se abrirem, e o Espírito, que como pomba, descia sobre
+        ti." Um momento de ruptura visível entre o céu e a terra,
+        logo antes de seres enviado ao deserto. Que eu reconheça hoje
+        que também minhas confirmações mais claras podem preceder
+        provações reais. Amém.`),
     },
     meditation: {
-      prompt: t(`A primeira mensagem pública de Jesus combina
-        anúncio ("o tempo está cumprido") com convite direto à ação
-        ("arrependei-vos... crede") — não apenas informação, mas
-        chamado imediato à resposta.`),
+      prompt: t(`A imagem dos céus se "abrindo" — não apenas se
+        revelando, mas se rompendo — sugere um momento extraordinário
+        e raro de contato direto entre céu e terra, imediatamente
+        antes do envio ao deserto que se seguiria.`),
       questions: [
-        'Você reconhece intelectualmente a mensagem do evangelho, mas ainda não respondeu completamente a ela em alguma área?',
-        'O que significaria "arrepender-se e crer" hoje, concretamente, não apenas como conceito teológico?',
-        'Que oportunidade presente você reconhece como "tempo cumprido" para uma mudança que tem adiado?',
+        'Você já teve um momento de clareza espiritual tão marcante quanto "céus se abrindo" — e o que veio logo depois dele?',
+        'Como esse padrão — revelação clara seguida de provação — se repete também na sua própria caminhada?',
+        'O que significaria hoje confiar que uma confirmação recebida de Deus é preparação, não isenção, para o que vem a seguir?',
       ],
     },
   },

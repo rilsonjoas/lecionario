@@ -188,7 +188,7 @@ const week1: DevotionalEntry[] = [
 const week2: DevotionalEntry[] = [
   {
     prayer: {
-      title: 'Sai-te da Tua Terra',
+      title: 'Para a Terra Que Eu Te Mostrarei',
       text: t(`Senhor, chamaste Abrão: "sai-te da tua terra, da tua
         parentela, e da casa de teu pai, para a terra que eu te
         mostrarei." Um chamado que exigia deixar tudo o que era

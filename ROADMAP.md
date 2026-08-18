@@ -14,7 +14,10 @@ aqui, achado ao auditar os roadmaps de todos os projetos)
 - Motor litúrgico completo: cálculo de Páscoa, estações, cores, ciclos A/B/C, nomes dos dias em PT-BR
 - Dados RCL em JSON para os três ciclos (leituras por data + coletas)
 - **Textos bíblicos completos** (Almeida ARC) — 4337 textos inseridos, 0 referências canônicas faltando
-- **Devocionais gerados** — 2191 orações + meditações (2025–2030), Tempo Comum dos três ciclos ancorado no RCL real (ver 1.2), demais estações com templates sazonais
+- **Devocionais gerados** — 2191 orações + meditações (2025–2030),
+  **todas as sete estações litúrgicas** (Advento, Natal, Epifania,
+  Quaresma, Páscoa, Pentecostes/Trindade, Tempo Comum) dos três ciclos
+  ancoradas no RCL real, sem repetição e sem lacuna (ver 1.2-1.2i)
 - **Conteúdo de Semana Santa** (2026-08-15/16) — Domingo de Ramos,
   Quinta/Sexta-Feira Santa, Sábado Santo, com orações e meditações
   originais pro Tríduo (ver 1.1) — estava listado como ausente na
@@ -33,19 +36,20 @@ aqui, achado ao auditar os roadmaps de todos os projetos)
 
 ### O que está incompleto ou ausente
 
-- Conteúdo devocional do Tempo Comum: **os três ciclos (A, B, C)
-  completos e precisos, ancorados no Próprio real do RCL, sem
-  repetição e sem lacuna** (2026-08-16/17/18) — Ciclo A (27 semanas,
-  189 dias, Próprios 3-29), Ciclo B (26 semanas, 182 dias, Próprios
-  4-29) e Ciclo C (26 semanas, 182 dias, Próprios 4-29), cada um
-  validado programaticamente contra suas duas ocorrências reais no
-  período gerado (2026/2029, 2024/2027/2030 e 2025/2028
-  respectivamente) — zero repetição, zero dia faltando. Esse trabalho
-  incluiu descobrir e consertar um bug estrutural na atribuição de
-  leituras que afetava os três ciclos, não só o devocional (ver 1.2a).
-  Os templates genéricos por estação (Advento, Natal, Epifania,
-  Quaresma, Páscoa, Pentecostes) seguem fora do escopo desta rodada
-  (ver 1.2)
+- ~~Conteúdo devocional do Tempo Comum~~ — **feito, e estendido a
+  todas as demais estações também** (2026-08-16 a 2026-08-18, ver
+  1.2-1.2i). Os três ciclos (A, B, C) completos e precisos, ancorados
+  no Próprio real do RCL — Ciclo A (27 semanas, 189 dias, Próprios
+  3-29), Ciclo B (26 semanas, 182 dias, Próprios 4-29) e Ciclo C (26
+  semanas, 182 dias, Próprios 4-29) — mais Advento, Natal, Epifania,
+  Quaresma, Páscoa e Pentecostes/Trindade, cada estação validada
+  programaticamente contra os 6 anos gerados (2025-2030), na janela
+  exata de cada arquivo publicado — zero repetição, zero dia faltando.
+  Esse trabalho incluiu descobrir e consertar um bug estrutural na
+  atribuição de leituras que afetava os três ciclos, não só o
+  devocional (ver 1.2a), e vários outros bugs estruturais menores em
+  cada estação subsequente (ver 1.2b a 1.2i). O objeto genérico
+  `templates` ficou órfão e pode ser removido numa limpeza futura
 - Leituras RCL de Natal e Epifania: **três bugs estruturais achados e
   corrigidos (2026-08-18)** ao auditar as demais estações em busca do
   mesmo padrão de erro do Tempo Comum — ver 1.2b
@@ -580,6 +584,89 @@ caíam nos templates genéricos.
 
 **Ainda falta:** Páscoa (Domingo de Páscoa até Pentecostes) — última
 estação genérica restante.
+
+---
+
+### 1.2i Páscoa e Pentecostes ancorados no RCL, 3 ciclos — todas as
+estações litúrgicas agora ancoradas no RCL real (2026-08-18)
+
+Sexto e último bloco de conteúdo devocional ancorado no RCL. Com este
+bloco, **todas** as estações litúrgicas (Advento, Natal, Epifania,
+Quaresma, Páscoa, Pentecostes/Trindade, Tempo Comum) têm conteúdo
+próprio grounded nas leituras reais do RCL — o objetivo original desta
+rodada inteira ("fechar os gargalos de conteúdo, nada de orações
+repetidas, nada de conteúdo genérico") está cumprido.
+
+- [x] `easter-{A,B,C}.ts`: 7 semanas fixas (Domingo da Ressurreição ao
+      7º Domingo da Páscoa), mesmo padrão de `advent-*.ts` — 49
+      orações + 49 meditações por ciclo (147 no total), sem
+      adaptação de data necessária já que o Domingo de Páscoa é
+      sempre domingo
+- [x] `pentecost.ts`: Domingo de Pentecostes (leitura própria por
+      ciclo), `pentecostGapWeek` (os 6 dias entre Pentecostes e a
+      Trindade, sem leitura própria no RCL, compartilhados pelos 3
+      ciclos) e Domingo da Santíssima Trindade em si — usando as
+      mesmas 4 leituras de `trinityWeek{A,B,C}` (já existentes desde
+      1.2c, mas cobrindo só os 6 dias DEPOIS da Trindade), com ângulos
+      e títulos deliberadamente diferentes pra não repetir
+- [x] `generateForDate`: a estação `'pentecost'` cobre sempre os
+      mesmos 8 dias fixos (Domingo de Pentecostes ao Domingo da
+      Trindade, ambos inclusive) — tratados por data exata
+      (`pentecostDay`/`trinityDay` calculados a partir da Páscoa),
+      não por número de semana
+- [x] Validado nos 6 anos gerados (2025-2030): Páscoa até a véspera de
+      Pentecostes (49 dias) + Pentecostes até a Trindade (8 dias) = 57
+      dias por ano, zero repetição, zero lacuna, checado com datas de
+      Páscoa/Pentecostes/Trindade calculadas de forma independente do
+      próprio gerador (algoritmo de Páscoa em Python), não reaproveitando
+      nenhuma lógica do `generate-devotionals.ts`
+- [x] **10 duplicações de título entre estações achadas durante essa
+      validação** (algumas introduzidas agora, outras pré-existentes
+      desde blocos anteriores) — só apareciam ao checar o JSON final
+      de um ano inteiro (não por estação isolada), que é exatamente a
+      lição documentada em 1.2c. Exemplos: "Deus Não Faz Acepção de
+      Pessoas" (Atos 10, usado tanto no Batismo do Senhor quanto no
+      Domingo de Páscoa, Ciclo A), "O Tempo Está Cumprido" (Marcos
+      1:15, usado idêntico em Epifania 3B e Quaresma 1B), "Antes Que
+      Eu Te Formasse..." e "Tu És a Minha Rocha..." (Jeremias 1 e
+      Salmo 71, repetidos entre Epifania C e um Próprio do Tempo
+      Comum C). Todas renomeadas com ângulo/versículo diferente da
+      mesma passagem, mantendo o texto grounded
+- [x] **Achado de infraestrutura mais sutil, no fronteira dos
+      arquivos anuais:** `generateYear(year)` gera de 1/dez do ano
+      anterior a 30/nov do ano corrente, mas só tratava a fronteira do
+      FIM do intervalo (Advento de fim de novembro que já pertence ao
+      próximo ano litúrgico, ver 1.2c) — faltava o espelho no INÍCIO:
+      quando o Advento do ano anterior começa depois de 1/dez (ex.:
+      3/dez), os dias 1-2/dez ainda pertencem à cauda do ano litúrgico
+      anterior (semana de Cristo Rei) e devem usar o ciclo desse ano
+      anterior, não o ciclo do arquivo. Sem essa correção, esses 1-2
+      dias por ano mostravam o ciclo errado — inofensivo na maioria
+      dos anos, mas criava repetição exata de título quando esse ciclo
+      errado coincidia com o ciclo usado no fim do MESMO arquivo
+      (achado checando devotionals-2029.json/2030.json contra as datas
+      reais, não contra os módulos isolados — mesma lição de sempre)
+- [x] **Duplicação de conteúdo achada no mesmo processo:** os títulos
+      de "Cristo Rei" (última semana do Tempo Comum) em `ordinary-A.ts`
+      e `ordinary-B.ts` eram literalmente idênticos ("Cristo Rei"), ao
+      contrário do `ordinary-C.ts` que já usava um título específico
+      ("Este É o Rei dos Judeus"). Renomeado o de A pra "Vinde,
+      Benditos de Meu Pai" (Mateus 25:34)
+- [x] Regressão completa reconfirmada: **os 6 anos gerados (2025-2030),
+      na janela exata de cada arquivo `devotionals-YYYY.json`
+      (1/dez do ano anterior a 30/nov do ano corrente), têm zero dia
+      faltando e zero título repetido** — validação cobrindo o ano
+      litúrgico inteiro, não só Páscoa/Pentecostes. `tsc`, `prettier`
+      e os 42 testes passando; sincronizado pro mobile
+
+**Conclusão desta rodada:** as sete estações litúrgicas (Advento,
+Natal, Epifania, Quaresma, Páscoa, Pentecostes/Trindade, Tempo Comum)
+têm agora conteúdo devocional 100% ancorado nas leituras reais do RCL,
+nos 3 ciclos, sem repetição e sem lacuna, validado diretamente contra o
+JSON final publicado — não contra os módulos de conteúdo isolados. O
+objeto genérico `templates` em `generate-devotionals.ts` ficou órfão
+(nenhuma estação mais cai nele) e pode ser removido numa limpeza futura,
+mas isso não foi feito nesta rodada por não ter sido pedido.
 
 ---
 

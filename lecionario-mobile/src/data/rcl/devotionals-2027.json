@@ -1067,15 +1067,15 @@
     },
     "2027-02-15": {
       "prayer": {
-        "title": "Faze-me Saber os Teus Caminhos",
-        "text": "Senhor, o salmista pede: \"faze-me saber os teus caminhos, Senhor; ensina-me as tuas veredas.\" Um pedido de aprendizado contínuo, não de conhecimento já completo. Que eu entre nesta Quaresma com essa mesma disposição de aprendiz. Amém."
+        "title": "Não Te Lembres dos Pecados da Minha Mocidade",
+        "text": "Senhor, o salmista pede: \"lembra-te, ó Senhor, das tuas misericórdias... não te lembres dos pecados da minha mocidade, nem das minhas transgressões.\" Um pedido de memória seletiva — que tua lembrança recaia sobre tua fidelidade, não sobre meus erros antigos. Que eu entre nesta Quaresma sem o peso de culpas já perdoadas há muito. Amém."
       },
       "meditation": {
-        "prompt": "O salmo usa linguagem de aprendizado contínuo — \"faze-me saber\", \"ensina-me\" — apropriada para alguém em processo, não para quem já domina completamente o caminho.",
+        "prompt": "O salmista não nega ter pecados de juventude — ele pede especificamente que Deus escolha lembrar de outra coisa: sua própria misericórdia e benignidade, \"desde a eternidade\", em vez das transgressões antigas.",
         "questions": [
-          "Você entra nesta Quaresma com disposição de aprendiz, ou já sente que \"sabe\" tudo sobre essa estação?",
-          "Que caminho específico de Deus você ainda precisa que ele te ensine?",
-          "Como cultivar humildade genuína de aprendizado, mesmo depois de anos de fé?"
+          "Que \"pecado da mocidade\" você ainda carrega como se Deus continuasse se lembrando dele com o mesmo peso que você?",
+          "Como pedir, concretamente, que Deus \"não se lembre\" — ou seja, aceitar que ele já esqueceu — de algo que você mesmo não consegue esquecer?",
+          "O que significaria entrar nesta Quaresma confiando mais na memória da misericórdia de Deus do que na sua própria memória da falha?"
         ]
       }
     },
@@ -1123,15 +1123,15 @@
     },
     "2027-02-19": {
       "prayer": {
-        "title": "O Tempo Está Cumprido",
-        "text": "Senhor Jesus, iniciaste teu ministério declarando: \"o tempo está cumprido, e é chegado o reino de Deus. Arrependei-vos, e crede no evangelho.\" Um anúncio de urgência e oportunidade simultâneas. Que eu responda a esse anúncio hoje, não apenas o reconheça intelectualmente. Amém."
+        "title": "Viu os Céus Se Abrirem",
+        "text": "Senhor Jesus, ao saíres da água do batismo, \"viu os céus se abrirem, e o Espírito, que como pomba, descia sobre ti.\" Um momento de ruptura visível entre o céu e a terra, logo antes de seres enviado ao deserto. Que eu reconheça hoje que também minhas confirmações mais claras podem preceder provações reais. Amém."
       },
       "meditation": {
-        "prompt": "A primeira mensagem pública de Jesus combina anúncio (\"o tempo está cumprido\") com convite direto à ação (\"arrependei-vos... crede\") — não apenas informação, mas chamado imediato à resposta.",
+        "prompt": "A imagem dos céus se \"abrindo\" — não apenas se revelando, mas se rompendo — sugere um momento extraordinário e raro de contato direto entre céu e terra, imediatamente antes do envio ao deserto que se seguiria.",
         "questions": [
-          "Você reconhece intelectualmente a mensagem do evangelho, mas ainda não respondeu completamente a ela em alguma área?",
-          "O que significaria \"arrepender-se e crer\" hoje, concretamente, não apenas como conceito teológico?",
-          "Que oportunidade presente você reconhece como \"tempo cumprido\" para uma mudança que tem adiado?"
+          "Você já teve um momento de clareza espiritual tão marcante quanto \"céus se abrindo\" — e o que veio logo depois dele?",
+          "Como esse padrão — revelação clara seguida de provação — se repete também na sua própria caminhada?",
+          "O que significaria hoje confiar que uma confirmação recebida de Deus é preparação, não isenção, para o que vem a seguir?"
         ]
       }
     },
@@ -1557,7 +1557,7 @@
     },
     "2027-03-23": {
       "prayer": {
-        "title": "Debalde Tenho Trabalhado",
+        "title": "Pouca Coisa É Seres Meu Servo",
         "text": "Senhor, o servo confessa desânimo real: \"debalde tenho trabalhado, inútil e vãmente gastei as minhas forças.\" Nesta terça-feira santa, diante da cruz que se aproxima, reconheço que até o caminho mais fiel pode incluir momentos de sentir que o esforço não valeu a pena. Sustenta-me nessa mesma confiança do servo. Amém."
       },
       "meditation": {
@@ -1585,799 +1585,799 @@
     },
     "2027-03-28": {
       "prayer": {
-        "title": "Cristo Ressuscitou!",
-        "text": "Aleluia! Cristo ressuscitou! O túmulo está vazio. A morte foi vencida. O cordeiro que foi imolado vive para sempre. Neste domingo da ressurreição, enche-nos da alegria pascal. Não uma alegria superficial, mas a certeza de que a última palavra não é do sofrimento, nem da injustiça, nem da morte — a última palavra é de Deus, e essa palavra é VIDA. Renova em nós a esperança da ressurreição. Porque Ele vive, podemos enfrentar o amanhã. Porque Ele vive, o mal não tem a palavra final. Cristo ressuscitou! Aleluia! Amém."
+        "title": "Regozijemo-nos e Alegremo-nos Nele",
+        "text": "Senhor ressuscitado, hoje celebramos: \"este é o dia que o Senhor fez; regozijemo-nos, e alegremo-nos nele.\" Depois de quarenta dias de jornada quaresmal e da semana mais sombria do calendário, chega o dia que muda o sentido de todos os outros. Que minha alegria hoje seja genuína, não apenas cerimonial. Aleluia! Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "O salmo, escrito séculos antes, encontra seu cumprimento pleno precisamente hoje — a pedra rejeitada pelos edificadores tornou-se a pedra angular de tudo.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Como distinguir, na sua própria experiência, entre alegria cerimonial (esperada da data) e alegria genuína?",
+          "Que \"pedra rejeitada\" na sua vida você já viu Deus transformar em fundamento?",
+          "O que significaria viver hoje, concretamente, à luz da afirmação \"este é o dia que o Senhor fez\"?"
         ]
       }
     },
     "2027-03-29": {
       "prayer": {
-        "title": "Cristo Ressuscitou!",
-        "text": "Aleluia! Cristo ressuscitou! O túmulo está vazio. A morte foi vencida. O cordeiro que foi imolado vive para sempre. Neste domingo da ressurreição, enche-nos da alegria pascal. Não uma alegria superficial, mas a certeza de que a última palavra não é do sofrimento, nem da injustiça, nem da morte — a última palavra é de Deus, e essa palavra é VIDA. Renova em nós a esperança da ressurreição. Porque Ele vive, podemos enfrentar o amanhã. Porque Ele vive, o mal não tem a palavra final. Cristo ressuscitou! Aleluia! Amém."
+        "title": "Não Faz Acepção de Pessoas",
+        "text": "Senhor, Pedro proclama diante de Cornélio, um gentio: \"Deus não faz acepção de pessoas; mas que lhe é aceitável aquele que, em qualquer nação, o teme e pratica o que é justo.\" A ressurreição não conhece fronteiras étnicas ou sociais. Que eu viva essa mesma amplitude sem barreiras hoje. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "Este discurso marca a primeira vez que o evangelho é anunciado explicitamente a um gentio — um momento decisivo de expansão que a própria igreja primitiva levou tempo para aceitar plenamente.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Que fronteira social ou cultural você ainda hesita em cruzar com o evangelho?",
+          "Você trata a boa notícia como reservada a \"gente como eu\", ou genuinamente universal?",
+          "Como a amplitude do anúncio de Pedro desafia limites que você talvez nem perceba que impõe?"
         ]
       }
     },
     "2027-03-30": {
       "prayer": {
-        "title": "Cristo Ressuscitou!",
-        "text": "Aleluia! Cristo ressuscitou! O túmulo está vazio. A morte foi vencida. O cordeiro que foi imolado vive para sempre. Neste domingo da ressurreição, enche-nos da alegria pascal. Não uma alegria superficial, mas a certeza de que a última palavra não é do sofrimento, nem da injustiça, nem da morte — a última palavra é de Deus, e essa palavra é VIDA. Renova em nós a esperança da ressurreição. Porque Ele vive, podemos enfrentar o amanhã. Porque Ele vive, o mal não tem a palavra final. Cristo ressuscitou! Aleluia! Amém."
+        "title": "Testemunhas Predeterminadas",
+        "text": "Senhor, Pedro descreve os apóstolos como \"testemunhas predeterminadas por Deus... que comemos e bebemos juntamente com ele depois que ressurgiu.\" Testemunho coletivo, não experiência isolada. Que eu reconheça hoje as testemunhas que sustentam minha própria fé. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "O testemunho da ressurreição não vem de uma pessoa isolada, mas de um grupo que compartilhou refeições concretas com o Cristo ressuscitado — evidência coletiva, não visão privada e solitária.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Quem são as testemunhas cuja fé sustenta ou confirma a sua?",
+          "Você vive sua fé de forma mais isolada ou mais comunitária?",
+          "O que significaria buscar mais essa confirmação em comunidade esta semana?"
         ]
       }
     },
     "2027-03-31": {
       "prayer": {
-        "title": "Cristo Ressuscitou!",
-        "text": "Aleluia! Cristo ressuscitou! O túmulo está vazio. A morte foi vencida. O cordeiro que foi imolado vive para sempre. Neste domingo da ressurreição, enche-nos da alegria pascal. Não uma alegria superficial, mas a certeza de que a última palavra não é do sofrimento, nem da injustiça, nem da morte — a última palavra é de Deus, e essa palavra é VIDA. Renova em nós a esperança da ressurreição. Porque Ele vive, podemos enfrentar o amanhã. Porque Ele vive, o mal não tem a palavra final. Cristo ressuscitou! Aleluia! Amém."
+        "title": "Expurgai o Fermento Velho",
+        "text": "Senhor, Paulo instrui: \"expurgai o fermento velho, para que sejais massa nova... porque Cristo, nossa páscoa, já foi sacrificado.\" A ressurreição pede purificação ativa, não apenas celebração passiva. Que hábito velho preciso expurgar hoje, à luz dessa páscoa cumprida? Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "Paulo usa a imagem da purificação da casa antes da Páscoa judaica — remover todo fermento velho — como metáfora para a transformação moral que deveria acompanhar a fé na ressurreição, não apenas celebrá-la teoricamente.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Que \"fermento velho\" — hábito, atitude, padrão — você reconhece que ainda não expurgou?",
+          "Como a celebração da Páscoa deveria se traduzir em mudança concreta, não apenas em sentimento?",
+          "O que significaria começar hoje esse processo de purificação ativa?"
         ]
       }
     },
     "2027-04-01": {
       "prayer": {
-        "title": "Cristo Ressuscitou!",
-        "text": "Aleluia! Cristo ressuscitou! O túmulo está vazio. A morte foi vencida. O cordeiro que foi imolado vive para sempre. Neste domingo da ressurreição, enche-nos da alegria pascal. Não uma alegria superficial, mas a certeza de que a última palavra não é do sofrimento, nem da injustiça, nem da morte — a última palavra é de Deus, e essa palavra é VIDA. Renova em nós a esperança da ressurreição. Porque Ele vive, podemos enfrentar o amanhã. Porque Ele vive, o mal não tem a palavra final. Cristo ressuscitou! Aleluia! Amém."
+        "title": "Com os Ázimos da Sinceridade e da Verdade",
+        "text": "Senhor, Paulo conclui: \"celebremos a festa... com os ázimos da sinceridade e da verdade.\" A celebração pascal pede autenticidade, não fachada. Que minha celebração hoje seja genuína, livre da hipocrisia que às vezes acompanha rituais repetidos. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "Paulo opõe deliberadamente \"sinceridade e verdade\" a \"malícia e corrupção\" — a celebração cristã genuína exige integridade interior, não apenas observância externa correta.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Sua celebração da Páscoa este ano tem sido mais sincera ou mais automática, por hábito?",
+          "O que significaria celebrar hoje \"com sinceridade e verdade\", examinando sua própria motivação?",
+          "Existe alguma área de falta de sinceridade que a luz da ressurreição está expondo em você?"
         ]
       }
     },
     "2027-04-02": {
       "prayer": {
-        "title": "Cristo Ressuscitou!",
-        "text": "Aleluia! Cristo ressuscitou! O túmulo está vazio. A morte foi vencida. O cordeiro que foi imolado vive para sempre. Neste domingo da ressurreição, enche-nos da alegria pascal. Não uma alegria superficial, mas a certeza de que a última palavra não é do sofrimento, nem da injustiça, nem da morte — a última palavra é de Deus, e essa palavra é VIDA. Renova em nós a esperança da ressurreição. Porque Ele vive, podemos enfrentar o amanhã. Porque Ele vive, o mal não tem a palavra final. Cristo ressuscitou! Aleluia! Amém."
+        "title": "Ao Dizer Isso, Voltou-se para Trás",
+        "text": "Senhor Jesus, Maria Madalena não te reconheceu de imediato junto ao sepulcro — pensou que fosses o jardineiro. Só quando chamaste seu nome, \"Maria!\", ela se voltou e reconheceu. Que eu escute hoje meu próprio nome, chamado por ti, em meio à minha própria confusão. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "O reconhecimento de Maria não vem de argumento teológico, mas do próprio Jesus chamando seu nome — algo pessoal e íntimo, em meio à dor real da perda que ela ainda sentia.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Já houve um momento em que você sentiu Deus \"chamar seu nome\" pessoalmente, em meio à confusão ou luto?",
+          "Você tende a reconhecer Deus mais por argumento racional, ou por esse tipo de encontro pessoal e direto?",
+          "O que significaria, hoje, parar de procurar respostas genéricas e escutar seu próprio nome sendo chamado?"
         ]
       }
     },
     "2027-04-03": {
       "prayer": {
-        "title": "Cristo Ressuscitou!",
-        "text": "Aleluia! Cristo ressuscitou! O túmulo está vazio. A morte foi vencida. O cordeiro que foi imolado vive para sempre. Neste domingo da ressurreição, enche-nos da alegria pascal. Não uma alegria superficial, mas a certeza de que a última palavra não é do sofrimento, nem da injustiça, nem da morte — a última palavra é de Deus, e essa palavra é VIDA. Renova em nós a esperança da ressurreição. Porque Ele vive, podemos enfrentar o amanhã. Porque Ele vive, o mal não tem a palavra final. Cristo ressuscitou! Aleluia! Amém."
+        "title": "Vi o Senhor!",
+        "text": "Senhor, encerramos esta primeira semana pascal com o anúncio direto de Maria Madalena: \"Vi o Senhor!\" Não uma teoria, mas testemunho pessoal. Que meu próprio testemunho esta semana carregue essa mesma simplicidade e certeza. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "Maria Madalena torna-se a primeira pregadora do evangelho da ressurreição com apenas quatro palavras diretas — um modelo de testemunho simples que não precisa de elaboração teológica complexa para ser eficaz.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Esta primeira semana pascal — da acepção de pessoas ao chamado pelo nome — o que você mais quer levar adiante?",
+          "Como você anunciaria, hoje, com a mesma simplicidade de Maria, o que já experimentou de Deus?",
+          "O que significaria entrar na segunda semana da Páscoa carregando esse testemunho direto?"
         ]
       }
     },
     "2027-04-04": {
       "prayer": {
-        "title": "A Fé que Toca",
-        "text": "Jesus ressurreto, tu apareceste aos discípulos e sopraste sobre eles o Espírito Santo. Tomé precisou tocar para crer. Tu não o rejeitaste, mas o convidaste: \"Põe o teu dedo aqui\". Ajuda-nos na nossa incredulidade. Quando duvidarmos, vem ao nosso encontro. Quando não conseguirmos ver, revela-te. Tu és o mesmo Senhor que se fez presente no cenáculo com as portas trancadas — atravessa as portas trancadas do nosso coração e renova a nossa fé. Amém."
+        "title": "Um Só o Coração e Uma Só a Alma",
+        "text": "Senhor, a multidão dos que criam \"era um só o coração e uma só a alma, e ninguém dizia que coisa alguma das que possuía era sua própria.\" Uma unidade que se expressava até em questões materiais. Que minha própria comunidade de fé busque essa mesma unidade concreta hoje. Amém."
       },
       "meditation": {
-        "prompt": "Tomé duvidou, e Jesus não o rejeitou. Ele o convidou a tocar. A dúvida honesta é bem-vinda na presença de Cristo.",
+        "prompt": "A descrição de Atos 4 vai além de simpatia ou boas intenções — a unidade de coração se traduzia em disposição real de compartilhar bens, um teste concreto de comunhão genuína.",
         "questions": [
-          "Qual a diferença entre dúvida honesta e incredulidade teimosa?",
-          "Do que você precisa ter certeza para crer mais profundamente?",
-          "Jesus apareceu apesar das portas trancadas — que \"portas\" você tem mantido trancadas que precisam da presença dEle?"
+          "Sua comunidade de fé reflete algo dessa unidade profunda, ou permanece mais superficial?",
+          "O que significaria, para você, tratar seus próprios bens com essa mesma disposição generosa?",
+          "Que passo concreto você poderia dar esta semana em direção a essa unidade de coração e alma?"
         ]
       }
     },
     "2027-04-05": {
       "prayer": {
-        "title": "A Fé que Toca",
-        "text": "Jesus ressurreto, tu apareceste aos discípulos e sopraste sobre eles o Espírito Santo. Tomé precisou tocar para crer. Tu não o rejeitaste, mas o convidaste: \"Põe o teu dedo aqui\". Ajuda-nos na nossa incredulidade. Quando duvidarmos, vem ao nosso encontro. Quando não conseguirmos ver, revela-te. Tu és o mesmo Senhor que se fez presente no cenáculo com as portas trancadas — atravessa as portas trancadas do nosso coração e renova a nossa fé. Amém."
+        "title": "Não Havia Entre Eles Necessitado Algum",
+        "text": "Senhor, o resultado da generosidade da igreja primitiva era concreto: \"não havia entre eles necessitado algum.\" Não apenas boas intenções, mas resultado mensurável. Que minha própria generosidade produza esse mesmo efeito tangível ao meu redor. Amém."
       },
       "meditation": {
-        "prompt": "Tomé duvidou, e Jesus não o rejeitou. Ele o convidou a tocar. A dúvida honesta é bem-vinda na presença de Cristo.",
+        "prompt": "Lucas registra um resultado concreto e verificável da generosidade da igreja primitiva — não apenas um ideal espiritual abstrato, mas necessidades materiais reais sendo supridas de fato.",
         "questions": [
-          "Qual a diferença entre dúvida honesta e incredulidade teimosa?",
-          "Do que você precisa ter certeza para crer mais profundamente?",
-          "Jesus apareceu apesar das portas trancadas — que \"portas\" você tem mantido trancadas que precisam da presença dEle?"
+          "Você mede sua generosidade por intenção ou por resultado concreto e verificável?",
+          "Existe alguém, hoje, cuja necessidade concreta você poderia ajudar a suprir?",
+          "O que impede sua comunidade de alcançar esse mesmo padrão — \"não havia necessitado algum\"?"
         ]
       }
     },
     "2027-04-06": {
       "prayer": {
-        "title": "A Fé que Toca",
-        "text": "Jesus ressurreto, tu apareceste aos discípulos e sopraste sobre eles o Espírito Santo. Tomé precisou tocar para crer. Tu não o rejeitaste, mas o convidaste: \"Põe o teu dedo aqui\". Ajuda-nos na nossa incredulidade. Quando duvidarmos, vem ao nosso encontro. Quando não conseguirmos ver, revela-te. Tu és o mesmo Senhor que se fez presente no cenáculo com as portas trancadas — atravessa as portas trancadas do nosso coração e renova a nossa fé. Amém."
+        "title": "Quão Bom É que os Irmãos Vivam em União",
+        "text": "Senhor, o salmista celebra: \"quão bom e quão suave é que os irmãos vivam em união... porque ali o Senhor ordenou a bênção, a vida para sempre.\" A união fraterna não é apenas agradável — atrai bênção divina específica. Que eu cultive essa união hoje, onde estiver fragmentada. Amém."
       },
       "meditation": {
-        "prompt": "Tomé duvidou, e Jesus não o rejeitou. Ele o convidou a tocar. A dúvida honesta é bem-vinda na presença de Cristo.",
+        "prompt": "O salmo liga diretamente a união fraterna à presença e bênção de Deus — não são duas coisas separadas, mas a união genuína é descrita como o próprio lugar onde a bênção é \"ordenada\".",
         "questions": [
-          "Qual a diferença entre dúvida honesta e incredulidade teimosa?",
-          "Do que você precisa ter certeza para crer mais profundamente?",
-          "Jesus apareceu apesar das portas trancadas — que \"portas\" você tem mantido trancadas que precisam da presença dEle?"
+          "Onde você percebe fragmentação, em vez de união, entre irmãos na fé?",
+          "O que significaria buscar ativamente essa união, sabendo que ali \"o Senhor ordena a bênção\"?",
+          "Que primeiro passo concreto você poderia dar hoje em direção à reconciliação com alguém?"
         ]
       }
     },
     "2027-04-07": {
       "prayer": {
-        "title": "A Fé que Toca",
-        "text": "Jesus ressurreto, tu apareceste aos discípulos e sopraste sobre eles o Espírito Santo. Tomé precisou tocar para crer. Tu não o rejeitaste, mas o convidaste: \"Põe o teu dedo aqui\". Ajuda-nos na nossa incredulidade. Quando duvidarmos, vem ao nosso encontro. Quando não conseguirmos ver, revela-te. Tu és o mesmo Senhor que se fez presente no cenáculo com as portas trancadas — atravessa as portas trancadas do nosso coração e renova a nossa fé. Amém."
+        "title": "Se Andarmos na Luz",
+        "text": "Senhor, João escreve: \"se andarmos na luz, como ele na luz está, temos comunhão uns com os outros, e o sangue de Jesus... nos purifica de todo pecado.\" A comunhão genuína depende de viver na luz, não na escuridão escondida. Que eu ande hoje sem esconder o que preciso trazer à luz. Amém."
       },
       "meditation": {
-        "prompt": "Tomé duvidou, e Jesus não o rejeitou. Ele o convidou a tocar. A dúvida honesta é bem-vinda na presença de Cristo.",
+        "prompt": "João conecta diretamente \"andar na luz\" com comunhão genuína — a honestidade sobre o próprio pecado, em vez de escondê-lo, é o que abre espaço para relacionamento real, não aparência de perfeição.",
         "questions": [
-          "Qual a diferença entre dúvida honesta e incredulidade teimosa?",
-          "Do que você precisa ter certeza para crer mais profundamente?",
-          "Jesus apareceu apesar das portas trancadas — que \"portas\" você tem mantido trancadas que precisam da presença dEle?"
+          "Que área da sua vida você mantém \"na escuridão\", escondida até de pessoas próximas?",
+          "O que impede você de trazer isso à luz, mesmo sabendo que a purificação depende disso?",
+          "Como a comunhão genuína muda quando é praticada na luz, não na aparência controlada?"
         ]
       }
     },
     "2027-04-08": {
       "prayer": {
-        "title": "A Fé que Toca",
-        "text": "Jesus ressurreto, tu apareceste aos discípulos e sopraste sobre eles o Espírito Santo. Tomé precisou tocar para crer. Tu não o rejeitaste, mas o convidaste: \"Põe o teu dedo aqui\". Ajuda-nos na nossa incredulidade. Quando duvidarmos, vem ao nosso encontro. Quando não conseguirmos ver, revela-te. Tu és o mesmo Senhor que se fez presente no cenáculo com as portas trancadas — atravessa as portas trancadas do nosso coração e renova a nossa fé. Amém."
+        "title": "Se Confessarmos os Nossos Pecados",
+        "text": "Senhor, João promete: \"se confessarmos os nossos pecados, ele é fiel e justo para nos perdoar os pecados, e nos purificar de toda injustiça.\" Uma promessa condicionada apenas à confissão honesta. Que eu confesse hoje o que ainda não trouxe abertamente a ti. Amém."
       },
       "meditation": {
-        "prompt": "Tomé duvidou, e Jesus não o rejeitou. Ele o convidou a tocar. A dúvida honesta é bem-vinda na presença de Cristo.",
+        "prompt": "A promessa de João não depende de méritos ou performance — apenas da confissão honesta, apoiada no caráter fiel e justo de Deus, não na dignidade de quem confessa.",
         "questions": [
-          "Qual a diferença entre dúvida honesta e incredulidade teimosa?",
-          "Do que você precisa ter certeza para crer mais profundamente?",
-          "Jesus apareceu apesar das portas trancadas — que \"portas\" você tem mantido trancadas que precisam da presença dEle?"
+          "O que você ainda não confessou abertamente a Deus, talvez por vergonha ou medo?",
+          "Como a promessa de fidelidade e justiça de Deus — não seu próprio mérito — muda sua disposição de confessar?",
+          "O que significaria buscar hoje essa purificação através de confissão simples e direta?"
         ]
       }
     },
     "2027-04-09": {
       "prayer": {
-        "title": "A Fé que Toca",
-        "text": "Jesus ressurreto, tu apareceste aos discípulos e sopraste sobre eles o Espírito Santo. Tomé precisou tocar para crer. Tu não o rejeitaste, mas o convidaste: \"Põe o teu dedo aqui\". Ajuda-nos na nossa incredulidade. Quando duvidarmos, vem ao nosso encontro. Quando não conseguirmos ver, revela-te. Tu és o mesmo Senhor que se fez presente no cenáculo com as portas trancadas — atravessa as portas trancadas do nosso coração e renova a nossa fé. Amém."
+        "title": "Se Eu Não Vir o Sinal dos Cravos",
+        "text": "Senhor, Tomé exigiu: \"se eu não vir o sinal dos cravos nas mãos... de maneira nenhuma crerei.\" Não repreendeste essa exigência — vieste até ele, oferecendo exatamente o que pedira. Que eu traga minhas próprias dúvidas honestas a ti, sem medo de julgamento. Amém."
       },
       "meditation": {
-        "prompt": "Tomé duvidou, e Jesus não o rejeitou. Ele o convidou a tocar. A dúvida honesta é bem-vinda na presença de Cristo.",
+        "prompt": "Jesus não pune o pedido de Tomé por evidência concreta — ele volta especificamente para atendê-lo, mostrando que dúvida honesta, trazida abertamente, recebe resposta, não rejeição.",
         "questions": [
-          "Qual a diferença entre dúvida honesta e incredulidade teimosa?",
-          "Do que você precisa ter certeza para crer mais profundamente?",
-          "Jesus apareceu apesar das portas trancadas — que \"portas\" você tem mantido trancadas que precisam da presença dEle?"
+          "Que dúvida você tem escondido, com medo de que seja \"fé insuficiente\" para trazer a Deus?",
+          "Como a resposta gentil de Jesus a Tomé muda sua disposição de trazer suas próprias exigências?",
+          "O que significaria imitar a honestidade de Tomé, em vez de fingir certeza que você não sente?"
         ]
       }
     },
     "2027-04-10": {
       "prayer": {
-        "title": "A Fé que Toca",
-        "text": "Jesus ressurreto, tu apareceste aos discípulos e sopraste sobre eles o Espírito Santo. Tomé precisou tocar para crer. Tu não o rejeitaste, mas o convidaste: \"Põe o teu dedo aqui\". Ajuda-nos na nossa incredulidade. Quando duvidarmos, vem ao nosso encontro. Quando não conseguirmos ver, revela-te. Tu és o mesmo Senhor que se fez presente no cenáculo com as portas trancadas — atravessa as portas trancadas do nosso coração e renova a nossa fé. Amém."
+        "title": "Bem-Aventurados os Que Não Viram e Creram",
+        "text": "Senhor, encerramos esta semana com tua palavra a Tomé: \"bem-aventurados os que não viram e creram.\" Essa bênção é minha, hoje, tanto quanto foi para os primeiros ouvintes. Que eu viva à altura dela, com fé confiante, não cega. Amém."
       },
       "meditation": {
-        "prompt": "Tomé duvidou, e Jesus não o rejeitou. Ele o convidou a tocar. A dúvida honesta é bem-vinda na presença de Cristo.",
+        "prompt": "Esta bênção final do evangelho é dirigida diretamente a todo leitor futuro que creria sem o privilégio de ter visto Jesus fisicamente ressuscitado — incluindo você, hoje.",
         "questions": [
-          "Qual a diferença entre dúvida honesta e incredulidade teimosa?",
-          "Do que você precisa ter certeza para crer mais profundamente?",
-          "Jesus apareceu apesar das portas trancadas — que \"portas\" você tem mantido trancadas que precisam da presença dEle?"
+          "Esta semana — da unidade da igreja primitiva à bênção de Tomé — o que você mais quer levar adiante?",
+          "Como essa bênção específica, endereçada a quem \"não viu\", muda como você vê sua própria fé?",
+          "O que significaria entrar na terceira semana da Páscoa vivendo concretamente essa bem-aventurança?"
         ]
       }
     },
     "2027-04-11": {
       "prayer": {
-        "title": "O Caminho de Emaús",
-        "text": "Senhor Jesus, assim como caminhaste ao lado dos discípulos de Emaús sem que eles te reconhecessem, caminha ao nosso lado nas estradas da vida. Muitas vezes estamos cegos pela tristeza, pelo medo, pela desilusão. Abre os nossos olhos para te reconhecer no partir do pão. Aquece os nossos corações enquanto falas conosco pelas Escrituras. Que a nossa comunhão contigo nos transforme de espectadores tristes em testemunhas alegres. Amém."
+        "title": "Vós Negastes o Santo e Justo",
+        "text": "Senhor, Pedro confronta diretamente a multidão: \"vós negastes o Santo e Justo, e pedistes que se vos desse um homicida.\" Uma acusação dura, mas seguida imediatamente de misericórdia: \"eu sei que o fizestes por ignorância.\" Ajuda-me a receber correção sem me destruir sob o peso dela. Amém."
       },
       "meditation": {
-        "prompt": "Os discípulos de Emaús estavam voltando para casa desiludidos. Não sabiam que a resposta para sua tristeza caminhava ao lado deles.",
+        "prompt": "Pedro combina confronto direto com misericórdia explícita — a verdade sobre o pecado da multidão não é suavizada, mas também não é apresentada sem o reconhecimento de que agiram \"por ignorância\".",
         "questions": [
-          "Em que área da sua vida você está \"voltando para Emaús\" — decepcionado, desistindo, desanimado?",
-          "O que precisa \"arder\" no seu coração para que você reconheça Jesus ao seu lado?",
-          "Quem precisa ouvir de você a boa notícia: \"O Senhor ressuscitou verdadeiramente\"?"
+          "Você tende a evitar confronto direto sobre erro real, ou a apresentá-lo sem misericórdia junto?",
+          "Como a combinação de Pedro — verdade dura e graça imediata — poderia moldar uma conversa difícil que você precisa ter?",
+          "Existe algo que você fez \"por ignorância\" que ainda carrega como culpa desproporcional?"
         ]
       }
     },
     "2027-04-12": {
       "prayer": {
-        "title": "O Caminho de Emaús",
-        "text": "Senhor Jesus, assim como caminhaste ao lado dos discípulos de Emaús sem que eles te reconhecessem, caminha ao nosso lado nas estradas da vida. Muitas vezes estamos cegos pela tristeza, pelo medo, pela desilusão. Abre os nossos olhos para te reconhecer no partir do pão. Aquece os nossos corações enquanto falas conosco pelas Escrituras. Que a nossa comunhão contigo nos transforme de espectadores tristes em testemunhas alegres. Amém."
+        "title": "Arrependei-vos e Convertei-vos",
+        "text": "Senhor, Pedro convida: \"arrependei-vos, pois, e convertei-vos, para que sejam apagados os vossos pecados, de sorte que venham os tempos de refrigério.\" Arrependimento não como fardo, mas como caminho para refrigério genuíno. Que eu busque hoje esse mesmo caminho. Amém."
       },
       "meditation": {
-        "prompt": "Os discípulos de Emaús estavam voltando para casa desiludidos. Não sabiam que a resposta para sua tristeza caminhava ao lado deles.",
+        "prompt": "Pedro apresenta o arrependimento não como punição adicional, mas como porta para \"tempos de refrigério\" — uma reformulação que transforma a confissão de fardo em alívio.",
         "questions": [
-          "Em que área da sua vida você está \"voltando para Emaús\" — decepcionado, desistindo, desanimado?",
-          "O que precisa \"arder\" no seu coração para que você reconheça Jesus ao seu lado?",
-          "Quem precisa ouvir de você a boa notícia: \"O Senhor ressuscitou verdadeiramente\"?"
+          "Você associa arrependimento mais com fardo e vergonha, ou com o \"refrigério\" que Pedro promete?",
+          "Que área da sua vida precisa desse tipo de conversão hoje?",
+          "O que significaria buscar arrependimento genuíno esperando alívio real, não apenas culpa aliviada temporariamente?"
         ]
       }
     },
     "2027-04-13": {
       "prayer": {
-        "title": "O Caminho de Emaús",
-        "text": "Senhor Jesus, assim como caminhaste ao lado dos discípulos de Emaús sem que eles te reconhecessem, caminha ao nosso lado nas estradas da vida. Muitas vezes estamos cegos pela tristeza, pelo medo, pela desilusão. Abre os nossos olhos para te reconhecer no partir do pão. Aquece os nossos corações enquanto falas conosco pelas Escrituras. Que a nossa comunhão contigo nos transforme de espectadores tristes em testemunhas alegres. Amém."
+        "title": "Sabei que o Senhor Separou para Si o Piedoso",
+        "text": "Senhor, o salmista declara: \"sabei que o Senhor separou para si aquele que é piedoso; o Senhor me ouve quando eu clamo a ele.\" Uma confiança tranquila, mesmo cercado por quem \"converte a glória em infâmia\". Que eu descanse hoje nessa mesma certeza de ser ouvido. Amém."
       },
       "meditation": {
-        "prompt": "Os discípulos de Emaús estavam voltando para casa desiludidos. Não sabiam que a resposta para sua tristeza caminhava ao lado deles.",
+        "prompt": "O salmo é escrito em contexto de oposição real (\"filhos dos homens, até quando convertereis a minha glória em infâmia\") — a confiança não nega o conflito, mas repousa apesar dele.",
         "questions": [
-          "Em que área da sua vida você está \"voltando para Emaús\" — decepcionado, desistindo, desanimado?",
-          "O que precisa \"arder\" no seu coração para que você reconheça Jesus ao seu lado?",
-          "Quem precisa ouvir de você a boa notícia: \"O Senhor ressuscitou verdadeiramente\"?"
+          "Você enfrenta hoje algum tipo de oposição ou desonra injusta que precisa levar a Deus?",
+          "Como a certeza de que \"o Senhor separou para si o piedoso\" muda sua forma de responder a essa oposição?",
+          "O que significaria clamar hoje, confiando que serás ouvido, como o salmista confiava?"
         ]
       }
     },
     "2027-04-14": {
       "prayer": {
-        "title": "O Caminho de Emaús",
-        "text": "Senhor Jesus, assim como caminhaste ao lado dos discípulos de Emaús sem que eles te reconhecessem, caminha ao nosso lado nas estradas da vida. Muitas vezes estamos cegos pela tristeza, pelo medo, pela desilusão. Abre os nossos olhos para te reconhecer no partir do pão. Aquece os nossos corações enquanto falas conosco pelas Escrituras. Que a nossa comunhão contigo nos transforme de espectadores tristes em testemunhas alegres. Amém."
+        "title": "Vede Que Grande Amor",
+        "text": "Senhor, João exclama: \"vede que grande amor nos tem concedido o Pai: que fôssemos chamados filhos de Deus; e nós o somos.\" Não título simbólico, mas identidade real e presente. Que eu viva hoje consciente dessa filiação genuína, não apenas conceitual. Amém."
       },
       "meditation": {
-        "prompt": "Os discípulos de Emaús estavam voltando para casa desiludidos. Não sabiam que a resposta para sua tristeza caminhava ao lado deles.",
+        "prompt": "João insiste que a filiação divina não é apenas título honorário ou esperança futura — \"e nós o somos\" — realidade presente e concreta, já efetiva agora.",
         "questions": [
-          "Em que área da sua vida você está \"voltando para Emaús\" — decepcionado, desistindo, desanimado?",
-          "O que precisa \"arder\" no seu coração para que você reconheça Jesus ao seu lado?",
-          "Quem precisa ouvir de você a boa notícia: \"O Senhor ressuscitou verdadeiramente\"?"
+          "Você vive mais consciente de ser \"filho de Deus\" como fato presente, ou como ideia distante?",
+          "Como essa identidade mudaria uma decisão específica que você enfrenta hoje?",
+          "O que significaria receber hoje esse \"grande amor\" não como conceito, mas como realidade vivida?"
         ]
       }
     },
     "2027-04-15": {
       "prayer": {
-        "title": "O Caminho de Emaús",
-        "text": "Senhor Jesus, assim como caminhaste ao lado dos discípulos de Emaús sem que eles te reconhecessem, caminha ao nosso lado nas estradas da vida. Muitas vezes estamos cegos pela tristeza, pelo medo, pela desilusão. Abre os nossos olhos para te reconhecer no partir do pão. Aquece os nossos corações enquanto falas conosco pelas Escrituras. Que a nossa comunhão contigo nos transforme de espectadores tristes em testemunhas alegres. Amém."
+        "title": "Ainda Não É Manifesto o Que Havemos de Ser",
+        "text": "Senhor, João admite honestamente: \"ainda não é manifesto o que havemos de ser. Mas sabemos que, quando ele se manifestar, seremos semelhantes a ele.\" Há mistério genuíno sobre meu futuro completo — e isso não diminui a esperança. Que eu viva em paz com essa incerteza parcial. Amém."
       },
       "meditation": {
-        "prompt": "Os discípulos de Emaús estavam voltando para casa desiludidos. Não sabiam que a resposta para sua tristeza caminhava ao lado deles.",
+        "prompt": "João combina honestidade sobre o que ainda não se sabe completamente (\"ainda não é manifesto\") com confiança clara sobre a direção geral (\"seremos semelhantes a ele\") — mistério e certeza convivendo.",
         "questions": [
-          "Em que área da sua vida você está \"voltando para Emaús\" — decepcionado, desistindo, desanimado?",
-          "O que precisa \"arder\" no seu coração para que você reconheça Jesus ao seu lado?",
-          "Quem precisa ouvir de você a boa notícia: \"O Senhor ressuscitou verdadeiramente\"?"
+          "Você consegue viver em paz com aspectos do seu futuro espiritual que permanecem, honestamente, incertos?",
+          "O que significa, para você, que um dia será \"semelhante a ele\", mesmo sem saber os detalhes completos?",
+          "Como essa esperança, mesmo parcial, muda a forma como você vive hoje?"
         ]
       }
     },
     "2027-04-16": {
       "prayer": {
-        "title": "O Caminho de Emaús",
-        "text": "Senhor Jesus, assim como caminhaste ao lado dos discípulos de Emaús sem que eles te reconhecessem, caminha ao nosso lado nas estradas da vida. Muitas vezes estamos cegos pela tristeza, pelo medo, pela desilusão. Abre os nossos olhos para te reconhecer no partir do pão. Aquece os nossos corações enquanto falas conosco pelas Escrituras. Que a nossa comunhão contigo nos transforme de espectadores tristes em testemunhas alegres. Amém."
+        "title": "Olhai as Minhas Mãos e os Meus Pés",
+        "text": "Senhor Jesus, diante do medo dos discípulos, que pensavam ver um espírito, ofereceste prova concreta: \"olhai as minhas mãos e os meus pés, que sou eu mesmo; apalpai-me e vede.\" Tua ressurreição é física, não apenas espiritual abstrata. Que eu confie nessa realidade concreta hoje. Amém."
       },
       "meditation": {
-        "prompt": "Os discípulos de Emaús estavam voltando para casa desiludidos. Não sabiam que a resposta para sua tristeza caminhava ao lado deles.",
+        "prompt": "Jesus insiste deliberadamente na realidade física da ressurreição — não fantasma, não visão espiritual apenas, mas corpo tangível, com marcas reais das feridas ainda visíveis.",
         "questions": [
-          "Em que área da sua vida você está \"voltando para Emaús\" — decepcionado, desistindo, desanimado?",
-          "O que precisa \"arder\" no seu coração para que você reconheça Jesus ao seu lado?",
-          "Quem precisa ouvir de você a boa notícia: \"O Senhor ressuscitou verdadeiramente\"?"
+          "Você tende a espiritualizar demais a ressurreição, perdendo de vista sua realidade concreta e física?",
+          "Como a insistência de Jesus em ser tocado muda sua compreensão da esperança da ressurreição para você mesmo?",
+          "O que significaria confiar hoje numa fé que não teme evidência concreta, como Jesus não temeu?"
         ]
       }
     },
     "2027-04-17": {
       "prayer": {
-        "title": "O Caminho de Emaús",
-        "text": "Senhor Jesus, assim como caminhaste ao lado dos discípulos de Emaús sem que eles te reconhecessem, caminha ao nosso lado nas estradas da vida. Muitas vezes estamos cegos pela tristeza, pelo medo, pela desilusão. Abre os nossos olhos para te reconhecer no partir do pão. Aquece os nossos corações enquanto falas conosco pelas Escrituras. Que a nossa comunhão contigo nos transforme de espectadores tristes em testemunhas alegres. Amém."
+        "title": "Vós Sois Testemunhas Destas Coisas",
+        "text": "Senhor, encerramos esta semana com tua palavra final aos discípulos: \"vós sois testemunhas destas coisas.\" O mesmo chamado que receberam então chega até mim hoje. Que eu viva à altura desse título — testemunha, não apenas espectador. Amém."
       },
       "meditation": {
-        "prompt": "Os discípulos de Emaús estavam voltando para casa desiludidos. Não sabiam que a resposta para sua tristeza caminhava ao lado deles.",
+        "prompt": "Jesus encerra o encontro não com mais explicação teológica, mas com comissionamento direto — os discípulos deixam de ser apenas receptores da revelação para se tornarem seus transmissores.",
         "questions": [
-          "Em que área da sua vida você está \"voltando para Emaús\" — decepcionado, desistindo, desanimado?",
-          "O que precisa \"arder\" no seu coração para que você reconheça Jesus ao seu lado?",
-          "Quem precisa ouvir de você a boa notícia: \"O Senhor ressuscitou verdadeiramente\"?"
+          "Esta semana — da correção misericordiosa de Pedro à comissão final de Jesus — o que você mais quer levar adiante?",
+          "Você vive mais como espectador da fé ou como testemunha ativa dela?",
+          "Como você quer entrar na quarta semana da Páscoa, à luz dessa comissão recebida?"
         ]
       }
     },
     "2027-04-18": {
       "prayer": {
-        "title": "O Bom Pastor",
-        "text": "Jesus, Bom Pastor, tu conheces cada uma das tuas ovelhas pelo nome. Conheces as nossas lutas, medos e alegrias. Nós conhecemos a tua voz e te seguimos. Guia-nos por pastos verdejantes e águas tranquilas. Quando passarmos pelo vale da sombra da morte, não temeremos, porque tu estás conosco. Guarda-nos de seguir vozes estranhas que nos desviam do teu caminho. Em ti não nos faltará nada. Amém."
+        "title": "Em Nenhum Outro Há Salvação",
+        "text": "Senhor, diante das autoridades, Pedro declarou sem rodeios: \"em nenhum outro há salvação; porque debaixo do céu nenhum outro nome há, dado entre os homens, em que devamos ser salvos.\" Uma exclusividade que hoje soa contracultural. Que eu tenha essa mesma clareza, sem hesitação envergonhada. Amém."
       },
       "meditation": {
-        "prompt": "O Bom Pastor conhece suas ovelhas pelo nome. Em um mundo de massas e números, você é conhecido pessoalmente pelo Criador.",
+        "prompt": "Pedro faz essa declaração exclusiva precisamente diante de quem tinha poder para prendê-lo — a clareza da convicção não diminui diante de consequência real e imediata.",
         "questions": [
-          "O que significa para você ser conhecido pelo nome pelo Criador do universo?",
-          "Você tem reconhecido a voz do Pastor no meio do barulho do mundo?",
-          "Em que área você precisa confiar mais na liderança do Bom Pastor?"
+          "Você hesita em afirmar clareza sobre sua fé quando isso poderia gerar desconforto social?",
+          "O que sustentava a coragem de Pedro diante de autoridades reais e ameaçadoras?",
+          "Como manter essa clareza sem perder a humildade e o respeito por quem discorda?"
         ]
       }
     },
     "2027-04-19": {
       "prayer": {
-        "title": "O Bom Pastor",
-        "text": "Jesus, Bom Pastor, tu conheces cada uma das tuas ovelhas pelo nome. Conheces as nossas lutas, medos e alegrias. Nós conhecemos a tua voz e te seguimos. Guia-nos por pastos verdejantes e águas tranquilas. Quando passarmos pelo vale da sombra da morte, não temeremos, porque tu estás conosco. Guarda-nos de seguir vozes estranhas que nos desviam do teu caminho. Em ti não nos faltará nada. Amém."
+        "title": "A Pedra Rejeitada pelos Edificadores",
+        "text": "Senhor, Pedro cita novamente o salmo: \"ele é a pedra que foi rejeitada por vós, os edificadores, a qual foi posta como pedra angular.\" A rejeição humana não invalidou o propósito divino. Que eu confie nisso quando algo meu for rejeitado injustamente. Amém."
       },
       "meditation": {
-        "prompt": "O Bom Pastor conhece suas ovelhas pelo nome. Em um mundo de massas e números, você é conhecido pessoalmente pelo Criador.",
+        "prompt": "A mesma imagem do Salmo 118, citada no Domingo de Páscoa, reaparece aqui diante das autoridades — a rejeição não apenas não impediu, mas se tornou parte do próprio plano de Deus.",
         "questions": [
-          "O que significa para você ser conhecido pelo nome pelo Criador do universo?",
-          "Você tem reconhecido a voz do Pastor no meio do barulho do mundo?",
-          "Em que área você precisa confiar mais na liderança do Bom Pastor?"
+          "Que rejeição você sofreu que, olhando em retrospecto, Deus usou de forma que você não esperava?",
+          "Como essa imagem repetida — pedra rejeitada, pedra angular — muda sua confiança diante de rejeição atual?",
+          "O que significaria confiar hoje que a rejeição não tem a palavra final sobre o seu valor?"
         ]
       }
     },
     "2027-04-20": {
       "prayer": {
-        "title": "O Bom Pastor",
-        "text": "Jesus, Bom Pastor, tu conheces cada uma das tuas ovelhas pelo nome. Conheces as nossas lutas, medos e alegrias. Nós conhecemos a tua voz e te seguimos. Guia-nos por pastos verdejantes e águas tranquilas. Quando passarmos pelo vale da sombra da morte, não temeremos, porque tu estás conosco. Guarda-nos de seguir vozes estranhas que nos desviam do teu caminho. Em ti não nos faltará nada. Amém."
+        "title": "A Tua Vara e o Teu Cajado me Consolam",
+        "text": "Senhor, meu pastor, \"ainda que eu ande pelo vale da sombra da morte, não temerei mal algum, porque tu estás comigo; a tua vara e o teu cajado me consolam.\" Instrumentos de correção e proteção, ambos consoladores. Que eu aceite hoje tanto tua correção quanto tua proteção como consolo. Amém."
       },
       "meditation": {
-        "prompt": "O Bom Pastor conhece suas ovelhas pelo nome. Em um mundo de massas e números, você é conhecido pessoalmente pelo Criador.",
+        "prompt": "A vara e o cajado eram, literalmente, instrumentos de disciplina e de defesa usados por pastores reais — o salmo os descreve, surpreendentemente, como fonte de consolo, não de medo.",
         "questions": [
-          "O que significa para você ser conhecido pelo nome pelo Criador do universo?",
-          "Você tem reconhecido a voz do Pastor no meio do barulho do mundo?",
-          "Em que área você precisa confiar mais na liderança do Bom Pastor?"
+          "Você recebe a correção de Deus mais como ameaça ou como consolo, como o salmo descreve?",
+          "Que \"vale da sombra da morte\" você atravessa hoje, precisando dessa companhia?",
+          "O que significaria confiar que até a disciplina de Deus, como a vara do pastor, é forma de cuidado?"
         ]
       }
     },
     "2027-04-21": {
       "prayer": {
-        "title": "O Bom Pastor",
-        "text": "Jesus, Bom Pastor, tu conheces cada uma das tuas ovelhas pelo nome. Conheces as nossas lutas, medos e alegrias. Nós conhecemos a tua voz e te seguimos. Guia-nos por pastos verdejantes e águas tranquilas. Quando passarmos pelo vale da sombra da morte, não temeremos, porque tu estás conosco. Guarda-nos de seguir vozes estranhas que nos desviam do teu caminho. Em ti não nos faltará nada. Amém."
+        "title": "Não Amemos de Palavra, Nem de Língua",
+        "text": "Senhor, João instrui: \"não amemos de palavra, nem de língua, mas por obras e em verdade.\" O amor genuíno se prova em ação concreta, não em declaração. Que meu amor hoje se expresse por obras específicas, não apenas sentimento declarado. Amém."
       },
       "meditation": {
-        "prompt": "O Bom Pastor conhece suas ovelhas pelo nome. Em um mundo de massas e números, você é conhecido pessoalmente pelo Criador.",
+        "prompt": "João contrasta diretamente amor verbal com amor praticado — a genuinidade do amor cristão, para ele, se prova especificamente na disposição de agir, não apenas de declarar sentimento.",
         "questions": [
-          "O que significa para você ser conhecido pelo nome pelo Criador do universo?",
-          "Você tem reconhecido a voz do Pastor no meio do barulho do mundo?",
-          "Em que área você precisa confiar mais na liderança do Bom Pastor?"
+          "Seu amor por alguém próximo tem se expressado mais em palavras ou em ações concretas recentemente?",
+          "Que \"obra\" específica você poderia realizar hoje que comunicaria amor melhor do que qualquer palavra?",
+          "Existe alguém a quem você declara amor, mas cujas necessidades concretas você tem ignorado?"
         ]
       }
     },
     "2027-04-22": {
       "prayer": {
-        "title": "O Bom Pastor",
-        "text": "Jesus, Bom Pastor, tu conheces cada uma das tuas ovelhas pelo nome. Conheces as nossas lutas, medos e alegrias. Nós conhecemos a tua voz e te seguimos. Guia-nos por pastos verdejantes e águas tranquilas. Quando passarmos pelo vale da sombra da morte, não temeremos, porque tu estás conosco. Guarda-nos de seguir vozes estranhas que nos desviam do teu caminho. Em ti não nos faltará nada. Amém."
+        "title": "Sou o Bom Pastor; Dou a Minha Vida pelas Ovelhas",
+        "text": "Senhor Jesus, declaraste: \"eu sou o bom pastor; o bom pastor dá a sua vida pelas ovelhas.\" Não mercenário que foge do perigo, mas pastor que permanece até o fim. Que eu confie hoje nessa disposição tua de nunca me abandonar diante da ameaça. Amém."
       },
       "meditation": {
-        "prompt": "O Bom Pastor conhece suas ovelhas pelo nome. Em um mundo de massas e números, você é conhecido pessoalmente pelo Criador.",
+        "prompt": "Jesus contrasta deliberadamente o \"bom pastor\" com o \"mercenário\" — a diferença não está na presença durante a calmaria, mas na permanência precisamente quando o lobo aparece.",
         "questions": [
-          "O que significa para você ser conhecido pelo nome pelo Criador do universo?",
-          "Você tem reconhecido a voz do Pastor no meio do barulho do mundo?",
-          "Em que área você precisa confiar mais na liderança do Bom Pastor?"
+          "Você já experimentou alguém agir como \"mercenário\" — presente só enquanto conveniente — em vez de pastor fiel?",
+          "Como a promessa de Jesus de nunca fugir muda sua confiança diante de uma ameaça atual?",
+          "O que significaria imitar esse tipo de fidelidade em algum relacionamento onde você é responsável por outros?"
         ]
       }
     },
     "2027-04-23": {
       "prayer": {
-        "title": "O Bom Pastor",
-        "text": "Jesus, Bom Pastor, tu conheces cada uma das tuas ovelhas pelo nome. Conheces as nossas lutas, medos e alegrias. Nós conhecemos a tua voz e te seguimos. Guia-nos por pastos verdejantes e águas tranquilas. Quando passarmos pelo vale da sombra da morte, não temeremos, porque tu estás conosco. Guarda-nos de seguir vozes estranhas que nos desviam do teu caminho. Em ti não nos faltará nada. Amém."
+        "title": "Tenho Ainda Outras Ovelhas",
+        "text": "Senhor Jesus, disseste: \"tenho ainda outras ovelhas que não são deste aprisco; a essas também me importa conduzir... e haverá um rebanho e um pastor.\" Teu cuidado se estende além das fronteiras que eu talvez trace. Que eu reconheça hoje \"outras ovelhas\" que ainda não considerei parte do rebanho. Amém."
       },
       "meditation": {
-        "prompt": "O Bom Pastor conhece suas ovelhas pelo nome. Em um mundo de massas e números, você é conhecido pessoalmente pelo Criador.",
+        "prompt": "Jesus antecipa deliberadamente a expansão do rebanho para além das fronteiras conhecidas de Israel — um só rebanho futuro que incluiria pessoas ainda fora da experiência imediata dos discípulos.",
         "questions": [
-          "O que significa para você ser conhecido pelo nome pelo Criador do universo?",
-          "Você tem reconhecido a voz do Pastor no meio do barulho do mundo?",
-          "Em que área você precisa confiar mais na liderança do Bom Pastor?"
+          "Quem você já classificou, consciente ou inconscientemente, como fora do \"aprisco\" que merece cuidado?",
+          "Como essa promessa de Jesus desafia fronteiras que sua própria comunidade talvez trace sem perceber?",
+          "O que significaria buscar ativamente essas \"outras ovelhas\" esta semana?"
         ]
       }
     },
     "2027-04-24": {
       "prayer": {
-        "title": "O Bom Pastor",
-        "text": "Jesus, Bom Pastor, tu conheces cada uma das tuas ovelhas pelo nome. Conheces as nossas lutas, medos e alegrias. Nós conhecemos a tua voz e te seguimos. Guia-nos por pastos verdejantes e águas tranquilas. Quando passarmos pelo vale da sombra da morte, não temeremos, porque tu estás conosco. Guarda-nos de seguir vozes estranhas que nos desviam do teu caminho. Em ti não nos faltará nada. Amém."
+        "title": "Ninguém Ma Tira de Mim",
+        "text": "Senhor, encerramos esta semana com tua declaração de soberania sobre a própria morte: \"ninguém ma tira de mim, mas eu de mim mesmo a dou; tenho autoridade para a dar, e tenho autoridade para retomá-la.\" Nem mesmo a cruz foi imposta sem teu consentimento ativo. Que eu confie nessa soberania sobre tudo o que me ameaça. Amém."
       },
       "meditation": {
-        "prompt": "O Bom Pastor conhece suas ovelhas pelo nome. Em um mundo de massas e números, você é conhecido pessoalmente pelo Criador.",
+        "prompt": "Jesus insiste que sua morte não foi imposta por circunstâncias fora de controle, mas dada voluntariamente, com autoridade plena tanto para entregar a vida quanto para retomá-la.",
         "questions": [
-          "O que significa para você ser conhecido pelo nome pelo Criador do universo?",
-          "Você tem reconhecido a voz do Pastor no meio do barulho do mundo?",
-          "Em que área você precisa confiar mais na liderança do Bom Pastor?"
+          "Esta semana — da declaração ousada de Pedro à soberania do Bom Pastor — o que te ensinou sobre confiança diante da ameaça?",
+          "Como a soberania de Jesus sobre a própria morte muda sua confiança diante do que você teme perder?",
+          "O que significaria entrar na quinta semana da Páscoa descansando nessa autoridade que Jesus mesmo reivindica?"
         ]
       }
     },
     "2027-04-25": {
       "prayer": {
-        "title": "A Videira Verdadeira",
-        "text": "Senhor Jesus, tu és a videira verdadeira e nós somos os ramos. Sem ti nada podemos fazer. Perdoa-nos quando tentamos dar fruto por nossa própria força, apenas para murchar e cair. Mantém-nos ligados a ti pela oração e pela Palavra. O Pai, o agricultor, poda os ramos para que deem mais fruto — aceitamos a poda, mesmo quando dói, confiando que ela produzirá frutos de justiça. Que a seiva do teu Espírito corra em nós e produza fruto que permaneça. Amém."
+        "title": "Entendes, Porventura, o Que Estás Lendo?",
+        "text": "Senhor, Filipe perguntou ao eunuco etíope: \"entendes, porventura, o que estás lendo?\" E o eunuco respondeu com humildade: \"como poderei entender, se alguém não me ensinar?\" Que eu tenha essa mesma humildade diante do que ainda não compreendo nas Escrituras. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "O eunuco, apesar de sua posição de poder e riqueza, admite abertamente sua necessidade de ensino — uma humildade intelectual que abre espaço para o encontro transformador que se segue.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Você tende a fingir entendimento que não tem, por orgulho ou vergonha de perguntar?",
+          "Quem, na sua vida, poderia desempenhar o papel de Filipe, ajudando você a entender algo que ainda confunde?",
+          "O que significaria abordar hoje um texto difícil da Escritura com essa mesma humildade do eunuco?"
         ]
       }
     },
     "2027-04-26": {
       "prayer": {
-        "title": "A Videira Verdadeira",
-        "text": "Senhor Jesus, tu és a videira verdadeira e nós somos os ramos. Sem ti nada podemos fazer. Perdoa-nos quando tentamos dar fruto por nossa própria força, apenas para murchar e cair. Mantém-nos ligados a ti pela oração e pela Palavra. O Pai, o agricultor, poda os ramos para que deem mais fruto — aceitamos a poda, mesmo quando dói, confiando que ela produzirá frutos de justiça. Que a seiva do teu Espírito corra em nós e produza fruto que permaneça. Amém."
+        "title": "Eis Aqui Água; Que Impede que Eu Seja Batizado?",
+        "text": "Senhor, assim que compreendeu quem era Jesus, o eunuco perguntou sem hesitação: \"eis aqui água; que impede que eu seja batizado?\" Uma resposta imediata à revelação recebida. Que minha própria resposta a ti seja tão pronta e sem obstáculos autoimpostos. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "A pergunta do eunuco é retórica — ele já sabe que nada deveria impedir, e a narrativa confirma isso ao não registrar hesitação alguma de Filipe antes do batismo imediato.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Que \"obstáculo\" você tem imaginado existir entre você e um passo de fé que, na verdade, não existe?",
+          "Como a prontidão do eunuco desafia sua própria tendência a adiar respostas claras a Deus?",
+          "O que significaria remover hoje um obstáculo autoimposto que você mesmo criou?"
         ]
       }
     },
     "2027-04-27": {
       "prayer": {
-        "title": "A Videira Verdadeira",
-        "text": "Senhor Jesus, tu és a videira verdadeira e nós somos os ramos. Sem ti nada podemos fazer. Perdoa-nos quando tentamos dar fruto por nossa própria força, apenas para murchar e cair. Mantém-nos ligados a ti pela oração e pela Palavra. O Pai, o agricultor, poda os ramos para que deem mais fruto — aceitamos a poda, mesmo quando dói, confiando que ela produzirá frutos de justiça. Que a seiva do teu Espírito corra em nós e produza fruto que permaneça. Amém."
+        "title": "Os Mansos Comerão e Se Fartarão",
+        "text": "Senhor, o salmista promete: \"os mansos comerão e se fartarão; louvarão ao Senhor os que o buscam.\" Não os poderosos, mas os mansos — sendo saciados plenamente, não apenas sobrevivendo. Que eu confie hoje nessa provisão específica para quem busca, sem exigir, a tua mesa. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "O salmo escolhe deliberadamente \"os mansos\" como destinatários da fartura prometida — não conquista pela força, mas satisfação concedida a quem busca com humildade, exatamente o tipo de encontro que Filipe teve com o eunuco etíope.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Você busca a Deus mais como quem exige respostas, ou como alguém manso, disposto a receber o que for dado?",
+          "Que \"fartura\" espiritual você tem procurado por esforço próprio, quando poderia simplesmente vir buscar e receber?",
+          "O que significaria hoje se aproximar da mesa de Deus com essa mesma mansidão, confiando que haverá fartura?"
         ]
       }
     },
     "2027-04-28": {
       "prayer": {
-        "title": "A Videira Verdadeira",
-        "text": "Senhor Jesus, tu és a videira verdadeira e nós somos os ramos. Sem ti nada podemos fazer. Perdoa-nos quando tentamos dar fruto por nossa própria força, apenas para murchar e cair. Mantém-nos ligados a ti pela oração e pela Palavra. O Pai, o agricultor, poda os ramos para que deem mais fruto — aceitamos a poda, mesmo quando dói, confiando que ela produzirá frutos de justiça. Que a seiva do teu Espírito corra em nós e produza fruto que permaneça. Amém."
+        "title": "Deus É Amor",
+        "text": "Senhor, João declara diretamente: \"Deus é amor.\" Não apenas \"Deus ama\" — uma ação entre outras — mas amor como a própria essência de quem tu és. Que essa verdade fundamental molde hoje toda a minha compreensão de quem se dirige a mim. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "A afirmação de João vai além de descrever uma qualidade de Deus entre várias — ela identifica o amor como a própria natureza essencial de Deus, o ponto de partida para entender tudo o mais sobre ele.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Sua imagem de Deus é moldada primeiro por essa verdade — \"Deus é amor\" — ou por outras características primeiro?",
+          "Como reordenar sua compreensão de Deus, colocando o amor como ponto de partida, mudaria sua oração hoje?",
+          "O que significaria tratar cada interação com Deus hoje à luz dessa identidade essencial dele?"
         ]
       }
     },
     "2027-04-29": {
       "prayer": {
-        "title": "A Videira Verdadeira",
-        "text": "Senhor Jesus, tu és a videira verdadeira e nós somos os ramos. Sem ti nada podemos fazer. Perdoa-nos quando tentamos dar fruto por nossa própria força, apenas para murchar e cair. Mantém-nos ligados a ti pela oração e pela Palavra. O Pai, o agricultor, poda os ramos para que deem mais fruto — aceitamos a poda, mesmo quando dói, confiando que ela produzirá frutos de justiça. Que a seiva do teu Espírito corra em nós e produza fruto que permaneça. Amém."
+        "title": "O Perfeito Amor Lança Fora o Medo",
+        "text": "Senhor, João ensina: \"no amor não há medo; antes o perfeito amor lança fora o medo.\" Meu medo muitas vezes revela onde ainda não recebi plenamente esse amor. Que eu permita hoje que teu amor expulse o medo específico que carrego. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "João estabelece uma relação inversamente proporcional entre amor experimentado e medo sentido — o crescimento em um naturalmente diminui a presença do outro, sem eliminar a possibilidade de crescer mais.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Que medo específico você carrega hoje que talvez revele uma área onde ainda não recebeu plenamente o amor de Deus?",
+          "Como distinguir entre medo saudável (prudência) e o medo que o \"perfeito amor\" deveria expulsar?",
+          "O que significaria, concretamente, abrir esse medo específico à ação desse amor hoje?"
         ]
       }
     },
     "2027-04-30": {
       "prayer": {
-        "title": "A Videira Verdadeira",
-        "text": "Senhor Jesus, tu és a videira verdadeira e nós somos os ramos. Sem ti nada podemos fazer. Perdoa-nos quando tentamos dar fruto por nossa própria força, apenas para murchar e cair. Mantém-nos ligados a ti pela oração e pela Palavra. O Pai, o agricultor, poda os ramos para que deem mais fruto — aceitamos a poda, mesmo quando dói, confiando que ela produzirá frutos de justiça. Que a seiva do teu Espírito corra em nós e produza fruto que permaneça. Amém."
+        "title": "Eu Sou a Videira; Vós Sois as Varas",
+        "text": "Senhor Jesus, declaraste: \"eu sou a videira; vós sois as varas. Quem permanece em mim e eu nele, esse dá muito fruto; porque sem mim nada podeis fazer.\" Não parceria entre iguais, mas dependência vital e constante. Que eu reconheça hoje essa dependência, sem tentar produzir fruto por conta própria. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "A imagem da videira estabelece uma dependência que não é ocasional, mas contínua e vital — a vara separada da videira não apenas produz menos fruto, mas seca completamente e perde toda capacidade produtiva.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Em que área você tem tentado \"dar fruto\" com esforço próprio, desconectado da fonte real?",
+          "O que significa, na prática diária, \"permanecer\" na videira, não apenas visitá-la ocasionalmente?",
+          "Como reconhecer os sinais de que você está tentando produzir sem essa conexão vital constante?"
         ]
       }
     },
     "2027-05-01": {
       "prayer": {
-        "title": "A Videira Verdadeira",
-        "text": "Senhor Jesus, tu és a videira verdadeira e nós somos os ramos. Sem ti nada podemos fazer. Perdoa-nos quando tentamos dar fruto por nossa própria força, apenas para murchar e cair. Mantém-nos ligados a ti pela oração e pela Palavra. O Pai, o agricultor, poda os ramos para que deem mais fruto — aceitamos a poda, mesmo quando dói, confiando que ela produzirá frutos de justiça. Que a seiva do teu Espírito corra em nós e produza fruto que permaneça. Amém."
+        "title": "Nisto É Glorificado Meu Pai",
+        "text": "Senhor, encerramos esta semana com tua palavra: \"nisto é glorificado meu Pai, que deis muito fruto.\" O propósito final do fruto não é minha própria satisfação, mas a glória do Pai. Que eu viva hoje orientado por esse propósito maior. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "Jesus conecta diretamente o fruto produzido pelos discípulos com a glória do Pai — o propósito da produtividade espiritual não termina no próprio discípulo, mas aponta para além dele.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Esta semana — da humildade do eunuco à dependência vital da videira — o que você mais quer levar adiante?",
+          "Você mede o \"fruto\" da sua vida mais pela própria satisfação, ou pela glória que traz a Deus?",
+          "Como você quer entrar na sexta semana da Páscoa, à luz dessa reflexão sobre permanecer e frutificar?"
         ]
       }
     },
     "2027-05-02": {
       "prayer": {
-        "title": "A Promessa do Consolador",
-        "text": "Senhor Jesus, antes de voltares ao Pai, prometeste não nos deixar órfãos. Enviaste o Espírito Santo, o Consolador, para estar conosco para sempre. Agradecemos pela presença constante do Espírito em nossas vidas. Ele nos guia a toda verdade, nos lembra das tuas palavras, intercede por nós com gemidos inexprimíveis. Renova em nós hoje a consciência de que não estamos sós — o próprio Deus habita em nós pelo Espírito. Amém."
+        "title": "Também Sobre os Gentios Se Derramou o Espírito",
+        "text": "Senhor, os crentes judeus \"maravilharam-se de que também sobre os gentios se derramasse o dom do Espírito Santo.\" Tua obra ultrapassou expectativas até dos mais fiéis. Que eu permaneça aberto a formas surpreendentes de tua ação, mesmo quando desafiam minhas categorias. Amém."
       },
       "meditation": {
-        "prompt": "Jesus não nos deixou órfãos. O Espírito Santo é a presença contínua de Deus conosco. Não estamos sozinhos.",
+        "prompt": "A surpresa genuína dos crentes judeus mostra que até pessoas de fé sincera podem ter expectativas limitadas demais sobre onde e em quem Deus escolhe agir.",
         "questions": [
-          "Você tem vivido como órfão ou como filho amado que tem o Espírito habitando em você?",
-          "Como você pode estar mais atento à voz do Espírito no seu dia a dia?",
-          "O que muda na sua vida sabendo que o próprio Deus intercede por você com gemidos inexprimíveis?"
+          "Você já ficou surpreso — talvez até desconfortável — ao ver Deus agir de forma que não esperava, em alguém inesperado?",
+          "Que categoria ou expectativa sua sobre \"quem\" Deus alcança poderia estar limitando demais sua visão?",
+          "Como imitar a disposição desses primeiros crentes de reconhecer e aceitar essa surpresa, em vez de resistir a ela?"
         ]
       }
     },
     "2027-05-03": {
       "prayer": {
-        "title": "A Promessa do Consolador",
-        "text": "Senhor Jesus, antes de voltares ao Pai, prometeste não nos deixar órfãos. Enviaste o Espírito Santo, o Consolador, para estar conosco para sempre. Agradecemos pela presença constante do Espírito em nossas vidas. Ele nos guia a toda verdade, nos lembra das tuas palavras, intercede por nós com gemidos inexprimíveis. Renova em nós hoje a consciência de que não estamos sós — o próprio Deus habita em nós pelo Espírito. Amém."
+        "title": "Pode Alguém Recusar a Água?",
+        "text": "Senhor, diante da evidência clara da obra do Espírito, Pedro perguntou: \"pode alguém porventura recusar a água para que não sejam batizados estes que também, como nós, receberam o Espírito Santo?\" Que eu não erga barreiras onde tu já removeste. Amém."
       },
       "meditation": {
-        "prompt": "Jesus não nos deixou órfãos. O Espírito Santo é a presença contínua de Deus conosco. Não estamos sozinhos.",
+        "prompt": "Pedro reconhece que a evidência da obra de Deus deve preceder e determinar a resposta da igreja, não o contrário — a estrutura humana se ajusta à ação divina já observada, não o inverso.",
         "questions": [
-          "Você tem vivido como órfão ou como filho amado que tem o Espírito habitando em você?",
-          "Como você pode estar mais atento à voz do Espírito no seu dia a dia?",
-          "O que muda na sua vida sabendo que o próprio Deus intercede por você com gemidos inexprimíveis?"
+          "Você já ergueu, sem perceber, alguma barreira que Deus já havia removido?",
+          "Como reconhecer, na prática, quando a evidência da obra de Deus deveria mudar sua própria resistência?",
+          "O que significaria hoje deixar de \"recusar a água\" a alguém que Deus já recebeu?"
         ]
       }
     },
     "2027-05-04": {
       "prayer": {
-        "title": "A Promessa do Consolador",
-        "text": "Senhor Jesus, antes de voltares ao Pai, prometeste não nos deixar órfãos. Enviaste o Espírito Santo, o Consolador, para estar conosco para sempre. Agradecemos pela presença constante do Espírito em nossas vidas. Ele nos guia a toda verdade, nos lembra das tuas palavras, intercede por nós com gemidos inexprimíveis. Renova em nós hoje a consciência de que não estamos sós — o próprio Deus habita em nós pelo Espírito. Amém."
+        "title": "Cantai ao Senhor um Cântico Novo",
+        "text": "Senhor, o salmista convida: \"cantai ao Senhor um cântico novo, porque ele tem feito maravilhas.\" Um novo cântico para uma nova obra — não repetir mecanicamente o antigo, mas celebrar o que Deus está fazendo agora. Que eu encontre hoje palavras novas para o que tu tens feito recentemente. Amém."
       },
       "meditation": {
-        "prompt": "Jesus não nos deixou órfãos. O Espírito Santo é a presença contínua de Deus conosco. Não estamos sozinhos.",
+        "prompt": "O convite a um \"cântico novo\" sugere que a resposta de louvor deveria acompanhar e refletir ações novas e específicas de Deus, não apenas repetir fórmulas antigas sem conexão com a realidade presente.",
         "questions": [
-          "Você tem vivido como órfão ou como filho amado que tem o Espírito habitando em você?",
-          "Como você pode estar mais atento à voz do Espírito no seu dia a dia?",
-          "O que muda na sua vida sabendo que o próprio Deus intercede por você com gemidos inexprimíveis?"
+          "Que \"maravilha\" recente de Deus na sua vida ainda não recebeu de você um \"cântico novo\" — reconhecimento específico?",
+          "Você tende a louvar com fórmulas antigas repetidas, ou busca linguagem nova para experiências novas?",
+          "O que significaria hoje compor, mesmo informalmente, esse cântico novo pessoal?"
         ]
       }
     },
     "2027-05-05": {
       "prayer": {
-        "title": "A Promessa do Consolador",
-        "text": "Senhor Jesus, antes de voltares ao Pai, prometeste não nos deixar órfãos. Enviaste o Espírito Santo, o Consolador, para estar conosco para sempre. Agradecemos pela presença constante do Espírito em nossas vidas. Ele nos guia a toda verdade, nos lembra das tuas palavras, intercede por nós com gemidos inexprimíveis. Renova em nós hoje a consciência de que não estamos sós — o próprio Deus habita em nós pelo Espírito. Amém."
+        "title": "Todo Aquele Que É Nascido de Deus Vence o Mundo",
+        "text": "Senhor, João declara: \"todo o que é nascido de Deus vence o mundo; e esta é a vitória que vence o mundo: a nossa fé.\" Não vitória por força própria, mas pela fé que já pertence a quem nasceu de novo. Que eu viva hoje reivindicando essa vitória já dada. Amém."
       },
       "meditation": {
-        "prompt": "Jesus não nos deixou órfãos. O Espírito Santo é a presença contínua de Deus conosco. Não estamos sozinhos.",
+        "prompt": "João identifica a \"vitória\" não com conquista futura distante, mas com a própria fé já presente no crente — vitória como identidade atual, não apenas esperança adiada.",
         "questions": [
-          "Você tem vivido como órfão ou como filho amado que tem o Espírito habitando em você?",
-          "Como você pode estar mais atento à voz do Espírito no seu dia a dia?",
-          "O que muda na sua vida sabendo que o próprio Deus intercede por você com gemidos inexprimíveis?"
+          "Você vive mais como alguém em batalha incerta, ou como alguém que já carrega a vitória, como João descreve?",
+          "Que \"mundo\" — pressão, tentação, sistema de valores contrário — você precisa vencer hoje através dessa fé?",
+          "O que significaria reivindicar essa vitória já dada, em vez de lutar como se ainda não a tivesse?"
         ]
       }
     },
     "2027-05-06": {
       "prayer": {
-        "title": "A Promessa do Consolador",
-        "text": "Senhor Jesus, antes de voltares ao Pai, prometeste não nos deixar órfãos. Enviaste o Espírito Santo, o Consolador, para estar conosco para sempre. Agradecemos pela presença constante do Espírito em nossas vidas. Ele nos guia a toda verdade, nos lembra das tuas palavras, intercede por nós com gemidos inexprimíveis. Renova em nós hoje a consciência de que não estamos sós — o próprio Deus habita em nós pelo Espírito. Amém."
+        "title": "Ninguém Tem Maior Amor do Que Este",
+        "text": "Senhor Jesus, declaraste: \"ninguém tem maior amor do que este, de dar alguém a sua vida pelos seus amigos.\" O padrão máximo de amor, que tu mesmo vivestes primeiro. Que eu busque, nas minhas próprias medidas, viver segundo esse padrão. Amém."
       },
       "meditation": {
-        "prompt": "Jesus não nos deixou órfãos. O Espírito Santo é a presença contínua de Deus conosco. Não estamos sozinhos.",
+        "prompt": "Jesus define o amor supremo não como sentimento intenso, mas como disposição concreta de sacrifício pelo outro — um padrão que ele mesmo cumpriria literalmente dias depois desta conversa.",
         "questions": [
-          "Você tem vivido como órfão ou como filho amado que tem o Espírito habitando em você?",
-          "Como você pode estar mais atento à voz do Espírito no seu dia a dia?",
-          "O que muda na sua vida sabendo que o próprio Deus intercede por você com gemidos inexprimíveis?"
+          "Como esse padrão — dar a vida pelos amigos — se traduz em gestos menores, mas reais, na sua rotina?",
+          "Existe alguém por quem você resiste a fazer um sacrifício real, mesmo pequeno?",
+          "O que significaria viver hoje um pouco mais próximo desse padrão máximo de amor?"
         ]
       }
     },
     "2027-05-07": {
       "prayer": {
-        "title": "A Promessa do Consolador",
-        "text": "Senhor Jesus, antes de voltares ao Pai, prometeste não nos deixar órfãos. Enviaste o Espírito Santo, o Consolador, para estar conosco para sempre. Agradecemos pela presença constante do Espírito em nossas vidas. Ele nos guia a toda verdade, nos lembra das tuas palavras, intercede por nós com gemidos inexprimíveis. Renova em nós hoje a consciência de que não estamos sós — o próprio Deus habita em nós pelo Espírito. Amém."
+        "title": "Já Não Vos Chamo Servos, Mas Amigos",
+        "text": "Senhor Jesus, declaraste: \"já não vos chamo servos, porque o servo não sabe o que faz o seu senhor; mas chamei-vos amigos, porque tudo quanto ouvi de meu Pai vos dei a conhecer.\" Uma promoção de relacionamento, não apenas de título. Que eu viva hoje como amigo, não apenas servo obediente. Amém."
       },
       "meditation": {
-        "prompt": "Jesus não nos deixou órfãos. O Espírito Santo é a presença contínua de Deus conosco. Não estamos sozinhos.",
+        "prompt": "A diferença que Jesus estabelece entre servo e amigo está no acesso ao conhecimento e à intimidade — o amigo é incluído no propósito e no coração, não apenas instruído a obedecer sem explicação.",
         "questions": [
-          "Você tem vivido como órfão ou como filho amado que tem o Espírito habitando em você?",
-          "Como você pode estar mais atento à voz do Espírito no seu dia a dia?",
-          "O que muda na sua vida sabendo que o próprio Deus intercede por você com gemidos inexprimíveis?"
+          "Você se relaciona com Deus mais como servo cumprindo ordens, ou como amigo incluído em seus propósitos?",
+          "O que significa, para você, ter acesso ao \"que o Senhor faz\", não apenas receber instruções isoladas?",
+          "Como essa amizade oferecida por Jesus muda sua forma de orar hoje?"
         ]
       }
     },
     "2027-05-08": {
       "prayer": {
-        "title": "A Promessa do Consolador",
-        "text": "Senhor Jesus, antes de voltares ao Pai, prometeste não nos deixar órfãos. Enviaste o Espírito Santo, o Consolador, para estar conosco para sempre. Agradecemos pela presença constante do Espírito em nossas vidas. Ele nos guia a toda verdade, nos lembra das tuas palavras, intercede por nós com gemidos inexprimíveis. Renova em nós hoje a consciência de que não estamos sós — o próprio Deus habita em nós pelo Espírito. Amém."
+        "title": "Que Vos Ameis Uns aos Outros",
+        "text": "Senhor, encerramos esta semana com teu mandamento central: \"isto vos mando: que vos ameis uns aos outros.\" Amanhã celebramos a Ascensão — o início de uma nova forma da tua presença entre nós. Que eu viva hoje já esse mandamento simples e essencial. Amém."
       },
       "meditation": {
-        "prompt": "Jesus não nos deixou órfãos. O Espírito Santo é a presença contínua de Deus conosco. Não estamos sozinhos.",
+        "prompt": "Jesus reduz o mandamento final desta longa conversa a uma única instrução essencial — não múltiplas regras complexas, mas o amor mútuo como resumo de tudo o mais que ele ensinou.",
         "questions": [
-          "Você tem vivido como órfão ou como filho amado que tem o Espírito habitando em você?",
-          "Como você pode estar mais atento à voz do Espírito no seu dia a dia?",
-          "O que muda na sua vida sabendo que o próprio Deus intercede por você com gemidos inexprimíveis?"
+          "Esta semana — da surpresa da inclusão dos gentios ao mandamento simples do amor — o que você mais quer levar adiante?",
+          "Se tivesse que resumir sua fé em um único mandamento, como Jesus fez aqui, o que diria?",
+          "Como você quer entrar na última semana da Páscoa, à luz desse mandamento essencial?"
         ]
       }
     },
     "2027-05-09": {
       "prayer": {
-        "title": "Ascensão e Missão",
-        "text": "Senhor exaltado, tu foste elevado ao céu e estás assentado à direita do Pai. Deste-nos a Grande Comissão: \"Ide por todo mundo e pregai o evangelho a toda criatura\". Enche-nos do poder do Espírito Santo para sermos tuas testemunhas. Não apenas com palavras, mas com vidas transformadas. Até que voltes, somos os teus embaixadores neste mundo. Usa-nos para levar a tua luz onde há trevas, a tua paz onde há conflito, o teu amor onde há ódio. Maranata! Vem, Senhor Jesus! Amém."
+        "title": "Convinha Que Se Cumprisse a Escritura",
+        "text": "Senhor, Pedro, diante da vaga deixada por Judas, reconheceu: \"convinha que se cumprisse a escritura.\" Mesmo a traição mais dolorosa encontrou lugar dentro do teu propósito maior. Que eu confie hoje que nem mesmo minha maior decepção escapa ao teu cuidado soberano. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "Pedro processa a traição de Judas — provavelmente a experiência mais dolorosa do grupo apostólico — através da lente da Escritura cumprida, sem minimizar a dor, mas situando-a dentro de um propósito maior.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Que traição ou decepção você carrega que ainda não conseguiu situar dentro de um propósito maior?",
+          "Como a resposta de Pedro — nem negação nem desespero, mas reconhecimento de propósito — poderia orientar sua própria dor?",
+          "O que significaria confiar hoje que Deus segue trabalhando mesmo através das piores traições humanas?"
         ]
       }
     },
     "2027-05-10": {
       "prayer": {
-        "title": "Ascensão e Missão",
-        "text": "Senhor exaltado, tu foste elevado ao céu e estás assentado à direita do Pai. Deste-nos a Grande Comissão: \"Ide por todo mundo e pregai o evangelho a toda criatura\". Enche-nos do poder do Espírito Santo para sermos tuas testemunhas. Não apenas com palavras, mas com vidas transformadas. Até que voltes, somos os teus embaixadores neste mundo. Usa-nos para levar a tua luz onde há trevas, a tua paz onde há conflito, o teu amor onde há ódio. Maranata! Vem, Senhor Jesus! Amém."
+        "title": "Deitaram Sortes a Respeito Deles",
+        "text": "Senhor, para escolher o substituto de Judas, os apóstolos oraram e \"deitaram sortes... e caiu a sorte sobre Matias.\" Um método que hoje pareceria estranho, mas que revela dependência genuína de tua orientação em decisões difíceis. Guia hoje minha própria decisão incerta. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "O método usado pelos apóstolos — lançar sortes, precedido de oração explícita — reflete uma cultura diferente da nossa, mas revela um princípio permanente: buscar ativamente a orientação de Deus antes de decisões importantes.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Que decisão importante você enfrenta hoje sem ter buscado, com a mesma intencionalidade dos apóstolos, a orientação de Deus?",
+          "Como você discerne a vontade de Deus em decisões onde não há resposta óbvia?",
+          "O que significaria orar antes de decidir, como os apóstolos oraram antes de lançar sortes?"
         ]
       }
     },
     "2027-05-11": {
       "prayer": {
-        "title": "Ascensão e Missão",
-        "text": "Senhor exaltado, tu foste elevado ao céu e estás assentado à direita do Pai. Deste-nos a Grande Comissão: \"Ide por todo mundo e pregai o evangelho a toda criatura\". Enche-nos do poder do Espírito Santo para sermos tuas testemunhas. Não apenas com palavras, mas com vidas transformadas. Até que voltes, somos os teus embaixadores neste mundo. Usa-nos para levar a tua luz onde há trevas, a tua paz onde há conflito, o teu amor onde há ódio. Maranata! Vem, Senhor Jesus! Amém."
+        "title": "Como a Árvore Plantada Junto às Correntes de Águas",
+        "text": "Senhor, o salmista descreve quem medita na tua lei \"como a árvore plantada junto às correntes de águas, a qual dá o seu fruto na estação própria.\" Não fruto forçado, mas fruto natural de raízes bem nutridas. Que eu esteja hoje bem enraizado em ti. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "A imagem da árvore enfatiza que o fruto vem naturalmente de estar bem plantado e nutrido, não de esforço direto para produzi-lo — a raiz determina o fruto, não a pressão externa.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Você tem investido mais em \"produzir fruto\" diretamente, ou em estar bem enraizado nas fontes certas?",
+          "O que significaria, concretamente, estar \"plantado junto às correntes de águas\" na sua rotina de fé?",
+          "Que raiz precisa de mais atenção hoje para que o fruto certo venha, na estação própria, sem forçar?"
         ]
       }
     },
     "2027-05-12": {
       "prayer": {
-        "title": "Ascensão e Missão",
-        "text": "Senhor exaltado, tu foste elevado ao céu e estás assentado à direita do Pai. Deste-nos a Grande Comissão: \"Ide por todo mundo e pregai o evangelho a toda criatura\". Enche-nos do poder do Espírito Santo para sermos tuas testemunhas. Não apenas com palavras, mas com vidas transformadas. Até que voltes, somos os teus embaixadores neste mundo. Usa-nos para levar a tua luz onde há trevas, a tua paz onde há conflito, o teu amor onde há ódio. Maranata! Vem, Senhor Jesus! Amém."
+        "title": "Deus Nos Deu a Vida Eterna",
+        "text": "Senhor, João declara: \"Deus nos deu a vida eterna; e esta vida está em seu Filho.\" Um dom já concedido, não apenas prometido para o futuro distante. Que eu viva hoje como alguém que já possui essa vida, não apenas espera por ela. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "João usa o tempo verbal do passado — \"deu\", não \"dará\" — enfatizando que a vida eterna é posse presente do crente, localizada especificamente \"no Filho\", não em méritos próprios.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Você vive mais como alguém esperando a vida eterna no futuro, ou como quem já a possui agora, \"no Filho\"?",
+          "Como essa posse presente muda a forma como você encara a ansiedade sobre o futuro?",
+          "O que significaria viver hoje já a partir dessa certeza, não apenas na expectativa dela?"
         ]
       }
     },
     "2027-05-13": {
       "prayer": {
-        "title": "Ascensão e Missão",
-        "text": "Senhor exaltado, tu foste elevado ao céu e estás assentado à direita do Pai. Deste-nos a Grande Comissão: \"Ide por todo mundo e pregai o evangelho a toda criatura\". Enche-nos do poder do Espírito Santo para sermos tuas testemunhas. Não apenas com palavras, mas com vidas transformadas. Até que voltes, somos os teus embaixadores neste mundo. Usa-nos para levar a tua luz onde há trevas, a tua paz onde há conflito, o teu amor onde há ódio. Maranata! Vem, Senhor Jesus! Amém."
+        "title": "Santifica-os na Verdade",
+        "text": "Senhor Jesus, oraste pelos discípulos: \"santifica-os na verdade, a tua palavra é a verdade.\" Não pedes que sejam removidos do mundo, mas transformados dentro dele pela verdade. Que a tua palavra me santifique hoje, onde quer que eu esteja. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "Jesus não ora pela remoção dos discípulos do mundo difícil onde vivem, mas pela transformação interior deles através da verdade — permanecer no mundo, mas genuinamente diferente dele.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Você busca mais escapar de contextos difíceis, ou ser transformado pela verdade dentro deles?",
+          "Que área da sua vida precisa hoje dessa santificação específica pela Palavra?",
+          "Como viver \"no mundo, mas não do mundo\" de forma concreta, não apenas como frase repetida?"
         ]
       }
     },
     "2027-05-14": {
       "prayer": {
-        "title": "Ascensão e Missão",
-        "text": "Senhor exaltado, tu foste elevado ao céu e estás assentado à direita do Pai. Deste-nos a Grande Comissão: \"Ide por todo mundo e pregai o evangelho a toda criatura\". Enche-nos do poder do Espírito Santo para sermos tuas testemunhas. Não apenas com palavras, mas com vidas transformadas. Até que voltes, somos os teus embaixadores neste mundo. Usa-nos para levar a tua luz onde há trevas, a tua paz onde há conflito, o teu amor onde há ódio. Maranata! Vem, Senhor Jesus! Amém."
+        "title": "Assim Como Tu Me Enviaste ao Mundo",
+        "text": "Senhor Jesus, oraste: \"assim como tu me enviaste ao mundo, também eu os enviarei ao mundo.\" Um envio que espelha o teu próprio, com o mesmo propósito e urgência. Que eu reconheça hoje meu próprio envio, não apenas minha permanência passiva. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "Jesus estabelece uma continuidade direta entre sua própria missão e a dos discípulos — o mesmo padrão de envio, não uma tarefa menor ou secundária, mas participação real na mesma missão.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Você vive mais consciente de ser \"enviado\", com propósito específico, ou apenas de estar presente sem missão clara?",
+          "Como a comparação direta com o próprio envio de Jesus muda a seriedade com que você encara sua missão?",
+          "O que significaria viver hoje, concretamente, como alguém enviado, não apenas presente?"
         ]
       }
     },
     "2027-05-15": {
       "prayer": {
-        "title": "Ascensão e Missão",
-        "text": "Senhor exaltado, tu foste elevado ao céu e estás assentado à direita do Pai. Deste-nos a Grande Comissão: \"Ide por todo mundo e pregai o evangelho a toda criatura\". Enche-nos do poder do Espírito Santo para sermos tuas testemunhas. Não apenas com palavras, mas com vidas transformadas. Até que voltes, somos os teus embaixadores neste mundo. Usa-nos para levar a tua luz onde há trevas, a tua paz onde há conflito, o teu amor onde há ódio. Maranata! Vem, Senhor Jesus! Amém."
+        "title": "Por Eles Eu Me Santifico",
+        "text": "Senhor, encerramos toda a estação pascal com tua declaração final: \"por eles eu me santifico, para que também eles sejam santificados na verdade.\" Amanhã celebramos Pentecostes — a chegada do Espírito que torna essa santificação realidade vivida na igreja. Prepara meu coração para receber. Amém."
       },
       "meditation": {
-        "prompt": "O túmulo vazio é o evento que separa o cristianismo de todas as outras religiões. Deus fez o que nenhum ser humano poderia fazer.",
+        "prompt": "Esta oração de Jesus, feita na véspera de sua própria prisão e morte, projeta diretamente para o que a igreja celebraria em Pentecostes — a chegada do Espírito que tornaria real essa santificação pedida.",
         "questions": [
-          "Se a ressurreição é verdade — e ela é — que implicações isso tem para o seu medo da morte?",
-          "De que maneiras você precisa experimentar a \"ressurreição\" hoje — em relacionamentos, esperanças, sonhos?",
-          "A ressurreição não é apenas um evento passado, mas uma realidade presente. Como você pode viver na luz da ressurreição hoje?"
+          "Toda esta estação pascal — do sepulcro vazio à oração final de Jesus — o que você mais quer levar para Pentecostes?",
+          "Como você se sente preparado, ou não, para receber amanhã o Espírito que a igreja celebrará?",
+          "O que significaria entrar em Pentecostes já vivendo a santificação pela qual Jesus orou?"
         ]
       }
     },
     "2027-05-16": {
       "prayer": {
-        "title": "Vem, Espírito Santo",
-        "text": "Espírito Santo de Deus, desce sobre nós como desces-te sobre os apóstolos no cenáculo. Enche-nos do teu fogo divino — não um fogo que destrói, mas que purifica, ilumina e aquece. Abre os nossos lábios para proclamar as maravilhas de Deus com ousadia. Quebra as barreiras de línguas e culturas que nos separam. Une-nos num só corpo, um só Espírito, uma só esperança. O mundo precisa ver uma igreja cheia do Espírito — corajosa, amorosa, missionária. Faze de nós essa igreja. Vem, Espírito Santo! Amém."
+        "title": "O Espírito Ajuda na Nossa Fraqueza",
+        "text": "Espírito Santo, hoje celebramos tua chegada sobre a igreja, mas Paulo lembra que tua obra não termina no espetáculo daquele dia: \"o Espírito nos ajuda na fraqueza; porque não sabemos o que havemos de pedir como convém, mas o Espírito mesmo intercede por nós com gemidos inexprimíveis.\" Intercede hoje por mim, onde minhas próprias palavras não alcançam. Amém."
       },
       "meditation": {
-        "prompt": "Pentecostes inverte Babel. No princípio, a confusão das línguas espalhou a humanidade. No Espírito, as línguas se abrem para unir.",
+        "prompt": "Paulo descreve uma obra do Espírito muito mais silenciosa do que o vento e o fogo de Atos 2 — intercessão contínua, precisamente nos momentos em que nem sabemos formular o próprio pedido.",
         "questions": [
-          "O que impede a unidade no corpo de Cristo hoje — e como você pode ser um instrumento de reconciliação?",
-          "O fogo do Espírito purifica, ilumina e aquece. Qual dessas obras você mais precisa hoje?",
-          "A igreja primária saiu do cenáculo para transformar o mundo. Que \"cenáculo\" você precisa deixar para cumprir sua missão?"
+          "Existe algo que você carrega hoje sem conseguir sequer formular em palavras o que gostaria de pedir a Deus?",
+          "Como a promessa de que \"o Espírito intercede com gemidos inexprimíveis\" muda sua ansiedade sobre orar \"certo\"?",
+          "O que significaria confiar hoje nessa intercessão silenciosa, mesmo sem sentir o espetáculo do primeiro Pentecostes?"
         ]
       }
     },
     "2027-05-17": {
       "prayer": {
-        "title": "Vem, Espírito Santo",
-        "text": "Espírito Santo de Deus, desce sobre nós como desces-te sobre os apóstolos no cenáculo. Enche-nos do teu fogo divino — não um fogo que destrói, mas que purifica, ilumina e aquece. Abre os nossos lábios para proclamar as maravilhas de Deus com ousadia. Quebra as barreiras de línguas e culturas que nos separam. Une-nos num só corpo, um só Espírito, uma só esperança. O mundo precisa ver uma igreja cheia do Espírito — corajosa, amorosa, missionária. Faze de nós essa igreja. Vem, Espírito Santo! Amém."
+        "title": "Depois do Vento e do Fogo",
+        "text": "Espírito Santo, ontem celebramos teu batismo de fogo e vento sobre a igreja — hoje a vida comum retoma seu ritmo. Que eu não confunda ausência de espetáculo com ausência de tua presença. Continua a agir hoje, mesmo sem línguas de fogo visíveis. Amém."
       },
       "meditation": {
-        "prompt": "Pentecostes inverte Babel. No princípio, a confusão das línguas espalhou a humanidade. No Espírito, as línguas se abrem para unir.",
+        "prompt": "O dia depois de Pentecostes não vem acompanhado de nova manifestação espetacular — a igreja precisou aprender a reconhecer a presença contínua do Espírito na vida comum, não apenas no evento extraordinário.",
         "questions": [
-          "O que impede a unidade no corpo de Cristo hoje — e como você pode ser um instrumento de reconciliação?",
-          "O fogo do Espírito purifica, ilumina e aquece. Qual dessas obras você mais precisa hoje?",
-          "A igreja primária saiu do cenáculo para transformar o mundo. Que \"cenáculo\" você precisa deixar para cumprir sua missão?"
+          "Você tende a associar a presença de Deus mais com momentos espetaculares do que com a vida comum do dia a dia?",
+          "Como reconhecer hoje, num dia sem nada de extraordinário, a mesma presença que se manifestou ontem com tanta força?",
+          "O que significaria viver esta semana esperando o Espírito na rotina, não apenas em momentos marcantes?"
         ]
       }
     },
     "2027-05-18": {
       "prayer": {
-        "title": "Vem, Espírito Santo",
-        "text": "Espírito Santo de Deus, desce sobre nós como desces-te sobre os apóstolos no cenáculo. Enche-nos do teu fogo divino — não um fogo que destrói, mas que purifica, ilumina e aquece. Abre os nossos lábios para proclamar as maravilhas de Deus com ousadia. Quebra as barreiras de línguas e culturas que nos separam. Une-nos num só corpo, um só Espírito, uma só esperança. O mundo precisa ver uma igreja cheia do Espírito — corajosa, amorosa, missionária. Faze de nós essa igreja. Vem, Espírito Santo! Amém."
+        "title": "Uma Igreja de Muitas Línguas",
+        "text": "Espírito Santo, no Pentecostes, pessoas de \"todas as nações que há debaixo do céu\" ouviram, cada uma em sua própria língua, \"as grandezas de Deus.\" Que a igreja que habito hoje reflita essa mesma amplitude, sem exigir uniformidade que tu mesmo não exigiste. Amém."
       },
       "meditation": {
-        "prompt": "Pentecostes inverte Babel. No princípio, a confusão das línguas espalhou a humanidade. No Espírito, as línguas se abrem para unir.",
+        "prompt": "O milagre de Pentecostes preserva deliberadamente a diversidade de línguas, em vez de impor uma única língua comum — a unidade do Espírito não elimina diferença legítima.",
         "questions": [
-          "O que impede a unidade no corpo de Cristo hoje — e como você pode ser um instrumento de reconciliação?",
-          "O fogo do Espírito purifica, ilumina e aquece. Qual dessas obras você mais precisa hoje?",
-          "A igreja primária saiu do cenáculo para transformar o mundo. Que \"cenáculo\" você precisa deixar para cumprir sua missão?"
+          "Sua comunidade de fé valoriza diversidade genuína, ou espera uniformidade disfarçada de unidade?",
+          "Que \"língua\" diferente da sua — forma de expressar fé, cultura, temperamento — você poderia aprender a valorizar mais?",
+          "O que significaria buscar hoje unidade sem exigir que todos \"falem\" exatamente da mesma forma?"
         ]
       }
     },
     "2027-05-19": {
       "prayer": {
-        "title": "Vem, Espírito Santo",
-        "text": "Espírito Santo de Deus, desce sobre nós como desces-te sobre os apóstolos no cenáculo. Enche-nos do teu fogo divino — não um fogo que destrói, mas que purifica, ilumina e aquece. Abre os nossos lábios para proclamar as maravilhas de Deus com ousadia. Quebra as barreiras de línguas e culturas que nos separam. Une-nos num só corpo, um só Espírito, uma só esperança. O mundo precisa ver uma igreja cheia do Espírito — corajosa, amorosa, missionária. Faze de nós essa igreja. Vem, Espírito Santo! Amém."
+        "title": "Estão Cheios de Mosto",
+        "text": "Espírito Santo, quando a igreja recebeu teu poder, alguns zombaram: \"estão cheios de mosto.\" A obra genuína de Deus nem sempre é reconhecida por quem observa de fora — às vezes é confundida com algo menor. Ajuda-me a não desistir diante de zombaria semelhante. Amém."
       },
       "meditation": {
-        "prompt": "Pentecostes inverte Babel. No princípio, a confusão das línguas espalhou a humanidade. No Espírito, as línguas se abrem para unir.",
+        "prompt": "A zombaria de alguns espectadores no primeiro Pentecostes lembra que manifestações genuínas do Espírito nem sempre são recebidas com reverência — má interpretação e ridicularização são reação possível, não prova de fracasso.",
         "questions": [
-          "O que impede a unidade no corpo de Cristo hoje — e como você pode ser um instrumento de reconciliação?",
-          "O fogo do Espírito purifica, ilumina e aquece. Qual dessas obras você mais precisa hoje?",
-          "A igreja primária saiu do cenáculo para transformar o mundo. Que \"cenáculo\" você precisa deixar para cumprir sua missão?"
+          "Você já teve uma experiência genuína de fé mal interpretada ou ridicularizada por quem observava de fora?",
+          "Como a reação de Pedro — explicar com calma, não revidar com raiva — poderia orientar sua própria resposta a isso?",
+          "O que significaria continuar fiel esta semana, mesmo sabendo que nem todos reconhecerão o que você vive como genuíno?"
         ]
       }
     },
     "2027-05-20": {
       "prayer": {
-        "title": "Vem, Espírito Santo",
-        "text": "Espírito Santo de Deus, desce sobre nós como desces-te sobre os apóstolos no cenáculo. Enche-nos do teu fogo divino — não um fogo que destrói, mas que purifica, ilumina e aquece. Abre os nossos lábios para proclamar as maravilhas de Deus com ousadia. Quebra as barreiras de línguas e culturas que nos separam. Une-nos num só corpo, um só Espírito, uma só esperança. O mundo precisa ver uma igreja cheia do Espírito — corajosa, amorosa, missionária. Faze de nós essa igreja. Vem, Espírito Santo! Amém."
+        "title": "Filhos e Filhas Profetizarão",
+        "text": "Espírito Santo, através de Joel, prometeste: \"os vossos filhos e as vossas filhas profetizarão, os vossos mancebos terão visões, os vossos anciãos terão sonhos.\" Um derramamento que não escolhe apenas líderes estabelecidos. Que eu reconheça hoje essa mesma amplitude ao meu redor. Amém."
       },
       "meditation": {
-        "prompt": "Pentecostes inverte Babel. No princípio, a confusão das línguas espalhou a humanidade. No Espírito, as línguas se abrem para unir.",
+        "prompt": "A profecia citada por Pedro nomeia deliberadamente categorias inteiras normalmente excluídas de liderança religiosa — filhos, filhas, jovens, servos — como destinatários igualmente válidos do Espírito.",
         "questions": [
-          "O que impede a unidade no corpo de Cristo hoje — e como você pode ser um instrumento de reconciliação?",
-          "O fogo do Espírito purifica, ilumina e aquece. Qual dessas obras você mais precisa hoje?",
-          "A igreja primária saiu do cenáculo para transformar o mundo. Que \"cenáculo\" você precisa deixar para cumprir sua missão?"
+          "Você já subestimou a capacidade de alguém — por idade, gênero ou posição — de ouvir e falar autenticamente de Deus?",
+          "Como essa profecia de Joel desafia hierarquias que sua própria comunidade talvez mantenha sem perceber?",
+          "Que \"filho, filha, jovem ou servo\" ao seu redor você poderia começar a ouvir com mais atenção esta semana?"
         ]
       }
     },
     "2027-05-21": {
       "prayer": {
-        "title": "Vem, Espírito Santo",
-        "text": "Espírito Santo de Deus, desce sobre nós como desces-te sobre os apóstolos no cenáculo. Enche-nos do teu fogo divino — não um fogo que destrói, mas que purifica, ilumina e aquece. Abre os nossos lábios para proclamar as maravilhas de Deus com ousadia. Quebra as barreiras de línguas e culturas que nos separam. Une-nos num só corpo, um só Espírito, uma só esperança. O mundo precisa ver uma igreja cheia do Espírito — corajosa, amorosa, missionária. Faze de nós essa igreja. Vem, Espírito Santo! Amém."
+        "title": "Todo Aquele que Invocar o Nome do Senhor",
+        "text": "Espírito Santo, a promessa de Joel, citada por Pedro, termina com amplitude radical: \"todo aquele que invocar o nome do Senhor será salvo.\" Sem pré-requisito além do próprio clamor sincero. Que eu confie hoje nessa simplicidade, sem acrescentar barreiras que tu mesmo não colocaste. Amém."
       },
       "meditation": {
-        "prompt": "Pentecostes inverte Babel. No princípio, a confusão das línguas espalhou a humanidade. No Espírito, as línguas se abrem para unir.",
+        "prompt": "A promessa final da citação de Joel é deliberadamente ampla e simples — \"todo aquele\" — sem qualificação adicional de mérito, conhecimento prévio ou status, apenas o clamor sincero pelo nome do Senhor.",
         "questions": [
-          "O que impede a unidade no corpo de Cristo hoje — e como você pode ser um instrumento de reconciliação?",
-          "O fogo do Espírito purifica, ilumina e aquece. Qual dessas obras você mais precisa hoje?",
-          "A igreja primária saiu do cenáculo para transformar o mundo. Que \"cenáculo\" você precisa deixar para cumprir sua missão?"
+          "Você já acrescentou, sem perceber, pré-requisitos à salvação que essa promessa simples não exige?",
+          "Como essa simplicidade radical — \"todo aquele que invocar\" — muda sua forma de apresentar o evangelho a alguém?",
+          "O que significaria hoje confiar nessa mesma simplicidade para uma dúvida sua sobre se você \"já fez o suficiente\"?"
         ]
       }
     },
     "2027-05-22": {
       "prayer": {
-        "title": "Vem, Espírito Santo",
-        "text": "Espírito Santo de Deus, desce sobre nós como desces-te sobre os apóstolos no cenáculo. Enche-nos do teu fogo divino — não um fogo que destrói, mas que purifica, ilumina e aquece. Abre os nossos lábios para proclamar as maravilhas de Deus com ousadia. Quebra as barreiras de línguas e culturas que nos separam. Une-nos num só corpo, um só Espírito, uma só esperança. O mundo precisa ver uma igreja cheia do Espírito — corajosa, amorosa, missionária. Faze de nós essa igreja. Vem, Espírito Santo! Amém."
+        "title": "Véspera da Trindade",
+        "text": "Deus Uno e Trino, amanhã celebramos o mistério da tua própria natureza — Pai, Filho e Espírito Santo, um só Deus. Esta semana inteira, desde o Pentecostes, tem sido sobre a obra visível do teu Espírito. Prepara meu coração para contemplar amanhã o mistério mais profundo de quem tu és. Amém."
       },
       "meditation": {
-        "prompt": "Pentecostes inverte Babel. No princípio, a confusão das línguas espalhou a humanidade. No Espírito, as línguas se abrem para unir.",
+        "prompt": "O calendário litúrgico encerra deliberadamente esta semana centrada na obra do Espírito com a véspera de uma celebração centrada na própria identidade de Deus — do que o Espírito faz para quem o Espírito é.",
         "questions": [
-          "O que impede a unidade no corpo de Cristo hoje — e como você pode ser um instrumento de reconciliação?",
-          "O fogo do Espírito purifica, ilumina e aquece. Qual dessas obras você mais precisa hoje?",
-          "A igreja primária saiu do cenáculo para transformar o mundo. Que \"cenáculo\" você precisa deixar para cumprir sua missão?"
+          "Esta semana desde o Pentecostes — do vento e fogo à igreja de muitas línguas — o que você mais quer levar adiante?",
+          "Como contemplar amanhã, não apenas a obra de Deus, mas o próprio mistério de quem ele é?",
+          "O que significaria entrar no Domingo da Trindade depois de uma semana inteira vivendo a presença do Espírito?"
         ]
       }
     },
     "2027-05-23": {
       "prayer": {
-        "title": "Vem, Espírito Santo",
-        "text": "Espírito Santo de Deus, desce sobre nós como desces-te sobre os apóstolos no cenáculo. Enche-nos do teu fogo divino — não um fogo que destrói, mas que purifica, ilumina e aquece. Abre os nossos lábios para proclamar as maravilhas de Deus com ousadia. Quebra as barreiras de línguas e culturas que nos separam. Une-nos num só corpo, um só Espírito, uma só esperança. O mundo precisa ver uma igreja cheia do Espírito — corajosa, amorosa, missionária. Faze de nós essa igreja. Vem, Espírito Santo! Amém."
+        "title": "Santo, Santo, Santo É o Senhor dos Exércitos",
+        "text": "Deus Uno e Trino, os serafins da visão de Isaías clamavam: \"Santo, santo, santo é o Senhor dos exércitos; a terra toda está cheia da sua glória.\" Uma tripla repetição que a tradição cristã ouviria depois com novos ouvidos, reconhecendo nela um eco do próprio mistério trinitário. Que eu me una hoje a esse louvor antigo e sempre novo. Amém."
       },
       "meditation": {
-        "prompt": "Pentecostes inverte Babel. No princípio, a confusão das línguas espalhou a humanidade. No Espírito, as línguas se abrem para unir.",
+        "prompt": "A tripla aclamação \"santo, santo, santo\" — lida hoje, Domingo da Trindade — ecoa de forma sugestiva o mistério de um só Deus em três pessoas, embora Isaías, séculos antes, não pudesse ainda nomear o que via dessa forma.",
         "questions": [
-          "O que impede a unidade no corpo de Cristo hoje — e como você pode ser um instrumento de reconciliação?",
-          "O fogo do Espírito purifica, ilumina e aquece. Qual dessas obras você mais precisa hoje?",
-          "A igreja primária saiu do cenáculo para transformar o mundo. Que \"cenáculo\" você precisa deixar para cumprir sua missão?"
+          "Como a visão avassaladora de Isaías — \"estou perdido, sou homem de lábios impuros\" — se compara à sua própria experiência de aproximação a Deus?",
+          "O que significa, para você, que a santidade tripla de Deus enche \"toda a terra\", não apenas espaços sagrados isolados?",
+          "Que área da sua vida ainda precisa ser tocada, como os lábios de Isaías, por essa purificação direta de Deus?"
         ]
       }
     },
@@ -2495,15 +2495,15 @@
     },
     "2027-06-01": {
       "prayer": {
-        "title": "Fala, Senhor, Porque o Teu Servo Ouve",
-        "text": "Senhor, na quarta vez que chamaste, Samuel finalmente respondeu como Eli o havia orientado: \"Fala, Senhor, porque o teu servo ouve.\" Não \"escuta, servo, porque o Senhor fala\" — mas o contrário, disposição de ouvir antes de qualquer coisa. Ensina-me essa mesma postura de escuta genuína, disposto a ouvir mesmo quando a mensagem for difícil, como foi para Samuel naquela noite. Amém."
+        "title": "Ainda Não Conhecia o Senhor",
+        "text": "Senhor, o texto observa sobre o jovem Samuel: \"ainda não conhecia o Senhor, nem lhe fora ainda revelada a palavra do Senhor.\" Uma admissão honesta de inexperiência, logo antes do primeiro chamado real. Ensina-me essa mesma humildade diante do que ainda não conheço de ti. Amém."
       },
       "meditation": {
-        "prompt": "A mensagem que Samuel recebeu naquela noite era dura — um julgamento sobre a casa de Eli — e ainda assim ele respondeu com disposição de ouvir antes de saber o conteúdo.",
+        "prompt": "O texto não esconde a inexperiência de Samuel — ele precisou de três chamados e da orientação de Eli antes de reconhecer a voz de Deus. A falta de familiaridade inicial não o desqualificou para o chamado que viria a seguir.",
         "questions": [
-          "Você está disposto a ouvir de Deus mesmo quando a mensagem pode ser difícil de receber?",
-          "O que significaria orar, hoje, \"fala, Senhor, porque o teu servo ouve\" — sem condicionar a resposta ao conteúdo?",
-          "Existe uma mensagem difícil que você tem evitado ouvir de Deus?"
+          "Você já hesitou em confiar num chamado ou numa impressão espiritual por se sentir \"inexperiente demais\" para reconhecê-la com certeza?",
+          "Quem, como Eli fez por Samuel, já ajudou você a reconhecer a voz de Deus quando ainda não sabia identificá-la sozinho?",
+          "O que significaria admitir hoje, com a mesma honestidade do texto, uma área onde você \"ainda não conhece\" plenamente o Senhor?"
         ]
       }
     },

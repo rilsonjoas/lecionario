@@ -2059,23 +2059,23 @@ const proper15: DevotionalEntry[] = [
 const proper16: DevotionalEntry[] = [
   {
     prayer: {
-      title: 'Antes Que Eu Te Formasse no Ventre Te Conheci',
-      text: t(`Senhor, disseste a Jeremias: "antes que eu te formasse
-        no ventre te conheci, e antes que saísses da madre te
-        santifiquei." Meu chamado e meu valor não começaram no dia em
-        que percebi sua presença — eles existiam antes mesmo de eu
-        nascer. Ajuda-me a viver a partir dessa identidade já dada, não
-        de uma que preciso conquistar. Amém.`),
+      title: 'Para Arrancar e Plantar, Derribar e Edificar',
+      text: t(`Senhor, ao chamar Jeremias, definiste um propósito
+        amplo: "eis que te dei... autoridade... para arrancar e
+        derribar, para destruir e arruinar, para edificar e para
+        plantar." Um chamado que inclui tanto demolição quanto
+        construção. Ajuda-me a aceitar que parte do meu próprio
+        chamado também pode exigir derrubar antes de plantar. Amém.`),
     },
     meditation: {
-      prompt: t(`Deus fala do conhecimento e propósito para Jeremias
-        como já estabelecidos antes do nascimento — uma identidade
-        concedida, não construída ao longo do tempo por conquista
-        pessoal.`),
+      prompt: t(`O chamado de Jeremias não é só de construção
+        positiva — inclui explicitamente arrancar, derribar e destruir
+        antes de edificar e plantar, um padrão desconfortável, mas
+        necessário, de reforma genuína.`),
       questions: [
-        'Você vive mais a partir de uma identidade já dada por Deus, ou de uma que sente precisar constantemente provar?',
-        'Como a ideia de ser "conhecido" por Deus antes mesmo de nascer muda sua percepção sobre seu propósito?',
-        'O que significaria confiar que seu valor já estava estabelecido antes de qualquer conquista sua?',
+        'Que "arrancar e derribar" você tem evitado, preferindo pular direto para "edificar e plantar"?',
+        'Como aceitar que reforma genuína, pessoal ou comunitária, muitas vezes exige demolição antes de construção?',
+        'O que você precisaria derrubar hoje para que algo novo e melhor pudesse ser plantado no lugar?',
       ],
     },
   },
@@ -2101,22 +2101,22 @@ const proper16: DevotionalEntry[] = [
   },
   {
     prayer: {
-      title: 'Tu És a Minha Rocha e a Minha Fortaleza',
-      text: t(`Senhor, o salmista declara: "tu és a minha rocha e a
-        minha fortaleza... em ti me tenho apoiado desde que nasci."
-        Uma vida inteira de dependência, desde o início. Que minha
-        própria confiança em ti seja assim — não ocasional, mas o fio
-        contínuo de toda a minha existência. Amém.`),
+      title: 'Esperarei Continuamente e Te Louvarei Cada Vez Mais',
+      text: t(`Senhor, o salmista declara: "eu esperarei continuamente,
+        e te louvarei cada vez mais." Não louvor decrescente com o
+        tempo, mas crescente — quanto mais vivo, mais tenho razão para
+        louvar. Que minha própria fé, com os anos, produza esse mesmo
+        aumento, não o desgaste do hábito repetido. Amém.`),
     },
     meditation: {
-      prompt: t(`A confiança descrita não é resposta a uma crise
-        específica, mas um padrão de vida inteira — "desde a minha
-        mocidade... desde que nasci" — dependência constante, não
-        apenas emergencial.`),
+      prompt: t(`O salmista, já na velhice (conforme o restante do
+        salmo), não descreve louvor cansado ou diminuído — promete o
+        oposto: aumento contínuo, um padrão raro de fé que cresce, não
+        míngua, com o tempo.`),
       questions: [
-        'Sua confiança em Deus é mais um padrão constante de vida ou uma resposta acionada apenas em crises?',
-        'Que "rocha" você tem buscado além de Deus para estabilidade — e ela realmente sustenta?',
-        'Como cultivar uma confiança contínua, não apenas episódica, em Deus?',
+        'Sua fé, com o passar dos anos, tem crescido em louvor ou se acomodado em hábito repetido?',
+        'O que sustentaria em você esse mesmo padrão do salmista — louvor que aumenta, não diminui, com a idade?',
+        'Como cultivar hoje um louvor que genuinamente cresce "cada vez mais", não apenas se mantém constante?',
       ],
     },
   },

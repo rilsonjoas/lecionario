@@ -162,7 +162,7 @@ const holyMonday: DevotionalEntry = {
 // Terça-feira Santa — Isaías 49:1-7 · Salmo 71:1-14 · 1 Coríntios 1:18-31 · João 12:20-36
 const holyTuesday: DevotionalEntry = {
   prayer: {
-    title: 'Debalde Tenho Trabalhado',
+    title: 'Pouca Coisa É Seres Meu Servo',
     text: t(`Senhor, o servo confessa desânimo real: "debalde tenho
       trabalhado, inútil e vãmente gastei as minhas forças." Nesta
       terça-feira santa, diante da cruz que se aproxima, reconheço que

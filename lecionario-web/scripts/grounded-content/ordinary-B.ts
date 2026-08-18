@@ -234,23 +234,22 @@ const proper4: DevotionalEntry[] = [
   },
   {
     prayer: {
-      title: 'Fala, Senhor, Porque o Teu Servo Ouve',
-      text: t(`Senhor, na quarta vez que chamaste, Samuel finalmente
-        respondeu como Eli o havia orientado: "Fala, Senhor, porque o
-        teu servo ouve." Não "escuta, servo, porque o Senhor fala" —
-        mas o contrário, disposição de ouvir antes de qualquer coisa.
-        Ensina-me essa mesma postura de escuta genuína, disposto a
-        ouvir mesmo quando a mensagem for difícil, como foi para
-        Samuel naquela noite. Amém.`),
+      title: 'Ainda Não Conhecia o Senhor',
+      text: t(`Senhor, o texto observa sobre o jovem Samuel: "ainda
+        não conhecia o Senhor, nem lhe fora ainda revelada a palavra
+        do Senhor." Uma admissão honesta de inexperiência, logo antes
+        do primeiro chamado real. Ensina-me essa mesma humildade
+        diante do que ainda não conheço de ti. Amém.`),
     },
     meditation: {
-      prompt: t(`A mensagem que Samuel recebeu naquela noite era dura
-        — um julgamento sobre a casa de Eli — e ainda assim ele
-        respondeu com disposição de ouvir antes de saber o conteúdo.`),
+      prompt: t(`O texto não esconde a inexperiência de Samuel — ele
+        precisou de três chamados e da orientação de Eli antes de
+        reconhecer a voz de Deus. A falta de familiaridade inicial não
+        o desqualificou para o chamado que viria a seguir.`),
       questions: [
-        'Você está disposto a ouvir de Deus mesmo quando a mensagem pode ser difícil de receber?',
-        'O que significaria orar, hoje, "fala, Senhor, porque o teu servo ouve" — sem condicionar a resposta ao conteúdo?',
-        'Existe uma mensagem difícil que você tem evitado ouvir de Deus?',
+        'Você já hesitou em confiar num chamado ou numa impressão espiritual por se sentir "inexperiente demais" para reconhecê-la com certeza?',
+        'Quem, como Eli fez por Samuel, já ajudou você a reconhecer a voz de Deus quando ainda não sabia identificá-la sozinho?',
+        'O que significaria admitir hoje, com a mesma honestidade do texto, uma área onde você "ainda não conhece" plenamente o Senhor?',
       ],
     },
   },

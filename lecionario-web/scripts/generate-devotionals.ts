@@ -36,6 +36,18 @@ import { ashWednesday, ashWednesdayGap, holyWeekEarly } from './grounded-content
 import lentA from './grounded-content/lent-A';
 import lentB from './grounded-content/lent-B';
 import lentC from './grounded-content/lent-C';
+import easterA from './grounded-content/easter-A';
+import easterB from './grounded-content/easter-B';
+import easterC from './grounded-content/easter-C';
+import {
+  pentecostSundayA,
+  pentecostSundayB,
+  pentecostSundayC,
+  pentecostGapWeek,
+  trinitySundayA,
+  trinitySundayB,
+  trinitySundayC,
+} from './grounded-content/pentecost';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -1630,6 +1642,31 @@ const groundedLent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEnt
   C: lentC,
 };
 
+// Páscoa — mesma lógica de groundedAdvent: sempre exatamente 7 semanas
+// fixas (Domingo da Ressurreição ao 7º Domingo da Páscoa), sem
+// necessidade de adaptação de data — Páscoa é sempre domingo, como o
+// próprio Advento. Ver scripts/grounded-content/easter-*.ts.
+const groundedEaster: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+  A: easterA,
+  B: easterB,
+  C: easterC,
+};
+
+// Pentecostes + Trindade — ver scripts/grounded-content/pentecost.ts:
+// os 8 dias fixos entre o Domingo de Pentecostes e o Domingo da
+// Trindade (inclusive), tratados por data exata em generateForDate.
+const pentecostSundayByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry>> = {
+  A: pentecostSundayA,
+  B: pentecostSundayB,
+  C: pentecostSundayC,
+};
+
+const trinitySundayByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry>> = {
+  A: trinitySundayA,
+  B: trinitySundayB,
+  C: trinitySundayC,
+};
+
 // ─── Tríduo Pascal — Conteúdo Fixo ──────────────────────────────────
 //
 // Estes quatro dias são o ápice do ano litúrgico. O script de geração
@@ -1928,6 +1965,38 @@ function generateForDate(
     }
   }
 
+  // Páscoa: 7 semanas fixas, ancoradas nas leituras reais de cada
+  // ciclo (ver scripts/grounded-content/easter-*.ts) — mesmo padrão do
+  // Advento, já que o Domingo de Páscoa é sempre domingo.
+  if (season === 'easter') {
+    const groundedWeek = groundedEaster[cycle]?.[week];
+    if (groundedWeek) {
+      return groundedWeek[date.getDay()];
+    }
+  }
+
+  // Pentecostes + Trindade: a estação 'pentecost' cobre sempre os
+  // mesmos 8 dias fixos (Domingo de Pentecostes a Domingo da
+  // Trindade, ambos inclusive) — tratados por data exata, não por
+  // semana, já que só há esses 2 domingos com leitura própria e 6
+  // dias de intervalo sem leitura no RCL. Ver
+  // scripts/grounded-content/pentecost.ts.
+  if (season === 'pentecost') {
+    const easter = calculateEaster(date.getFullYear());
+    const pentecostDay = addDays(easter, 49);
+    const trinityDay = addDays(pentecostDay, 7);
+    if (formatDate(date) === formatDate(pentecostDay)) {
+      return pentecostSundayByCycle[cycle] ?? null;
+    }
+    if (formatDate(date) === formatDate(trinityDay)) {
+      return trinitySundayByCycle[cycle] ?? null;
+    }
+    const daysSincePentecost = Math.round((date.getTime() - pentecostDay.getTime()) / 86400000);
+    if (daysSincePentecost > 0 && daysSincePentecost < 7) {
+      return pentecostGapWeek[daysSincePentecost - 1] ?? null;
+    }
+  }
+
   const seasonTemplates = templates[season];
   if (!seasonTemplates) return null;
 
@@ -1965,7 +2034,9 @@ function generateYear(year: number): Record<string, DevotionalEntry> {
   const easter = calculateEaster(year);
   const cycle = getLiturgicalCycle(year);
   const nextCycle = getLiturgicalCycle(year + 1);
+  const prevCycle = getLiturgicalCycle(year - 1);
   const adventThisYear = calculateAdventStart(year);
+  const adventPrevYear = calculateAdventStart(year - 1);
 
   // Generate from Dec 1 of previous year (Advent) to Nov 30 of current year
   const startDate = new Date(year - 1, 11, 1);
@@ -1985,7 +2056,25 @@ function generateYear(year: number): Record<string, DevotionalEntry> {
       // ao ciclo do ANO SEGUINTE, não ao ciclo `year` usado no resto
       // do laço. Sem isso, esses últimos dias de novembro mostravam
       // conteúdo do Advento do ciclo errado.
-      const effectiveCycle = season === 'advent' && current >= adventThisYear ? nextCycle : cycle;
+      //
+      // Achado em 2026-08-18 (validação Páscoa/Pentecostes, ver
+      // ROADMAP.md 1.2i): o espelho do mesmo problema existe no INÍCIO
+      // do laço — quando o Advento do ANO ANTERIOR (que abre o ano
+      // litúrgico `year`) começa depois de 1/dez (ex.: 3/dez), os dias
+      // 1-2/dez ainda pertencem à cauda do ano litúrgico ANTERIOR
+      // (Cristo Rei), que usa o ciclo de `year - 1`, não o `cycle`
+      // usado no resto do laço. Sem isso, esses 1-2 dias mostravam
+      // conteúdo de Cristo Rei do ciclo errado — e, por serem sempre o
+      // mesmo título todo ano em que isso acontece, criavam repetição
+      // exata com o fim de novembro do ARQUIVO SEGUINTE (achado
+      // validando devotionals-2029.json/2030.json contra as datas
+      // reais de Cristo Rei/Advento, não contra o módulo isolado).
+      const effectiveCycle =
+        season === 'advent' && current >= adventThisYear
+          ? nextCycle
+          : current < adventPrevYear
+            ? prevCycle
+            : cycle;
 
       const devotional = generateForDate(current, season, week, effectiveCycle);
       if (devotional) {

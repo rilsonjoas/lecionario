@@ -4822,18 +4822,19 @@ const ordinaryA: Record<number, DevotionalEntry[]> = {
     },
     {
       prayer: {
-        title: 'Cristo Rei',
-        text: t(`Senhor, encerramos hoje o Tempo Comum celebrando a
-          tua realeza — não a de um governante distante, mas a do
-          Pastor que busca pessoalmente as perdidas, julga com
-          justiça, e se identifica com os pequeninos. Ao longo destas
-          semanas caminhamos por Gênesis e Êxodo, por profetas e
-          juízas, por parábolas de talentos e virgens vigilantes.
-          Hoje, diante do teu trono, reconheço: tu és Rei — não pela
-          força, mas pelo amor que se faz serviço. Que o novo ano
-          litúrgico, que começa com o Advento, me encontre mais
-          disposto a servir-te nos pequeninos do que estava há um ano.
-          Amém.`),
+        title: 'Vinde, Benditos de Meu Pai',
+        text: t(`Senhor, encerramos hoje o Tempo Comum com tua palavra
+          final aos justos: "vinde, benditos de meu Pai, possuí por
+          herança o reino que vos está preparado desde a fundação do
+          mundo." Não realeza de governante distante, mas a do Pastor
+          que se identifica com os pequeninos e recompensa quem os
+          serviu sem saber que servia a ti. Ao longo destas semanas
+          caminhamos por Gênesis e Êxodo, por profetas e juízas, por
+          parábolas de talentos e virgens vigilantes. Hoje, diante do
+          teu trono, reconheço: tu és Rei — não pela força, mas pelo
+          amor que se faz serviço. Que o novo ano litúrgico, que
+          começa com o Advento, me encontre mais disposto a servir-te
+          nos pequeninos do que estava há um ano. Amém.`),
       },
       meditation: {
         prompt: t(`O ano litúrgico termina não com uma imagem de poder
