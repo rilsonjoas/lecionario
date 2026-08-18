@@ -184,6 +184,12 @@ const rclReadings: Record<
       second_reading: '2 Pedro 1:16-21',
       gospel: 'Mateus 17:1-9',
     },
+    'epiphanyday:1': {
+      first_reading: 'Isaías 60:1-6',
+      psalm: 'Salmo 72:1-7, 10-14',
+      second_reading: 'Efésios 3:1-12',
+      gospel: 'Mateus 2:1-12',
+    },
     'epiphany:1': {
       first_reading: 'Isaías 42:1-9',
       psalm: 'Salmo 29',
@@ -542,6 +548,12 @@ const rclReadings: Record<
       second_reading: '2 Coríntios 4:3-6',
       gospel: 'Marcos 9:2-9',
     },
+    'epiphanyday:1': {
+      first_reading: 'Isaías 60:1-6',
+      psalm: 'Salmo 72:1-7, 10-14',
+      second_reading: 'Efésios 3:1-12',
+      gospel: 'Mateus 2:1-12',
+    },
     'epiphany:1': {
       first_reading: 'Gênesis 1:1-5',
       psalm: 'Salmo 29',
@@ -887,6 +899,12 @@ const rclReadings: Record<
       psalm: 'Salmo 99',
       second_reading: '2 Coríntios 3:12-4:2',
       gospel: 'Lucas 9:28-36, (37-43)',
+    },
+    'epiphanyday:1': {
+      first_reading: 'Isaías 60:1-6',
+      psalm: 'Salmo 72:1-7, 10-14',
+      second_reading: 'Efésios 3:1-12',
+      gospel: 'Mateus 2:1-12',
     },
     'epiphany:1': {
       first_reading: 'Isaías 43:1-7',
@@ -1508,8 +1526,15 @@ function generateYear(cycle: string, liturgicalYear: number, calendarYear: numbe
     christmasSunday = addDays(christmasSunday, 7);
   }
 
-  // Epiphany (Jan 6)
-  const epiphanyKey = 'epiphany:1';
+  // Epiphany (Jan 6) — achado em 2026-08-18 (ver ROADMAP.md 1.2f):
+  // este bloco usava a chave 'epiphany:1', que na verdade contém a
+  // leitura do Batismo do Senhor (Mateus 3, não Mateus 2) — a leitura
+  // real da Epifania (visita dos magos, Isaías 60/Mateus 2:1-12, igual
+  // nos 3 ciclos) nunca existia na tabela. Isso empurrava toda a
+  // numeração dos domingos seguintes uma semana adiantada: o Batismo
+  // do Senhor (1º domingo real depois da Epifania) mostrava a leitura
+  // do "2º Domingo depois da Epifania", e assim por diante.
+  const epiphanyKey = 'epiphanyday:1';
   const epiphanyReadings = readings[epiphanyKey];
   if (epiphanyReadings) {
     entries.push({
@@ -1541,24 +1566,37 @@ function generateYear(cycle: string, liturgicalYear: number, calendarYear: numbe
   // calhasse de cair ali, dependendo do ano (varia de semana 6 a 10,
   // ver checagem 2015-2045). Detecta o último domingo comparando se o
   // PRÓXIMO domingo já cairia na Quarta-feira de Cinzas ou depois.
+  // epiphanyWeek=2 é o 1º domingo real depois da Epifania (sempre o
+  // Domingo do Batismo do Senhor, nome próprio — não "1º Domingo após
+  // a Epifania", que não existe como tal no RCL); epiphanyWeek=3 é o
+  // "2º Domingo após a Epifania" (chave da tabela `epiphany:2`), e
+  // assim por diante — a chave da tabela é sempre `epiphany:${M}`
+  // onde M = epiphanyWeek - 1 é o número do domingo real (1 =
+  // Batismo, 2 = 2º Domingo, ...), consistente com o conteúdo já
+  // existente em cada tabela (achado/corrigido em 2026-08-18, ver
+  // ROADMAP.md 1.2f).
   let epiphanyWeek = 2; // Start from week 2 (week 1 was Jan 6)
   let currentSunday = getNextSunday(addDays(epiphanyJan6, 1));
   while (currentSunday < ashWed) {
     const isLastSundayBeforeLent = addDays(currentSunday, 7) >= ashWed;
+    const realSundayNumber = epiphanyWeek - 1;
+    const isBaptism = realSundayNumber === 1;
     const key = isLastSundayBeforeLent
       ? ('transfiguration:1' as const)
-      : (`epiphany:${epiphanyWeek}` as const);
+      : (`epiphany:${realSundayNumber}` as const);
     const dayReadings = readings[key];
     if (dayReadings) {
       const collectKey =
-        epiphanyWeek <= 8 ? (`epiphany:${epiphanyWeek}` as const) : 'epiphany:last';
+        realSundayNumber <= 8 ? (`epiphany:${realSundayNumber}` as const) : 'epiphany:last';
       entries.push({
         date: dateToRef(currentSunday),
         season: 'epiphany',
         weekOfSeason: epiphanyWeek,
         dayName: isLastSundayBeforeLent
           ? 'Domingo da Transfiguração'
-          : `${ordinalNumbers[epiphanyWeek - 1] || `${epiphanyWeek}º`} Domingo após a Epifania`,
+          : isBaptism
+            ? 'Batismo do Senhor'
+            : `${ordinalNumbers[realSundayNumber - 1] || `${realSundayNumber}º`} Domingo após a Epifania`,
         holyDay: true,
         readings: [
           { type: 'first_reading', ref: dayReadings.first_reading },

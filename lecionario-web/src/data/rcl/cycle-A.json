@@ -1384,6 +1384,36 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ],
+        "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
+      },
+      {
+        "date": "2024-01-07",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Isaías 42:1-9",
             "text": "Eis aqui o meu servo, a quem sustenho; o meu escolhido, em quem se compraz a minha alma; pus o meu espírito sobre ele. ele trará justiça às nações. Não clamará, não se exaltará, nem fará ouvir a sua voz na rua. A cana trilhada, não a quebrará, nem apagará o pavio que fumega; em verdade trará a justiça; não faltará nem será quebrantado, até que ponha na terra a justiça; e as ilhas aguardarão a sua lei. Assim diz Deus, o Senhor, que criou os céus e os desenrolou, e estendeu a terra e o que dela procede; que dá a respiração ao povo que nela está, e o espírito aos que andam nela. Eu o Senhor te chamei em justiça; tomei-te pela mão, e te guardei; e te dei por pacto ao povo, e para luz das nações; para abrir os olhos dos cegos, para tirar da prisão os presos, e do cárcere os que jazem em trevas. Eu sou o Senhor; este é o meu nome; a minha glória, pois, a outrem não a darei, nem o meu louvor às imagens esculpidas. Eis que as primeiras coisas já se realizaram, e novas coisas eu vos anuncio; antes que venham à luz, vo-las faço ouvir."
           },
@@ -1406,9 +1436,9 @@
         "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
       },
       {
-        "date": "2024-01-07",
+        "date": "2024-01-14",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1436,9 +1466,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2024-01-14",
+        "date": "2024-01-21",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1466,9 +1496,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2024-01-21",
+        "date": "2024-01-28",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1496,9 +1526,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2024-01-28",
+        "date": "2024-02-04",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1521,36 +1551,6 @@
             "type": "gospel",
             "ref": "Mateus 5:13-20",
             "text": "Vós sois o sal da terra; mas se o sal se tornar insípido, com que se há de restaurar-lhe o sabor? para nada mais presta, senão para ser lançado fora, e ser pisado pelos homens. Vós sois a luz do mundo. Não se pode esconder uma cidade situada sobre um monte; nem os que acendem uma candeia a colocam debaixo do alqueire, mas no velador, e assim ilumina a todos que estão na casa. Assim resplandeça a vossa luz diante dos homens, para que vejam as vossas boas obras, e glorifiquem a vosso Pai, que está nos céus. Não penseis que vim destruir a lei ou os profetas; não vim destruir, mas cumprir. Porque em verdade vos digo que, até que o céu e a terra passem, de modo nenhum passará da lei um só i ou um só til, até que tudo seja cumprido. Qualquer, pois, que violar um destes mandamentos, por menor que seja, e assim ensinar aos homens, será chamado o menor no reino dos céus; aquele, porém, que os cumprir e ensinar será chamado grande no reino dos céus. Pois eu vos digo que, se a vossa justiça não exceder a dos escribas e fariseus, de modo nenhum entrareis no reino dos céus."
-          }
-        ],
-        "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
-      },
-      {
-        "date": "2024-02-04",
-        "season": "epiphany",
-        "weekOfSeason": 6,
-        "dayName": "Sexto Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Deuteronômio 30:15-20",
-            "text": "Vê que hoje te pus diante de ti a vida e o bem, a morte e o mal. Se guardares o mandamento que eu hoje te ordeno de amar ao Senhor teu Deus, de andar nos seus caminhos, e de guardar os seus mandamentos, os seus estatutos e os seus preceitos, então viverás, e te multiplicarás, e o Senhor teu Deus te abençoará na terra em que estás entrando para a possuíres. Mas se o teu coração se desviar, e não quiseres ouvir, e fores seduzido para adorares outros deuses, e os servires, declaro-te hoje que certamente perecerás; não prolongarás os dias na terra para entrar na qual estás passando o Jordão, a fim de a possuíres. O céu e a terra tomo hoje por testemunhas contra ti de que te pus diante de ti a vida e a morte, a bênção e a maldição; escolhe, pois, a vida, para que vivas, tu e a tua descendência, amando ao Senhor teu Deus, obedecendo à sua voz, e te apegando a ele; pois ele é a tua vida, e o prolongamento dos teus dias; e para que habites na terra que o Senhor prometeu com juramento a teus pais, a Abraão, a Isaque e a Jacó, que lhes havia de dar."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 119:1-8",
-            "text": "Bem-aventurados os que trilham com integridade o seu caminho, os que andam na lei do Senhor! Bem-aventurados os que guardam os seus testemunhos, que o buscam de todo o coração, que não praticam iniqüidade, mas andam nos caminhos dele! Tu ordenaste os teus preceitos, para que fossem diligentemente observados. Oxalá sejam os meus caminhos dirigidos de maneira que eu observe os teus estatutos! Então não ficarei confundido, atentando para todos os teus mandamentos. Louvar-te-ei com retidão de coração, quando tiver aprendido as tuas retas ordenanças. Observarei os teus estatutos; não me desampares totalmente!"
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 3:1-9",
-            "text": "E eu, irmãos não vos pude falar como a espírituais, mas como a carnais, como a criancinhas em Cristo. Leite vos dei por alimento, e não comida sólida, porque não a podíeis suportar; nem ainda agora podeis; porquanto ainda sois carnais; pois, havendo entre vós inveja e contendas, não sois porventura carnais, e não estais andando segundo os homens? Porque, dizendo um: Eu sou de Paulo; e outro: Eu de Apolo; não sois apenas homens? Pois, que é Apolo, e que é Paulo, senão ministros pelos quais crestes, e isso conforme o que o Senhor concedeu a cada um? Eu plantei; Apolo regou; mas Deus deu o crescimento. De modo que, nem o que planta é alguma coisa, nem o que rega, mas Deus, que dá o crescimento. Ora, uma só coisa é o que planta e o que rega; e cada um receberá o seu galardão segundo o seu trabalho. Porque nós somos cooperadores de Deus; vós sois lavoura de Deus e edifício de Deus."
-          },
-          {
-            "type": "gospel",
-            "ref": "Mateus 5:21-37",
-            "text": "Ouvistes que foi dito aos antigos: Não matarás; e, Quem matar será réu de juízo. Eu, porém, vos digo que todo aquele que se encolerizar contra seu irmão, será réu de juízo; e quem disser a seu irmão: Raca, será réu diante do sinédrio; e quem lhe disser: Tolo, será réu do fogo do inferno. Portanto, se estiveres apresentando a tua oferta no altar, e aí te lembrares de que teu irmão tem alguma coisa contra ti, deixa ali diante do altar a tua oferta, e vai conciliar-te primeiro com teu irmão, e depois vem apresentar a tua oferta. Concilia-te depressa com o teu adversário, enquanto estás no caminho com ele; para que não aconteça que o adversário te entregue ao guarda, e sejas lançado na prisão. Em verdade te digo que de maneira nenhuma sairás dali enquanto não pagares o último ceitil. Ouvistes que foi dito: Não adulterarás. Eu, porém, vos digo que todo aquele que olhar para uma mulher para a cobiçar, já em seu coração cometeu adultério com ela. Se o teu olho direito te faz tropeçar, arranca-o e lança-o de ti; pois te é melhor que se perca um dos teus membros do que seja todo o teu corpo lançado no inferno. E, se a tua mão direita te faz tropeçar, corta-a e lança-a de ti; pois te é melhor que se perca um dos teus membros do que vá todo o teu corpo para o inferno. Também foi dito: Quem repudiar sua mulher, dê-lhe carta de divórcio. Eu, porém, vos digo que todo aquele que repudia sua mulher, a não ser por causa de infidelidade, a faz adúltera; e quem casar com a repudiada, comete adultério. Outrossim, ouvistes que foi dito aos antigos: Não jurarás falso, mas cumprirás para com o Senhor os teus juramentos. Eu, porém, vos digo que de maneira nenhuma jureis; nem pelo céu, porque é o trono de Deus; nem pela terra, porque é o escabelo de seus pés; nem por Jerusalém, porque é a cidade do grande Rei; nem jures pela tua cabeça, porque não podes tornar um só cabelo branco ou preto. Seja, porém, o vosso falar: Sim, sim; não, não; pois o que passa daí, vem do Maligno."
           }
         ],
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
@@ -1594,6 +1594,36 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ],
+        "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
+      },
+      {
+        "date": "2025-01-12",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Isaías 42:1-9",
             "text": "Eis aqui o meu servo, a quem sustenho; o meu escolhido, em quem se compraz a minha alma; pus o meu espírito sobre ele. ele trará justiça às nações. Não clamará, não se exaltará, nem fará ouvir a sua voz na rua. A cana trilhada, não a quebrará, nem apagará o pavio que fumega; em verdade trará a justiça; não faltará nem será quebrantado, até que ponha na terra a justiça; e as ilhas aguardarão a sua lei. Assim diz Deus, o Senhor, que criou os céus e os desenrolou, e estendeu a terra e o que dela procede; que dá a respiração ao povo que nela está, e o espírito aos que andam nela. Eu o Senhor te chamei em justiça; tomei-te pela mão, e te guardei; e te dei por pacto ao povo, e para luz das nações; para abrir os olhos dos cegos, para tirar da prisão os presos, e do cárcere os que jazem em trevas. Eu sou o Senhor; este é o meu nome; a minha glória, pois, a outrem não a darei, nem o meu louvor às imagens esculpidas. Eis que as primeiras coisas já se realizaram, e novas coisas eu vos anuncio; antes que venham à luz, vo-las faço ouvir."
           },
@@ -1616,9 +1646,9 @@
         "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
       },
       {
-        "date": "2025-01-12",
+        "date": "2025-01-19",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1646,9 +1676,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2025-01-19",
+        "date": "2025-01-26",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1676,9 +1706,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2025-01-26",
+        "date": "2025-02-02",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1706,9 +1736,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2025-02-02",
+        "date": "2025-02-09",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1736,9 +1766,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2025-02-09",
+        "date": "2025-02-16",
         "season": "epiphany",
-        "weekOfSeason": 6,
+        "weekOfSeason": 7,
         "dayName": "Sexto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1766,9 +1796,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2025-02-16",
+        "date": "2025-02-23",
         "season": "epiphany",
-        "weekOfSeason": 7,
+        "weekOfSeason": 8,
         "dayName": "Sétimo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1791,36 +1821,6 @@
             "type": "gospel",
             "ref": "Mateus 5:38-48",
             "text": "Ouvistes que foi dito: Olho por olho, e dente por dente. Eu, porém, vos digo que não resistais ao homem mau; mas a qualquer que te bater na face direita, oferece-lhe também a outra; e ao que quiser pleitear contigo, e tirar-te a túnica, larga-lhe também a capa; e, se qualquer te obrigar a caminhar mil passos, vai com ele dois mil. Dá a quem te pedir, e não voltes as costas ao que quiser que lhe emprestes. Ouvistes que foi dito: Amarás ao teu próximo, e odiarás ao teu inimigo. Eu, porém, vos digo: Amai aos vossos inimigos, e orai pelos que vos perseguem; para que vos torneis filhos do vosso Pai que está nos céus; porque ele faz nascer o seu sol sobre maus e bons, e faz chover sobre justos e injustos. Pois, se amardes aos que vos amam, que recompensa tereis? não fazem os publicanos também o mesmo? E, se saudardes somente os vossos irmãos, que fazeis demais? não fazem os gentios também o mesmo? Sede vós, pois, perfeitos, como é perfeito o vosso Pai celestial."
-          }
-        ],
-        "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
-      },
-      {
-        "date": "2025-02-23",
-        "season": "epiphany",
-        "weekOfSeason": 8,
-        "dayName": "Oitavo Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Isaías 49:8-16a",
-            "text": "Assim diz o Senhor: No tempo aceitável te ouvi, e no dia da salvação te ajudei; e te guardarei, e te darei por pacto do povo, para restaurares a terra, e lhe dares em herança as herdades assoladas; para dizeres aos presos: Saí; e aos que estão em trevas: Aparecei; eles pastarão nos caminhos, e em todos os altos desnudados haverá o seu pasto. Nunca terão fome nem sede; não os afligirá nem a calma nem o sol; porque o que se compadece deles os guiará, e os conduzirá mansamente aos mananciais das águas. Farei de todos os meus montes um caminho; e as minhas estradas serão exaltadas. Eis que estes virão de longe, e eis que aqueles do Norte e do Ocidente, e aqueles outros da terra de Sinim. Cantai, ó céus, e exulta, ó terra, e vós, montes, estalai de júbilo, porque o Senhor consolou o seu povo, e se compadeceu dos seus aflitos. Mas Sião diz: O Senhor me desamparou, o meu Senhor se esqueceu de mim. pode uma mulher esquecer-se de seu filho de peito, de maneira que não se compadeça do filho do seu ventre? Mas ainda que esta se esquecesse, eu, todavia, não me esquecerei de ti. Eis que nas palmas das minhas mãos eu te gravei; os teus muros estão continuamente diante de mim."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 131",
-            "text": "Senhor, o meu coração não é soberbo, nem os meus olhos são altivos; não me ocupo de assuntos grandes e maravilhosos demais para mim. Pelo contrário, tenho feito acalmar e sossegar a minha alma; qual criança desmamada sobre o seio de sua mãe, qual criança desmamada está a minha alma para comigo. Espera, ó Israel, no Senhor, desde agora e para sempre."
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 4:1-5",
-            "text": "Que os homens nos considerem, pois, como ministros de Cristo, e despenseiros dos mistérios de Deus. Ora, além disso, o que se requer nos despenseiros é que cada um seja encontrado fiel. Todavia, a mim mui pouco se me dá de ser julgado por vós, ou por qualquer tribunal humano; nem eu tampouco a mim mesmo me julgo. Porque, embora em nada me sinta culpado, nem por isso sou justificado; pois quem me julga é o Senhor. Portanto nada julgueis antes do tempo, até que venha o Senhor, o qual não só trará à luz as coisas ocultas das trevas, mas também manifestará os desígnios dos corações; e então cada um receberá de Deus o seu louvor."
-          },
-          {
-            "type": "gospel",
-            "ref": "Mateus 6:24-34",
-            "text": "Ninguém pode servir a dois senhores; porque ou há de odiar a um e amar o outro, ou há de dedicar-se a um e desprezar o outro. Não podeis servir a Deus e às riquezas. Por isso vos digo: Não estejais ansiosos quanto à vossa vida, pelo que haveis de comer, ou pelo que haveis de beber; nem, quanto ao vosso corpo, pelo que haveis de vestir. Não é a vida mais do que o alimento, e o corpo mais do que o vestuário? Olhai para as aves do céu, que não semeiam, nem ceifam, nem ajuntam em celeiros; e vosso Pai celestial as alimenta. Não valeis vós muito mais do que elas? Ora, qual de vós, por mais ansioso que esteja, pode acrescentar um côvado à sua estatura? E pelo que haveis de vestir, por que andais ansiosos? Olhai para os lírios do campo, como crescem; não trabalham nem fiam; contudo vos digo que nem mesmo Salomão em toda a sua glória se vestiu como um deles. Pois, se Deus assim veste a erva do campo, que hoje existe e amanhã é lançada no forno, quanto mais a vós, homens de pouca fé? Portanto, não vos inquieteis, dizendo: Que havemos de comer? ou: Que havemos de beber? ou: Com que nos havemos de vestir? (Pois a todas estas coisas os gentios procuram.) Porque vosso Pai celestial sabe que precisais de tudo isso. Mas buscai primeiro o seu reino e a sua justiça, e todas estas coisas vos serão acrescentadas. Não vos inquieteis, pois, pelo dia de amanhã; porque o dia de amanhã cuidará de si mesmo. Basta a cada dia o seu mal."
           }
         ],
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
@@ -1864,6 +1864,36 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ],
+        "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
+      },
+      {
+        "date": "2026-01-11",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Isaías 42:1-9",
             "text": "Eis aqui o meu servo, a quem sustenho; o meu escolhido, em quem se compraz a minha alma; pus o meu espírito sobre ele. ele trará justiça às nações. Não clamará, não se exaltará, nem fará ouvir a sua voz na rua. A cana trilhada, não a quebrará, nem apagará o pavio que fumega; em verdade trará a justiça; não faltará nem será quebrantado, até que ponha na terra a justiça; e as ilhas aguardarão a sua lei. Assim diz Deus, o Senhor, que criou os céus e os desenrolou, e estendeu a terra e o que dela procede; que dá a respiração ao povo que nela está, e o espírito aos que andam nela. Eu o Senhor te chamei em justiça; tomei-te pela mão, e te guardei; e te dei por pacto ao povo, e para luz das nações; para abrir os olhos dos cegos, para tirar da prisão os presos, e do cárcere os que jazem em trevas. Eu sou o Senhor; este é o meu nome; a minha glória, pois, a outrem não a darei, nem o meu louvor às imagens esculpidas. Eis que as primeiras coisas já se realizaram, e novas coisas eu vos anuncio; antes que venham à luz, vo-las faço ouvir."
           },
@@ -1886,9 +1916,9 @@
         "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
       },
       {
-        "date": "2026-01-11",
+        "date": "2026-01-18",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1916,9 +1946,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2026-01-18",
+        "date": "2026-01-25",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1946,9 +1976,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2026-01-25",
+        "date": "2026-02-01",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1976,9 +2006,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2026-02-01",
+        "date": "2026-02-08",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2001,36 +2031,6 @@
             "type": "gospel",
             "ref": "Mateus 5:13-20",
             "text": "Vós sois o sal da terra; mas se o sal se tornar insípido, com que se há de restaurar-lhe o sabor? para nada mais presta, senão para ser lançado fora, e ser pisado pelos homens. Vós sois a luz do mundo. Não se pode esconder uma cidade situada sobre um monte; nem os que acendem uma candeia a colocam debaixo do alqueire, mas no velador, e assim ilumina a todos que estão na casa. Assim resplandeça a vossa luz diante dos homens, para que vejam as vossas boas obras, e glorifiquem a vosso Pai, que está nos céus. Não penseis que vim destruir a lei ou os profetas; não vim destruir, mas cumprir. Porque em verdade vos digo que, até que o céu e a terra passem, de modo nenhum passará da lei um só i ou um só til, até que tudo seja cumprido. Qualquer, pois, que violar um destes mandamentos, por menor que seja, e assim ensinar aos homens, será chamado o menor no reino dos céus; aquele, porém, que os cumprir e ensinar será chamado grande no reino dos céus. Pois eu vos digo que, se a vossa justiça não exceder a dos escribas e fariseus, de modo nenhum entrareis no reino dos céus."
-          }
-        ],
-        "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
-      },
-      {
-        "date": "2026-02-08",
-        "season": "epiphany",
-        "weekOfSeason": 6,
-        "dayName": "Sexto Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Deuteronômio 30:15-20",
-            "text": "Vê que hoje te pus diante de ti a vida e o bem, a morte e o mal. Se guardares o mandamento que eu hoje te ordeno de amar ao Senhor teu Deus, de andar nos seus caminhos, e de guardar os seus mandamentos, os seus estatutos e os seus preceitos, então viverás, e te multiplicarás, e o Senhor teu Deus te abençoará na terra em que estás entrando para a possuíres. Mas se o teu coração se desviar, e não quiseres ouvir, e fores seduzido para adorares outros deuses, e os servires, declaro-te hoje que certamente perecerás; não prolongarás os dias na terra para entrar na qual estás passando o Jordão, a fim de a possuíres. O céu e a terra tomo hoje por testemunhas contra ti de que te pus diante de ti a vida e a morte, a bênção e a maldição; escolhe, pois, a vida, para que vivas, tu e a tua descendência, amando ao Senhor teu Deus, obedecendo à sua voz, e te apegando a ele; pois ele é a tua vida, e o prolongamento dos teus dias; e para que habites na terra que o Senhor prometeu com juramento a teus pais, a Abraão, a Isaque e a Jacó, que lhes havia de dar."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 119:1-8",
-            "text": "Bem-aventurados os que trilham com integridade o seu caminho, os que andam na lei do Senhor! Bem-aventurados os que guardam os seus testemunhos, que o buscam de todo o coração, que não praticam iniqüidade, mas andam nos caminhos dele! Tu ordenaste os teus preceitos, para que fossem diligentemente observados. Oxalá sejam os meus caminhos dirigidos de maneira que eu observe os teus estatutos! Então não ficarei confundido, atentando para todos os teus mandamentos. Louvar-te-ei com retidão de coração, quando tiver aprendido as tuas retas ordenanças. Observarei os teus estatutos; não me desampares totalmente!"
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 3:1-9",
-            "text": "E eu, irmãos não vos pude falar como a espírituais, mas como a carnais, como a criancinhas em Cristo. Leite vos dei por alimento, e não comida sólida, porque não a podíeis suportar; nem ainda agora podeis; porquanto ainda sois carnais; pois, havendo entre vós inveja e contendas, não sois porventura carnais, e não estais andando segundo os homens? Porque, dizendo um: Eu sou de Paulo; e outro: Eu de Apolo; não sois apenas homens? Pois, que é Apolo, e que é Paulo, senão ministros pelos quais crestes, e isso conforme o que o Senhor concedeu a cada um? Eu plantei; Apolo regou; mas Deus deu o crescimento. De modo que, nem o que planta é alguma coisa, nem o que rega, mas Deus, que dá o crescimento. Ora, uma só coisa é o que planta e o que rega; e cada um receberá o seu galardão segundo o seu trabalho. Porque nós somos cooperadores de Deus; vós sois lavoura de Deus e edifício de Deus."
-          },
-          {
-            "type": "gospel",
-            "ref": "Mateus 5:21-37",
-            "text": "Ouvistes que foi dito aos antigos: Não matarás; e, Quem matar será réu de juízo. Eu, porém, vos digo que todo aquele que se encolerizar contra seu irmão, será réu de juízo; e quem disser a seu irmão: Raca, será réu diante do sinédrio; e quem lhe disser: Tolo, será réu do fogo do inferno. Portanto, se estiveres apresentando a tua oferta no altar, e aí te lembrares de que teu irmão tem alguma coisa contra ti, deixa ali diante do altar a tua oferta, e vai conciliar-te primeiro com teu irmão, e depois vem apresentar a tua oferta. Concilia-te depressa com o teu adversário, enquanto estás no caminho com ele; para que não aconteça que o adversário te entregue ao guarda, e sejas lançado na prisão. Em verdade te digo que de maneira nenhuma sairás dali enquanto não pagares o último ceitil. Ouvistes que foi dito: Não adulterarás. Eu, porém, vos digo que todo aquele que olhar para uma mulher para a cobiçar, já em seu coração cometeu adultério com ela. Se o teu olho direito te faz tropeçar, arranca-o e lança-o de ti; pois te é melhor que se perca um dos teus membros do que seja todo o teu corpo lançado no inferno. E, se a tua mão direita te faz tropeçar, corta-a e lança-a de ti; pois te é melhor que se perca um dos teus membros do que vá todo o teu corpo para o inferno. Também foi dito: Quem repudiar sua mulher, dê-lhe carta de divórcio. Eu, porém, vos digo que todo aquele que repudia sua mulher, a não ser por causa de infidelidade, a faz adúltera; e quem casar com a repudiada, comete adultério. Outrossim, ouvistes que foi dito aos antigos: Não jurarás falso, mas cumprirás para com o Senhor os teus juramentos. Eu, porém, vos digo que de maneira nenhuma jureis; nem pelo céu, porque é o trono de Deus; nem pela terra, porque é o escabelo de seus pés; nem por Jerusalém, porque é a cidade do grande Rei; nem jures pela tua cabeça, porque não podes tornar um só cabelo branco ou preto. Seja, porém, o vosso falar: Sim, sim; não, não; pois o que passa daí, vem do Maligno."
           }
         ],
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
@@ -2074,6 +2074,36 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ],
+        "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
+      },
+      {
+        "date": "2027-01-10",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Isaías 42:1-9",
             "text": "Eis aqui o meu servo, a quem sustenho; o meu escolhido, em quem se compraz a minha alma; pus o meu espírito sobre ele. ele trará justiça às nações. Não clamará, não se exaltará, nem fará ouvir a sua voz na rua. A cana trilhada, não a quebrará, nem apagará o pavio que fumega; em verdade trará a justiça; não faltará nem será quebrantado, até que ponha na terra a justiça; e as ilhas aguardarão a sua lei. Assim diz Deus, o Senhor, que criou os céus e os desenrolou, e estendeu a terra e o que dela procede; que dá a respiração ao povo que nela está, e o espírito aos que andam nela. Eu o Senhor te chamei em justiça; tomei-te pela mão, e te guardei; e te dei por pacto ao povo, e para luz das nações; para abrir os olhos dos cegos, para tirar da prisão os presos, e do cárcere os que jazem em trevas. Eu sou o Senhor; este é o meu nome; a minha glória, pois, a outrem não a darei, nem o meu louvor às imagens esculpidas. Eis que as primeiras coisas já se realizaram, e novas coisas eu vos anuncio; antes que venham à luz, vo-las faço ouvir."
           },
@@ -2096,9 +2126,9 @@
         "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
       },
       {
-        "date": "2027-01-10",
+        "date": "2027-01-17",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2126,9 +2156,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2027-01-17",
+        "date": "2027-01-24",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2156,9 +2186,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2027-01-24",
+        "date": "2027-01-31",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2181,36 +2211,6 @@
             "type": "gospel",
             "ref": "Mateus 5:1-12",
             "text": "Jesus, pois, vendo as multidões, subiu ao monte; e, tendo se assentado, aproximaram-se os seus discípulos, e ele se pôs a ensiná-los, dizendo: Bem-aventurados os humildes de espírito, porque deles é o reino dos céus. Bem-aventurados os que choram, porque eles serão consolados. Bem-aventurados os mansos, porque eles herdarão a terra. Bem-aventurados os que têm fome e sede de justiça porque eles serão fartos. Bem-aventurados os misericordiosos, porque eles alcançarão misericórdia. Bem-aventurados os limpos de coração, porque eles verão a Deus. Bem-aventurados os pacificadores, porque eles serão chamados filhos de Deus. Bem-aventurados os que são perseguidos por causa da justiça, porque deles é o reino dos céus. Bem-aventurados sois vós, quando vos injuriarem e perseguiram e, mentindo, disserem todo mal contra vós por minha causa. Alegrai-vos e exultai, porque é grande o vosso galardão nos céus; porque assim perseguiram aos profetas que foram antes de vós."
-          }
-        ],
-        "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
-      },
-      {
-        "date": "2027-01-31",
-        "season": "epiphany",
-        "weekOfSeason": 5,
-        "dayName": "Quinto Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Isaías 58:1-9a",
-            "text": "Clama em alta voz, não te detenhas, levanta a tua voz como a trombeta e anuncia ao meu povo a sua transgressão, e à casa de Jacó os seus pecados. Todavia me procuram cada dia, tomam prazer em saber os meus caminhos; como se fossem um povo que praticasse a justiça e não tivesse abandonado a ordenança do seu Deus, pedem-me juízos retos, têm prazer em se chegar a Deus!, Por que temos nós jejuado, dizem eles, e tu não atentas para isso? por que temos afligido as nossas almas, e tu não o sabes? Eis que no dia em que jejuais, prosseguis nas vossas empresas, e exigis que se façam todos os vossos trabalhos. Eis que para contendas e rixas jejuais, e para ferirdes com punho iníquo! Jejuando vós assim como hoje, a vossa voz não se fara ouvir no alto. Seria esse o jejum que eu escolhi? o dia em que o homem aflija a sua alma? Consiste porventura, em inclinar o homem a cabeça como junco e em estender debaixo de si saco e cinza? chamarias tu a isso jejum e dia aceitável ao Senhor? Acaso não é este o jejum que escolhi? que soltes as ligaduras da impiedade, que desfaças as ataduras do jugo? e que deixes ir livres os oprimidos, e despedaces todo jugo? Porventura não é também que repartas o teu pão com o faminto, e recolhas em casa os pobres desamparados? que vendo o nu, o cubras, e não te escondas da tua carne? Então romperá a tua luz como a alva, e a tua cura apressadamente brotará. e a tua justiça irá adiante de ti; e a glória do Senhor será a tua retaguarda. Então clamarás, e o Senhor te responderá; gritarás, e ele dirá: Eis-me aqui. Se tirares do meio de ti o jugo, o estender do dedo, e o falar iniquamente;"
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 112:1-9",
-            "text": "Louvai ao Senhor. Bem-aventurado o homem que teme ao Senhor, que em seus mandamentos tem grande prazer! A sua descendência será poderosa na terra; a geração dos retos será abençoada. Bens e riquezas há na sua casa; e a sua justiça permanece para sempre. Aos retos nasce luz nas trevas; ele é compassivo, misericordioso e justo. Ditoso é o homem que se compadece, e empresta, que conduz os seus negócios com justiça; pois ele nunca será abalado; o justo ficará em memória eterna. Ele não teme más notícias; o seu coração está firme, confiando no Senhor. O seu coração está bem firmado, ele não terá medo, até que veja cumprido o seu desejo sobre os seus adversários. Espalhou, deu aos necessitados; a sua justiça subsiste para sempre; o seu poder será exaltado em honra."
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 2:1-12",
-            "text": "E eu, irmãos, quando fui ter convosco, anunciando-vos o testemunho de Deus, não fui com sublimidade de palavras ou de sabedoria. Porque nada me propus saber entre vós, senão a Jesus Cristo, e este crucificado. E eu estive convosco em fraqueza, e em temor, e em grande tremor. A minha linguagem e a minha pregação não consistiram em palavras persuasivas de sabedoria, mas em demonstração do Espírito de poder; para que a vossa fé não se apoiasse na sabedoria dos homens, mas no poder de Deus. Na verdade, entre os perfeitos falamos sabedoria, não porém a sabedoria deste mundo, nem dos príncipes deste mundo, que estão sendo reduzidos a nada; mas falamos a sabedoria de Deus em mistério, que esteve oculta, a qual Deus preordenou antes dos séculos para nossa glória; a qual nenhum dos príncipes deste mundo compreendeu; porque se a tivessem compreendido, não teriam crucificado o Senhor da glória. Mas, como está escrito: As coisas que olhos não viram, nem ouvidos ouviram, nem penetraram o coração do homem, são as que Deus preparou para os que o amam. Porque Deus no-las revelou pelo seu Espírito; pois o Espírito esquadrinha todas as coisas, mesmos as profundezas de Deus. Pois, qual dos homens entende as coisas do homem, senão o espírito do homem que nele está? assim também as coisas de Deus, ninguém as compreendeu, senão o Espírito de Deus. Ora, nós não temos recebido o espírito do mundo, mas sim o Espírito que provém de Deus, a fim de compreendermos as coisas que nos foram dadas gratuitamente por Deus;"
-          },
-          {
-            "type": "gospel",
-            "ref": "Mateus 5:13-20",
-            "text": "Vós sois o sal da terra; mas se o sal se tornar insípido, com que se há de restaurar-lhe o sabor? para nada mais presta, senão para ser lançado fora, e ser pisado pelos homens. Vós sois a luz do mundo. Não se pode esconder uma cidade situada sobre um monte; nem os que acendem uma candeia a colocam debaixo do alqueire, mas no velador, e assim ilumina a todos que estão na casa. Assim resplandeça a vossa luz diante dos homens, para que vejam as vossas boas obras, e glorifiquem a vosso Pai, que está nos céus. Não penseis que vim destruir a lei ou os profetas; não vim destruir, mas cumprir. Porque em verdade vos digo que, até que o céu e a terra passem, de modo nenhum passará da lei um só i ou um só til, até que tudo seja cumprido. Qualquer, pois, que violar um destes mandamentos, por menor que seja, e assim ensinar aos homens, será chamado o menor no reino dos céus; aquele, porém, que os cumprir e ensinar será chamado grande no reino dos céus. Pois eu vos digo que, se a vossa justiça não exceder a dos escribas e fariseus, de modo nenhum entrareis no reino dos céus."
           }
         ],
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
@@ -2254,6 +2254,36 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ],
+        "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
+      },
+      {
+        "date": "2028-01-09",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Isaías 42:1-9",
             "text": "Eis aqui o meu servo, a quem sustenho; o meu escolhido, em quem se compraz a minha alma; pus o meu espírito sobre ele. ele trará justiça às nações. Não clamará, não se exaltará, nem fará ouvir a sua voz na rua. A cana trilhada, não a quebrará, nem apagará o pavio que fumega; em verdade trará a justiça; não faltará nem será quebrantado, até que ponha na terra a justiça; e as ilhas aguardarão a sua lei. Assim diz Deus, o Senhor, que criou os céus e os desenrolou, e estendeu a terra e o que dela procede; que dá a respiração ao povo que nela está, e o espírito aos que andam nela. Eu o Senhor te chamei em justiça; tomei-te pela mão, e te guardei; e te dei por pacto ao povo, e para luz das nações; para abrir os olhos dos cegos, para tirar da prisão os presos, e do cárcere os que jazem em trevas. Eu sou o Senhor; este é o meu nome; a minha glória, pois, a outrem não a darei, nem o meu louvor às imagens esculpidas. Eis que as primeiras coisas já se realizaram, e novas coisas eu vos anuncio; antes que venham à luz, vo-las faço ouvir."
           },
@@ -2276,9 +2306,9 @@
         "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
       },
       {
-        "date": "2028-01-09",
+        "date": "2028-01-16",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2306,9 +2336,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2028-01-16",
+        "date": "2028-01-23",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2336,9 +2366,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2028-01-23",
+        "date": "2028-01-30",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2366,9 +2396,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2028-01-30",
+        "date": "2028-02-06",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2396,9 +2426,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2028-02-06",
+        "date": "2028-02-13",
         "season": "epiphany",
-        "weekOfSeason": 6,
+        "weekOfSeason": 7,
         "dayName": "Sexto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2426,9 +2456,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2028-02-13",
+        "date": "2028-02-20",
         "season": "epiphany",
-        "weekOfSeason": 7,
+        "weekOfSeason": 8,
         "dayName": "Sétimo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2451,36 +2481,6 @@
             "type": "gospel",
             "ref": "Mateus 5:38-48",
             "text": "Ouvistes que foi dito: Olho por olho, e dente por dente. Eu, porém, vos digo que não resistais ao homem mau; mas a qualquer que te bater na face direita, oferece-lhe também a outra; e ao que quiser pleitear contigo, e tirar-te a túnica, larga-lhe também a capa; e, se qualquer te obrigar a caminhar mil passos, vai com ele dois mil. Dá a quem te pedir, e não voltes as costas ao que quiser que lhe emprestes. Ouvistes que foi dito: Amarás ao teu próximo, e odiarás ao teu inimigo. Eu, porém, vos digo: Amai aos vossos inimigos, e orai pelos que vos perseguem; para que vos torneis filhos do vosso Pai que está nos céus; porque ele faz nascer o seu sol sobre maus e bons, e faz chover sobre justos e injustos. Pois, se amardes aos que vos amam, que recompensa tereis? não fazem os publicanos também o mesmo? E, se saudardes somente os vossos irmãos, que fazeis demais? não fazem os gentios também o mesmo? Sede vós, pois, perfeitos, como é perfeito o vosso Pai celestial."
-          }
-        ],
-        "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
-      },
-      {
-        "date": "2028-02-20",
-        "season": "epiphany",
-        "weekOfSeason": 8,
-        "dayName": "Oitavo Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Isaías 49:8-16a",
-            "text": "Assim diz o Senhor: No tempo aceitável te ouvi, e no dia da salvação te ajudei; e te guardarei, e te darei por pacto do povo, para restaurares a terra, e lhe dares em herança as herdades assoladas; para dizeres aos presos: Saí; e aos que estão em trevas: Aparecei; eles pastarão nos caminhos, e em todos os altos desnudados haverá o seu pasto. Nunca terão fome nem sede; não os afligirá nem a calma nem o sol; porque o que se compadece deles os guiará, e os conduzirá mansamente aos mananciais das águas. Farei de todos os meus montes um caminho; e as minhas estradas serão exaltadas. Eis que estes virão de longe, e eis que aqueles do Norte e do Ocidente, e aqueles outros da terra de Sinim. Cantai, ó céus, e exulta, ó terra, e vós, montes, estalai de júbilo, porque o Senhor consolou o seu povo, e se compadeceu dos seus aflitos. Mas Sião diz: O Senhor me desamparou, o meu Senhor se esqueceu de mim. pode uma mulher esquecer-se de seu filho de peito, de maneira que não se compadeça do filho do seu ventre? Mas ainda que esta se esquecesse, eu, todavia, não me esquecerei de ti. Eis que nas palmas das minhas mãos eu te gravei; os teus muros estão continuamente diante de mim."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 131",
-            "text": "Senhor, o meu coração não é soberbo, nem os meus olhos são altivos; não me ocupo de assuntos grandes e maravilhosos demais para mim. Pelo contrário, tenho feito acalmar e sossegar a minha alma; qual criança desmamada sobre o seio de sua mãe, qual criança desmamada está a minha alma para comigo. Espera, ó Israel, no Senhor, desde agora e para sempre."
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 4:1-5",
-            "text": "Que os homens nos considerem, pois, como ministros de Cristo, e despenseiros dos mistérios de Deus. Ora, além disso, o que se requer nos despenseiros é que cada um seja encontrado fiel. Todavia, a mim mui pouco se me dá de ser julgado por vós, ou por qualquer tribunal humano; nem eu tampouco a mim mesmo me julgo. Porque, embora em nada me sinta culpado, nem por isso sou justificado; pois quem me julga é o Senhor. Portanto nada julgueis antes do tempo, até que venha o Senhor, o qual não só trará à luz as coisas ocultas das trevas, mas também manifestará os desígnios dos corações; e então cada um receberá de Deus o seu louvor."
-          },
-          {
-            "type": "gospel",
-            "ref": "Mateus 6:24-34",
-            "text": "Ninguém pode servir a dois senhores; porque ou há de odiar a um e amar o outro, ou há de dedicar-se a um e desprezar o outro. Não podeis servir a Deus e às riquezas. Por isso vos digo: Não estejais ansiosos quanto à vossa vida, pelo que haveis de comer, ou pelo que haveis de beber; nem, quanto ao vosso corpo, pelo que haveis de vestir. Não é a vida mais do que o alimento, e o corpo mais do que o vestuário? Olhai para as aves do céu, que não semeiam, nem ceifam, nem ajuntam em celeiros; e vosso Pai celestial as alimenta. Não valeis vós muito mais do que elas? Ora, qual de vós, por mais ansioso que esteja, pode acrescentar um côvado à sua estatura? E pelo que haveis de vestir, por que andais ansiosos? Olhai para os lírios do campo, como crescem; não trabalham nem fiam; contudo vos digo que nem mesmo Salomão em toda a sua glória se vestiu como um deles. Pois, se Deus assim veste a erva do campo, que hoje existe e amanhã é lançada no forno, quanto mais a vós, homens de pouca fé? Portanto, não vos inquieteis, dizendo: Que havemos de comer? ou: Que havemos de beber? ou: Com que nos havemos de vestir? (Pois a todas estas coisas os gentios procuram.) Porque vosso Pai celestial sabe que precisais de tudo isso. Mas buscai primeiro o seu reino e a sua justiça, e todas estas coisas vos serão acrescentadas. Não vos inquieteis, pois, pelo dia de amanhã; porque o dia de amanhã cuidará de si mesmo. Basta a cada dia o seu mal."
           }
         ],
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
@@ -2524,6 +2524,36 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ],
+        "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
+      },
+      {
+        "date": "2029-01-07",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Isaías 42:1-9",
             "text": "Eis aqui o meu servo, a quem sustenho; o meu escolhido, em quem se compraz a minha alma; pus o meu espírito sobre ele. ele trará justiça às nações. Não clamará, não se exaltará, nem fará ouvir a sua voz na rua. A cana trilhada, não a quebrará, nem apagará o pavio que fumega; em verdade trará a justiça; não faltará nem será quebrantado, até que ponha na terra a justiça; e as ilhas aguardarão a sua lei. Assim diz Deus, o Senhor, que criou os céus e os desenrolou, e estendeu a terra e o que dela procede; que dá a respiração ao povo que nela está, e o espírito aos que andam nela. Eu o Senhor te chamei em justiça; tomei-te pela mão, e te guardei; e te dei por pacto ao povo, e para luz das nações; para abrir os olhos dos cegos, para tirar da prisão os presos, e do cárcere os que jazem em trevas. Eu sou o Senhor; este é o meu nome; a minha glória, pois, a outrem não a darei, nem o meu louvor às imagens esculpidas. Eis que as primeiras coisas já se realizaram, e novas coisas eu vos anuncio; antes que venham à luz, vo-las faço ouvir."
           },
@@ -2546,9 +2576,9 @@
         "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
       },
       {
-        "date": "2029-01-07",
+        "date": "2029-01-14",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2576,9 +2606,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2029-01-14",
+        "date": "2029-01-21",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2606,9 +2636,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2029-01-21",
+        "date": "2029-01-28",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2636,9 +2666,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2029-01-28",
+        "date": "2029-02-04",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2661,36 +2691,6 @@
             "type": "gospel",
             "ref": "Mateus 5:13-20",
             "text": "Vós sois o sal da terra; mas se o sal se tornar insípido, com que se há de restaurar-lhe o sabor? para nada mais presta, senão para ser lançado fora, e ser pisado pelos homens. Vós sois a luz do mundo. Não se pode esconder uma cidade situada sobre um monte; nem os que acendem uma candeia a colocam debaixo do alqueire, mas no velador, e assim ilumina a todos que estão na casa. Assim resplandeça a vossa luz diante dos homens, para que vejam as vossas boas obras, e glorifiquem a vosso Pai, que está nos céus. Não penseis que vim destruir a lei ou os profetas; não vim destruir, mas cumprir. Porque em verdade vos digo que, até que o céu e a terra passem, de modo nenhum passará da lei um só i ou um só til, até que tudo seja cumprido. Qualquer, pois, que violar um destes mandamentos, por menor que seja, e assim ensinar aos homens, será chamado o menor no reino dos céus; aquele, porém, que os cumprir e ensinar será chamado grande no reino dos céus. Pois eu vos digo que, se a vossa justiça não exceder a dos escribas e fariseus, de modo nenhum entrareis no reino dos céus."
-          }
-        ],
-        "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
-      },
-      {
-        "date": "2029-02-04",
-        "season": "epiphany",
-        "weekOfSeason": 6,
-        "dayName": "Sexto Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Deuteronômio 30:15-20",
-            "text": "Vê que hoje te pus diante de ti a vida e o bem, a morte e o mal. Se guardares o mandamento que eu hoje te ordeno de amar ao Senhor teu Deus, de andar nos seus caminhos, e de guardar os seus mandamentos, os seus estatutos e os seus preceitos, então viverás, e te multiplicarás, e o Senhor teu Deus te abençoará na terra em que estás entrando para a possuíres. Mas se o teu coração se desviar, e não quiseres ouvir, e fores seduzido para adorares outros deuses, e os servires, declaro-te hoje que certamente perecerás; não prolongarás os dias na terra para entrar na qual estás passando o Jordão, a fim de a possuíres. O céu e a terra tomo hoje por testemunhas contra ti de que te pus diante de ti a vida e a morte, a bênção e a maldição; escolhe, pois, a vida, para que vivas, tu e a tua descendência, amando ao Senhor teu Deus, obedecendo à sua voz, e te apegando a ele; pois ele é a tua vida, e o prolongamento dos teus dias; e para que habites na terra que o Senhor prometeu com juramento a teus pais, a Abraão, a Isaque e a Jacó, que lhes havia de dar."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 119:1-8",
-            "text": "Bem-aventurados os que trilham com integridade o seu caminho, os que andam na lei do Senhor! Bem-aventurados os que guardam os seus testemunhos, que o buscam de todo o coração, que não praticam iniqüidade, mas andam nos caminhos dele! Tu ordenaste os teus preceitos, para que fossem diligentemente observados. Oxalá sejam os meus caminhos dirigidos de maneira que eu observe os teus estatutos! Então não ficarei confundido, atentando para todos os teus mandamentos. Louvar-te-ei com retidão de coração, quando tiver aprendido as tuas retas ordenanças. Observarei os teus estatutos; não me desampares totalmente!"
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 3:1-9",
-            "text": "E eu, irmãos não vos pude falar como a espírituais, mas como a carnais, como a criancinhas em Cristo. Leite vos dei por alimento, e não comida sólida, porque não a podíeis suportar; nem ainda agora podeis; porquanto ainda sois carnais; pois, havendo entre vós inveja e contendas, não sois porventura carnais, e não estais andando segundo os homens? Porque, dizendo um: Eu sou de Paulo; e outro: Eu de Apolo; não sois apenas homens? Pois, que é Apolo, e que é Paulo, senão ministros pelos quais crestes, e isso conforme o que o Senhor concedeu a cada um? Eu plantei; Apolo regou; mas Deus deu o crescimento. De modo que, nem o que planta é alguma coisa, nem o que rega, mas Deus, que dá o crescimento. Ora, uma só coisa é o que planta e o que rega; e cada um receberá o seu galardão segundo o seu trabalho. Porque nós somos cooperadores de Deus; vós sois lavoura de Deus e edifício de Deus."
-          },
-          {
-            "type": "gospel",
-            "ref": "Mateus 5:21-37",
-            "text": "Ouvistes que foi dito aos antigos: Não matarás; e, Quem matar será réu de juízo. Eu, porém, vos digo que todo aquele que se encolerizar contra seu irmão, será réu de juízo; e quem disser a seu irmão: Raca, será réu diante do sinédrio; e quem lhe disser: Tolo, será réu do fogo do inferno. Portanto, se estiveres apresentando a tua oferta no altar, e aí te lembrares de que teu irmão tem alguma coisa contra ti, deixa ali diante do altar a tua oferta, e vai conciliar-te primeiro com teu irmão, e depois vem apresentar a tua oferta. Concilia-te depressa com o teu adversário, enquanto estás no caminho com ele; para que não aconteça que o adversário te entregue ao guarda, e sejas lançado na prisão. Em verdade te digo que de maneira nenhuma sairás dali enquanto não pagares o último ceitil. Ouvistes que foi dito: Não adulterarás. Eu, porém, vos digo que todo aquele que olhar para uma mulher para a cobiçar, já em seu coração cometeu adultério com ela. Se o teu olho direito te faz tropeçar, arranca-o e lança-o de ti; pois te é melhor que se perca um dos teus membros do que seja todo o teu corpo lançado no inferno. E, se a tua mão direita te faz tropeçar, corta-a e lança-a de ti; pois te é melhor que se perca um dos teus membros do que vá todo o teu corpo para o inferno. Também foi dito: Quem repudiar sua mulher, dê-lhe carta de divórcio. Eu, porém, vos digo que todo aquele que repudia sua mulher, a não ser por causa de infidelidade, a faz adúltera; e quem casar com a repudiada, comete adultério. Outrossim, ouvistes que foi dito aos antigos: Não jurarás falso, mas cumprirás para com o Senhor os teus juramentos. Eu, porém, vos digo que de maneira nenhuma jureis; nem pelo céu, porque é o trono de Deus; nem pela terra, porque é o escabelo de seus pés; nem por Jerusalém, porque é a cidade do grande Rei; nem jures pela tua cabeça, porque não podes tornar um só cabelo branco ou preto. Seja, porém, o vosso falar: Sim, sim; não, não; pois o que passa daí, vem do Maligno."
           }
         ],
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
@@ -2734,6 +2734,36 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ],
+        "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
+      },
+      {
+        "date": "2030-01-13",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Isaías 42:1-9",
             "text": "Eis aqui o meu servo, a quem sustenho; o meu escolhido, em quem se compraz a minha alma; pus o meu espírito sobre ele. ele trará justiça às nações. Não clamará, não se exaltará, nem fará ouvir a sua voz na rua. A cana trilhada, não a quebrará, nem apagará o pavio que fumega; em verdade trará a justiça; não faltará nem será quebrantado, até que ponha na terra a justiça; e as ilhas aguardarão a sua lei. Assim diz Deus, o Senhor, que criou os céus e os desenrolou, e estendeu a terra e o que dela procede; que dá a respiração ao povo que nela está, e o espírito aos que andam nela. Eu o Senhor te chamei em justiça; tomei-te pela mão, e te guardei; e te dei por pacto ao povo, e para luz das nações; para abrir os olhos dos cegos, para tirar da prisão os presos, e do cárcere os que jazem em trevas. Eu sou o Senhor; este é o meu nome; a minha glória, pois, a outrem não a darei, nem o meu louvor às imagens esculpidas. Eis que as primeiras coisas já se realizaram, e novas coisas eu vos anuncio; antes que venham à luz, vo-las faço ouvir."
           },
@@ -2756,9 +2786,9 @@
         "collect": "Pai celestial, que no batismo de Jesus no Jordão o proclamaste teu Filho amado e o ungiste com o Espírito Santo: Concede que todos os que são batizados em teu nome sejam fiéis à sua vocação e testemunhem o teu amor ao mundo; por Jesus Cristo, nosso Senhor. Amém."
       },
       {
-        "date": "2030-01-13",
+        "date": "2030-01-20",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2786,9 +2816,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2030-01-20",
+        "date": "2030-01-27",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2816,9 +2846,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2030-01-27",
+        "date": "2030-02-03",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2846,9 +2876,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2030-02-03",
+        "date": "2030-02-10",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2876,9 +2906,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2030-02-10",
+        "date": "2030-02-17",
         "season": "epiphany",
-        "weekOfSeason": 6,
+        "weekOfSeason": 7,
         "dayName": "Sexto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2906,9 +2936,9 @@
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
       },
       {
-        "date": "2030-02-17",
+        "date": "2030-02-24",
         "season": "epiphany",
-        "weekOfSeason": 7,
+        "weekOfSeason": 8,
         "dayName": "Sétimo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2931,36 +2961,6 @@
             "type": "gospel",
             "ref": "Mateus 5:38-48",
             "text": "Ouvistes que foi dito: Olho por olho, e dente por dente. Eu, porém, vos digo que não resistais ao homem mau; mas a qualquer que te bater na face direita, oferece-lhe também a outra; e ao que quiser pleitear contigo, e tirar-te a túnica, larga-lhe também a capa; e, se qualquer te obrigar a caminhar mil passos, vai com ele dois mil. Dá a quem te pedir, e não voltes as costas ao que quiser que lhe emprestes. Ouvistes que foi dito: Amarás ao teu próximo, e odiarás ao teu inimigo. Eu, porém, vos digo: Amai aos vossos inimigos, e orai pelos que vos perseguem; para que vos torneis filhos do vosso Pai que está nos céus; porque ele faz nascer o seu sol sobre maus e bons, e faz chover sobre justos e injustos. Pois, se amardes aos que vos amam, que recompensa tereis? não fazem os publicanos também o mesmo? E, se saudardes somente os vossos irmãos, que fazeis demais? não fazem os gentios também o mesmo? Sede vós, pois, perfeitos, como é perfeito o vosso Pai celestial."
-          }
-        ],
-        "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."
-      },
-      {
-        "date": "2030-02-24",
-        "season": "epiphany",
-        "weekOfSeason": 8,
-        "dayName": "Oitavo Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Isaías 49:8-16a",
-            "text": "Assim diz o Senhor: No tempo aceitável te ouvi, e no dia da salvação te ajudei; e te guardarei, e te darei por pacto do povo, para restaurares a terra, e lhe dares em herança as herdades assoladas; para dizeres aos presos: Saí; e aos que estão em trevas: Aparecei; eles pastarão nos caminhos, e em todos os altos desnudados haverá o seu pasto. Nunca terão fome nem sede; não os afligirá nem a calma nem o sol; porque o que se compadece deles os guiará, e os conduzirá mansamente aos mananciais das águas. Farei de todos os meus montes um caminho; e as minhas estradas serão exaltadas. Eis que estes virão de longe, e eis que aqueles do Norte e do Ocidente, e aqueles outros da terra de Sinim. Cantai, ó céus, e exulta, ó terra, e vós, montes, estalai de júbilo, porque o Senhor consolou o seu povo, e se compadeceu dos seus aflitos. Mas Sião diz: O Senhor me desamparou, o meu Senhor se esqueceu de mim. pode uma mulher esquecer-se de seu filho de peito, de maneira que não se compadeça do filho do seu ventre? Mas ainda que esta se esquecesse, eu, todavia, não me esquecerei de ti. Eis que nas palmas das minhas mãos eu te gravei; os teus muros estão continuamente diante de mim."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 131",
-            "text": "Senhor, o meu coração não é soberbo, nem os meus olhos são altivos; não me ocupo de assuntos grandes e maravilhosos demais para mim. Pelo contrário, tenho feito acalmar e sossegar a minha alma; qual criança desmamada sobre o seio de sua mãe, qual criança desmamada está a minha alma para comigo. Espera, ó Israel, no Senhor, desde agora e para sempre."
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 4:1-5",
-            "text": "Que os homens nos considerem, pois, como ministros de Cristo, e despenseiros dos mistérios de Deus. Ora, além disso, o que se requer nos despenseiros é que cada um seja encontrado fiel. Todavia, a mim mui pouco se me dá de ser julgado por vós, ou por qualquer tribunal humano; nem eu tampouco a mim mesmo me julgo. Porque, embora em nada me sinta culpado, nem por isso sou justificado; pois quem me julga é o Senhor. Portanto nada julgueis antes do tempo, até que venha o Senhor, o qual não só trará à luz as coisas ocultas das trevas, mas também manifestará os desígnios dos corações; e então cada um receberá de Deus o seu louvor."
-          },
-          {
-            "type": "gospel",
-            "ref": "Mateus 6:24-34",
-            "text": "Ninguém pode servir a dois senhores; porque ou há de odiar a um e amar o outro, ou há de dedicar-se a um e desprezar o outro. Não podeis servir a Deus e às riquezas. Por isso vos digo: Não estejais ansiosos quanto à vossa vida, pelo que haveis de comer, ou pelo que haveis de beber; nem, quanto ao vosso corpo, pelo que haveis de vestir. Não é a vida mais do que o alimento, e o corpo mais do que o vestuário? Olhai para as aves do céu, que não semeiam, nem ceifam, nem ajuntam em celeiros; e vosso Pai celestial as alimenta. Não valeis vós muito mais do que elas? Ora, qual de vós, por mais ansioso que esteja, pode acrescentar um côvado à sua estatura? E pelo que haveis de vestir, por que andais ansiosos? Olhai para os lírios do campo, como crescem; não trabalham nem fiam; contudo vos digo que nem mesmo Salomão em toda a sua glória se vestiu como um deles. Pois, se Deus assim veste a erva do campo, que hoje existe e amanhã é lançada no forno, quanto mais a vós, homens de pouca fé? Portanto, não vos inquieteis, dizendo: Que havemos de comer? ou: Que havemos de beber? ou: Com que nos havemos de vestir? (Pois a todas estas coisas os gentios procuram.) Porque vosso Pai celestial sabe que precisais de tudo isso. Mas buscai primeiro o seu reino e a sua justiça, e todas estas coisas vos serão acrescentadas. Não vos inquieteis, pois, pelo dia de amanhã; porque o dia de amanhã cuidará de si mesmo. Basta a cada dia o seu mal."
           }
         ],
         "collect": "Deus Todo-Poderoso, cujo Filho se transfigurou diante dos seus discípulos: Concede-nos que, contemplando a sua glória, sejamos fortalecidos para levar a nossa cruz e seguir os seus passos; ele que vive e reina contigo e com o Espírito Santo, um só Deus, agora e para sempre. Amém."

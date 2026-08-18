@@ -469,6 +469,42 @@ por `date.getDay()` do Advento/Tempo Comum sem adaptação).
 
 ---
 
+### 1.2f Achado: leitura da Epifania (25/dez) e numeração dos domingos seguintes (2026-08-18)
+
+Ao preparar o conteúdo devocional da Epifania, achei mais um bug do
+mesmo tipo: a chave `epiphany:1` da tabela continha a leitura do
+**Batismo do Senhor** (Mateus 3:13-17), não a leitura real do **Dia da
+Epifania** (visita dos magos, Mateus 2:1-12) — que nunca existia na
+tabela. Isso empurrava a numeração de todos os domingos seguintes uma
+semana adiantada: 6/jan mostrava a leitura do Batismo; o 1º domingo
+real depois (que deveria ser o próprio Batismo) mostrava a leitura do
+"2º Domingo depois da Epifania"; e assim por diante, até a
+Transfiguração (que já tinha sido corrigida separadamente em 1.2 —
+essa parte continuou correta, só a numeração intermediária estava
+errada).
+
+- [x] Nova chave `epiphanyday:1` — leitura real da Epifania (Isaías
+      60:1-6 · Salmo 72:1-7, 10-14 · Efésios 3:1-12 · Mateus 2:1-12),
+      igual nos 3 ciclos (é uma das poucas leituras fixas do RCL, não
+      cíclicas)
+- [x] 6/jan agora usa `epiphanyday:1`; o 1º domingo real depois da
+      Epifania (sempre "Batismo do Senhor", nome próprio — não existe
+      "1º Domingo depois da Epifania" no RCL) usa a chave `epiphany:1`
+      (conteúdo que já estava certo, só mal aproveitado); cada domingo
+      seguinte usa `epiphany:${M}` onde M é o número real do domingo
+      (2 = "2º Domingo", 3 = "3º Domingo", ...)
+- [x] Validado nos 3 ciclos, múltiplos anos: 6/jan sempre mostra os
+      magos, o domingo seguinte sempre "Batismo do Senhor" com a
+      leitura certa por ciclo, e a numeração dos domingos seguintes
+      bate com o RCL oficial (confirmado contra a Vanderbilt Divinity
+      Library)
+- [x] Regressão de Tempo Comum, Advento e Natal reconfirmada — essa
+      mudança não toca nessas partes do código. `tsc`, `prettier` e os
+      42 testes passando; `cycle-A/B/C.json` e `devotionals-*.json`
+      sincronizados pro mobile
+
+---
+
 ### 1.3 Correção de build (mobile)
 
 - [x] **`NoSuchMethodError` resolvido (2026-08-15)** — não era teórico,

@@ -1377,6 +1377,35 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ]
+      },
+      {
+        "date": "2024-01-07",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Gênesis 1:1-5",
             "text": "No princípio criou Deus os céus e a terra. A terra era sem forma e vazia; e havia trevas sobre a face do abismo, mas o Espírito de Deus pairava sobre a face das águas. Disse Deus: haja luz. E houve luz. Viu Deus que a luz era boa; e fez separação entre a luz e as trevas. E Deus chamou à luz dia, e às trevas noite. E foi a tarde e a manhã, o dia primeiro."
           },
@@ -1398,9 +1427,9 @@
         ]
       },
       {
-        "date": "2024-01-07",
+        "date": "2024-01-14",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1427,9 +1456,9 @@
         ]
       },
       {
-        "date": "2024-01-14",
+        "date": "2024-01-21",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1456,9 +1485,9 @@
         ]
       },
       {
-        "date": "2024-01-21",
+        "date": "2024-01-28",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1485,9 +1514,9 @@
         ]
       },
       {
-        "date": "2024-01-28",
+        "date": "2024-02-04",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1510,35 +1539,6 @@
             "type": "gospel",
             "ref": "Marcos 1:29-39",
             "text": "Em seguida, saiu da sinagoga e foi a casa de Simão e André com Tiago e João. A sogra de Simão estava de cama com febre, e logo lhe falaram a respeito dela. Então Jesus, chegando-se e tomando-a pela mão, a levantou; e a febre a deixou, e ela os servia. Sendo já tarde, tendo-se posto o sol, traziam-lhe todos os enfermos, e os endemoninhados; e toda a cidade estava reunida à porta; e ele curou muitos doentes atacados de diversas moléstias, e expulsou muitos demônios; mas não permitia que os demônios falassem, porque o conheciam. De madrugada, ainda bem escuro, levantou-se, saiu e foi a um lugar deserto, e ali orava. Foram, pois, Simão e seus companheiros procurá-lo; quando o encontraram, disseram-lhe: Todos te buscam. Respondeu-lhes Jesus: Vamos a outras partes, às povoações vizinhas, para que eu pregue ali também; pois para isso é que vim. Foi, então, por toda a Galiléia, pregando nas sinagogas deles e expulsando os demônios."
-          }
-        ]
-      },
-      {
-        "date": "2024-02-04",
-        "season": "epiphany",
-        "weekOfSeason": 6,
-        "dayName": "Sexto Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "2 Reis 5:1-14",
-            "text": "Ora, Naamã, chefe do exército do rei da Síria, era um grande homem diante do seu senhor, e de muito respeito, porque por ele o Senhor dera livramento aos sírios; era homem valente, porém leproso. Os sírios, numa das suas investidas, haviam levado presa, da terra de Israel, uma menina que ficou ao serviço da mulher de Naamã. Disse ela a sua senhora: Oxalá que o meu senhor estivesse diante do profeta que está em Samária! Pois este o curaria da sua lepra. Então Naamã foi notificar a seu senhor, dizendo: Assim e assim falou a menina que é da terra de Israel. Respondeu o rei da Síria: Vai, anda, e enviarei uma carta ao rei de Israel. Foi, pois, e levou consigo dez talentos de prata, e seis mil siclos de ouro e dez mudas de roupa. Também levou ao rei de Israel a carta, que dizia: Logo, em chegando a ti esta carta, saberás que eu te enviei Naamã, meu servo, para que o cures da sua lepra. Tendo o rei de Israel lido a carta, rasgou as suas vestes, e disse: Sou eu Deus, que possa matar e vivificar, para que este envie a mim um homem a fim de que eu o cure da sua lepra? Notai, peço-vos, e vede como ele anda buscando ocasião contra mim. Quando Eliseu, o homem de Deus, ouviu que o rei de Israel rasgara as suas vestes, mandou dizer ao rei: Por que rasgaste as tuas vestes? Deixa-o vir ter comigo, e saberá que há profeta em Israel. Veio, pois, Naamã com os seus cavalos, e com o seu carro, e parou à porta da casa de Eliseu. Então este lhe mandou um mensageiro, a dizer-lhe: Vai, lava-te sete vezes no Jordão, e a tua carne tornará a ti, e ficarás purificado. Naamã, porém, indignado, retirou-se, dizendo: Eis que pensava eu: Certamente ele sairá a ter comigo, pôr-se-á em pé, invocará o nome do Senhor seu Deus, passará a sua mão sobre o lugar, e curará o leproso. Não são, porventura, Abana e Farpar, rios de Damasco, melhores do que todas as águas de Israel? não poderia eu lavar-me neles, e ficar purificado? Assim se voltou e se retirou com indignação. Os seus servos, porém, chegaram-se a ele e lhe falaram, dizendo: Meu pai, se o profeta te houvesse indicado alguma coisa difícil, porventura não a terias cumprido? Quanto mais, dizendo-te ele: Lava-te, e ficarás purificado. Desceu ele, pois, e mergulhou-se no Jordão sete vezes, conforme a palavra do homem de Deus; e a sua carne tornou-se como a carne dum menino, e ficou purificado."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 30",
-            "text": "Exaltar-te-ei, ó Senhor, porque tu me levantaste, e não permitiste que meus inimigos se alegrassem sobre mim. Ó Senhor, Deus meu, a ti clamei, e tu me curaste. Senhor, fizeste subir a minha alma do Seol, conservaste-me a vida, dentre os que descem à cova. Cantai louvores ao Senhor, vós que sois seus santos, e louvai o seu santo nome. Porque a sua ira dura só um momento; no seu favor está a vida. O choro pode durar uma noite; pela manhã, porém, vem o cântico de júbilo. Quanto a mim, dizia eu na minha prosperidade: Jamais serei abalado. Tu, Senhor, pelo teu favor fizeste que a minha montanha permanecesse forte; ocultaste o teu rosto, e fiquei conturbado. A ti, Senhor, clamei, e ao Senhor supliquei: Que proveito haverá no meu sangue, se eu descer à cova? Porventura te louvará o pó? Anunciará ele a tua verdade? Ouve, Senhor, e tem compaixão de mim! Ó Senhor, sê o meu ajudador! Tornaste o meu pranto em regozijo, tiraste o meu cilício, e me cingiste de alegria; para que a minha alma te cante louvores, e não se cale. Senhor, Deus meu, eu te louvarei para sempre."
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 9:24-27",
-            "text": "Não sabeis vós que os que correm no estádio, todos, na verdade, correm, mas um só é que recebe o prêmio? Correi de tal maneira que o alcanceis. E todo aquele que luta, exerce domínio próprio em todas as coisas; ora, eles o fazem para alcançar uma coroa corruptível, nós, porém, uma incorruptível. Pois eu assim corro, não como indeciso; assim combato, não como batendo no ar. Antes subjugo o meu corpo, e o reduzo à submissão, para que, depois de pregar a outros, eu mesmo não venha a ficar reprovado."
-          },
-          {
-            "type": "gospel",
-            "ref": "Marcos 1:40-45",
-            "text": "E veio a ele um leproso que, de joelhos, lhe rogava, dizendo: Se quiseres, bem podes tornar-me limpo. Jesus, pois, compadecido dele, estendendo a mão, tocou-o e disse-lhe: Quero; sê limpo. Imediatamente desapareceu dele a lepra e ficou limpo. E Jesus, advertindo-o secretamente, logo o despediu, dizendo-lhe: Olha, não digas nada a ninguém; mas vai, mostra-te ao sacerdote e oferece pela tua purificação o que Moisés determinou, para lhes servir de testemunho. Ele, porém, saindo dali, começou a publicar o caso por toda parte e a divulgá-lo, de modo que Jesus já não podia entrar abertamente numa cidade, mas conservava-se fora em lugares desertos; e de todos os lados iam ter com ele."
           }
         ]
       },
@@ -1580,6 +1580,35 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ]
+      },
+      {
+        "date": "2025-01-12",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Gênesis 1:1-5",
             "text": "No princípio criou Deus os céus e a terra. A terra era sem forma e vazia; e havia trevas sobre a face do abismo, mas o Espírito de Deus pairava sobre a face das águas. Disse Deus: haja luz. E houve luz. Viu Deus que a luz era boa; e fez separação entre a luz e as trevas. E Deus chamou à luz dia, e às trevas noite. E foi a tarde e a manhã, o dia primeiro."
           },
@@ -1601,9 +1630,9 @@
         ]
       },
       {
-        "date": "2025-01-12",
+        "date": "2025-01-19",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1630,9 +1659,9 @@
         ]
       },
       {
-        "date": "2025-01-19",
+        "date": "2025-01-26",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1659,9 +1688,9 @@
         ]
       },
       {
-        "date": "2025-01-26",
+        "date": "2025-02-02",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1688,9 +1717,9 @@
         ]
       },
       {
-        "date": "2025-02-02",
+        "date": "2025-02-09",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1717,9 +1746,9 @@
         ]
       },
       {
-        "date": "2025-02-09",
+        "date": "2025-02-16",
         "season": "epiphany",
-        "weekOfSeason": 6,
+        "weekOfSeason": 7,
         "dayName": "Sexto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1746,9 +1775,9 @@
         ]
       },
       {
-        "date": "2025-02-16",
+        "date": "2025-02-23",
         "season": "epiphany",
-        "weekOfSeason": 7,
+        "weekOfSeason": 8,
         "dayName": "Sétimo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1771,35 +1800,6 @@
             "type": "gospel",
             "ref": "Marcos 2:1-12",
             "text": "Alguns dias depois entrou Jesus outra vez em Cafarnaum, e soube-se que ele estava em casa. Ajuntaram-se, pois, muitos, a ponta de não caberem nem mesmo diante da porta; e ele lhes anunciava a palavra. Nisso vieram alguns a trazer-lhe um paralítico, carregado por quatro; e não podendo aproximar-se dele, por causa da multidão, descobriram o telhado onde estava e, fazendo uma abertura, baixaram o leito em que jazia o paralítico. E Jesus, vendo-lhes a fé, disse ao paralítico: Filho, perdoados são os teus pecados. Ora, estavam ali sentados alguns dos escribas, que arrazoavam em seus corações, dizendo: Por que fala assim este homem? Ele blasfema. Quem pode perdoar pecados senão um só, que é Deus? Mas Jesus logo percebeu em seu espírito que eles assim arrazoavam dentro de si, e perguntou-lhes: Por que arrazoais desse modo em vossos corações? Qual é mais fácil? dizer ao paralítico: Perdoados são os teus pecados; ou dizer: Levanta-te, toma o teu leito, e anda? Ora, para que saibais que o Filho do homem tem sobre a terra autoridade para perdoar pecados ( disse ao paralítico ), a ti te digo, levanta-te, toma o teu leito, e vai para tua casa. Então ele se levantou e, tomando logo o leito, saiu à vista de todos; de modo que todos pasmavam e glorificavam a Deus, dizendo: Nunca vimos coisa semelhante."
-          }
-        ]
-      },
-      {
-        "date": "2025-02-23",
-        "season": "epiphany",
-        "weekOfSeason": 8,
-        "dayName": "Oitavo Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Oséias 2:14-20",
-            "text": "Portanto, eis que eu a atrairei, e a levarei para o deserto, e lhe falarei ao coração. E lhe darei as suas vinhas dali, e o vale de Acor por porta de esperança; e ali responderá, como nos dias da sua mocidade, e como no dia em que subiu da terra do Egito. E naquele dia, diz o Senhor, ela me chamará meu marido; e não me chamará mais meu Baal. Pois da sua boca tirarei os nomes dos baalins, e não mais se fará menção desses nomes. Naquele dia farei por eles aliança com as feras do campo, e com as aves do céu, e com os répteis da terra; e da terra tirarei o arco, e a espada, e a guerra, e os farei deitar em segurança. E desposar-te-ei comigo para sempre; sim, desposar-te-ei comigo em justiça, e em juízo, e em amorável benignidade, e em misericórdias; e desposar-te-ei comigo em fidelidade, e conhecerás ao Senhor."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 103:1-13, 22",
-            "text": "Bendize, ó minha alma, ao Senhor, e tudo o que há em mim bendiga o seu santo nome. Bendize, ó minha alma, ao Senhor, e não te esqueças de nenhum dos seus benefícios. É ele quem perdoa todas as tuas iniqüidades, quem sara todas as tuas enfermidades, quem redime a tua vida da cova, quem te coroa de benignidade e de misericórdia, quem te supre de todo o bem, de sorte que a tua mocidade se renova como a da águia. O Senhor executa atos de justiça, e juízo a favor de todos os oprimidos. Fez notórios os seus caminhos a Moisés, e os seus feitos aos filhos de Israel. Compassivo e misericordioso é o Senhor; tardio em irar-se e grande em benignidade. Não repreenderá perpetuamente, nem para sempre conservará a sua ira. Não nos trata segundo os nossos pecados, nem nos retribui segundo as nossas iniqüidades. Pois quanto o céu está elevado acima da terra, assim é grande a sua benignidade para com os que o temem. Quanto o oriente está longe do ocidente, tanto tem ele afastado de nós as nossas transgressões. Como um pai se compadece de seus filhos, assim o Senhor se compadece daqueles que o temem. Bendizei ao Senhor, vós todas as suas obras, em todos os lugares do seu domínio! Bendizei, ó minha alma ao Senhor!"
-          },
-          {
-            "type": "second_reading",
-            "ref": "2 Coríntios 3:1-6",
-            "text": "Começamos outra vez a recomendar-nos a nós mesmos? Ou, porventura, necessitamos, como alguns, de cartas de recomendação para vós, ou de vós? Vós sois a nossa carta, escrita em nossos corações, conhecida e lida por todos os homens, sendo manifestos como carta de Cristo, ministrada por nós, e escrita, não com tinta, mas com o Espírito do Deus vivo, não em tábuas de pedra, mas em tábuas de carne do coração. E é por Cristo que temos tal confiança em Deus; não que sejamos capazes, por nós, de pensar alguma coisa, como de nós mesmos; mas a nossa capacidade vem de Deus, o qual também nos capacitou para sermos ministros dum novo pacto, não da letra, mas do espírito; porque a letra mata, mas o espírito vivifica."
-          },
-          {
-            "type": "gospel",
-            "ref": "Marcos 2:13-22",
-            "text": "Outra vez saiu Jesus para a beira do mar; e toda a multidão ia ter com ele, e ele os ensinava. Quando ia passando, viu a Levi, filho de Alfeu, sentado na coletoria, e disse-lhe: Segue-me. E ele, levantando-se, o seguiu. Ora, estando Jesus à mesa em casa de Levi, estavam também ali reclinados com ele e seus discípulos muitos publicanos e pecadores; pois eram em grande número e o seguiam. Vendo os escribas dos fariseus que comia com os publicanos e pecadores, perguntavam aos discípulos: Por que é que ele como com os publicanos e pecadores? Jesus, porém, ouvindo isso, disse-lhes: Não necessitam de médico os sãos, mas sim os enfermos; eu não vim chamar justos, mas pecadores. Ora, os discípulos de João e os fariseus estavam jejuando; e foram perguntar-lhe: Por que jejuam os discípulos de João e os dos fariseus, mas os teus discípulos não jejuam? Respondeu-lhes Jesus: Podem, porventura, jejuar os convidados às núpcias, enquanto está com eles o noivo? Enquanto têm consigo o noivo não podem jejuar; dias virão, porém, em que lhes será tirado o noivo; nesses dias, sim hão de jejuar. Ninguém cose remendo de pano novo em vestido velho; do contrário o remendo novo tira parte do velho, e torna-se maior a rotura. E ninguém deita vinho novo em odres velhos; do contrário, o vinho novo romperá os odres, e perder-se-á o vinho e também os odres; mas deita-se vinho novo em odres novos."
           }
         ]
       },
@@ -1841,6 +1841,35 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ]
+      },
+      {
+        "date": "2026-01-11",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Gênesis 1:1-5",
             "text": "No princípio criou Deus os céus e a terra. A terra era sem forma e vazia; e havia trevas sobre a face do abismo, mas o Espírito de Deus pairava sobre a face das águas. Disse Deus: haja luz. E houve luz. Viu Deus que a luz era boa; e fez separação entre a luz e as trevas. E Deus chamou à luz dia, e às trevas noite. E foi a tarde e a manhã, o dia primeiro."
           },
@@ -1862,9 +1891,9 @@
         ]
       },
       {
-        "date": "2026-01-11",
+        "date": "2026-01-18",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1891,9 +1920,9 @@
         ]
       },
       {
-        "date": "2026-01-18",
+        "date": "2026-01-25",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1920,9 +1949,9 @@
         ]
       },
       {
-        "date": "2026-01-25",
+        "date": "2026-02-01",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1949,9 +1978,9 @@
         ]
       },
       {
-        "date": "2026-02-01",
+        "date": "2026-02-08",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -1974,35 +2003,6 @@
             "type": "gospel",
             "ref": "Marcos 1:29-39",
             "text": "Em seguida, saiu da sinagoga e foi a casa de Simão e André com Tiago e João. A sogra de Simão estava de cama com febre, e logo lhe falaram a respeito dela. Então Jesus, chegando-se e tomando-a pela mão, a levantou; e a febre a deixou, e ela os servia. Sendo já tarde, tendo-se posto o sol, traziam-lhe todos os enfermos, e os endemoninhados; e toda a cidade estava reunida à porta; e ele curou muitos doentes atacados de diversas moléstias, e expulsou muitos demônios; mas não permitia que os demônios falassem, porque o conheciam. De madrugada, ainda bem escuro, levantou-se, saiu e foi a um lugar deserto, e ali orava. Foram, pois, Simão e seus companheiros procurá-lo; quando o encontraram, disseram-lhe: Todos te buscam. Respondeu-lhes Jesus: Vamos a outras partes, às povoações vizinhas, para que eu pregue ali também; pois para isso é que vim. Foi, então, por toda a Galiléia, pregando nas sinagogas deles e expulsando os demônios."
-          }
-        ]
-      },
-      {
-        "date": "2026-02-08",
-        "season": "epiphany",
-        "weekOfSeason": 6,
-        "dayName": "Sexto Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "2 Reis 5:1-14",
-            "text": "Ora, Naamã, chefe do exército do rei da Síria, era um grande homem diante do seu senhor, e de muito respeito, porque por ele o Senhor dera livramento aos sírios; era homem valente, porém leproso. Os sírios, numa das suas investidas, haviam levado presa, da terra de Israel, uma menina que ficou ao serviço da mulher de Naamã. Disse ela a sua senhora: Oxalá que o meu senhor estivesse diante do profeta que está em Samária! Pois este o curaria da sua lepra. Então Naamã foi notificar a seu senhor, dizendo: Assim e assim falou a menina que é da terra de Israel. Respondeu o rei da Síria: Vai, anda, e enviarei uma carta ao rei de Israel. Foi, pois, e levou consigo dez talentos de prata, e seis mil siclos de ouro e dez mudas de roupa. Também levou ao rei de Israel a carta, que dizia: Logo, em chegando a ti esta carta, saberás que eu te enviei Naamã, meu servo, para que o cures da sua lepra. Tendo o rei de Israel lido a carta, rasgou as suas vestes, e disse: Sou eu Deus, que possa matar e vivificar, para que este envie a mim um homem a fim de que eu o cure da sua lepra? Notai, peço-vos, e vede como ele anda buscando ocasião contra mim. Quando Eliseu, o homem de Deus, ouviu que o rei de Israel rasgara as suas vestes, mandou dizer ao rei: Por que rasgaste as tuas vestes? Deixa-o vir ter comigo, e saberá que há profeta em Israel. Veio, pois, Naamã com os seus cavalos, e com o seu carro, e parou à porta da casa de Eliseu. Então este lhe mandou um mensageiro, a dizer-lhe: Vai, lava-te sete vezes no Jordão, e a tua carne tornará a ti, e ficarás purificado. Naamã, porém, indignado, retirou-se, dizendo: Eis que pensava eu: Certamente ele sairá a ter comigo, pôr-se-á em pé, invocará o nome do Senhor seu Deus, passará a sua mão sobre o lugar, e curará o leproso. Não são, porventura, Abana e Farpar, rios de Damasco, melhores do que todas as águas de Israel? não poderia eu lavar-me neles, e ficar purificado? Assim se voltou e se retirou com indignação. Os seus servos, porém, chegaram-se a ele e lhe falaram, dizendo: Meu pai, se o profeta te houvesse indicado alguma coisa difícil, porventura não a terias cumprido? Quanto mais, dizendo-te ele: Lava-te, e ficarás purificado. Desceu ele, pois, e mergulhou-se no Jordão sete vezes, conforme a palavra do homem de Deus; e a sua carne tornou-se como a carne dum menino, e ficou purificado."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 30",
-            "text": "Exaltar-te-ei, ó Senhor, porque tu me levantaste, e não permitiste que meus inimigos se alegrassem sobre mim. Ó Senhor, Deus meu, a ti clamei, e tu me curaste. Senhor, fizeste subir a minha alma do Seol, conservaste-me a vida, dentre os que descem à cova. Cantai louvores ao Senhor, vós que sois seus santos, e louvai o seu santo nome. Porque a sua ira dura só um momento; no seu favor está a vida. O choro pode durar uma noite; pela manhã, porém, vem o cântico de júbilo. Quanto a mim, dizia eu na minha prosperidade: Jamais serei abalado. Tu, Senhor, pelo teu favor fizeste que a minha montanha permanecesse forte; ocultaste o teu rosto, e fiquei conturbado. A ti, Senhor, clamei, e ao Senhor supliquei: Que proveito haverá no meu sangue, se eu descer à cova? Porventura te louvará o pó? Anunciará ele a tua verdade? Ouve, Senhor, e tem compaixão de mim! Ó Senhor, sê o meu ajudador! Tornaste o meu pranto em regozijo, tiraste o meu cilício, e me cingiste de alegria; para que a minha alma te cante louvores, e não se cale. Senhor, Deus meu, eu te louvarei para sempre."
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 9:24-27",
-            "text": "Não sabeis vós que os que correm no estádio, todos, na verdade, correm, mas um só é que recebe o prêmio? Correi de tal maneira que o alcanceis. E todo aquele que luta, exerce domínio próprio em todas as coisas; ora, eles o fazem para alcançar uma coroa corruptível, nós, porém, uma incorruptível. Pois eu assim corro, não como indeciso; assim combato, não como batendo no ar. Antes subjugo o meu corpo, e o reduzo à submissão, para que, depois de pregar a outros, eu mesmo não venha a ficar reprovado."
-          },
-          {
-            "type": "gospel",
-            "ref": "Marcos 1:40-45",
-            "text": "E veio a ele um leproso que, de joelhos, lhe rogava, dizendo: Se quiseres, bem podes tornar-me limpo. Jesus, pois, compadecido dele, estendendo a mão, tocou-o e disse-lhe: Quero; sê limpo. Imediatamente desapareceu dele a lepra e ficou limpo. E Jesus, advertindo-o secretamente, logo o despediu, dizendo-lhe: Olha, não digas nada a ninguém; mas vai, mostra-te ao sacerdote e oferece pela tua purificação o que Moisés determinou, para lhes servir de testemunho. Ele, porém, saindo dali, começou a publicar o caso por toda parte e a divulgá-lo, de modo que Jesus já não podia entrar abertamente numa cidade, mas conservava-se fora em lugares desertos; e de todos os lados iam ter com ele."
           }
         ]
       },
@@ -2044,6 +2044,35 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ]
+      },
+      {
+        "date": "2027-01-10",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Gênesis 1:1-5",
             "text": "No princípio criou Deus os céus e a terra. A terra era sem forma e vazia; e havia trevas sobre a face do abismo, mas o Espírito de Deus pairava sobre a face das águas. Disse Deus: haja luz. E houve luz. Viu Deus que a luz era boa; e fez separação entre a luz e as trevas. E Deus chamou à luz dia, e às trevas noite. E foi a tarde e a manhã, o dia primeiro."
           },
@@ -2065,9 +2094,9 @@
         ]
       },
       {
-        "date": "2027-01-10",
+        "date": "2027-01-17",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2094,9 +2123,9 @@
         ]
       },
       {
-        "date": "2027-01-17",
+        "date": "2027-01-24",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2123,9 +2152,9 @@
         ]
       },
       {
-        "date": "2027-01-24",
+        "date": "2027-01-31",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2148,35 +2177,6 @@
             "type": "gospel",
             "ref": "Marcos 1:21-28",
             "text": "Entraram em Cafarnaum; e, logo no sábado, indo ele à sinagoga, pôs-se a ensinar. E maravilhavam-se da sua doutrina, porque os ensinava como tendo autoridade, e não como os escribas. Ora, estava na sinagoga um homem possesso dum espírito imundo, o qual gritou: Que temos nós contigo, Jesus, nazareno? Vieste destruir-nos? Bem sei quem és: o Santo de Deus. Mas Jesus o repreendeu, dizendo: Cala-te, e sai dele. Então o espírito imundo, convulsionando-o e clamando com grande voz, saiu dele. E todos se maravilharam a ponto de perguntarem entre si, dizendo: Que é isto? Uma nova doutrina com autoridade! Pois ele ordena aos espíritos imundos, e eles lhe obedecem! E logo correu a sua fama por toda a região da Galiléia."
-          }
-        ]
-      },
-      {
-        "date": "2027-01-31",
-        "season": "epiphany",
-        "weekOfSeason": 5,
-        "dayName": "Quinto Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Isaías 40:21-31",
-            "text": "Porventura não sabeis? porventura não ouvis? ou desde o princípio não se vos notificou isso mesmo? ou não tendes entendido desde a fundação da terra? E ele o que está assentado sobre o círculo da terra, cujos moradores são para ele como gafanhotos; é ele o que estende os céus como cortina, e o desenrola como tenda para nela habitar. E ele o que reduz a nada os príncipes, e torna em coisa vã os juízes da terra. Na verdade, mal se tem plantado, mal se tem semeado e mal se tem arraigado na terra o seu tronco, quando ele sopra sobre eles, e secam-se, e a tempestade os leva como à pragana. A quem, pois, me comparareis, para que eu lhe seja semelhante? diz o Santo. Levantai ao alto os vossos olhos, e vede: quem criou estas coisas? Foi aquele que faz sair o exército delas segundo o seu número; ele as chama a todas pelos seus nomes; por ser ele grande em força, e forte em poder, nenhuma faltará. Por que dizes, ó Jacó, e falas, ó Israel: O meu caminho está escondido ao Senhor, e o meu juízo passa despercebido ao meu Deus? Não sabes, não ouviste que o eterno Deus, o Senhor, o Criador dos confins da terra, não se cansa nem se fatiga? E inescrutável o seu entendimento. Ele dá força ao cansado, e aumenta as forças ao que não tem nenhum vigor. Os jovens se cansarão e se fatigarão, e os mancebos cairão, mas os que esperam no Senhor renovarão as suas forças; subirão com asas como águias; correrão, e não se cansarão; andarão, e não se fatigarão."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 147:1-11, 20c",
-            "text": "Louvai ao Senhor; porque é bom cantar louvores ao nosso Deus; pois isso é agradável, e decoroso é o louvor. O Senhor edifica Jerusalém, congrega os dispersos de Israel; sara os quebrantados de coração, e cura-lhes as feridas; conta o número das estrelas, chamando-as a todas pelos seus nomes. Grande é o nosso Senhor, e de grande poder; não há limite ao seu entendimento. O Senhor eleva os humildes, e humilha os perversos até a terra. Cantai ao Senhor em ação de graças; com a harpa cantai louvores ao nosso Deus. Ele é que cobre o céu de nuvens, que prepara a chuva para a terra, e que faz produzir erva sobre os montes; que dá aos animais o seu alimento, e aos filhos dos corvos quando clamam. Não se deleita na força do cavalo, nem se compraz nas pernas do homem. O Senhor se compraz nos que o temem, nos que esperam na sua benignidade. Não fez assim a nenhuma das outras nações; e, quanto às suas ordenanças, elas não as conhecem. Louvai ao Senhor!"
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 9:16-23",
-            "text": "Pois, se anuncio o evangelho, não tenho de que me gloriar, porque me é imposta essa obrigação; e ai de mim, se não anunciar o evangelho! Se, pois, o faço de vontade própria, tenho recompensa; mas, se não é de vontade própria, estou apenas incumbido de uma mordomia. Logo, qual é a minha recompensa? É que, pregando o evangelho, eu o faça gratuitamente, para não usar em absoluto do meu direito no evangelho. Pois, sendo livre de todos, fiz-me escravo de todos para ganhar o maior número possível: Fiz-me como judeu para os judeus, para ganhar os judeus; para os que estão debaixo da lei, como se estivesse eu debaixo da lei (embora debaixo da lei não esteja), para ganhar os que estão debaixo da lei; para os que estão sem lei, como se estivesse sem lei (não estando sem lei para com Deus, mas debaixo da lei de Cristo), para ganhar os que estão sem lei. Fiz-me como fraco para os fracos, para ganhar os fracos. Fiz-me tudo para todos, para por todos os meios chegar a salvar alguns. Ora, tudo faço por causa do evangelho, para dele tornar-me co-participante."
-          },
-          {
-            "type": "gospel",
-            "ref": "Marcos 1:29-39",
-            "text": "Em seguida, saiu da sinagoga e foi a casa de Simão e André com Tiago e João. A sogra de Simão estava de cama com febre, e logo lhe falaram a respeito dela. Então Jesus, chegando-se e tomando-a pela mão, a levantou; e a febre a deixou, e ela os servia. Sendo já tarde, tendo-se posto o sol, traziam-lhe todos os enfermos, e os endemoninhados; e toda a cidade estava reunida à porta; e ele curou muitos doentes atacados de diversas moléstias, e expulsou muitos demônios; mas não permitia que os demônios falassem, porque o conheciam. De madrugada, ainda bem escuro, levantou-se, saiu e foi a um lugar deserto, e ali orava. Foram, pois, Simão e seus companheiros procurá-lo; quando o encontraram, disseram-lhe: Todos te buscam. Respondeu-lhes Jesus: Vamos a outras partes, às povoações vizinhas, para que eu pregue ali também; pois para isso é que vim. Foi, então, por toda a Galiléia, pregando nas sinagogas deles e expulsando os demônios."
           }
         ]
       },
@@ -2218,6 +2218,35 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ]
+      },
+      {
+        "date": "2028-01-09",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Gênesis 1:1-5",
             "text": "No princípio criou Deus os céus e a terra. A terra era sem forma e vazia; e havia trevas sobre a face do abismo, mas o Espírito de Deus pairava sobre a face das águas. Disse Deus: haja luz. E houve luz. Viu Deus que a luz era boa; e fez separação entre a luz e as trevas. E Deus chamou à luz dia, e às trevas noite. E foi a tarde e a manhã, o dia primeiro."
           },
@@ -2239,9 +2268,9 @@
         ]
       },
       {
-        "date": "2028-01-09",
+        "date": "2028-01-16",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2268,9 +2297,9 @@
         ]
       },
       {
-        "date": "2028-01-16",
+        "date": "2028-01-23",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2297,9 +2326,9 @@
         ]
       },
       {
-        "date": "2028-01-23",
+        "date": "2028-01-30",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2326,9 +2355,9 @@
         ]
       },
       {
-        "date": "2028-01-30",
+        "date": "2028-02-06",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2355,9 +2384,9 @@
         ]
       },
       {
-        "date": "2028-02-06",
+        "date": "2028-02-13",
         "season": "epiphany",
-        "weekOfSeason": 6,
+        "weekOfSeason": 7,
         "dayName": "Sexto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2384,9 +2413,9 @@
         ]
       },
       {
-        "date": "2028-02-13",
+        "date": "2028-02-20",
         "season": "epiphany",
-        "weekOfSeason": 7,
+        "weekOfSeason": 8,
         "dayName": "Sétimo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2409,35 +2438,6 @@
             "type": "gospel",
             "ref": "Marcos 2:1-12",
             "text": "Alguns dias depois entrou Jesus outra vez em Cafarnaum, e soube-se que ele estava em casa. Ajuntaram-se, pois, muitos, a ponta de não caberem nem mesmo diante da porta; e ele lhes anunciava a palavra. Nisso vieram alguns a trazer-lhe um paralítico, carregado por quatro; e não podendo aproximar-se dele, por causa da multidão, descobriram o telhado onde estava e, fazendo uma abertura, baixaram o leito em que jazia o paralítico. E Jesus, vendo-lhes a fé, disse ao paralítico: Filho, perdoados são os teus pecados. Ora, estavam ali sentados alguns dos escribas, que arrazoavam em seus corações, dizendo: Por que fala assim este homem? Ele blasfema. Quem pode perdoar pecados senão um só, que é Deus? Mas Jesus logo percebeu em seu espírito que eles assim arrazoavam dentro de si, e perguntou-lhes: Por que arrazoais desse modo em vossos corações? Qual é mais fácil? dizer ao paralítico: Perdoados são os teus pecados; ou dizer: Levanta-te, toma o teu leito, e anda? Ora, para que saibais que o Filho do homem tem sobre a terra autoridade para perdoar pecados ( disse ao paralítico ), a ti te digo, levanta-te, toma o teu leito, e vai para tua casa. Então ele se levantou e, tomando logo o leito, saiu à vista de todos; de modo que todos pasmavam e glorificavam a Deus, dizendo: Nunca vimos coisa semelhante."
-          }
-        ]
-      },
-      {
-        "date": "2028-02-20",
-        "season": "epiphany",
-        "weekOfSeason": 8,
-        "dayName": "Oitavo Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Oséias 2:14-20",
-            "text": "Portanto, eis que eu a atrairei, e a levarei para o deserto, e lhe falarei ao coração. E lhe darei as suas vinhas dali, e o vale de Acor por porta de esperança; e ali responderá, como nos dias da sua mocidade, e como no dia em que subiu da terra do Egito. E naquele dia, diz o Senhor, ela me chamará meu marido; e não me chamará mais meu Baal. Pois da sua boca tirarei os nomes dos baalins, e não mais se fará menção desses nomes. Naquele dia farei por eles aliança com as feras do campo, e com as aves do céu, e com os répteis da terra; e da terra tirarei o arco, e a espada, e a guerra, e os farei deitar em segurança. E desposar-te-ei comigo para sempre; sim, desposar-te-ei comigo em justiça, e em juízo, e em amorável benignidade, e em misericórdias; e desposar-te-ei comigo em fidelidade, e conhecerás ao Senhor."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 103:1-13, 22",
-            "text": "Bendize, ó minha alma, ao Senhor, e tudo o que há em mim bendiga o seu santo nome. Bendize, ó minha alma, ao Senhor, e não te esqueças de nenhum dos seus benefícios. É ele quem perdoa todas as tuas iniqüidades, quem sara todas as tuas enfermidades, quem redime a tua vida da cova, quem te coroa de benignidade e de misericórdia, quem te supre de todo o bem, de sorte que a tua mocidade se renova como a da águia. O Senhor executa atos de justiça, e juízo a favor de todos os oprimidos. Fez notórios os seus caminhos a Moisés, e os seus feitos aos filhos de Israel. Compassivo e misericordioso é o Senhor; tardio em irar-se e grande em benignidade. Não repreenderá perpetuamente, nem para sempre conservará a sua ira. Não nos trata segundo os nossos pecados, nem nos retribui segundo as nossas iniqüidades. Pois quanto o céu está elevado acima da terra, assim é grande a sua benignidade para com os que o temem. Quanto o oriente está longe do ocidente, tanto tem ele afastado de nós as nossas transgressões. Como um pai se compadece de seus filhos, assim o Senhor se compadece daqueles que o temem. Bendizei ao Senhor, vós todas as suas obras, em todos os lugares do seu domínio! Bendizei, ó minha alma ao Senhor!"
-          },
-          {
-            "type": "second_reading",
-            "ref": "2 Coríntios 3:1-6",
-            "text": "Começamos outra vez a recomendar-nos a nós mesmos? Ou, porventura, necessitamos, como alguns, de cartas de recomendação para vós, ou de vós? Vós sois a nossa carta, escrita em nossos corações, conhecida e lida por todos os homens, sendo manifestos como carta de Cristo, ministrada por nós, e escrita, não com tinta, mas com o Espírito do Deus vivo, não em tábuas de pedra, mas em tábuas de carne do coração. E é por Cristo que temos tal confiança em Deus; não que sejamos capazes, por nós, de pensar alguma coisa, como de nós mesmos; mas a nossa capacidade vem de Deus, o qual também nos capacitou para sermos ministros dum novo pacto, não da letra, mas do espírito; porque a letra mata, mas o espírito vivifica."
-          },
-          {
-            "type": "gospel",
-            "ref": "Marcos 2:13-22",
-            "text": "Outra vez saiu Jesus para a beira do mar; e toda a multidão ia ter com ele, e ele os ensinava. Quando ia passando, viu a Levi, filho de Alfeu, sentado na coletoria, e disse-lhe: Segue-me. E ele, levantando-se, o seguiu. Ora, estando Jesus à mesa em casa de Levi, estavam também ali reclinados com ele e seus discípulos muitos publicanos e pecadores; pois eram em grande número e o seguiam. Vendo os escribas dos fariseus que comia com os publicanos e pecadores, perguntavam aos discípulos: Por que é que ele como com os publicanos e pecadores? Jesus, porém, ouvindo isso, disse-lhes: Não necessitam de médico os sãos, mas sim os enfermos; eu não vim chamar justos, mas pecadores. Ora, os discípulos de João e os fariseus estavam jejuando; e foram perguntar-lhe: Por que jejuam os discípulos de João e os dos fariseus, mas os teus discípulos não jejuam? Respondeu-lhes Jesus: Podem, porventura, jejuar os convidados às núpcias, enquanto está com eles o noivo? Enquanto têm consigo o noivo não podem jejuar; dias virão, porém, em que lhes será tirado o noivo; nesses dias, sim hão de jejuar. Ninguém cose remendo de pano novo em vestido velho; do contrário o remendo novo tira parte do velho, e torna-se maior a rotura. E ninguém deita vinho novo em odres velhos; do contrário, o vinho novo romperá os odres, e perder-se-á o vinho e também os odres; mas deita-se vinho novo em odres novos."
           }
         ]
       },
@@ -2479,6 +2479,35 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ]
+      },
+      {
+        "date": "2029-01-07",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Gênesis 1:1-5",
             "text": "No princípio criou Deus os céus e a terra. A terra era sem forma e vazia; e havia trevas sobre a face do abismo, mas o Espírito de Deus pairava sobre a face das águas. Disse Deus: haja luz. E houve luz. Viu Deus que a luz era boa; e fez separação entre a luz e as trevas. E Deus chamou à luz dia, e às trevas noite. E foi a tarde e a manhã, o dia primeiro."
           },
@@ -2500,9 +2529,9 @@
         ]
       },
       {
-        "date": "2029-01-07",
+        "date": "2029-01-14",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2529,9 +2558,9 @@
         ]
       },
       {
-        "date": "2029-01-14",
+        "date": "2029-01-21",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2558,9 +2587,9 @@
         ]
       },
       {
-        "date": "2029-01-21",
+        "date": "2029-01-28",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2587,9 +2616,9 @@
         ]
       },
       {
-        "date": "2029-01-28",
+        "date": "2029-02-04",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2612,35 +2641,6 @@
             "type": "gospel",
             "ref": "Marcos 1:29-39",
             "text": "Em seguida, saiu da sinagoga e foi a casa de Simão e André com Tiago e João. A sogra de Simão estava de cama com febre, e logo lhe falaram a respeito dela. Então Jesus, chegando-se e tomando-a pela mão, a levantou; e a febre a deixou, e ela os servia. Sendo já tarde, tendo-se posto o sol, traziam-lhe todos os enfermos, e os endemoninhados; e toda a cidade estava reunida à porta; e ele curou muitos doentes atacados de diversas moléstias, e expulsou muitos demônios; mas não permitia que os demônios falassem, porque o conheciam. De madrugada, ainda bem escuro, levantou-se, saiu e foi a um lugar deserto, e ali orava. Foram, pois, Simão e seus companheiros procurá-lo; quando o encontraram, disseram-lhe: Todos te buscam. Respondeu-lhes Jesus: Vamos a outras partes, às povoações vizinhas, para que eu pregue ali também; pois para isso é que vim. Foi, então, por toda a Galiléia, pregando nas sinagogas deles e expulsando os demônios."
-          }
-        ]
-      },
-      {
-        "date": "2029-02-04",
-        "season": "epiphany",
-        "weekOfSeason": 6,
-        "dayName": "Sexto Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "2 Reis 5:1-14",
-            "text": "Ora, Naamã, chefe do exército do rei da Síria, era um grande homem diante do seu senhor, e de muito respeito, porque por ele o Senhor dera livramento aos sírios; era homem valente, porém leproso. Os sírios, numa das suas investidas, haviam levado presa, da terra de Israel, uma menina que ficou ao serviço da mulher de Naamã. Disse ela a sua senhora: Oxalá que o meu senhor estivesse diante do profeta que está em Samária! Pois este o curaria da sua lepra. Então Naamã foi notificar a seu senhor, dizendo: Assim e assim falou a menina que é da terra de Israel. Respondeu o rei da Síria: Vai, anda, e enviarei uma carta ao rei de Israel. Foi, pois, e levou consigo dez talentos de prata, e seis mil siclos de ouro e dez mudas de roupa. Também levou ao rei de Israel a carta, que dizia: Logo, em chegando a ti esta carta, saberás que eu te enviei Naamã, meu servo, para que o cures da sua lepra. Tendo o rei de Israel lido a carta, rasgou as suas vestes, e disse: Sou eu Deus, que possa matar e vivificar, para que este envie a mim um homem a fim de que eu o cure da sua lepra? Notai, peço-vos, e vede como ele anda buscando ocasião contra mim. Quando Eliseu, o homem de Deus, ouviu que o rei de Israel rasgara as suas vestes, mandou dizer ao rei: Por que rasgaste as tuas vestes? Deixa-o vir ter comigo, e saberá que há profeta em Israel. Veio, pois, Naamã com os seus cavalos, e com o seu carro, e parou à porta da casa de Eliseu. Então este lhe mandou um mensageiro, a dizer-lhe: Vai, lava-te sete vezes no Jordão, e a tua carne tornará a ti, e ficarás purificado. Naamã, porém, indignado, retirou-se, dizendo: Eis que pensava eu: Certamente ele sairá a ter comigo, pôr-se-á em pé, invocará o nome do Senhor seu Deus, passará a sua mão sobre o lugar, e curará o leproso. Não são, porventura, Abana e Farpar, rios de Damasco, melhores do que todas as águas de Israel? não poderia eu lavar-me neles, e ficar purificado? Assim se voltou e se retirou com indignação. Os seus servos, porém, chegaram-se a ele e lhe falaram, dizendo: Meu pai, se o profeta te houvesse indicado alguma coisa difícil, porventura não a terias cumprido? Quanto mais, dizendo-te ele: Lava-te, e ficarás purificado. Desceu ele, pois, e mergulhou-se no Jordão sete vezes, conforme a palavra do homem de Deus; e a sua carne tornou-se como a carne dum menino, e ficou purificado."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 30",
-            "text": "Exaltar-te-ei, ó Senhor, porque tu me levantaste, e não permitiste que meus inimigos se alegrassem sobre mim. Ó Senhor, Deus meu, a ti clamei, e tu me curaste. Senhor, fizeste subir a minha alma do Seol, conservaste-me a vida, dentre os que descem à cova. Cantai louvores ao Senhor, vós que sois seus santos, e louvai o seu santo nome. Porque a sua ira dura só um momento; no seu favor está a vida. O choro pode durar uma noite; pela manhã, porém, vem o cântico de júbilo. Quanto a mim, dizia eu na minha prosperidade: Jamais serei abalado. Tu, Senhor, pelo teu favor fizeste que a minha montanha permanecesse forte; ocultaste o teu rosto, e fiquei conturbado. A ti, Senhor, clamei, e ao Senhor supliquei: Que proveito haverá no meu sangue, se eu descer à cova? Porventura te louvará o pó? Anunciará ele a tua verdade? Ouve, Senhor, e tem compaixão de mim! Ó Senhor, sê o meu ajudador! Tornaste o meu pranto em regozijo, tiraste o meu cilício, e me cingiste de alegria; para que a minha alma te cante louvores, e não se cale. Senhor, Deus meu, eu te louvarei para sempre."
-          },
-          {
-            "type": "second_reading",
-            "ref": "1 Coríntios 9:24-27",
-            "text": "Não sabeis vós que os que correm no estádio, todos, na verdade, correm, mas um só é que recebe o prêmio? Correi de tal maneira que o alcanceis. E todo aquele que luta, exerce domínio próprio em todas as coisas; ora, eles o fazem para alcançar uma coroa corruptível, nós, porém, uma incorruptível. Pois eu assim corro, não como indeciso; assim combato, não como batendo no ar. Antes subjugo o meu corpo, e o reduzo à submissão, para que, depois de pregar a outros, eu mesmo não venha a ficar reprovado."
-          },
-          {
-            "type": "gospel",
-            "ref": "Marcos 1:40-45",
-            "text": "E veio a ele um leproso que, de joelhos, lhe rogava, dizendo: Se quiseres, bem podes tornar-me limpo. Jesus, pois, compadecido dele, estendendo a mão, tocou-o e disse-lhe: Quero; sê limpo. Imediatamente desapareceu dele a lepra e ficou limpo. E Jesus, advertindo-o secretamente, logo o despediu, dizendo-lhe: Olha, não digas nada a ninguém; mas vai, mostra-te ao sacerdote e oferece pela tua purificação o que Moisés determinou, para lhes servir de testemunho. Ele, porém, saindo dali, começou a publicar o caso por toda parte e a divulgá-lo, de modo que Jesus já não podia entrar abertamente numa cidade, mas conservava-se fora em lugares desertos; e de todos os lados iam ter com ele."
           }
         ]
       },
@@ -2682,6 +2682,35 @@
         "readings": [
           {
             "type": "first_reading",
+            "ref": "Isaías 60:1-6",
+            "text": "Levanta-te, resplandece, porque é chegada a tua luz, e é nascida sobre ti a glória do Senhor. Pois eis que as trevas cobrirão a terra, e a escuridão os povos; mas sobre ti o Senhor virá surgindo, e a sua glória se verá sobre ti. E nações caminharão para a tua luz, e reis para o resplendor da tua aurora. Levanta em redor os teus olhos, e vê; todos estes se ajuntam, e vêm ter contigo; teus filhos vêm de longe, e tuas filhas se criarão a teu lado. Então o verás, e estarás radiante, e o teu coração estremecerá e se alegrará; porque a abundância do mar se tornará a ti, e as riquezas das nações a ti virão. A multidão de camelos te cobrirá, os dromedários de Midiã e Efá; todos os de Sabá, virão; trarão ouro e incenso, e publicarão os louvores do Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 10-14",
+            "text": "Ó Deus, dá ao rei os teus juízes, e a tua justiça ao filho do rei. Julgue ele o teu povo com justiça, e os teus pobres com eqüidade. Que os montes tragam paz ao povo, como também os outeiros, com justiça. Julgue ele os aflitos do povo, salve os filhos do necessitado, e esmague o opressor. Viva ele enquanto existir o sol, e enquanto durar a lua, por todas as gerações. Desça como a chuva sobre o prado, como os chuveiros que regam a terra. Nos seus dias floreça a justiça, e haja abundância de paz enquanto durar a lua. Paguem-lhe tributo os reis de Társis e das ilhas; os reis de Sabá e de Seba ofereçam-lhe dons. Todos os reis se prostrem perante ele; todas as nações o sirvam. Porque ele livra ao necessitado quando clama, como também ao aflito e ao que não tem quem o ajude. Compadece-se do pobre e do necessitado, e a vida dos necessitados ele salva. Ele os liberta da opressão e da violência, e precioso aos seus olhos é o sangue deles."
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 3:1-12",
+            "text": "Por esta razão eu, Paulo, o prisioneiro de Cristo Jesus por amor de vós gentios... Se é que tendes ouvido a dispensação da graça de Deus, que para convosco me foi dada; como pela revelação me foi manifestado o mistério, conforme acima em poucas palavras vos escrevi, pelo que, quando ledes, podeis perceber a minha compreensão do mistério de Cristo, o qual em outras gerações não foi manifestado aos filhos dos homens, como se revelou agora no Espírito aos seus santos apóstolos e profetas, a saber, que os gentios são co-herdeiros e membros do mesmo corpo e co-participantes da promessa em Cristo Jesus por meio do evangelho; do qual fui feito ministro, segundo o dom da graça de Deus, que me foi dada conforme a operação do seu poder. A mim, o mínimo de todos os santos, me foi dada esta graça de anunciar aos gentios as riquezas inescrutáveis de Cristo, e demonstrar a todos qual seja a dispensação do mistério que desde os séculos esteve oculto em Deus, que tudo criou, para que agora seja manifestada, por meio da igreja, aos principados e potestades nas regiões celestes, segundo o eterno propósito que fez em Cristo Jesus nosso Senhor, no qual temos ousadia e acesso em confiança, pela nossa fé nele."
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 2:1-12",
+            "text": "Tendo, pois, nascido Jesus em Belém da Judéia, no tempo do rei Herodes, eis que vieram do oriente a Jerusalém uns magos que perguntavam: Onde está aquele que é nascido rei dos judeus? pois do oriente vimos a sua estrela e viemos adorá-lo. O rei Herodes, ouvindo isso, perturbou-se, e com ele toda a Jerusalém; e, reunindo todos os principais sacerdotes e os escribas do povo, perguntava-lhes onde havia de nascer o Cristo. Responderam-lhe eles: Em Belém da Judéia; pois assim está escrito pelo profeta: E tu, Belém, terra de Judá, de modo nenhum és a menor entre as principais cidades de Judá; porque de ti sairá o Guia que há de apascentar o meu povo de Israel. Então Herodes chamou secretamente os magos, e deles inquiriu com precisão acerca do tempo em que a estrela aparecera; e enviando-os a Belém, disse-lhes: Ide, e perguntai diligentemente pelo menino; e, quando o achardes, participai-mo, para que também eu vá e o adore. Tendo eles, pois, ouvido o rei, partiram; e eis que a estrela que tinham visto quando no oriente ia adiante deles, até que, chegando, se deteve sobre o lugar onde estava o menino. Ao verem eles a estrela, regozijaram-se com grande alegria. E entrando na casa, viram o menino com Maria sua mãe e, prostrando-se, o adoraram; e abrindo os seus tesouros, ofertaram-lhe dádivas: ouro incenso e mirra. Ora, sendo por divina revelação avisados em sonhos para não voltarem a Herodes, regressaram à sua terra por outro caminho."
+          }
+        ]
+      },
+      {
+        "date": "2030-01-13",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Batismo do Senhor",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
             "ref": "Gênesis 1:1-5",
             "text": "No princípio criou Deus os céus e a terra. A terra era sem forma e vazia; e havia trevas sobre a face do abismo, mas o Espírito de Deus pairava sobre a face das águas. Disse Deus: haja luz. E houve luz. Viu Deus que a luz era boa; e fez separação entre a luz e as trevas. E Deus chamou à luz dia, e às trevas noite. E foi a tarde e a manhã, o dia primeiro."
           },
@@ -2703,9 +2732,9 @@
         ]
       },
       {
-        "date": "2030-01-13",
+        "date": "2030-01-20",
         "season": "epiphany",
-        "weekOfSeason": 2,
+        "weekOfSeason": 3,
         "dayName": "Segundo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2732,9 +2761,9 @@
         ]
       },
       {
-        "date": "2030-01-20",
+        "date": "2030-01-27",
         "season": "epiphany",
-        "weekOfSeason": 3,
+        "weekOfSeason": 4,
         "dayName": "Terceiro Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2761,9 +2790,9 @@
         ]
       },
       {
-        "date": "2030-01-27",
+        "date": "2030-02-03",
         "season": "epiphany",
-        "weekOfSeason": 4,
+        "weekOfSeason": 5,
         "dayName": "Quarto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2790,9 +2819,9 @@
         ]
       },
       {
-        "date": "2030-02-03",
+        "date": "2030-02-10",
         "season": "epiphany",
-        "weekOfSeason": 5,
+        "weekOfSeason": 6,
         "dayName": "Quinto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2819,9 +2848,9 @@
         ]
       },
       {
-        "date": "2030-02-10",
+        "date": "2030-02-17",
         "season": "epiphany",
-        "weekOfSeason": 6,
+        "weekOfSeason": 7,
         "dayName": "Sexto Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2848,9 +2877,9 @@
         ]
       },
       {
-        "date": "2030-02-17",
+        "date": "2030-02-24",
         "season": "epiphany",
-        "weekOfSeason": 7,
+        "weekOfSeason": 8,
         "dayName": "Sétimo Domingo após a Epifania",
         "holyDay": true,
         "readings": [
@@ -2873,35 +2902,6 @@
             "type": "gospel",
             "ref": "Marcos 2:1-12",
             "text": "Alguns dias depois entrou Jesus outra vez em Cafarnaum, e soube-se que ele estava em casa. Ajuntaram-se, pois, muitos, a ponta de não caberem nem mesmo diante da porta; e ele lhes anunciava a palavra. Nisso vieram alguns a trazer-lhe um paralítico, carregado por quatro; e não podendo aproximar-se dele, por causa da multidão, descobriram o telhado onde estava e, fazendo uma abertura, baixaram o leito em que jazia o paralítico. E Jesus, vendo-lhes a fé, disse ao paralítico: Filho, perdoados são os teus pecados. Ora, estavam ali sentados alguns dos escribas, que arrazoavam em seus corações, dizendo: Por que fala assim este homem? Ele blasfema. Quem pode perdoar pecados senão um só, que é Deus? Mas Jesus logo percebeu em seu espírito que eles assim arrazoavam dentro de si, e perguntou-lhes: Por que arrazoais desse modo em vossos corações? Qual é mais fácil? dizer ao paralítico: Perdoados são os teus pecados; ou dizer: Levanta-te, toma o teu leito, e anda? Ora, para que saibais que o Filho do homem tem sobre a terra autoridade para perdoar pecados ( disse ao paralítico ), a ti te digo, levanta-te, toma o teu leito, e vai para tua casa. Então ele se levantou e, tomando logo o leito, saiu à vista de todos; de modo que todos pasmavam e glorificavam a Deus, dizendo: Nunca vimos coisa semelhante."
-          }
-        ]
-      },
-      {
-        "date": "2030-02-24",
-        "season": "epiphany",
-        "weekOfSeason": 8,
-        "dayName": "Oitavo Domingo após a Epifania",
-        "holyDay": true,
-        "readings": [
-          {
-            "type": "first_reading",
-            "ref": "Oséias 2:14-20",
-            "text": "Portanto, eis que eu a atrairei, e a levarei para o deserto, e lhe falarei ao coração. E lhe darei as suas vinhas dali, e o vale de Acor por porta de esperança; e ali responderá, como nos dias da sua mocidade, e como no dia em que subiu da terra do Egito. E naquele dia, diz o Senhor, ela me chamará meu marido; e não me chamará mais meu Baal. Pois da sua boca tirarei os nomes dos baalins, e não mais se fará menção desses nomes. Naquele dia farei por eles aliança com as feras do campo, e com as aves do céu, e com os répteis da terra; e da terra tirarei o arco, e a espada, e a guerra, e os farei deitar em segurança. E desposar-te-ei comigo para sempre; sim, desposar-te-ei comigo em justiça, e em juízo, e em amorável benignidade, e em misericórdias; e desposar-te-ei comigo em fidelidade, e conhecerás ao Senhor."
-          },
-          {
-            "type": "psalm",
-            "ref": "Salmo 103:1-13, 22",
-            "text": "Bendize, ó minha alma, ao Senhor, e tudo o que há em mim bendiga o seu santo nome. Bendize, ó minha alma, ao Senhor, e não te esqueças de nenhum dos seus benefícios. É ele quem perdoa todas as tuas iniqüidades, quem sara todas as tuas enfermidades, quem redime a tua vida da cova, quem te coroa de benignidade e de misericórdia, quem te supre de todo o bem, de sorte que a tua mocidade se renova como a da águia. O Senhor executa atos de justiça, e juízo a favor de todos os oprimidos. Fez notórios os seus caminhos a Moisés, e os seus feitos aos filhos de Israel. Compassivo e misericordioso é o Senhor; tardio em irar-se e grande em benignidade. Não repreenderá perpetuamente, nem para sempre conservará a sua ira. Não nos trata segundo os nossos pecados, nem nos retribui segundo as nossas iniqüidades. Pois quanto o céu está elevado acima da terra, assim é grande a sua benignidade para com os que o temem. Quanto o oriente está longe do ocidente, tanto tem ele afastado de nós as nossas transgressões. Como um pai se compadece de seus filhos, assim o Senhor se compadece daqueles que o temem. Bendizei ao Senhor, vós todas as suas obras, em todos os lugares do seu domínio! Bendizei, ó minha alma ao Senhor!"
-          },
-          {
-            "type": "second_reading",
-            "ref": "2 Coríntios 3:1-6",
-            "text": "Começamos outra vez a recomendar-nos a nós mesmos? Ou, porventura, necessitamos, como alguns, de cartas de recomendação para vós, ou de vós? Vós sois a nossa carta, escrita em nossos corações, conhecida e lida por todos os homens, sendo manifestos como carta de Cristo, ministrada por nós, e escrita, não com tinta, mas com o Espírito do Deus vivo, não em tábuas de pedra, mas em tábuas de carne do coração. E é por Cristo que temos tal confiança em Deus; não que sejamos capazes, por nós, de pensar alguma coisa, como de nós mesmos; mas a nossa capacidade vem de Deus, o qual também nos capacitou para sermos ministros dum novo pacto, não da letra, mas do espírito; porque a letra mata, mas o espírito vivifica."
-          },
-          {
-            "type": "gospel",
-            "ref": "Marcos 2:13-22",
-            "text": "Outra vez saiu Jesus para a beira do mar; e toda a multidão ia ter com ele, e ele os ensinava. Quando ia passando, viu a Levi, filho de Alfeu, sentado na coletoria, e disse-lhe: Segue-me. E ele, levantando-se, o seguiu. Ora, estando Jesus à mesa em casa de Levi, estavam também ali reclinados com ele e seus discípulos muitos publicanos e pecadores; pois eram em grande número e o seguiam. Vendo os escribas dos fariseus que comia com os publicanos e pecadores, perguntavam aos discípulos: Por que é que ele como com os publicanos e pecadores? Jesus, porém, ouvindo isso, disse-lhes: Não necessitam de médico os sãos, mas sim os enfermos; eu não vim chamar justos, mas pecadores. Ora, os discípulos de João e os fariseus estavam jejuando; e foram perguntar-lhe: Por que jejuam os discípulos de João e os dos fariseus, mas os teus discípulos não jejuam? Respondeu-lhes Jesus: Podem, porventura, jejuar os convidados às núpcias, enquanto está com eles o noivo? Enquanto têm consigo o noivo não podem jejuar; dias virão, porém, em que lhes será tirado o noivo; nesses dias, sim hão de jejuar. Ninguém cose remendo de pano novo em vestido velho; do contrário o remendo novo tira parte do velho, e torna-se maior a rotura. E ninguém deita vinho novo em odres velhos; do contrário, o vinho novo romperá os odres, e perder-se-á o vinho e também os odres; mas deita-se vinho novo em odres novos."
           }
         ]
       },
