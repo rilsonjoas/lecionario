@@ -440,6 +440,35 @@ por `date.getDay()` do Advento/Tempo Comum sem adaptação).
 
 ---
 
+### 1.2e Natal ancorado no RCL, 3 ciclos (2026-08-18)
+
+- [x] `christmas.ts` escrito com estrutura própria (diferente de
+      Advento/Tempo Comum): 25/dez não cai sempre no mesmo dia da
+      semana, então não dá pra indexar por `date.getDay()`. Em vez
+      disso: conteúdo específico pro Dia de Natal (por ciclo), pro 1º
+      Domingo depois do Natal (por ciclo — varia bastante: fuga pro
+      Egito no A, apresentação no templo no B, Jesus menino no templo
+      no C), pro 2º Domingo depois do Natal quando existe (comum aos
+      3 ciclos — leitura igual no RCL), e 10 meditações de dia de
+      semana sobre a narrativa da Natividade (Lucas 2 / prólogo de
+      João), comuns aos 3 ciclos já que o RCL não distingue por ciclo
+      nesses dias
+- [x] `getGroundedChristmasContent()` calcula dinamicamente, pra
+      qualquer data, se é o Dia de Natal, o 1º/2º Domingo (mesma
+      lógica de `generate-rcl-data.ts`), ou um dia de semana comum —
+      nesse caso conta quantos dias de semana já passaram desde
+      26/dez pra escolher sem repetir
+- [x] Validado nos 6 anos gerados: 12 dias cada, zero repetição, zero
+      lacuna, conteúdo do ciclo certo no Dia de Natal e no 1º Domingo,
+      domingo certo identificado corretamente ano a ano (checado
+      contra o dia da semana real de cada 25/dez)
+- [x] Regressão de Advento e Tempo Comum reconfirmada. `tsc`,
+      `prettier` e os 42 testes passando; sincronizado pro mobile
+
+**Ainda faltam:** Epifania, Quaresma, Páscoa.
+
+---
+
 ### 1.3 Correção de build (mobile)
 
 - [x] **`NoSuchMethodError` resolvido (2026-08-15)** — não era teórico,

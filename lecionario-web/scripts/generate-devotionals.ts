@@ -24,6 +24,10 @@ import ordinaryC, { trinityWeekC } from './grounded-content/ordinary-C';
 import adventA from './grounded-content/advent-A';
 import adventB from './grounded-content/advent-B';
 import adventC from './grounded-content/advent-C';
+import christmasByCycle, {
+  christmasSunday2,
+  christmasWeekdays,
+} from './grounded-content/christmas';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -1697,6 +1701,58 @@ function seededPick<T>(items: T[], seed: string): T {
   return items[index];
 }
 
+function addDays(date: Date, days: number): Date {
+  const d = new Date(date);
+  d.setDate(d.getDate() + days);
+  return d;
+}
+
+function getNextSunday(date: Date): Date {
+  const d = new Date(date);
+  while (d.getDay() !== 0) {
+    d.setDate(d.getDate() + 1);
+  }
+  return d;
+}
+
+// Natal: 25/dez não cai sempre no mesmo dia da semana, então não dá
+// pra indexar por `date.getDay()` como no Advento/Tempo Comum — ver
+// scripts/grounded-content/christmas.ts pro raciocínio completo.
+// Calcula, pra qualquer data dentro da estação, se é o próprio Dia de
+// Natal, o 1º ou 2º Domingo depois do Natal (calculados
+// dinamicamente, igual à mesma lógica em generate-rcl-data.ts), ou um
+// dia de semana comum — nesse caso, conta quantos dias de semana já
+// se passaram desde 26/dez pra escolher uma entrada sem repetir.
+function getGroundedChristmasContent(date: Date, cycle: 'A' | 'B' | 'C'): DevotionalEntry | null {
+  const year = date.getMonth() < 6 ? date.getFullYear() - 1 : date.getFullYear();
+  const christmasDay = new Date(year, 11, 25);
+  const epiphany = new Date(year + 1, 0, 6);
+
+  if (formatDate(date) === formatDate(christmasDay)) {
+    return christmasByCycle[cycle].day;
+  }
+
+  const sunday1 = getNextSunday(addDays(christmasDay, 1));
+  const sunday2Candidate = addDays(sunday1, 7);
+  const sunday2 = sunday2Candidate < epiphany ? sunday2Candidate : null;
+
+  if (formatDate(date) === formatDate(sunday1)) {
+    return christmasByCycle[cycle].sunday1;
+  }
+  if (sunday2 && formatDate(date) === formatDate(sunday2)) {
+    return christmasSunday2;
+  }
+
+  let weekdayCount = 0;
+  for (let d = addDays(christmasDay, 1); d <= date; d = addDays(d, 1)) {
+    const isSunday1 = formatDate(d) === formatDate(sunday1);
+    const isSunday2 = sunday2 && formatDate(d) === formatDate(sunday2);
+    if (!isSunday1 && !isSunday2) weekdayCount++;
+  }
+  if (weekdayCount === 0) return null;
+  return christmasWeekdays[(weekdayCount - 1) % christmasWeekdays.length];
+}
+
 function generateForDate(
   date: Date,
   season: string,
@@ -1740,6 +1796,13 @@ function generateForDate(
     if (groundedWeek) {
       return groundedWeek[date.getDay()];
     }
+  }
+
+  // Natal: ver getGroundedChristmasContent — estrutura própria porque
+  // 25/dez não cai sempre no mesmo dia da semana.
+  if (season === 'christmas') {
+    const grounded = getGroundedChristmasContent(date, cycle);
+    if (grounded) return grounded;
   }
 
   const seasonTemplates = templates[season];
