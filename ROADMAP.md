@@ -505,6 +505,43 @@ errada).
 
 ---
 
+### 1.2g Epifania ancorada no RCL, 3 ciclos (2026-08-18)
+
+Fecha o quarto bloco de conteúdo devocional ancorado no RCL (depois de
+Tempo Comum, Advento e Natal).
+
+- [x] `epiphany-shared.ts` — o próprio 6/jan (visita dos magos, leitura
+      fixa igual nos 3 ciclos) e `epiphanyGapWeek` (6 entradas,
+      mesmo padrão de `trinityWeek*`) pros dias entre 6/jan e o
+      Batismo do Senhor, que variam de 0 a 6 dependendo do dia da
+      semana em que cai a Epifania
+- [x] `epiphany-{A,B,C}.ts` — do Batismo do Senhor (sempre o 1º
+      domingo real depois de 6/jan) até o 7º Domingo, mesmo padrão de
+      `ordinary-*.ts` (semana de 7 dias ancorada no domingo real,
+      localizado por data). `transfigurationWeek` tratado à parte em
+      cada arquivo, localizado por nome do dia ("Domingo da
+      Transfiguração"), não por número de semana, porque essa semana
+      pode cair em qualquer posição de 6 a 10 dependendo do ano — 56
+      orações + 56 meditações por ciclo (7 semanas × 7 dias + semana
+      da Transfiguração)
+- [x] `findGoverningSunday()` generalizado (antes só
+      `findGoverningOrdinarySunday`) pra servir também
+      `findGoverningEpiphanySunday()`, com `weekOfSeason >= 2` pra
+      nunca confundir a própria entrada de 6/jan com um "domingo
+      regente"
+- [x] Validado nos 6 anos gerados: zero repetição, zero lacuna na
+      Epifania inteira de cada ano; 6/jan sempre com o conteúdo
+      compartilhado certo; Batismo do Senhor e domingos seguintes com
+      o conteúdo do ciclo certo (confirmado contra `getLiturgicalCycle`
+      independentemente)
+- [x] Regressão de Tempo Comum, Advento e Natal reconfirmada. `tsc`,
+      `prettier` e os 42 testes passando; sincronizado pro mobile
+
+**Ainda faltam:** Quaresma, Páscoa — últimas duas estações genéricas
+restantes.
+
+---
+
 ### 1.3 Correção de build (mobile)
 
 - [x] **`NoSuchMethodError` resolvido (2026-08-15)** — não era teórico,

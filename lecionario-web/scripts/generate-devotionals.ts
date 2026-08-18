@@ -28,6 +28,10 @@ import christmasByCycle, {
   christmasSunday2,
   christmasWeekdays,
 } from './grounded-content/christmas';
+import { epiphanyDay, epiphanyGapWeek } from './grounded-content/epiphany-shared';
+import epiphanyA, { transfigurationWeek as transfigA } from './grounded-content/epiphany-A';
+import epiphanyB, { transfigurationWeek as transfigB } from './grounded-content/epiphany-B';
+import epiphanyC, { transfigurationWeek as transfigC } from './grounded-content/epiphany-C';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -1415,24 +1419,44 @@ const rclDataByCycle: Partial<Record<'A' | 'B' | 'C', { seasons: Record<string, 
   C: cycleCData as { seasons: Record<string, RclEntry[]> },
 };
 
-function findGoverningOrdinarySunday(cycle: 'A' | 'B' | 'C', date: Date): RclEntry | null {
+// O domingo que rege a semana é o mais recente com date <= dateStr,
+// dentro de uma janela de 6 dias (a distância máxima entre um domingo
+// e o sábado seguinte). Usado tanto pelo Tempo Comum (temporada
+// 'ordinary') quanto pela Epifania (temporada 'epiphany', ver
+// findGoverningEpiphanySunday abaixo).
+function findGoverningSunday(
+  cycle: 'A' | 'B' | 'C',
+  date: Date,
+  season: string,
+  minWeekOfSeason = 0,
+): RclEntry | null {
   const data = rclDataByCycle[cycle];
   if (!data) return null;
 
   const dateStr = formatDate(date);
-  const entries = data.seasons.ordinary ?? [];
+  const entries = data.seasons[season] ?? [];
 
-  // O domingo que rege a semana é o mais recente com date <= dateStr,
-  // dentro de uma janela de 6 dias (a distância máxima entre um
-  // domingo e o sábado seguinte).
   let best: RclEntry | null = null;
   for (const entry of entries) {
+    if (entry.weekOfSeason < minWeekOfSeason) continue;
     if (entry.date > dateStr) continue;
     const diffDays = (date.getTime() - new Date(entry.date + 'T00:00:00').getTime()) / 86400000;
     if (diffDays > 6) continue;
     if (!best || entry.date > best.date) best = entry;
   }
   return best;
+}
+
+function findGoverningOrdinarySunday(cycle: 'A' | 'B' | 'C', date: Date): RclEntry | null {
+  return findGoverningSunday(cycle, date, 'ordinary');
+}
+
+// weekOfSeason >= 2 exclui a própria entrada de 6/jan (weekOfSeason
+// 1, 'Epifania do Senhor') — esse dia tem tratamento próprio (ver
+// getGroundedChristmasContent-like logic em generateForDate), não
+// deve ser confundido com um "domingo regente" de semana.
+function findGoverningEpiphanySunday(cycle: 'A' | 'B' | 'C', date: Date): RclEntry | null {
+  return findGoverningSunday(cycle, date, 'epiphany', 2);
 }
 
 function getLiturgicalSeasonForLiturgicalYear(liturgicalYear: number, date: Date): string {
@@ -1561,6 +1585,24 @@ const groundedAdvent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalE
   A: adventA,
   B: adventB,
   C: adventC,
+};
+
+// Epifania — do Batismo do Senhor (weekOfSeason 2) até o 7º Domingo
+// (weekOfSeason 8). O Domingo da Transfiguração é tratado à parte
+// (transfigurationWeekByCycle), localizado por nome do dia, não por
+// número de semana, porque ele pode ocupar qualquer weekOfSeason de 6
+// a 10 dependendo do ano (ver ROADMAP.md 1.2f). Ver
+// scripts/grounded-content/epiphany-*.ts.
+const groundedEpiphany: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+  A: epiphanyA,
+  B: epiphanyB,
+  C: epiphanyC,
+};
+
+const transfigurationWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry[]>> = {
+  A: transfigA,
+  B: transfigB,
+  C: transfigC,
 };
 
 // ─── Tríduo Pascal — Conteúdo Fixo ──────────────────────────────────
@@ -1803,6 +1845,30 @@ function generateForDate(
   if (season === 'christmas') {
     const grounded = getGroundedChristmasContent(date, cycle);
     if (grounded) return grounded;
+  }
+
+  // Epifania: do Batismo do Senhor à Transfiguração usa o mesmo
+  // padrão do Tempo Comum (domingo real rege a semana, ver
+  // findGoverningEpiphanySunday); 6/jan em si e os dias entre 6/jan e
+  // o Batismo (0-6 dias, variam por ano) têm tratamento próprio — ver
+  // scripts/grounded-content/epiphany-shared.ts.
+  if (season === 'epiphany') {
+    if (formatDate(date) === formatDate(new Date(date.getFullYear(), 0, 6))) {
+      return epiphanyDay;
+    }
+    const governingSunday = findGoverningEpiphanySunday(cycle, date);
+    if (!governingSunday && date.getDay() >= 1 && date.getDay() <= 6) {
+      return epiphanyGapWeek[date.getDay() - 1];
+    }
+    if (governingSunday?.dayName === 'Domingo da Transfiguração') {
+      return transfigurationWeekByCycle[cycle]?.[date.getDay()] ?? null;
+    }
+    const groundedWeek = governingSunday
+      ? groundedEpiphany[cycle]?.[governingSunday.weekOfSeason]
+      : undefined;
+    if (groundedWeek) {
+      return groundedWeek[date.getDay()];
+    }
   }
 
   const seasonTemplates = templates[season];
