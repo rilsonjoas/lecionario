@@ -874,6 +874,35 @@
         ]
       },
       {
+        "date": "2023-12-31",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "1º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Isaías 61:10-62:3",
+            "text": "Regozijar-me-ei muito no Senhor, a minha alma se alegrará no meu Deus, porque me vestiu de vestes de salvação, cobriu-me com o manto de justiça, como noivo que se adorna com uma grinalda, e como noiva que se enfeita com as suas jóias. Porque, como a terra produz os seus renovos, e como o horto faz brotar o que nele se semeia, assim o Senhor Deus fará brotar a justiça e o louvor perante todas as nações."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 148",
+            "text": "Louvai ao Senhor! Louvai ao Senhor desde o céu, louvai-o nas alturas! Louvai-o, todos os seus anjos; louvai-o, todas as suas hostes! Louvai-o, sol e lua; louvai-o, todas as estrelas luzentes! Louvai-o, céus dos céus, e as águas que estão sobre os céus! Louvem eles o nome do Senhor; pois ele deu ordem, e logo foram criados. Também ele os estabeleceu para todo sempre; e lhes fixou um limite que nenhum deles ultrapassará. Louvai ao Senhor desde a terra, vós, monstros marinhos e todos os abismos; fogo e saraiva, neve e vapor; vento tempestuoso que excuta a sua palavra; montes e todos os outeiros; árvores frutíferas e todos os cedros; feras e todo o gado; répteis e aves voadoras; reis da terra e todos os povos; príncipes e todos os juízes da terra; mancebos e donzelas; velhos e crianças! Louvem eles o nome do Senhor, pois só o seu nome é excelso; a sua glória é acima da terra e do céu. Ele também exalta o poder do seu povo, o louvor de todos os seus santos, dos filhos de Israel, um povo que lhe é chegado. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 4:4-7",
+            "text": "mas, vindo a plenitude dos tempos, Deus enviou seu Filho, nascido de mulher, nascido debaixo de lei, para resgatar os que estavam debaixo de lei, a fim de recebermos a adoção de filhos. E, porque sois filhos, Deus enviou aos nossos corações o Espírito de seu Filho, que clama: Aba, Pai. Portanto já não és mais servo, mas filho; e se és filho, és também herdeiro por Deus."
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 2:22-40",
+            "text": "Terminados os dias da purificação, segundo a lei de Moisés, levaram-no a Jerusalém, para apresentá-lo ao Senhor (conforme está escrito na lei do Senhor: Todo primogênito será consagrado ao Senhor), e para oferecerem um sacrifício segundo o disposto na lei do Senhor: um par de rolas, ou dois pombinhos. Ora, havia em Jerusalém um homem cujo nome era Simeão; e este homem, justo e temente a Deus, esperava a consolação de Israel; e o Espírito Santo estava sobre ele. E lhe fora revelado pelo Espírito Santo que ele não morreria antes de ver o Cristo do Senhor. Assim pelo Espírito foi ao templo; e quando os pais trouxeram o menino Jesus, para fazerem por ele segundo o costume da lei, Simeão o tomou em seus braços, e louvou a Deus, e disse: Agora, Senhor, despedes em paz o teu servo, segundo a tua palavra; pois os meus olhos já viram a tua salvação, a qual tu preparaste ante a face de todos os povos; luz para revelação aos gentios, e para glória do teu povo Israel. Enquanto isso, seu pai e sua mãe se admiravam das coisas que deles se diziam. E Simeão os abençoou, e disse a Maria, mãe do menino: Eis que este é posto para queda e para levantamento de muitos em Israel, e para ser alvo de contradição, sim, e uma espada traspassará a tua própria alma, para que se manifestem os pensamentos de muitos corações. Havia também uma profetisa, Ana, filha de Fanuel, da tribo de Aser. Era já avançada em idade, tendo vivido com o marido sete anos desde a sua virgindade; e era viúva, de quase oitenta e quatro anos. Não se afastava do templo, servindo a Deus noite e dia em jejuns e orações. Chegando ela na mesma hora, deu graças a Deus, e falou a respeito do menino a todos os que esperavam a redenção de Jerusalém. Assim que cumpriram tudo segundo a lei do Senhor, voltaram à Galiléia, para sua cidade de Nazaré. E o menino ia crescendo e fortalecendo-se, ficando cheio de sabedoria; e a graça de Deus estava sobre ele."
+          }
+        ]
+      },
+      {
         "date": "2024-12-25",
         "season": "christmas",
         "weekOfSeason": 1,
@@ -899,6 +928,64 @@
             "type": "gospel",
             "ref": "João 1:1-14",
             "text": "No princípio era o Verbo, e o Verbo estava com Deus, e o Verbo era Deus. Ele estava no princípio com Deus. Todas as coisas foram feitas por intermédio dele, e sem ele nada do que foi feito se fez. Nele estava a vida, e a vida era a luz dos homens; a luz resplandece nas trevas, e as trevas não prevaleceram contra ela. Houve um homem enviado de Deus, cujo nome era João. Este veio como testemunha, a fim de dar testemunho da luz, para que todos cressem por meio dele. Ele não era a luz, mas veio para dar testemunho da luz. Pois a verdadeira luz, que alumia a todo homem, estava chegando ao mundo. Estava ele no mundo, e o mundo foi feito por intermédio dele, e o mundo não o conheceu. Veio para o que era seu, e os seus não o receberam. Mas, a todos quantos o receberam, aos que crêem no seu nome, deu-lhes o poder de se tornarem filhos de Deus; os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do varão, mas de Deus. E o Verbo se fez carne, e habitou entre nós, cheio de graça e de verdade; e vimos a sua glória, como a glória do unigênito do Pai."
+          }
+        ]
+      },
+      {
+        "date": "2024-12-29",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "1º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Isaías 61:10-62:3",
+            "text": "Regozijar-me-ei muito no Senhor, a minha alma se alegrará no meu Deus, porque me vestiu de vestes de salvação, cobriu-me com o manto de justiça, como noivo que se adorna com uma grinalda, e como noiva que se enfeita com as suas jóias. Porque, como a terra produz os seus renovos, e como o horto faz brotar o que nele se semeia, assim o Senhor Deus fará brotar a justiça e o louvor perante todas as nações."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 148",
+            "text": "Louvai ao Senhor! Louvai ao Senhor desde o céu, louvai-o nas alturas! Louvai-o, todos os seus anjos; louvai-o, todas as suas hostes! Louvai-o, sol e lua; louvai-o, todas as estrelas luzentes! Louvai-o, céus dos céus, e as águas que estão sobre os céus! Louvem eles o nome do Senhor; pois ele deu ordem, e logo foram criados. Também ele os estabeleceu para todo sempre; e lhes fixou um limite que nenhum deles ultrapassará. Louvai ao Senhor desde a terra, vós, monstros marinhos e todos os abismos; fogo e saraiva, neve e vapor; vento tempestuoso que excuta a sua palavra; montes e todos os outeiros; árvores frutíferas e todos os cedros; feras e todo o gado; répteis e aves voadoras; reis da terra e todos os povos; príncipes e todos os juízes da terra; mancebos e donzelas; velhos e crianças! Louvem eles o nome do Senhor, pois só o seu nome é excelso; a sua glória é acima da terra e do céu. Ele também exalta o poder do seu povo, o louvor de todos os seus santos, dos filhos de Israel, um povo que lhe é chegado. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 4:4-7",
+            "text": "mas, vindo a plenitude dos tempos, Deus enviou seu Filho, nascido de mulher, nascido debaixo de lei, para resgatar os que estavam debaixo de lei, a fim de recebermos a adoção de filhos. E, porque sois filhos, Deus enviou aos nossos corações o Espírito de seu Filho, que clama: Aba, Pai. Portanto já não és mais servo, mas filho; e se és filho, és também herdeiro por Deus."
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 2:22-40",
+            "text": "Terminados os dias da purificação, segundo a lei de Moisés, levaram-no a Jerusalém, para apresentá-lo ao Senhor (conforme está escrito na lei do Senhor: Todo primogênito será consagrado ao Senhor), e para oferecerem um sacrifício segundo o disposto na lei do Senhor: um par de rolas, ou dois pombinhos. Ora, havia em Jerusalém um homem cujo nome era Simeão; e este homem, justo e temente a Deus, esperava a consolação de Israel; e o Espírito Santo estava sobre ele. E lhe fora revelado pelo Espírito Santo que ele não morreria antes de ver o Cristo do Senhor. Assim pelo Espírito foi ao templo; e quando os pais trouxeram o menino Jesus, para fazerem por ele segundo o costume da lei, Simeão o tomou em seus braços, e louvou a Deus, e disse: Agora, Senhor, despedes em paz o teu servo, segundo a tua palavra; pois os meus olhos já viram a tua salvação, a qual tu preparaste ante a face de todos os povos; luz para revelação aos gentios, e para glória do teu povo Israel. Enquanto isso, seu pai e sua mãe se admiravam das coisas que deles se diziam. E Simeão os abençoou, e disse a Maria, mãe do menino: Eis que este é posto para queda e para levantamento de muitos em Israel, e para ser alvo de contradição, sim, e uma espada traspassará a tua própria alma, para que se manifestem os pensamentos de muitos corações. Havia também uma profetisa, Ana, filha de Fanuel, da tribo de Aser. Era já avançada em idade, tendo vivido com o marido sete anos desde a sua virgindade; e era viúva, de quase oitenta e quatro anos. Não se afastava do templo, servindo a Deus noite e dia em jejuns e orações. Chegando ela na mesma hora, deu graças a Deus, e falou a respeito do menino a todos os que esperavam a redenção de Jerusalém. Assim que cumpriram tudo segundo a lei do Senhor, voltaram à Galiléia, para sua cidade de Nazaré. E o menino ia crescendo e fortalecendo-se, ficando cheio de sabedoria; e a graça de Deus estava sobre ele."
+          }
+        ]
+      },
+      {
+        "date": "2025-01-05",
+        "season": "christmas",
+        "weekOfSeason": 3,
+        "dayName": "2º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 31:7-14",
+            "text": "Pois assim diz o Senhor: Cantai sobre Jacó com alegria, e exultai por causa da principal das nações; proclamai, cantai louvores, e dizei: Salva, Senhor, o teu povo, o resto de Israel. Eis que os trarei da terra do norte e os congregarei das extremidades da terra; e com eles os cegos e aleijados, as mulheres grávidas e as de parto juntamente; em grande companhia voltarão para cá. Virão com choro, e com súplicas os levarei; guiá-los-ei aos ribeiros de águas, por caminho direito em que não tropeçarão; porque sou um pai para Israel, e Efraim é o meu primogênito. Ouvi a palavra do Senhor, ó nações, e anunciai-a nas longinquas terras maritimas, e dizei: Aquele que espalhou a Israel o congregará e o guardará, como o pastor ao seu rebanho. Pois o Senhor resgatou a Jacó, e o livrou da mão do que era mais forte do que ele. E virão, e cantarão de júbilo nos altos de Sião, e ficarão radiantes pelos bens do Senhor, pelo trigo, o mosto, e o azeite, pelos cordeiros e os bezerros; e a sua vida será como um jardim regado, e nunca mais desfalecerão. Então a virgem se alegrará na dança, como também os mancebos e os velhos juntamente; porque tornarei o seu pranto em gozo, e os consolarei, e lhes darei alegria em lugar de tristeza. E saciarei de gordura a alma dos sacerdotes, e o meu povo se fartará dos meus bens, diz o Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 147:12-20",
+            "text": "Louva, ó Jerusalém, ao Senhor; louva, ó Sião, ao teu Deus. Porque ele fortalece as trancas das tuas portas; abençoa aos teus filhos dentro de ti. Ele é quem estabelece a paz nas tuas fronteiras; quem do mais fino trigo te farta; quem envia o seu mandamento pela terra; a sua palavra corre mui velozmente. Ele dá a neve como lã, esparge a geada como cinza, e lança o seu gelo em pedaços; quem pode resistir ao seu frio? Manda a sua palavra, e os derrete; faz soprar o vento, e correm as águas; ele revela a sua palavra a Jacó, os seus estatutos e as suas ordenanças a Israel. Não fez assim a nenhuma das outras nações; e, quanto às suas ordenanças, elas não as conhecem. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 1:3-14",
+            "text": "Bendito seja o Deus e Pai de nosso Senhor Jesus Cristo, o qual nos abençoou com todas as bênçãos espirituais nas regiões celestes em Cristo; como também nos elegeu nele antes da fundação do mundo, para sermos santos e irrepreensíveis diante dele em amor; e nos predestinou para sermos filhos de adoção por Jesus Cristo, para si mesmo, segundo o beneplácito de sua vontade, para o louvor da glória da sua graça, a qual nos deu gratuitamente no Amado; em quem temos a redenção pelo seu sangue, a redenção dos nossos delitos, segundo as riquezas da sua graça, que ele fez abundar para conosco em toda a sabedoria e prudência, fazendo-nos conhecer o mistério da sua vontade, segundo o seu beneplácito, que nele propôs para a dispensação da plenitude dos tempos, de fazer convergir em Cristo todas as coisas, tanto as que estão nos céus como as que estão na terra, nele, digo, no qual também fomos feitos herança, havendo sido predestinados conforme o propósito daquele que faz todas as coisas segundo o conselho da sua vontade, com o fim de sermos para o louvor da sua glória, nós, os que antes havíamos esperado em Cristo; no qual também vós, tendo ouvido a palavra da verdade, o evangelho da vossa salvação, e tendo nele também crido, fostes selados com o Espírito Santo da promessa, o qual é o penhor da nossa herança, para redenção da possessão de Deus, para o louvor da sua glória."
+          },
+          {
+            "type": "gospel",
+            "ref": "João 1:(1-9), 10-18",
+            "text": "Estava ele no mundo, e o mundo foi feito por intermédio dele, e o mundo não o conheceu. Veio para o que era seu, e os seus não o receberam. Mas, a todos quantos o receberam, aos que crêem no seu nome, deu-lhes o poder de se tornarem filhos de Deus; os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do varão, mas de Deus. E o Verbo se fez carne, e habitou entre nós, cheio de graça e de verdade; e vimos a sua glória, como a glória do unigênito do Pai. João deu testemunho dele, e clamou, dizendo: Este é aquele de quem eu disse: O que vem depois de mim, passou adiante de mim; porque antes de mim ele já existia. Pois todos nós recebemos da sua plenitude, e graça sobre graça. Porque a lei foi dada por meio de Moisés; a graça e a verdade vieram por Jesus Cristo. Ninguém jamais viu a Deus. O Deus unigênito, que está no seio do Pai, esse o deu a conhecer."
           }
         ]
       },
@@ -932,6 +1019,64 @@
         ]
       },
       {
+        "date": "2025-12-28",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "1º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Isaías 61:10-62:3",
+            "text": "Regozijar-me-ei muito no Senhor, a minha alma se alegrará no meu Deus, porque me vestiu de vestes de salvação, cobriu-me com o manto de justiça, como noivo que se adorna com uma grinalda, e como noiva que se enfeita com as suas jóias. Porque, como a terra produz os seus renovos, e como o horto faz brotar o que nele se semeia, assim o Senhor Deus fará brotar a justiça e o louvor perante todas as nações."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 148",
+            "text": "Louvai ao Senhor! Louvai ao Senhor desde o céu, louvai-o nas alturas! Louvai-o, todos os seus anjos; louvai-o, todas as suas hostes! Louvai-o, sol e lua; louvai-o, todas as estrelas luzentes! Louvai-o, céus dos céus, e as águas que estão sobre os céus! Louvem eles o nome do Senhor; pois ele deu ordem, e logo foram criados. Também ele os estabeleceu para todo sempre; e lhes fixou um limite que nenhum deles ultrapassará. Louvai ao Senhor desde a terra, vós, monstros marinhos e todos os abismos; fogo e saraiva, neve e vapor; vento tempestuoso que excuta a sua palavra; montes e todos os outeiros; árvores frutíferas e todos os cedros; feras e todo o gado; répteis e aves voadoras; reis da terra e todos os povos; príncipes e todos os juízes da terra; mancebos e donzelas; velhos e crianças! Louvem eles o nome do Senhor, pois só o seu nome é excelso; a sua glória é acima da terra e do céu. Ele também exalta o poder do seu povo, o louvor de todos os seus santos, dos filhos de Israel, um povo que lhe é chegado. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 4:4-7",
+            "text": "mas, vindo a plenitude dos tempos, Deus enviou seu Filho, nascido de mulher, nascido debaixo de lei, para resgatar os que estavam debaixo de lei, a fim de recebermos a adoção de filhos. E, porque sois filhos, Deus enviou aos nossos corações o Espírito de seu Filho, que clama: Aba, Pai. Portanto já não és mais servo, mas filho; e se és filho, és também herdeiro por Deus."
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 2:22-40",
+            "text": "Terminados os dias da purificação, segundo a lei de Moisés, levaram-no a Jerusalém, para apresentá-lo ao Senhor (conforme está escrito na lei do Senhor: Todo primogênito será consagrado ao Senhor), e para oferecerem um sacrifício segundo o disposto na lei do Senhor: um par de rolas, ou dois pombinhos. Ora, havia em Jerusalém um homem cujo nome era Simeão; e este homem, justo e temente a Deus, esperava a consolação de Israel; e o Espírito Santo estava sobre ele. E lhe fora revelado pelo Espírito Santo que ele não morreria antes de ver o Cristo do Senhor. Assim pelo Espírito foi ao templo; e quando os pais trouxeram o menino Jesus, para fazerem por ele segundo o costume da lei, Simeão o tomou em seus braços, e louvou a Deus, e disse: Agora, Senhor, despedes em paz o teu servo, segundo a tua palavra; pois os meus olhos já viram a tua salvação, a qual tu preparaste ante a face de todos os povos; luz para revelação aos gentios, e para glória do teu povo Israel. Enquanto isso, seu pai e sua mãe se admiravam das coisas que deles se diziam. E Simeão os abençoou, e disse a Maria, mãe do menino: Eis que este é posto para queda e para levantamento de muitos em Israel, e para ser alvo de contradição, sim, e uma espada traspassará a tua própria alma, para que se manifestem os pensamentos de muitos corações. Havia também uma profetisa, Ana, filha de Fanuel, da tribo de Aser. Era já avançada em idade, tendo vivido com o marido sete anos desde a sua virgindade; e era viúva, de quase oitenta e quatro anos. Não se afastava do templo, servindo a Deus noite e dia em jejuns e orações. Chegando ela na mesma hora, deu graças a Deus, e falou a respeito do menino a todos os que esperavam a redenção de Jerusalém. Assim que cumpriram tudo segundo a lei do Senhor, voltaram à Galiléia, para sua cidade de Nazaré. E o menino ia crescendo e fortalecendo-se, ficando cheio de sabedoria; e a graça de Deus estava sobre ele."
+          }
+        ]
+      },
+      {
+        "date": "2026-01-04",
+        "season": "christmas",
+        "weekOfSeason": 3,
+        "dayName": "2º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 31:7-14",
+            "text": "Pois assim diz o Senhor: Cantai sobre Jacó com alegria, e exultai por causa da principal das nações; proclamai, cantai louvores, e dizei: Salva, Senhor, o teu povo, o resto de Israel. Eis que os trarei da terra do norte e os congregarei das extremidades da terra; e com eles os cegos e aleijados, as mulheres grávidas e as de parto juntamente; em grande companhia voltarão para cá. Virão com choro, e com súplicas os levarei; guiá-los-ei aos ribeiros de águas, por caminho direito em que não tropeçarão; porque sou um pai para Israel, e Efraim é o meu primogênito. Ouvi a palavra do Senhor, ó nações, e anunciai-a nas longinquas terras maritimas, e dizei: Aquele que espalhou a Israel o congregará e o guardará, como o pastor ao seu rebanho. Pois o Senhor resgatou a Jacó, e o livrou da mão do que era mais forte do que ele. E virão, e cantarão de júbilo nos altos de Sião, e ficarão radiantes pelos bens do Senhor, pelo trigo, o mosto, e o azeite, pelos cordeiros e os bezerros; e a sua vida será como um jardim regado, e nunca mais desfalecerão. Então a virgem se alegrará na dança, como também os mancebos e os velhos juntamente; porque tornarei o seu pranto em gozo, e os consolarei, e lhes darei alegria em lugar de tristeza. E saciarei de gordura a alma dos sacerdotes, e o meu povo se fartará dos meus bens, diz o Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 147:12-20",
+            "text": "Louva, ó Jerusalém, ao Senhor; louva, ó Sião, ao teu Deus. Porque ele fortalece as trancas das tuas portas; abençoa aos teus filhos dentro de ti. Ele é quem estabelece a paz nas tuas fronteiras; quem do mais fino trigo te farta; quem envia o seu mandamento pela terra; a sua palavra corre mui velozmente. Ele dá a neve como lã, esparge a geada como cinza, e lança o seu gelo em pedaços; quem pode resistir ao seu frio? Manda a sua palavra, e os derrete; faz soprar o vento, e correm as águas; ele revela a sua palavra a Jacó, os seus estatutos e as suas ordenanças a Israel. Não fez assim a nenhuma das outras nações; e, quanto às suas ordenanças, elas não as conhecem. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 1:3-14",
+            "text": "Bendito seja o Deus e Pai de nosso Senhor Jesus Cristo, o qual nos abençoou com todas as bênçãos espirituais nas regiões celestes em Cristo; como também nos elegeu nele antes da fundação do mundo, para sermos santos e irrepreensíveis diante dele em amor; e nos predestinou para sermos filhos de adoção por Jesus Cristo, para si mesmo, segundo o beneplácito de sua vontade, para o louvor da glória da sua graça, a qual nos deu gratuitamente no Amado; em quem temos a redenção pelo seu sangue, a redenção dos nossos delitos, segundo as riquezas da sua graça, que ele fez abundar para conosco em toda a sabedoria e prudência, fazendo-nos conhecer o mistério da sua vontade, segundo o seu beneplácito, que nele propôs para a dispensação da plenitude dos tempos, de fazer convergir em Cristo todas as coisas, tanto as que estão nos céus como as que estão na terra, nele, digo, no qual também fomos feitos herança, havendo sido predestinados conforme o propósito daquele que faz todas as coisas segundo o conselho da sua vontade, com o fim de sermos para o louvor da sua glória, nós, os que antes havíamos esperado em Cristo; no qual também vós, tendo ouvido a palavra da verdade, o evangelho da vossa salvação, e tendo nele também crido, fostes selados com o Espírito Santo da promessa, o qual é o penhor da nossa herança, para redenção da possessão de Deus, para o louvor da sua glória."
+          },
+          {
+            "type": "gospel",
+            "ref": "João 1:(1-9), 10-18",
+            "text": "Estava ele no mundo, e o mundo foi feito por intermédio dele, e o mundo não o conheceu. Veio para o que era seu, e os seus não o receberam. Mas, a todos quantos o receberam, aos que crêem no seu nome, deu-lhes o poder de se tornarem filhos de Deus; os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do varão, mas de Deus. E o Verbo se fez carne, e habitou entre nós, cheio de graça e de verdade; e vimos a sua glória, como a glória do unigênito do Pai. João deu testemunho dele, e clamou, dizendo: Este é aquele de quem eu disse: O que vem depois de mim, passou adiante de mim; porque antes de mim ele já existia. Pois todos nós recebemos da sua plenitude, e graça sobre graça. Porque a lei foi dada por meio de Moisés; a graça e a verdade vieram por Jesus Cristo. Ninguém jamais viu a Deus. O Deus unigênito, que está no seio do Pai, esse o deu a conhecer."
+          }
+        ]
+      },
+      {
         "date": "2026-12-25",
         "season": "christmas",
         "weekOfSeason": 1,
@@ -957,6 +1102,64 @@
             "type": "gospel",
             "ref": "João 1:1-14",
             "text": "No princípio era o Verbo, e o Verbo estava com Deus, e o Verbo era Deus. Ele estava no princípio com Deus. Todas as coisas foram feitas por intermédio dele, e sem ele nada do que foi feito se fez. Nele estava a vida, e a vida era a luz dos homens; a luz resplandece nas trevas, e as trevas não prevaleceram contra ela. Houve um homem enviado de Deus, cujo nome era João. Este veio como testemunha, a fim de dar testemunho da luz, para que todos cressem por meio dele. Ele não era a luz, mas veio para dar testemunho da luz. Pois a verdadeira luz, que alumia a todo homem, estava chegando ao mundo. Estava ele no mundo, e o mundo foi feito por intermédio dele, e o mundo não o conheceu. Veio para o que era seu, e os seus não o receberam. Mas, a todos quantos o receberam, aos que crêem no seu nome, deu-lhes o poder de se tornarem filhos de Deus; os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do varão, mas de Deus. E o Verbo se fez carne, e habitou entre nós, cheio de graça e de verdade; e vimos a sua glória, como a glória do unigênito do Pai."
+          }
+        ]
+      },
+      {
+        "date": "2026-12-27",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "1º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Isaías 61:10-62:3",
+            "text": "Regozijar-me-ei muito no Senhor, a minha alma se alegrará no meu Deus, porque me vestiu de vestes de salvação, cobriu-me com o manto de justiça, como noivo que se adorna com uma grinalda, e como noiva que se enfeita com as suas jóias. Porque, como a terra produz os seus renovos, e como o horto faz brotar o que nele se semeia, assim o Senhor Deus fará brotar a justiça e o louvor perante todas as nações."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 148",
+            "text": "Louvai ao Senhor! Louvai ao Senhor desde o céu, louvai-o nas alturas! Louvai-o, todos os seus anjos; louvai-o, todas as suas hostes! Louvai-o, sol e lua; louvai-o, todas as estrelas luzentes! Louvai-o, céus dos céus, e as águas que estão sobre os céus! Louvem eles o nome do Senhor; pois ele deu ordem, e logo foram criados. Também ele os estabeleceu para todo sempre; e lhes fixou um limite que nenhum deles ultrapassará. Louvai ao Senhor desde a terra, vós, monstros marinhos e todos os abismos; fogo e saraiva, neve e vapor; vento tempestuoso que excuta a sua palavra; montes e todos os outeiros; árvores frutíferas e todos os cedros; feras e todo o gado; répteis e aves voadoras; reis da terra e todos os povos; príncipes e todos os juízes da terra; mancebos e donzelas; velhos e crianças! Louvem eles o nome do Senhor, pois só o seu nome é excelso; a sua glória é acima da terra e do céu. Ele também exalta o poder do seu povo, o louvor de todos os seus santos, dos filhos de Israel, um povo que lhe é chegado. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 4:4-7",
+            "text": "mas, vindo a plenitude dos tempos, Deus enviou seu Filho, nascido de mulher, nascido debaixo de lei, para resgatar os que estavam debaixo de lei, a fim de recebermos a adoção de filhos. E, porque sois filhos, Deus enviou aos nossos corações o Espírito de seu Filho, que clama: Aba, Pai. Portanto já não és mais servo, mas filho; e se és filho, és também herdeiro por Deus."
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 2:22-40",
+            "text": "Terminados os dias da purificação, segundo a lei de Moisés, levaram-no a Jerusalém, para apresentá-lo ao Senhor (conforme está escrito na lei do Senhor: Todo primogênito será consagrado ao Senhor), e para oferecerem um sacrifício segundo o disposto na lei do Senhor: um par de rolas, ou dois pombinhos. Ora, havia em Jerusalém um homem cujo nome era Simeão; e este homem, justo e temente a Deus, esperava a consolação de Israel; e o Espírito Santo estava sobre ele. E lhe fora revelado pelo Espírito Santo que ele não morreria antes de ver o Cristo do Senhor. Assim pelo Espírito foi ao templo; e quando os pais trouxeram o menino Jesus, para fazerem por ele segundo o costume da lei, Simeão o tomou em seus braços, e louvou a Deus, e disse: Agora, Senhor, despedes em paz o teu servo, segundo a tua palavra; pois os meus olhos já viram a tua salvação, a qual tu preparaste ante a face de todos os povos; luz para revelação aos gentios, e para glória do teu povo Israel. Enquanto isso, seu pai e sua mãe se admiravam das coisas que deles se diziam. E Simeão os abençoou, e disse a Maria, mãe do menino: Eis que este é posto para queda e para levantamento de muitos em Israel, e para ser alvo de contradição, sim, e uma espada traspassará a tua própria alma, para que se manifestem os pensamentos de muitos corações. Havia também uma profetisa, Ana, filha de Fanuel, da tribo de Aser. Era já avançada em idade, tendo vivido com o marido sete anos desde a sua virgindade; e era viúva, de quase oitenta e quatro anos. Não se afastava do templo, servindo a Deus noite e dia em jejuns e orações. Chegando ela na mesma hora, deu graças a Deus, e falou a respeito do menino a todos os que esperavam a redenção de Jerusalém. Assim que cumpriram tudo segundo a lei do Senhor, voltaram à Galiléia, para sua cidade de Nazaré. E o menino ia crescendo e fortalecendo-se, ficando cheio de sabedoria; e a graça de Deus estava sobre ele."
+          }
+        ]
+      },
+      {
+        "date": "2027-01-03",
+        "season": "christmas",
+        "weekOfSeason": 3,
+        "dayName": "2º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 31:7-14",
+            "text": "Pois assim diz o Senhor: Cantai sobre Jacó com alegria, e exultai por causa da principal das nações; proclamai, cantai louvores, e dizei: Salva, Senhor, o teu povo, o resto de Israel. Eis que os trarei da terra do norte e os congregarei das extremidades da terra; e com eles os cegos e aleijados, as mulheres grávidas e as de parto juntamente; em grande companhia voltarão para cá. Virão com choro, e com súplicas os levarei; guiá-los-ei aos ribeiros de águas, por caminho direito em que não tropeçarão; porque sou um pai para Israel, e Efraim é o meu primogênito. Ouvi a palavra do Senhor, ó nações, e anunciai-a nas longinquas terras maritimas, e dizei: Aquele que espalhou a Israel o congregará e o guardará, como o pastor ao seu rebanho. Pois o Senhor resgatou a Jacó, e o livrou da mão do que era mais forte do que ele. E virão, e cantarão de júbilo nos altos de Sião, e ficarão radiantes pelos bens do Senhor, pelo trigo, o mosto, e o azeite, pelos cordeiros e os bezerros; e a sua vida será como um jardim regado, e nunca mais desfalecerão. Então a virgem se alegrará na dança, como também os mancebos e os velhos juntamente; porque tornarei o seu pranto em gozo, e os consolarei, e lhes darei alegria em lugar de tristeza. E saciarei de gordura a alma dos sacerdotes, e o meu povo se fartará dos meus bens, diz o Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 147:12-20",
+            "text": "Louva, ó Jerusalém, ao Senhor; louva, ó Sião, ao teu Deus. Porque ele fortalece as trancas das tuas portas; abençoa aos teus filhos dentro de ti. Ele é quem estabelece a paz nas tuas fronteiras; quem do mais fino trigo te farta; quem envia o seu mandamento pela terra; a sua palavra corre mui velozmente. Ele dá a neve como lã, esparge a geada como cinza, e lança o seu gelo em pedaços; quem pode resistir ao seu frio? Manda a sua palavra, e os derrete; faz soprar o vento, e correm as águas; ele revela a sua palavra a Jacó, os seus estatutos e as suas ordenanças a Israel. Não fez assim a nenhuma das outras nações; e, quanto às suas ordenanças, elas não as conhecem. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 1:3-14",
+            "text": "Bendito seja o Deus e Pai de nosso Senhor Jesus Cristo, o qual nos abençoou com todas as bênçãos espirituais nas regiões celestes em Cristo; como também nos elegeu nele antes da fundação do mundo, para sermos santos e irrepreensíveis diante dele em amor; e nos predestinou para sermos filhos de adoção por Jesus Cristo, para si mesmo, segundo o beneplácito de sua vontade, para o louvor da glória da sua graça, a qual nos deu gratuitamente no Amado; em quem temos a redenção pelo seu sangue, a redenção dos nossos delitos, segundo as riquezas da sua graça, que ele fez abundar para conosco em toda a sabedoria e prudência, fazendo-nos conhecer o mistério da sua vontade, segundo o seu beneplácito, que nele propôs para a dispensação da plenitude dos tempos, de fazer convergir em Cristo todas as coisas, tanto as que estão nos céus como as que estão na terra, nele, digo, no qual também fomos feitos herança, havendo sido predestinados conforme o propósito daquele que faz todas as coisas segundo o conselho da sua vontade, com o fim de sermos para o louvor da sua glória, nós, os que antes havíamos esperado em Cristo; no qual também vós, tendo ouvido a palavra da verdade, o evangelho da vossa salvação, e tendo nele também crido, fostes selados com o Espírito Santo da promessa, o qual é o penhor da nossa herança, para redenção da possessão de Deus, para o louvor da sua glória."
+          },
+          {
+            "type": "gospel",
+            "ref": "João 1:(1-9), 10-18",
+            "text": "Estava ele no mundo, e o mundo foi feito por intermédio dele, e o mundo não o conheceu. Veio para o que era seu, e os seus não o receberam. Mas, a todos quantos o receberam, aos que crêem no seu nome, deu-lhes o poder de se tornarem filhos de Deus; os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do varão, mas de Deus. E o Verbo se fez carne, e habitou entre nós, cheio de graça e de verdade; e vimos a sua glória, como a glória do unigênito do Pai. João deu testemunho dele, e clamou, dizendo: Este é aquele de quem eu disse: O que vem depois de mim, passou adiante de mim; porque antes de mim ele já existia. Pois todos nós recebemos da sua plenitude, e graça sobre graça. Porque a lei foi dada por meio de Moisés; a graça e a verdade vieram por Jesus Cristo. Ninguém jamais viu a Deus. O Deus unigênito, que está no seio do Pai, esse o deu a conhecer."
           }
         ]
       },
@@ -990,6 +1193,64 @@
         ]
       },
       {
+        "date": "2027-12-26",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "1º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Isaías 61:10-62:3",
+            "text": "Regozijar-me-ei muito no Senhor, a minha alma se alegrará no meu Deus, porque me vestiu de vestes de salvação, cobriu-me com o manto de justiça, como noivo que se adorna com uma grinalda, e como noiva que se enfeita com as suas jóias. Porque, como a terra produz os seus renovos, e como o horto faz brotar o que nele se semeia, assim o Senhor Deus fará brotar a justiça e o louvor perante todas as nações."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 148",
+            "text": "Louvai ao Senhor! Louvai ao Senhor desde o céu, louvai-o nas alturas! Louvai-o, todos os seus anjos; louvai-o, todas as suas hostes! Louvai-o, sol e lua; louvai-o, todas as estrelas luzentes! Louvai-o, céus dos céus, e as águas que estão sobre os céus! Louvem eles o nome do Senhor; pois ele deu ordem, e logo foram criados. Também ele os estabeleceu para todo sempre; e lhes fixou um limite que nenhum deles ultrapassará. Louvai ao Senhor desde a terra, vós, monstros marinhos e todos os abismos; fogo e saraiva, neve e vapor; vento tempestuoso que excuta a sua palavra; montes e todos os outeiros; árvores frutíferas e todos os cedros; feras e todo o gado; répteis e aves voadoras; reis da terra e todos os povos; príncipes e todos os juízes da terra; mancebos e donzelas; velhos e crianças! Louvem eles o nome do Senhor, pois só o seu nome é excelso; a sua glória é acima da terra e do céu. Ele também exalta o poder do seu povo, o louvor de todos os seus santos, dos filhos de Israel, um povo que lhe é chegado. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 4:4-7",
+            "text": "mas, vindo a plenitude dos tempos, Deus enviou seu Filho, nascido de mulher, nascido debaixo de lei, para resgatar os que estavam debaixo de lei, a fim de recebermos a adoção de filhos. E, porque sois filhos, Deus enviou aos nossos corações o Espírito de seu Filho, que clama: Aba, Pai. Portanto já não és mais servo, mas filho; e se és filho, és também herdeiro por Deus."
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 2:22-40",
+            "text": "Terminados os dias da purificação, segundo a lei de Moisés, levaram-no a Jerusalém, para apresentá-lo ao Senhor (conforme está escrito na lei do Senhor: Todo primogênito será consagrado ao Senhor), e para oferecerem um sacrifício segundo o disposto na lei do Senhor: um par de rolas, ou dois pombinhos. Ora, havia em Jerusalém um homem cujo nome era Simeão; e este homem, justo e temente a Deus, esperava a consolação de Israel; e o Espírito Santo estava sobre ele. E lhe fora revelado pelo Espírito Santo que ele não morreria antes de ver o Cristo do Senhor. Assim pelo Espírito foi ao templo; e quando os pais trouxeram o menino Jesus, para fazerem por ele segundo o costume da lei, Simeão o tomou em seus braços, e louvou a Deus, e disse: Agora, Senhor, despedes em paz o teu servo, segundo a tua palavra; pois os meus olhos já viram a tua salvação, a qual tu preparaste ante a face de todos os povos; luz para revelação aos gentios, e para glória do teu povo Israel. Enquanto isso, seu pai e sua mãe se admiravam das coisas que deles se diziam. E Simeão os abençoou, e disse a Maria, mãe do menino: Eis que este é posto para queda e para levantamento de muitos em Israel, e para ser alvo de contradição, sim, e uma espada traspassará a tua própria alma, para que se manifestem os pensamentos de muitos corações. Havia também uma profetisa, Ana, filha de Fanuel, da tribo de Aser. Era já avançada em idade, tendo vivido com o marido sete anos desde a sua virgindade; e era viúva, de quase oitenta e quatro anos. Não se afastava do templo, servindo a Deus noite e dia em jejuns e orações. Chegando ela na mesma hora, deu graças a Deus, e falou a respeito do menino a todos os que esperavam a redenção de Jerusalém. Assim que cumpriram tudo segundo a lei do Senhor, voltaram à Galiléia, para sua cidade de Nazaré. E o menino ia crescendo e fortalecendo-se, ficando cheio de sabedoria; e a graça de Deus estava sobre ele."
+          }
+        ]
+      },
+      {
+        "date": "2028-01-02",
+        "season": "christmas",
+        "weekOfSeason": 3,
+        "dayName": "2º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 31:7-14",
+            "text": "Pois assim diz o Senhor: Cantai sobre Jacó com alegria, e exultai por causa da principal das nações; proclamai, cantai louvores, e dizei: Salva, Senhor, o teu povo, o resto de Israel. Eis que os trarei da terra do norte e os congregarei das extremidades da terra; e com eles os cegos e aleijados, as mulheres grávidas e as de parto juntamente; em grande companhia voltarão para cá. Virão com choro, e com súplicas os levarei; guiá-los-ei aos ribeiros de águas, por caminho direito em que não tropeçarão; porque sou um pai para Israel, e Efraim é o meu primogênito. Ouvi a palavra do Senhor, ó nações, e anunciai-a nas longinquas terras maritimas, e dizei: Aquele que espalhou a Israel o congregará e o guardará, como o pastor ao seu rebanho. Pois o Senhor resgatou a Jacó, e o livrou da mão do que era mais forte do que ele. E virão, e cantarão de júbilo nos altos de Sião, e ficarão radiantes pelos bens do Senhor, pelo trigo, o mosto, e o azeite, pelos cordeiros e os bezerros; e a sua vida será como um jardim regado, e nunca mais desfalecerão. Então a virgem se alegrará na dança, como também os mancebos e os velhos juntamente; porque tornarei o seu pranto em gozo, e os consolarei, e lhes darei alegria em lugar de tristeza. E saciarei de gordura a alma dos sacerdotes, e o meu povo se fartará dos meus bens, diz o Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 147:12-20",
+            "text": "Louva, ó Jerusalém, ao Senhor; louva, ó Sião, ao teu Deus. Porque ele fortalece as trancas das tuas portas; abençoa aos teus filhos dentro de ti. Ele é quem estabelece a paz nas tuas fronteiras; quem do mais fino trigo te farta; quem envia o seu mandamento pela terra; a sua palavra corre mui velozmente. Ele dá a neve como lã, esparge a geada como cinza, e lança o seu gelo em pedaços; quem pode resistir ao seu frio? Manda a sua palavra, e os derrete; faz soprar o vento, e correm as águas; ele revela a sua palavra a Jacó, os seus estatutos e as suas ordenanças a Israel. Não fez assim a nenhuma das outras nações; e, quanto às suas ordenanças, elas não as conhecem. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 1:3-14",
+            "text": "Bendito seja o Deus e Pai de nosso Senhor Jesus Cristo, o qual nos abençoou com todas as bênçãos espirituais nas regiões celestes em Cristo; como também nos elegeu nele antes da fundação do mundo, para sermos santos e irrepreensíveis diante dele em amor; e nos predestinou para sermos filhos de adoção por Jesus Cristo, para si mesmo, segundo o beneplácito de sua vontade, para o louvor da glória da sua graça, a qual nos deu gratuitamente no Amado; em quem temos a redenção pelo seu sangue, a redenção dos nossos delitos, segundo as riquezas da sua graça, que ele fez abundar para conosco em toda a sabedoria e prudência, fazendo-nos conhecer o mistério da sua vontade, segundo o seu beneplácito, que nele propôs para a dispensação da plenitude dos tempos, de fazer convergir em Cristo todas as coisas, tanto as que estão nos céus como as que estão na terra, nele, digo, no qual também fomos feitos herança, havendo sido predestinados conforme o propósito daquele que faz todas as coisas segundo o conselho da sua vontade, com o fim de sermos para o louvor da sua glória, nós, os que antes havíamos esperado em Cristo; no qual também vós, tendo ouvido a palavra da verdade, o evangelho da vossa salvação, e tendo nele também crido, fostes selados com o Espírito Santo da promessa, o qual é o penhor da nossa herança, para redenção da possessão de Deus, para o louvor da sua glória."
+          },
+          {
+            "type": "gospel",
+            "ref": "João 1:(1-9), 10-18",
+            "text": "Estava ele no mundo, e o mundo foi feito por intermédio dele, e o mundo não o conheceu. Veio para o que era seu, e os seus não o receberam. Mas, a todos quantos o receberam, aos que crêem no seu nome, deu-lhes o poder de se tornarem filhos de Deus; os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do varão, mas de Deus. E o Verbo se fez carne, e habitou entre nós, cheio de graça e de verdade; e vimos a sua glória, como a glória do unigênito do Pai. João deu testemunho dele, e clamou, dizendo: Este é aquele de quem eu disse: O que vem depois de mim, passou adiante de mim; porque antes de mim ele já existia. Pois todos nós recebemos da sua plenitude, e graça sobre graça. Porque a lei foi dada por meio de Moisés; a graça e a verdade vieram por Jesus Cristo. Ninguém jamais viu a Deus. O Deus unigênito, que está no seio do Pai, esse o deu a conhecer."
+          }
+        ]
+      },
+      {
         "date": "2028-12-25",
         "season": "christmas",
         "weekOfSeason": 1,
@@ -1019,6 +1280,35 @@
         ]
       },
       {
+        "date": "2028-12-31",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "1º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Isaías 61:10-62:3",
+            "text": "Regozijar-me-ei muito no Senhor, a minha alma se alegrará no meu Deus, porque me vestiu de vestes de salvação, cobriu-me com o manto de justiça, como noivo que se adorna com uma grinalda, e como noiva que se enfeita com as suas jóias. Porque, como a terra produz os seus renovos, e como o horto faz brotar o que nele se semeia, assim o Senhor Deus fará brotar a justiça e o louvor perante todas as nações."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 148",
+            "text": "Louvai ao Senhor! Louvai ao Senhor desde o céu, louvai-o nas alturas! Louvai-o, todos os seus anjos; louvai-o, todas as suas hostes! Louvai-o, sol e lua; louvai-o, todas as estrelas luzentes! Louvai-o, céus dos céus, e as águas que estão sobre os céus! Louvem eles o nome do Senhor; pois ele deu ordem, e logo foram criados. Também ele os estabeleceu para todo sempre; e lhes fixou um limite que nenhum deles ultrapassará. Louvai ao Senhor desde a terra, vós, monstros marinhos e todos os abismos; fogo e saraiva, neve e vapor; vento tempestuoso que excuta a sua palavra; montes e todos os outeiros; árvores frutíferas e todos os cedros; feras e todo o gado; répteis e aves voadoras; reis da terra e todos os povos; príncipes e todos os juízes da terra; mancebos e donzelas; velhos e crianças! Louvem eles o nome do Senhor, pois só o seu nome é excelso; a sua glória é acima da terra e do céu. Ele também exalta o poder do seu povo, o louvor de todos os seus santos, dos filhos de Israel, um povo que lhe é chegado. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 4:4-7",
+            "text": "mas, vindo a plenitude dos tempos, Deus enviou seu Filho, nascido de mulher, nascido debaixo de lei, para resgatar os que estavam debaixo de lei, a fim de recebermos a adoção de filhos. E, porque sois filhos, Deus enviou aos nossos corações o Espírito de seu Filho, que clama: Aba, Pai. Portanto já não és mais servo, mas filho; e se és filho, és também herdeiro por Deus."
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 2:22-40",
+            "text": "Terminados os dias da purificação, segundo a lei de Moisés, levaram-no a Jerusalém, para apresentá-lo ao Senhor (conforme está escrito na lei do Senhor: Todo primogênito será consagrado ao Senhor), e para oferecerem um sacrifício segundo o disposto na lei do Senhor: um par de rolas, ou dois pombinhos. Ora, havia em Jerusalém um homem cujo nome era Simeão; e este homem, justo e temente a Deus, esperava a consolação de Israel; e o Espírito Santo estava sobre ele. E lhe fora revelado pelo Espírito Santo que ele não morreria antes de ver o Cristo do Senhor. Assim pelo Espírito foi ao templo; e quando os pais trouxeram o menino Jesus, para fazerem por ele segundo o costume da lei, Simeão o tomou em seus braços, e louvou a Deus, e disse: Agora, Senhor, despedes em paz o teu servo, segundo a tua palavra; pois os meus olhos já viram a tua salvação, a qual tu preparaste ante a face de todos os povos; luz para revelação aos gentios, e para glória do teu povo Israel. Enquanto isso, seu pai e sua mãe se admiravam das coisas que deles se diziam. E Simeão os abençoou, e disse a Maria, mãe do menino: Eis que este é posto para queda e para levantamento de muitos em Israel, e para ser alvo de contradição, sim, e uma espada traspassará a tua própria alma, para que se manifestem os pensamentos de muitos corações. Havia também uma profetisa, Ana, filha de Fanuel, da tribo de Aser. Era já avançada em idade, tendo vivido com o marido sete anos desde a sua virgindade; e era viúva, de quase oitenta e quatro anos. Não se afastava do templo, servindo a Deus noite e dia em jejuns e orações. Chegando ela na mesma hora, deu graças a Deus, e falou a respeito do menino a todos os que esperavam a redenção de Jerusalém. Assim que cumpriram tudo segundo a lei do Senhor, voltaram à Galiléia, para sua cidade de Nazaré. E o menino ia crescendo e fortalecendo-se, ficando cheio de sabedoria; e a graça de Deus estava sobre ele."
+          }
+        ]
+      },
+      {
         "date": "2029-12-25",
         "season": "christmas",
         "weekOfSeason": 1,
@@ -1044,6 +1334,35 @@
             "type": "gospel",
             "ref": "João 1:1-14",
             "text": "No princípio era o Verbo, e o Verbo estava com Deus, e o Verbo era Deus. Ele estava no princípio com Deus. Todas as coisas foram feitas por intermédio dele, e sem ele nada do que foi feito se fez. Nele estava a vida, e a vida era a luz dos homens; a luz resplandece nas trevas, e as trevas não prevaleceram contra ela. Houve um homem enviado de Deus, cujo nome era João. Este veio como testemunha, a fim de dar testemunho da luz, para que todos cressem por meio dele. Ele não era a luz, mas veio para dar testemunho da luz. Pois a verdadeira luz, que alumia a todo homem, estava chegando ao mundo. Estava ele no mundo, e o mundo foi feito por intermédio dele, e o mundo não o conheceu. Veio para o que era seu, e os seus não o receberam. Mas, a todos quantos o receberam, aos que crêem no seu nome, deu-lhes o poder de se tornarem filhos de Deus; os quais não nasceram do sangue, nem da vontade da carne, nem da vontade do varão, mas de Deus. E o Verbo se fez carne, e habitou entre nós, cheio de graça e de verdade; e vimos a sua glória, como a glória do unigênito do Pai."
+          }
+        ]
+      },
+      {
+        "date": "2029-12-30",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "1º Domingo depois do Natal",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Isaías 61:10-62:3",
+            "text": "Regozijar-me-ei muito no Senhor, a minha alma se alegrará no meu Deus, porque me vestiu de vestes de salvação, cobriu-me com o manto de justiça, como noivo que se adorna com uma grinalda, e como noiva que se enfeita com as suas jóias. Porque, como a terra produz os seus renovos, e como o horto faz brotar o que nele se semeia, assim o Senhor Deus fará brotar a justiça e o louvor perante todas as nações."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 148",
+            "text": "Louvai ao Senhor! Louvai ao Senhor desde o céu, louvai-o nas alturas! Louvai-o, todos os seus anjos; louvai-o, todas as suas hostes! Louvai-o, sol e lua; louvai-o, todas as estrelas luzentes! Louvai-o, céus dos céus, e as águas que estão sobre os céus! Louvem eles o nome do Senhor; pois ele deu ordem, e logo foram criados. Também ele os estabeleceu para todo sempre; e lhes fixou um limite que nenhum deles ultrapassará. Louvai ao Senhor desde a terra, vós, monstros marinhos e todos os abismos; fogo e saraiva, neve e vapor; vento tempestuoso que excuta a sua palavra; montes e todos os outeiros; árvores frutíferas e todos os cedros; feras e todo o gado; répteis e aves voadoras; reis da terra e todos os povos; príncipes e todos os juízes da terra; mancebos e donzelas; velhos e crianças! Louvem eles o nome do Senhor, pois só o seu nome é excelso; a sua glória é acima da terra e do céu. Ele também exalta o poder do seu povo, o louvor de todos os seus santos, dos filhos de Israel, um povo que lhe é chegado. Louvai ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 4:4-7",
+            "text": "mas, vindo a plenitude dos tempos, Deus enviou seu Filho, nascido de mulher, nascido debaixo de lei, para resgatar os que estavam debaixo de lei, a fim de recebermos a adoção de filhos. E, porque sois filhos, Deus enviou aos nossos corações o Espírito de seu Filho, que clama: Aba, Pai. Portanto já não és mais servo, mas filho; e se és filho, és também herdeiro por Deus."
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 2:22-40",
+            "text": "Terminados os dias da purificação, segundo a lei de Moisés, levaram-no a Jerusalém, para apresentá-lo ao Senhor (conforme está escrito na lei do Senhor: Todo primogênito será consagrado ao Senhor), e para oferecerem um sacrifício segundo o disposto na lei do Senhor: um par de rolas, ou dois pombinhos. Ora, havia em Jerusalém um homem cujo nome era Simeão; e este homem, justo e temente a Deus, esperava a consolação de Israel; e o Espírito Santo estava sobre ele. E lhe fora revelado pelo Espírito Santo que ele não morreria antes de ver o Cristo do Senhor. Assim pelo Espírito foi ao templo; e quando os pais trouxeram o menino Jesus, para fazerem por ele segundo o costume da lei, Simeão o tomou em seus braços, e louvou a Deus, e disse: Agora, Senhor, despedes em paz o teu servo, segundo a tua palavra; pois os meus olhos já viram a tua salvação, a qual tu preparaste ante a face de todos os povos; luz para revelação aos gentios, e para glória do teu povo Israel. Enquanto isso, seu pai e sua mãe se admiravam das coisas que deles se diziam. E Simeão os abençoou, e disse a Maria, mãe do menino: Eis que este é posto para queda e para levantamento de muitos em Israel, e para ser alvo de contradição, sim, e uma espada traspassará a tua própria alma, para que se manifestem os pensamentos de muitos corações. Havia também uma profetisa, Ana, filha de Fanuel, da tribo de Aser. Era já avançada em idade, tendo vivido com o marido sete anos desde a sua virgindade; e era viúva, de quase oitenta e quatro anos. Não se afastava do templo, servindo a Deus noite e dia em jejuns e orações. Chegando ela na mesma hora, deu graças a Deus, e falou a respeito do menino a todos os que esperavam a redenção de Jerusalém. Assim que cumpriram tudo segundo a lei do Senhor, voltaram à Galiléia, para sua cidade de Nazaré. E o menino ia crescendo e fortalecendo-se, ficando cheio de sabedoria; e a graça de Deus estava sobre ele."
           }
         ]
       }
@@ -1227,28 +1546,28 @@
         "date": "2024-02-11",
         "season": "epiphany",
         "weekOfSeason": 7,
-        "dayName": "Sétimo Domingo após a Epifania",
+        "dayName": "Domingo da Transfiguração",
         "holyDay": true,
         "readings": [
           {
             "type": "first_reading",
-            "ref": "Isaías 43:18-25",
-            "text": "Não vos lembreis das coisas passadas, nem considereis as antigas. Eis que faço uma coisa nova; agora está saindo à luz; porventura não a percebeis? eis que porei um caminho no deserto, e rios no ermo. Os animais do campo me honrarão, os chacais e os avestruzes; porque porei águas no deserto, e rios no ermo, para dar de beber ao meu povo, ao meu escolhido, esse povo que formei para mim, para que publicasse o meu louvor. Contudo tu não me invocaste a mim, ó Jacó; mas te cansaste de mim, ó Israel. Não me trouxeste o gado miúdo dos teus holocaustos, nem me honraste com os teus sacrifícios; não te fiz servir com ofertas, nem te fatiguei com incenso. Não me compraste por dinheiro cana aromática, nem com a gordura dos teus sacrifícios me satisfizeste; mas me deste trabalho com os teus pecados, e me cansaste com as tuas iniqüidades. Eu, eu mesmo, sou o que apago as tuas transgressões por amor de mim, e dos teus pecados não me lembro."
+            "ref": "2 Reis 2:1-12",
+            "text": "Quando o Senhor estava para tomar Elias ao céu num redemoinho, Elias partiu de Gilgal com Eliseu. Disse Elias a Eliseu: Fica-te aqui, porque o Senhor me envia a Betel. Eliseu, porém disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim desceram a Betel. Então os filhos dos profetas que estavam em Betel saíram ao encontro de Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Eliseu, fica-te aqui, porque o Senhor me envia a Jericó. Ele, porém, disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim vieram a Jericó. Então os filhos dos profetas que estavam em Jericó se chegaram a Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Fica-te aqui, porque o senhor me envia ao Jordão. Mas ele disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim ambos foram juntos. E foram cinqüenta homens dentre os filhos dos profetas, e pararam defronte deles, de longe; e eles dois pararam junto ao Jordão. Então Elias tomou a sua capa e, dobrando-a, feriu as águas, as quais se dividiram de uma à outra banda; e passaram ambos a pé enxuto. Havendo eles passado, Elias disse a Eliseu: Pede-me o que queres que eu te faça, antes que seja tomado de ti. E disse Eliseu: Peço-te que haja sobre mim dobrada porção de teu espírito. Respondeu Elias: Coisa difícil pediste. Todavia, se me vires quando for tomado de ti, assim se te fará; porém, se não, não se fará. E, indo eles caminhando e conversando, eis que um carro de fogo, com cavalos de fogo, os separou um do outro; e Elias subiu ao céu num redemoinho. O que vendo Eliseu, clamou: Meu pai, meu pai! o carro de Israel, e seus cavaleiros! E não o viu mais. Pegou então nas suas vestes e as rasgou em duas partes;"
           },
           {
             "type": "psalm",
-            "ref": "Salmo 41",
-            "text": "Bem-aventurado é aquele que considera o pobre; o Senhor o livrará no dia do mal. O Senhor o guardará, e o conservará em vida; será abençoado na terra; tu, Senhor não o entregarás à vontade dos seus inimigos. O Senhor o sustentará no leito da enfermidade; tu lhe amaciarás a cama na sua doença. Disse eu da minha parte: Senhor, compadece-te de mim, sara a minha alma, pois pequei contra ti. Os meus inimigos falam mal de mim, dizendo: Quando morrerá ele, e perecerá o seu nome? E, se algum deles vem ver-me, diz falsidades; no seu coração amontoa a maldade; e quando ele sai, é disso que fala. Todos os que me odeiam cochicham entre si contra mim; contra mim maquinam o mal, dizendo: Alguma coisa ruim se lhe apega; e agora que está deitado, não se levantará mais. Até o meu próprio amigo íntimo em quem eu tanto confiava, e que comia do meu pão, levantou contra mim o seu calcanhar. Mas tu, Senhor, compadece-te de mim e levanta-me, para que eu lhes retribua. Por isso conheço eu que te deleitas em mim, por não triunfar de mim o meu inimigo Quanto a mim, tu me sustentas na minha integridade, e me colocas diante da tua face para sempre. Bendito seja o Senhor Deus de Israel de eternidade a eternidade. Amém e amém."
+            "ref": "Salmo 50:1-6",
+            "text": "O Poderoso, o Senhor Deus, fala e convoca a terra desde o nascer do sol até o seu ocaso. Desde Sião, a perfeição da formosura. Deus resplandece. O nosso Deus vem, e não guarda silêncio; diante dele há um fogo devorador, e grande tormenta ao seu redor. Ele intima os altos céus e a terra, para o julgamento do seu povo: Congregai os meus santos, aqueles que fizeram comigo um pacto por meio de sacrifícios. Os céus proclamam a justiça dele, pois Deus mesmo é Juiz."
           },
           {
             "type": "second_reading",
-            "ref": "2 Coríntios 1:18-22",
-            "text": "Antes, como Deus é fiel, a nossa palavra a vós não é sim e não, porque o Filho de Deus, Cristo Jesus, que entre vós foi pregado por nós, isto é, por mim, Silvano e Timóteo, não foi sim e não; mas nele houve sim. Pois, tantas quantas forem as promessas de Deus, nele está o sim; portanto é por ele o amém, para glória de Deus por nosso intermédio. Mas aquele que nos confirma convosco em Cristo, e nos ungiu, é Deus, o qual também nos selou e nos deu como penhor o Espírito em nossos corações."
+            "ref": "2 Coríntios 4:3-6",
+            "text": "Mas, se ainda o nosso evangelho está encoberto, é naqueles que se perdem que está encoberto, nos quais o deus deste século cegou os entendimentos dos incrédulos, para que lhes não resplandeça a luz do evangelho da glória de Cristo, o qual é a imagem de Deus. Pois não nos pregamos a nós mesmos, mas a Cristo Jesus como Senhor; e a nós mesmos como vossos servos por amor de Jesus. Porque Deus, que disse: Das trevas brilhará a luz, é quem brilhou em nossos corações, para iluminação do conhecimento da glória de Deus na face de Cristo."
           },
           {
             "type": "gospel",
-            "ref": "Marcos 2:1-12",
-            "text": "Alguns dias depois entrou Jesus outra vez em Cafarnaum, e soube-se que ele estava em casa. Ajuntaram-se, pois, muitos, a ponta de não caberem nem mesmo diante da porta; e ele lhes anunciava a palavra. Nisso vieram alguns a trazer-lhe um paralítico, carregado por quatro; e não podendo aproximar-se dele, por causa da multidão, descobriram o telhado onde estava e, fazendo uma abertura, baixaram o leito em que jazia o paralítico. E Jesus, vendo-lhes a fé, disse ao paralítico: Filho, perdoados são os teus pecados. Ora, estavam ali sentados alguns dos escribas, que arrazoavam em seus corações, dizendo: Por que fala assim este homem? Ele blasfema. Quem pode perdoar pecados senão um só, que é Deus? Mas Jesus logo percebeu em seu espírito que eles assim arrazoavam dentro de si, e perguntou-lhes: Por que arrazoais desse modo em vossos corações? Qual é mais fácil? dizer ao paralítico: Perdoados são os teus pecados; ou dizer: Levanta-te, toma o teu leito, e anda? Ora, para que saibais que o Filho do homem tem sobre a terra autoridade para perdoar pecados ( disse ao paralítico ), a ti te digo, levanta-te, toma o teu leito, e vai para tua casa. Então ele se levantou e, tomando logo o leito, saiu à vista de todos; de modo que todos pasmavam e glorificavam a Deus, dizendo: Nunca vimos coisa semelhante."
+            "ref": "Marcos 9:2-9",
+            "text": "Seis dias depois tomou Jesus consigo a Pedro, a Tiago, e a João, e os levou à parte sós, a um alto monte; e foi transfigurado diante deles; as suas vestes tornaram-se resplandecentes, extremamente brancas, tais como nenhum lavandeiro sobre a terra as poderia branquear. E apareceu-lhes Elias com Moisés, e falavam com Jesus. Pedro, tomando a palavra, disse a Jesus: Mestre, bom é estarmos aqui; faça-mos, pois, três cabanas, uma para ti, outra para Moisés, e outra para Elias. Pois não sabia o que havia de dizer, porque ficaram atemorizados. Nisto veio uma nuvem que os cobriu, e dela saiu uma voz que dizia: Este é o meu Filho amado; a ele ouvi. De repente, tendo olhado em redor, não viram mais a ninguém consigo, senão só a Jesus. Enquanto desciam do monte, ordenou-lhes que a ninguém contassem o que tinham visto, até que o Filho do homem ressurgisse dentre os mortos."
           }
         ]
       },
@@ -1456,6 +1775,64 @@
         ]
       },
       {
+        "date": "2025-02-23",
+        "season": "epiphany",
+        "weekOfSeason": 8,
+        "dayName": "Oitavo Domingo após a Epifania",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Oséias 2:14-20",
+            "text": "Portanto, eis que eu a atrairei, e a levarei para o deserto, e lhe falarei ao coração. E lhe darei as suas vinhas dali, e o vale de Acor por porta de esperança; e ali responderá, como nos dias da sua mocidade, e como no dia em que subiu da terra do Egito. E naquele dia, diz o Senhor, ela me chamará meu marido; e não me chamará mais meu Baal. Pois da sua boca tirarei os nomes dos baalins, e não mais se fará menção desses nomes. Naquele dia farei por eles aliança com as feras do campo, e com as aves do céu, e com os répteis da terra; e da terra tirarei o arco, e a espada, e a guerra, e os farei deitar em segurança. E desposar-te-ei comigo para sempre; sim, desposar-te-ei comigo em justiça, e em juízo, e em amorável benignidade, e em misericórdias; e desposar-te-ei comigo em fidelidade, e conhecerás ao Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 103:1-13, 22",
+            "text": "Bendize, ó minha alma, ao Senhor, e tudo o que há em mim bendiga o seu santo nome. Bendize, ó minha alma, ao Senhor, e não te esqueças de nenhum dos seus benefícios. É ele quem perdoa todas as tuas iniqüidades, quem sara todas as tuas enfermidades, quem redime a tua vida da cova, quem te coroa de benignidade e de misericórdia, quem te supre de todo o bem, de sorte que a tua mocidade se renova como a da águia. O Senhor executa atos de justiça, e juízo a favor de todos os oprimidos. Fez notórios os seus caminhos a Moisés, e os seus feitos aos filhos de Israel. Compassivo e misericordioso é o Senhor; tardio em irar-se e grande em benignidade. Não repreenderá perpetuamente, nem para sempre conservará a sua ira. Não nos trata segundo os nossos pecados, nem nos retribui segundo as nossas iniqüidades. Pois quanto o céu está elevado acima da terra, assim é grande a sua benignidade para com os que o temem. Quanto o oriente está longe do ocidente, tanto tem ele afastado de nós as nossas transgressões. Como um pai se compadece de seus filhos, assim o Senhor se compadece daqueles que o temem. Bendizei ao Senhor, vós todas as suas obras, em todos os lugares do seu domínio! Bendizei, ó minha alma ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 3:1-6",
+            "text": "Começamos outra vez a recomendar-nos a nós mesmos? Ou, porventura, necessitamos, como alguns, de cartas de recomendação para vós, ou de vós? Vós sois a nossa carta, escrita em nossos corações, conhecida e lida por todos os homens, sendo manifestos como carta de Cristo, ministrada por nós, e escrita, não com tinta, mas com o Espírito do Deus vivo, não em tábuas de pedra, mas em tábuas de carne do coração. E é por Cristo que temos tal confiança em Deus; não que sejamos capazes, por nós, de pensar alguma coisa, como de nós mesmos; mas a nossa capacidade vem de Deus, o qual também nos capacitou para sermos ministros dum novo pacto, não da letra, mas do espírito; porque a letra mata, mas o espírito vivifica."
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 2:13-22",
+            "text": "Outra vez saiu Jesus para a beira do mar; e toda a multidão ia ter com ele, e ele os ensinava. Quando ia passando, viu a Levi, filho de Alfeu, sentado na coletoria, e disse-lhe: Segue-me. E ele, levantando-se, o seguiu. Ora, estando Jesus à mesa em casa de Levi, estavam também ali reclinados com ele e seus discípulos muitos publicanos e pecadores; pois eram em grande número e o seguiam. Vendo os escribas dos fariseus que comia com os publicanos e pecadores, perguntavam aos discípulos: Por que é que ele como com os publicanos e pecadores? Jesus, porém, ouvindo isso, disse-lhes: Não necessitam de médico os sãos, mas sim os enfermos; eu não vim chamar justos, mas pecadores. Ora, os discípulos de João e os fariseus estavam jejuando; e foram perguntar-lhe: Por que jejuam os discípulos de João e os dos fariseus, mas os teus discípulos não jejuam? Respondeu-lhes Jesus: Podem, porventura, jejuar os convidados às núpcias, enquanto está com eles o noivo? Enquanto têm consigo o noivo não podem jejuar; dias virão, porém, em que lhes será tirado o noivo; nesses dias, sim hão de jejuar. Ninguém cose remendo de pano novo em vestido velho; do contrário o remendo novo tira parte do velho, e torna-se maior a rotura. E ninguém deita vinho novo em odres velhos; do contrário, o vinho novo romperá os odres, e perder-se-á o vinho e também os odres; mas deita-se vinho novo em odres novos."
+          }
+        ]
+      },
+      {
+        "date": "2025-03-02",
+        "season": "epiphany",
+        "weekOfSeason": 9,
+        "dayName": "Domingo da Transfiguração",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 2:1-12",
+            "text": "Quando o Senhor estava para tomar Elias ao céu num redemoinho, Elias partiu de Gilgal com Eliseu. Disse Elias a Eliseu: Fica-te aqui, porque o Senhor me envia a Betel. Eliseu, porém disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim desceram a Betel. Então os filhos dos profetas que estavam em Betel saíram ao encontro de Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Eliseu, fica-te aqui, porque o Senhor me envia a Jericó. Ele, porém, disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim vieram a Jericó. Então os filhos dos profetas que estavam em Jericó se chegaram a Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Fica-te aqui, porque o senhor me envia ao Jordão. Mas ele disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim ambos foram juntos. E foram cinqüenta homens dentre os filhos dos profetas, e pararam defronte deles, de longe; e eles dois pararam junto ao Jordão. Então Elias tomou a sua capa e, dobrando-a, feriu as águas, as quais se dividiram de uma à outra banda; e passaram ambos a pé enxuto. Havendo eles passado, Elias disse a Eliseu: Pede-me o que queres que eu te faça, antes que seja tomado de ti. E disse Eliseu: Peço-te que haja sobre mim dobrada porção de teu espírito. Respondeu Elias: Coisa difícil pediste. Todavia, se me vires quando for tomado de ti, assim se te fará; porém, se não, não se fará. E, indo eles caminhando e conversando, eis que um carro de fogo, com cavalos de fogo, os separou um do outro; e Elias subiu ao céu num redemoinho. O que vendo Eliseu, clamou: Meu pai, meu pai! o carro de Israel, e seus cavaleiros! E não o viu mais. Pegou então nas suas vestes e as rasgou em duas partes;"
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 50:1-6",
+            "text": "O Poderoso, o Senhor Deus, fala e convoca a terra desde o nascer do sol até o seu ocaso. Desde Sião, a perfeição da formosura. Deus resplandece. O nosso Deus vem, e não guarda silêncio; diante dele há um fogo devorador, e grande tormenta ao seu redor. Ele intima os altos céus e a terra, para o julgamento do seu povo: Congregai os meus santos, aqueles que fizeram comigo um pacto por meio de sacrifícios. Os céus proclamam a justiça dele, pois Deus mesmo é Juiz."
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 4:3-6",
+            "text": "Mas, se ainda o nosso evangelho está encoberto, é naqueles que se perdem que está encoberto, nos quais o deus deste século cegou os entendimentos dos incrédulos, para que lhes não resplandeça a luz do evangelho da glória de Cristo, o qual é a imagem de Deus. Pois não nos pregamos a nós mesmos, mas a Cristo Jesus como Senhor; e a nós mesmos como vossos servos por amor de Jesus. Porque Deus, que disse: Das trevas brilhará a luz, é quem brilhou em nossos corações, para iluminação do conhecimento da glória de Deus na face de Cristo."
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 9:2-9",
+            "text": "Seis dias depois tomou Jesus consigo a Pedro, a Tiago, e a João, e os levou à parte sós, a um alto monte; e foi transfigurado diante deles; as suas vestes tornaram-se resplandecentes, extremamente brancas, tais como nenhum lavandeiro sobre a terra as poderia branquear. E apareceu-lhes Elias com Moisés, e falavam com Jesus. Pedro, tomando a palavra, disse a Jesus: Mestre, bom é estarmos aqui; faça-mos, pois, três cabanas, uma para ti, outra para Moisés, e outra para Elias. Pois não sabia o que havia de dizer, porque ficaram atemorizados. Nisto veio uma nuvem que os cobriu, e dela saiu uma voz que dizia: Este é o meu Filho amado; a ele ouvi. De repente, tendo olhado em redor, não viram mais a ninguém consigo, senão só a Jesus. Enquanto desciam do monte, ordenou-lhes que a ninguém contassem o que tinham visto, até que o Filho do homem ressurgisse dentre os mortos."
+          }
+        ]
+      },
+      {
         "date": "2026-01-06",
         "season": "epiphany",
         "weekOfSeason": 1,
@@ -1633,28 +2010,28 @@
         "date": "2026-02-15",
         "season": "epiphany",
         "weekOfSeason": 7,
-        "dayName": "Sétimo Domingo após a Epifania",
+        "dayName": "Domingo da Transfiguração",
         "holyDay": true,
         "readings": [
           {
             "type": "first_reading",
-            "ref": "Isaías 43:18-25",
-            "text": "Não vos lembreis das coisas passadas, nem considereis as antigas. Eis que faço uma coisa nova; agora está saindo à luz; porventura não a percebeis? eis que porei um caminho no deserto, e rios no ermo. Os animais do campo me honrarão, os chacais e os avestruzes; porque porei águas no deserto, e rios no ermo, para dar de beber ao meu povo, ao meu escolhido, esse povo que formei para mim, para que publicasse o meu louvor. Contudo tu não me invocaste a mim, ó Jacó; mas te cansaste de mim, ó Israel. Não me trouxeste o gado miúdo dos teus holocaustos, nem me honraste com os teus sacrifícios; não te fiz servir com ofertas, nem te fatiguei com incenso. Não me compraste por dinheiro cana aromática, nem com a gordura dos teus sacrifícios me satisfizeste; mas me deste trabalho com os teus pecados, e me cansaste com as tuas iniqüidades. Eu, eu mesmo, sou o que apago as tuas transgressões por amor de mim, e dos teus pecados não me lembro."
+            "ref": "2 Reis 2:1-12",
+            "text": "Quando o Senhor estava para tomar Elias ao céu num redemoinho, Elias partiu de Gilgal com Eliseu. Disse Elias a Eliseu: Fica-te aqui, porque o Senhor me envia a Betel. Eliseu, porém disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim desceram a Betel. Então os filhos dos profetas que estavam em Betel saíram ao encontro de Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Eliseu, fica-te aqui, porque o Senhor me envia a Jericó. Ele, porém, disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim vieram a Jericó. Então os filhos dos profetas que estavam em Jericó se chegaram a Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Fica-te aqui, porque o senhor me envia ao Jordão. Mas ele disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim ambos foram juntos. E foram cinqüenta homens dentre os filhos dos profetas, e pararam defronte deles, de longe; e eles dois pararam junto ao Jordão. Então Elias tomou a sua capa e, dobrando-a, feriu as águas, as quais se dividiram de uma à outra banda; e passaram ambos a pé enxuto. Havendo eles passado, Elias disse a Eliseu: Pede-me o que queres que eu te faça, antes que seja tomado de ti. E disse Eliseu: Peço-te que haja sobre mim dobrada porção de teu espírito. Respondeu Elias: Coisa difícil pediste. Todavia, se me vires quando for tomado de ti, assim se te fará; porém, se não, não se fará. E, indo eles caminhando e conversando, eis que um carro de fogo, com cavalos de fogo, os separou um do outro; e Elias subiu ao céu num redemoinho. O que vendo Eliseu, clamou: Meu pai, meu pai! o carro de Israel, e seus cavaleiros! E não o viu mais. Pegou então nas suas vestes e as rasgou em duas partes;"
           },
           {
             "type": "psalm",
-            "ref": "Salmo 41",
-            "text": "Bem-aventurado é aquele que considera o pobre; o Senhor o livrará no dia do mal. O Senhor o guardará, e o conservará em vida; será abençoado na terra; tu, Senhor não o entregarás à vontade dos seus inimigos. O Senhor o sustentará no leito da enfermidade; tu lhe amaciarás a cama na sua doença. Disse eu da minha parte: Senhor, compadece-te de mim, sara a minha alma, pois pequei contra ti. Os meus inimigos falam mal de mim, dizendo: Quando morrerá ele, e perecerá o seu nome? E, se algum deles vem ver-me, diz falsidades; no seu coração amontoa a maldade; e quando ele sai, é disso que fala. Todos os que me odeiam cochicham entre si contra mim; contra mim maquinam o mal, dizendo: Alguma coisa ruim se lhe apega; e agora que está deitado, não se levantará mais. Até o meu próprio amigo íntimo em quem eu tanto confiava, e que comia do meu pão, levantou contra mim o seu calcanhar. Mas tu, Senhor, compadece-te de mim e levanta-me, para que eu lhes retribua. Por isso conheço eu que te deleitas em mim, por não triunfar de mim o meu inimigo Quanto a mim, tu me sustentas na minha integridade, e me colocas diante da tua face para sempre. Bendito seja o Senhor Deus de Israel de eternidade a eternidade. Amém e amém."
+            "ref": "Salmo 50:1-6",
+            "text": "O Poderoso, o Senhor Deus, fala e convoca a terra desde o nascer do sol até o seu ocaso. Desde Sião, a perfeição da formosura. Deus resplandece. O nosso Deus vem, e não guarda silêncio; diante dele há um fogo devorador, e grande tormenta ao seu redor. Ele intima os altos céus e a terra, para o julgamento do seu povo: Congregai os meus santos, aqueles que fizeram comigo um pacto por meio de sacrifícios. Os céus proclamam a justiça dele, pois Deus mesmo é Juiz."
           },
           {
             "type": "second_reading",
-            "ref": "2 Coríntios 1:18-22",
-            "text": "Antes, como Deus é fiel, a nossa palavra a vós não é sim e não, porque o Filho de Deus, Cristo Jesus, que entre vós foi pregado por nós, isto é, por mim, Silvano e Timóteo, não foi sim e não; mas nele houve sim. Pois, tantas quantas forem as promessas de Deus, nele está o sim; portanto é por ele o amém, para glória de Deus por nosso intermédio. Mas aquele que nos confirma convosco em Cristo, e nos ungiu, é Deus, o qual também nos selou e nos deu como penhor o Espírito em nossos corações."
+            "ref": "2 Coríntios 4:3-6",
+            "text": "Mas, se ainda o nosso evangelho está encoberto, é naqueles que se perdem que está encoberto, nos quais o deus deste século cegou os entendimentos dos incrédulos, para que lhes não resplandeça a luz do evangelho da glória de Cristo, o qual é a imagem de Deus. Pois não nos pregamos a nós mesmos, mas a Cristo Jesus como Senhor; e a nós mesmos como vossos servos por amor de Jesus. Porque Deus, que disse: Das trevas brilhará a luz, é quem brilhou em nossos corações, para iluminação do conhecimento da glória de Deus na face de Cristo."
           },
           {
             "type": "gospel",
-            "ref": "Marcos 2:1-12",
-            "text": "Alguns dias depois entrou Jesus outra vez em Cafarnaum, e soube-se que ele estava em casa. Ajuntaram-se, pois, muitos, a ponta de não caberem nem mesmo diante da porta; e ele lhes anunciava a palavra. Nisso vieram alguns a trazer-lhe um paralítico, carregado por quatro; e não podendo aproximar-se dele, por causa da multidão, descobriram o telhado onde estava e, fazendo uma abertura, baixaram o leito em que jazia o paralítico. E Jesus, vendo-lhes a fé, disse ao paralítico: Filho, perdoados são os teus pecados. Ora, estavam ali sentados alguns dos escribas, que arrazoavam em seus corações, dizendo: Por que fala assim este homem? Ele blasfema. Quem pode perdoar pecados senão um só, que é Deus? Mas Jesus logo percebeu em seu espírito que eles assim arrazoavam dentro de si, e perguntou-lhes: Por que arrazoais desse modo em vossos corações? Qual é mais fácil? dizer ao paralítico: Perdoados são os teus pecados; ou dizer: Levanta-te, toma o teu leito, e anda? Ora, para que saibais que o Filho do homem tem sobre a terra autoridade para perdoar pecados ( disse ao paralítico ), a ti te digo, levanta-te, toma o teu leito, e vai para tua casa. Então ele se levantou e, tomando logo o leito, saiu à vista de todos; de modo que todos pasmavam e glorificavam a Deus, dizendo: Nunca vimos coisa semelhante."
+            "ref": "Marcos 9:2-9",
+            "text": "Seis dias depois tomou Jesus consigo a Pedro, a Tiago, e a João, e os levou à parte sós, a um alto monte; e foi transfigurado diante deles; as suas vestes tornaram-se resplandecentes, extremamente brancas, tais como nenhum lavandeiro sobre a terra as poderia branquear. E apareceu-lhes Elias com Moisés, e falavam com Jesus. Pedro, tomando a palavra, disse a Jesus: Mestre, bom é estarmos aqui; faça-mos, pois, três cabanas, uma para ti, outra para Moisés, e outra para Elias. Pois não sabia o que havia de dizer, porque ficaram atemorizados. Nisto veio uma nuvem que os cobriu, e dela saiu uma voz que dizia: Este é o meu Filho amado; a ele ouvi. De repente, tendo olhado em redor, não viram mais a ninguém consigo, senão só a Jesus. Enquanto desciam do monte, ordenou-lhes que a ninguém contassem o que tinham visto, até que o Filho do homem ressurgisse dentre os mortos."
           }
         ]
       },
@@ -1807,28 +2184,28 @@
         "date": "2027-02-07",
         "season": "epiphany",
         "weekOfSeason": 6,
-        "dayName": "Sexto Domingo após a Epifania",
+        "dayName": "Domingo da Transfiguração",
         "holyDay": true,
         "readings": [
           {
             "type": "first_reading",
-            "ref": "2 Reis 5:1-14",
-            "text": "Ora, Naamã, chefe do exército do rei da Síria, era um grande homem diante do seu senhor, e de muito respeito, porque por ele o Senhor dera livramento aos sírios; era homem valente, porém leproso. Os sírios, numa das suas investidas, haviam levado presa, da terra de Israel, uma menina que ficou ao serviço da mulher de Naamã. Disse ela a sua senhora: Oxalá que o meu senhor estivesse diante do profeta que está em Samária! Pois este o curaria da sua lepra. Então Naamã foi notificar a seu senhor, dizendo: Assim e assim falou a menina que é da terra de Israel. Respondeu o rei da Síria: Vai, anda, e enviarei uma carta ao rei de Israel. Foi, pois, e levou consigo dez talentos de prata, e seis mil siclos de ouro e dez mudas de roupa. Também levou ao rei de Israel a carta, que dizia: Logo, em chegando a ti esta carta, saberás que eu te enviei Naamã, meu servo, para que o cures da sua lepra. Tendo o rei de Israel lido a carta, rasgou as suas vestes, e disse: Sou eu Deus, que possa matar e vivificar, para que este envie a mim um homem a fim de que eu o cure da sua lepra? Notai, peço-vos, e vede como ele anda buscando ocasião contra mim. Quando Eliseu, o homem de Deus, ouviu que o rei de Israel rasgara as suas vestes, mandou dizer ao rei: Por que rasgaste as tuas vestes? Deixa-o vir ter comigo, e saberá que há profeta em Israel. Veio, pois, Naamã com os seus cavalos, e com o seu carro, e parou à porta da casa de Eliseu. Então este lhe mandou um mensageiro, a dizer-lhe: Vai, lava-te sete vezes no Jordão, e a tua carne tornará a ti, e ficarás purificado. Naamã, porém, indignado, retirou-se, dizendo: Eis que pensava eu: Certamente ele sairá a ter comigo, pôr-se-á em pé, invocará o nome do Senhor seu Deus, passará a sua mão sobre o lugar, e curará o leproso. Não são, porventura, Abana e Farpar, rios de Damasco, melhores do que todas as águas de Israel? não poderia eu lavar-me neles, e ficar purificado? Assim se voltou e se retirou com indignação. Os seus servos, porém, chegaram-se a ele e lhe falaram, dizendo: Meu pai, se o profeta te houvesse indicado alguma coisa difícil, porventura não a terias cumprido? Quanto mais, dizendo-te ele: Lava-te, e ficarás purificado. Desceu ele, pois, e mergulhou-se no Jordão sete vezes, conforme a palavra do homem de Deus; e a sua carne tornou-se como a carne dum menino, e ficou purificado."
+            "ref": "2 Reis 2:1-12",
+            "text": "Quando o Senhor estava para tomar Elias ao céu num redemoinho, Elias partiu de Gilgal com Eliseu. Disse Elias a Eliseu: Fica-te aqui, porque o Senhor me envia a Betel. Eliseu, porém disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim desceram a Betel. Então os filhos dos profetas que estavam em Betel saíram ao encontro de Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Eliseu, fica-te aqui, porque o Senhor me envia a Jericó. Ele, porém, disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim vieram a Jericó. Então os filhos dos profetas que estavam em Jericó se chegaram a Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Fica-te aqui, porque o senhor me envia ao Jordão. Mas ele disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim ambos foram juntos. E foram cinqüenta homens dentre os filhos dos profetas, e pararam defronte deles, de longe; e eles dois pararam junto ao Jordão. Então Elias tomou a sua capa e, dobrando-a, feriu as águas, as quais se dividiram de uma à outra banda; e passaram ambos a pé enxuto. Havendo eles passado, Elias disse a Eliseu: Pede-me o que queres que eu te faça, antes que seja tomado de ti. E disse Eliseu: Peço-te que haja sobre mim dobrada porção de teu espírito. Respondeu Elias: Coisa difícil pediste. Todavia, se me vires quando for tomado de ti, assim se te fará; porém, se não, não se fará. E, indo eles caminhando e conversando, eis que um carro de fogo, com cavalos de fogo, os separou um do outro; e Elias subiu ao céu num redemoinho. O que vendo Eliseu, clamou: Meu pai, meu pai! o carro de Israel, e seus cavaleiros! E não o viu mais. Pegou então nas suas vestes e as rasgou em duas partes;"
           },
           {
             "type": "psalm",
-            "ref": "Salmo 30",
-            "text": "Exaltar-te-ei, ó Senhor, porque tu me levantaste, e não permitiste que meus inimigos se alegrassem sobre mim. Ó Senhor, Deus meu, a ti clamei, e tu me curaste. Senhor, fizeste subir a minha alma do Seol, conservaste-me a vida, dentre os que descem à cova. Cantai louvores ao Senhor, vós que sois seus santos, e louvai o seu santo nome. Porque a sua ira dura só um momento; no seu favor está a vida. O choro pode durar uma noite; pela manhã, porém, vem o cântico de júbilo. Quanto a mim, dizia eu na minha prosperidade: Jamais serei abalado. Tu, Senhor, pelo teu favor fizeste que a minha montanha permanecesse forte; ocultaste o teu rosto, e fiquei conturbado. A ti, Senhor, clamei, e ao Senhor supliquei: Que proveito haverá no meu sangue, se eu descer à cova? Porventura te louvará o pó? Anunciará ele a tua verdade? Ouve, Senhor, e tem compaixão de mim! Ó Senhor, sê o meu ajudador! Tornaste o meu pranto em regozijo, tiraste o meu cilício, e me cingiste de alegria; para que a minha alma te cante louvores, e não se cale. Senhor, Deus meu, eu te louvarei para sempre."
+            "ref": "Salmo 50:1-6",
+            "text": "O Poderoso, o Senhor Deus, fala e convoca a terra desde o nascer do sol até o seu ocaso. Desde Sião, a perfeição da formosura. Deus resplandece. O nosso Deus vem, e não guarda silêncio; diante dele há um fogo devorador, e grande tormenta ao seu redor. Ele intima os altos céus e a terra, para o julgamento do seu povo: Congregai os meus santos, aqueles que fizeram comigo um pacto por meio de sacrifícios. Os céus proclamam a justiça dele, pois Deus mesmo é Juiz."
           },
           {
             "type": "second_reading",
-            "ref": "1 Coríntios 9:24-27",
-            "text": "Não sabeis vós que os que correm no estádio, todos, na verdade, correm, mas um só é que recebe o prêmio? Correi de tal maneira que o alcanceis. E todo aquele que luta, exerce domínio próprio em todas as coisas; ora, eles o fazem para alcançar uma coroa corruptível, nós, porém, uma incorruptível. Pois eu assim corro, não como indeciso; assim combato, não como batendo no ar. Antes subjugo o meu corpo, e o reduzo à submissão, para que, depois de pregar a outros, eu mesmo não venha a ficar reprovado."
+            "ref": "2 Coríntios 4:3-6",
+            "text": "Mas, se ainda o nosso evangelho está encoberto, é naqueles que se perdem que está encoberto, nos quais o deus deste século cegou os entendimentos dos incrédulos, para que lhes não resplandeça a luz do evangelho da glória de Cristo, o qual é a imagem de Deus. Pois não nos pregamos a nós mesmos, mas a Cristo Jesus como Senhor; e a nós mesmos como vossos servos por amor de Jesus. Porque Deus, que disse: Das trevas brilhará a luz, é quem brilhou em nossos corações, para iluminação do conhecimento da glória de Deus na face de Cristo."
           },
           {
             "type": "gospel",
-            "ref": "Marcos 1:40-45",
-            "text": "E veio a ele um leproso que, de joelhos, lhe rogava, dizendo: Se quiseres, bem podes tornar-me limpo. Jesus, pois, compadecido dele, estendendo a mão, tocou-o e disse-lhe: Quero; sê limpo. Imediatamente desapareceu dele a lepra e ficou limpo. E Jesus, advertindo-o secretamente, logo o despediu, dizendo-lhe: Olha, não digas nada a ninguém; mas vai, mostra-te ao sacerdote e oferece pela tua purificação o que Moisés determinou, para lhes servir de testemunho. Ele, porém, saindo dali, começou a publicar o caso por toda parte e a divulgá-lo, de modo que Jesus já não podia entrar abertamente numa cidade, mas conservava-se fora em lugares desertos; e de todos os lados iam ter com ele."
+            "ref": "Marcos 9:2-9",
+            "text": "Seis dias depois tomou Jesus consigo a Pedro, a Tiago, e a João, e os levou à parte sós, a um alto monte; e foi transfigurado diante deles; as suas vestes tornaram-se resplandecentes, extremamente brancas, tais como nenhum lavandeiro sobre a terra as poderia branquear. E apareceu-lhes Elias com Moisés, e falavam com Jesus. Pedro, tomando a palavra, disse a Jesus: Mestre, bom é estarmos aqui; faça-mos, pois, três cabanas, uma para ti, outra para Moisés, e outra para Elias. Pois não sabia o que havia de dizer, porque ficaram atemorizados. Nisto veio uma nuvem que os cobriu, e dela saiu uma voz que dizia: Este é o meu Filho amado; a ele ouvi. De repente, tendo olhado em redor, não viram mais a ninguém consigo, senão só a Jesus. Enquanto desciam do monte, ordenou-lhes que a ninguém contassem o que tinham visto, até que o Filho do homem ressurgisse dentre os mortos."
           }
         ]
       },
@@ -2036,6 +2413,64 @@
         ]
       },
       {
+        "date": "2028-02-20",
+        "season": "epiphany",
+        "weekOfSeason": 8,
+        "dayName": "Oitavo Domingo após a Epifania",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Oséias 2:14-20",
+            "text": "Portanto, eis que eu a atrairei, e a levarei para o deserto, e lhe falarei ao coração. E lhe darei as suas vinhas dali, e o vale de Acor por porta de esperança; e ali responderá, como nos dias da sua mocidade, e como no dia em que subiu da terra do Egito. E naquele dia, diz o Senhor, ela me chamará meu marido; e não me chamará mais meu Baal. Pois da sua boca tirarei os nomes dos baalins, e não mais se fará menção desses nomes. Naquele dia farei por eles aliança com as feras do campo, e com as aves do céu, e com os répteis da terra; e da terra tirarei o arco, e a espada, e a guerra, e os farei deitar em segurança. E desposar-te-ei comigo para sempre; sim, desposar-te-ei comigo em justiça, e em juízo, e em amorável benignidade, e em misericórdias; e desposar-te-ei comigo em fidelidade, e conhecerás ao Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 103:1-13, 22",
+            "text": "Bendize, ó minha alma, ao Senhor, e tudo o que há em mim bendiga o seu santo nome. Bendize, ó minha alma, ao Senhor, e não te esqueças de nenhum dos seus benefícios. É ele quem perdoa todas as tuas iniqüidades, quem sara todas as tuas enfermidades, quem redime a tua vida da cova, quem te coroa de benignidade e de misericórdia, quem te supre de todo o bem, de sorte que a tua mocidade se renova como a da águia. O Senhor executa atos de justiça, e juízo a favor de todos os oprimidos. Fez notórios os seus caminhos a Moisés, e os seus feitos aos filhos de Israel. Compassivo e misericordioso é o Senhor; tardio em irar-se e grande em benignidade. Não repreenderá perpetuamente, nem para sempre conservará a sua ira. Não nos trata segundo os nossos pecados, nem nos retribui segundo as nossas iniqüidades. Pois quanto o céu está elevado acima da terra, assim é grande a sua benignidade para com os que o temem. Quanto o oriente está longe do ocidente, tanto tem ele afastado de nós as nossas transgressões. Como um pai se compadece de seus filhos, assim o Senhor se compadece daqueles que o temem. Bendizei ao Senhor, vós todas as suas obras, em todos os lugares do seu domínio! Bendizei, ó minha alma ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 3:1-6",
+            "text": "Começamos outra vez a recomendar-nos a nós mesmos? Ou, porventura, necessitamos, como alguns, de cartas de recomendação para vós, ou de vós? Vós sois a nossa carta, escrita em nossos corações, conhecida e lida por todos os homens, sendo manifestos como carta de Cristo, ministrada por nós, e escrita, não com tinta, mas com o Espírito do Deus vivo, não em tábuas de pedra, mas em tábuas de carne do coração. E é por Cristo que temos tal confiança em Deus; não que sejamos capazes, por nós, de pensar alguma coisa, como de nós mesmos; mas a nossa capacidade vem de Deus, o qual também nos capacitou para sermos ministros dum novo pacto, não da letra, mas do espírito; porque a letra mata, mas o espírito vivifica."
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 2:13-22",
+            "text": "Outra vez saiu Jesus para a beira do mar; e toda a multidão ia ter com ele, e ele os ensinava. Quando ia passando, viu a Levi, filho de Alfeu, sentado na coletoria, e disse-lhe: Segue-me. E ele, levantando-se, o seguiu. Ora, estando Jesus à mesa em casa de Levi, estavam também ali reclinados com ele e seus discípulos muitos publicanos e pecadores; pois eram em grande número e o seguiam. Vendo os escribas dos fariseus que comia com os publicanos e pecadores, perguntavam aos discípulos: Por que é que ele como com os publicanos e pecadores? Jesus, porém, ouvindo isso, disse-lhes: Não necessitam de médico os sãos, mas sim os enfermos; eu não vim chamar justos, mas pecadores. Ora, os discípulos de João e os fariseus estavam jejuando; e foram perguntar-lhe: Por que jejuam os discípulos de João e os dos fariseus, mas os teus discípulos não jejuam? Respondeu-lhes Jesus: Podem, porventura, jejuar os convidados às núpcias, enquanto está com eles o noivo? Enquanto têm consigo o noivo não podem jejuar; dias virão, porém, em que lhes será tirado o noivo; nesses dias, sim hão de jejuar. Ninguém cose remendo de pano novo em vestido velho; do contrário o remendo novo tira parte do velho, e torna-se maior a rotura. E ninguém deita vinho novo em odres velhos; do contrário, o vinho novo romperá os odres, e perder-se-á o vinho e também os odres; mas deita-se vinho novo em odres novos."
+          }
+        ]
+      },
+      {
+        "date": "2028-02-27",
+        "season": "epiphany",
+        "weekOfSeason": 9,
+        "dayName": "Domingo da Transfiguração",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 2:1-12",
+            "text": "Quando o Senhor estava para tomar Elias ao céu num redemoinho, Elias partiu de Gilgal com Eliseu. Disse Elias a Eliseu: Fica-te aqui, porque o Senhor me envia a Betel. Eliseu, porém disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim desceram a Betel. Então os filhos dos profetas que estavam em Betel saíram ao encontro de Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Eliseu, fica-te aqui, porque o Senhor me envia a Jericó. Ele, porém, disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim vieram a Jericó. Então os filhos dos profetas que estavam em Jericó se chegaram a Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Fica-te aqui, porque o senhor me envia ao Jordão. Mas ele disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim ambos foram juntos. E foram cinqüenta homens dentre os filhos dos profetas, e pararam defronte deles, de longe; e eles dois pararam junto ao Jordão. Então Elias tomou a sua capa e, dobrando-a, feriu as águas, as quais se dividiram de uma à outra banda; e passaram ambos a pé enxuto. Havendo eles passado, Elias disse a Eliseu: Pede-me o que queres que eu te faça, antes que seja tomado de ti. E disse Eliseu: Peço-te que haja sobre mim dobrada porção de teu espírito. Respondeu Elias: Coisa difícil pediste. Todavia, se me vires quando for tomado de ti, assim se te fará; porém, se não, não se fará. E, indo eles caminhando e conversando, eis que um carro de fogo, com cavalos de fogo, os separou um do outro; e Elias subiu ao céu num redemoinho. O que vendo Eliseu, clamou: Meu pai, meu pai! o carro de Israel, e seus cavaleiros! E não o viu mais. Pegou então nas suas vestes e as rasgou em duas partes;"
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 50:1-6",
+            "text": "O Poderoso, o Senhor Deus, fala e convoca a terra desde o nascer do sol até o seu ocaso. Desde Sião, a perfeição da formosura. Deus resplandece. O nosso Deus vem, e não guarda silêncio; diante dele há um fogo devorador, e grande tormenta ao seu redor. Ele intima os altos céus e a terra, para o julgamento do seu povo: Congregai os meus santos, aqueles que fizeram comigo um pacto por meio de sacrifícios. Os céus proclamam a justiça dele, pois Deus mesmo é Juiz."
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 4:3-6",
+            "text": "Mas, se ainda o nosso evangelho está encoberto, é naqueles que se perdem que está encoberto, nos quais o deus deste século cegou os entendimentos dos incrédulos, para que lhes não resplandeça a luz do evangelho da glória de Cristo, o qual é a imagem de Deus. Pois não nos pregamos a nós mesmos, mas a Cristo Jesus como Senhor; e a nós mesmos como vossos servos por amor de Jesus. Porque Deus, que disse: Das trevas brilhará a luz, é quem brilhou em nossos corações, para iluminação do conhecimento da glória de Deus na face de Cristo."
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 9:2-9",
+            "text": "Seis dias depois tomou Jesus consigo a Pedro, a Tiago, e a João, e os levou à parte sós, a um alto monte; e foi transfigurado diante deles; as suas vestes tornaram-se resplandecentes, extremamente brancas, tais como nenhum lavandeiro sobre a terra as poderia branquear. E apareceu-lhes Elias com Moisés, e falavam com Jesus. Pedro, tomando a palavra, disse a Jesus: Mestre, bom é estarmos aqui; faça-mos, pois, três cabanas, uma para ti, outra para Moisés, e outra para Elias. Pois não sabia o que havia de dizer, porque ficaram atemorizados. Nisto veio uma nuvem que os cobriu, e dela saiu uma voz que dizia: Este é o meu Filho amado; a ele ouvi. De repente, tendo olhado em redor, não viram mais a ninguém consigo, senão só a Jesus. Enquanto desciam do monte, ordenou-lhes que a ninguém contassem o que tinham visto, até que o Filho do homem ressurgisse dentre os mortos."
+          }
+        ]
+      },
+      {
         "date": "2029-01-06",
         "season": "epiphany",
         "weekOfSeason": 1,
@@ -2213,28 +2648,28 @@
         "date": "2029-02-11",
         "season": "epiphany",
         "weekOfSeason": 7,
-        "dayName": "Sétimo Domingo após a Epifania",
+        "dayName": "Domingo da Transfiguração",
         "holyDay": true,
         "readings": [
           {
             "type": "first_reading",
-            "ref": "Isaías 43:18-25",
-            "text": "Não vos lembreis das coisas passadas, nem considereis as antigas. Eis que faço uma coisa nova; agora está saindo à luz; porventura não a percebeis? eis que porei um caminho no deserto, e rios no ermo. Os animais do campo me honrarão, os chacais e os avestruzes; porque porei águas no deserto, e rios no ermo, para dar de beber ao meu povo, ao meu escolhido, esse povo que formei para mim, para que publicasse o meu louvor. Contudo tu não me invocaste a mim, ó Jacó; mas te cansaste de mim, ó Israel. Não me trouxeste o gado miúdo dos teus holocaustos, nem me honraste com os teus sacrifícios; não te fiz servir com ofertas, nem te fatiguei com incenso. Não me compraste por dinheiro cana aromática, nem com a gordura dos teus sacrifícios me satisfizeste; mas me deste trabalho com os teus pecados, e me cansaste com as tuas iniqüidades. Eu, eu mesmo, sou o que apago as tuas transgressões por amor de mim, e dos teus pecados não me lembro."
+            "ref": "2 Reis 2:1-12",
+            "text": "Quando o Senhor estava para tomar Elias ao céu num redemoinho, Elias partiu de Gilgal com Eliseu. Disse Elias a Eliseu: Fica-te aqui, porque o Senhor me envia a Betel. Eliseu, porém disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim desceram a Betel. Então os filhos dos profetas que estavam em Betel saíram ao encontro de Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Eliseu, fica-te aqui, porque o Senhor me envia a Jericó. Ele, porém, disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim vieram a Jericó. Então os filhos dos profetas que estavam em Jericó se chegaram a Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Fica-te aqui, porque o senhor me envia ao Jordão. Mas ele disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim ambos foram juntos. E foram cinqüenta homens dentre os filhos dos profetas, e pararam defronte deles, de longe; e eles dois pararam junto ao Jordão. Então Elias tomou a sua capa e, dobrando-a, feriu as águas, as quais se dividiram de uma à outra banda; e passaram ambos a pé enxuto. Havendo eles passado, Elias disse a Eliseu: Pede-me o que queres que eu te faça, antes que seja tomado de ti. E disse Eliseu: Peço-te que haja sobre mim dobrada porção de teu espírito. Respondeu Elias: Coisa difícil pediste. Todavia, se me vires quando for tomado de ti, assim se te fará; porém, se não, não se fará. E, indo eles caminhando e conversando, eis que um carro de fogo, com cavalos de fogo, os separou um do outro; e Elias subiu ao céu num redemoinho. O que vendo Eliseu, clamou: Meu pai, meu pai! o carro de Israel, e seus cavaleiros! E não o viu mais. Pegou então nas suas vestes e as rasgou em duas partes;"
           },
           {
             "type": "psalm",
-            "ref": "Salmo 41",
-            "text": "Bem-aventurado é aquele que considera o pobre; o Senhor o livrará no dia do mal. O Senhor o guardará, e o conservará em vida; será abençoado na terra; tu, Senhor não o entregarás à vontade dos seus inimigos. O Senhor o sustentará no leito da enfermidade; tu lhe amaciarás a cama na sua doença. Disse eu da minha parte: Senhor, compadece-te de mim, sara a minha alma, pois pequei contra ti. Os meus inimigos falam mal de mim, dizendo: Quando morrerá ele, e perecerá o seu nome? E, se algum deles vem ver-me, diz falsidades; no seu coração amontoa a maldade; e quando ele sai, é disso que fala. Todos os que me odeiam cochicham entre si contra mim; contra mim maquinam o mal, dizendo: Alguma coisa ruim se lhe apega; e agora que está deitado, não se levantará mais. Até o meu próprio amigo íntimo em quem eu tanto confiava, e que comia do meu pão, levantou contra mim o seu calcanhar. Mas tu, Senhor, compadece-te de mim e levanta-me, para que eu lhes retribua. Por isso conheço eu que te deleitas em mim, por não triunfar de mim o meu inimigo Quanto a mim, tu me sustentas na minha integridade, e me colocas diante da tua face para sempre. Bendito seja o Senhor Deus de Israel de eternidade a eternidade. Amém e amém."
+            "ref": "Salmo 50:1-6",
+            "text": "O Poderoso, o Senhor Deus, fala e convoca a terra desde o nascer do sol até o seu ocaso. Desde Sião, a perfeição da formosura. Deus resplandece. O nosso Deus vem, e não guarda silêncio; diante dele há um fogo devorador, e grande tormenta ao seu redor. Ele intima os altos céus e a terra, para o julgamento do seu povo: Congregai os meus santos, aqueles que fizeram comigo um pacto por meio de sacrifícios. Os céus proclamam a justiça dele, pois Deus mesmo é Juiz."
           },
           {
             "type": "second_reading",
-            "ref": "2 Coríntios 1:18-22",
-            "text": "Antes, como Deus é fiel, a nossa palavra a vós não é sim e não, porque o Filho de Deus, Cristo Jesus, que entre vós foi pregado por nós, isto é, por mim, Silvano e Timóteo, não foi sim e não; mas nele houve sim. Pois, tantas quantas forem as promessas de Deus, nele está o sim; portanto é por ele o amém, para glória de Deus por nosso intermédio. Mas aquele que nos confirma convosco em Cristo, e nos ungiu, é Deus, o qual também nos selou e nos deu como penhor o Espírito em nossos corações."
+            "ref": "2 Coríntios 4:3-6",
+            "text": "Mas, se ainda o nosso evangelho está encoberto, é naqueles que se perdem que está encoberto, nos quais o deus deste século cegou os entendimentos dos incrédulos, para que lhes não resplandeça a luz do evangelho da glória de Cristo, o qual é a imagem de Deus. Pois não nos pregamos a nós mesmos, mas a Cristo Jesus como Senhor; e a nós mesmos como vossos servos por amor de Jesus. Porque Deus, que disse: Das trevas brilhará a luz, é quem brilhou em nossos corações, para iluminação do conhecimento da glória de Deus na face de Cristo."
           },
           {
             "type": "gospel",
-            "ref": "Marcos 2:1-12",
-            "text": "Alguns dias depois entrou Jesus outra vez em Cafarnaum, e soube-se que ele estava em casa. Ajuntaram-se, pois, muitos, a ponta de não caberem nem mesmo diante da porta; e ele lhes anunciava a palavra. Nisso vieram alguns a trazer-lhe um paralítico, carregado por quatro; e não podendo aproximar-se dele, por causa da multidão, descobriram o telhado onde estava e, fazendo uma abertura, baixaram o leito em que jazia o paralítico. E Jesus, vendo-lhes a fé, disse ao paralítico: Filho, perdoados são os teus pecados. Ora, estavam ali sentados alguns dos escribas, que arrazoavam em seus corações, dizendo: Por que fala assim este homem? Ele blasfema. Quem pode perdoar pecados senão um só, que é Deus? Mas Jesus logo percebeu em seu espírito que eles assim arrazoavam dentro de si, e perguntou-lhes: Por que arrazoais desse modo em vossos corações? Qual é mais fácil? dizer ao paralítico: Perdoados são os teus pecados; ou dizer: Levanta-te, toma o teu leito, e anda? Ora, para que saibais que o Filho do homem tem sobre a terra autoridade para perdoar pecados ( disse ao paralítico ), a ti te digo, levanta-te, toma o teu leito, e vai para tua casa. Então ele se levantou e, tomando logo o leito, saiu à vista de todos; de modo que todos pasmavam e glorificavam a Deus, dizendo: Nunca vimos coisa semelhante."
+            "ref": "Marcos 9:2-9",
+            "text": "Seis dias depois tomou Jesus consigo a Pedro, a Tiago, e a João, e os levou à parte sós, a um alto monte; e foi transfigurado diante deles; as suas vestes tornaram-se resplandecentes, extremamente brancas, tais como nenhum lavandeiro sobre a terra as poderia branquear. E apareceu-lhes Elias com Moisés, e falavam com Jesus. Pedro, tomando a palavra, disse a Jesus: Mestre, bom é estarmos aqui; faça-mos, pois, três cabanas, uma para ti, outra para Moisés, e outra para Elias. Pois não sabia o que havia de dizer, porque ficaram atemorizados. Nisto veio uma nuvem que os cobriu, e dela saiu uma voz que dizia: Este é o meu Filho amado; a ele ouvi. De repente, tendo olhado em redor, não viram mais a ninguém consigo, senão só a Jesus. Enquanto desciam do monte, ordenou-lhes que a ninguém contassem o que tinham visto, até que o Filho do homem ressurgisse dentre os mortos."
           }
         ]
       },
@@ -2438,6 +2873,64 @@
             "type": "gospel",
             "ref": "Marcos 2:1-12",
             "text": "Alguns dias depois entrou Jesus outra vez em Cafarnaum, e soube-se que ele estava em casa. Ajuntaram-se, pois, muitos, a ponta de não caberem nem mesmo diante da porta; e ele lhes anunciava a palavra. Nisso vieram alguns a trazer-lhe um paralítico, carregado por quatro; e não podendo aproximar-se dele, por causa da multidão, descobriram o telhado onde estava e, fazendo uma abertura, baixaram o leito em que jazia o paralítico. E Jesus, vendo-lhes a fé, disse ao paralítico: Filho, perdoados são os teus pecados. Ora, estavam ali sentados alguns dos escribas, que arrazoavam em seus corações, dizendo: Por que fala assim este homem? Ele blasfema. Quem pode perdoar pecados senão um só, que é Deus? Mas Jesus logo percebeu em seu espírito que eles assim arrazoavam dentro de si, e perguntou-lhes: Por que arrazoais desse modo em vossos corações? Qual é mais fácil? dizer ao paralítico: Perdoados são os teus pecados; ou dizer: Levanta-te, toma o teu leito, e anda? Ora, para que saibais que o Filho do homem tem sobre a terra autoridade para perdoar pecados ( disse ao paralítico ), a ti te digo, levanta-te, toma o teu leito, e vai para tua casa. Então ele se levantou e, tomando logo o leito, saiu à vista de todos; de modo que todos pasmavam e glorificavam a Deus, dizendo: Nunca vimos coisa semelhante."
+          }
+        ]
+      },
+      {
+        "date": "2030-02-24",
+        "season": "epiphany",
+        "weekOfSeason": 8,
+        "dayName": "Oitavo Domingo após a Epifania",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "Oséias 2:14-20",
+            "text": "Portanto, eis que eu a atrairei, e a levarei para o deserto, e lhe falarei ao coração. E lhe darei as suas vinhas dali, e o vale de Acor por porta de esperança; e ali responderá, como nos dias da sua mocidade, e como no dia em que subiu da terra do Egito. E naquele dia, diz o Senhor, ela me chamará meu marido; e não me chamará mais meu Baal. Pois da sua boca tirarei os nomes dos baalins, e não mais se fará menção desses nomes. Naquele dia farei por eles aliança com as feras do campo, e com as aves do céu, e com os répteis da terra; e da terra tirarei o arco, e a espada, e a guerra, e os farei deitar em segurança. E desposar-te-ei comigo para sempre; sim, desposar-te-ei comigo em justiça, e em juízo, e em amorável benignidade, e em misericórdias; e desposar-te-ei comigo em fidelidade, e conhecerás ao Senhor."
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 103:1-13, 22",
+            "text": "Bendize, ó minha alma, ao Senhor, e tudo o que há em mim bendiga o seu santo nome. Bendize, ó minha alma, ao Senhor, e não te esqueças de nenhum dos seus benefícios. É ele quem perdoa todas as tuas iniqüidades, quem sara todas as tuas enfermidades, quem redime a tua vida da cova, quem te coroa de benignidade e de misericórdia, quem te supre de todo o bem, de sorte que a tua mocidade se renova como a da águia. O Senhor executa atos de justiça, e juízo a favor de todos os oprimidos. Fez notórios os seus caminhos a Moisés, e os seus feitos aos filhos de Israel. Compassivo e misericordioso é o Senhor; tardio em irar-se e grande em benignidade. Não repreenderá perpetuamente, nem para sempre conservará a sua ira. Não nos trata segundo os nossos pecados, nem nos retribui segundo as nossas iniqüidades. Pois quanto o céu está elevado acima da terra, assim é grande a sua benignidade para com os que o temem. Quanto o oriente está longe do ocidente, tanto tem ele afastado de nós as nossas transgressões. Como um pai se compadece de seus filhos, assim o Senhor se compadece daqueles que o temem. Bendizei ao Senhor, vós todas as suas obras, em todos os lugares do seu domínio! Bendizei, ó minha alma ao Senhor!"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 3:1-6",
+            "text": "Começamos outra vez a recomendar-nos a nós mesmos? Ou, porventura, necessitamos, como alguns, de cartas de recomendação para vós, ou de vós? Vós sois a nossa carta, escrita em nossos corações, conhecida e lida por todos os homens, sendo manifestos como carta de Cristo, ministrada por nós, e escrita, não com tinta, mas com o Espírito do Deus vivo, não em tábuas de pedra, mas em tábuas de carne do coração. E é por Cristo que temos tal confiança em Deus; não que sejamos capazes, por nós, de pensar alguma coisa, como de nós mesmos; mas a nossa capacidade vem de Deus, o qual também nos capacitou para sermos ministros dum novo pacto, não da letra, mas do espírito; porque a letra mata, mas o espírito vivifica."
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 2:13-22",
+            "text": "Outra vez saiu Jesus para a beira do mar; e toda a multidão ia ter com ele, e ele os ensinava. Quando ia passando, viu a Levi, filho de Alfeu, sentado na coletoria, e disse-lhe: Segue-me. E ele, levantando-se, o seguiu. Ora, estando Jesus à mesa em casa de Levi, estavam também ali reclinados com ele e seus discípulos muitos publicanos e pecadores; pois eram em grande número e o seguiam. Vendo os escribas dos fariseus que comia com os publicanos e pecadores, perguntavam aos discípulos: Por que é que ele como com os publicanos e pecadores? Jesus, porém, ouvindo isso, disse-lhes: Não necessitam de médico os sãos, mas sim os enfermos; eu não vim chamar justos, mas pecadores. Ora, os discípulos de João e os fariseus estavam jejuando; e foram perguntar-lhe: Por que jejuam os discípulos de João e os dos fariseus, mas os teus discípulos não jejuam? Respondeu-lhes Jesus: Podem, porventura, jejuar os convidados às núpcias, enquanto está com eles o noivo? Enquanto têm consigo o noivo não podem jejuar; dias virão, porém, em que lhes será tirado o noivo; nesses dias, sim hão de jejuar. Ninguém cose remendo de pano novo em vestido velho; do contrário o remendo novo tira parte do velho, e torna-se maior a rotura. E ninguém deita vinho novo em odres velhos; do contrário, o vinho novo romperá os odres, e perder-se-á o vinho e também os odres; mas deita-se vinho novo em odres novos."
+          }
+        ]
+      },
+      {
+        "date": "2030-03-03",
+        "season": "epiphany",
+        "weekOfSeason": 9,
+        "dayName": "Domingo da Transfiguração",
+        "holyDay": true,
+        "readings": [
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 2:1-12",
+            "text": "Quando o Senhor estava para tomar Elias ao céu num redemoinho, Elias partiu de Gilgal com Eliseu. Disse Elias a Eliseu: Fica-te aqui, porque o Senhor me envia a Betel. Eliseu, porém disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim desceram a Betel. Então os filhos dos profetas que estavam em Betel saíram ao encontro de Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Eliseu, fica-te aqui, porque o Senhor me envia a Jericó. Ele, porém, disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim vieram a Jericó. Então os filhos dos profetas que estavam em Jericó se chegaram a Eliseu, e lhe disseram: Sabes que o Senhor hoje tomará o teu senhor por sobre a tua cabeça? E ele disse: Sim, eu o sei; calai-vos. E Elias lhe disse: Fica-te aqui, porque o senhor me envia ao Jordão. Mas ele disse: Vive o Senhor, e vive a tua alma, que não te deixarei. E assim ambos foram juntos. E foram cinqüenta homens dentre os filhos dos profetas, e pararam defronte deles, de longe; e eles dois pararam junto ao Jordão. Então Elias tomou a sua capa e, dobrando-a, feriu as águas, as quais se dividiram de uma à outra banda; e passaram ambos a pé enxuto. Havendo eles passado, Elias disse a Eliseu: Pede-me o que queres que eu te faça, antes que seja tomado de ti. E disse Eliseu: Peço-te que haja sobre mim dobrada porção de teu espírito. Respondeu Elias: Coisa difícil pediste. Todavia, se me vires quando for tomado de ti, assim se te fará; porém, se não, não se fará. E, indo eles caminhando e conversando, eis que um carro de fogo, com cavalos de fogo, os separou um do outro; e Elias subiu ao céu num redemoinho. O que vendo Eliseu, clamou: Meu pai, meu pai! o carro de Israel, e seus cavaleiros! E não o viu mais. Pegou então nas suas vestes e as rasgou em duas partes;"
+          },
+          {
+            "type": "psalm",
+            "ref": "Salmo 50:1-6",
+            "text": "O Poderoso, o Senhor Deus, fala e convoca a terra desde o nascer do sol até o seu ocaso. Desde Sião, a perfeição da formosura. Deus resplandece. O nosso Deus vem, e não guarda silêncio; diante dele há um fogo devorador, e grande tormenta ao seu redor. Ele intima os altos céus e a terra, para o julgamento do seu povo: Congregai os meus santos, aqueles que fizeram comigo um pacto por meio de sacrifícios. Os céus proclamam a justiça dele, pois Deus mesmo é Juiz."
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 4:3-6",
+            "text": "Mas, se ainda o nosso evangelho está encoberto, é naqueles que se perdem que está encoberto, nos quais o deus deste século cegou os entendimentos dos incrédulos, para que lhes não resplandeça a luz do evangelho da glória de Cristo, o qual é a imagem de Deus. Pois não nos pregamos a nós mesmos, mas a Cristo Jesus como Senhor; e a nós mesmos como vossos servos por amor de Jesus. Porque Deus, que disse: Das trevas brilhará a luz, é quem brilhou em nossos corações, para iluminação do conhecimento da glória de Deus na face de Cristo."
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 9:2-9",
+            "text": "Seis dias depois tomou Jesus consigo a Pedro, a Tiago, e a João, e os levou à parte sós, a um alto monte; e foi transfigurado diante deles; as suas vestes tornaram-se resplandecentes, extremamente brancas, tais como nenhum lavandeiro sobre a terra as poderia branquear. E apareceu-lhes Elias com Moisés, e falavam com Jesus. Pedro, tomando a palavra, disse a Jesus: Mestre, bom é estarmos aqui; faça-mos, pois, três cabanas, uma para ti, outra para Moisés, e outra para Elias. Pois não sabia o que havia de dizer, porque ficaram atemorizados. Nisto veio uma nuvem que os cobriu, e dela saiu uma voz que dizia: Este é o meu Filho amado; a ele ouvi. De repente, tendo olhado em redor, não viram mais a ninguém consigo, senão só a Jesus. Enquanto desciam do monte, ordenou-lhes que a ninguém contassem o que tinham visto, até que o Filho do homem ressurgisse dentre os mortos."
           }
         ]
       }

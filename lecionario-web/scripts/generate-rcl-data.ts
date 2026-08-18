@@ -170,7 +170,19 @@ const rclReadings: Record<
       first_reading: 'Isaías 63:7-9',
       psalm: 'Salmo 148',
       second_reading: 'Hebreus 2:10-18',
-      gospel: 'Mateus 2:13-15',
+      gospel: 'Mateus 2:13-23',
+    },
+    'christmas:3': {
+      first_reading: 'Jeremias 31:7-14',
+      psalm: 'Salmo 147:12-20',
+      second_reading: 'Efésios 1:3-14',
+      gospel: 'João 1:(1-9), 10-18',
+    },
+    'transfiguration:1': {
+      first_reading: 'Êxodo 24:12-18',
+      psalm: 'Salmo 2',
+      second_reading: '2 Pedro 1:16-21',
+      gospel: 'Mateus 17:1-9',
     },
     'epiphany:1': {
       first_reading: 'Isaías 42:1-9',
@@ -512,6 +524,24 @@ const rclReadings: Record<
       second_reading: 'Hebreus 1:1-12',
       gospel: 'João 1:1-14',
     },
+    'christmas:2': {
+      first_reading: 'Isaías 61:10-62:3',
+      psalm: 'Salmo 148',
+      second_reading: 'Gálatas 4:4-7',
+      gospel: 'Lucas 2:22-40',
+    },
+    'christmas:3': {
+      first_reading: 'Jeremias 31:7-14',
+      psalm: 'Salmo 147:12-20',
+      second_reading: 'Efésios 1:3-14',
+      gospel: 'João 1:(1-9), 10-18',
+    },
+    'transfiguration:1': {
+      first_reading: '2 Reis 2:1-12',
+      psalm: 'Salmo 50:1-6',
+      second_reading: '2 Coríntios 4:3-6',
+      gospel: 'Marcos 9:2-9',
+    },
     'epiphany:1': {
       first_reading: 'Gênesis 1:1-5',
       psalm: 'Salmo 29',
@@ -553,6 +583,12 @@ const rclReadings: Record<
       psalm: 'Salmo 41',
       second_reading: '2 Coríntios 1:18-22',
       gospel: 'Marcos 2:1-12',
+    },
+    'epiphany:8': {
+      first_reading: 'Oséias 2:14-20',
+      psalm: 'Salmo 103:1-13, 22',
+      second_reading: '2 Coríntios 3:1-6',
+      gospel: 'Marcos 2:13-22',
     },
     'lent:1': {
       first_reading: 'Gênesis 9:8-17',
@@ -833,6 +869,24 @@ const rclReadings: Record<
       psalm: 'Salmo 97',
       second_reading: 'Tito 3:4-7',
       gospel: 'Lucas 2:8-20',
+    },
+    'christmas:2': {
+      first_reading: '1 Samuel 2:18-20, 26',
+      psalm: 'Salmo 148',
+      second_reading: 'Colossenses 3:12-17',
+      gospel: 'Lucas 2:41-52',
+    },
+    'christmas:3': {
+      first_reading: 'Jeremias 31:7-14',
+      psalm: 'Salmo 147:12-20',
+      second_reading: 'Efésios 1:3-14',
+      gospel: 'João 1:(1-9), 10-18',
+    },
+    'transfiguration:1': {
+      first_reading: 'Êxodo 34:29-35',
+      psalm: 'Salmo 99',
+      second_reading: '2 Coríntios 3:12-4:2',
+      gospel: 'Lucas 9:28-36, (37-43)',
     },
     'epiphany:1': {
       first_reading: 'Isaías 43:1-7',
@@ -1416,6 +1470,44 @@ function generateYear(cycle: string, liturgicalYear: number, calendarYear: numbe
     });
   }
 
+  // Domingo(s) depois do Natal (entre 26/dez e 5/jan) — achado em
+  // 2026-08-18 (ver ROADMAP.md 1.2): a leitura do 1º Domingo depois do
+  // Natal (`christmas:2`) já existia na tabela, mas nunca era ligada
+  // na geração — ficava órfã, mesmo padrão do bug antigo do
+  // Pentecostes/Trindade. Além disso, na maioria dos anos (quando o
+  // Natal cai de quarta a sábado) existem DOIS domingos entre o Natal
+  // e a Epifania, não um só — e o RCL real tem leitura própria pro
+  // segundo (`christmas:3`, igual nos 3 ciclos). Calcula
+  // dinamicamente quantos domingos existem nesse intervalo, ano a
+  // ano — não hardcoded.
+  const christmasSundayKeys: SundayIdentifier[] = ['christmas:2', 'christmas:3'];
+  let christmasSundayIndex = 0;
+  let christmasSunday = getNextSunday(addDays(christmasDay, 1));
+  while (christmasSunday < epiphany && christmasSundayIndex < christmasSundayKeys.length) {
+    const key = christmasSundayKeys[christmasSundayIndex];
+    const dayReadings = readings[key];
+    if (dayReadings) {
+      const weekNum = christmasSundayIndex + 2;
+      entries.push({
+        date: dateToRef(christmasSunday),
+        season: 'christmas',
+        weekOfSeason: weekNum,
+        dayName:
+          christmasSundayIndex === 0 ? '1º Domingo depois do Natal' : '2º Domingo depois do Natal',
+        holyDay: true,
+        readings: [
+          { type: 'first_reading', ref: dayReadings.first_reading },
+          { type: 'psalm', ref: dayReadings.psalm },
+          { type: 'second_reading', ref: dayReadings.second_reading },
+          { type: 'gospel', ref: dayReadings.gospel },
+        ],
+        collect: collects?.[key],
+      });
+    }
+    christmasSundayIndex++;
+    christmasSunday = addDays(christmasSunday, 7);
+  }
+
   // Epiphany (Jan 6)
   const epiphanyKey = 'epiphany:1';
   const epiphanyReadings = readings[epiphanyKey];
@@ -1441,10 +1533,21 @@ function generateYear(cycle: string, liturgicalYear: number, calendarYear: numbe
   const epiphanyJan6 = new Date(epiphanyYear, 0, 6);
   const ashWed = calculateAshWednesday(epiphanyYear);
 
+  // Domingo da Transfiguração — achado em 2026-08-18 (ver ROADMAP.md
+  // 1.2): é sempre o ÚLTIMO domingo antes da Quarta-feira de Cinzas,
+  // com leituras fixas por ciclo (não numeração sequencial) — mas o
+  // código antigo nunca tratava esse domingo como caso especial,
+  // então mostrava sempre o conteúdo genérico de "Epifania N" que
+  // calhasse de cair ali, dependendo do ano (varia de semana 6 a 10,
+  // ver checagem 2015-2045). Detecta o último domingo comparando se o
+  // PRÓXIMO domingo já cairia na Quarta-feira de Cinzas ou depois.
   let epiphanyWeek = 2; // Start from week 2 (week 1 was Jan 6)
   let currentSunday = getNextSunday(addDays(epiphanyJan6, 1));
   while (currentSunday < ashWed) {
-    const key = `epiphany:${epiphanyWeek}` as const;
+    const isLastSundayBeforeLent = addDays(currentSunday, 7) >= ashWed;
+    const key = isLastSundayBeforeLent
+      ? ('transfiguration:1' as const)
+      : (`epiphany:${epiphanyWeek}` as const);
     const dayReadings = readings[key];
     if (dayReadings) {
       const collectKey =
@@ -1453,7 +1556,9 @@ function generateYear(cycle: string, liturgicalYear: number, calendarYear: numbe
         date: dateToRef(currentSunday),
         season: 'epiphany',
         weekOfSeason: epiphanyWeek,
-        dayName: `${ordinalNumbers[epiphanyWeek - 1] || `${epiphanyWeek}º`} Domingo após a Epifania`,
+        dayName: isLastSundayBeforeLent
+          ? 'Domingo da Transfiguração'
+          : `${ordinalNumbers[epiphanyWeek - 1] || `${epiphanyWeek}º`} Domingo após a Epifania`,
         holyDay: true,
         readings: [
           { type: 'first_reading', ref: dayReadings.first_reading },

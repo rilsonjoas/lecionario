@@ -46,6 +46,9 @@ aqui, achado ao auditar os roadmaps de todos os projetos)
   Os templates genéricos por estação (Advento, Natal, Epifania,
   Quaresma, Páscoa, Pentecostes) seguem fora do escopo desta rodada
   (ver 1.2)
+- Leituras RCL de Natal e Epifania: **três bugs estruturais achados e
+  corrigidos (2026-08-18)** ao auditar as demais estações em busca do
+  mesmo padrão de erro do Tempo Comum — ver 1.2b
 - **iOS nunca testado em dispositivo físico** (foco consciente em Android por enquanto — ver 1.3)
 - Notificações push ausentes
 - Compartilhamento nativo ausente
@@ -256,6 +259,86 @@ já foram ancorados/escritos no novo mapeamento — ver 1.2 acima. Único
 item em aberto do escopo original: revisar/aposentar os templates
 genéricos por estação (Advento, Natal, Epifania, Quaresma, Páscoa,
 Pentecostes), deliberadamente fora do escopo desta rodada.
+
+---
+
+### 1.2b Leituras do Natal e da Epifania (achado e corrigido em 2026-08-18)
+
+Depois de fechar o Tempo Comum, auditei as demais estações (Advento,
+Natal, Epifania, Quaresma, Páscoa) procurando o mesmo padrão de bug —
+leitura certa existindo na tabela mas nunca ligada na geração, ou
+numeração sequencial que não bate com o RCL real quando o intervalo de
+tempo varia por ano. Achei três bugs reais, confirmados contra o RCL
+oficial da Vanderbilt Divinity Library, todos em `generate-rcl-data.ts`:
+
+1. **Domingo da Transfiguração nunca era gerado como caso especial.**
+   É sempre o último domingo antes da Quarta-feira de Cinzas, com
+   leituras fixas por ciclo (ex: Mateus 17:1-9 no Ciclo A) — mas o
+   código antigo só numerava sequencialmente "Domingo após a
+   Epifania" (2, 3, 4...), então esse domingo específico mostrava
+   sempre a leitura genérica que calhasse de cair ali. Confirmado
+   programaticamente: esse domingo varia entre a semana 6 e a 9 no
+   intervalo 2024-2030 (e chega à semana 10 em 2038, dentro de
+   2015-2045) — nunca a mesma, então nunca corrigia sozinho.
+2. **O(s) domingo(s) depois do Natal nunca eram gerados.** A leitura
+   do 1º Domingo depois do Natal (`christmas:2`) já existia na tabela
+   do Ciclo A mas ficava órfã — nem essa nem as do Ciclo B/C (que nem
+   existiam) eram ligadas na geração. Pior: a maioria dos anos
+   (quando o Natal cai de quarta a sábado) tem **dois** domingos entre
+   o Natal e a Epifania, não um — e o RCL real tem leitura própria pro
+   segundo (`christmas:3`, igual nos 3 ciclos: Jeremias 31:7-14 /
+   Salmo 147:12-20 / Efésios 1:3-14 / João 1:(1-9), 10-18). Confirmado
+   programaticamente contra 2024-2030: só 2028 e 2029 têm 1 domingo,
+   os outros 5 anos têm 2.
+3. **Semana 8 da Epifania faltava inteira no Ciclo B**, silenciosamente
+   — a tabela do Ciclo B só ia até `epiphany:7`, então em anos que
+   precisam de 8 domingos regulares antes da Transfiguração (2025,
+   2028, 2030 no intervalo gerado — inclusive 2030, uma ocorrência
+   real do Ciclo B), esse domingo específico não tinha entrada
+   nenhuma. Mesma classe de bug do achado original do Pentecostes/
+   Trindade (1.2a): não conteúdo errado, ausência total.
+
+**O conserto:**
+- [x] Leituras da Transfiguração adicionadas por ciclo (`transfiguration:1`
+      em A/B/C), confirmadas contra o RCL oficial da Vanderbilt:
+      - **Ciclo A**: Êxodo 24:12-18 · Salmo 2 · 2 Pedro 1:16-21 · Mateus 17:1-9
+      - **Ciclo B**: 2 Reis 2:1-12 · Salmo 50:1-6 · 2 Coríntios 4:3-6 · Marcos 9:2-9
+      - **Ciclo C**: Êxodo 34:29-35 · Salmo 99 · 2 Coríntios 3:12-4:2 · Lucas 9:28-36, (37-43)
+- [x] Loop da Epifania agora detecta o último domingo antes da
+      Quarta-feira de Cinzas (comparando se o próximo domingo já cairia
+      nela ou depois) e troca pela leitura fixa da Transfiguração, ano a
+      ano, sem hardcoding
+- [x] Geração de domingo(s) depois do Natal implementada — calcula
+      dinamicamente quantos domingos existem entre 26/dez e a véspera
+      da Epifania (1 ou 2, dependendo do ano) e usa `christmas:2` pro
+      primeiro e `christmas:3` pro segundo
+- [x] `christmas:2` adicionado pros Ciclos B (Isaías 61:10-62:3 · Salmo
+      148 · Gálatas 4:4-7 · Lucas 2:22-40) e C (1 Samuel 2:18-20, 26 ·
+      Salmo 148 · Colossenses 3:12-17 · Lucas 2:41-52); citação do
+      evangelho do Ciclo A corrigida de Mateus 2:13-15 pra 2:13-23
+      (citação oficial completa)
+- [x] `christmas:3` adicionado aos 3 ciclos (mesmo conteúdo, é comum
+      ao RCL todo)
+- [x] `epiphany:8` adicionado ao Ciclo B (Oséias 2:14-20 · Salmo
+      103:1-13, 22 · 2 Coríntios 3:1-6 · Marcos 2:13-22), confirmado
+      contra o RCL oficial da Vanderbilt
+- [x] **Validado programaticamente para 2024-2030:** todo ano agora
+      tem exatamente um "Domingo da Transfiguração" (nunca mais
+      conteúdo genérico de Epifania nesse domingo) e o número certo de
+      domingos depois do Natal (1 em 2028/2029, 2 nos demais anos do
+      intervalo) — sem exceção
+- [x] Regressão checada: Tempo Comum (1.2/1.2a) continua zero
+      repetição/zero lacuna depois do conserto — essa mudança não
+      tocou naquela parte do código. `tsc`, `prettier` e os 42 testes
+      passando; `cycle-A/B/C.json` sincronizados pro mobile
+
+**Fora do escopo desta rodada:** não fiz uma reauditoria completa,
+citação por citação, de todo o Advento/Epifania/Quaresma (só validei
+o que já estava no código contra o RCL pontualmente, ao investigar
+estes 3 bugs) — é possível que existam outras imprecisões menores
+ainda não achadas nessas estações. O conteúdo devocional (orações/
+meditações) dessas estações continua nos templates genéricos, sem o
+mesmo tratamento ancorado no RCL que o Tempo Comum já tem.
 
 ---
 
