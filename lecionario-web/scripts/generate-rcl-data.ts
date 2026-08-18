@@ -74,6 +74,32 @@ function getWeekOfSeason(date: Date, seasonStart: Date): number {
   return Math.floor(differenceInDays(date, seasonStart) / 7) + 1;
 }
 
+/**
+ * Calcula o número real do "Proper" (RCL) para um domingo do Tempo Comum,
+ * ancorado em data fixa do calendário — não em contagem sequencial desde
+ * a Trindade. Esse é o ponto central do conserto de 2026-08-16 (ver
+ * ROADMAP.md 1.2): a contagem sequencial resultava numa leitura errada em
+ * praticamente todo domingo do Tempo Comum, porque o número de domingos
+ * entre a Trindade e o Advento varia todo ano (22 a 27, dependendo de
+ * quando cai a Páscoa), enquanto o RCL real ancora cada Proper numa
+ * janela fixa de 7 dias do calendário civil, independente do ano.
+ *
+ * Fórmula oficial do RCL: o Proper 29 (Domingo de Cristo Rei, sempre o
+ * último domingo antes do Advento) cai no domingo entre 20 e 26 de
+ * novembro, todo ano, sem exceção — inclusive em anos bissextos, já que a
+ * fórmula não depende de fevereiro. Os demais Propers contam 7 dias para
+ * trás a partir dessa janela. Validado por cálculo direto (não
+ * hardcoded) para 2015-2045, cobrindo todos os anos bissextos do
+ * intervalo — ver checagem em scripts/grounded-content/README ou o
+ * histórico desta sessão no CHANGELOG.
+ */
+function getProperNumberForDate(date: Date): number {
+  const properTwentyNineWindowStart = new Date(date.getFullYear(), 10, 20); // 20 de novembro
+  const daysSince = differenceInDays(date, properTwentyNineWindowStart);
+  const weekBucket = Math.floor(daysSince / 7);
+  return 29 + weekBucket;
+}
+
 // ─── Tipos ──────────────────────────────────────────────────────────
 
 interface RCLReading {
@@ -284,167 +310,173 @@ const rclReadings: Record<
       second_reading: '1 Coríntios 12:3b-13',
       gospel: 'João 20:19-23',
     },
-    'ordinary:2': {
+    'trinity:1': {
+      first_reading: 'Gênesis 1:1-2:4a',
+      psalm: 'Salmo 8',
+      second_reading: '2 Coríntios 13:11-13',
+      gospel: 'Mateus 28:16-20',
+    },
+    proper3: {
+      first_reading: 'Deuteronômio 30:15-20',
+      psalm: 'Salmo 131',
+      second_reading: '1 Coríntios 4:1-5',
+      gospel: 'Mateus 6:24-34',
+    },
+    proper4: {
+      first_reading: 'Gênesis 6:9-22; 7:24; 8:14-19',
+      psalm: 'Salmo 46',
+      second_reading: 'Romanos 1:16-17; 3:22b-28, (29-31)',
+      gospel: 'Mateus 7:21-29',
+    },
+    proper5: {
       first_reading: 'Gênesis 12:1-9',
       psalm: 'Salmo 33:1-12',
       second_reading: 'Romanos 4:13-25',
       gospel: 'Mateus 9:9-13, 18-26',
     },
-    'ordinary:3': {
+    proper6: {
+      first_reading: 'Gênesis 18:1-15, (21:1-7)',
+      psalm: 'Salmo 116:1-2, 12-19',
+      second_reading: 'Romanos 5:1-8',
+      gospel: 'Mateus 9:35-10:8, (9-23)',
+    },
+    proper7: {
       first_reading: 'Gênesis 21:8-21',
       psalm: 'Salmo 86:1-10, 16-17',
       second_reading: 'Romanos 6:1b-11',
       gospel: 'Mateus 10:24-39',
     },
-    'ordinary:4': {
+    proper8: {
       first_reading: 'Gênesis 22:1-14',
       psalm: 'Salmo 13',
       second_reading: 'Romanos 6:12-23',
       gospel: 'Mateus 10:40-42',
     },
-    'ordinary:5': {
+    proper9: {
       first_reading: 'Gênesis 24:34-38, 42-49, 58-67',
       psalm: 'Salmo 45:10-17',
       second_reading: 'Romanos 7:15-25a',
       gospel: 'Mateus 11:16-19, 25-30',
     },
-    'ordinary:6': {
+    proper10: {
       first_reading: 'Gênesis 25:19-34',
       psalm: 'Salmo 119:105-112',
       second_reading: 'Romanos 8:1-11',
       gospel: 'Mateus 13:1-9, 18-23',
     },
-    'ordinary:7': {
+    proper11: {
       first_reading: 'Gênesis 28:10-19a',
       psalm: 'Salmo 139:1-12, 23-24',
       second_reading: 'Romanos 8:12-25',
       gospel: 'Mateus 13:24-30, 36-43',
     },
-    'ordinary:8': {
+    proper12: {
       first_reading: 'Gênesis 29:15-28',
       psalm: 'Salmo 105:1-11, 45b',
       second_reading: 'Romanos 8:26-39',
-      gospel: 'Mateus 13:44-52',
+      gospel: 'Mateus 13:31-33, 44-52',
     },
-    'ordinary:9': {
+    proper13: {
       first_reading: 'Gênesis 32:22-31',
       psalm: 'Salmo 17:1-7, 15',
       second_reading: 'Romanos 9:1-5',
       gospel: 'Mateus 14:13-21',
     },
-    'ordinary:10': {
+    proper14: {
       first_reading: 'Gênesis 37:1-4, 12-28',
       psalm: 'Salmo 105:1-6, 16-22, 45b',
       second_reading: 'Romanos 10:5-15',
       gospel: 'Mateus 14:22-33',
     },
-    'ordinary:11': {
+    proper15: {
       first_reading: 'Gênesis 45:1-15',
       psalm: 'Salmo 133',
       second_reading: 'Romanos 11:1-2a, 29-32',
-      gospel: 'Mateus 15:21-28',
+      gospel: 'Mateus 15:(10-20), 21-28',
     },
-    'ordinary:12': {
+    proper16: {
       first_reading: 'Êxodo 1:8-2:10',
       psalm: 'Salmo 124',
       second_reading: 'Romanos 12:1-8',
       gospel: 'Mateus 16:13-20',
     },
-    'ordinary:13': {
+    proper17: {
       first_reading: 'Êxodo 3:1-15',
       psalm: 'Salmo 105:1-6, 23-26, 45b',
       second_reading: 'Romanos 12:9-21',
       gospel: 'Mateus 16:21-28',
     },
-    'ordinary:14': {
+    proper18: {
       first_reading: 'Êxodo 12:1-14',
       psalm: 'Salmo 149',
       second_reading: 'Romanos 13:8-14',
       gospel: 'Mateus 18:15-20',
     },
-    'ordinary:15': {
+    proper19: {
       first_reading: 'Êxodo 14:19-31',
       psalm: 'Salmo 114',
       second_reading: 'Romanos 14:1-12',
       gospel: 'Mateus 18:21-35',
     },
-    'ordinary:16': {
+    proper20: {
       first_reading: 'Êxodo 16:2-15',
-      psalm: 'Salmo 78:1-4, 12-16',
-      second_reading: 'Romanos 11:13-24',
-      gospel: 'Mateus 19:1-12',
+      psalm: 'Salmo 105:1-6, 37-45',
+      second_reading: 'Filipenses 1:21-30',
+      gospel: 'Mateus 20:1-16',
     },
-    'ordinary:17': {
+    proper21: {
       first_reading: 'Êxodo 17:1-7',
-      psalm: 'Salmo 78:17-20, 52-55',
+      psalm: 'Salmo 78:1-4, 12-16',
       second_reading: 'Filipenses 2:1-13',
       gospel: 'Mateus 21:23-32',
     },
-    'ordinary:18': {
-      first_reading: 'Êxodo 20:1-20',
+    proper22: {
+      first_reading: 'Êxodo 20:1-4, 7-9, 12-20',
       psalm: 'Salmo 19',
       second_reading: 'Filipenses 3:4b-14',
       gospel: 'Mateus 21:33-46',
     },
-    'ordinary:19': {
+    proper23: {
       first_reading: 'Êxodo 32:1-14',
       psalm: 'Salmo 106:1-6, 19-23',
       second_reading: 'Filipenses 4:1-9',
       gospel: 'Mateus 22:1-14',
     },
-    'ordinary:20': {
+    proper24: {
       first_reading: 'Êxodo 33:12-23',
       psalm: 'Salmo 99',
       second_reading: '1 Tessalonicenses 1:1-10',
       gospel: 'Mateus 22:15-22',
     },
-    'ordinary:21': {
+    proper25: {
       first_reading: 'Levítico 19:1-2, 15-18',
       psalm: 'Salmo 1',
       second_reading: '1 Tessalonicenses 2:1-8',
       gospel: 'Mateus 22:34-46',
     },
-    'ordinary:22': {
-      first_reading: 'Josué 24:1-3a, 14-25',
-      psalm: 'Salmo 78:1-7',
+    proper26: {
+      first_reading: 'Josué 3:7-17',
+      psalm: 'Salmo 107:1-7, 33-37',
       second_reading: '1 Tessalonicenses 2:9-13',
       gospel: 'Mateus 23:1-12',
     },
-    'ordinary:23': {
-      first_reading: 'Juízes 2:6-15',
-      psalm: 'Salmo 106:40-48',
-      second_reading: '1 Tessalonicenses 5:1-11',
+    proper27: {
+      first_reading: 'Josué 24:1-3a, 14-25',
+      psalm: 'Salmo 78:1-7',
+      second_reading: '1 Tessalonicenses 4:13-18',
       gospel: 'Mateus 25:1-13',
     },
-    'ordinary:24': {
-      first_reading: 'Rute 1:1-18',
-      psalm: 'Salmo 146',
-      second_reading: 'Hebreus 9:11-14',
+    proper28: {
+      first_reading: 'Juízes 4:1-7',
+      psalm: 'Salmo 123',
+      second_reading: '1 Tessalonicenses 5:1-11',
       gospel: 'Mateus 25:14-30',
     },
-    'ordinary:25': {
-      first_reading: 'Rute 2:1-13',
-      psalm: 'Salmo 127',
-      second_reading: 'Hebreus 9:24-28',
+    proper29: {
+      first_reading: 'Ezequiel 34:11-16, 20-24',
+      psalm: 'Salmo 100',
+      second_reading: 'Efésios 1:15-23',
       gospel: 'Mateus 25:31-46',
-    },
-    'ordinary:26': {
-      first_reading: 'Rute 3:1-5; 4:13-17',
-      psalm: 'Salmo 128',
-      second_reading: 'Hebreus 10:11-14, 19-25',
-      gospel: 'Mateus 26:14-27:66',
-    },
-    'ordinary:27': {
-      first_reading: '1 Reis 3:5-14',
-      psalm: 'Salmo 119:97-104',
-      second_reading: 'Hebreus 11:1-3, 8-16',
-      gospel: 'Mateus 28:16-20',
-    },
-    'ordinary:28': {
-      first_reading: '1 Reis 17:8-16',
-      psalm: 'Salmo 146',
-      second_reading: 'Hebreus 13:1-8, 15-16',
-      gospel: 'Lucas 21:5-19',
     },
   },
 
@@ -606,167 +638,167 @@ const rclReadings: Record<
       second_reading: 'Romanos 8:22-27',
       gospel: 'João 15:26-27; 16:4b-15',
     },
-    'ordinary:2': {
-      first_reading: '1 Samuel 3:1-20',
+    'trinity:1': {
+      first_reading: 'Isaías 6:1-8',
+      psalm: 'Salmo 29',
+      second_reading: 'Romanos 8:12-17',
+      gospel: 'João 3:1-17',
+    },
+    proper4: {
+      first_reading: '1 Samuel 3:1-10, (11-20)',
       psalm: 'Salmo 139:1-6, 13-18',
-      second_reading: '1 Coríntios 6:12-20',
-      gospel: 'João 1:43-51',
-    },
-    'ordinary:3': {
-      first_reading: 'Jonas 3:1-5, 10',
-      psalm: 'Salmo 62:5-12',
-      second_reading: '1 Coríntios 7:29-31',
-      gospel: 'Marcos 1:14-20',
-    },
-    'ordinary:4': {
-      first_reading: 'Deuteronômio 18:15-20',
-      psalm: 'Salmo 111',
-      second_reading: '1 Coríntios 8:1-13',
-      gospel: 'Marcos 1:21-28',
-    },
-    'ordinary:5': {
-      first_reading: 'Isaías 40:21-31',
-      psalm: 'Salmo 147:1-11, 20c',
-      second_reading: '1 Coríntios 9:16-23',
-      gospel: 'Marcos 1:29-39',
-    },
-    'ordinary:6': {
-      first_reading: '2 Reis 5:1-14',
-      psalm: 'Salmo 30',
-      second_reading: '1 Coríntios 9:24-27',
-      gospel: 'Marcos 1:40-45',
-    },
-    'ordinary:7': {
-      first_reading: 'Isaías 43:18-25',
-      psalm: 'Salmo 41',
-      second_reading: '2 Coríntios 1:18-22',
-      gospel: 'Marcos 2:1-12',
-    },
-    'ordinary:8': {
-      first_reading: 'Oséias 2:14-20',
-      psalm: 'Salmo 103:1-13, 22',
-      second_reading: '2 Coríntios 3:1-6',
-      gospel: 'Marcos 2:13-22',
-    },
-    'ordinary:9': {
-      first_reading: 'Deuteronômio 5:12-15',
-      psalm: 'Salmo 81:1-10',
       second_reading: '2 Coríntios 4:5-12',
       gospel: 'Marcos 2:23-3:6',
     },
-    'ordinary:10': {
-      first_reading: 'Gênesis 3:8-15',
-      psalm: 'Salmo 130',
+    proper5: {
+      first_reading: '1 Samuel 8:4-11, (12-15), 16-20, (11:14-15)',
+      psalm: 'Salmo 138',
       second_reading: '2 Coríntios 4:13-5:1',
       gospel: 'Marcos 3:20-35',
     },
-    'ordinary:11': {
-      first_reading: 'Ezequiel 17:22-24',
-      psalm: 'Salmo 92:1-4, 12-15',
-      second_reading: '2 Coríntios 5:6-17',
+    proper6: {
+      first_reading: '1 Samuel 15:34-16:13',
+      psalm: 'Salmo 20',
+      second_reading: '2 Coríntios 5:6-10, (11-13), 14-17',
       gospel: 'Marcos 4:26-34',
     },
-    'ordinary:12': {
-      first_reading: 'Jó 38:1-11',
-      psalm: 'Salmo 107:1-3, 23-32',
-      second_reading: '2 Coríntios 5:14-21',
+    proper7: {
+      first_reading: '1 Samuel 17:(1a, 4-11, 19-23), 32-49',
+      psalm: 'Salmo 9:9-20',
+      second_reading: '2 Coríntios 6:1-13',
       gospel: 'Marcos 4:35-41',
     },
-    'ordinary:13': {
-      first_reading: 'Sabedoria 1:13-15; 2:23-24',
-      psalm: 'Salmo 30',
+    proper8: {
+      first_reading: '2 Samuel 1:1, 17-27',
+      psalm: 'Salmo 130',
       second_reading: '2 Coríntios 8:7-15',
       gospel: 'Marcos 5:21-43',
     },
-    'ordinary:14': {
-      first_reading: 'Ezequiel 2:1-5',
-      psalm: 'Salmo 123',
+    proper9: {
+      first_reading: '2 Samuel 5:1-5, 9-10',
+      psalm: 'Salmo 48',
       second_reading: '2 Coríntios 12:2-10',
       gospel: 'Marcos 6:1-13',
     },
-    'ordinary:15': {
-      first_reading: 'Amós 7:7-15',
-      psalm: 'Salmo 85:8-13',
+    proper10: {
+      first_reading: '2 Samuel 6:1-5, 12b-19',
+      psalm: 'Salmo 24',
       second_reading: 'Efésios 1:3-14',
       gospel: 'Marcos 6:14-29',
     },
-    'ordinary:16': {
-      first_reading: 'Jeremias 23:1-6',
-      psalm: 'Salmo 23',
+    proper11: {
+      first_reading: '2 Samuel 7:1-14a',
+      psalm: 'Salmo 89:20-37',
       second_reading: 'Efésios 2:11-22',
       gospel: 'Marcos 6:30-34, 53-56',
     },
-    'ordinary:17': {
-      first_reading: '2 Reis 4:42-44',
-      psalm: 'Salmo 145:10-18',
+    proper12: {
+      first_reading: '2 Samuel 11:1-15',
+      psalm: 'Salmo 14',
       second_reading: 'Efésios 3:14-21',
       gospel: 'João 6:1-21',
     },
-    'ordinary:18': {
-      first_reading: 'Êxodo 16:2-15',
-      psalm: 'Salmo 78:1-4, 12-16',
+    proper13: {
+      first_reading: '2 Samuel 11:26-12:13a',
+      psalm: 'Salmo 51:1-12',
       second_reading: 'Efésios 4:1-16',
       gospel: 'João 6:24-35',
     },
-    'ordinary:19': {
-      first_reading: '1 Reis 19:4-8',
-      psalm: 'Salmo 34:1-8',
+    proper14: {
+      first_reading: '2 Samuel 18:5-9, 15, 31-33',
+      psalm: 'Salmo 130',
       second_reading: 'Efésios 4:25-5:2',
       gospel: 'João 6:35, 41-51',
     },
-    'ordinary:20': {
-      first_reading: 'Provérbios 9:1-6',
-      psalm: 'Salmo 34:9-14',
+    proper15: {
+      first_reading: '1 Reis 2:10-12; 3:3-14',
+      psalm: 'Salmo 111',
       second_reading: 'Efésios 5:15-20',
       gospel: 'João 6:51-58',
     },
-    'ordinary:21': {
-      first_reading: 'Josué 24:1-2a, 14-18',
-      psalm: 'Salmo 34:15-22',
-      second_reading: 'Efésios 5:21-33',
-      gospel: 'João 6:60-69',
+    proper16: {
+      first_reading: '1 Reis 8:(1,6,10-11), 22-30, 41-43',
+      psalm: 'Salmo 84',
+      second_reading: 'Efésios 6:10-20',
+      gospel: 'João 6:56-69',
     },
-    'ordinary:22': {
-      first_reading: 'Deuteronômio 4:1-2, 6-9',
-      psalm: 'Salmo 15',
+    proper17: {
+      first_reading: 'Cânticos 2:8-13',
+      psalm: 'Salmo 45:1-2, 6-9',
       second_reading: 'Tiago 1:17-27',
       gospel: 'Marcos 7:1-8, 14-15, 21-23',
     },
-    'ordinary:23': {
-      first_reading: 'Isaías 35:4-7a',
-      psalm: 'Salmo 146',
-      second_reading: 'Tiago 2:1-10, 14-17',
+    proper18: {
+      first_reading: 'Provérbios 22:1-2, 8-9, 22-23',
+      psalm: 'Salmo 125',
+      second_reading: 'Tiago 2:1-10, (11-13), 14-17',
       gospel: 'Marcos 7:24-37',
     },
-    'ordinary:24': {
-      first_reading: 'Isaías 50:4-9a',
-      psalm: 'Salmo 116:1-9',
-      second_reading: 'Tiago 2:14-26',
+    proper19: {
+      first_reading: 'Provérbios 1:20-33',
+      psalm: 'Salmo 19',
+      second_reading: 'Tiago 3:1-12',
       gospel: 'Marcos 8:27-38',
     },
-    'ordinary:25': {
-      first_reading: 'Jeremias 11:18-20',
-      psalm: 'Salmo 54',
-      second_reading: 'Tiago 3:13-4:8',
+    proper20: {
+      first_reading: 'Provérbios 31:10-31',
+      psalm: 'Salmo 1',
+      second_reading: 'Tiago 3:13-4:3, 7-8a',
       gospel: 'Marcos 9:30-37',
     },
-    'ordinary:26': {
-      first_reading: 'Números 11:4-6, 10-16, 24-29',
-      psalm: 'Salmo 19:7-14',
-      second_reading: 'Tiago 5:1-6',
+    proper21: {
+      first_reading: 'Ester 7:1-6, 9-10; 9:20-22',
+      psalm: 'Salmo 124',
+      second_reading: 'Tiago 5:13-20',
       gospel: 'Marcos 9:38-50',
     },
-    'ordinary:27': {
-      first_reading: 'Gênesis 2:18-24',
-      psalm: 'Salmo 8',
-      second_reading: 'Hebreus 1:1-4; 2:5-12',
+    proper22: {
+      first_reading: 'Jó 1:1, 2:1-10',
+      psalm: 'Salmo 26',
+      second_reading: 'Hebreus 1:1-4, 2:5-12',
       gospel: 'Marcos 10:2-16',
     },
-    'ordinary:28': {
-      first_reading: 'Amós 5:6-7, 10-15',
-      psalm: 'Salmo 90:12-17',
+    proper23: {
+      first_reading: 'Jó 23:1-9, 16-17',
+      psalm: 'Salmo 22:1-15',
       second_reading: 'Hebreus 4:12-16',
       gospel: 'Marcos 10:17-31',
+    },
+    proper24: {
+      first_reading: 'Jó 38:1-7, (34-41)',
+      psalm: 'Salmo 104:1-9, 24, 35c',
+      second_reading: 'Hebreus 5:1-10',
+      gospel: 'Marcos 10:35-45',
+    },
+    proper25: {
+      first_reading: 'Jó 42:1-6, 10-17',
+      psalm: 'Salmo 34:1-8, (19-22)',
+      second_reading: 'Hebreus 7:23-28',
+      gospel: 'Marcos 10:46-52',
+    },
+    proper26: {
+      first_reading: 'Rute 1:1-18',
+      psalm: 'Salmo 146',
+      second_reading: 'Hebreus 9:11-14',
+      gospel: 'Marcos 12:28-34',
+    },
+    proper27: {
+      first_reading: 'Rute 3:1-5; 4:13-17',
+      psalm: 'Salmo 127',
+      second_reading: 'Hebreus 9:24-28',
+      gospel: 'Marcos 12:38-44',
+    },
+    proper28: {
+      first_reading: '1 Samuel 1:4-20',
+      psalm: '1 Samuel 2:1-10',
+      second_reading: 'Hebreus 10:11-14, (15-18), 19-25',
+      gospel: 'Marcos 13:1-8',
+    },
+    proper29: {
+      first_reading: 'Ezequiel 34:11-16, 20-24',
+      psalm: 'Salmo 100',
+      second_reading: 'Apocalipse 1:4b-8',
+      gospel: 'João 18:33-37',
     },
   },
 
@@ -934,167 +966,167 @@ const rclReadings: Record<
       second_reading: 'Romanos 8:14-17',
       gospel: 'João 14:8-17, 25-27',
     },
-    'ordinary:2': {
-      first_reading: 'Isaías 62:1-5',
-      psalm: 'Salmo 36:5-10',
-      second_reading: '1 Coríntios 12:1-11',
-      gospel: 'João 2:1-11',
+    'trinity:1': {
+      first_reading: 'Provérbios 8:1-4, 22-31',
+      psalm: 'Salmo 8',
+      second_reading: 'Romanos 5:1-5',
+      gospel: 'João 16:12-15',
     },
-    'ordinary:3': {
-      first_reading: 'Neemias 8:1-3, 5-6, 8-10',
-      psalm: 'Salmo 19',
-      second_reading: '1 Coríntios 12:12-31a',
-      gospel: 'Lucas 4:14-21',
-    },
-    'ordinary:4': {
-      first_reading: 'Jeremias 1:4-10',
-      psalm: 'Salmo 71:1-6',
-      second_reading: '1 Coríntios 13:1-13',
-      gospel: 'Lucas 4:21-30',
-    },
-    'ordinary:5': {
-      first_reading: 'Isaías 6:1-8',
-      psalm: 'Salmo 138',
-      second_reading: '1 Coríntios 15:1-11',
-      gospel: 'Lucas 5:1-11',
-    },
-    'ordinary:6': {
-      first_reading: 'Jeremias 17:5-10',
-      psalm: 'Salmo 1',
-      second_reading: '1 Coríntios 15:12-20',
-      gospel: 'Lucas 6:17-26',
-    },
-    'ordinary:7': {
-      first_reading: 'Gênesis 45:3-11, 15',
-      psalm: 'Salmo 37:1-11, 39-40',
-      second_reading: '1 Coríntios 15:35-38, 42-50',
-      gospel: 'Lucas 6:27-38',
-    },
-    'ordinary:8': {
-      first_reading: 'Eclesiástico 27:4-7',
-      psalm: 'Salmo 92:1-4, 12-15',
-      second_reading: '1 Coríntios 15:54-58',
-      gospel: 'Lucas 6:39-49',
-    },
-    'ordinary:9': {
-      first_reading: '1 Reis 8:22-23, 41-43',
-      psalm: 'Salmo 96:1-9',
+    proper4: {
+      first_reading: '1 Reis 18:20-21, (22-29), 30-39',
+      psalm: 'Salmo 96',
       second_reading: 'Gálatas 1:1-12',
       gospel: 'Lucas 7:1-10',
     },
-    'ordinary:10': {
-      first_reading: '1 Reis 17:17-24',
+    proper5: {
+      first_reading: '1 Reis 17:8-16, (17-24)',
       psalm: 'Salmo 146',
       second_reading: 'Gálatas 1:11-24',
       gospel: 'Lucas 7:11-17',
     },
-    'ordinary:11': {
-      first_reading: '2 Samuel 11:26-12:10, 13-14',
-      psalm: 'Salmo 32',
+    proper6: {
+      first_reading: '1 Reis 21:1-10, (11-14), 15-21a',
+      psalm: 'Salmo 5:1-8',
       second_reading: 'Gálatas 2:15-21',
       gospel: 'Lucas 7:36-8:3',
     },
-    'ordinary:12': {
-      first_reading: 'Zacarias 12:8-10; 13:1',
-      psalm: 'Salmo 63:1-8',
+    proper7: {
+      first_reading: '1 Reis 19:1-4, (5-7), 8-15a',
+      psalm: 'Salmo 42, 43',
       second_reading: 'Gálatas 3:23-29',
-      gospel: 'Lucas 9:18-24',
+      gospel: 'Lucas 8:26-39',
     },
-    'ordinary:13': {
-      first_reading: '1 Reis 19:15-16, 19-21',
-      psalm: 'Salmo 16',
+    proper8: {
+      first_reading: '2 Reis 2:1-2, 6-14',
+      psalm: 'Salmo 77:1-2, 11-20',
       second_reading: 'Gálatas 5:1, 13-25',
       gospel: 'Lucas 9:51-62',
     },
-    'ordinary:14': {
-      first_reading: 'Isaías 66:10-14',
-      psalm: 'Salmo 66:1-8',
-      second_reading: 'Gálatas 6:7-16',
+    proper9: {
+      first_reading: '2 Reis 5:1-14',
+      psalm: 'Salmo 30',
+      second_reading: 'Gálatas 6:(1-6), 7-16',
       gospel: 'Lucas 10:1-11, 16-20',
     },
-    'ordinary:15': {
-      first_reading: 'Deuteronômio 30:9-14',
-      psalm: 'Salmo 25:1-9',
+    proper10: {
+      first_reading: 'Amós 7:7-17',
+      psalm: 'Salmo 82',
       second_reading: 'Colossenses 1:1-14',
       gospel: 'Lucas 10:25-37',
     },
-    'ordinary:16': {
-      first_reading: 'Gênesis 18:1-10a',
-      psalm: 'Salmo 15',
+    proper11: {
+      first_reading: 'Amós 8:1-12',
+      psalm: 'Salmo 52',
       second_reading: 'Colossenses 1:15-28',
       gospel: 'Lucas 10:38-42',
     },
-    'ordinary:17': {
-      first_reading: 'Gênesis 18:20-32',
-      psalm: 'Salmo 138',
-      second_reading: 'Colossenses 2:6-15',
+    proper12: {
+      first_reading: 'Oséias 1:2-10',
+      psalm: 'Salmo 85',
+      second_reading: 'Colossenses 2:6-15, (16-19)',
       gospel: 'Lucas 11:1-13',
     },
-    'ordinary:18': {
-      first_reading: 'Eclesiastes 1:2; 2:18-23',
-      psalm: 'Salmo 90:3-6, 12-17',
+    proper13: {
+      first_reading: 'Oséias 11:1-11',
+      psalm: 'Salmo 107:1-9, 43',
       second_reading: 'Colossenses 3:1-11',
       gospel: 'Lucas 12:13-21',
     },
-    'ordinary:19': {
-      first_reading: 'Gênesis 15:1-6',
-      psalm: 'Salmo 33:12-22',
+    proper14: {
+      first_reading: 'Isaías 1:1, 10-20',
+      psalm: 'Salmo 50:1-8, 22-23',
       second_reading: 'Hebreus 11:1-3, 8-16',
       gospel: 'Lucas 12:32-40',
     },
-    'ordinary:20': {
-      first_reading: 'Jeremias 23:23-29',
-      psalm: 'Salmo 82',
+    proper15: {
+      first_reading: 'Isaías 5:1-7',
+      psalm: 'Salmo 80:1-2, 8-19',
       second_reading: 'Hebreus 11:29-12:2',
       gospel: 'Lucas 12:49-56',
     },
-    'ordinary:21': {
-      first_reading: 'Isaías 66:18-23',
-      psalm: 'Salmo 117',
+    proper16: {
+      first_reading: 'Jeremias 1:4-10',
+      psalm: 'Salmo 71:1-6',
       second_reading: 'Hebreus 12:18-29',
-      gospel: 'Lucas 13:22-30',
+      gospel: 'Lucas 13:10-17',
     },
-    'ordinary:22': {
-      first_reading: 'Eclesiástico 10:12-18',
-      psalm: 'Salmo 112',
+    proper17: {
+      first_reading: 'Jeremias 2:4-13',
+      psalm: 'Salmo 81:1, 10-16',
       second_reading: 'Hebreus 13:1-8, 15-16',
       gospel: 'Lucas 14:1, 7-14',
     },
-    'ordinary:23': {
+    proper18: {
       first_reading: 'Jeremias 18:1-11',
       psalm: 'Salmo 139:1-6, 13-18',
-      second_reading: 'Filemom 1-21',
+      second_reading: 'Filemom 1:1-21',
       gospel: 'Lucas 14:25-33',
     },
-    'ordinary:24': {
-      first_reading: 'Êxodo 32:7-14',
-      psalm: 'Salmo 51:1-11',
+    proper19: {
+      first_reading: 'Jeremias 4:11-12, 22-28',
+      psalm: 'Salmo 14',
       second_reading: '1 Timóteo 1:12-17',
       gospel: 'Lucas 15:1-10',
     },
-    'ordinary:25': {
-      first_reading: 'Amós 8:4-7',
-      psalm: 'Salmo 113',
+    proper20: {
+      first_reading: 'Jeremias 8:18-9:1',
+      psalm: 'Salmo 79:1-9',
       second_reading: '1 Timóteo 2:1-7',
       gospel: 'Lucas 16:1-13',
     },
-    'ordinary:26': {
-      first_reading: 'Amós 6:1a, 4-7',
-      psalm: 'Salmo 146',
+    proper21: {
+      first_reading: 'Jeremias 32:1-3a, 6-15',
+      psalm: 'Salmo 91:1-6, 14-16',
       second_reading: '1 Timóteo 6:6-19',
       gospel: 'Lucas 16:19-31',
     },
-    'ordinary:27': {
-      first_reading: 'Habacuque 1:1-4; 2:1-4',
-      psalm: 'Salmo 95',
+    proper22: {
+      first_reading: 'Lamentações 1:1-6; 3:19-26',
+      psalm: 'Salmo 137',
       second_reading: '2 Timóteo 1:1-14',
       gospel: 'Lucas 17:5-10',
     },
-    'ordinary:28': {
-      first_reading: '2 Reis 5:1-3, 7-15c',
-      psalm: 'Salmo 111',
+    proper23: {
+      first_reading: 'Jeremias 29:1, 4-7',
+      psalm: 'Salmo 66:1-12',
       second_reading: '2 Timóteo 2:8-15',
       gospel: 'Lucas 17:11-19',
+    },
+    proper24: {
+      first_reading: 'Jeremias 31:27-34',
+      psalm: 'Salmo 119:97-104',
+      second_reading: '2 Timóteo 3:14-4:5',
+      gospel: 'Lucas 18:1-8',
+    },
+    proper25: {
+      first_reading: 'Joel 2:23-32',
+      psalm: 'Salmo 65',
+      second_reading: '2 Timóteo 4:6-8, 16-18',
+      gospel: 'Lucas 18:9-14',
+    },
+    proper26: {
+      first_reading: 'Habacuque 1:1-4; 2:1-4',
+      psalm: 'Salmo 119:137-144',
+      second_reading: '2 Tessalonicenses 1:1-4, 11-12',
+      gospel: 'Lucas 19:1-10',
+    },
+    proper27: {
+      first_reading: 'Ageu 1:15b-2:9',
+      psalm: 'Salmo 145:1-5, 17-21',
+      second_reading: '2 Tessalonicenses 2:1-5, 13-17',
+      gospel: 'Lucas 20:27-38',
+    },
+    proper28: {
+      first_reading: 'Isaías 65:17-25',
+      psalm: 'Isaías 12',
+      second_reading: '2 Tessalonicenses 3:6-13',
+      gospel: 'Lucas 21:5-19',
+    },
+    proper29: {
+      first_reading: 'Jeremias 23:1-6',
+      psalm: 'Salmo 46',
+      second_reading: 'Colossenses 1:11-20',
+      gospel: 'Lucas 23:33-43',
     },
   },
 };
@@ -1478,24 +1510,27 @@ function generateYear(cycle: string, liturgicalYear: number, calendarYear: numbe
     });
   }
 
-  // Easter Sundays (Easter 1-7, where Easter 7 = Pentecost)
+  // Easter Sundays — os 7 domingos reais da Páscoa (Páscoa em si até o
+  // 7º Domingo da Páscoa, a semana antes de Pentecostes). Antes deste
+  // conserto (2026-08-16), o laço ia até w=7 = Páscoa+42 dias e
+  // rotulava esse dia como "Pentecostes" — mas o Pentecostes real é
+  // Páscoa+49 dias; a data usada era o verdadeiro 7º Domingo da
+  // Páscoa. Isso empurrava toda a numeração do Tempo Comum uma semana
+  // pra frente da data certa. Ver ROADMAP.md 1.2.
   for (let w = 1; w <= 7; w++) {
     const sunday = addDays(easter, (w - 1) * 7);
     const key = `easter:${w}` as const;
     const dayReadings = readings[key];
     if (!dayReadings) continue;
 
-    const collectKey = w === 7 ? ('pentecost:1' as const) : (`easter:${w}` as const);
     entries.push({
       date: dateToRef(sunday),
-      season: w === 7 ? 'pentecost' : 'easter',
+      season: 'easter',
       weekOfSeason: w,
       dayName:
         w === 1
           ? 'Domingo da Ressurreição'
-          : w === 7
-            ? 'Pentecostes'
-            : `${ordinalNumbers[w - 1] || `${w}º`} Domingo da Páscoa`,
+          : `${ordinalNumbers[w - 1] || `${w}º`} Domingo da Páscoa`,
       holyDay: true,
       readings: [
         { type: 'first_reading', ref: dayReadings.first_reading },
@@ -1503,26 +1538,78 @@ function generateYear(cycle: string, liturgicalYear: number, calendarYear: numbe
         { type: 'second_reading', ref: dayReadings.second_reading },
         { type: 'gospel', ref: dayReadings.gospel },
       ],
-      collect: collects?.[collectKey],
+      collect: collects?.[`easter:${w}` as const],
     });
   }
 
-  // Ordinary Time (after Pentecost to Advent next year)
+  // Dia de Pentecostes (Páscoa + 49 dias) — antes deste conserto nunca
+  // era gerado como entrada própria; a leitura correta já existia na
+  // tabela (chave 'pentecost:1') mas ficava órfã, nunca consultada.
   const pentecostSunday = addDays(easter, 49);
-  const nextAdvent = calculateAdventStart(liturgicalYear);
-  const firstOrdinarySunday = getNextSunday(addDays(pentecostSunday, 7));
+  const pentecostReadings = readings['pentecost:1'];
+  if (pentecostReadings) {
+    entries.push({
+      date: dateToRef(pentecostSunday),
+      season: 'pentecost',
+      weekOfSeason: 1,
+      dayName: 'Dia de Pentecostes',
+      holyDay: true,
+      readings: [
+        { type: 'first_reading', ref: pentecostReadings.first_reading },
+        { type: 'psalm', ref: pentecostReadings.psalm },
+        { type: 'second_reading', ref: pentecostReadings.second_reading },
+        { type: 'gospel', ref: pentecostReadings.gospel },
+      ],
+      collect: collects?.['pentecost:1'],
+    });
+  }
 
-  let ordinaryWeek = 2; // Proper counting starts at 2
+  // Domingo da Trindade (Pentecostes + 7 dias) — mesma lacuna: antes
+  // deste conserto não existia como entrada própria, e a primeira
+  // leitura do "Tempo Comum" acabava sendo mostrada na data da
+  // Trindade, uma semana adiantada.
+  const trinitySunday = addDays(pentecostSunday, 7);
+  const trinityReadings = readings['trinity:1'];
+  if (trinityReadings) {
+    entries.push({
+      date: dateToRef(trinitySunday),
+      season: 'pentecost',
+      weekOfSeason: 2,
+      dayName: 'Domingo da Santíssima Trindade',
+      holyDay: true,
+      readings: [
+        { type: 'first_reading', ref: trinityReadings.first_reading },
+        { type: 'psalm', ref: trinityReadings.psalm },
+        { type: 'second_reading', ref: trinityReadings.second_reading },
+        { type: 'gospel', ref: trinityReadings.gospel },
+      ],
+      collect: collects?.['pentecost:1'],
+    });
+  }
+
+  // Tempo Comum — ancorado no Próprio real de cada domingo (ver
+  // getProperNumberForDate), não mais numerado sequencialmente a
+  // partir da Trindade. É o conserto central desta seção: a contagem
+  // sequencial antiga produzia a leitura errada em praticamente todo
+  // domingo, porque o número de domingos entre a Trindade e o Advento
+  // varia todo ano (22 a 27), enquanto cada Próprio do RCL real está
+  // ancorado numa janela fixa do calendário civil. `weekOfSeason`
+  // aqui É o número do Próprio (3 a 29) — estável e com o mesmo
+  // significado todo ano, ao contrário da contagem sequencial antiga.
+  const nextAdvent = calculateAdventStart(liturgicalYear);
+  const firstOrdinarySunday = addDays(trinitySunday, 7);
+
   currentSunday = firstOrdinarySunday;
   while (currentSunday < nextAdvent) {
-    const key = `ordinary:${ordinaryWeek}` as const;
+    const properNumber = getProperNumberForDate(currentSunday);
+    const key = `proper${properNumber}` as const;
     const dayReadings = readings[key];
     if (dayReadings) {
       entries.push({
         date: dateToRef(currentSunday),
         season: 'ordinary',
-        weekOfSeason: ordinaryWeek,
-        dayName: `${ordinalNumbers[ordinaryWeek - 1] || `${ordinaryWeek}º`} Domingo do Tempo Comum`,
+        weekOfSeason: properNumber,
+        dayName: `${ordinalNumbers[properNumber - 1] || `${properNumber}º`} Domingo do Tempo Comum`,
         holyDay: true,
         readings: [
           { type: 'first_reading', ref: dayReadings.first_reading },
@@ -1534,7 +1621,6 @@ function generateYear(cycle: string, liturgicalYear: number, calendarYear: numbe
       });
     }
     currentSunday = addDays(currentSunday, 7);
-    ordinaryWeek++;
   }
 
   entries.sort((a, b) => a.date.localeCompare(b.date));

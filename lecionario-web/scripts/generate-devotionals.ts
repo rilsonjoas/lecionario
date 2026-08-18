@@ -15,11 +15,29 @@
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import cycleAData from '../src/data/rcl/cycle-A.json';
+import ordinaryA, { trinityWeekA } from './grounded-content/ordinary-A';
+import ordinaryB, { trinityWeekB } from './grounded-content/ordinary-B';
+import ordinaryC, { trinityWeekC } from './grounded-content/ordinary-C';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // ─── Tipos ──────────────────────────────────────────────────────────
+
+interface RclReading {
+  type: 'first_reading' | 'psalm' | 'second_reading' | 'gospel';
+  ref: string;
+  text?: string;
+}
+
+interface RclEntry {
+  date: string;
+  season: string;
+  weekOfSeason: number;
+  dayName: string;
+  readings: RclReading[];
+}
 
 interface DailyPrayer {
   title: string;
@@ -1352,9 +1370,49 @@ function formatDate(d: Date): string {
   return `${y}-${m}-${day}`;
 }
 
-function getLiturgicalCycle(year: number): string {
-  const cycles = ['B', 'C', 'A'];
-  return cycles[year % 3];
+// Alinhado com getLiturgicalCycle() em src/lib/liturgical-calendar.ts.
+// `year` aqui já é o "ano litúrgico" (o mesmo `year` recebido por
+// generateYear/getLiturgicalSeasonForLiturgicalYear, que cobre do Advento
+// do ano anterior até novembro deste ano).
+function getLiturgicalCycle(liturgicalYear: number): 'A' | 'B' | 'C' {
+  const remainder = liturgicalYear % 3;
+  if (remainder === 1) return 'A';
+  if (remainder === 2) return 'B';
+  return 'C';
+}
+
+// ─── Leituras Reais do RCL — Tempo Comum ────────────────────────────
+//
+// Em vez de repetir o mesmo texto genérico por semana inteira, os dias
+// do Tempo Comum cobertos por `groundedOrdinary` (ver abaixo) usam o
+// domingo real do Lecionário Comum Revisado que rege aquela semana
+// (segunda a sábado seguem o mesmo domingo, como nos devocionais
+// impressos tradicionais). Isso também resolve a divergência entre a
+// numeração de semana calculada localmente (getWeekOfSeason) e a
+// numeração usada nos dados do RCL (cycle-A.json etc.): a busca é por
+// data, não por número de semana.
+const rclDataByCycle: Partial<Record<'A' | 'B' | 'C', { seasons: Record<string, RclEntry[]> }>> = {
+  A: cycleAData as { seasons: Record<string, RclEntry[]> },
+};
+
+function findGoverningOrdinarySunday(cycle: 'A' | 'B' | 'C', date: Date): RclEntry | null {
+  const data = rclDataByCycle[cycle];
+  if (!data) return null;
+
+  const dateStr = formatDate(date);
+  const entries = data.seasons.ordinary ?? [];
+
+  // O domingo que rege a semana é o mais recente com date <= dateStr,
+  // dentro de uma janela de 6 dias (a distância máxima entre um
+  // domingo e o sábado seguinte).
+  let best: RclEntry | null = null;
+  for (const entry of entries) {
+    if (entry.date > dateStr) continue;
+    const diffDays = (date.getTime() - new Date(entry.date + 'T00:00:00').getTime()) / 86400000;
+    if (diffDays > 6) continue;
+    if (!best || entry.date > best.date) best = entry;
+  }
+  return best;
 }
 
 function getLiturgicalSeasonForLiturgicalYear(liturgicalYear: number, date: Date): string {
@@ -1428,6 +1486,29 @@ function getWeekOfSeason(date: Date, season: string, adventStart: Date, easter: 
   }
   return Math.floor((date.getTime() - seasonStart.getTime()) / (86400000 * 7)) + 1;
 }
+
+// ─── Tempo Comum Ancorado no RCL ─────────────────────────────────────
+//
+// Diferente dos templates genéricos acima (um texto por semana,
+// repetido de domingo a sábado), este conteúdo é escrito a partir das
+// leituras reais daquele domingo do RCL (ver scripts/grounded-content/).
+// Cada dia da semana reflete sobre uma leitura ou ângulo diferente do
+// mesmo domingo, então os sete dias não se repetem — e o conteúdo muda
+// de verdade quando o ciclo litúrgico muda (A/B/C), porque a leitura
+// muda. Array de 7 entradas por semana, índice = date.getDay()
+// (0 = domingo … 6 = sábado). Cobertura de cada ciclo documentada no
+// topo do respectivo módulo em scripts/grounded-content/.
+const groundedOrdinary: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+  A: ordinaryA,
+  B: ordinaryB,
+  C: ordinaryC,
+};
+
+const trinityWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry[]>> = {
+  A: trinityWeekA,
+  B: trinityWeekB,
+  C: trinityWeekC,
+};
 
 // ─── Tríduo Pascal — Conteúdo Fixo ──────────────────────────────────
 //
@@ -1567,7 +1648,40 @@ function seededPick<T>(items: T[], seed: string): T {
   return items[index];
 }
 
-function generateForDate(date: Date, season: string, week: number): DevotionalEntry | null {
+function generateForDate(
+  date: Date,
+  season: string,
+  week: number,
+  cycle: 'A' | 'B' | 'C',
+): DevotionalEntry | null {
+  // Tempo Comum: tenta primeiro o conteúdo ancorado no domingo real do
+  // RCL (ver groundedOrdinary). `weekOfSeason` aqui é o número real do
+  // Próprio (3-29, ver getProperNumberForDate em generate-rcl-data.ts)
+  // — não mais uma contagem sequencial desde a Trindade. Ciclos A, B e
+  // C completos (Próprios 3-29 / 4-29 / 4-29) — ver ROADMAP.md 1.2a.
+  if (season === 'ordinary') {
+    const governingSunday = findGoverningOrdinarySunday(cycle, date);
+
+    // Os 6 dias entre a Trindade e o primeiro Próprio real (sempre
+    // Trindade+1 a Trindade+6, todo ano) não têm domingo "regente"
+    // dentro da janela de 6 dias — não pertencem a nenhum Próprio do
+    // RCL. Sem este caso, esses dias ficavam sem devocional nenhum
+    // (achado em 2026-08-17). date.getDay() aqui vai de 1 (segunda) a
+    // 6 (sábado); trinityWeekByCycle[cycle] está indexado 0-5 na
+    // mesma ordem.
+    const trinityWeek = trinityWeekByCycle[cycle];
+    if (!governingSunday && trinityWeek && date.getDay() >= 1 && date.getDay() <= 6) {
+      return trinityWeek[date.getDay() - 1];
+    }
+
+    const groundedWeek = governingSunday
+      ? groundedOrdinary[cycle]?.[governingSunday.weekOfSeason]
+      : undefined;
+    if (groundedWeek) {
+      return groundedWeek[date.getDay()];
+    }
+  }
+
   const seasonTemplates = templates[season];
   if (!seasonTemplates) return null;
 
@@ -1604,6 +1718,7 @@ function generateYear(year: number): Record<string, DevotionalEntry> {
   const entries: Record<string, DevotionalEntry> = {};
   const adventStart = calculateAdventStart(year - 1);
   const easter = calculateEaster(year);
+  const cycle = getLiturgicalCycle(year);
 
   // Generate from Dec 1 of previous year (Advent) to Nov 30 of current year
   const startDate = new Date(year - 1, 11, 1);
@@ -1617,7 +1732,7 @@ function generateYear(year: number): Record<string, DevotionalEntry> {
       const season = getLiturgicalSeasonForLiturgicalYear(year, current);
       const week = getWeekOfSeason(current, season, adventStart, easter);
 
-      const devotional = generateForDate(current, season, week);
+      const devotional = generateForDate(current, season, week, cycle);
       if (devotional) {
         entries[dateStr] = devotional;
       }

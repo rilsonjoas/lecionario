@@ -14,7 +14,7 @@ aqui, achado ao auditar os roadmaps de todos os projetos)
 - Motor litúrgico completo: cálculo de Páscoa, estações, cores, ciclos A/B/C, nomes dos dias em PT-BR
 - Dados RCL em JSON para os três ciclos (leituras por data + coletas)
 - **Textos bíblicos completos** (Almeida ARC) — 4337 textos inseridos, 0 referências canônicas faltando
-- **Devocionais gerados** — 2152 orações + meditações (2025–2030) com templates sazonais
+- **Devocionais gerados** — 2191 orações + meditações (2025–2030), Tempo Comum dos três ciclos ancorado no RCL real (ver 1.2), demais estações com templates sazonais
 - **Conteúdo de Semana Santa** (2026-08-15/16) — Domingo de Ramos,
   Quinta/Sexta-Feira Santa, Sábado Santo, com orações e meditações
   originais pro Tríduo (ver 1.1) — estava listado como ausente na
@@ -33,7 +33,19 @@ aqui, achado ao auditar os roadmaps de todos os projetos)
 
 ### O que está incompleto ou ausente
 
-- Conteúdo devocional do Tempo Comum ainda genérico (mesma oração repete por 7 dias seguidos — ver 1.2)
+- Conteúdo devocional do Tempo Comum: **os três ciclos (A, B, C)
+  completos e precisos, ancorados no Próprio real do RCL, sem
+  repetição e sem lacuna** (2026-08-16/17/18) — Ciclo A (27 semanas,
+  189 dias, Próprios 3-29), Ciclo B (26 semanas, 182 dias, Próprios
+  4-29) e Ciclo C (26 semanas, 182 dias, Próprios 4-29), cada um
+  validado programaticamente contra suas duas ocorrências reais no
+  período gerado (2026/2029, 2024/2027/2030 e 2025/2028
+  respectivamente) — zero repetição, zero dia faltando. Esse trabalho
+  incluiu descobrir e consertar um bug estrutural na atribuição de
+  leituras que afetava os três ciclos, não só o devocional (ver 1.2a).
+  Os templates genéricos por estação (Advento, Natal, Epifania,
+  Quaresma, Páscoa, Pentecostes) seguem fora do escopo desta rodada
+  (ver 1.2)
 - **iOS nunca testado em dispositivo físico** (foco consciente em Android por enquanto — ver 1.3)
 - Notificações push ausentes
 - Compartilhamento nativo ausente
@@ -67,9 +79,183 @@ aqui, achado ao auditar os roadmaps de todos os projetos)
 
 ### 1.2 Conteúdo devocional
 
-- [ ] Revisar orações do Tempo Comum (atualmente genéricas demais)
-- [ ] Adicionar variação de conteúdo (mesma oração repete por 7 dias seguidos)
+**Causa raiz confirmada (2026-08-16):** cada semana do Tempo Comum
+tinha só 1 oração no array de templates (`generate-devotionals.ts`),
+então `seededPick` sempre "escolhia" a única opção — daí a repetição
+idêntica por até 7 dias. Além disso 16 das 27 semanas não tinham
+meditação própria (caíam no fallback genérico embutido no código), e
+semanas 29+ reaproveitavam a semana 24. O devocional também nunca
+usava o ciclo litúrgico A/B/C nem as leituras reais do RCL já
+existentes em `cycle-A/B/C.json` — o mesmo texto valia pra qualquer
+ano.
+
+- [x] **Arquitetura ancorada no RCL implementada** — `generateForDate()`
+      agora busca o domingo real do RCL que rege a semana
+      (`findGoverningOrdinarySunday`, por data + ciclo, não por número
+      de semana calculado localmente — os dois sistemas de numeração
+      divergiam) e usa conteúdo por dia da semana (índice = `date.getDay()`)
+      em vez de repetir o mesmo texto de domingo a sábado
+- [x] **`getLiturgicalCycle()` corrigido** — a função existia no script
+      mas estava com a fórmula errada e não era chamada em lugar
+      nenhum; agora alinhada com `src/lib/liturgical-calendar.ts` e
+      usada de fato
+- [x] **Bônus:** a semana entre o Domingo da Trindade e o 1º Próprio
+      real do Tempo Comum não tinha devocional nenhum. Depois do
+      conserto de 1.2a essa lacuna reapareceu (era um efeito colateral
+      do bug antigo, não uma correção de verdade) — resolvida agora
+      com conteúdo próprio: `trinityWeekA` (6 dias, Trindade+1 a
+      Trindade+6, sempre esse intervalo fixo todo ano), ancorado nas
+      4 leituras do próprio Domingo da Trindade
+- [x] **Ciclo A completo e preciso: 27 semanas do Tempo Comum
+      (Próprios 3-29) ancoradas no RCL corrigido** (2026-08-16/17) —
+      189 orações + 189 meditações originais, cada uma citando o
+      texto real da leitura daquele domingo. Conteúdo em
+      `scripts/grounded-content/ordinary-A.ts`, chaveado pelo número
+      real do Próprio (não mais posição sequencial — ver 1.2a).
+      **Validado sem nenhuma repetição e sem nenhum dia faltando** em
+      2026 e 2029 (as duas ocorrências reais do Ciclo A no período
+      gerado, 183 dias de Tempo Comum cada, checado programaticamente)
+- [x] **Achado da semana 26 investigado a fundo — era só a ponta do
+      iceberg (2026-08-16).** O que parecia um evangelho trocado numa
+      semana era na verdade um bug estrutural na atribuição de
+      leituras do Tempo Comum, presente nos **três ciclos**, afetando a
+      tela de leituras ao vivo (não só o devocional). Detalhe completo
+      da investigação e do conserto na seção **1.2a** abaixo.
+- [x] **Re-ancoramento de `ordinary-A.ts` no Próprio real concluído
+      (2026-08-17).** Comparei, entrada por entrada, as 24 semanas já
+      escritas contra as leituras corretas: 19 batiam limpo (só
+      renomeadas), mas 5 estavam de fato contaminadas (a antiga semana
+      16 usava leitura errada em 3 dos 7 dias — Romanos 11/Mateus 19
+      em vez do Filipenses 1/Mateus 20 real do Próprio 20 — e as
+      antigas semanas 22-25 foram escritas em cima de combinações que
+      não existem em nenhum domingo real do RCL). Reescrevi essas 5 do
+      zero, mais os Próprios 3, 4 e 6 que nunca tinham sido cobertos —
+      8 semanas novas ao todo (56 orações + 56 meditações), todas
+      ancoradas no texto bíblico real confirmado contra a fonte
+      oficial. `devotionals-2026/2029.json` regenerados e validados.
+- [x] **Ciclo B estendido e validado (2026-08-17).** `ordinary-B.ts`
+      escrito do zero (26 semanas, Próprios 4-29 — o Ciclo B nunca
+      precisa do Próprio 3 entre 2015-2045) mais `trinityWeekB`, todo
+      ancorado nas leituras reais (1 Samuel, 2 Samuel, 1 Reis, Jó, Rute
+      + 2 Coríntios, Efésios, Tiago, Hebreus + Evangelho de Marcos).
+      182 orações + 182 meditações originais. `tsc` limpo, validado sem
+      repetição e sem lacuna em 2027 e 2030 (as duas ocorrências reais
+      do Ciclo B no período gerado)
+- [x] **Ciclo C estendido e validado (2026-08-18).** `ordinary-C.ts`
+      escrito do zero (26 semanas, Próprios 4-29) mais `trinityWeekC`,
+      ancorado nas leituras reais (1-2 Reis, Amós, Oséias, Isaías,
+      Jeremias, Lamentações, Joel, Habacuque, Ageu + Gálatas,
+      Colossenses, 1-2 Timóteo, Filemom, 1-2 Tessalonicenses +
+      Evangelho de Lucas). 182 orações + 182 meditações originais.
+      `tsc` limpo, validado sem repetição e sem lacuna em 2025 e 2028
+      (as duas ocorrências reais do Ciclo C no período gerado, incluindo
+      2028 que é ano bissexto)
+- [x] `groundedOrdinary` e `trinityWeekByCycle` em
+      `generate-devotionals.ts` trocados de `{ A: ordinaryA }` pros três
+      ciclos (`A`, `B`, `C`). `devotionals-2025.json` a
+      `devotionals-2030.json` regenerados (2191 devocionais),
+      `prettier`/`tsc`/os 42 testes passando, `cycle-A/B/C.json` e
+      `devotionals-*.json` sincronizados pro mobile
+- [ ] Revisar/aposentar os templates genéricos por estação assim que a
+      cobertura ancorada for completa (hoje ainda são o fallback pra
+      Advento, Natal, Epifania, Quaresma, Páscoa e Pentecostes — fora
+      do escopo desta rodada, que tratou só do Tempo Comum)
 - [ ] Considerar Devocionais Feriados Nacionais (Natal, Ano Novo, Páscoa)
+
+---
+
+### 1.2a Precisão das leituras do RCL (achado e corrigido em 2026-08-16)
+
+**O problema real:** o Tempo Comum inteiro — os três ciclos, todo ano —
+mostrava a leitura bíblica errada, sistematicamente 2 semanas
+adiantada em relação à data certa do RCL oficial. Não era um bug
+raro; era 100% dos domingos do Tempo Comum, todo ano, nos três
+ciclos. Confirmado comparando o app contra o [Revised Common
+Lectionary da Vanderbilt Divinity Library](https://lectionary.library.vanderbilt.edu/)
+(a mesma fonte que o próprio `generate-rcl-data.ts` já citava) —
+baixei os calendários oficiais de 2025-2026 (Ano A), 2026-2027 (Ano
+B) e 2027-2028 (Ano C) e comparei domingo a domingo.
+
+**Duas causas raiz combinadas** em `generate-rcl-data.ts`:
+1. O Domingo da Trindade nunca existia como entrada própria — a
+   primeira leitura do "Tempo Comum" era mostrada na própria data da
+   Trindade, uma semana adiantada.
+2. A tabela de leituras (`ordinary:N`, numeração sequencial desde a
+   Trindade) pulava o Próprio 6 inteiro (Gênesis 18, "Sara ri") entre
+   as posições 2 e 3 — mais uma semana de atraso acumulado.
+3. Além disso, o fim da tabela (posições ~26-28) tinha conteúdo
+   fabricado/remendado que não corresponde a nenhum domingo real do
+   RCL (a origem do bug da Paixão na semana 26 do Ciclo A) — e o
+   Ciclo B tinha um erro pior ainda: boa parte da tabela "ordinary"
+   continha leituras da **Epifania**, coladas por engano no lugar das
+   leituras pós-Pentecostes.
+
+**Por que isso ia continuar quebrando todo ano:** o RCL real ancora
+cada "Próprio" numa janela fixa de 7 dias do calendário civil
+(Próprio 29 = Domingo de Cristo Rei = sempre o domingo entre 20-26 de
+novembro, todo ano, sem exceção). O código antigo contava
+sequencialmente a partir da Trindade — e como o número de domingos
+entre a Trindade e o Advento varia todo ano (22 a 27, dependendo de
+quando cai a Páscoa), a mesma "semana 2" caía em Próprios diferentes
+dependendo do ano. Não tinha como isso um dia coincidir certo, exceto
+por acaso.
+
+**O conserto:**
+- [x] Nova função `getProperNumberForDate()` — calcula o Próprio real
+      a partir da data (ancorado em 20 de novembro = início da janela
+      do Próprio 29), não mais por contagem sequencial
+- [x] Domingo de Pentecostes e Domingo da Trindade agora são entradas
+      próprias (a leitura de Pentecostes já existia na tabela mas
+      ficava órfã, nunca usada — só faltava ligar)
+- [x] Tabela de leituras do Tempo Comum **reconstruída do zero para
+      os três ciclos**, chaveada por Próprio real (`proper3` a
+      `proper29`), toda verificada contra a fonte oficial:
+      - **Ciclo A**: completo, Próprios 3-29 (Próprios 3-4 via
+        [crivoice.org](https://www.crivoice.org/lectionary/), Próprios
+        5-29 confirmados linha a linha contra o PDF oficial da
+        Vanderbilt)
+      - **Ciclo B**: completo, Próprios 4-29 (confirmado contra o PDF
+        oficial da Vanderbilt 2026-2027). Próprio 3 nunca é necessário
+        entre 2015-2045 (calculado, não suposto)
+      - **Ciclo C**: completo, Próprios 4-29 (Próprios 6-29 confirmados
+        contra o PDF oficial da Vanderbilt 2027-2028; **Próprios 4-5
+        via crivoice.org sem segunda confirmação cruzada** — sinalizado
+        porque não achei uma segunda fonte pra checar, mas na prática
+        quase não importa: nenhum ano entre 2015-2045 chega a precisar
+        do Próprio 4 do Ciclo C, e o Próprio 3 nunca é necessário nesse
+        intervalo)
+- [x] `weekOfSeason` das entradas do Tempo Comum agora É o número do
+      Próprio (3-29) — estável e com o mesmo significado todo ano, ao
+      invés de uma posição sequencial que significava coisas
+      diferentes dependendo do ano
+- [x] **Validado programaticamente, não só "parece certo":** rodei um
+      checador que compara cada domingo do Tempo Comum de 2026 (Ciclo
+      A) contra o PDF oficial — **zero divergências** nas 4 leituras de
+      todos os 25 Próprios daquele ano. Repeti pra todas as ocorrências
+      reais de cada ciclo no intervalo gerado (A: 2026, 2029 · B: 2024,
+      2027, 2030 · C: 2025, 2028) e para **2028, que é ano bissexto** —
+      Cristo Rei caiu certinho no último domingo antes do Advento em
+      todos os casos, sem exceção
+- [x] Textos bíblicos completos rebuscados (`lookup-bible-text.ts`)
+      pras citações novas/corrigidas — só ficaram sem texto as
+      referências deuterocanônicas (esperado, o script já ignora essas
+      de propósito) e nenhuma citação nova ficou sem texto
+- [x] `cycle-A/B/C.json` regenerados e sincronizados pro mobile,
+      `tsc`/`prettier`/os 42 testes passando
+
+**Cobertura temporal:** a fórmula do Próprio 29 (ancorada em 20 de
+novembro) é cálculo direto de data, não uma tabela fixa por ano —
+funciona pra qualquer ano, incluindo bissextos, sem precisar de
+manutenção. Validei contra 2015-2045 (31 anos, todos os bissextos do
+intervalo inclusos) que o Tempo Comum nunca precisa de menos que o
+Próprio 3 nem mais que o Próprio 29 — a tabela reconstruída cobre esse
+intervalo inteiro.
+
+**Atualização (2026-08-18):** os devocionais dos três ciclos (A, B, C)
+já foram ancorados/escritos no novo mapeamento — ver 1.2 acima. Único
+item em aberto do escopo original: revisar/aposentar os templates
+genéricos por estação (Advento, Natal, Epifania, Quaresma, Páscoa,
+Pentecostes), deliberadamente fora do escopo desta rodada.
 
 ---
 
@@ -387,7 +573,7 @@ Os JSONs são copiados do `lecionario-web/src/data/rcl/` para `lecionario-mobile
 | `getSampleDevotional` agora síncrono mas chamado com `await` | `page.tsx` | Cosmético — funciona |
 | RCL JSONs com 2MB+ cada | `src/data/rcl/` | Pode impactar tempo de build/bundle |
 | Admin panel quebrado (Supabase inativo) | `src/app/admin/` | Funcionalidade admin indisponível |
-| Devocionais repetem mesma oração 7 dias seguidos | `generate-devotionals.ts` | Conteúdo pouco variado |
+| Devocionais repetem mesma oração 7 dias seguidos fora do Tempo Comum (Advento, Natal, Epifania, Quaresma, Páscoa, Pentecostes) | `generate-devotionals.ts` | Conteúdo pouco variado nessas estações; Tempo Comum dos três ciclos já resolvido (ver 1.2) |
 | Sem testes para a camada de dados local | `src/lib/*.ts` | Confiança menor em refactors |
 
 ---
@@ -650,7 +836,7 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       direto no JSX). Comparado ao Meus Remédios (i18n real, pt/en/es
       completo) porque a natureza dos dois projetos é diferente: Meus
       Remédios é interface neutra, tradução é troca de string. Lecionário
-      é **100% conteúdo** — Bíblia em Almeida ARC, 2152 devocionais
+      é **100% conteúdo** — Bíblia em Almeida ARC, 2191 devocionais
       gerados em português. Traduzir só a UI sem traduzir o conteúdo
       bíblico/devocional seria teatro, não internacionalização de
       verdade — exigiria trocar a tradução bíblica de base (ESV/KJV em
