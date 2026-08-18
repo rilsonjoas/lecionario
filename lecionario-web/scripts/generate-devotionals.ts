@@ -32,6 +32,10 @@ import { epiphanyDay, epiphanyGapWeek } from './grounded-content/epiphany-shared
 import epiphanyA, { transfigurationWeek as transfigA } from './grounded-content/epiphany-A';
 import epiphanyB, { transfigurationWeek as transfigB } from './grounded-content/epiphany-B';
 import epiphanyC, { transfigurationWeek as transfigC } from './grounded-content/epiphany-C';
+import { ashWednesday, ashWednesdayGap, holyWeekEarly } from './grounded-content/lent-shared';
+import lentA from './grounded-content/lent-A';
+import lentB from './grounded-content/lent-B';
+import lentC from './grounded-content/lent-C';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -1535,7 +1539,16 @@ function getWeekOfSeason(date: Date, season: string, liturgicalYear: number, eas
       break;
     }
     case 'lent':
-      seasonStart = new Date(easter.getTime() - 46 * 86400000); // Ash Wednesday
+      // Achado em 2026-08-18 (ver ROADMAP.md 1.2h): contar a semana a
+      // partir da própria Quarta-feira de Cinzas (sempre uma
+      // quarta-feira) desalinhava a numeração do conteúdo ancorado —
+      // que é escrito por semana real domingo-sábado, como nas outras
+      // estações. Conta a partir do 1º Domingo da Quaresma (Cinzas+4
+      // dias, sempre um domingo) em vez disso; a própria
+      // Quarta-feira de Cinzas e os 3 dias seguintes (quinta a
+      // sábado) são tratados à parte por data exata, não por esta
+      // numeração de semana — ver generateForDate.
+      seasonStart = new Date(easter.getTime() - 46 * 86400000 + 4 * 86400000); // 1º Domingo da Quaresma
       break;
     case 'easter':
     case 'pentecost':
@@ -1603,6 +1616,18 @@ const transfigurationWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntr
   A: transfigA,
   B: transfigB,
   C: transfigC,
+};
+
+// Quaresma — 5 semanas fixas (1º-5º Domingo), mesmo padrão de
+// groundedAdvent. A semana 6 (Domingo de Ramos) não tem array aqui —
+// o próprio domingo, quinta e sexta-feira e sábado já são
+// sobrescritos por `triduumContent`; só segunda/terça/quarta dessa
+// semana usam `holyWeekEarly` (ver generateForDate). Ver
+// scripts/grounded-content/lent-*.ts.
+const groundedLent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+  A: lentA,
+  B: lentB,
+  C: lentC,
 };
 
 // ─── Tríduo Pascal — Conteúdo Fixo ──────────────────────────────────
@@ -1866,6 +1891,38 @@ function generateForDate(
     const groundedWeek = governingSunday
       ? groundedEpiphany[cycle]?.[governingSunday.weekOfSeason]
       : undefined;
+    if (groundedWeek) {
+      return groundedWeek[date.getDay()];
+    }
+  }
+
+  // Quaresma: a Quarta-feira de Cinzas em si e os 3 dias seguintes
+  // (quinta a sábado, sem leitura própria no RCL) são tratados por
+  // data exata, antes do 1º Domingo real da Quaresma — ver
+  // getWeekOfSeason (achado em 2026-08-18, ROADMAP.md 1.2h): a
+  // numeração de semana conta a partir desse 1º Domingo, não da
+  // própria Quarta-feira de Cinzas, pra alinhar com o conteúdo
+  // ancorado (escrito por semana domingo-sábado, como nas outras
+  // estações). Semana 6 (semana do Domingo de Ramos) só precisa de
+  // conteúdo próprio pra segunda/terça/quarta — domingo, quinta,
+  // sexta e sábado já são sobrescritos por `triduumContent` depois.
+  if (season === 'lent') {
+    const easter = calculateEaster(date.getFullYear());
+    const ashWed = addDays(easter, -46);
+    if (formatDate(date) === formatDate(ashWed)) {
+      return ashWednesday;
+    }
+    const daysSinceAsh = Math.round((date.getTime() - ashWed.getTime()) / 86400000);
+    if (daysSinceAsh > 0 && daysSinceAsh < 4) {
+      return ashWednesdayGap[daysSinceAsh - 1];
+    }
+    if (week === 6) {
+      if (date.getDay() >= 1 && date.getDay() <= 3) {
+        return holyWeekEarly[date.getDay() - 1];
+      }
+      return null;
+    }
+    const groundedWeek = groundedLent[cycle]?.[week];
     if (groundedWeek) {
       return groundedWeek[date.getDay()];
     }

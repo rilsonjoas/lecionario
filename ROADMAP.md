@@ -542,6 +542,47 @@ restantes.
 
 ---
 
+### 1.2h Quaresma ancorada no RCL, 3 ciclos (2026-08-18)
+
+Quinto bloco de conteúdo devocional ancorado no RCL. A Semana Santa
+(Domingo de Ramos, Quinta, Sexta e Sábado Santo) já tinha conteúdo
+dedicado desde 2026-08-15/16 (`triduumContent`) — este bloco cobre o
+resto: Quarta-feira de Cinzas até o 5º Domingo da Quaresma, e as três
+primeiras leituras da Semana Santa (segunda a quarta) que ainda
+caíam nos templates genéricos.
+
+- [x] `lent-shared.ts`: Quarta-feira de Cinzas (leitura fixa, igual
+      nos 3 ciclos), `ashWednesdayGap` (quinta a sábado seguintes, sem
+      leitura própria no RCL) e `holyWeekEarly` (segunda a
+      quarta-feira santa — os "Cânticos do Servo" de Isaías,
+      também comuns aos 3 ciclos)
+- [x] `lent-{A,B,C}.ts`: 5 semanas fixas (1º-5º Domingo da Quaresma),
+      mesmo padrão de `advent-*.ts` — 35 orações + 35 meditações por
+      ciclo
+- [x] **Achado de infraestrutura no caminho:** `getWeekOfSeason`
+      contava a semana da Quaresma a partir da própria Quarta-feira de
+      Cinzas (sempre uma quarta-feira) — o que desalinhava a
+      numeração do conteúdo ancorado, escrito por semana real
+      domingo-sábado como nas outras estações. Corrigido pra contar a
+      partir do 1º Domingo real da Quaresma (Cinzas+4 dias, sempre um
+      domingo); a própria Quarta-feira de Cinzas e os 3 dias
+      seguintes agora são tratados por data exata, não por essa
+      numeração
+- [x] Validado nos 6 anos gerados: 39 dias cada (Cinzas até a véspera
+      do Domingo de Ramos), zero repetição, zero lacuna; confirmado
+      que a Quarta-feira de Cinzas, o 1º Domingo da Quaresma e a
+      transição pra Semana Santa (segunda/terça/quarta → já
+      sobrescrito por `triduumContent` na quinta) encadeiam
+      corretamente sem sobreposição nem buraco
+- [x] Regressão de Tempo Comum, Advento, Natal e Epifania
+      reconfirmada. `tsc`, `prettier` e os 42 testes passando;
+      sincronizado pro mobile
+
+**Ainda falta:** Páscoa (Domingo de Páscoa até Pentecostes) — última
+estação genérica restante.
+
+---
+
 ### 1.3 Correção de build (mobile)
 
 - [x] **`NoSuchMethodError` resolvido (2026-08-15)** — não era teórico,
