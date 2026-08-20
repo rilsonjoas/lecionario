@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ScrollText, BookOpen, Music, Cross } from 'lucide-react';
+import { ScrollText, BookOpen, Music, Cross, Copy, Check } from 'lucide-react';
 import type { Reading } from '@/types';
 
 interface ReadingCardProps {
@@ -48,6 +49,14 @@ const readingTypeConfig = {
 export function ReadingCard({ reading, index }: ReadingCardProps) {
   const config = readingTypeConfig[reading.type];
   const IconComponent = config.icon;
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    const text = `${reading.reference}\n${reading.citation}\n\n${reading.text ?? ''}`;
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="group relative animate-fade-in" style={{ animationDelay: `${index * 150}ms` }}>
@@ -66,12 +75,21 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
               </p>
             </div>
 
-            <Badge className="bg-accent/10 text-accent border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2">
-              <IconComponent className="w-3 h-3" />
-              <span className="text-[9px] uppercase tracking-[0.2em] font-bold">
-                {config.label}
-              </span>
-            </Badge>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={handleCopy}
+                className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+                aria-label={copied ? 'Copiado' : 'Copiar leitura'}
+              >
+                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              </button>
+              <Badge className="bg-accent/10 text-accent border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2">
+                <IconComponent className="w-3 h-3" />
+                <span className="text-[9px] uppercase tracking-[0.2em] font-bold">
+                  {config.label}
+                </span>
+              </Badge>
+            </div>
           </div>
 
           {reading.text && (

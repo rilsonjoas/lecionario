@@ -4,7 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { format, addDays, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Share2, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -81,6 +81,31 @@ function HomeContent() {
     router.push(`/?date=${dateStr}`, { scroll: false });
   };
 
+  const [shared, setShared] = useState(false);
+  const handleShareDay = async () => {
+    if (!devotional) return;
+    const d = devotional;
+    const lines = [
+      `${d.liturgicalInfo.dayName}`,
+      `${format(currentDate, "EEEE, d 'de' MMMM", { locale: ptBR })} — Ano ${d.liturgicalInfo.cycle}`,
+      '',
+      ...d.readings.map((r) => `${r.reference} (${r.citation})`),
+      '',
+      d.collect ? `Coleta: ${d.collect}` : '',
+      `Meditação: ${d.meditation.prompt}`,
+      '',
+      '— Lecionário Comum Revisado',
+    ];
+    const text = lines.filter(Boolean).join('\n');
+    if (navigator.share) {
+      await navigator.share({ title: d.liturgicalInfo.dayName, text });
+    } else {
+      await navigator.clipboard.writeText(text);
+    }
+    setShared(true);
+    setTimeout(() => setShared(false), 2000);
+  };
+
   if (error) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
@@ -148,6 +173,21 @@ function HomeContent() {
             >
               <span className="hidden sm:inline">Próximo Dia</span>
               <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleShareDay}
+              className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
+              aria-label={shared ? 'Dia copiado' : 'Compartilhar dia'}
+            >
+              {shared ? (
+                <Check className="w-3 h-3 md:w-4 md:h-4" />
+              ) : (
+                <Share2 className="w-3 h-3 md:w-4 md:h-4" />
+              )}
+              <span className="hidden sm:inline">{shared ? 'Copiado!' : 'Compartilhar'}</span>
             </Button>
           </div>
         </div>

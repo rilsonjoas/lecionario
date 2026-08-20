@@ -1,4 +1,4 @@
-import { Flame } from 'lucide-react';
+import { Flame, Copy, Check } from 'lucide-react';
 import { useState } from 'react';
 import type { DailyPrayer } from '@/types';
 
@@ -8,6 +8,19 @@ interface PrayerSectionProps {
 
 export function PrayerSection({ prayer }: PrayerSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    const parts = [prayer.title, prayer.text];
+    if (prayer.author || prayer.source) {
+      parts.push(
+        `— ${prayer.author ?? ''}${prayer.author && prayer.source ? ' • ' : ''}${prayer.source ?? ''}`,
+      );
+    }
+    await navigator.clipboard.writeText(parts.join('\n\n'));
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="relative animate-fade-in group">
@@ -49,7 +62,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             )}
           </div>
 
-          <div className="pt-10 text-center border-t border-dourado/10">
+          <div className="pt-10 text-center border-t border-dourado/10 space-y-4">
             {/* `shimmer-gold` era classe morta (não existia no CSS deste
                 projeto, só na nota de identidade do vault) — removida.
                 Cor trocada pra dourado-texto (achado 2026-08-15: dourado/40
@@ -57,6 +70,14 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             <p className="text-[10px] uppercase tracking-[0.5em] text-dourado-texto font-bold">
               "SURSUM CORDA — CORAÇÕES AO ALTO"
             </p>
+            <button
+              onClick={handleCopy}
+              className="inline-flex items-center gap-2 px-4 py-2 text-[10px] uppercase tracking-[0.2em] font-bold text-dourado-texto border border-dourado/20 rounded-md hover:bg-dourado/10 transition-colors"
+              aria-label={copied ? 'Copiado' : 'Copiar oração'}
+            >
+              {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+              {copied ? 'Copiado!' : 'Copiar'}
+            </button>
           </div>
         </div>
         <div className="classic-frame-footer" />

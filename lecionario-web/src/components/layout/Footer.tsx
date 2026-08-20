@@ -1,9 +1,15 @@
 import { Heart } from 'lucide-react';
+import { seasonBrandColors } from '@/lib/theme';
 import type { LiturgicalSeason } from '@/types';
 
 export function Footer({ season = 'ordinary' }: { season?: LiturgicalSeason }) {
+  const seasonBg = seasonBrandColors[season];
+
   return (
-    <footer className="bg-secondary border-t border-accent/10 mt-16 texture-leather">
+    <footer
+      className="border-t border-accent/10 mt-16 texture-leather transition-colors duration-700"
+      style={{ backgroundColor: seasonBg }}
+    >
       <div className="container mx-auto px-4 py-12">
         <div className="text-center space-y-6">
           <div className="flex items-center justify-center gap-4 text-xs uppercase tracking-[0.3em] font-bold text-dourado-texto">
