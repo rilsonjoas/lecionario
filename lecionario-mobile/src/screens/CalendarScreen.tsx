@@ -50,7 +50,6 @@ export default function CalendarScreen() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     const timer = setTimeout(() => setLoading(false), 100);
     return () => clearTimeout(timer);
   }, [currentMonth]);
