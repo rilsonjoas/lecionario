@@ -55,7 +55,6 @@ aqui, achado ao auditar os roadmaps de todos os projetos)
   mesmo padrão de erro do Tempo Comum — ver 1.2b
 - **iOS nunca testado em dispositivo físico** (foco consciente em Android por enquanto — ver 1.3)
 - Notificações push ausentes
-- Compartilhamento nativo ausente
 - Config screen com apenas limpar cache
 - Cobertura de testes baixa (só motor litúrgico)
 - Sem crash reporting, sem analytics
@@ -159,11 +158,11 @@ ano.
       `devotionals-2030.json` regenerados (2191 devocionais),
       `prettier`/`tsc`/os 42 testes passando, `cycle-A/B/C.json` e
       `devotionals-*.json` sincronizados pro mobile
-- [ ] Revisar/aposentar os templates genéricos por estação assim que a
-      cobertura ancorada for completa (hoje ainda são o fallback pra
-      Advento, Natal, Epifania, Quaresma, Páscoa e Pentecostes — fora
-      do escopo desta rodada, que tratou só do Tempo Comum)
-- [ ] Considerar Devocionais Feriados Nacionais (Natal, Ano Novo, Páscoa)
+- [x] Revisar/aposentar os templates genéricos por estação (2026-08-20) —
+      removidos 1278 linhas de código morto (`templates` inteiro,
+      `seededPick`, fallback). Nenhuma estação caía mais nele; fallback
+      agora é `return null` (melhor que mostrar conteúdo genérico errado).
+      `generate-devotionals.ts` saiu de 2139 pra 855 linhas
 
 ---
 
@@ -982,7 +981,6 @@ Os JSONs são copiados do `lecionario-web/src/data/rcl/` para `lecionario-mobile
 |---|---|---|
 | `getSampleDevotional` agora síncrono mas chamado com `await` | `page.tsx` | Cosmético — funciona |
 | RCL JSONs com 2MB+ cada | `src/data/rcl/` | Pode impactar tempo de build/bundle |
-| Devocionais repetem mesma oração 7 dias seguidos fora do Tempo Comum (Advento, Natal, Epifania, Quaresma, Páscoa, Pentecostes) | `generate-devotionals.ts` | Conteúdo pouco variado nessas estações; Tempo Comum dos três ciclos já resolvido (ver 1.2) |
 | Sem testes para a camada de dados local | `src/lib/*.ts` | Confiança menor em refactors |
 
 ---

@@ -174,21 +174,6 @@ function HomeContent() {
               <span className="hidden sm:inline">Próximo Dia</span>
               <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
             </Button>
-
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={handleShareDay}
-              className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
-              aria-label={shared ? 'Dia copiado' : 'Compartilhar dia'}
-            >
-              {shared ? (
-                <Check className="w-3 h-3 md:w-4 md:h-4" />
-              ) : (
-                <Share2 className="w-3 h-3 md:w-4 md:h-4" />
-              )}
-              <span className="hidden sm:inline">{shared ? 'Copiado!' : 'Compartilhar'}</span>
-            </Button>
           </div>
         </div>
 
@@ -211,6 +196,17 @@ function HomeContent() {
                 <span className="text-accent">❖</span>
                 <span className="divider-line"></span>
               </div>
+
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleShareDay}
+                className="text-muted-foreground hover:text-accent transition-colors gap-2 text-xs mx-auto"
+                aria-label={shared ? 'Dia copiado' : 'Compartilhar dia'}
+              >
+                {shared ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
+                {shared ? 'Copiado!' : 'Compartilhar este dia'}
+              </Button>
             </section>
 
             {/* Oração de Coleta */}
