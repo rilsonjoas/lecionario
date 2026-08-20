@@ -38,9 +38,7 @@ lecionario/
 | App mobile — telas Home, Calendário, Configurações | Funcional |
 | App web — PWA devocional | Funcional |
 | Cache offline (AsyncStorage + TTL 24h) | Implementado |
-| Admin web (painel de edição) | Requer Supabase (opcional) |
 | Notificações push | Pendente |
-| Conteúdo Semana Santa | Pendente |
 
 Veja [ROADMAP.md](ROADMAP.md) para o plano completo até v1.0 e além.
 
@@ -96,12 +94,7 @@ npx eas build --profile development --platform android
 
 ## Variáveis de ambiente
 
-| Variável | Onde | Descrição | Obrigatória? |
-|---|---|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | `lecionario-web/.env.local` | URL do projeto Supabase | Admin apenas |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | `lecionario-web/.env.local` | Chave anon pública | Admin apenas |
-
-O app principal **não precisa** de Supabase. O admin panel (opcional) usa Supabase para auth + CRUD.
+Nenhuma variável de ambiente necessária. Todos os dados são locais (bundlados no app).
 
 ---
 
@@ -114,7 +107,6 @@ O app principal **não precisa** de Supabase. O admin panel (opcional) usa Supab
 | `generate-rcl-data.ts` | Gera JSONs RCL com datas, leituras, coletas para ciclos A/B/C |
 | `lookup-bible-text.ts` | Popula textos bíblicos (Almeida ARC) nos JSONs RCL |
 | `generate-devotionals.ts` | Gera orações + meditações diárias (2025–2030) |
-| `full-seed.ts` | (Opcional) Popula Supabase com os dados |
 
 
 

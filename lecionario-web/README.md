@@ -11,12 +11,11 @@
 | **Engine litúrgico** | Completo (Páscoa, Advento, cores, ciclos A/B/C, nomes em PT-BR) | Completo (portado do web)                           |
 | **Dados RCL**        | Ciclos A/B/C completos com textos bíblicos (ARC, ~4337 textos)  | Mesmos dados (JSONs copiados)                       |
 | **Devocionais**      | 2152 orações + meditações (2025–2030)                           | Mesmos dados (JSONs copiados)                       |
-| **UI**               | 49 componentes shadcn/ui + devocionais + admin                  | Home, Calendário, Configurações                     |
-| **Supabase**         | Apenas admin panel (opcional)                                   | Removido — dados 100% locais                        |
+| **UI**               | 49 componentes shadcn/ui + devocionais                          | Home, Calendário, Configurações                     |
+| **Dados**            | 100% locais (JSONs bundlados, sem backend)                      | Mesmos dados (JSONs copiados)                       |
 | **Testes**           | 42 testes (Vitest) — motor litúrgico + utils                    | 38 testes (Vitest) — motor litúrgico                |
 | **CI/CD**            | GitHub Actions (lint + typecheck + format + testes)             | GitHub Actions (lint + typecheck + format + testes) |
 | **Offline**          | Service Worker com runtime caching + dados estáticos bundlados  | AsyncStorage com TTL 24h + JSONs bundlados          |
-| **Admin**            | Painel com auth, editor, estatísticas (requer Supabase)         | Inexistente                                         |
 
 ## 🗺️ Roadmap
 

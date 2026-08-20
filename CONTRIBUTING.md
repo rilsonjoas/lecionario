@@ -62,8 +62,6 @@ lecionario-web/        # Web app (Next.js 14 PWA)
     types/             # Definições TypeScript
     data/              # Dados RCL e devocionais
     hooks/             # Hooks personalizados
-  supabase/
-    migrations/        # Migrações do banco
 
 lecionario-mobile/     # Mobile app (Expo/React Native)
 ```

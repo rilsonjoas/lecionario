@@ -4,7 +4,7 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { format, addDays, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, CalendarDays } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -13,7 +13,6 @@ import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
 import { DatePicker } from '@/components/layout/DatePicker';
-import { LiturgicalCalendar } from '@/components/layout/LiturgicalCalendar';
 import { getSampleDevotional } from '@/data/sample-devotional';
 import { applySeasonTheme, applySeasonBranding } from '@/lib/theme';
 import type { DailyDevotional } from '@/types';
@@ -52,22 +51,20 @@ function HomeContent() {
 
   const [devotional, setDevotional] = useState<DailyDevotional | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [showCalendar, setShowCalendar] = useState(false);
-
   useEffect(() => {
-    async function loadDevotional() {
-      setError(null);
-      setDevotional(null);
-      try {
-        const data = await getSampleDevotional(currentDate);
-        setDevotional(data);
-      } catch (err) {
-        const message = err instanceof Error ? err.message : 'Erro ao carregar devocional';
-        console.error('Erro ao carregar devocional:', err);
-        setError(message);
-      }
+    // getSampleDevotional é síncrona (lê dados já bundlados, sem I/O) —
+    // não precisa de async/await; achado ao auditar o ROADMAP contra o
+    // código real (2026-08-19).
+    setError(null);
+    setDevotional(null);
+    try {
+      const data = getSampleDevotional(currentDate);
+      setDevotional(data);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Erro ao carregar devocional';
+      console.error('Erro ao carregar devocional:', err);
+      setError(message);
     }
-    loadDevotional();
   }, [currentDate]);
 
   useEffect(() => {
@@ -81,7 +78,6 @@ function HomeContent() {
   const handleDateChange = (newDate: Date) => {
     const dateStr = format(newDate, 'yyyy-MM-dd');
     setCurrentDate(newDate);
-    setShowCalendar(false);
     router.push(`/?date=${dateStr}`, { scroll: false });
   };
 
@@ -115,7 +111,10 @@ function HomeContent() {
     <>
       <DateSync onDateChange={setCurrentDate} />
       <div className="min-h-screen bg-background transition-all duration-700">
-        <Header liturgicalDay={devotional.liturgicalInfo} />
+        <Header
+          liturgicalDay={devotional.liturgicalInfo}
+          season={devotional.liturgicalInfo.season}
+        />
 
         {/* Navigation Controls */}
         <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-accent/10 py-3 md:py-4 shadow-sm">
@@ -143,18 +142,6 @@ function HomeContent() {
             <Button
               variant="ghost"
               size="sm"
-              onClick={() => setShowCalendar((p) => !p)}
-              className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
-              title="Calendário Litúrgico"
-              aria-label="Abrir calendário litúrgico"
-            >
-              <CalendarDays className="w-3.5 h-3.5 md:w-4 md:h-4" />
-              <span className="hidden sm:inline">Calendário</span>
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="sm"
               onClick={() => handleDateChange(addDays(currentDate, 1))}
               className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
               aria-label="Próximo dia"
@@ -164,12 +151,6 @@ function HomeContent() {
             </Button>
           </div>
         </div>
-
-        {showCalendar && (
-          <div className="container mx-auto px-3 md:px-4 py-6 max-w-4xl animate-fade-in">
-            <LiturgicalCalendar currentDate={currentDate} onDateChange={handleDateChange} />
-          </div>
-        )}
 
         <main className="container mx-auto px-3 md:px-4 py-12 md:py-16 max-w-6xl">
           <div className="space-y-16 md:space-y-20">

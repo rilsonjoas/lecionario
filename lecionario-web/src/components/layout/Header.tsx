@@ -1,19 +1,25 @@
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Calendar } from 'lucide-react';
-import type { LiturgicalDayInfo } from '@/types';
+import { seasonBrandColors } from '@/lib/theme';
+import type { LiturgicalDayInfo, LiturgicalSeason } from '@/types';
 
 interface HeaderProps {
   liturgicalDay: LiturgicalDayInfo;
+  season: LiturgicalSeason;
 }
 
-export function Header({ liturgicalDay }: HeaderProps) {
+export function Header({ liturgicalDay, season }: HeaderProps) {
   // Parse date string correctly to avoid timezone issues
   // Add 'T00:00:00' to force local timezone interpretation
   const currentDate = parseISO(liturgicalDay.date + 'T00:00:00');
+  const seasonBg = seasonBrandColors[season];
 
   return (
-    <header className="relative bg-secondary border-b border-accent/20 shadow-2xl overflow-hidden pb-8 md:pb-12 pt-6 md:pt-10 texture-leather">
+    <header
+      className="relative border-b border-accent/20 shadow-2xl overflow-hidden pb-8 md:pb-12 pt-6 md:pt-10"
+      style={{ backgroundColor: seasonBg }}
+    >
       {/* Decorative background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-laranja-queimado/10 rounded-full blur-3xl animate-pulse" />

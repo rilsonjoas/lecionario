@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Platform } from 'react-native';
+import { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Platform, ActivityIndicator } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -47,6 +47,13 @@ export default function CalendarScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavProp>();
   const [currentMonth, setCurrentMonth] = useState(startOfMonth(new Date()));
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => setLoading(false), 100);
+    return () => clearTimeout(timer);
+  }, [currentMonth]);
 
   const goPrevMonth = () => setCurrentMonth((prev) => subMonths(prev, 1));
   const goNextMonth = () => setCurrentMonth((prev) => addMonths(prev, 1));
@@ -119,8 +126,13 @@ export default function CalendarScreen() {
         ))}
       </View>
 
-      <View style={styles.daysGrid}>
-        {days.map((d) => {
+      {loading ? (
+        <View style={styles.loadingContainer}>
+          <ActivityIndicator size="large" color="#B8860B" />
+        </View>
+      ) : (
+        <View style={styles.daysGrid}>
+          {days.map((d) => {
           const info = getLiturgicalDayInfo(d);
           const seasonColor = seasonColors[info.season];
           const inMonth = isSameMonth(d, currentMonth);
@@ -152,7 +164,8 @@ export default function CalendarScreen() {
             </TouchableOpacity>
           );
         })}
-      </View>
+        </View>
+      )}
 
       <View style={styles.legend}>
         <Text style={styles.legendTitle}>Cores Litúrgicas</Text>
@@ -174,6 +187,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#1A1A1A',
     paddingHorizontal: 16,
+  },
+  loadingContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 80,
   },
   header: {
     flexDirection: 'row',

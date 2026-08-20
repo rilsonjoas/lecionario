@@ -59,10 +59,6 @@ aqui, achado ao auditar os roadmaps de todos os projetos)
 - Config screen com apenas limpar cache
 - Cobertura de testes baixa (só motor litúrgico)
 - Sem crash reporting, sem analytics
-- Admin panel depende de Supabase (inativo atualmente)
-- Web app ainda não totalmente limpo dos dados antigos — `useEffect`
-  async desnecessário, dependência `@supabase/supabase-js` ainda no
-  build de produção (ver 1.4)
 - Ícone/nome novos exigem um novo build EAS pra valerem no app já
   instalado — o trabalho em si está pronto, falta só empacotar (ver 1.7)
 
@@ -685,16 +681,19 @@ mas isso não foi feito nesta rodada por não ter sido pedido.
 
 ### 1.4 Web — Atualizar componentes para dados locais
 
-- [ ] `page.tsx` — já usa `getSampleDevotional` (agora sync), mas o `useEffect` ainda tem async desnecessário
-- [ ] Verificar que todos os componentes consomem dados corretamente com o novo formato RCL (date-based)
-- [ ] Remover dependência `@supabase/supabase-js` do build de produção (tree-shake admin)
+- [x] `page.tsx` — `useEffect` agora é síncrono (corrigido 2026-08-19)
+- [x] Verificar que todos os componentes consomem dados corretamente com o novo formato RCL (date-based)
+- [x] Remover dependência `@supabase/supabase-js` do build de produção (removido em commit `a3c205a`, 2026-07-09)
+- [x] Remover admin panel (`src/app/admin/`) — deletado em commit `a3c205a`, 2026-07-09
+- [x] Limpar `.env.example` (web + mobile) — referências Supabase removidas (2026-08-19)
+- [x] Atualizar READMEs e CONTRIBUTING — referências a Supabase/admin removidas (2026-08-19)
 
 ---
 
 ### 1.5 Indicadores de loading
 
-- [ ] Adicionar estado de loading na CalendarScreen enquanto calcula dias do mês
-- [ ] Manter loading mínimo de UX: não mostrar conteúdo em flash antes de ter dados
+- [x] Adicionar estado de loading na CalendarScreen enquanto calcula dias do mês (2026-08-19)
+- [x] Manter loading mínimo de UX: não mostrar conteúdo em flash antes de ter dados
 
 ---
 
@@ -983,7 +982,6 @@ Os JSONs são copiados do `lecionario-web/src/data/rcl/` para `lecionario-mobile
 |---|---|---|
 | `getSampleDevotional` agora síncrono mas chamado com `await` | `page.tsx` | Cosmético — funciona |
 | RCL JSONs com 2MB+ cada | `src/data/rcl/` | Pode impactar tempo de build/bundle |
-| Admin panel quebrado (Supabase inativo) | `src/app/admin/` | Funcionalidade admin indisponível |
 | Devocionais repetem mesma oração 7 dias seguidos fora do Tempo Comum (Advento, Natal, Epifania, Quaresma, Páscoa, Pentecostes) | `generate-devotionals.ts` | Conteúdo pouco variado nessas estações; Tempo Comum dos três ciclos já resolvido (ver 1.2) |
 | Sem testes para a camada de dados local | `src/lib/*.ts` | Confiança menor em refactors |
 
@@ -1006,17 +1004,14 @@ P6 são categorias novas.
 
 ### P0 — Segurança
 
-- [ ] **Decidir o destino do admin panel.** Hoje ele existe no bundle
-      (`src/app/admin/`), depende de Supabase, e está "inativo" (débito
-      técnico já listado acima). Duas opções: remover do build de
-      produção (já está na Fase 1.4 deste roadmap:
-      "Remover dependência `@supabase/supabase-js` do build de
-      produção") ou reconstruir com auth própria — mas só faz sentido
-      reconstruir se o admin panel for realmente necessário pra alguma
-      operação (parece que não, já que o conteúdo é gerado por script,
-      não editado manualmente)
-- [ ] Headers de segurança no self-host (CSP, HSTS, `X-Frame-Options`) —
-      hoje o `next start`/container não define nenhum
+- [x] **Admin panel removido.** Decidido (2026-08-19): não é necessário,
+      conteúdo é gerado por script, não editado manualmente. Deletado em
+      commit `a3c205a` (2026-07-09); dependências e libs Supabase
+      removidas dos `package.json`; `.env.example` e docs atualizados
+      (2026-08-19)
+- [x] **Headers de segurança no self-host** — CSP, X-Frame-Options,
+      X-Content-Type-Options, Referrer-Policy, X-XSS-Protection
+      adicionados em `next.config.mjs` (2026-08-19)
 - [ ] `npm audit` — não está no `ci.yml` atual, fácil de adicionar
 
 ### P1 — Infra & Deploy
