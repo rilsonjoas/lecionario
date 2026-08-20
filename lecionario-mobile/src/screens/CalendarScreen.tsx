@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Platform, ActivityIndicator } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+  Platform,
+  ActivityIndicator,
+} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -132,37 +140,37 @@ export default function CalendarScreen() {
       ) : (
         <View style={styles.daysGrid}>
           {days.map((d) => {
-          const info = getLiturgicalDayInfo(d);
-          const seasonColor = seasonColors[info.season];
-          const inMonth = isSameMonth(d, currentMonth);
-          const isToday = isSameDay(d, today);
+            const info = getLiturgicalDayInfo(d);
+            const seasonColor = seasonColors[info.season];
+            const inMonth = isSameMonth(d, currentMonth);
+            const isToday = isSameDay(d, today);
 
-          return (
-            <TouchableOpacity
-              key={d.toISOString()}
-              style={[
-                styles.dayCell,
-                { width: daySize, height: daySize },
-                !inMonth && styles.dayCellOtherMonth,
-                isToday && styles.dayCellToday,
-              ]}
-              onPress={() => navigation.navigate('Hoje', { date: format(d, 'yyyy-MM-dd') })}
-              accessibilityLabel={`${format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })} - ${info.dayName}`}
-              accessibilityRole="button"
-            >
-              <View style={[styles.dayDot, { backgroundColor: seasonColor }]} />
-              <Text
+            return (
+              <TouchableOpacity
+                key={d.toISOString()}
                 style={[
-                  styles.dayText,
-                  !inMonth && styles.dayTextOtherMonth,
-                  isToday && styles.dayTextToday,
+                  styles.dayCell,
+                  { width: daySize, height: daySize },
+                  !inMonth && styles.dayCellOtherMonth,
+                  isToday && styles.dayCellToday,
                 ]}
+                onPress={() => navigation.navigate('Hoje', { date: format(d, 'yyyy-MM-dd') })}
+                accessibilityLabel={`${format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })} - ${info.dayName}`}
+                accessibilityRole="button"
               >
-                {format(d, 'd')}
-              </Text>
-            </TouchableOpacity>
-          );
-        })}
+                <View style={[styles.dayDot, { backgroundColor: seasonColor }]} />
+                <Text
+                  style={[
+                    styles.dayText,
+                    !inMonth && styles.dayTextOtherMonth,
+                    isToday && styles.dayTextToday,
+                  ]}
+                >
+                  {format(d, 'd')}
+                </Text>
+              </TouchableOpacity>
+            );
+          })}
         </View>
       )}
 
