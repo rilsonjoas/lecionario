@@ -31,9 +31,7 @@ export function QuoteCard({ date }: QuoteCardProps) {
   return (
     <View style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}>
       <MaterialCommunityIcons name="format-quote-open" size={20} color={colors.accent} />
-      <Text style={[styles.quote, { color: colors.text, fontSize: scale(15) }]}>
-        {quote.quote}
-      </Text>
+      <Text style={[styles.quote, { color: colors.text, fontSize: scale(15) }]}>{quote.quote}</Text>
       <TouchableOpacity
         onPress={() => Linking.openURL(amazonUrl)}
         style={styles.sourceRow}

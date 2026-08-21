@@ -36,14 +36,15 @@ interface CycleData {
 }
 
 const allDevotionals: DevotionalsData[] = [
-  devotionals2025 as DevotionalsData, devotionals2026 as DevotionalsData,
-  devotionals2027 as DevotionalsData, devotionals2028 as DevotionalsData,
-  devotionals2029 as DevotionalsData, devotionals2030 as DevotionalsData,
+  devotionals2025 as DevotionalsData,
+  devotionals2026 as DevotionalsData,
+  devotionals2027 as DevotionalsData,
+  devotionals2028 as DevotionalsData,
+  devotionals2029 as DevotionalsData,
+  devotionals2030 as DevotionalsData,
 ];
 
-const allCycles: CycleData[] = [
-  cycleA as CycleData, cycleB as CycleData, cycleC as CycleData,
-];
+const allCycles: CycleData[] = [cycleA as CycleData, cycleB as CycleData, cycleC as CycleData];
 
 function getReadingsForDate(dateStr: string): string[] {
   for (const cycle of allCycles) {
@@ -90,7 +91,8 @@ export function searchDevotionals(query: string): SearchResult[] {
         continue;
       }
 
-      const medText = `${meditation?.prompt || ''} ${(meditation?.questions || []).join(' ')}`.toLowerCase();
+      const medText =
+        `${meditation?.prompt || ''} ${(meditation?.questions || []).join(' ')}`.toLowerCase();
       if (medText.includes(q)) {
         results.push({ date: dateStr, dayName: prayer?.title || dateStr, matchedOn: 'meditação' });
         seen.add(dateStr);

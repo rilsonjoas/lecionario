@@ -26,9 +26,7 @@ export function ArtCard({ reference }: Props) {
 
   if (!artwork) return null;
 
-  const imageUrl = artwork.imageUrl
-    ? `${API_BASE}${artwork.imageUrl}`
-    : null;
+  const imageUrl = artwork.imageUrl ? `${API_BASE}${artwork.imageUrl}` : null;
 
   return (
     <View style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}>
@@ -38,17 +36,15 @@ export function ArtCard({ reference }: Props) {
           Pintura do Dia
         </Text>
       </View>
-      {imageUrl && (
-        <Image
-          source={{ uri: imageUrl }}
-          style={styles.image}
-          resizeMode="cover"
-        />
-      )}
+      {imageUrl && <Image source={{ uri: imageUrl }} style={styles.image} resizeMode="cover" />}
       <Text style={[styles.title, { color: colors.text, fontSize: scale(14) }]} numberOfLines={2}>
-        {artwork.title}{artwork.year ? ` (${artwork.year})` : ''}
+        {artwork.title}
+        {artwork.year ? ` (${artwork.year})` : ''}
       </Text>
-      <Text style={[styles.artist, { color: colors.textMuted, fontSize: scale(12) }]} numberOfLines={1}>
+      <Text
+        style={[styles.artist, { color: colors.textMuted, fontSize: scale(12) }]}
+        numberOfLines={1}
+      >
         {artwork.artistOrDirector}
       </Text>
       <TouchableOpacity

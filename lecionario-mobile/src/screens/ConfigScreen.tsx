@@ -8,7 +8,11 @@ import {
   scheduleDailyNotification,
   cancelAllNotifications,
 } from '@/lib/notifications';
-import { useSettings, type ThemePreference, type FontSizePreference } from '@/contexts/SettingsContext';
+import {
+  useSettings,
+  type ThemePreference,
+  type FontSizePreference,
+} from '@/contexts/SettingsContext';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
 
@@ -31,7 +35,12 @@ const TIME_OPTIONS = [
   { value: '09:00', label: '9h' },
 ];
 
-const BIBLIOTECA_LINKS: { label: string; description: string; url: string; icon: keyof typeof MaterialCommunityIcons.glyphMap }[] = [
+const BIBLIOTECA_LINKS: {
+  label: string;
+  description: string;
+  url: string;
+  icon: keyof typeof MaterialCommunityIcons.glyphMap;
+}[] = [
   {
     label: 'Narniano',
     description: 'A casa de todos os projetos',
@@ -121,7 +130,10 @@ export default function ConfigScreen() {
 
   return (
     <ScrollView
-      style={[styles.container, { backgroundColor: colors.background, paddingTop: insets.top + 16 }]}
+      style={[
+        styles.container,
+        { backgroundColor: colors.background, paddingTop: insets.top + 16 },
+      ]}
       contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
     >
       <View style={styles.header}>
@@ -224,7 +236,9 @@ export default function ConfigScreen() {
         <TouchableOpacity
           style={[styles.row, { borderBottomColor: colors.border }]}
           onPress={handleToggleNotifications}
-          accessibilityLabel={notificationsEnabled ? 'Desativar notificações' : 'Ativar notificações'}
+          accessibilityLabel={
+            notificationsEnabled ? 'Desativar notificações' : 'Ativar notificações'
+          }
           accessibilityRole="switch"
           accessibilityState={{ checked: notificationsEnabled }}
         >
@@ -259,8 +273,15 @@ export default function ConfigScreen() {
         </TouchableOpacity>
 
         {notificationsEnabled && (
-          <View style={[styles.timePicker, { backgroundColor: colors.card, borderColor: colors.border }]}>
-            <Text style={[styles.timePickerLabel, { color: colors.textMuted, fontSize: scale(10) }]}>
+          <View
+            style={[
+              styles.timePicker,
+              { backgroundColor: colors.card, borderColor: colors.border },
+            ]}
+          >
+            <Text
+              style={[styles.timePickerLabel, { color: colors.textMuted, fontSize: scale(10) }]}
+            >
               Horário
             </Text>
             <View style={styles.timeRow}>
@@ -272,8 +293,7 @@ export default function ConfigScreen() {
                     {
                       backgroundColor:
                         notificationTime === opt.value ? colors.accent : 'transparent',
-                      borderColor:
-                        notificationTime === opt.value ? colors.accent : colors.border,
+                      borderColor: notificationTime === opt.value ? colors.accent : colors.border,
                     },
                   ]}
                   onPress={() => handleChangeTime(opt.value)}

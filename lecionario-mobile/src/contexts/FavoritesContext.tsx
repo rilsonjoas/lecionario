@@ -20,23 +20,15 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
     });
   }, []);
 
-  const toggleFavorite = useCallback(
-    (dateStr: string) => {
-      setFavorites((prev) => {
-        const next = prev.includes(dateStr)
-          ? prev.filter((d) => d !== dateStr)
-          : [...prev, dateStr];
-        AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(next));
-        return next;
-      });
-    },
-    [],
-  );
+  const toggleFavorite = useCallback((dateStr: string) => {
+    setFavorites((prev) => {
+      const next = prev.includes(dateStr) ? prev.filter((d) => d !== dateStr) : [...prev, dateStr];
+      AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(next));
+      return next;
+    });
+  }, []);
 
-  const isFavorite = useCallback(
-    (dateStr: string) => favorites.includes(dateStr),
-    [favorites],
-  );
+  const isFavorite = useCallback((dateStr: string) => favorites.includes(dateStr), [favorites]);
 
   return (
     <FavoritesContext.Provider value={{ favorites, toggleFavorite, isFavorite }}>

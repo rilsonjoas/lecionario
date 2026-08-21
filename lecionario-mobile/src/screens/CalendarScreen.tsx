@@ -96,14 +96,22 @@ export default function CalendarScreen() {
   const today = new Date();
 
   return (
-    <View style={[styles.container, { backgroundColor: colors.background, paddingTop: insets.top + 16 }]}>
+    <View
+      style={[
+        styles.container,
+        { backgroundColor: colors.background, paddingTop: insets.top + 16 },
+      ]}
+    >
       <View style={styles.header}>
         <MaterialCommunityIcons name="calendar-text" size={24} color={colors.accent} />
         <Text style={[styles.title, { color: colors.text, fontSize: scale(20) }]}>
           Calendário Litúrgico
         </Text>
         <TouchableOpacity
-          onPress={() => { setSearchMode(!searchMode); setSearchQuery(''); }}
+          onPress={() => {
+            setSearchMode(!searchMode);
+            setSearchQuery('');
+          }}
           style={styles.searchToggle}
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
           accessibilityLabel={searchMode ? 'Fechar busca' : 'Buscar devocional'}
@@ -138,7 +146,12 @@ export default function CalendarScreen() {
           accessibilityRole="tab"
           accessibilityState={{ selected: !showFavorites }}
         >
-          <Text style={[styles.tabText, { color: !showFavorites ? colors.accent : colors.textMuted, fontSize: scale(13) }]}>
+          <Text
+            style={[
+              styles.tabText,
+              { color: !showFavorites ? colors.accent : colors.textMuted, fontSize: scale(13) },
+            ]}
+          >
             Calendário
           </Text>
         </TouchableOpacity>
@@ -148,8 +161,17 @@ export default function CalendarScreen() {
           accessibilityRole="tab"
           accessibilityState={{ selected: showFavorites }}
         >
-          <MaterialCommunityIcons name="heart" size={14} color={showFavorites ? colors.accent : colors.textMuted} />
-          <Text style={[styles.tabText, { color: showFavorites ? colors.accent : colors.textMuted, fontSize: scale(13) }]}>
+          <MaterialCommunityIcons
+            name="heart"
+            size={14}
+            color={showFavorites ? colors.accent : colors.textMuted}
+          />
+          <Text
+            style={[
+              styles.tabText,
+              { color: showFavorites ? colors.accent : colors.textMuted, fontSize: scale(13) },
+            ]}
+          >
             Favoritos {favorites.length > 0 ? `(${favorites.length})` : ''}
           </Text>
         </TouchableOpacity>
@@ -158,7 +180,15 @@ export default function CalendarScreen() {
       {searchMode && (
         <View style={styles.searchContainer}>
           <TextInput
-            style={[styles.searchInput, { color: colors.text, backgroundColor: colors.surface, borderColor: colors.border, fontSize: scale(15) }]}
+            style={[
+              styles.searchInput,
+              {
+                color: colors.text,
+                backgroundColor: colors.surface,
+                borderColor: colors.border,
+                fontSize: scale(15),
+              },
+            ]}
             placeholder="Buscar por referência, data ou palavra-chave..."
             placeholderTextColor={colors.textMuted}
             value={searchQuery}
@@ -175,18 +205,30 @@ export default function CalendarScreen() {
             <TouchableOpacity
               key={r.date}
               style={[styles.searchResult, { borderBottomColor: colors.border }]}
-              onPress={() => { setSearchMode(false); navigation.navigate('Hoje', { date: r.date }); }}
+              onPress={() => {
+                setSearchMode(false);
+                navigation.navigate('Hoje', { date: r.date });
+              }}
               accessibilityRole="button"
             >
               <View style={styles.searchResultContent}>
-                <Text style={[styles.searchResultDate, { color: colors.text, fontSize: scale(14) }]}>
+                <Text
+                  style={[styles.searchResultDate, { color: colors.text, fontSize: scale(14) }]}
+                >
                   {r.date}
                 </Text>
-                <Text style={[styles.searchResultTitle, { color: colors.textMuted, fontSize: scale(12) }]}>
+                <Text
+                  style={[
+                    styles.searchResultTitle,
+                    { color: colors.textMuted, fontSize: scale(12) },
+                  ]}
+                >
                   {r.dayName}
                 </Text>
               </View>
-              <Text style={[styles.searchResultMatch, { color: colors.accent, fontSize: scale(10) }]}>
+              <Text
+                style={[styles.searchResultMatch, { color: colors.accent, fontSize: scale(10) }]}
+              >
                 {r.matchedOn}
               </Text>
             </TouchableOpacity>
@@ -201,97 +243,101 @@ export default function CalendarScreen() {
 
       {!showFavorites && !searchMode && (
         <>
-        <View style={styles.monthNav}>
-          <TouchableOpacity
-            onPress={goPrevMonth}
-            style={styles.monthButton}
-            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-            accessibilityLabel="Mês anterior"
-            accessibilityRole="button"
-          >
-          <MaterialCommunityIcons name="chevron-left" size={28} color={colors.accent} />
-        </TouchableOpacity>
-        <Text style={[styles.monthTitle, { color: colors.text, fontSize: scale(16) }]}>
-          {format(currentMonth, "MMMM 'de' yyyy", { locale: ptBR })}
-        </Text>
-        <TouchableOpacity
-          onPress={goNextMonth}
-          style={styles.monthButton}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          accessibilityLabel="Próximo mês"
-          accessibilityRole="button"
-        >
-          <MaterialCommunityIcons name="chevron-right" size={28} color={colors.accent} />
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.weekDaysRow}>
-        {WEEKDAYS.map((wd) => (
-          <View key={wd} style={[styles.weekDayCell, { width: daySize }]}>
-            <Text style={[styles.weekDayText, { color: colors.textMuted, fontSize: scale(10) }]}>
-              {wd}
+          <View style={styles.monthNav}>
+            <TouchableOpacity
+              onPress={goPrevMonth}
+              style={styles.monthButton}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              accessibilityLabel="Mês anterior"
+              accessibilityRole="button"
+            >
+              <MaterialCommunityIcons name="chevron-left" size={28} color={colors.accent} />
+            </TouchableOpacity>
+            <Text style={[styles.monthTitle, { color: colors.text, fontSize: scale(16) }]}>
+              {format(currentMonth, "MMMM 'de' yyyy", { locale: ptBR })}
             </Text>
+            <TouchableOpacity
+              onPress={goNextMonth}
+              style={styles.monthButton}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+              accessibilityLabel="Próximo mês"
+              accessibilityRole="button"
+            >
+              <MaterialCommunityIcons name="chevron-right" size={28} color={colors.accent} />
+            </TouchableOpacity>
           </View>
-        ))}
-      </View>
 
-      {loading ? (
-        <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color={colors.accent} />
-        </View>
-      ) : (
-        <View style={styles.daysGrid}>
-          {days.map((d) => {
-            const info = getLiturgicalDayInfo(d);
-            const seasonColor = seasonColors[info.season];
-            const inMonth = isSameMonth(d, currentMonth);
-            const isToday = isSameDay(d, today);
-
-            return (
-              <TouchableOpacity
-                key={d.toISOString()}
-                style={[
-                  styles.dayCell,
-                  { width: daySize, height: daySize },
-                  !inMonth && styles.dayCellOtherMonth,
-                  isToday && { backgroundColor: `${colors.accent}26` },
-                ]}
-                onPress={() => navigation.navigate('Hoje', { date: format(d, 'yyyy-MM-dd') })}
-                accessibilityLabel={`${format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })} - ${info.dayName}`}
-                accessibilityRole="button"
-              >
-                <View style={[styles.dayDot, { backgroundColor: seasonColor }]} />
+          <View style={styles.weekDaysRow}>
+            {WEEKDAYS.map((wd) => (
+              <View key={wd} style={[styles.weekDayCell, { width: daySize }]}>
                 <Text
-                  style={[
-                    styles.dayText,
-                    { color: colors.text, fontSize: scale(13) },
-                    !inMonth && { color: colors.textMuted },
-                    isToday && styles.dayTextToday,
-                  ]}
+                  style={[styles.weekDayText, { color: colors.textMuted, fontSize: scale(10) }]}
                 >
-                  {format(d, 'd')}
+                  {wd}
                 </Text>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
-      )}
+              </View>
+            ))}
+          </View>
 
-      <View style={styles.legend}>
-        <Text style={[styles.legendTitle, { color: colors.textMuted, fontSize: scale(10) }]}>
-          Cores Litúrgicas
-        </Text>
-        <View style={styles.legendGrid}>
-          {(Object.keys(seasonColors) as LiturgicalSeason[]).map((season) => (
-            <View key={season} style={styles.legendItem}>
-              <View style={[styles.legendDot, { backgroundColor: seasonColors[season] }]} />
-              <Text style={[styles.legendText, { color: colors.textMuted, fontSize: scale(11) }]}>
-                {seasonLabels[season]}
-              </Text>
+          {loading ? (
+            <View style={styles.loadingContainer}>
+              <ActivityIndicator size="large" color={colors.accent} />
             </View>
-          ))}
-        </View>
-      </View>
+          ) : (
+            <View style={styles.daysGrid}>
+              {days.map((d) => {
+                const info = getLiturgicalDayInfo(d);
+                const seasonColor = seasonColors[info.season];
+                const inMonth = isSameMonth(d, currentMonth);
+                const isToday = isSameDay(d, today);
+
+                return (
+                  <TouchableOpacity
+                    key={d.toISOString()}
+                    style={[
+                      styles.dayCell,
+                      { width: daySize, height: daySize },
+                      !inMonth && styles.dayCellOtherMonth,
+                      isToday && { backgroundColor: `${colors.accent}26` },
+                    ]}
+                    onPress={() => navigation.navigate('Hoje', { date: format(d, 'yyyy-MM-dd') })}
+                    accessibilityLabel={`${format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })} - ${info.dayName}`}
+                    accessibilityRole="button"
+                  >
+                    <View style={[styles.dayDot, { backgroundColor: seasonColor }]} />
+                    <Text
+                      style={[
+                        styles.dayText,
+                        { color: colors.text, fontSize: scale(13) },
+                        !inMonth && { color: colors.textMuted },
+                        isToday && styles.dayTextToday,
+                      ]}
+                    >
+                      {format(d, 'd')}
+                    </Text>
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          )}
+
+          <View style={styles.legend}>
+            <Text style={[styles.legendTitle, { color: colors.textMuted, fontSize: scale(10) }]}>
+              Cores Litúrgicas
+            </Text>
+            <View style={styles.legendGrid}>
+              {(Object.keys(seasonColors) as LiturgicalSeason[]).map((season) => (
+                <View key={season} style={styles.legendItem}>
+                  <View style={[styles.legendDot, { backgroundColor: seasonColors[season] }]} />
+                  <Text
+                    style={[styles.legendText, { color: colors.textMuted, fontSize: scale(11) }]}
+                  >
+                    {seasonLabels[season]}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          </View>
         </>
       )}
 
@@ -325,14 +371,25 @@ export default function CalendarScreen() {
                   >
                     <View style={[styles.favoriteDot, { backgroundColor: seasonColor }]} />
                     <View style={styles.favoriteContent}>
-                      <Text style={[styles.favoriteDate, { color: colors.text, fontSize: scale(14) }]}>
+                      <Text
+                        style={[styles.favoriteDate, { color: colors.text, fontSize: scale(14) }]}
+                      >
                         {format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                       </Text>
-                      <Text style={[styles.favoriteDayName, { color: colors.textMuted, fontSize: scale(12) }]}>
+                      <Text
+                        style={[
+                          styles.favoriteDayName,
+                          { color: colors.textMuted, fontSize: scale(12) },
+                        ]}
+                      >
                         {info.dayName}
                       </Text>
                     </View>
-                    <MaterialCommunityIcons name="chevron-right" size={18} color={colors.textMuted} />
+                    <MaterialCommunityIcons
+                      name="chevron-right"
+                      size={18}
+                      color={colors.textMuted}
+                    />
                   </TouchableOpacity>
                 );
               })

@@ -37,9 +37,7 @@ export async function scheduleDailyNotification(time: string): Promise<void> {
 
   const info = getLiturgicalDayInfo(next);
   const rclData = getRCLReadings(info.cycle, next);
-  const refs = rclData
-    ? rclData.readings.map((r) => r.reference).join(' · ')
-    : 'Leituras do dia';
+  const refs = rclData ? rclData.readings.map((r) => r.reference).join(' · ') : 'Leituras do dia';
 
   const dateStr = format(next, "dd 'de' MMMM", { locale: ptBR });
 

@@ -32,19 +32,12 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
   };
 
   return (
-    <View
-      style={[
-        styles.card,
-        { marginTop: index > 0 ? 16 : 0, backgroundColor: colors.card },
-      ]}
-    >
+    <View style={[styles.card, { marginTop: index > 0 ? 16 : 0, backgroundColor: colors.card }]}>
       <View style={[styles.accentBar, { backgroundColor: colors.accent }]} />
       <View style={styles.content}>
         <View style={styles.headerRow}>
           <View style={styles.referenceContainer}>
-            <Text
-              style={[styles.reference, { color: colors.text, fontSize: scale(18) }]}
-            >
+            <Text style={[styles.reference, { color: colors.text, fontSize: scale(18) }]}>
               {reading.reference}
             </Text>
             {reading.citation && (
@@ -63,7 +56,12 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
             >
               <MaterialCommunityIcons name="share-outline" size={18} color={colors.accent} />
             </TouchableOpacity>
-            <View style={[styles.badge, { backgroundColor: `${colors.accent}1A`, borderColor: `${colors.accent}33` }]}>
+            <View
+              style={[
+                styles.badge,
+                { backgroundColor: `${colors.accent}1A`, borderColor: `${colors.accent}33` },
+              ]}
+            >
               <MaterialCommunityIcons name={config.icon} size={12} color={config.color} />
               <Text style={[styles.badgeText, { color: config.color, fontSize: scale(9) }]}>
                 {config.label}
@@ -74,10 +72,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
         {reading.text && (
           <View style={styles.textContainer}>
             <View style={[styles.textBorder, { backgroundColor: `${colors.accent}33` }]} />
-            <Text
-              style={[styles.text, { color: colors.text, fontSize: scale(14) }]}
-              selectable
-            >
+            <Text style={[styles.text, { color: colors.text, fontSize: scale(14) }]} selectable>
               {reading.text}
             </Text>
           </View>

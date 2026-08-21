@@ -225,7 +225,9 @@ export default function HomeScreen() {
           accessibilityLabel="Dia anterior"
         >
           <MaterialCommunityIcons name="chevron-left" size={24} color={headerColors.bodyMuted} />
-          <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>Anterior</Text>
+          <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>
+            Anterior
+          </Text>
         </TouchableOpacity>
 
         {/* Achado real (2026-08-16): tocar na data não fazia nada — vira
@@ -254,7 +256,9 @@ export default function HomeScreen() {
           accessibilityRole="button"
           accessibilityLabel="Próximo dia"
         >
-          <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>Próximo</Text>
+          <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>
+            Próximo
+          </Text>
           <MaterialCommunityIcons name="chevron-right" size={24} color={headerColors.bodyMuted} />
         </TouchableOpacity>
       </View>
@@ -311,10 +315,14 @@ export default function HomeScreen() {
 
             <View style={styles.section}>
               <View style={styles.sectionHeader}>
-                <Text style={[styles.sectionHeaderTitle, { color: colors.text, fontSize: scale(22) }]}>
+                <Text
+                  style={[styles.sectionHeaderTitle, { color: colors.text, fontSize: scale(22) }]}
+                >
                   Lectio Divina
                 </Text>
-                <Text style={[styles.sectionHeaderSub, { color: colors.textMuted, fontSize: scale(8) }]}>
+                <Text
+                  style={[styles.sectionHeaderSub, { color: colors.textMuted, fontSize: scale(8) }]}
+                >
                   Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length}{' '}
                   Estações da Palavra
                 </Text>
@@ -334,10 +342,14 @@ export default function HomeScreen() {
 
             <View style={styles.section}>
               <View style={styles.quoteSectionHeader}>
-                <Text style={[styles.sectionHeaderTitle, { color: colors.text, fontSize: scale(18) }]}>
+                <Text
+                  style={[styles.sectionHeaderTitle, { color: colors.text, fontSize: scale(18) }]}
+                >
                   Citação do dia
                 </Text>
-                <Text style={[styles.sectionHeaderSub, { color: colors.textMuted, fontSize: scale(8) }]}>
+                <Text
+                  style={[styles.sectionHeaderSub, { color: colors.textMuted, fontSize: scale(8) }]}
+                >
                   C. S. LEWIS
                 </Text>
               </View>

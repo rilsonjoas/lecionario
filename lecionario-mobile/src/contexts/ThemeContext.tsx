@@ -46,7 +46,10 @@ const DARK: ThemeColors = {
 
 const ThemeContext = createContext<ThemeColors>(DARK);
 
-function resolveTheme(pref: ThemePreference, systemScheme: 'light' | 'dark' | null | undefined): ThemeColors {
+function resolveTheme(
+  pref: ThemePreference,
+  systemScheme: 'light' | 'dark' | null | undefined,
+): ThemeColors {
   if (pref === 'system') return systemScheme === 'dark' ? DARK : LIGHT;
   return pref === 'dark' ? DARK : LIGHT;
 }

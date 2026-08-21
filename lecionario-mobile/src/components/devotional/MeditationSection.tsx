@@ -53,7 +53,9 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
           <View style={[styles.questionsSection, { borderTopColor: `${colors.accent}1A` }]}>
             <View style={styles.questionsHeader}>
               <MaterialCommunityIcons name="help-circle-outline" size={14} color={colors.accent} />
-              <Text style={[styles.questionsTitle, { color: colors.textMuted, fontSize: scale(9) }]}>
+              <Text
+                style={[styles.questionsTitle, { color: colors.textMuted, fontSize: scale(9) }]}
+              >
                 Questões para Silenciar
               </Text>
             </View>
@@ -75,7 +77,12 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
                     { backgroundColor: `${colors.text}0D`, borderColor: `${colors.accent}1A` },
                   ]}
                 >
-                  <Text style={[styles.questionNumberText, { color: colors.textMuted, fontSize: scale(12) }]}>
+                  <Text
+                    style={[
+                      styles.questionNumberText,
+                      { color: colors.textMuted, fontSize: scale(12) },
+                    ]}
+                  >
                     {index + 1}
                   </Text>
                 </View>

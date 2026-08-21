@@ -37,12 +37,17 @@ export function CollectSection({ collect }: CollectSectionProps) {
             },
           ]}
         >
-          <Text style={[styles.collectText, { color: colors.text, fontSize: scale(15) }]} selectable>
+          <Text
+            style={[styles.collectText, { color: colors.text, fontSize: scale(15) }]}
+            selectable
+          >
             {collect}
           </Text>
           <View style={[styles.amenSection, { borderTopColor: `${colors.accent}1A` }]}>
             <View style={[styles.amenLine, { backgroundColor: `${colors.accent}33` }]} />
-            <Text style={[styles.amenText, { fontSize: scale(9) }]}>Por Jesus Cristo, nosso Senhor. Amém.</Text>
+            <Text style={[styles.amenText, { fontSize: scale(9) }]}>
+              Por Jesus Cristo, nosso Senhor. Amém.
+            </Text>
           </View>
         </View>
       </View>
