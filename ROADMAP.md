@@ -1375,3 +1375,41 @@ conta local não tem (achado real: `meus-remedios/README.md`, seção
 "Decisão: Google OAuth + conta local"); (3) App Store exige "Entrar
 com Apple" se você oferece "Entrar com Google" (Guideline 4.8) — "só
 Google" não é viável em iOS de qualquer forma.
+
+---
+
+## Backlog de Produto — Issues e Bugs (levantamento 2026-08-21)
+
+> Levantamento feito pelo Rilson ao usar o produto de verdade — web e mobile.
+> Organizado por gravidade.
+
+### 🔴 Crítico — bloqueios de uso
+
+- [ ] **pre-commit hook falhando** — `pre-commit script failed`. Diagnosticar qual hook falha e por quê. Pode ser ESLint, Prettier ou validação de tipos no staged commit.
+
+### 🟠 Grave — UX quebrada
+
+- [ ] **"Voltar para Hoje" existe só no mobile, não no web** — adicionar botão equivalente na barra de navegação do web (entre as setas de anterior/próximo ou como CTA fixo).
+- [ ] **Favoritar existe só no mobile, não no web** — implementar `FavoritesContext` também no web, com coração nos cards. Os dados ficam em `localStorage`.
+- [ ] **Botões de favoritar e compartilhar no mobile empurram o nome do app para a esquerda** — mover os dois botões para baixo do menu `anterior | calendário | próximo` como linha separada.
+- [ ] **Tags "Salmo" e "Segunda leitura" ilegíveis no mobile em Tempo Comum** — o verde claro da estação tem contraste insuficiente. Regra: todas as tags de leitura usam texto branco independentemente da estação. Checar contraste WCAG AA (≥4.5:1) em todas as 8 estações.
+- [ ] **Primeira letra da Meditação (capitular) com cor ruim no modo escuro** — usar branco (`#fff`) no modo escuro, assim como o resto do texto da seção.
+- [ ] **Fontes grandes/pequenas demais em várias seções** — em especial a Oração do Dia no web fica tão grande que prejudica o print/compartilhamento. Criar escala tipográfica consistente (ex: `prose-sm` ou tamanho fixo para cards de conteúdo).
+
+### 🟡 Melhoria — UX e produto
+
+- [ ] **"Conheça também" — design não conversa com o resto do site** — a seção de links para outros projetos está com estilo genérico. Integrar com o Design Narniano: usar fonte correta, paleta sazonal, espaçamento consistente com o restante do footer. (Mesmo problema no Gerador C.S. Lewis — componente compartilhado?)
+- [ ] **Verde do Tempo Comum com legibilidade baixa** — avaliar se o tom atual (`--graca-verde`) passa em WCAG AA em backgrounds claros e escuros. Se não, escurecer o tom ou ajustar só o contraste de texto sobre ele.
+- [ ] **"Tradição e Devoção" como lema** — avaliar se deve aparecer em outros lugares além de onde já está (splash, about?). Decisão de produto, não de engenharia.
+- [ ] **Botão de compartilhar em excesso na página inicial** — revisar quantos botões de share existem. Proposta: 1 botão de copiar por card, posicionado no canto inferior direito. Remover shares duplicados.
+- [ ] **Busca e Favoritos dentro do calendário mobile** — mover para a tab bar de baixo junto de Hoje, Calendário e Config. Avaliar se as legendas de texto sob os ícones da tab bar são necessárias (ícones sozinhos podem ser suficientes).
+- [ ] **Ordem das Configurações** — reorganizar: (1) Notificações + hora personalizada, (2) Aparência (tema + fonte), (3) Biblioteca, (4) Sobre. Remover "Limpar dados temporários" — pouco valor, gera confusão.
+- [ ] **Favicons da Biblioteca em formato circular** — em vez de quadrado/retangular, aplicar `border-radius: 50%` nos ícones de cada projeto na tela de Biblioteca.
+- [ ] **Seção "Sobre" no app — remover "Dados litúrgicos calculados localmente"** — informação técnica sem valor para o usuário. Simplificar a seção Sobre para o essencial (missão, versão, créditos).
+- [ ] **Login com OAuth Google para sincronizar favoritos** — avaliar: o que seria sincronizado? (favoritos, progresso de leitura, configurações). Seguir o padrão `meus-remedios`: OAuth Google + conta local (não só Google). Decisão de produto antes de implementar.
+- [ ] **Biblioteca: favicons circulares** — estilo mais premium, consistente com o Design Narniano.
+
+### 🔵 Padrão cruzado — ver também
+
+- [ ] **`npm audit` no CI** — não está no `ci.yml`. Adicionar como step de segurança (mesmo padrão da Bancada).
+- [ ] **"Conheça também" / Biblioteca** — mesmo componente usado no Gerador C.S. Lewis. Corrigir em um, replicar no outro.

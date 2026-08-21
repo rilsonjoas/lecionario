@@ -1,4 +1,5 @@
 'use client';
+import { ErrorBoundary } from '@/components/layout/ErrorBoundary';
 
 import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
@@ -73,6 +74,14 @@ function HomeContent() {
       applySeasonBranding(devotional.liturgicalInfo.season);
     }
   }, [devotional]);
+
+  // Pre-fetch adjacent dates to speed up navigation and enable offline date shifting
+  useEffect(() => {
+    const prevDateStr = format(addDays(currentDate, -1), 'yyyy-MM-dd');
+    const nextDateStr = format(addDays(currentDate, 1), 'yyyy-MM-dd');
+    router.prefetch(`/?date=${prevDateStr}`);
+    router.prefetch(`/?date=${nextDateStr}`);
+  }, [currentDate, router]);
 
   // Sync state with URL when date changes
   const handleDateChange = (newDate: Date) => {
@@ -212,7 +221,9 @@ function HomeContent() {
             {/* Oração de Coleta */}
             {devotional.collect && (
               <section className="animate-fade-in md:max-w-4xl mx-auto w-full">
-                <CollectSection collect={devotional.collect} />
+                <ErrorBoundary name="Coleta">
+                  <CollectSection collect={devotional.collect} />
+                </ErrorBoundary>
               </section>
             )}
 
@@ -229,24 +240,30 @@ function HomeContent() {
               </div>
 
               <div className="grid gap-8 md:gap-12">
-                {devotional.readings.map((reading, index) => (
-                  <ReadingCard
-                    key={`${reading.type}-${reading.reference}`}
-                    reading={reading}
-                    index={index}
-                  />
-                ))}
+                <ErrorBoundary name="Leituras">
+                  {devotional.readings.map((reading, index) => (
+                    <ReadingCard
+                      key={`${reading.type}-${reading.reference}`}
+                      reading={reading}
+                      index={index}
+                    />
+                  ))}
+                </ErrorBoundary>
               </div>
             </section>
 
             {/* Prayer Section */}
             <section className="animate-fade-in md:max-w-4xl mx-auto w-full">
-              <PrayerSection prayer={devotional.prayer} />
+              <ErrorBoundary name="Oração">
+                <PrayerSection prayer={devotional.prayer} />
+              </ErrorBoundary>
             </section>
 
             {/* Meditation Section */}
             <section className="animate-fade-in md:max-w-4xl mx-auto w-full">
-              <MeditationSection meditation={devotional.meditation} />
+              <ErrorBoundary name="Meditação">
+                <MeditationSection meditation={devotional.meditation} />
+              </ErrorBoundary>
             </section>
 
             {/* Inspiration Quote */}

@@ -13,6 +13,9 @@ export function ServiceWorkerRegistration() {
         .register('/sw.js')
         .then((registration) => {
           console.log('[PWA] Service Worker registrado com sucesso:', registration.scope);
+          console.log('[PWA] Active:', registration.active ? registration.active.state : 'null');
+          console.log('[PWA] Waiting:', registration.waiting ? registration.waiting.state : 'null');
+          console.log('[PWA] Installing:', registration.installing ? registration.installing.state : 'null');
 
           registration.onupdatefound = () => {
             const installingWorker = registration.installing;

@@ -1,4 +1,5 @@
 'use client';
+import { logger } from '@/lib/logger';
 
 import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -11,7 +12,7 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error('Erro na aplicação:', error);
+    logger.error('Erro crítico na aplicação:', error, { digest: error.digest });
   }, [error]);
 
   return (

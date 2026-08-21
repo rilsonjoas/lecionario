@@ -11,7 +11,8 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,json}\"",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "update:android": "eas update --branch preview --platform android"
   },
   "dependencies": {
     "@expo-google-fonts/lora": "^0.4.2",
