@@ -1309,11 +1309,23 @@ muito mais restrito por natureza**.
   (`eas submit --platform android`), mas **não há confirmação de que já
   foi rodado de verdade** — conferir antes de assumir que está
   publicado
-- **Monetização**: não mapeada. Se fizer sentido algum dia, o caminho
-  mais coerente com o propósito do projeto não é ads/assinatura
-  agressiva — mais provável fazer sentido como doação voluntária
-  (Pix/link) do que freemium, dado o perfil da audiência (comunidade
-  religiosa, não consumidor de app comum)
+- **Monetização — decisão tomada em 2026-08-21** (deixou de ser "não
+  mapeada"): monetizar por todas as formas que não sejam anúncio,
+  anúncio (AdSense no web, AdMob no mobile) fica adiado pro futuro, não
+  descartado — mas não é prioridade agora, e segue a mesma reserva já
+  documentada acima (não amarrado ao conteúdo litúrgico/devocional em
+  si, se algum dia acontecer).
+  - [ ] **Doação voluntária (Pix/link) — prioridade, fazer agora.**
+        Continua o caminho mais coerente com o propósito e a audiência
+        (comunidade religiosa, não consumidor de app comum) — "quem usa
+        sustenta o projeto", sem paywall no conteúdo em si.
+  - [ ] **Afiliado (Amazon) — avaliar.** Menos óbvio que nos outros
+        projetos porque o conteúdo litúrgico do app já é de graça e
+        autocontido, mas cabe como complemento: edições físicas do
+        Book of Common Prayer, bíblias de estudo, devocionais impressos
+        relacionados ao Ano Litúrgico — mesmo padrão de link discreto
+        dos outros projetos (`BookCard.tsx` do `TestePolitico`), não
+        centro da experiência.
 - **Aquisição**: diferente de competir em ASO genérico — o canal real
   aqui é comunidade (paróquias, grupos anglicanos/litúrgicos, indicação
   direta), não tráfego de busca de app store
