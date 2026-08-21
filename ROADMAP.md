@@ -33,7 +33,7 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 - **Busca** — indexa 6 anos de devotionals + 3 ciclos, por referência/data/palavra-chave (4.2)
 - **Pintura do Dia** — ArtCard integrado à API Bíblia na Arte, só online (4.5)
 - **QuoteCard** — 165 citações C.S. Lewis, seleção date-seeded, link Amazon (4.7)
-- **Biblioteca** — seção no ConfigScreen com 4 projetos (4.8)
+- **Biblioteca** — mobile (ConfigScreen) e web (Footer), 4 projetos (4.8)
 - **Error states reutilizáveis** — EmptyState, ErrorState
 
 ### O que está incompleto ou ausente
@@ -932,7 +932,7 @@ Scriptorium, Gerador C.S. Lewis) — ajuda SEO (autoridade cruzada de
 domínio) e retenção, sem depender de nenhuma integração de dado, só
 link estático. Mesmo item registrado nos outros 3.
 
-- [x] Componente de rodapé "parte da mesma biblioteca" com os 4 links (2026-08-20 — seção "Biblioteca" no ConfigScreen com Bíblia na Arte, Scriptorium, Gerador C.S. Lewis)
+- [x] Componente de rodapé "parte da mesma biblioteca" com os 4 links — mobile (2026-08-20 — seção "Biblioteca" no ConfigScreen com Bíblia na Arte, Scriptorium, Gerador C.S. Lewis) e **web** (2026-08-21 — seção "A Biblioteca" no `Footer.tsx`, mesmos 4 links; o checkbox tinha sido marcado feito só com o mobile pronto)
 
 ---
 
