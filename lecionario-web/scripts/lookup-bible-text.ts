@@ -6,7 +6,7 @@
  *
  * Fonte: https://github.com/seven1m/open-bibles (por-almeida.usfx.xml)
  */
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -414,8 +414,23 @@ function updateRCLWithTexts(bible: BibleData, filePath: string) {
 // ─── Main ───────────────────────────────────────────────────────────
 
 function main() {
-  const bibleXmlPath = '/tmp/por-almeida.xml';
+  // Antes vivia em /tmp/por-almeida.xml — um diretório efêmero. Isso foi a
+  // causa raiz de perder os textos ARC silenciosamente: quando o arquivo
+  // sumia (reboot, sessão nova), regenerar os JSONs não tinha como
+  // repopular o texto, e ninguém percebia (ver ROADMAP > Débito técnico).
+  // Agora vive dentro do repo, então sempre vai estar disponível.
+  const bibleXmlPath = resolve(__dirname, 'data/por-almeida.usfx.xml');
   const rclDir = resolve(__dirname, '../src/data/rcl');
+
+  if (!existsSync(bibleXmlPath)) {
+    console.error(`❌ Arquivo não encontrado: ${bibleXmlPath}`);
+    console.error(
+      '   Baixe com: curl -o ' +
+        bibleXmlPath +
+        ' https://raw.githubusercontent.com/seven1m/open-bibles/master/por-almeida.usfx.xml',
+    );
+    process.exit(1);
+  }
 
   console.log('📖 Parseando Bíblia Almeida...');
   const bible = parseBibleXML(bibleXmlPath);

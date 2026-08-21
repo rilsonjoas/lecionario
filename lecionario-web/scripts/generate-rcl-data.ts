@@ -1824,6 +1824,36 @@ function main() {
     }
 
     const filePath = resolve(outputDir, `cycle-${cycle}.json`);
+
+    // Preserva textos bíblicos (ARC) já populados por lookup-bible-text.ts.
+    // Este script recalcula datas/referências/coletas do zero a cada rodada;
+    // sem isso, regenerar por causa de um bugfix de calendário apaga
+    // silenciosamente o `text` de toda leitura (ver ROADMAP > Débito técnico,
+    // caso real no commit 817ed23). Só reaproveita o texto se a referência
+    // não mudou — se `ref` for diferente, o texto antigo não corresponde
+    // mais e fica pendente de novo lookup.
+    if (existsSync(filePath)) {
+      const previous = JSON.parse(String(readFileSync(filePath))) as typeof output;
+      const previousTextByKey = new Map<string, string>();
+      for (const entries of Object.values(previous.seasons ?? {})) {
+        for (const entry of entries) {
+          for (const reading of entry.readings) {
+            if (reading.text) {
+              previousTextByKey.set(`${entry.date}|${reading.type}|${reading.ref}`, reading.text);
+            }
+          }
+        }
+      }
+      for (const entries of Object.values(output.seasons)) {
+        for (const entry of entries) {
+          for (const reading of entry.readings) {
+            const preserved = previousTextByKey.get(`${entry.date}|${reading.type}|${reading.ref}`);
+            if (preserved) reading.text = preserved;
+          }
+        }
+      }
+    }
+
     writeFileSync(filePath, JSON.stringify(output, null, 2));
     console.log(`✅ Gerado ${filePath} (${unique.size} entradas)`);
   }

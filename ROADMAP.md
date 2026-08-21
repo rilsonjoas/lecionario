@@ -4,13 +4,13 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ---
 
-## Situação atual (atualizado 2026-08-20)
+## Situação atual (atualizado 2026-08-21)
 
 ### O que está funcionando
 
 - Motor litúrgico completo: cálculo de Páscoa, estações, cores, ciclos A/B/C, nomes dos dias em PT-BR
 - Dados RCL em JSON para os três ciclos (leituras por data + coletas)
-- **Textos bíblicos (Almeida ARC)** — inseridos na geração original, mas **foram perdidos silenciosamente** no commit `817ed23` ao regenerar os JSONs dos ciclos. Re-execução do `lookup-bible-text.ts` pendente (requer restaurar `/tmp/por-almeida.xml`). Ver débito técnico abaixo.
+- **Textos bíblicos (Almeida ARC)** — 4613 textos restaurados (2026-08-21), depois de terem sido perdidos silenciosamente no commit `817ed23`. Causa raiz corrigida (ver débito técnico): `generate-rcl-data.ts` agora preserva `text` ao regenerar em vez de sobrescrever, o XML fonte saiu de `/tmp` (efêmero) pra dentro do repo (`lecionario-web/scripts/data/`), e um teste em `rcl-bible-text.test.ts` (web + mobile) quebra o CI se a cobertura cair de novo
 - **Devocionais gerados** — 2191 orações + meditações (2025–2030),
   todas as sete estações litúrgicas ancoradas no RCL real
 - **Conteúdo de Semana Santa** — Domingo de Ramos, Tríduo, Sábado Santo
@@ -40,7 +40,7 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 - ~~Conteúdo devocional do Tempo Comum~~ — **feito e estendido a todas as estações** (ver 1.2-1.2i)
 - **iOS nunca testado em dispositivo físico** (foco em Android)
-- **Textos bíblicos ARC perdidos nos JSONs** — ver débito técnico
+- ~~Textos bíblicos ARC perdidos nos JSONs~~ — **restaurados e causa raiz corrigida** (2026-08-21, ver débito técnico)
 - Widget Android/iOS (adiado — ver 4.3)
 - Scriptorium Divinum "Leia mais" (pausado — ver 4.6)
 
@@ -966,6 +966,8 @@ Os JSONs são copiados do `lecionario-web/src/data/rcl/` para `lecionario-mobile
 | `getSampleDevotional` agora síncrono mas chamado com `await` | `page.tsx` | Cosmético — funciona |
 | RCL JSONs com 2MB+ cada | `src/data/rcl/` | Pode impactar tempo de build/bundle |
 | Sem testes para a camada de dados local | `src/lib/*.ts` | Confiança menor em refactors |
+| ~~Textos ARC perdidos silenciosamente ao regenerar~~ **resolvido 2026-08-21**: `generate-rcl-data.ts` fazia sobrescrita cega dos `cycle-*.json`, sem preservar `text` já populado por `lookup-bible-text.ts` — foi assim que o commit `817ed23` apagou tudo sem ninguém notar. Consertado com merge-preserve (só reaproveita `text` se `date+type+ref` não mudou) + XML fonte movido de `/tmp` (efêmero) pra `scripts/data/por-almeida.usfx.xml` (no repo) + teste `rcl-bible-text.test.ts` (web e mobile) que quebra o CI se a cobertura de texto cair | `generate-rcl-data.ts`, `lookup-bible-text.ts` | Resolvido — 4613 textos restaurados |
+| `getReferenceText()` não resolve refs com dois salmos separados por vírgula (ex. "Salmo 42, 43") | `lookup-bible-text.ts` | 7 leituras (1x/ano, Vigília Pascal do Ciclo C) sem texto — allowlisted no teste de cobertura, não bloqueia CI |
 
 ---
 
