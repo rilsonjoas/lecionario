@@ -43,9 +43,9 @@ const BIBLIOTECA_LINKS: {
 }[] = [
   {
     label: 'Narniano',
-    description: 'A casa de todos os projetos',
+    description: 'Portal sobre C.S. Lewis, Nárnia e fé cristã',
     url: 'https://narniano.com',
-    icon: 'home-heart',
+    icon: 'crown',
   },
   {
     label: 'Bíblia na Arte',
@@ -62,7 +62,7 @@ const BIBLIOTECA_LINKS: {
   {
     label: 'Gerador C.S. Lewis',
     description: 'Citações inspiradoras de C.S. Lewis',
-    url: 'https://gerador-cs-lewis.vercel.app',
+    url: 'https://cslewis.narniano.com',
     icon: 'format-quote-close',
   },
 ];

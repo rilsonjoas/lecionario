@@ -1,0 +1,57 @@
+name: EAS Build (Android)
+
+# Só roda quando algo que exige um binário nativo novo muda de verdade
+# (config nativo, profile de build, dependências) — não em mudanças de
+# código/dado JS, que já são cobertas por OTA em eas.yml. Rodar build
+# nativo (13min+ de CI + cota de build da Expo) pra cada push de src/
+# era desperdício (achado 2026-08-21). Também disparável manualmente.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'lecionario-mobile/app.config.ts'
+      - 'lecionario-mobile/eas.json'
+      - 'lecionario-mobile/package.json'
+      - 'lecionario-mobile/package-lock.json'
+  workflow_dispatch:
+
+concurrency:
+  group: eas-build-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: EAS Build (Android)
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: Install dependencies
+        working-directory: lecionario-mobile
+        run: npm ci --legacy-peer-deps
+
+      # SENTRY_ORG/SENTRY_PROJECT/SENTRY_AUTH_TOKEN não são passados aqui
+      # de propósito: o build de verdade roda num container remoto da
+      # Expo, que não herda env vars deste job. Estão cadastrados como
+      # EAS Environment Variables (`eas env:list preview`) — foi isso
+      # que quebrou o build em 2026-08-21 (auth token do Sentry não
+      # encontrado no Gradle) até serem cadastrados lá.
+      - name: Build (Android preview)
+        working-directory: lecionario-mobile
+        run: eas build --platform android --profile preview --non-interactive

@@ -933,6 +933,7 @@ domínio) e retenção, sem depender de nenhuma integração de dado, só
 link estático. Mesmo item registrado nos outros 3.
 
 - [x] Componente de rodapé "parte da mesma biblioteca" com os 4 links — mobile (2026-08-20 — seção "Biblioteca" no ConfigScreen com Bíblia na Arte, Scriptorium, Gerador C.S. Lewis) e **web** (2026-08-21 — seção "A Biblioteca" no `Footer.tsx`, mesmos 4 links; o checkbox tinha sido marcado feito só com o mobile pronto)
+- [x] Correções de conteúdo (2026-08-21): URL do Gerador C.S. Lewis estava errada (`gerador-cs-lewis.vercel.app` → `cslewis.narniano.com`, mobile e web); descrição do Narniano trocada de "A casa de todos os projetos" pra "Portal sobre C.S. Lewis, Nárnia e fé cristã" (mobile e web); ícone do Narniano no mobile trocado de `home-heart` pra `crown` (nenhuma das duas libs de ícone tem leão — coroa referencia Aslan como Rei). No web, o rodapé ficou grande demais com ícone+descrição por link — reduzido pro formato compacto "Conheça também: A · B · C · D" (mesmo espírito do `ClusterFooter.tsx` do Gerador C.S. Lewis), sem ícones; "Lecionário Comum Revisado" também encurtado pra só "Lecionário"
 
 ---
 
@@ -968,6 +969,8 @@ Os JSONs são copiados do `lecionario-web/src/data/rcl/` para `lecionario-mobile
 | Sem testes para a camada de dados local | `src/lib/*.ts` | Confiança menor em refactors |
 | ~~Textos ARC perdidos silenciosamente ao regenerar~~ **resolvido 2026-08-21**: `generate-rcl-data.ts` fazia sobrescrita cega dos `cycle-*.json`, sem preservar `text` já populado por `lookup-bible-text.ts` — foi assim que o commit `817ed23` apagou tudo sem ninguém notar. Consertado com merge-preserve (só reaproveita `text` se `date+type+ref` não mudou) + XML fonte movido de `/tmp` (efêmero) pra `scripts/data/por-almeida.usfx.xml` (no repo) + teste `rcl-bible-text.test.ts` (web e mobile) que quebra o CI se a cobertura de texto cair | `generate-rcl-data.ts`, `lookup-bible-text.ts` | Resolvido — 4613 textos restaurados |
 | `getReferenceText()` não resolve refs com dois salmos separados por vírgula (ex. "Salmo 42, 43") | `lookup-bible-text.ts` | 7 leituras (1x/ano, Vigília Pascal do Ciclo C) sem texto — allowlisted no teste de cobertura, não bloqueia CI |
+| ~~`eas.yml` rodava build de APK nativo (13min+) em toda mudança de JS/dado~~ **resolvido 2026-08-21**: split em `eas.yml` (só OTA, dispara em qualquer push de `src/**`) e `eas-build.yml` (só APK nativo, dispara só quando `app.config.ts`/`eas.json`/`package.json` mudam, ou manualmente) | `.github/workflows/eas.yml`, `eas-build.yml` | Resolvido — economiza tempo de CI e cota de build da Expo |
+| Variáveis `SENTRY_ORG`/`SENTRY_PROJECT`/`SENTRY_AUTH_TOKEN` passadas como env do job do GitHub Actions não chegam no container remoto onde o Gradle roda de fato — precisam ser [EAS Environment Variables](https://docs.expo.dev/eas/environment-variables/) cadastradas via `eas env:create <environment> --name X --value Y` (feito pro ambiente `preview` em 2026-08-21, causa de um build falhar) | `eas-build.yml` | Resolvido pro `preview`; replicar pro `production` quando esse profile for usado de verdade |
 
 ---
 
