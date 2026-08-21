@@ -1,6 +1,8 @@
-const { getDefaultConfig } = require('expo/metro-config');
+const {
+  getSentryExpoConfig
+} = require("@sentry/react-native/metro");
 
-const config = getDefaultConfig(__dirname);
+const config = getSentryExpoConfig(__dirname);
 
 // react-native 0.81.5 pulls @react-native/virtualized-lists which depends on
 // react-native ^0.86, causing npm to install a nested copy. Metro then tries

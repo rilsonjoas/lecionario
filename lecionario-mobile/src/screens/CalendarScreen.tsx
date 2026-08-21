@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import {
   View,
   Text,
+  TextInput,
   StyleSheet,
   TouchableOpacity,
   Dimensions,
@@ -21,20 +22,21 @@ import {
   endOfWeek,
   addDays,
   format,
+  parse,
   isSameMonth,
   isSameDay,
 } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { getLiturgicalDayInfo } from '@/lib/liturgical-calendar';
 import { seasonThemes } from '@/lib/theme';
+import { useThemeColors } from '@/contexts/ThemeContext';
+import { useFontScale } from '@/contexts/FontContext';
+import { useFavorites } from '@/contexts/FavoritesContext';
+import { searchDevotionals } from '@/lib/search';
 import type { LiturgicalSeason, RootTabParamList } from '@/types';
 
 type NavProp = BottomTabNavigationProp<RootTabParamList, 'Calendário'>;
 
-// Consolidado (2026-08-16): antes era paleta própria, nunca sincronizada
-// com lib/theme.ts — causou bug real (Advento continuava roxo na legenda
-// mesmo depois de virar azul em todo o resto do app). Agora deriva direto
-// de seasonThemes, uma fonte só — não pode mais divergir.
 const seasonColors: Record<LiturgicalSeason, string> = Object.fromEntries(
   Object.entries(seasonThemes).map(([season, theme]) => [season, theme.primaryColor]),
 ) as Record<LiturgicalSeason, string>;
@@ -54,8 +56,14 @@ const WEEKDAYS = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 export default function CalendarScreen() {
   const insets = useSafeAreaInsets();
   const navigation = useNavigation<NavProp>();
+  const colors = useThemeColors();
+  const { scale } = useFontScale();
+  const { favorites } = useFavorites();
   const [currentMonth, setCurrentMonth] = useState(startOfMonth(new Date()));
   const [loading, setLoading] = useState(true);
+  const [showFavorites, setShowFavorites] = useState(false);
+  const [searchMode, setSearchMode] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 100);
@@ -80,38 +88,130 @@ export default function CalendarScreen() {
   const screenWidth = Dimensions.get('window').width;
   const daySize = Math.max(Math.min((screenWidth - 48) / 7, 48), 40);
 
+  const searchResults = useMemo(
+    () => (searchMode && searchQuery.length >= 2 ? searchDevotionals(searchQuery) : []),
+    [searchMode, searchQuery],
+  );
+
   const today = new Date();
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top + 16 }]}>
+    <View style={[styles.container, { backgroundColor: colors.background, paddingTop: insets.top + 16 }]}>
       <View style={styles.header}>
-        <MaterialCommunityIcons name="calendar-text" size={24} color="#B8860B" />
-        <Text style={styles.title}>Calendário Litúrgico</Text>
+        <MaterialCommunityIcons name="calendar-text" size={24} color={colors.accent} />
+        <Text style={[styles.title, { color: colors.text, fontSize: scale(20) }]}>
+          Calendário Litúrgico
+        </Text>
+        <TouchableOpacity
+          onPress={() => { setSearchMode(!searchMode); setSearchQuery(''); }}
+          style={styles.searchToggle}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          accessibilityLabel={searchMode ? 'Fechar busca' : 'Buscar devocional'}
+          accessibilityRole="button"
+        >
+          <MaterialCommunityIcons
+            name={searchMode ? 'close' : 'magnify'}
+            size={22}
+            color={colors.accent}
+          />
+        </TouchableOpacity>
         {!isSameMonth(currentMonth, new Date()) && (
           <TouchableOpacity
-            style={styles.todayButton}
+            style={[styles.todayButton, { borderColor: `${colors.accent}66` }]}
             onPress={() => setCurrentMonth(startOfMonth(new Date()))}
             hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
             accessibilityRole="button"
             accessibilityLabel="Voltar para hoje"
           >
-            <MaterialCommunityIcons name="calendar-today" size={14} color="#B8860B" />
-            <Text style={styles.todayButtonText}>Hoje</Text>
+            <MaterialCommunityIcons name="calendar-today" size={14} color={colors.accent} />
+            <Text style={[styles.todayButtonText, { color: colors.accent, fontSize: scale(10) }]}>
+              Hoje
+            </Text>
           </TouchableOpacity>
         )}
       </View>
 
-      <View style={styles.monthNav}>
+      <View style={styles.tabRow}>
         <TouchableOpacity
-          onPress={goPrevMonth}
-          style={styles.monthButton}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          accessibilityLabel="Mês anterior"
-          accessibilityRole="button"
+          onPress={() => setShowFavorites(false)}
+          style={[styles.tab, !showFavorites && { borderBottomColor: colors.accent }]}
+          accessibilityRole="tab"
+          accessibilityState={{ selected: !showFavorites }}
         >
-          <MaterialCommunityIcons name="chevron-left" size={28} color="#B8860B" />
+          <Text style={[styles.tabText, { color: !showFavorites ? colors.accent : colors.textMuted, fontSize: scale(13) }]}>
+            Calendário
+          </Text>
         </TouchableOpacity>
-        <Text style={styles.monthTitle}>
+        <TouchableOpacity
+          onPress={() => setShowFavorites(true)}
+          style={[styles.tab, showFavorites && { borderBottomColor: colors.accent }]}
+          accessibilityRole="tab"
+          accessibilityState={{ selected: showFavorites }}
+        >
+          <MaterialCommunityIcons name="heart" size={14} color={showFavorites ? colors.accent : colors.textMuted} />
+          <Text style={[styles.tabText, { color: showFavorites ? colors.accent : colors.textMuted, fontSize: scale(13) }]}>
+            Favoritos {favorites.length > 0 ? `(${favorites.length})` : ''}
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {searchMode && (
+        <View style={styles.searchContainer}>
+          <TextInput
+            style={[styles.searchInput, { color: colors.text, backgroundColor: colors.surface, borderColor: colors.border, fontSize: scale(15) }]}
+            placeholder="Buscar por referência, data ou palavra-chave..."
+            placeholderTextColor={colors.textMuted}
+            value={searchQuery}
+            onChangeText={setSearchQuery}
+            autoFocus
+            returnKeyType="search"
+          />
+          {searchQuery.length >= 2 && (
+            <Text style={[styles.searchCount, { color: colors.textMuted, fontSize: scale(11) }]}>
+              {searchResults.length} resultado{searchResults.length !== 1 ? 's' : ''}
+            </Text>
+          )}
+          {searchResults.map((r) => (
+            <TouchableOpacity
+              key={r.date}
+              style={[styles.searchResult, { borderBottomColor: colors.border }]}
+              onPress={() => { setSearchMode(false); navigation.navigate('Hoje', { date: r.date }); }}
+              accessibilityRole="button"
+            >
+              <View style={styles.searchResultContent}>
+                <Text style={[styles.searchResultDate, { color: colors.text, fontSize: scale(14) }]}>
+                  {r.date}
+                </Text>
+                <Text style={[styles.searchResultTitle, { color: colors.textMuted, fontSize: scale(12) }]}>
+                  {r.dayName}
+                </Text>
+              </View>
+              <Text style={[styles.searchResultMatch, { color: colors.accent, fontSize: scale(10) }]}>
+                {r.matchedOn}
+              </Text>
+            </TouchableOpacity>
+          ))}
+          {searchQuery.length >= 2 && searchResults.length === 0 && (
+            <Text style={[styles.searchEmpty, { color: colors.textMuted, fontSize: scale(13) }]}>
+              Nenhum resultado para "{searchQuery}"
+            </Text>
+          )}
+        </View>
+      )}
+
+      {!showFavorites && !searchMode && (
+        <>
+        <View style={styles.monthNav}>
+          <TouchableOpacity
+            onPress={goPrevMonth}
+            style={styles.monthButton}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            accessibilityLabel="Mês anterior"
+            accessibilityRole="button"
+          >
+          <MaterialCommunityIcons name="chevron-left" size={28} color={colors.accent} />
+        </TouchableOpacity>
+        <Text style={[styles.monthTitle, { color: colors.text, fontSize: scale(16) }]}>
           {format(currentMonth, "MMMM 'de' yyyy", { locale: ptBR })}
         </Text>
         <TouchableOpacity
@@ -121,21 +221,23 @@ export default function CalendarScreen() {
           accessibilityLabel="Próximo mês"
           accessibilityRole="button"
         >
-          <MaterialCommunityIcons name="chevron-right" size={28} color="#B8860B" />
+          <MaterialCommunityIcons name="chevron-right" size={28} color={colors.accent} />
         </TouchableOpacity>
       </View>
 
       <View style={styles.weekDaysRow}>
         {WEEKDAYS.map((wd) => (
           <View key={wd} style={[styles.weekDayCell, { width: daySize }]}>
-            <Text style={styles.weekDayText}>{wd}</Text>
+            <Text style={[styles.weekDayText, { color: colors.textMuted, fontSize: scale(10) }]}>
+              {wd}
+            </Text>
           </View>
         ))}
       </View>
 
       {loading ? (
         <View style={styles.loadingContainer}>
-          <ActivityIndicator size="large" color="#B8860B" />
+          <ActivityIndicator size="large" color={colors.accent} />
         </View>
       ) : (
         <View style={styles.daysGrid}>
@@ -152,7 +254,7 @@ export default function CalendarScreen() {
                   styles.dayCell,
                   { width: daySize, height: daySize },
                   !inMonth && styles.dayCellOtherMonth,
-                  isToday && styles.dayCellToday,
+                  isToday && { backgroundColor: `${colors.accent}26` },
                 ]}
                 onPress={() => navigation.navigate('Hoje', { date: format(d, 'yyyy-MM-dd') })}
                 accessibilityLabel={`${format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })} - ${info.dayName}`}
@@ -162,7 +264,8 @@ export default function CalendarScreen() {
                 <Text
                   style={[
                     styles.dayText,
-                    !inMonth && styles.dayTextOtherMonth,
+                    { color: colors.text, fontSize: scale(13) },
+                    !inMonth && { color: colors.textMuted },
                     isToday && styles.dayTextToday,
                   ]}
                 >
@@ -175,16 +278,67 @@ export default function CalendarScreen() {
       )}
 
       <View style={styles.legend}>
-        <Text style={styles.legendTitle}>Cores Litúrgicas</Text>
+        <Text style={[styles.legendTitle, { color: colors.textMuted, fontSize: scale(10) }]}>
+          Cores Litúrgicas
+        </Text>
         <View style={styles.legendGrid}>
           {(Object.keys(seasonColors) as LiturgicalSeason[]).map((season) => (
             <View key={season} style={styles.legendItem}>
               <View style={[styles.legendDot, { backgroundColor: seasonColors[season] }]} />
-              <Text style={styles.legendText}>{seasonLabels[season]}</Text>
+              <Text style={[styles.legendText, { color: colors.textMuted, fontSize: scale(11) }]}>
+                {seasonLabels[season]}
+              </Text>
             </View>
           ))}
         </View>
       </View>
+        </>
+      )}
+
+      {showFavorites && !searchMode && (
+        <View style={styles.favoritesList}>
+          {favorites.length === 0 ? (
+            <View style={styles.emptyFavorites}>
+              <MaterialCommunityIcons name="heart-outline" size={40} color={colors.textMuted} />
+              <Text style={[styles.emptyText, { color: colors.textMuted, fontSize: scale(15) }]}>
+                Nenhum dia favoritado ainda
+              </Text>
+              <Text style={[styles.emptyHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+                Toque no coração no devocional do dia para salvar aqui.
+              </Text>
+            </View>
+          ) : (
+            favorites
+              .sort()
+              .reverse()
+              .map((dateStr) => {
+                const d = parse(dateStr, 'yyyy-MM-dd', new Date());
+                const info = getLiturgicalDayInfo(d);
+                const seasonColor = seasonColors[info.season];
+                return (
+                  <TouchableOpacity
+                    key={dateStr}
+                    style={[styles.favoriteRow, { borderBottomColor: colors.border }]}
+                    onPress={() => navigation.navigate('Hoje', { date: dateStr })}
+                    accessibilityRole="button"
+                    accessibilityLabel={`${format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })} — ${info.dayName}`}
+                  >
+                    <View style={[styles.favoriteDot, { backgroundColor: seasonColor }]} />
+                    <View style={styles.favoriteContent}>
+                      <Text style={[styles.favoriteDate, { color: colors.text, fontSize: scale(14) }]}>
+                        {format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
+                      </Text>
+                      <Text style={[styles.favoriteDayName, { color: colors.textMuted, fontSize: scale(12) }]}>
+                        {info.dayName}
+                      </Text>
+                    </View>
+                    <MaterialCommunityIcons name="chevron-right" size={18} color={colors.textMuted} />
+                  </TouchableOpacity>
+                );
+              })
+          )}
+        </View>
+      )}
     </View>
   );
 }
@@ -192,7 +346,6 @@ export default function CalendarScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1A1A1A',
     paddingHorizontal: 16,
   },
   loadingContainer: {
@@ -205,13 +358,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 10,
-    paddingBottom: 20,
+    gap: 8,
+    paddingBottom: 16,
+  },
+  searchToggle: {
+    padding: 4,
   },
   title: {
-    fontSize: 22,
     fontWeight: '700',
-    color: '#F5F5F0',
     fontFamily: 'Lora_700Bold',
   },
   todayButton: {
@@ -222,11 +376,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     borderRadius: 16,
     borderWidth: 1,
-    borderColor: 'rgba(184,134,11,0.4)',
   },
   todayButtonText: {
-    fontSize: 11,
-    color: '#B8860B',
     fontFamily: 'Lora_600SemiBold_Italic',
   },
   monthNav: {
@@ -243,8 +394,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   monthTitle: {
-    fontSize: 18,
-    color: '#F5F5F0',
     fontFamily: 'Lora_400Regular',
     textTransform: 'capitalize',
   },
@@ -258,8 +407,6 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
   },
   weekDayText: {
-    fontSize: 11,
-    color: 'rgba(255,255,255,0.45)',
     textTransform: 'uppercase',
     letterSpacing: 1,
     fontWeight: '600',
@@ -278,10 +425,6 @@ const styles = StyleSheet.create({
   dayCellOtherMonth: {
     opacity: 0.25,
   },
-  dayCellToday: {
-    backgroundColor: 'rgba(184,134,11,0.15)',
-    borderRadius: Platform.select({ android: 12, default: 8 }),
-  },
   dayDot: {
     position: 'absolute',
     top: Platform.select({ android: 6, default: 4 }),
@@ -290,23 +433,15 @@ const styles = StyleSheet.create({
     borderRadius: 3,
   },
   dayText: {
-    fontSize: 14,
-    color: '#F5F5F0',
     fontFamily: 'Lora_400Regular',
-  },
-  dayTextOtherMonth: {
-    color: 'rgba(245,245,240,0.25)',
   },
   dayTextToday: {
     fontWeight: '700',
-    color: '#B8860B',
   },
   legend: {
     marginTop: 24,
   },
   legendTitle: {
-    fontSize: 11,
-    color: 'rgba(255,255,255,0.5)',
     textTransform: 'uppercase',
     letterSpacing: 2,
     fontWeight: '700',
@@ -329,8 +464,111 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   legendText: {
-    fontSize: 12,
-    color: 'rgba(255,255,255,0.65)',
     fontFamily: 'Lora_400Regular',
+  },
+  tabRow: {
+    flexDirection: 'row',
+    marginBottom: 16,
+    borderBottomWidth: 0.5,
+    borderBottomColor: 'rgba(128,128,128,0.2)',
+  },
+  tab: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 10,
+    borderBottomWidth: 2,
+    borderBottomColor: 'transparent',
+  },
+  tabText: {
+    fontFamily: 'Lora_700Bold',
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+  },
+  favoritesList: {
+    flex: 1,
+  },
+  favoriteRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+    paddingVertical: 14,
+    paddingHorizontal: 4,
+    borderBottomWidth: 0.5,
+  },
+  favoriteDot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+  },
+  favoriteContent: {
+    flex: 1,
+  },
+  favoriteDate: {
+    fontFamily: 'Lora_400Regular',
+  },
+  favoriteDayName: {
+    fontFamily: 'Lora_400Regular_Italic',
+    marginTop: 2,
+  },
+  emptyFavorites: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 60,
+    gap: 8,
+  },
+  emptyText: {
+    fontFamily: 'Lora_700Bold',
+  },
+  emptyHint: {
+    fontFamily: 'Lora_400Regular',
+    textAlign: 'center',
+  },
+  searchContainer: {
+    marginBottom: 16,
+  },
+  searchInput: {
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingHorizontal: 14,
+    paddingVertical: 10,
+    fontFamily: 'Lora_400Regular',
+  },
+  searchCount: {
+    marginTop: 6,
+    fontFamily: 'Lora_400Regular',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+  },
+  searchResult: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 4,
+    borderBottomWidth: 0.5,
+  },
+  searchResultContent: {
+    flex: 1,
+  },
+  searchResultDate: {
+    fontFamily: 'Lora_400Regular',
+  },
+  searchResultTitle: {
+    fontFamily: 'Lora_400Regular_Italic',
+    marginTop: 2,
+  },
+  searchResultMatch: {
+    fontFamily: 'Lora_700Bold',
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+  },
+  searchEmpty: {
+    marginTop: 16,
+    textAlign: 'center',
+    fontFamily: 'Lora_400Regular_Italic',
   },
 });

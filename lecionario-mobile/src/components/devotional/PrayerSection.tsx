@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as Clipboard from 'expo-clipboard';
 import type { DailyPrayer } from '@/types';
+import { useFontScale } from '@/contexts/FontContext';
 
 interface PrayerSectionProps {
   prayer: DailyPrayer;
@@ -10,6 +11,7 @@ interface PrayerSectionProps {
 
 export function PrayerSection({ prayer }: PrayerSectionProps) {
   const [copied, setCopied] = useState(false);
+  const { scale } = useFontScale();
 
   const handleCopy = async () => {
     const lines = [`${prayer.title}`, '', prayer.text];
@@ -26,9 +28,6 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
       <View style={styles.headerSection}>
         <View style={styles.iconRow}>
           <View style={styles.line} />
-          {/* Halo-glow (Design Narniano) — Android ignora shadowColor em
-              View, então o brilho é uma camada própria atrás do ícone,
-              não sombra nativa */}
           <View style={styles.iconGlow}>
             <View style={styles.iconCircle}>
               <MaterialCommunityIcons name="candle" size={28} color="#F5F5F0" />
@@ -36,12 +35,12 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
           </View>
           <View style={styles.line} />
         </View>
-        <Text style={styles.title}>Oração do Dia</Text>
-        <Text style={styles.subtitle}>{prayer.title}</Text>
+        <Text style={[styles.title, { fontSize: scale(26) }]}>Oração do Dia</Text>
+        <Text style={[styles.subtitle, { fontSize: scale(9) }]}>{prayer.title}</Text>
       </View>
 
       <View style={styles.bodySection}>
-        <Text style={styles.prayerText} selectable>
+        <Text style={[styles.prayerText, { fontSize: scale(15) }]} selectable>
           {prayer.text}
         </Text>
 
@@ -57,7 +56,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             size={16}
             color={copied ? '#7ED17E' : '#EDDFB8'}
           />
-          <Text style={[styles.copyText, copied && styles.copyTextDone]}>
+          <Text style={[styles.copyText, copied && styles.copyTextDone, { fontSize: scale(10) }]}>
             {copied ? 'Copiado!' : 'Copiar'}
           </Text>
         </TouchableOpacity>
@@ -65,7 +64,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
         {(prayer.author || prayer.source) && (
           <View style={styles.sourceRow}>
             <View style={styles.sourceLine} />
-            <Text style={styles.sourceText}>
+            <Text style={[styles.sourceText, { fontSize: scale(8) }]}>
               {prayer.author}
               {prayer.author && prayer.source ? ' • ' : ''}
               {prayer.source}
@@ -126,15 +125,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 28,
     color: '#F5F5F0',
     fontFamily: 'Lora_400Regular',
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: 10,
-    // Achado 2026-08-15: #B8860B sobre #6B3A3A dava 2.82:1, reprovado
-    // (WCAG AA precisa 4.5:1 em texto pequeno). #EDDFB8 dá 6.92:1.
     color: '#EDDFB8',
     textTransform: 'uppercase',
     letterSpacing: 3,
@@ -147,9 +142,6 @@ const styles = StyleSheet.create({
     paddingTop: 28,
   },
   prayerText: {
-    // Achado real 2026-08-16: 18px + padding empilhado (20+8) deixava
-    // poucas palavras por linha numa tela de celular, leitura "picotada"
-    fontSize: 16,
     lineHeight: 26,
     color: '#F5F5F0',
     fontFamily: 'Lora_400Regular_Italic',
@@ -166,7 +158,6 @@ const styles = StyleSheet.create({
     minHeight: 36,
   },
   copyText: {
-    fontSize: 11,
     color: '#EDDFB8',
     fontWeight: '600',
     fontFamily: 'Lora_600SemiBold_Italic',
@@ -189,7 +180,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(184,134,11,0.2)',
   },
   sourceText: {
-    fontSize: 9,
     color: '#EDDFB8',
     fontWeight: '700',
     fontFamily: 'Lora_600SemiBold_Italic',

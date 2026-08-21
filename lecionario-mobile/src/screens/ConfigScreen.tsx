@@ -1,12 +1,103 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Linking } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { clearCache } from '@/lib/cache';
+import {
+  requestNotificationPermission,
+  scheduleDailyNotification,
+  cancelAllNotifications,
+} from '@/lib/notifications';
+import { useSettings, type ThemePreference, type FontSizePreference } from '@/contexts/SettingsContext';
+import { useThemeColors } from '@/contexts/ThemeContext';
+import { useFontScale } from '@/contexts/FontContext';
+
+const THEME_OPTIONS: { value: ThemePreference; label: string; icon: string }[] = [
+  { value: 'system', label: 'Sistema', icon: 'cellphone' },
+  { value: 'light', label: 'Claro', icon: 'white-balance-sunny' },
+  { value: 'dark', label: 'Escuro', icon: 'moon-waning-crescent' },
+];
+
+const FONT_OPTIONS: { value: FontSizePreference; label: string; preview: number }[] = [
+  { value: 'small', label: 'Pequena', preview: 13 },
+  { value: 'medium', label: 'Média', preview: 15 },
+  { value: 'large', label: 'Grande', preview: 18 },
+];
+
+const TIME_OPTIONS = [
+  { value: '06:00', label: '6h' },
+  { value: '07:00', label: '7h' },
+  { value: '08:00', label: '8h' },
+  { value: '09:00', label: '9h' },
+];
+
+const BIBLIOTECA_LINKS: { label: string; description: string; url: string; icon: keyof typeof MaterialCommunityIcons.glyphMap }[] = [
+  {
+    label: 'Narniano',
+    description: 'A casa de todos os projetos',
+    url: 'https://narniano.com',
+    icon: 'home-heart',
+  },
+  {
+    label: 'Bíblia na Arte',
+    description: 'Obras de arte inspiradas nas Escrituras',
+    url: 'https://biblianaarte.narniano.com',
+    icon: 'palette-outline',
+  },
+  {
+    label: 'Scriptorium Divinum',
+    description: 'Clássicos da teologia cristã em português',
+    url: 'https://scriptorium.narniano.com',
+    icon: 'bookshelf',
+  },
+  {
+    label: 'Gerador C.S. Lewis',
+    description: 'Citações inspiradoras de C.S. Lewis',
+    url: 'https://gerador-cs-lewis.vercel.app',
+    icon: 'format-quote-close',
+  },
+];
 
 export default function ConfigScreen() {
   const insets = useSafeAreaInsets();
+  const colors = useThemeColors();
+  const { scale } = useFontScale();
+  const {
+    theme,
+    fontSize,
+    notificationsEnabled,
+    notificationTime,
+    setTheme,
+    setFontSize,
+    setNotificationsEnabled,
+    setNotificationTime,
+  } = useSettings();
   const [clearing, setClearing] = useState(false);
+
+  const handleToggleNotifications = async () => {
+    if (!notificationsEnabled) {
+      const granted = await requestNotificationPermission();
+      if (!granted) {
+        Alert.alert(
+          'Permissão negada',
+          'Ative as notificações nas configurações do sistema para receber o lembrete diário.',
+        );
+        return;
+      }
+      await scheduleDailyNotification(notificationTime);
+      setNotificationsEnabled(true);
+    } else {
+      await cancelAllNotifications();
+      setNotificationsEnabled(false);
+    }
+  };
+
+  const handleChangeTime = async (time: string) => {
+    setNotificationTime(time);
+    if (notificationsEnabled) {
+      await scheduleDailyNotification(time);
+    }
+  };
 
   const handleClearCache = () => {
     Alert.alert(
@@ -29,75 +120,286 @@ export default function ConfigScreen() {
   };
 
   return (
-    <View style={[styles.container, { paddingTop: insets.top + 16 }]}>
+    <ScrollView
+      style={[styles.container, { backgroundColor: colors.background, paddingTop: insets.top + 16 }]}
+      contentContainerStyle={{ paddingBottom: insets.bottom + 24 }}
+    >
       <View style={styles.header}>
-        <MaterialCommunityIcons name="cog" size={24} color="#B8860B" />
-        <Text style={styles.title}>Configurações</Text>
+        <MaterialCommunityIcons name="cog" size={24} color={colors.accent} />
+        <Text style={[styles.title, { color: colors.text }]}>Configurações</Text>
       </View>
 
+      {/* Aparência */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Armazenamento</Text>
+        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Aparência</Text>
+
+        <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
+          <Text style={[styles.cardLabel, { color: colors.text }]}>Tema</Text>
+          <View style={styles.optionRow}>
+            {THEME_OPTIONS.map((opt) => (
+              <TouchableOpacity
+                key={opt.value}
+                style={[
+                  styles.optionButton,
+                  {
+                    backgroundColor: theme === opt.value ? colors.accent : 'transparent',
+                    borderColor: theme === opt.value ? colors.accent : colors.border,
+                  },
+                ]}
+                onPress={() => setTheme(opt.value)}
+                accessibilityLabel={`Tema ${opt.label}`}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: theme === opt.value }}
+              >
+                <MaterialCommunityIcons
+                  name={opt.icon as keyof typeof MaterialCommunityIcons.glyphMap}
+                  size={16}
+                  color={theme === opt.value ? '#FFF' : colors.textMuted}
+                />
+                <Text
+                  style={[
+                    styles.optionText,
+                    {
+                      color: theme === opt.value ? '#FFF' : colors.text,
+                      fontSize: scale(12),
+                    },
+                  ]}
+                >
+                  {opt.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+
+        <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
+          <Text style={[styles.cardLabel, { color: colors.text }]}>Tamanho da fonte</Text>
+          <View style={styles.optionRow}>
+            {FONT_OPTIONS.map((opt) => (
+              <TouchableOpacity
+                key={opt.value}
+                style={[
+                  styles.optionButton,
+                  {
+                    backgroundColor: fontSize === opt.value ? colors.accent : 'transparent',
+                    borderColor: fontSize === opt.value ? colors.accent : colors.border,
+                  },
+                ]}
+                onPress={() => setFontSize(opt.value)}
+                accessibilityLabel={`Fonte ${opt.label}`}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: fontSize === opt.value }}
+              >
+                <Text
+                  style={[
+                    styles.optionText,
+                    {
+                      color: fontSize === opt.value ? '#FFF' : colors.text,
+                      fontSize: scale(opt.preview - 2),
+                    },
+                  ]}
+                >
+                  Aa
+                </Text>
+                <Text
+                  style={[
+                    styles.optionText,
+                    {
+                      color: fontSize === opt.value ? '#FFF' : colors.textMuted,
+                      fontSize: scale(10),
+                    },
+                  ]}
+                >
+                  {opt.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </View>
+
+      {/* Notificações */}
+      <View style={styles.section}>
+        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Notificações</Text>
         <TouchableOpacity
-          style={styles.row}
+          style={[styles.row, { borderBottomColor: colors.border }]}
+          onPress={handleToggleNotifications}
+          accessibilityLabel={notificationsEnabled ? 'Desativar notificações' : 'Ativar notificações'}
+          accessibilityRole="switch"
+          accessibilityState={{ checked: notificationsEnabled }}
+        >
+          <MaterialCommunityIcons
+            name={notificationsEnabled ? 'bell' : 'bell-off-outline'}
+            size={22}
+            color={colors.accent}
+          />
+          <View style={styles.rowContent}>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Lembrete diário
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              {notificationsEnabled
+                ? `Ativado — às ${notificationTime.replace(':h', '')}`
+                : 'Receba a leitura do dia toda manhã'}
+            </Text>
+          </View>
+          <View
+            style={[
+              styles.toggle,
+              { backgroundColor: notificationsEnabled ? colors.accent : colors.border },
+            ]}
+          >
+            <View
+              style={[
+                styles.toggleKnob,
+                { transform: [{ translateX: notificationsEnabled ? 18 : 2 }] },
+              ]}
+            />
+          </View>
+        </TouchableOpacity>
+
+        {notificationsEnabled && (
+          <View style={[styles.timePicker, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <Text style={[styles.timePickerLabel, { color: colors.textMuted, fontSize: scale(10) }]}>
+              Horário
+            </Text>
+            <View style={styles.timeRow}>
+              {TIME_OPTIONS.map((opt) => (
+                <TouchableOpacity
+                  key={opt.value}
+                  style={[
+                    styles.timeButton,
+                    {
+                      backgroundColor:
+                        notificationTime === opt.value ? colors.accent : 'transparent',
+                      borderColor:
+                        notificationTime === opt.value ? colors.accent : colors.border,
+                    },
+                  ]}
+                  onPress={() => handleChangeTime(opt.value)}
+                  accessibilityLabel={`Notificar às ${opt.label}`}
+                  accessibilityRole="radio"
+                  accessibilityState={{ checked: notificationTime === opt.value }}
+                >
+                  <Text
+                    style={[
+                      styles.timeText,
+                      {
+                        color: notificationTime === opt.value ? '#FFF' : colors.text,
+                        fontSize: scale(13),
+                      },
+                    ]}
+                  >
+                    {opt.label}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          </View>
+        )}
+      </View>
+
+      {/* Armazenamento */}
+      <View style={styles.section}>
+        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Armazenamento</Text>
+        <TouchableOpacity
+          style={[styles.row, { borderBottomColor: colors.border }]}
           onPress={handleClearCache}
           disabled={clearing}
           accessibilityLabel="Limpar dados temporários"
           accessibilityRole="button"
         >
-          <MaterialCommunityIcons name="delete-outline" size={22} color="#CC3333" />
+          <MaterialCommunityIcons name="delete-outline" size={22} color={colors.destructive} />
           <View style={styles.rowContent}>
-            <Text style={styles.rowLabel}>Limpar dados temporários</Text>
-            <Text style={styles.rowHint}>
-              As leituras já vêm no app, não precisam de internet — isso só limpa um cache técnico
-              de curta duração
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Limpar dados temporários
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              As leituras já vêm no app — isso só limpa um cache técnico
             </Text>
           </View>
-          <MaterialCommunityIcons name="chevron-right" size={20} color="rgba(255,255,255,0.3)" />
+          <MaterialCommunityIcons name="chevron-right" size={20} color={colors.textMuted} />
         </TouchableOpacity>
       </View>
 
+      {/* Sobre */}
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Sobre</Text>
-        <View style={styles.row}>
-          <MaterialCommunityIcons name="book-open-variant" size={22} color="#B8860B" />
+        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Sobre</Text>
+        <View style={[styles.row, { borderBottomColor: colors.border }]}>
+          <MaterialCommunityIcons name="book-open-variant" size={22} color={colors.accent} />
           <View style={styles.rowContent}>
-            <Text style={styles.rowLabel}>Lecionário</Text>
-            <Text style={styles.rowHint}>Versão 1.0.0</Text>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Lecionário
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              Versão 1.0.0
+            </Text>
           </View>
         </View>
-        <View style={styles.row}>
+        <View style={[styles.row, { borderBottomColor: colors.border }]}>
           <MaterialCommunityIcons name="calendar-text" size={22} color="#4A8B4A" />
           <View style={styles.rowContent}>
-            <Text style={styles.rowLabel}>Ciclo Litúrgico</Text>
-            <Text style={styles.rowHint}>Anos A, B, C — Lecionário Comum Revisado</Text>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Ciclo Litúrgico
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              Anos A, B, C — Lecionário Comum Revisado
+            </Text>
           </View>
         </View>
-        <View style={styles.row}>
-          <MaterialCommunityIcons
-            name="information-outline"
-            size={22}
-            color="rgba(255,255,255,0.5)"
-          />
+        <View style={[styles.row, { borderBottomColor: colors.border }]}>
+          <MaterialCommunityIcons name="information-outline" size={22} color={colors.textMuted} />
           <View style={styles.rowContent}>
-            <Text style={styles.rowLabel}>Dados litúrgicos</Text>
-            <Text style={styles.rowHint}>Calculados localmente para 2024–2030</Text>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Dados litúrgicos
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              Calculados localmente para 2025–2030
+            </Text>
           </View>
         </View>
       </View>
 
+      {/* Biblioteca */}
+      <View style={styles.section}>
+        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Biblioteca</Text>
+        <Text style={[styles.bibliotecaIntro, { color: colors.textMuted, fontSize: scale(12) }]}>
+          Parte de um ecossistema de projetos dedicados à teologia, à literatura e à devoção cristã.
+        </Text>
+        {BIBLIOTECA_LINKS.map((link) => (
+          <TouchableOpacity
+            key={link.label}
+            onPress={() => Linking.openURL(link.url)}
+            style={[styles.row, { borderBottomColor: colors.border }]}
+            accessibilityRole="link"
+            accessibilityLabel={`Abrir ${link.label}`}
+          >
+            <MaterialCommunityIcons name={link.icon} size={20} color={colors.accent} />
+            <View style={styles.rowContent}>
+              <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(14) }]}>
+                {link.label}
+              </Text>
+              <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(11) }]}>
+                {link.description}
+              </Text>
+            </View>
+            <MaterialCommunityIcons name="open-in-new" size={14} color={colors.textMuted} />
+          </TouchableOpacity>
+        ))}
+      </View>
+
       <View style={styles.footer}>
-        <Text style={styles.footerText}>
+        <Text style={[styles.footerText, { color: colors.textMuted, fontSize: scale(11) }]}>
           Lecionário — Meditação diária na Palavra de Deus seguindo o Ano Litúrgico Cristão.
         </Text>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#1A1A1A',
     paddingHorizontal: 16,
   },
   header: {
@@ -110,7 +412,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: '700',
-    color: '#F5F5F0',
     fontFamily: 'Lora_700Bold',
   },
   section: {
@@ -118,12 +419,48 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 11,
-    color: 'rgba(255,255,255,0.45)',
     textTransform: 'uppercase',
     letterSpacing: 2,
     fontWeight: '700',
     fontFamily: 'Lora_700Bold',
     marginBottom: 12,
+    paddingLeft: 4,
+  },
+  bibliotecaIntro: {
+    fontFamily: 'Lora_400Regular_Italic',
+    marginBottom: 12,
+    paddingLeft: 4,
+    lineHeight: 18,
+  },
+  card: {
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 10,
+    borderWidth: 1,
+  },
+  cardLabel: {
+    fontSize: 13,
+    fontWeight: '600',
+    fontFamily: 'Lora_700Bold',
+    marginBottom: 12,
+  },
+  optionRow: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  optionButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+    paddingVertical: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
+  optionText: {
+    fontWeight: '600',
+    fontFamily: 'Lora_400Regular',
   },
   row: {
     flexDirection: 'row',
@@ -132,22 +469,58 @@ const styles = StyleSheet.create({
     paddingVertical: 14,
     paddingHorizontal: 4,
     borderBottomWidth: 0.5,
-    borderBottomColor: 'rgba(255,255,255,0.08)',
     minHeight: 56,
   },
   rowContent: {
     flex: 1,
   },
   rowLabel: {
-    fontSize: 15,
-    color: '#F5F5F0',
     fontFamily: 'Lora_400Regular',
   },
   rowHint: {
-    fontSize: 12,
-    color: 'rgba(255,255,255,0.45)',
     fontFamily: 'Lora_400Regular',
     marginTop: 2,
+  },
+  toggle: {
+    width: 44,
+    height: 24,
+    borderRadius: 12,
+    justifyContent: 'center',
+    paddingHorizontal: 2,
+  },
+  toggleKnob: {
+    width: 20,
+    height: 20,
+    borderRadius: 10,
+    backgroundColor: '#FFF',
+  },
+  timePicker: {
+    marginTop: 12,
+    borderRadius: 12,
+    padding: 14,
+    borderWidth: 1,
+  },
+  timePickerLabel: {
+    textTransform: 'uppercase',
+    letterSpacing: 1,
+    fontWeight: '700',
+    fontFamily: 'Lora_700Bold',
+    marginBottom: 10,
+  },
+  timeRow: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  timeButton: {
+    flex: 1,
+    paddingVertical: 8,
+    borderRadius: 8,
+    borderWidth: 1,
+    alignItems: 'center',
+  },
+  timeText: {
+    fontWeight: '600',
+    fontFamily: 'Lora_400Regular',
   },
   footer: {
     marginTop: 'auto',
@@ -155,8 +528,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footerText: {
-    fontSize: 11,
-    color: 'rgba(255,255,255,0.3)',
     textAlign: 'center',
     lineHeight: 16,
     fontFamily: 'Lora_400Regular_Italic',

@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import type { LinkingOptions } from '@react-navigation/native';
+import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -15,6 +16,11 @@ import {
 } from '@expo-google-fonts/lora';
 import * as Sentry from '@sentry/react-native';
 import ErrorBoundary from '@/components/ErrorBoundary';
+import { SettingsProvider } from '@/contexts/SettingsContext';
+import { ThemeProvider, useThemeColors } from '@/contexts/ThemeContext';
+import { FontProvider } from '@/contexts/FontContext';
+import { FavoritesProvider } from '@/contexts/FavoritesContext';
+import { addNotificationResponseListener } from '@/lib/notifications';
 import HomeScreen from '@/screens/HomeScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 import ConfigScreen from '@/screens/ConfigScreen';
@@ -22,7 +28,6 @@ import type { RootTabParamList } from '@/types';
 
 Sentry.init({
   dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
-  // Em produção usa amostragem menor pra não estourar a cota.
   tracesSampleRate: __DEV__ ? 1.0 : 0.1,
   debug: __DEV__,
   environment: __DEV__ ? 'development' : 'production',
@@ -43,6 +48,83 @@ const linking: LinkingOptions<RootTabParamList> = {
   },
 };
 
+function AppTabs() {
+  const colors = useThemeColors();
+
+  return (
+    <>
+      <StatusBar style={colors.statusBar} />
+      <Tab.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: {
+            backgroundColor: colors.tabBarBg,
+            borderTopColor: colors.tabBarBorder,
+            borderTopWidth: 0.5,
+            paddingBottom: 8,
+            paddingTop: 8,
+            height: 60,
+            elevation: 0,
+            shadowOpacity: 0,
+          },
+          tabBarActiveTintColor: colors.accent,
+          tabBarInactiveTintColor: colors.textMuted,
+          tabBarLabelStyle: {
+            fontSize: 10,
+            textTransform: 'uppercase',
+            letterSpacing: 1,
+            fontWeight: '600',
+          },
+          tabBarItemStyle: {
+            minHeight: 48,
+          },
+        }}
+      >
+        <Tab.Screen
+          name="Hoje"
+          component={HomeScreen}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="book-open-variant" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Calendário"
+          component={CalendarScreen}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Config"
+          component={ConfigScreen}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="cog-outline" size={size} color={color} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </>
+  );
+}
+
+function NotificationHandler() {
+  const navigation = useNavigation<BottomTabNavigationProp<RootTabParamList>>();
+
+  useEffect(() => {
+    const sub = addNotificationResponseListener((date) => {
+      navigation.navigate('Hoje', { date });
+    });
+    return () => sub.remove();
+  }, [navigation]);
+
+  return null;
+}
+
 function App() {
   const [fontsLoaded] = useFonts({
     Lora_400Regular,
@@ -60,63 +142,18 @@ function App() {
   return (
     <SafeAreaProvider>
       <ErrorBoundary>
-        <NavigationContainer linking={linking}>
-          <StatusBar style="light" />
-          <Tab.Navigator
-            screenOptions={{
-              headerShown: false,
-              tabBarStyle: {
-                backgroundColor: '#1A1A1A',
-                borderTopColor: 'rgba(184,134,11,0.2)',
-                borderTopWidth: 0.5,
-                paddingBottom: 8,
-                paddingTop: 8,
-                height: 60,
-                elevation: 0,
-                shadowOpacity: 0,
-              },
-              tabBarActiveTintColor: '#B8860B',
-              tabBarInactiveTintColor: 'rgba(255,255,255,0.35)',
-              tabBarLabelStyle: {
-                fontSize: 10,
-                textTransform: 'uppercase',
-                letterSpacing: 1,
-                fontWeight: '600',
-              },
-              tabBarItemStyle: {
-                minHeight: 48,
-              },
-            }}
-          >
-            <Tab.Screen
-              name="Hoje"
-              component={HomeScreen}
-              options={{
-                tabBarIcon: ({ color, size }) => (
-                  <MaterialCommunityIcons name="book-open-variant" size={size} color={color} />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Calendário"
-              component={CalendarScreen}
-              options={{
-                tabBarIcon: ({ color, size }) => (
-                  <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
-                ),
-              }}
-            />
-            <Tab.Screen
-              name="Config"
-              component={ConfigScreen}
-              options={{
-                tabBarIcon: ({ color, size }) => (
-                  <MaterialCommunityIcons name="cog-outline" size={size} color={color} />
-                ),
-              }}
-            />
-          </Tab.Navigator>
-        </NavigationContainer>
+        <SettingsProvider>
+          <ThemeProvider>
+            <FontProvider>
+              <FavoritesProvider>
+                <NavigationContainer linking={linking}>
+                  <NotificationHandler />
+                  <AppTabs />
+                </NavigationContainer>
+              </FavoritesProvider>
+            </FontProvider>
+          </ThemeProvider>
+        </SettingsProvider>
       </ErrorBoundary>
     </SafeAreaProvider>
   );

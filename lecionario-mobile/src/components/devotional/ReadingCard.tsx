@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, TouchableOpacity, Share } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import type { Reading } from '@/types';
+import { useThemeColors } from '@/contexts/ThemeContext';
+import { useFontScale } from '@/contexts/FontContext';
 
 interface ReadingCardProps {
   reading: Reading;
@@ -12,17 +14,14 @@ const readingTypeConfig: Record<
   { label: string; icon: keyof typeof MaterialCommunityIcons.glyphMap; color: string }
 > = {
   first_reading: { label: 'Primeira Leitura', icon: 'book-open-variant', color: '#8B6914' },
-  // Achado real (2026-08-16): coração pra Salmo e estrela pra Evangelho
-  // não comunicavam nada específico — trocado por música (Salmos eram
-  // cantados) e cruz (o centro do Evangelho)
   psalm: { label: 'Salmo', icon: 'music-note-outline', color: '#4A2C6D' },
   second_reading: { label: 'Segunda Leitura', icon: 'script-text-outline', color: '#6B3A3A' },
-  // Achado 2026-08-15: #B8860B sobre branco dava 3.25:1, reprovado
-  // (mínimo 4.5:1 pra texto pequeno). #8F6608 dá 5.16:1.
   gospel: { label: 'Evangelho', icon: 'cross', color: '#8F6608' },
 };
 
 export function ReadingCard({ reading, index }: ReadingCardProps) {
+  const colors = useThemeColors();
+  const { scale } = useFontScale();
   const config = readingTypeConfig[reading.type] || readingTypeConfig.first_reading;
 
   const handleShare = async () => {
@@ -33,13 +32,26 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
   };
 
   return (
-    <View style={[styles.card, { marginTop: index > 0 ? 16 : 0 }]}>
-      <View style={styles.accentBar} />
+    <View
+      style={[
+        styles.card,
+        { marginTop: index > 0 ? 16 : 0, backgroundColor: colors.card },
+      ]}
+    >
+      <View style={[styles.accentBar, { backgroundColor: colors.accent }]} />
       <View style={styles.content}>
         <View style={styles.headerRow}>
           <View style={styles.referenceContainer}>
-            <Text style={styles.reference}>{reading.reference}</Text>
-            {reading.citation && <Text style={styles.citation}>{reading.citation}</Text>}
+            <Text
+              style={[styles.reference, { color: colors.text, fontSize: scale(18) }]}
+            >
+              {reading.reference}
+            </Text>
+            {reading.citation && (
+              <Text style={[styles.citation, { color: colors.textMuted, fontSize: scale(9) }]}>
+                {reading.citation}
+              </Text>
+            )}
           </View>
           <View style={styles.rightActions}>
             <TouchableOpacity
@@ -49,18 +61,23 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
               accessibilityLabel={`Compartilhar ${config.label} ${reading.reference}`}
               accessibilityRole="button"
             >
-              <MaterialCommunityIcons name="share-outline" size={18} color="#8B6914" />
+              <MaterialCommunityIcons name="share-outline" size={18} color={colors.accent} />
             </TouchableOpacity>
-            <View style={styles.badge}>
+            <View style={[styles.badge, { backgroundColor: `${colors.accent}1A`, borderColor: `${colors.accent}33` }]}>
               <MaterialCommunityIcons name={config.icon} size={12} color={config.color} />
-              <Text style={[styles.badgeText, { color: config.color }]}>{config.label}</Text>
+              <Text style={[styles.badgeText, { color: config.color, fontSize: scale(9) }]}>
+                {config.label}
+              </Text>
             </View>
           </View>
         </View>
         {reading.text && (
           <View style={styles.textContainer}>
-            <View style={styles.textBorder} />
-            <Text style={styles.text} selectable>
+            <View style={[styles.textBorder, { backgroundColor: `${colors.accent}33` }]} />
+            <Text
+              style={[styles.text, { color: colors.text, fontSize: scale(14) }]}
+              selectable
+            >
               {reading.text}
             </Text>
           </View>
@@ -72,7 +89,6 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: 'rgba(255,255,255,0.95)',
     borderRadius: 8,
     overflow: 'hidden',
     shadowColor: '#000',
@@ -83,7 +99,6 @@ const styles = StyleSheet.create({
   },
   accentBar: {
     height: 3,
-    backgroundColor: '#8B6914',
     opacity: 0.6,
   },
   content: {
@@ -112,14 +127,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   reference: {
-    fontSize: 20,
     fontWeight: '600',
-    color: '#333',
     fontFamily: 'Lora_600SemiBold_Italic',
   },
   citation: {
-    fontSize: 10,
-    color: '#999',
     textTransform: 'uppercase',
     letterSpacing: 2,
     fontFamily: 'Lora_600SemiBold_Italic',
@@ -131,13 +142,10 @@ const styles = StyleSheet.create({
     gap: 6,
     paddingHorizontal: 10,
     paddingVertical: 6,
-    backgroundColor: 'rgba(139,105,20,0.1)',
     borderRadius: 4,
     borderWidth: 1,
-    borderColor: 'rgba(139,105,20,0.2)',
   },
   badgeText: {
-    fontSize: 9,
     fontWeight: '700',
     textTransform: 'uppercase',
     letterSpacing: 2,
@@ -148,15 +156,12 @@ const styles = StyleSheet.create({
   },
   textBorder: {
     width: 2,
-    backgroundColor: 'rgba(139,105,20,0.2)',
     marginRight: 14,
     borderRadius: 1,
   },
   text: {
     flex: 1,
-    fontSize: 15,
     lineHeight: 24,
-    color: '#444',
     fontFamily: 'Lora_400Regular',
     paddingLeft: 2,
   },

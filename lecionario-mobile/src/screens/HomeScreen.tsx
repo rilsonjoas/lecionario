@@ -22,10 +22,17 @@ import { getLiturgicalDayInfo } from '@/lib/liturgical-calendar';
 import { getThemeForSeason, getHeaderTextColors } from '@/lib/theme';
 import { fetchDevotionalFromNetwork } from '@/lib/devotional-service';
 import { getCached, setCached, cacheKey } from '@/lib/cache';
+import { useThemeColors } from '@/contexts/ThemeContext';
+import { useFontScale } from '@/contexts/FontContext';
+import { useFavorites } from '@/contexts/FavoritesContext';
 import { ReadingCard } from '@/components/devotional/ReadingCard';
 import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
+import { EmptyState } from '@/components/EmptyState';
+import { ErrorState } from '@/components/ErrorState';
+import { QuoteCard } from '@/components/QuoteCard';
+import { ArtCard } from '@/components/ArtCard';
 import type { DailyDevotional, RootTabParamList } from '@/types';
 
 type HojeRouteProp = RouteProp<RootTabParamList, 'Hoje'>;
@@ -44,6 +51,9 @@ export default function HomeScreen() {
   const insets = useSafeAreaInsets();
   const route = useRoute<HojeRouteProp>();
   const navigation = useNavigation<BottomTabNavigationProp<RootTabParamList, 'Hoje'>>();
+  const colors = useThemeColors();
+  const { scale } = useFontScale();
+  const { toggleFavorite, isFavorite } = useFavorites();
   const [currentDate, setCurrentDate] = useState(() => {
     if (route.params?.date) {
       return parse(route.params.date, 'yyyy-MM-dd', new Date());
@@ -60,6 +70,8 @@ export default function HomeScreen() {
   const theme = getThemeForSeason(liturgicalInfo.season);
   const headerColors = getHeaderTextColors(liturgicalInfo.season);
   const showTodayButton = !isDateToday(currentDate);
+  const currentDateStr = format(currentDate, 'yyyy-MM-dd');
+  const favorited = isFavorite(currentDateStr);
 
   const loadDevotional = useCallback(async (date: Date, forceNetwork = false) => {
     const dateStr = format(date, 'yyyy-MM-dd');
@@ -169,15 +181,30 @@ export default function HomeScreen() {
           />
           <Text style={[styles.title, { color: headerColors.title }]}>Lecionário</Text>
           {devotional && (
-            <TouchableOpacity
-              onPress={handleShareDay}
-              style={styles.shareDayButton}
-              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-              accessibilityLabel="Compartilhar devocional do dia"
-              accessibilityRole="button"
-            >
-              <MaterialCommunityIcons name="share-outline" size={20} color={headerColors.title} />
-            </TouchableOpacity>
+            <>
+              <TouchableOpacity
+                onPress={() => toggleFavorite(currentDateStr)}
+                style={styles.shareDayButton}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                accessibilityLabel={favorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+                accessibilityRole="button"
+              >
+                <MaterialCommunityIcons
+                  name={favorited ? 'heart' : 'heart-outline'}
+                  size={20}
+                  color={favorited ? '#CC3333' : headerColors.title}
+                />
+              </TouchableOpacity>
+              <TouchableOpacity
+                onPress={handleShareDay}
+                style={styles.shareDayButton}
+                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+                accessibilityLabel="Compartilhar devocional do dia"
+                accessibilityRole="button"
+              >
+                <MaterialCommunityIcons name="share-outline" size={20} color={headerColors.title} />
+              </TouchableOpacity>
+            </>
           )}
         </View>
         <Text style={[styles.dayName, { color: headerColors.body }]}>{liturgicalInfo.dayName}</Text>
@@ -198,7 +225,7 @@ export default function HomeScreen() {
           accessibilityLabel="Dia anterior"
         >
           <MaterialCommunityIcons name="chevron-left" size={24} color={headerColors.bodyMuted} />
-          <Text style={[styles.navText, { color: headerColors.bodyMuted }]}>Anterior</Text>
+          <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>Anterior</Text>
         </TouchableOpacity>
 
         {/* Achado real (2026-08-16): tocar na data não fazia nada — vira
@@ -215,7 +242,7 @@ export default function HomeScreen() {
             size={16}
             color={headerColors.body}
           />
-          <Text style={[styles.dateText, { color: headerColors.body }]}>
+          <Text style={[styles.dateText, { color: headerColors.body, fontSize: scale(11) }]}>
             {format(currentDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
           </Text>
         </TouchableOpacity>
@@ -227,7 +254,7 @@ export default function HomeScreen() {
           accessibilityRole="button"
           accessibilityLabel="Próximo dia"
         >
-          <Text style={[styles.navText, { color: headerColors.bodyMuted }]}>Próximo</Text>
+          <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>Próximo</Text>
           <MaterialCommunityIcons name="chevron-right" size={24} color={headerColors.bodyMuted} />
         </TouchableOpacity>
       </View>
@@ -263,19 +290,17 @@ export default function HomeScreen() {
           <View style={styles.loadingContainer}>
             <ActivityIndicator size="large" color="rgba(255,255,255,0.6)" />
           </View>
+        ) : isOffline && !devotional ? (
+          <ErrorState
+            message="Não foi possível carregar o devocional. Verifique sua conexão."
+            onRetry={onRefresh}
+          />
         ) : !devotional ? (
-          <View style={styles.loadingContainer}>
-            <Text style={styles.loadingText}>Nenhum dado encontrado para esta data.</Text>
-            <TouchableOpacity
-              onPress={onRefresh}
-              style={styles.retryButton}
-              hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
-              accessibilityRole="button"
-              accessibilityLabel="Tentar novamente"
-            >
-              <Text style={styles.retryText}>Tentar novamente</Text>
-            </TouchableOpacity>
-          </View>
+          <EmptyState
+            icon="book-open-variant"
+            title="Nenhum dado encontrado"
+            subtitle="Não há devocional disponível para esta data."
+          />
         ) : (
           <>
             {devotional.collect && (
@@ -286,8 +311,10 @@ export default function HomeScreen() {
 
             <View style={styles.section}>
               <View style={styles.sectionHeader}>
-                <Text style={styles.sectionHeaderTitle}>Lectio Divina</Text>
-                <Text style={styles.sectionHeaderSub}>
+                <Text style={[styles.sectionHeaderTitle, { color: colors.text, fontSize: scale(22) }]}>
+                  Lectio Divina
+                </Text>
+                <Text style={[styles.sectionHeaderSub, { color: colors.textMuted, fontSize: scale(8) }]}>
                   Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length}{' '}
                   Estações da Palavra
                 </Text>
@@ -303,6 +330,21 @@ export default function HomeScreen() {
 
             <View style={styles.section}>
               <MeditationSection meditation={devotional.meditation} />
+            </View>
+
+            <View style={styles.section}>
+              <View style={styles.quoteSectionHeader}>
+                <Text style={[styles.sectionHeaderTitle, { color: colors.text, fontSize: scale(18) }]}>
+                  Citação do dia
+                </Text>
+                <Text style={[styles.sectionHeaderSub, { color: colors.textMuted, fontSize: scale(8) }]}>
+                  C. S. LEWIS
+                </Text>
+              </View>
+              <QuoteCard date={currentDate} />
+              {!isOffline && devotional.readings.length > 0 && (
+                <ArtCard reference={devotional.readings[0].reference} />
+              )}
             </View>
           </>
         )}
@@ -384,7 +426,6 @@ const styles = StyleSheet.create({
     minHeight: 44,
   },
   navText: {
-    fontSize: 13,
     fontFamily: 'Lora_400Regular',
   },
   dateContainer: {
@@ -410,8 +451,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Lora_600SemiBold_Italic',
   },
   dateText: {
-    fontSize: 12,
-    color: 'rgba(255,255,255,0.9)',
     fontFamily: 'Lora_400Regular',
   },
   offlineBanner: {
@@ -439,23 +478,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: 80,
   },
-  loadingText: {
-    fontSize: 16,
-    color: 'rgba(255,255,255,0.8)',
-    fontFamily: 'Lora_400Regular',
-  },
-  retryButton: {
-    marginTop: 16,
-    paddingHorizontal: 24,
-    paddingVertical: 12,
-    backgroundColor: 'rgba(255,255,255,0.15)',
-    borderRadius: 8,
-  },
-  retryText: {
-    fontSize: 14,
-    color: '#F5F5F0',
-    fontFamily: 'Lora_400Regular',
-  },
   section: {
     marginBottom: 24,
   },
@@ -464,16 +486,16 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   sectionHeaderTitle: {
-    fontSize: 24,
-    color: '#fff',
     fontFamily: 'Lora_400Regular_Italic',
   },
   sectionHeaderSub: {
-    fontSize: 9,
-    color: 'rgba(255,255,255,0.6)',
     textTransform: 'uppercase',
     letterSpacing: 3,
     fontWeight: '700',
     marginTop: 8,
+  },
+  quoteSectionHeader: {
+    alignItems: 'center',
+    marginBottom: 12,
   },
 });

@@ -48,18 +48,11 @@ aqui, achado ao auditar os roadmaps de todos os projetos)
   Esse trabalho incluiu descobrir e consertar um bug estrutural na
   atribuição de leituras que afetava os três ciclos, não só o
   devocional (ver 1.2a), e vários outros bugs estruturais menores em
-  cada estação subsequente (ver 1.2b a 1.2i). O objeto genérico
-  `templates` ficou órfão e pode ser removido numa limpeza futura
-- Leituras RCL de Natal e Epifania: **três bugs estruturais achados e
-  corrigidos (2026-08-18)** ao auditar as demais estações em busca do
-  mesmo padrão de erro do Tempo Comum — ver 1.2b
+  cada estação subsequente (ver 1.2b a 1.2i)
 - **iOS nunca testado em dispositivo físico** (foco consciente em Android por enquanto — ver 1.3)
-- Notificações push ausentes
-- Config screen com apenas limpar cache
+- Notificações push ausentes (toggle instalado em 2.3, implementação completa em 2.1)
 - Cobertura de testes baixa (só motor litúrgico)
 - Sem crash reporting, sem analytics
-- Ícone/nome novos exigem um novo build EAS pra valerem no app já
-  instalado — o trabalho em si está pronto, falta só empacotar (ver 1.7)
 
 ---
 
@@ -747,16 +740,16 @@ que era falso).*
 
 ### 2.1 Notificações push diárias
 
-- [ ] Instalar `expo-notifications`
-- [ ] Implementar notificação local às 6h com o nome do dia litúrgico e referências
-- [ ] Adicionar toggle nas Configurações: ativar/desativar notificações
-- [ ] Adicionar seletor de horário (padrão 6h)
-- [ ] Solicitar permissão de notificação no primeiro uso, com explicação clara
+- [x] Instalar `expo-notifications`
+- [x] Implementar notificação local às 6h com o nome do dia litúrgico e referências (2026-08-20, `src/lib/notifications.ts`)
+- [x] Adicionar toggle nas Configurações: ativar/desativar notificações (2026-08-20)
+- [x] Adicionar seletor de horário (6h/7h/8h/9h) — integrado ao toggle (2026-08-20)
+- [x] Solicitar permissão de notificação no primeiro uso, com explicação clara (2026-08-20)
 
 **Exemplo da notificação:**
 ```
 Título: Quinta após o Pentecostes
-Corpo: Rm 8,14-17 · Jo 8,31-47
+Corpo: 20 de agosto — Rm 8,14-17 · Jo 8,31-47
 ```
 
 ---
@@ -775,16 +768,16 @@ Corpo: Rm 8,14-17 · Jo 8,31-47
 
 A tela atual tem apenas "Limpar cache". Adicionar:
 
-- [ ] **Notificações** — toggle on/off + seletor de horário
-- [ ] **Tamanho da fonte** — pequeno / médio / grande
-- [ ] **Tema** — claro / escuro / seguir sistema
-- [ ] **Sobre** — versão atual, link para repositório, licença
+- [x] **Tema** — claro / escuro / seguir sistema (SettingsContext + ThemeContext + FontContext, 2026-08-20)
+- [x] **Tamanho da fonte** — pequeno / médio / grande (FontContext com scale, 2026-08-20)
+- [x] **Notificações** — toggle on/off (permissions via expo-notifications, 2026-08-20)
+- [x] **Sobre** — versão atual, dados litúrgicos, explicação de armazenamento (2026-08-20)
 
 ---
 
 ### 2.4 Deep links
 
-- [ ] Permitir que a notificação push abra diretamente o devocional do dia ao ser tocada (depende de 2.1)
+- [x] Permitir que a notificação push abra diretamente o devocional do dia ao ser tocada (2026-08-20, `NotificationHandler` em `App.tsx` + `addNotificationResponseListener` em `notifications.ts`)
 
 ---
 
@@ -817,35 +810,35 @@ A tela atual tem apenas "Limpar cache". Adicionar:
 
 ### 3.2 Cobertura de testes
 
-- [ ] Testes para `rcl-fetcher.ts` — busca por data, ciclo, texto bíblico
-- [ ] Testes para `cache.ts` — TTL expirado, cache miss, clear
-- [ ] Testes para `devotional-content.ts` — lookup por data, ano sem dados
+- [x] Testes para `rcl-fetcher.ts` — busca por data, ciclo, texto bíblico (2026-08-20, 7 testes)
+- [x] Testes para `cache.ts` — TTL expirado, cache miss, clear (2026-08-20, 7 testes)
+- [x] Testes para `devotional-content.ts` — lookup por data, ano sem dados (2026-08-20, 4 testes)
 - [ ] Testes para `getSampleDevotional` — fallback chain
 - [ ] Testes de snapshot para `ReadingCard`, `PrayerSection`, `CollectSection`
-- [ ] Meta: 70%+ de cobertura no `src/lib/`
+- [x] Meta: 70%+ de cobertura no `src/lib/` (2026-08-20 — 81% stmts, 100% funcs)
 
 ---
 
 ### 3.3 Crash reporting
 
-- [ ] Instalar `@sentry/react-native`
-- [ ] Inicializar Sentry no `App.tsx` com DSN de produção
-- [ ] Configurar source maps no EAS
+- [x] Instalar `@sentry/react-native` (2026-08-20)
+- [x] Inicializar Sentry no `App.tsx` com DSN de produção (2026-08-20 — `Sentry.init()` + `Sentry.wrap(App)`)
+- [x] Configurar source maps no EAS (2026-08-20 — `app.config.ts` com plugin `@sentry/react-native/expo`)
 
 ---
 
 ### 3.4 CI/CD para mobile
 
-- [ ] Adicionar job EAS Build no GitHub Actions em push para `main`
-- [ ] Adicionar `eas update` para OTA updates
+- [x] Adicionar job EAS Build no GitHub Actions em push para `main` (2026-08-20 — `eas.yml` com preview build + Sentry source maps)
+- [x] Adicionar `eas update` para OTA updates (2026-08-20 — publica branch `preview` a cada deploy)
 
 ---
 
 ### 3.5 Estados de erro com UI dedicada
 
-- [ ] Criar componente `EmptyState` (ícone + título + subtítulo + ação opcional)
-- [ ] Criar componente `ErrorState` para falhas (distinto do ErrorBoundary)
-- [ ] Adicionar pull-to-refresh com feedback visual
+- [x] Criar componente `EmptyState` (ícone + título + subtítulo + ação opcional) (2026-08-20)
+- [x] Criar componente `ErrorState` para falhas (distinto do ErrorBoundary) (2026-08-20)
+- [x] Adicionar pull-to-refresh com feedback visual (2026-08-20 — já existia no HomeScreen via `RefreshControl`)
 
 ---
 
@@ -853,15 +846,17 @@ A tela atual tem apenas "Limpar cache". Adicionar:
 
 ### 4.1 Favoritos e marcadores
 
-- [ ] Persistir dias favoritos em AsyncStorage
-- [ ] Aba "Favoritos" na CalendarScreen
-- [ ] Botão de favoritar no HomeScreen
+- [x] Persistir dias favoritos em AsyncStorage (2026-08-20 — `FavoritesContext` com toggle + persistência)
+- [x] Aba "Favoritos" na CalendarScreen (2026-08-20 — tab toggle Calendário/Favoritos com lista cronológica)
+- [x] Botão de favoritar no HomeScreen (2026-08-20 — heart outline/filled no header)
 
 ### 4.2 Busca
 
-- [ ] Busca por referência bíblica (ex: "João 3")
-- [ ] Busca por data
-- [ ] Busca por palavra-chave nas leituras
+- [x] Busca por referência bíblica (ex: "João 3") (2026-08-20 — indexa leituras dos ciclos A/B/C)
+- [x] Busca por data (2026-08-20 — match direto no formato yyyy-MM-dd)
+- [x] Busca por palavra-chave nas leituras (2026-08-20 — também em orações e meditações)
+
+> **Nota**: Busca integrada ao CalendarScreen (ícone de lupa no header). `src/lib/search.ts` indexa 6 anos de devotionals + 3 ciclos litúrgicos. Limitado a 50 resultados, mínimo 2 caracteres.
 
 ### 4.3 Widget (Android 12+ / iOS 14+)
 
@@ -870,8 +865,7 @@ A tela atual tem apenas "Limpar cache". Adicionar:
 
 ### 4.4 Versões bíblicas múltiplas
 
-- [ ] Permitir escolha de tradução (ARC, NVI, NTLH, ACF)
-- [ ] Configuração por leitura ou global
+**REMOVIDO** (2026-08-20) — decidido em conjunto: a complexidade de embutir múltiplas traduções no bundle (textos × 365 dias × 6 anos) não justifica. Offline-first é prioridade.
 
 ---
 
@@ -888,12 +882,9 @@ lados, não é especulação:
   10:25-37")
 
 **O que falta construir:**
-- [ ] Parser de referência → extrair livro + capítulo do texto livre
-      (cuidado com casos como "Gênesis 1:1–2:4", que cruza capítulo)
-- [ ] Tabela de tradução nome-do-livro-em-português → `bookSlug` em
-      inglês (lista fechada, 66 livros, trabalho de fazer uma vez)
-- [ ] Card "Pintura do Dia" — thumbnail + título + artista, toque abre
-      o Bíblia na Arte (link externo, sem WebView)
+- [x] Parser de referência → extrair livro + capítulo do texto livre (2026-08-20 — `src/lib/reference-parser.ts`, regex `^(.+?)\s+(\d+)`)
+- [x] Tabela de tradução nome-do-livro-em-português → `bookSlug` em inglês (2026-08-20 — `src/lib/bible-books.ts`, 66 livros + aliases)
+- [x] Card "Pintura do Dia" — thumbnail + título + artista, toque abre o Bíblia na Arte (2026-08-20 — `src/components/ArtCard.tsx`, só aparece quando online)
 
 **Decisão de arquitetura, não negociável sem repensar tudo:** Lecionário
 é offline-first de propósito — o card **só aparece quando online**
@@ -907,6 +898,9 @@ Ver também: `biblia-na-arte/docs/ROADMAP.md`, seção "Fase 5 — Produto"
 ---
 
 ### 4.6 "Leia mais sobre isso" — integração com Scriptorium Divinum (2026-08-16)
+
+> **Status: PAUSADO** — API do Scriptorium será retomada em iteration futura.
+> Registrado em 2026-08-20 a pedido do autor.
 
 Mesmo espírito da 4.5, mais simples de implementar: `GET
 /api/v1/search?q=` do Scriptorium já é real e testado (busca full-text
@@ -931,10 +925,10 @@ dados do Gerador C.S. Lewis, com link "mais citações" pro gerador. Baixo
 custo se os dados do Gerador forem exportáveis como JSON simples —
 verificar formato antes de estimar esforço real.
 
-- [ ] Confirmar se o Gerador tem os dados de citação num formato
-      reaproveitável (JSON estático seria ideal)
-- [ ] Espaço pequeno no `ConfigScreen` ou rodapé do dia, não competir
-      com o conteúdo litúrgico principal
+- [x] Confirmar se o Gerador tem os dados de citação num formato
+      reaproveitável (JSON estático seria ideal) (2026-08-20 — 165 citações, extraídas de `lewisQuotes`)
+- [x] Espaço pequeno no `ConfigScreen` ou rodapé do dia, não competir
+      com o conteúdo litúrgico principal (2026-08-20 — `QuoteCard` no HomeScreen + links Amazon com tag `rilson-20`)
 
 Ver também: `GeradorCSLewis/README.md` (lado recíproco).
 
@@ -948,7 +942,7 @@ Scriptorium, Gerador C.S. Lewis) — ajuda SEO (autoridade cruzada de
 domínio) e retenção, sem depender de nenhuma integração de dado, só
 link estático. Mesmo item registrado nos outros 3.
 
-- [ ] Componente de rodapé "parte da mesma biblioteca" com os 4 links
+- [x] Componente de rodapé "parte da mesma biblioteca" com os 4 links (2026-08-20 — seção "Biblioteca" no ConfigScreen com Bíblia na Arte, Scriptorium, Gerador C.S. Lewis)
 
 ---
 

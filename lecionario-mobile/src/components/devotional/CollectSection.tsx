@@ -1,31 +1,48 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { useThemeColors } from '@/contexts/ThemeContext';
+import { useFontScale } from '@/contexts/FontContext';
 
 interface CollectSectionProps {
   collect: string;
 }
 
 export function CollectSection({ collect }: CollectSectionProps) {
+  const colors = useThemeColors();
+  const { scale } = useFontScale();
+
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: colors.card }]}>
       <View style={styles.header}>
-        <View style={styles.iconContainer}>
-          <MaterialCommunityIcons name="crown" size={28} color="#B8860B" />
+        <View style={[styles.iconContainer, { backgroundColor: `${colors.accent}1A` }]}>
+          <MaterialCommunityIcons name="crown" size={28} color={colors.accent} />
         </View>
         <View style={styles.headerText}>
-          <Text style={styles.title}>Oração de Coleta</Text>
-          <Text style={styles.subtitle}>Oração Tradicional da Liturgia</Text>
+          <Text style={[styles.title, { color: colors.text, fontSize: scale(18) }]}>
+            Oração de Coleta
+          </Text>
+          <Text style={[styles.subtitle, { color: colors.textMuted, fontSize: scale(8) }]}>
+            Oração Tradicional da Liturgia
+          </Text>
         </View>
       </View>
 
       <View style={styles.body}>
-        <View style={styles.collectBox}>
-          <Text style={styles.collectText} selectable>
+        <View
+          style={[
+            styles.collectBox,
+            {
+              backgroundColor: `${colors.text}08`,
+              borderLeftColor: `${colors.accent}33`,
+            },
+          ]}
+        >
+          <Text style={[styles.collectText, { color: colors.text, fontSize: scale(15) }]} selectable>
             {collect}
           </Text>
-          <View style={styles.amenSection}>
-            <View style={styles.amenLine} />
-            <Text style={styles.amenText}>Por Jesus Cristo, nosso Senhor. Amém.</Text>
+          <View style={[styles.amenSection, { borderTopColor: `${colors.accent}1A` }]}>
+            <View style={[styles.amenLine, { backgroundColor: `${colors.accent}33` }]} />
+            <Text style={[styles.amenText, { fontSize: scale(9) }]}>Por Jesus Cristo, nosso Senhor. Amém.</Text>
           </View>
         </View>
       </View>
@@ -35,7 +52,6 @@ export function CollectSection({ collect }: CollectSectionProps) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
     borderRadius: 8,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -55,7 +71,6 @@ const styles = StyleSheet.create({
     width: 52,
     height: 52,
     borderRadius: 18,
-    backgroundColor: 'rgba(184,134,11,0.1)',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -63,13 +78,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: 20,
-    color: '#333',
     fontFamily: 'Lora_400Regular_Italic',
   },
   subtitle: {
-    fontSize: 9,
-    color: '#999',
     textTransform: 'uppercase',
     letterSpacing: 2,
     fontWeight: '700',
@@ -81,22 +92,15 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   collectBox: {
-    backgroundColor: 'rgba(255,255,255,0.3)',
     padding: 20,
     borderLeftWidth: 4,
-    borderLeftColor: 'rgba(139,105,20,0.2)',
   },
   collectText: {
-    // Achado real 2026-08-16: 18px deixava poucas palavras por linha
-    // numa tela de celular, leitura "picotada"
-    fontSize: 16,
     lineHeight: 26,
-    color: '#444',
     fontFamily: 'Lora_400Regular_Italic',
   },
   amenSection: {
     borderTopWidth: 1,
-    borderTopColor: 'rgba(139,105,20,0.1)',
     marginTop: 24,
     paddingTop: 16,
   },
@@ -106,12 +110,9 @@ const styles = StyleSheet.create({
     right: 0,
     width: 60,
     height: 1,
-    backgroundColor: 'rgba(139,105,20,0.2)',
   },
   amenText: {
-    fontSize: 10,
-    color: '#8F6608', // achado 2026-08-15: gold a 60% de opacidade sobre
-    // fundo claro reprovava WCAG AA; sólido dá 5.16:1
+    color: '#8F6608',
     textTransform: 'uppercase',
     letterSpacing: 3,
     fontWeight: '700',
