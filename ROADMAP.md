@@ -4,55 +4,45 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ---
 
-## Situação atual (atualizado 2026-08-16 — a versão de 28/06 abaixo
-ficou desatualizada por quase 2 meses; vários itens listados como
-"incompleto" já foram feitos nesse intervalo e não estavam refletidos
-aqui, achado ao auditar os roadmaps de todos os projetos)
+## Situação atual (atualizado 2026-08-20)
 
 ### O que está funcionando
 
 - Motor litúrgico completo: cálculo de Páscoa, estações, cores, ciclos A/B/C, nomes dos dias em PT-BR
 - Dados RCL em JSON para os três ciclos (leituras por data + coletas)
-- **Textos bíblicos completos** (Almeida ARC) — 4337 textos inseridos, 0 referências canônicas faltando
+- **Textos bíblicos (Almeida ARC)** — inseridos na geração original, mas **foram perdidos silenciosamente** no commit `817ed23` ao regenerar os JSONs dos ciclos. Re-execução do `lookup-bible-text.ts` pendente (requer restaurar `/tmp/por-almeida.xml`). Ver débito técnico abaixo.
 - **Devocionais gerados** — 2191 orações + meditações (2025–2030),
-  **todas as sete estações litúrgicas** (Advento, Natal, Epifania,
-  Quaresma, Páscoa, Pentecostes/Trindade, Tempo Comum) dos três ciclos
-  ancoradas no RCL real, sem repetição e sem lacuna (ver 1.2-1.2i)
-- **Conteúdo de Semana Santa** (2026-08-15/16) — Domingo de Ramos,
-  Quinta/Sexta-Feira Santa, Sábado Santo, com orações e meditações
-  originais pro Tríduo (ver 1.1) — estava listado como ausente na
-  versão de 28/06, já não é mais o caso
+  todas as sete estações litúrgicas ancoradas no RCL real
+- **Conteúdo de Semana Santa** — Domingo de Ramos, Tríduo, Sábado Santo
 - App mobile com três telas: Hoje, Calendário Litúrgico, Configurações
-- **Dados 100% locais** — Supabase removido do app principal, sem dependência de backend
+- **Dados 100% locais** — Supabase removido, sem dependência de backend
 - Cache offline com AsyncStorage e TTL de 24h
 - Temas sazonais (cor de fundo, acento, primária por estação)
-- **Logo real + identidade sazonal aplicada** (web e mobile, 2026-08-14/15)
-  — ícones, splash screen, favicon, manifests recoloridos por estação
-  (ver 1.6/1.7); a versão de 28/06 ainda listava isso como "placeholder"
+- **Logo real + identidade sazonal** (web e mobile)
 - **Build mobile corrigido e testado em dispositivo Android físico**
-  (2026-08-15/16, `NoSuchMethodError` resolvido — ver 1.3)
 - ErrorBoundary global
 - CI com TypeScript, ESLint, Prettier e testes (GitHub Actions)
+- **Notificações push** — permission, schedule, cancel, listener, time picker (2.1)
+- **Compartilhamento** — ReadingCard (copy/share), PrayerSection (copy), welcome (copy) (2.2)
+- **Config screen completa** — Tema/Fonte/Notificações/Sobre (2.3)
+- **Deep links** — `lecionario://dia/:date` (2.4)
+- **Testes** — 56 mobile (81% stmts, 100% funcs), 42 web (motor litúrgico + utils)
+- **Crash reporting** — Sentry inicializado em web + mobile, plugin Expo configurado
+- **CI/CD** — EAS Build + Update (`.github/workflows/eas.yml`), deploy automático no VPS via `deploy.yml`
+- **Favoritos** — FavoritesContext, heart button, aba no CalendarScreen (4.1)
+- **Busca** — indexa 6 anos de devotionals + 3 ciclos, por referência/data/palavra-chave (4.2)
+- **Pintura do Dia** — ArtCard integrado à API Bíblia na Arte, só online (4.5)
+- **QuoteCard** — 165 citações C.S. Lewis, seleção date-seeded, link Amazon (4.7)
+- **Biblioteca** — seção no ConfigScreen com 4 projetos (4.8)
+- **Error states reutilizáveis** — EmptyState, ErrorState
 
 ### O que está incompleto ou ausente
 
-- ~~Conteúdo devocional do Tempo Comum~~ — **feito, e estendido a
-  todas as demais estações também** (2026-08-16 a 2026-08-18, ver
-  1.2-1.2i). Os três ciclos (A, B, C) completos e precisos, ancorados
-  no Próprio real do RCL — Ciclo A (27 semanas, 189 dias, Próprios
-  3-29), Ciclo B (26 semanas, 182 dias, Próprios 4-29) e Ciclo C (26
-  semanas, 182 dias, Próprios 4-29) — mais Advento, Natal, Epifania,
-  Quaresma, Páscoa e Pentecostes/Trindade, cada estação validada
-  programaticamente contra os 6 anos gerados (2025-2030), na janela
-  exata de cada arquivo publicado — zero repetição, zero dia faltando.
-  Esse trabalho incluiu descobrir e consertar um bug estrutural na
-  atribuição de leituras que afetava os três ciclos, não só o
-  devocional (ver 1.2a), e vários outros bugs estruturais menores em
-  cada estação subsequente (ver 1.2b a 1.2i)
-- **iOS nunca testado em dispositivo físico** (foco consciente em Android por enquanto — ver 1.3)
-- Notificações push ausentes (toggle instalado em 2.3, implementação completa em 2.1)
-- Cobertura de testes baixa (só motor litúrgico)
-- Sem crash reporting, sem analytics
+- ~~Conteúdo devocional do Tempo Comum~~ — **feito e estendido a todas as estações** (ver 1.2-1.2i)
+- **iOS nunca testado em dispositivo físico** (foco em Android)
+- **Textos bíblicos ARC perdidos nos JSONs** — ver débito técnico
+- Widget Android/iOS (adiado — ver 4.3)
+- Scriptorium Divinum "Leia mais" (pausado — ver 4.6)
 
 ---
 
