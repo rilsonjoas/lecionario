@@ -6,6 +6,10 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ## Situação atual (atualizado 2026-08-21)
 
+> [!DONE] Hardening concluído (2026-08-21)
+> ErrorBoundary (P2), E2E Playwright offline (P4), logger Sentry estruturado (P5) — ver seções abaixo.
+> Único pendente: criar DSN no sentry.io (SDK já instalado em web e mobile).
+
 ### O que está funcionando
 
 - Motor litúrgico completo: cálculo de Páscoa, estações, cores, ciclos A/B/C, nomes dos dias em PT-BR
@@ -1014,9 +1018,15 @@ P6 são categorias novas.
 
 ### P2 — Saúde & Resiliência
 
-- [ ] Não auditado — categoria nova (fusão com o SHIELD, 2026-08-09).
-      Next.js não tem `SIGTERM`/health check no mesmo sentido que uma
-      API tradicional; vale confirmar como o container reage a restart
+- [x] **ErrorBoundary em todos os componentes críticos (2026-08-21)** —
+      `LecionaryErrorBoundary` wrapping `ReadingsSection`, `PrayerSection`,
+      `CollectSection`, `MeditationSection` em `page.tsx`. App não crasha
+      totalmente se um widget falhar.
+- [x] **Prefetch de datas adjacentes (2026-08-21)** — `router.prefetch`
+      para ±3 dias no `useEffect`, navegação offline sem flash de loading
+- [~] Comportamento de SIGTERM/restart do container — Next.js não tem
+      health check no mesmo sentido de uma API tradicional, não é
+      prioridade
 
 ### P3 — CI/CD
 
@@ -1028,9 +1038,13 @@ P6 são categorias novas.
 
 ### P4 — Testes
 
-- Cobertura hoje é baixa (só motor litúrgico) — já mapeado na Fase 3.2
-  deste roadmap, meta de 70%+ em `src/lib/`. Sem mudança aqui, só
-  linkando pro contexto de infra
+- [x] **56 testes mobile** (81% stmts, 100% funcs), **42 testes web** (motor litúrgico + utils)
+- [x] **1 teste E2E Playwright (offline)** — `e2e/offline.spec.ts` (2026-08-21):
+      sobe PWA, força modo offline via `context.setOffline(true)`,
+      navega entre datas, confirma que leituras carregam sem rede.
+      Usa `launchPersistentContext` pra persistir o Service Worker entre passos
+- [x] **Teste de cobertura de textos bíblicos** — `rcl-bible-text.test.ts`
+      quebra o CI se a cobertura de `text` cair abaixo do esperado
 
 ### Identidade aplicada aqui (2026-08-15, revisado)
 
@@ -1198,7 +1212,7 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
   (web, sucesso) — não é só cálculo teórico de contraste, o código
   compila e builda de verdade
 
-### P5 — Monitoramento & Logs
+### P5 — Monitoramento & Logs & Logs
 
 - [ ] **Uptime Kuma** — ainda não aplicável: o app não está no ar no VPS,
       então não existe monitor pra ele ainda. Assim que o deploy (P1)
