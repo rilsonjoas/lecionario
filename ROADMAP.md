@@ -8,7 +8,9 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 > [!DONE] Hardening concluído (2026-08-21)
 > ErrorBoundary (P2), E2E Playwright offline (P4), logger Sentry estruturado (P5) — ver seções abaixo.
-> Único pendente: criar DSN no sentry.io (SDK já instalado em web e mobile).
+> Único pendente: **projetos criados no sentry.io (2026-08-22)** — falta
+> só colar o DSN nas env vars (EAS pro mobile, docker-compose pro web) e
+> validar o primeiro evento. Passo a passo no item P5 de cada plataforma.
 
 ### O que está funcionando
 
@@ -1228,8 +1230,22 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       alerta (**Telegram + e-mail**) já configurado centralmente no
       Uptime Kuma do VPS (mesmo usado por bancada, biblia-na-arte e
       scriptorium)
-- [ ] **Sentry no mobile (`@sentry/react-native`) — instalado e inicializado (2026-08-14), falta terminar a configuração**: SDK instalado, `Sentry.init` em `App.tsx` (lê `EXPO_PUBLIC_SENTRY_DSN`), raiz embrulhada com `Sentry.wrap(App)`. **Pendente**: criar o DSN no sentry.io, definir `EXPO_PUBLIC_SENTRY_DSN` no build do app e configurar source maps no EAS (Fase 3.3)
-- [ ] **Sentry no web (`@sentry/nextjs`) — instalado e inicializado (2026-08-14), falta terminar a configuração**: SDK instalado, arquivos `sentry.client.config.ts`, `sentry.server.config.ts` e `sentry.edge.config.ts` criados, `next.config.mjs` embrulhado com `withSentryConfig` (typecheck passou). **Pendente**: criar o DSN no sentry.io, definir `NEXT_PUBLIC_SENTRY_DSN` no `docker-compose.yml` do deploy e validar que eventos chegam
+- [~] **Sentry no mobile (`@sentry/react-native`) — projeto CRIADO no
+      sentry.io pelo autor (2026-08-22); DSN plugado nas envs EAS
+      `EXPO_PUBLIC_SENTRY_DSN` nos ambientes `preview` E `production`
+      (mesmo dia)**. SDK instalado, `Sentry.init` em `App.tsx`, raiz com
+      `Sentry.wrap(App)`, plugin de source maps no EAS (org `rilson`,
+      projeto `lecionario-mobile`). **Falta**: o próximo `eas update`
+      (disparado por push em `src/**`) embute o DSN no bundle OTA;
+      validar o primeiro evento chegando em Issues
+- [~] **Sentry no web (`@sentry/nextjs`) — projeto `javascript-nextjs`
+      existe na org do autor (2026-08-22)**. SDK instalado, arquivos
+      `sentry.client.config.ts`, `sentry.server.config.ts` e
+      `sentry.edge.config.ts` criados, `next.config.mjs` embrulhado com
+      `withSentryConfig` (typecheck passou). **Falta**: definir
+      `NEXT_PUBLIC_SENTRY_DSN` no `docker-compose.yml` do VPS (e no
+      `.env` do deploy), reiniciar o container e validar que eventos
+      chegam em Issues
 - DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
   com `enabled: !!dsn` deixa tudo rodando normal sem a chave (mesmo
   padrão usado no meus-remedios)
@@ -1302,7 +1318,9 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
 > com as políticas de uso e LGPD". O app é offline-first sem backend e sem
 > conta de usuário, o que simplifica MUITO a conformidade, mas não a
 > anula: Sentry coleta diagnósticos, e a publicação em lojas exige
-> política de privacidade formal.
+> política de privacidade formal. **Complemento do autor (2026-08-22):
+> registrar também auditoria de conformidade Play Store — ver item
+> dedicado abaixo.**
 
 **Regra de contato:** todo lugar que mencionar contato usa
 **`lecionario@narniano.com`** — decidido pelo autor em 2026-08-22.
@@ -1331,11 +1349,58 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       afiliado Amazon = cookie de indicação, mencionar. Sem cookies de
       rastreamento/analytics hoje; se um dia entrar AdSense (adiado),
       reabrir esse item
-- [ ] **Formulários das lojas ao publicar** — Play Console Data Safety +
-      Apple privacy labels: declarar coleta de diagnósticos (Sentry) e
-      link da política de privacidade (depende dos dois itens acima)
+- [ ] **Formulário de Segurança de Dados (Data Safety) da Play —
+      pré-preenchido (2026-08-22), copiar na hora do cadastro**. Com a
+      arquitetura atual do app, as respostas são:
+      - O app coleta dados? **Sim** — apenas: *App info and performance →
+        Crash logs* e *Diagnostics* (via Sentry: modelo do aparelho,
+        versão do SO, stack traces, IP)
+      - Os dados são compartilhados com terceiros? **Não**
+      - Transmissão segura? **Sim** (HTTPS/TLS)
+      - Usuário pode pedir exclusão? **Sim** — via
+        `lecionario@narniano.com` (na prática, dados pessoais não saem
+        do aparelho dele)
+      - **Todos os demais tipos: "Não coletado"** — sem localização,
+        financeiro, contatos, fotos, mensagens, histórico, identificadores
+        publicitários, nada
+      - Apple privacy labels idem, quando houver iOS
+- [ ] **Portabilidade de dados (LGPD art. 18, §V) — resolvida por design
+      (2026-08-22)**: nenhum dado pessoal é processado em servidor; tudo
+      que é do usuário (favoritos, preferências) vive no APARELHO dele,
+      sob controle direto. Não há o que exportar/portar enquanto não
+      houver conta/servidor. **Reabrir este item** se um dia nascer
+      sincronização ou login
+- [ ] **Auditoria de conformidade Play Store — pré-publicação
+      (2026-08-22)**. Checklist contra as Políticas do Google Play, na
+      ordem que o Console cobra:
+      1. Política de Privacidade com URL pública ✓ (temos
+         `/privacidade` — requisito duro do Play pra TODO app)
+      2. Formulário **Segurança de Dados**: declarar coleta de
+         "Registros de diagnóstico" (Sentry = crash logs, IDs de
+         dispositivo, IP) e nada mais — sem dados pessoais, financeiros
+         ou de localização; criptografia em trânsito sim (HTTPS);
+         opção de exclusão não se aplica (não há conta)
+      3. **Classificação de conteúdo (IARC)**: questionário da Play —
+         devocional religioso sem violência/aposta/UCG → expectativa
+         "Livre"
+      4. **Público-alvo e conteúdo**: marcar 13+ (religião não é
+         categoria sensível a menores); NÃO marcar "direcionado a
+         crianças"
+      5. **Permissões**: revisar manifest — notificações (justificada no
+         fluxo de opt-in), sem localização/câmera/contatos/storage
+         sensível; permissões de mídia do Expo checar se são só de
+         biblioteca para eventual compartilhamento
+      6. **Metadados honestos**: título/descrição/screenshots batendo com
+         a função real (revisor humano do Play testa o app)
+      7. **Faixa de teste** antes da produção: internal/closed testing
+         com alguns usuários reais por alguns dias — reduz risco de
+         rejection e pega crash via Sentry com DSN já plugado
+      8. LGPD sob ótica de controlador: registro das operações é este
+         roadmap mesmo; base legal documentada acima; DPO não exigível
+         (operação pequena, sem monitoramento sistemático em larga escala)
 - [ ] **Termos de uso simples** — opcional nesta fase; pode nascer como
-      seção dentro da página de Privacidade
+      seção dentro da página de Privacidade. O Play NÃO exige Termos pra
+      esta categoria (exige só Política de Privacidade, que já temos)
 
 ## L — Lançamento e crescimento (2026-08-08)
 
@@ -1598,10 +1663,26 @@ Google" não é viável em iOS de qualquer forma.
       day-share + 3 cópias (leituras/oração); mobile = day-share + 4
       cópias, zero share repetido
 - [ ] **Busca e Favoritos dentro do calendário mobile** — mover para a tab bar de baixo junto de Hoje, Calendário e Config. Avaliar se as legendas de texto sob os ícones da tab bar são necessárias (ícones sozinhos podem ser suficientes).
-- [ ] **Ordem das Configurações** — reorganizar: (1) Notificações + hora personalizada, (2) Aparência (tema + fonte), (3) Biblioteca, (4) Sobre. Remover "Limpar dados temporários" — pouco valor, gera confusão.
+- [x] **Ordem das Configurações + remover "Limpar dados temporários" —
+      RESOLVIDO (2026-08-22)**. Ordem nova conforme proposta do autor:
+      (1) Notificações com horário personalizado, (2) Aparência
+      (tema+fonte), (3) Biblioteca, (4) Sobre. Seção "Armazenamento"
+      inteira removida junto com `handleClearCache`/estado/import de
+      `clearCache` — o cache técnico se recalcula sozinho e o botão só
+      gerava dúvida; a lib continua existindo pra uso interno
 - [ ] **Favicons da Biblioteca em formato circular** — em vez de quadrado/retangular, aplicar `border-radius: 50%` nos ícones de cada projeto na tela de Biblioteca.
 - [ ] **Seção "Sobre" no app — remover "Dados litúrgicos calculados localmente"** — informação técnica sem valor para o usuário. Simplificar a seção Sobre para o essencial (missão, versão, créditos).
 - [ ] **Login com OAuth Google para sincronizar favoritos** — avaliar: o que seria sincronizado? (favoritos, progresso de leitura, configurações). Seguir o padrão `meus-remedios`: OAuth Google + conta local (não só Google). Decisão de produto antes de implementar.
+      ⚠️ **GATILHO DE CONFORMIDADE (2026-08-22)**: implementar login/sync
+      REABRE OBRIGATORIAMENTE, antes de qualquer release com a feature:
+      (1) Política de Privacidade (`/privacidade` — hoje diz "sem conta,
+      sem dados em servidor"); (2) Formulário Data Safety da Play
+      (dados de conta + sincronização passam a existir); (3)
+      Portabilidade de dados (item P8 marcado "resolvido por design");
+      (4) Auditoria LGPD (base legal muda, passa a haver dado pessoal em
+      servidor); (5) nota na tela Sobre do mobile. A política atual é
+      verdadeira pra realidade atual — o gatilho garante que não fique
+      mentira quando a realidade mudar
 - [ ] **Biblioteca: favicons circulares** — estilo mais premium, consistente com o Design Narniano.
 
 ### 🔵 Padrão cruzado — ver também
