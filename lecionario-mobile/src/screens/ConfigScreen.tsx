@@ -1,8 +1,6 @@
-import { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Linking } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { clearCache } from '@/lib/cache';
 import {
   requestNotificationPermission,
   scheduleDailyNotification,
@@ -81,8 +79,6 @@ export default function ConfigScreen() {
     setNotificationsEnabled,
     setNotificationTime,
   } = useSettings();
-  const [clearing, setClearing] = useState(false);
-
   const handleToggleNotifications = async () => {
     if (!notificationsEnabled) {
       const granted = await requestNotificationPermission();
@@ -108,26 +104,6 @@ export default function ConfigScreen() {
     }
   };
 
-  const handleClearCache = () => {
-    Alert.alert(
-      'Limpar dados temporários',
-      'Isso não afeta as leituras — elas já vêm no app. É só um cache técnico que se recalcula sozinho.',
-      [
-        { text: 'Cancelar', style: 'cancel' },
-        {
-          text: 'Limpar',
-          style: 'destructive',
-          onPress: async () => {
-            setClearing(true);
-            await clearCache();
-            setClearing(false);
-            Alert.alert('Pronto', 'Cache limpo com sucesso.');
-          },
-        },
-      ],
-    );
-  };
-
   return (
     <ScrollView
       style={[
@@ -139,95 +115,6 @@ export default function ConfigScreen() {
       <View style={styles.header}>
         <MaterialCommunityIcons name="cog" size={24} color={colors.accent} />
         <Text style={[styles.title, { color: colors.text }]}>Configurações</Text>
-      </View>
-
-      {/* Aparência */}
-      <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Aparência</Text>
-
-        <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
-          <Text style={[styles.cardLabel, { color: colors.text }]}>Tema</Text>
-          <View style={styles.optionRow}>
-            {THEME_OPTIONS.map((opt) => (
-              <TouchableOpacity
-                key={opt.value}
-                style={[
-                  styles.optionButton,
-                  {
-                    backgroundColor: theme === opt.value ? colors.accent : 'transparent',
-                    borderColor: theme === opt.value ? colors.accent : colors.border,
-                  },
-                ]}
-                onPress={() => setTheme(opt.value)}
-                accessibilityLabel={`Tema ${opt.label}`}
-                accessibilityRole="radio"
-                accessibilityState={{ checked: theme === opt.value }}
-              >
-                <MaterialCommunityIcons
-                  name={opt.icon as keyof typeof MaterialCommunityIcons.glyphMap}
-                  size={16}
-                  color={theme === opt.value ? '#FFF' : colors.textMuted}
-                />
-                <Text
-                  style={[
-                    styles.optionText,
-                    {
-                      color: theme === opt.value ? '#FFF' : colors.text,
-                      fontSize: scale(12),
-                    },
-                  ]}
-                >
-                  {opt.label}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
-
-        <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
-          <Text style={[styles.cardLabel, { color: colors.text }]}>Tamanho da fonte</Text>
-          <View style={styles.optionRow}>
-            {FONT_OPTIONS.map((opt) => (
-              <TouchableOpacity
-                key={opt.value}
-                style={[
-                  styles.optionButton,
-                  {
-                    backgroundColor: fontSize === opt.value ? colors.accent : 'transparent',
-                    borderColor: fontSize === opt.value ? colors.accent : colors.border,
-                  },
-                ]}
-                onPress={() => setFontSize(opt.value)}
-                accessibilityLabel={`Fonte ${opt.label}`}
-                accessibilityRole="radio"
-                accessibilityState={{ checked: fontSize === opt.value }}
-              >
-                <Text
-                  style={[
-                    styles.optionText,
-                    {
-                      color: fontSize === opt.value ? '#FFF' : colors.text,
-                      fontSize: scale(opt.preview - 2),
-                    },
-                  ]}
-                >
-                  Aa
-                </Text>
-                <Text
-                  style={[
-                    styles.optionText,
-                    {
-                      color: fontSize === opt.value ? '#FFF' : colors.textMuted,
-                      fontSize: scale(10),
-                    },
-                  ]}
-                >
-                  {opt.label}
-                </Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </View>
       </View>
 
       {/* Notificações */}
@@ -319,27 +206,121 @@ export default function ConfigScreen() {
         )}
       </View>
 
-      {/* Armazenamento */}
+      {/* Aparência */}
       <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Armazenamento</Text>
-        <TouchableOpacity
-          style={[styles.row, { borderBottomColor: colors.border }]}
-          onPress={handleClearCache}
-          disabled={clearing}
-          accessibilityLabel="Limpar dados temporários"
-          accessibilityRole="button"
-        >
-          <MaterialCommunityIcons name="delete-outline" size={22} color={colors.destructive} />
-          <View style={styles.rowContent}>
-            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
-              Limpar dados temporários
-            </Text>
-            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
-              As leituras já vêm no app — isso só limpa um cache técnico
-            </Text>
+        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Aparência</Text>
+
+        <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
+          <Text style={[styles.cardLabel, { color: colors.text }]}>Tema</Text>
+          <View style={styles.optionRow}>
+            {THEME_OPTIONS.map((opt) => (
+              <TouchableOpacity
+                key={opt.value}
+                style={[
+                  styles.optionButton,
+                  {
+                    backgroundColor: theme === opt.value ? colors.accent : 'transparent',
+                    borderColor: theme === opt.value ? colors.accent : colors.border,
+                  },
+                ]}
+                onPress={() => setTheme(opt.value)}
+                accessibilityLabel={`Tema ${opt.label}`}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: theme === opt.value }}
+              >
+                <MaterialCommunityIcons
+                  name={opt.icon as keyof typeof MaterialCommunityIcons.glyphMap}
+                  size={16}
+                  color={theme === opt.value ? '#FFF' : colors.textMuted}
+                />
+                <Text
+                  style={[
+                    styles.optionText,
+                    {
+                      color: theme === opt.value ? '#FFF' : colors.text,
+                      fontSize: scale(12),
+                    },
+                  ]}
+                >
+                  {opt.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
           </View>
-          <MaterialCommunityIcons name="chevron-right" size={20} color={colors.textMuted} />
-        </TouchableOpacity>
+        </View>
+
+        <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
+          <Text style={[styles.cardLabel, { color: colors.text }]}>Tamanho da fonte</Text>
+          <View style={styles.optionRow}>
+            {FONT_OPTIONS.map((opt) => (
+              <TouchableOpacity
+                key={opt.value}
+                style={[
+                  styles.optionButton,
+                  {
+                    backgroundColor: fontSize === opt.value ? colors.accent : 'transparent',
+                    borderColor: fontSize === opt.value ? colors.accent : colors.border,
+                  },
+                ]}
+                onPress={() => setFontSize(opt.value)}
+                accessibilityLabel={`Fonte ${opt.label}`}
+                accessibilityRole="radio"
+                accessibilityState={{ checked: fontSize === opt.value }}
+              >
+                <Text
+                  style={[
+                    styles.optionText,
+                    {
+                      color: fontSize === opt.value ? '#FFF' : colors.text,
+                      fontSize: scale(opt.preview - 2),
+                    },
+                  ]}
+                >
+                  Aa
+                </Text>
+                <Text
+                  style={[
+                    styles.optionText,
+                    {
+                      color: fontSize === opt.value ? '#FFF' : colors.textMuted,
+                      fontSize: scale(10),
+                    },
+                  ]}
+                >
+                  {opt.label}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        </View>
+      </View>
+
+      {/* Biblioteca */}
+      <View style={styles.section}>
+        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Biblioteca</Text>
+        <Text style={[styles.bibliotecaIntro, { color: colors.textMuted, fontSize: scale(12) }]}>
+          Parte de um ecossistema de projetos dedicados à teologia, à literatura e à devoção cristã.
+        </Text>
+        {BIBLIOTECA_LINKS.map((link) => (
+          <TouchableOpacity
+            key={link.label}
+            onPress={() => Linking.openURL(link.url)}
+            style={[styles.row, { borderBottomColor: colors.border }]}
+            accessibilityRole="link"
+            accessibilityLabel={`Abrir ${link.label}`}
+          >
+            <MaterialCommunityIcons name={link.icon} size={20} color={colors.accent} />
+            <View style={styles.rowContent}>
+              <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(14) }]}>
+                {link.label}
+              </Text>
+              <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(11) }]}>
+                {link.description}
+              </Text>
+            </View>
+            <MaterialCommunityIcons name="open-in-new" size={14} color={colors.textMuted} />
+          </TouchableOpacity>
+        ))}
       </View>
 
       {/* Sobre */}
@@ -412,34 +393,6 @@ export default function ConfigScreen() {
             </Text>
           </View>
         </TouchableOpacity>
-      </View>
-
-      {/* Biblioteca */}
-      <View style={styles.section}>
-        <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Biblioteca</Text>
-        <Text style={[styles.bibliotecaIntro, { color: colors.textMuted, fontSize: scale(12) }]}>
-          Parte de um ecossistema de projetos dedicados à teologia, à literatura e à devoção cristã.
-        </Text>
-        {BIBLIOTECA_LINKS.map((link) => (
-          <TouchableOpacity
-            key={link.label}
-            onPress={() => Linking.openURL(link.url)}
-            style={[styles.row, { borderBottomColor: colors.border }]}
-            accessibilityRole="link"
-            accessibilityLabel={`Abrir ${link.label}`}
-          >
-            <MaterialCommunityIcons name={link.icon} size={20} color={colors.accent} />
-            <View style={styles.rowContent}>
-              <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(14) }]}>
-                {link.label}
-              </Text>
-              <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(11) }]}>
-                {link.description}
-              </Text>
-            </View>
-            <MaterialCommunityIcons name="open-in-new" size={14} color={colors.textMuted} />
-          </TouchableOpacity>
-        ))}
       </View>
 
       <View style={styles.footer}>
