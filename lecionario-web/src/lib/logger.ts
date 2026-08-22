@@ -2,27 +2,31 @@ import * as Sentry from '@sentry/nextjs';
 
 type LogLevel = 'info' | 'warn' | 'error';
 
+type LogContext = Record<string, unknown>;
+
 interface LogMessage {
   level: LogLevel;
   message: string;
   timestamp: string;
-  context?: Record<string, any>;
-  error?: any;
+  context?: LogContext;
+  error?: unknown;
 }
 
 const isProduction = process.env.NODE_ENV === 'production';
 
 function formatLog({ level, message, timestamp, context, error }: LogMessage): string {
   const contextStr = context ? ` | Context: ${JSON.stringify(context)}` : '';
-  const errorStr = error ? ` | Error: ${error.stack || error.message || error}` : '';
+  const errorStr = error
+    ? ` | Error: ${error instanceof Error ? error.stack || error.message : String(error)}`
+    : '';
   return `[${timestamp}] [${level.toUpperCase()}] ${message}${contextStr}${errorStr}`;
 }
 
 export const logger = {
-  info(message: string, context?: Record<string, any>) {
+  info(message: string, context?: LogContext) {
     const timestamp = new Date().toISOString();
     const logData: LogMessage = { level: 'info', message, timestamp, context };
-    
+
     if (isProduction) {
       console.log(JSON.stringify(logData));
     } else {
@@ -30,10 +34,10 @@ export const logger = {
     }
   },
 
-  warn(message: string, context?: Record<string, any>) {
+  warn(message: string, context?: LogContext) {
     const timestamp = new Date().toISOString();
     const logData: LogMessage = { level: 'warn', message, timestamp, context };
-    
+
     if (isProduction) {
       console.warn(JSON.stringify(logData));
     } else {
@@ -47,10 +51,10 @@ export const logger = {
     });
   },
 
-  error(message: string, error?: any, context?: Record<string, any>) {
+  error(message: string, error?: unknown, context?: LogContext) {
     const timestamp = new Date().toISOString();
     const logData: LogMessage = { level: 'error', message, timestamp, context, error };
-    
+
     if (isProduction) {
       console.error(JSON.stringify(logData));
     } else {

@@ -45,6 +45,9 @@ jobs:
         working-directory: lecionario-web
         run: npm run test
 
+      - name: Audit dependencies (production, com allowlist)
+        run: node scripts/audit-allowlist.mjs web
+
   mobile:
     name: Mobile (Lint, TypeCheck, Tests)
     runs-on: ubuntu-latest
@@ -77,6 +80,9 @@ jobs:
       - name: Tests
         working-directory: lecionario-mobile
         run: npm run test
+
+      - name: Audit dependencies (production, com allowlist)
+        run: node scripts/audit-allowlist.mjs mobile
 
   docker:
     name: Docker Build & Push
