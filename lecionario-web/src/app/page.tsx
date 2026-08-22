@@ -209,11 +209,11 @@ function HomeContent() {
                     variant="ghost"
                     size="sm"
                     onClick={() => handleDateChange(new Date())}
-                    className="text-accent hover:text-primary transition-colors gap-1 text-[10px] md:text-xs uppercase tracking-[0.15em] font-bold px-2"
+                    className="border border-accent/40 rounded-full text-accent hover:bg-dourado/10 hover:text-primary transition-colors gap-1 md:gap-1.5 text-[10px] md:text-xs uppercase tracking-[0.15em] font-bold px-2.5 md:px-3 h-8"
                     aria-label="Voltar para hoje"
                   >
                     <CalendarCheck className="w-3.5 h-3.5" />
-                    <span className="hidden xs:inline sm:inline">Hoje</span>
+                    Hoje
                   </Button>
                 </>
               )}

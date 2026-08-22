@@ -32,7 +32,7 @@ export function GlossaryTerm({ term }: GlossaryTermProps) {
       >
         <HelpCircle className="h-3.5 w-3.5" />
       </button>
-      <DialogContent className="max-w-sm border-accent/20 bg-background text-foreground sm:rounded-xl">
+      <DialogContent className="max-w-sm border-accent/25 bg-card text-card-foreground shadow-2xl sm:rounded-xl">
         <DialogHeader>
           <DialogTitle className="font-display italic text-secondary">{entry.term}</DialogTitle>
           <DialogDescription className="pt-2 leading-relaxed text-muted-foreground">

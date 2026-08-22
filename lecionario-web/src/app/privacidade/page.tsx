@@ -16,7 +16,7 @@ export default function PrivacidadePage() {
   const info = getLiturgicalDayInfo(new Date());
   return (
     <div className="min-h-screen bg-background">
-      <Header liturgicalDay={info} season={info.season} />
+      <Header liturgicalDay={info} season={info.season} variant="minimal" />
       <main className="container mx-auto max-w-3xl px-4 py-12 md:py-16">
         <div className="space-y-8 md:space-y-10">
           <header className="space-y-3 text-center">
