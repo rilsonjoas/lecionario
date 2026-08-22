@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Heart } from 'lucide-react';
+import { Heart, Flame } from 'lucide-react';
 import { PixDonationCard } from '@/components/apoiar/PixDonationCard';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { getLiturgicalDayInfo } from '@/lib/liturgical-calendar';
 import { PIX_CONFIG } from '@/lib/pix';
 
 export const metadata: Metadata = {
@@ -14,8 +17,12 @@ export const metadata: Metadata = {
 // Pix estático gerado localmente pelo padrão EMV do Bacen, sem
 // intermediário nem taxa. Fase futura: gateway pra recorrência.
 export default function ApoiarPage() {
+  // Páginas estáticas merecem a mesma moldura da home: header/footer com
+  // a estação ATUAL (apontamento do autor, 2026-08-22)
+  const info = getLiturgicalDayInfo(new Date());
   return (
     <div className="min-h-screen bg-background">
+      <Header liturgicalDay={info} season={info.season} />
       <main className="container mx-auto max-w-3xl px-4 py-12 md:py-16">
         <div className="space-y-8 md:space-y-10">
           <header className="space-y-3 text-center">
@@ -49,7 +56,10 @@ export default function ApoiarPage() {
                 Recebedor: <strong>{PIX_CONFIG.receiverName}</strong> · Chave:{' '}
                 <strong>{PIX_CONFIG.key}</strong>
               </p>
-              <p>Qualquer valor é bem-vindo. Deus abençoe a sua generosidade. 🕯️</p>
+              <p className="flex items-center justify-center gap-1.5">
+                Qualquer valor é bem-vindo. Deus abençoe a sua generosidade.
+                <Flame className="h-4 w-4 text-accent" aria-hidden="true" />
+              </p>
             </section>
           </div>
 
@@ -63,6 +73,7 @@ export default function ApoiarPage() {
           </p>
         </div>
       </main>
+      <Footer season={info.season} />
     </div>
   );
 }

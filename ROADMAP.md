@@ -1784,6 +1784,9 @@ Google" não é viável em iOS de qualquer forma.
       Lecionário/versão → Ciclo Litúrgico → Apoie o projeto → Privacidade
       → Contato.
 - [ ] **Login com OAuth Google para sincronizar favoritos** — avaliar: o que seria sincronizado? (favoritos, progresso de leitura, configurações). Seguir o padrão `meus-remedios`: OAuth Google + conta local (não só Google). Decisão de produto antes de implementar.
+      🔔 **LEMBRETE PERMANENTE DO AUTOR (reforço 2026-08-22): se login
+      entrar UM DIA, a PRIMEIRA tarefa antes do release é reabrir e
+      atualizar as políticas — sem exceção.**
       ⚠️ **GATILHO DE CONFORMIDADE (2026-08-22)**: implementar login/sync
       REABRE OBRIGATORIAMENTE, antes de qualquer release com a feature:
       (1) Política de Privacidade (`/privacidade` — hoje diz "sem conta,
@@ -1872,6 +1875,14 @@ Google" não é viável em iOS de qualquer forma.
 2. Instagram devocional cruzando com @artecristadiaria e @narnianoexistencialista (manuais prontos no vault) — mesma audiência de profundidade
 3. SEO cauda longa já em curso via sitemap/GSC: "lecionário hoje", "leituras do dia", "devocional advento"
 4. Rodapé "A Biblioteca" cruza tráfego entre os 4 sites — adicionar UTMs pra medir o que cada vizinho manda
+
+### Pós-publicação na Play Store
+
+- [ ] **Botão "Baixar no Google Play" no site** — só DEPOIS do app estar
+      publicado na loja (2026-08-22, pedido do autor): badge/link de
+      download no header ou hero da home e nas páginas institucionais.
+      Nada de link morto antes da publicação real. Badge oficial segue
+      brand guidelines do Google Play.
 
 ### Monetização coerente com o público litúrgico
 

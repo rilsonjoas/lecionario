@@ -10,8 +10,10 @@ export function LewisQuoteSection({ date }: { date?: Date }) {
 
   return (
     <section className="border-t border-accent/10 py-16 text-center animate-fade-in">
+      {/* Mesma hierarquia do card mobile: título itálico + sub em caps */}
+      <h2 className="text-lg md:text-xl font-display italic text-secondary mb-2">Citação do dia</h2>
       <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent mb-8">
-        Inspiração de C.S. Lewis
+        C. S. LEWIS
       </p>
       <blockquote className="text-lg md:text-xl lg:text-2xl font-display italic text-secondary max-w-4xl mx-auto leading-relaxed px-4">
         &ldquo;{quote.quote}&rdquo;

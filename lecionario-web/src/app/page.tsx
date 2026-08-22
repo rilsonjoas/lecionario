@@ -86,6 +86,13 @@ function HomeContent() {
     router.prefetch(`/?date=${nextDateStr}`);
   }, [currentDate, router]);
 
+  // Trocar de dia (Anterior/Próximo/Calendário/DateSync) volta ao topo da
+  // página — o router.push usa { scroll: false } pra não conflitar com a
+  // barra sticky, então o reset precisa ser manual (report 2026-08-22)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentDate]);
+
   // Sync state with URL when date changes
   const handleDateChange = (newDate: Date) => {
     const dateStr = format(newDate, 'yyyy-MM-dd');

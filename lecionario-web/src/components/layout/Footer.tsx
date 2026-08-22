@@ -83,8 +83,9 @@ export function Footer({ season = 'ordinary' }: { season?: LiturgicalSeason }) {
               <a
                 href="mailto:lecionario@narniano.com"
                 className="transition-colors underline-offset-2 hover:text-dourado hover:underline"
+                title="lecionario@narniano.com"
               >
-                lecionario@narniano.com
+                Contato
               </a>
               <span aria-hidden="true" className="text-dourado/50">
                 ·

@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { Header } from '@/components/layout/Header';
+import { Footer } from '@/components/layout/Footer';
+import { getLiturgicalDayInfo } from '@/lib/liturgical-calendar';
 
 export const metadata: Metadata = {
   title: 'Política de Privacidade — Lecionário',
@@ -10,8 +13,10 @@ export const metadata: Metadata = {
 // Requisito P8 do ROADMAP (LGPD / políticas de loja). Regra de contato:
 // todo lugar que fala de contato usa lecionario@narniano.com.
 export default function PrivacidadePage() {
+  const info = getLiturgicalDayInfo(new Date());
   return (
     <div className="min-h-screen bg-background">
+      <Header liturgicalDay={info} season={info.season} />
       <main className="container mx-auto max-w-3xl px-4 py-12 md:py-16">
         <div className="space-y-8 md:space-y-10">
           <header className="space-y-3 text-center">
@@ -130,6 +135,7 @@ export default function PrivacidadePage() {
           </p>
         </div>
       </main>
+      <Footer season={info.season} />
     </div>
   );
 }

@@ -73,14 +73,16 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             {/* Ação única por card, centrada no rodapé — mesmo padrão dos
                 demais cards (backlog 2026-08-22: reduzir shares duplicados
                 na home) */}
-            <div className="flex justify-center">
+            {/* No web a ação mora no canto inferior direito (padrão
+                desktop), só ícone — o rótulo fica na acessibilidade */}
+            <div className="flex justify-end pt-2">
               <button
                 onClick={handleCopy}
-                className="inline-flex items-center gap-2 px-4 py-2 text-[10px] uppercase tracking-[0.2em] font-bold text-dourado-texto border border-dourado/20 rounded-md hover:bg-dourado/10 transition-colors"
+                className="p-2 rounded-md text-dourado-texto border border-dourado/20 hover:bg-dourado/10 transition-colors"
                 aria-label={copied ? 'Copiado' : 'Copiar oração'}
+                title={copied ? 'Copiado!' : 'Copiar oração'}
               >
-                {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-                {copied ? 'Copiado!' : 'Copiar'}
+                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
           </div>

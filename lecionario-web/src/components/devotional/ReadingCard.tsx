@@ -94,7 +94,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
               {/* Ação única por card, centrada no rodapé — mesmo padrão
                   do card de Oração (backlog 2026-08-22: reduzir shares
                   duplicados na home) */}
-              <div className="flex justify-center pt-2">
+              <div className="flex justify-end pt-2">
                 <button
                   onClick={handleCopy}
                   className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
