@@ -1460,17 +1460,59 @@ muito mais restrito por natureza**.
   descartado — mas não é prioridade agora, e segue a mesma reserva já
   documentada acima (não amarrado ao conteúdo litúrgico/devocional em
   si, se algum dia acontecer).
-  - [ ] **Doação voluntária (Pix/link) — prioridade, fazer agora.**
+  - [~] **Doação voluntária (Pix/link) — FASE 1 IMPLEMENTADA (2026-08-22)**.
         Continua o caminho mais coerente com o propósito e a audiência
         (comunidade religiosa, não consumidor de app comum) — "quem usa
         sustenta o projeto", sem paywall no conteúdo em si.
-  - [ ] **Afiliado (Amazon) — avaliar.** Menos óbvio que nos outros
-        projetos porque o conteúdo litúrgico do app já é de graça e
-        autocontido, mas cabe como complemento: edições físicas do
-        Book of Common Prayer, bíblias de estudo, devocionais impressos
-        relacionados ao Ano Litúrgico — mesmo padrão de link discreto
-        dos outros projetos (`BookCard.tsx` do `TestePolitico`), não
-        centro da experiência.
+        **Implementado**: página `/apoiar` no web (QR Pix estático gerado
+        localmente pelo padrão EMV/BR Code do Bacen com CRC16-CCITT
+        testado, 6 testes; botão copia-e-cola; estilo classic-frame) +
+        link "Apoie o projeto" no rodapé + entrada no sitemap. Mobile:
+        linha "Apoie o projeto" na seção Sobre do ConfigScreen que copia
+        o código Pix direto pra área de transferência (expo-clipboard,
+        funciona offline). Gerador duplicado web/mobile de propósito
+        (sem pacote compartilhado) com teste de sincronia entre os dois.
+        **DADOS FINAIS CONFIRMADOS PELO AUTOR (2026-08-22)** — chave
+        `lecionario@narniano.com` cadastrada na conta pessoal, cidade
+        Recife. Config atualizada nos dois apps, sem placeholders.
+        **Processo de decisão do nome do recebedor** (documentado pra
+        não esquecer o porquê):
+        1. O nome que aparece pra quem doa NÃO vem da chave nem do QR —
+           vem do titular da CONTA registrado no DICT do Bacen. Chave
+           nova ≠ identidade nova; não existe "chave no nome Lecionário"
+           numa conta pessoa física.
+        2. Pra exibir "Lecionário" como recebedor seria preciso CNPJ
+           (caminho acessível: MEI + conta PJ) e migrar as chaves pra
+           essa conta. Decisão: COMEÇAR NA PESSOA FÍSICA mesmo — custo
+           zero, dinheiro chega igual, e pra audiência religiosa/
+           comunitária "apoie o mantenedor" é normal e humaniza. A UI já
+           é transparente: a página mostra "Recebedor: Rilson Joás".
+           Se um dia o volume justificar, abre o MEI e troca só a chave
+           no `PIX_CONFIG` dos dois apps + republica.
+        3. Detalhe técnico: o campo 59 do BR Code (nosso `receiverName`)
+           é cosmético — o banco ignora na confirmação e exibe o titular
+           real. Escrever "Lecionário" lá seria enganoso sem efeito.
+        4. O padrão EMV limita o campo 59 a 25 caracteres: o nome civil
+           completo ("Rilson Joás Guedes Bezerra dos Santos", 37) não
+           cabe e truncaria feio no meio ("...Guedes Bezerr"). Decisão:
+           forma curta "Rilson Joás Guedes" (18 chars) no payload.
+        Fase 2 futura se escalar: Stripe/Mercado Pago pra recorrência +
+        recibos
+  - [x] **Afiliado (Amazon) — CONCLUÍDO (2026-08-22), forma decidida pelo
+        autor: pelas citações de C.S. Lewis.** O QuoteCard diário linka a
+        obra-fonte da citação pra busca da Amazon com a tag `rilson-20`
+        (reusada do Gerador C.S. Lewis) — o livro citado é exatamente o
+        produto afim, sem interromper a experiência devocional. Mobile
+        já tinha desde 2026-08-20; web em paridade agora (`LewisQuoteSection`
+        na home, abaixo do versículo de II Timóteo, seleção date-seeded
+        idêntica garantida por teste, `rel="sponsored"` no link). Lógica
+        extraída em `lewis-quotes.ts` (web) com testes: determinismo,
+        fórmula do seed igual à do mobile e cobertura do acervo inteiro
+        num ano (curiosidade documentada: `yyyyMMdd` não é linear nos
+        viradas de mês, então 165 dias corridos NÃO cobrem os 165
+        índices — um ano sim). Outros produtos (BCP impresso, bíblias de
+        estudo etc.) ficam pra reavaliar se houver tração de cliques —
+        nunca como centro da experiência.
 - **Aquisição**: diferente de competir em ASO genérico — o canal real
   aqui é comunidade (paróquias, grupos anglicanos/litúrgicos, indicação
   direta), não tráfego de busca de app store
@@ -1705,3 +1747,29 @@ Google" não é viável em iOS de qualquer forma.
       P0 Segurança acima (script `scripts/audit-allowlist.mjs` + steps no
       `ci.yml`)
 - [x] **"Conheça também" / Biblioteca** — lado Lecionário resolvido (2026-08-22): modelo aprovado implementado no `Footer.tsx`, ver item de UX acima. Falta o lado de lá: replicar as melhorias equivalentes no Gerador C.S. Lewis quando esse projeto for tocado (referência agora é dupla: `ClusterFooter.tsx` e o footer do Lecionário).
+
+---
+
+## Marketing e Distribuição (2026-08-22)
+
+> Monetização decidida em 2026-08-21: doação + afiliado agora, anúncios
+> adiados. Teto baixo de propósito não significa público zero — sem
+> distribuição nem doação acontece.
+
+### Motor central: a sazonalidade litúrgica É o calendário de marketing
+
+- **Advento 2026 começa em 29/nov** — maior gancho do ano do nicho. Preparar push de divulgação ~2 semanas antes
+- Cada estação (Natal → Quaresma → Páscoa → Pentecostes) é campanha de reativação natural: o produto já muda sozinho (pinturas, cores, logo sazonal)
+- KPI de hábito: retorno semanal por estação (favoritos + pintura do dia dão razão de voltar)
+
+### Canais
+
+1. Comunidades anglicanas/litúrgicas em português (grupos de paróquias, leitores do BCP) — nicho pequeno, fiel e sub-atendido
+2. Instagram devocional cruzando com @artecristadiaria e @narnianoexistencialista (manuais prontos no vault) — mesma audiência de profundidade
+3. SEO cauda longa já em curso via sitemap/GSC: "lecionário hoje", "leituras do dia", "devocional advento"
+4. Rodapé "A Biblioteca" cruza tráfego entre os 4 sites — adicionar UTMs pra medir o que cada vizinho manda
+
+### Monetização coerente com o público litúrgico
+
+- Doação: botão discreto, tom de "sustentar o ministério" (nunca paywall) — [ ] implementar botão (decisão tomada em 21/08, ainda não vi implementação no código)
+- Afiliado: livros devocionais/litúrgicos na Amazon reusando a tag `rilson-20` do Gerador
