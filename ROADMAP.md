@@ -1882,6 +1882,19 @@ Google" não é viável em iOS de qualquer forma.
 
 ### Política de cópias e assinatura (APÓS o modo escuro — 2026-08-22)
 
+- [x] **Sentry mobile validado pelo USO REAL (2026-08-22)** — autor
+      instalou o APK novo e usou o app; monitoramento passa a ser
+      operação de rotina no dashboard, sem erro artificial.
+- [x] **Rótulos aprovados pelo autor (2026-08-22)** — "Perguntas para
+      refletir" sancionado; teste com usuários reais fica como etapa de
+      campo para quando houver base de usuários instalada.
+- [x] **Sentry mobile validado pelo USO REAL (2026-08-22)** — autor
+      instalou o APK novo e usou o app; monitoramento passa a ser
+      operação de rotina no dashboard, sem erro artificial.
+- [x] **Rótulos aprovados pelo autor (2026-08-22)** — "Perguntas para
+      refletir" sancionado; teste com usuários reais fica como etapa de
+      campo para quando houver base de usuários instalada.
+
 - [x] **Expandir botões de copiar com critério — FEITO (2026-08-22)**:
       Citação do dia ganhou cópia nos DOIS apps (era o texto mais
       compartilhável sem botão). Arte/badges/navegação continuam sem —
@@ -1911,6 +1924,13 @@ Google" não é viável em iOS de qualquer forma.
          dark elegante — dourado-noturno mais suave, cards clássicos
          legíveis, nada de "invertido feio"
       3. Revisão visual das 7 estações × 2 temas
+
+- [x] **FASE 3 FECHADA PELO AUTOR (2026-08-22)** — navegou no modo
+      escuro, aprovou o que viu e os achados finais entraram como
+      ajustes pontuais na mesma sessão: fundo sazonal color-mix (v2),
+      dialog do glossário com card sólido, HOJE como pill reativa no
+      header, ModeToggle vestido na paleta. Daqui pra frente, novos
+      problemas de contraste são bugs pontuais, não fase.
 
 - [~] **FASES 1–2 IMPLEMENTADAS (2026-08-22)**: next-themes (class,
       system por padrão) via `theme-provider.tsx`; `.dark` invertendo a
