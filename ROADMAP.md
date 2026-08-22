@@ -1268,8 +1268,15 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       exporta `metadata` (Next.js App Router) com `openGraph` — mais
       maduro que o padrão estático de index.html, gerado por página.
       `public/robots.txt` também já existe
-- [ ] `sitemap.xml` — não existe (`app/sitemap.ts` do Next.js resolveria
-      isso nativamente, sem lib extra)
+- [x] **Google Search Console** — verificação de propriedade via
+      `metadata.verification.google` (2026-08-22), renderiza a meta
+      `google-site-verification`; confirmado no HTML servido
+- [x] `sitemap.xml` — RESOLVIDO (2026-08-22) via `app/sitemap.ts` nativo do
+      Next.js, sem lib extra. Rotas: `/` (daily) e `/privacidade` (yearly);
+      `robots.txt` ganhou linha `Sitemap:` apontando pra URL de produção.
+      Achado no caminho: `openGraph.url` do layout apontava pra
+      `lecionario.app` (domínio que não é nosso!) — corrigido pra
+      `lecionario.narniano.com` com `metadataBase` definido
 - [x] Já responsivo (breakpoint 768px, hook `useIsMobile`)
 - [x] **Contraste de cor (web + mobile) — resolvido de verdade (2026-08-15)**:
       auditoria real encontrou e corrigiu falha sistêmica de WCAG AA em
@@ -1288,6 +1295,47 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       removia da árvore de acessibilidade também, não só visualmente —
       no mobile web viravam ícone puro sem nome). Falta navegação por
       teclado (não testada) e teste com leitor de tela de verdade
+
+### P8 — Contato e conformidade legal / LGPD (2026-08-22)
+
+> Motivação: registro do autor — "nem sei se esse site/app está de acordo
+> com as políticas de uso e LGPD". O app é offline-first sem backend e sem
+> conta de usuário, o que simplifica MUITO a conformidade, mas não a
+> anula: Sentry coleta diagnósticos, e a publicação em lojas exige
+> política de privacidade formal.
+
+**Regra de contato:** todo lugar que mencionar contato usa
+**`lecionario@narniano.com`** — decidido pelo autor em 2026-08-22.
+
+- [x] **Pontos de contato implementados**: rodapé web (mailto discreto sob
+      o ©) e seção Sobre do mobile (linha "Contato" com `Linking.openURL`
+      mailto). Nenhum outro lugar do código mencionava contato antes —
+      grep confirma; ao criar qualquer menção nova, usar esse endereço
+- [x] **Política de Privacidade — RESOLVIDO (2026-08-22)**. Página
+      `/privacidade` no web (`app/privacidade/page.tsx`, metadata própria
+      pra SEO, estilo Narniano com classic-frame) cobrindo tudo que o P8
+      exigia: dados locais no aparelho (favoritos/preferências/cache),
+      relatórios de erro via Sentry (dados técnicos, sem vínculo com
+      identidade pois não há cadastro), links de afiliado Amazon
+      (`rilson-20`), seção "o que este serviço não faz" (sem analytics,
+      sem anúncios, sem venda de dados), direitos do art. 18 da LGPD e
+      contato `lecionario@narniano.com`. Link no rodapé web ao lado do
+      contato + linha "Privacidade" na seção Sobre do mobile (abre a
+      página no navegador). Falta pra fechar a conformidade: formulários
+      das lojas (Data Safety/privacy labels) quando publicar
+- [ ] **Auditoria LGPD** — mapear tratamentos: (1) favoritos/preferências =
+      dados locais no dispositivo, sem sair dele, base legal = execução de
+      serviço pedido pelo usuário; (2) Sentry (quando DSN ativar) =
+      diagnóstico técnico, pode conter identificadores de device/IP —
+      configurar `beforeSend` scrubbing e declarar na política; (3)
+      afiliado Amazon = cookie de indicação, mencionar. Sem cookies de
+      rastreamento/analytics hoje; se um dia entrar AdSense (adiado),
+      reabrir esse item
+- [ ] **Formulários das lojas ao publicar** — Play Console Data Safety +
+      Apple privacy labels: declarar coleta de diagnósticos (Sentry) e
+      link da política de privacidade (depende dos dois itens acima)
+- [ ] **Termos de uso simples** — opcional nesta fase; pode nascer como
+      seção dentro da página de Privacidade
 
 ## L — Lançamento e crescimento (2026-08-08)
 
@@ -1330,7 +1378,11 @@ muito mais restrito por natureza**.
 - **Publicação mobile**: `DEPLOY.md` já documenta o comando
   (`eas submit --platform android`), mas **não há confirmação de que já
   foi rodado de verdade** — conferir antes de assumir que está
-  publicado
+  publicado. **Preferência do autor (2026-08-21): atualizações do app
+  SEMPRE via `eas update` (OTA, segundos); novo APK/build nativo só
+  quando estritamente necessário** (mudança nativa, ícone, permissão,
+  versão de SDK). Tudo que é JS/dado já roda por OTA — ver split
+  `eas.yml`/`eas-build.yml` no débito técnico resolvido
 - **Monetização — decisão tomada em 2026-08-21** (deixou de ser "não
   mapeada"): monetizar por todas as formas que não sejam anúncio,
   anúncio (AdSense no web, AdMob no mobile) fica adiado pro futuro, não
@@ -1415,9 +1467,34 @@ Google" não é viável em iOS de qualquer forma.
 
 ### 🟠 Grave — UX quebrada
 
-- [ ] **"Voltar para Hoje" existe só no mobile, não no web** — adicionar botão equivalente na barra de navegação do web (entre as setas de anterior/próximo ou como CTA fixo).
-- [ ] **Favoritar existe só no mobile, não no web** — implementar `FavoritesContext` também no web, com coração nos cards. Os dados ficam em `localStorage`.
-- [ ] **Botões de favoritar e compartilhar no mobile empurram o nome do app para a esquerda** — mover os dois botões para baixo do menu `anterior | calendário | próximo` como linha separada.
+- [x] **"Voltar para Hoje" no web — RESOLVIDO (2026-08-21), com revisão
+      do autor**. Primeira versão (botão outline à direita da barra) foi
+      reprovada no teste real: desconectada do cluster de navegação e
+      espremida no mobile. Versão final, decisão de UX registrada:
+      **ações de navegação pertencem ao cluster da data; ações de
+      conteúdo (favoritar/compartilhar) ficam na página**. Ficou como
+      link discreto SEM borda sob a data ("✓ Voltar para hoje", caps
+      espaçadas, cor accent), dentro do bloco central `< | data | >`,
+      renderizado só quando a data ≠ hoje — compacto no mobile,
+      elegante no desktop, sem órfãos na barra
+- [x] **Favoritar existe só no mobile, não no web — RESOLVIDO
+      (2026-08-21)**. `FavoritesContext` web (`src/contexts/`, paridade de
+      API com o mobile: `favorites`/`toggleFavorite`/`isFavorite`),
+      persistência em `localStorage` (chave `lecionario:favorites`),
+      hidratação pós-mount pra não divergir do SSR. UI: botão
+      "Favoritar este dia"/"Favoritado" (coração, vermelho preenchido
+      quando ativo) ao lado do compartilhar na seção de boas-vindas +
+      seção "Dias Favoritados" com chips clicáveis (mais recente primeiro,
+      chip do dia atual destacado), só aparece quando há favoritos.
+      Provider ligado em `providers.tsx`. Fora do escopo desta rodada:
+      aba/tab dedicada de favoritos como no CalendarScreen mobile
+- [x] **Botões de favoritar e compartilhar no mobile empurram o nome do
+      app para a esquerda — RESOLVIDO (2026-08-21)**. Saíram do `titleRow`
+      e viraram linha própria de pílulas centradas (`actionsRow` com
+      `actionPill`: ícone + rótulo "Favoritar"/"Favoritado" e
+      "Compartilhar"), logo abaixo do menu `anterior | data | próximo`,
+      dentro da banda com véu. Estilo `shareDayButton` removido (código
+      morto). Rótulo muda pra "Favoritado" + coração vermelho quando ativo
 - [x] **Tags "Salmo" e "Segunda leitura" ilegíveis no mobile — RESOLVIDO
       (2026-08-21)**. Antes: fundo dourado translúcido fixo (`accent` a 10%)
       + cor de texto escura fixa por tipo, 9px. Agora (`ReadingCard` +
@@ -1428,12 +1505,33 @@ Google" não é viável em iOS de qualquer forma.
       revisar: o verde que ele via ilegível era o do HEADER/FOOTER (item
       🟡 abaixo), não das tags — mas a regra nova das tags ficou, alinhada
       ao que o web já fazia
-- [ ] **Primeira letra da Meditação (capitular) com cor ruim no modo escuro** — usar branco (`#fff`) no modo escuro, assim como o resto do texto da seção.
-- [ ] **Fontes grandes/pequenas demais em várias seções** — em especial a Oração do Dia no web fica tão grande que prejudica o print/compartilhamento. Criar escala tipográfica consistente (ex: `prose-sm` ou tamanho fixo para cards de conteúdo).
+- [x] **Primeira letra da Meditação (capitular) com cor ruim no modo escuro
+      — RESOLVIDO (2026-08-21)**. Causa: `#4B2E39` hardcoded no
+      `MeditationSection` mobile (vinho quaresmal sobre card escuro).
+      Correção: `ThemeColors` ganhou campo `mode: 'light' | 'dark'` e a
+      capitular agora é vinho no claro / `#F5F5F0` no escuro — igual ao
+      resto do texto, como pedido. Web não precisou de mudança (não tem
+      modo escuro; `--vinho` sobre bege-areia = 9.22:1)
+- [x] **Fontes grandes demais nos cards de conteúdo — RESOLVIDO
+      (2026-08-21)**. Escala de corpo de texto unificada no web: teto
+      `lg:text-xl` (20px) pra todos os cards devocionais. Ofensores
+      corrigidos: Oração do Dia (`PrayerSection` ia até `xl:text-3xl` =
+      30px — o caso relatado que estragava print/compartilhamento) e
+      Coleta (`CollectSection` ia até `md:text-2xl`). Meditação (20px) e
+      ReadingCard (18px) já estavam na escala. Títulos display mantidos
+      (identidade visual, não são corpo de leitura). Mobile já tinha sido
+      auditado em 2026-08-16 (só prayerText/collectText, já corrigidos).
+      **Segunda passada, a pedido do autor no teste real (mesmo dia):**
+      títulos ainda gigantes + respiro largo demais — h1 do Header caiu de
+      `lg:text-6xl` pra `lg:text-5xl` (e padding vertical reduzido),
+      "A Liturgia como Tradição" de `lg:text-5xl` pra `lg:text-4xl`,
+      "Oração do Dia" de `md:text-5xl` pra `md:text-4xl`, citação final
+      perdeu o degrau `xl:text-3xl`, e o ritmo vertical da home baixou de
+      `space-y-16/20 · py-12/16` pra `space-y-10/14 · py-8/12`
 
 ### 🟡 Melhoria — UX e produto
 
-- [ ] **"Conheça também" — design não conversa com o resto do site** — a seção de links para outros projetos está com estilo genérico. **Modelo aprovado (2026-08-21)**: hierarquia de 3 níveis do `ClusterFooter.tsx` do Gerador C.S. Lewis — rótulo-nicho em caps espaçadas ("CONHEÇA TAMBÉM", 10px, tom apagado) → links uniformes (mesmo tamanho/peso, 12px) separados por ✦ dourado em grupos atômicos `flex-wrap` (ornamento viaja junto do link, nunca sobra separador órfão na quebra de linha) → © discreto na base. Tudo numa família só (Lato), coluna centrada com ritmo vertical igual. Adaptar paleta pra sazonalidade do Lecionário ao aplicar.
+- [x] **"Conheça também" — design não conversa com o resto do site — RESOLVIDO (2026-08-22)**. Implementado exatamente o modelo aprovado abaixo: rótulo "Conheça também" em caps espaçadas (`text-[10px] font-bold tracking-[0.3em]`, dourado-texto), nav com pares atômicos ornamento+link (`flex items-baseline whitespace-nowrap`, ✦ dourado `mx-2.5` viajando com o link à esquerda), `flex-wrap` + `gap-y-2` + `max-w-md sm:max-w-none mx-auto` (responsivo de verdade — era um `<p>` inline único que estourava em tela estreita), hover underline com offset. Paleta adaptada à sazonalidade: links `text-bege-areia/80`, hover `hover:text-dourado`, separadores `dourado/70`. Copyright desceu pra bloco próprio com `pt-6`. Lint/tsc/testes verdes
 - [x] **Verde do Tempo Comum com legibilidade baixa — RESOLVIDO
       (2026-08-21), header e footer**. Medição real (texto creme
       `--bege-areia` / `--dourado-texto` sobre `seasonBrandColors`):
@@ -1471,13 +1569,34 @@ Google" não é viável em iOS de qualquer forma.
       natalino: bege 4.91 / título 5.66; melhor caso Quaresma: 12+);
       `getHeaderTextColors()` virou incondicional-clara (sem ramificação
       por estação), e `LIGHT_SEASONS`/`isLightSeason` restaram só pros
-      badges (fora do véu). Intencionalmente SEM camada: theme-color do
+      badges (fora do véu).       Intencionalmente SEM camada: theme-color do
       browser (hue da marca puro), legenda de cores do calendário (swatches)
       e badges. Validado com lint/tsc/testes nos dois apps (45 web, 59 mobile)
+- [x] **Ícones/logos sazonais sincronizados com o verde novo (2026-08-21,
+      mesmo dia)** — achado do autor ao conferir no localhost: os PNGs
+      gerados ainda usavam o sálvia antigo. Atualizado `WEB_PALETTE` no
+      `generate-logos.py` (epiphany/ordinary → `#4F6350`; ícone é marca,
+      não recebe véu) e regenerado tudo: logos web/mobile das duas estações
+      verdes, 7 manifests sazonais e assets Android. Só os arquivos das
+      estações verdes mudaram — troca cirúrgica confirmada no git status.
+      Pendência remanescente (baixa): consolidar a paleta duplicada entre
+      Python e JS numa fonte única compartilhada
       Pendência relacionada: regenerar ícones sazonais no
       `generate-logos.py` (ainda usa o sálvia antigo) ou consolidar paleta
 - [ ] **"Tradição e Devoção" como lema** — avaliar se deve aparecer em outros lugares além de onde já está (splash, about?). Decisão de produto, não de engenharia.
-- [ ] **Botão de compartilhar em excesso na página inicial** — revisar quantos botões de share existem. Proposta: 1 botão de copiar por card, posicionado no canto inferior direito. Remover shares duplicados.
+- [x] **Botão de compartilhar em excesso na página inicial — RESOLVIDO
+      (2026-08-22)**. Padrão final: **1 ação de copiar por card, centrada
+      no rodapé** (posição ajustada pelo autor durante o teste: centrado,
+      como sempre foi no card de Oração — não canto inferior direito como
+      na proposta original). Web: `ReadingCard` migrou o copiar do header
+      (ao lado do badge) pro rodapé centralizado; `PrayerSection` mantém
+      cópia centrada; "Compartilhar este dia" segue único na seção de
+      boas-vindas junto do Favoritar. Mobile: `ReadingCard` trocou o
+      share-sheet duplicado por cópia direta (`expo-clipboard`, feedback
+      "Copiado!" verde), alinhado ao centro abaixo do texto — o share
+      do dia continua só nas pílulas do header. Auditoria final: web =
+      day-share + 3 cópias (leituras/oração); mobile = day-share + 4
+      cópias, zero share repetido
 - [ ] **Busca e Favoritos dentro do calendário mobile** — mover para a tab bar de baixo junto de Hoje, Calendário e Config. Avaliar se as legendas de texto sob os ícones da tab bar são necessárias (ícones sozinhos podem ser suficientes).
 - [ ] **Ordem das Configurações** — reorganizar: (1) Notificações + hora personalizada, (2) Aparência (tema + fonte), (3) Biblioteca, (4) Sobre. Remover "Limpar dados temporários" — pouco valor, gera confusão.
 - [ ] **Favicons da Biblioteca em formato circular** — em vez de quadrado/retangular, aplicar `border-radius: 50%` nos ícones de cada projeto na tela de Biblioteca.
@@ -1490,4 +1609,4 @@ Google" não é viável em iOS de qualquer forma.
 - [x] **`npm audit` no CI** — feito (2026-08-21), ver detalhes na seção
       P0 Segurança acima (script `scripts/audit-allowlist.mjs` + steps no
       `ci.yml`)
-- [ ] **"Conheça também" / Biblioteca** — replicar o modelo aprovado do Gerador C.S. Lewis (2026-08-21): rótulo caps + links uniformes com ✦ dourado + © discreto, `flex-wrap` com itens atômicos. Referência: `ClusterFooter.tsx` em `GeradorCSLewis/src/components/`. Detalhes no item de UX acima.
+- [x] **"Conheça também" / Biblioteca** — lado Lecionário resolvido (2026-08-22): modelo aprovado implementado no `Footer.tsx`, ver item de UX acima. Falta o lado de lá: replicar as melhorias equivalentes no Gerador C.S. Lewis quando esse projeto for tocado (referência agora é dupla: `ClusterFooter.tsx` e o footer do Lecionário).
