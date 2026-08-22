@@ -46,4 +46,7 @@ jobs:
 
       - name: OTA Update
         working-directory: lecionario-mobile
-        run: eas update --branch preview --message "Deploy ${{ github.sha }}"
+        # --environment é obrigatório pro job remoto enxergar as env vars
+        # EAS (ex.: EXPO_PUBLIC_SENTRY_DSN) — sem ele o bundle publica
+        # sem as vars mesmo existindo no ambiente de mesmo nome da branch
+        run: eas update --branch preview --environment preview --message "Deploy ${{ github.sha }}"
