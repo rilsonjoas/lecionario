@@ -1,4 +1,13 @@
-import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Linking } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+  ScrollView,
+  Linking,
+  Image,
+} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as Clipboard from 'expo-clipboard';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -35,35 +44,44 @@ const TIME_OPTIONS = [
   { value: '09:00', label: '9h' },
 ];
 
+// Favicons reais dos projetos da biblioteca (apontamento do autor,
+// 2026-08-22: círculos chamam mais atenção que ícone genérico)
+const PROJECT_LOGOS = {
+  narniano: require('../../assets/projects/narniano.png'),
+  'biblia-na-arte': require('../../assets/projects/biblia-na-arte.png'),
+  scriptorium: require('../../assets/projects/scriptorium.png'),
+  cslewis: require('../../assets/projects/cslewis.png'),
+} as const;
+
 const BIBLIOTECA_LINKS: {
   label: string;
   description: string;
   url: string;
-  icon: keyof typeof MaterialCommunityIcons.glyphMap;
+  logo: keyof typeof PROJECT_LOGOS;
 }[] = [
   {
     label: 'Narniano',
     description: 'Portal sobre C.S. Lewis, Nárnia e fé cristã',
     url: 'https://narniano.com',
-    icon: 'crown',
+    logo: 'narniano',
   },
   {
     label: 'Bíblia na Arte',
     description: 'Obras de arte inspiradas nas Escrituras',
     url: 'https://biblianaarte.narniano.com',
-    icon: 'palette-outline',
+    logo: 'biblia-na-arte',
   },
   {
     label: 'Scriptorium Divinum',
     description: 'Clássicos da teologia cristã em português',
     url: 'https://scriptorium.narniano.com',
-    icon: 'bookshelf',
+    logo: 'scriptorium',
   },
   {
     label: 'Gerador C.S. Lewis',
     description: 'Citações inspiradoras de C.S. Lewis',
     url: 'https://cslewis.narniano.com',
-    icon: 'format-quote-close',
+    logo: 'cslewis',
   },
 ];
 
@@ -311,7 +329,7 @@ export default function ConfigScreen() {
             accessibilityRole="link"
             accessibilityLabel={`Abrir ${link.label}`}
           >
-            <MaterialCommunityIcons name={link.icon} size={20} color={colors.accent} />
+            <Image source={PROJECT_LOGOS[link.logo]} style={styles.projectLogo} />
             <View style={styles.rowContent}>
               <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(14) }]}>
                 {link.label}
@@ -374,17 +392,9 @@ export default function ConfigScreen() {
             </Text>
           </View>
         </View>
-        <View style={[styles.row, { borderBottomColor: colors.border }]}>
-          <MaterialCommunityIcons name="information-outline" size={22} color={colors.textMuted} />
-          <View style={styles.rowContent}>
-            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
-              Dados litúrgicos
-            </Text>
-            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
-              Calculados localmente para 2025–2030
-            </Text>
-          </View>
-        </View>
+        {/* "Dados litúrgicos calculados localmente" removida (apontamento
+            do autor, 2026-08-22): detalhe de implementação não agrega pro
+            usuário final */}
         {/* Contato oficial (P8, 2026-08-22): todo lugar que fala de
             contato aponta pra lecionario@narniano.com */}
         <TouchableOpacity
@@ -458,6 +468,11 @@ const styles = StyleSheet.create({
     fontFamily: 'Lora_700Bold',
     marginBottom: 12,
     paddingLeft: 4,
+  },
+  projectLogo: {
+    width: 28,
+    height: 28,
+    borderRadius: 14,
   },
   bibliotecaIntro: {
     fontFamily: 'Lora_400Regular_Italic',

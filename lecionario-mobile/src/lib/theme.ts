@@ -97,3 +97,20 @@ export function getBadgeColors(season: LiturgicalSeason): BadgeColors {
     fg: isLightSeason(season) ? '#2A1810' : '#F4EFE1',
   };
 }
+
+export interface OnBrandTextColors {
+  text: string;
+  muted: string;
+}
+
+// Texto que vive DIRETAMENTE sobre a cor da estação (fora de cards e do
+// véu do header) — ex.: títulos de seção da home. Report do autor
+// (2026-08-22): "texto preto em cima de fundo verde escuro" no modo
+// claro, porque colors.text é quase-preto e o fundo do conteúdo é o
+// primaryColor. Regra: estação de marca clara (ouro) pede texto escuro;
+// marca escura (verde etc.) pede creme — mesma partição dos badges.
+export function getOnBrandTextColors(season: LiturgicalSeason): OnBrandTextColors {
+  return isLightSeason(season)
+    ? { text: '#2A1810', muted: 'rgba(42,24,16,0.72)' }
+    : { text: '#F4EFE1', muted: 'rgba(255,255,255,0.85)' };
+}

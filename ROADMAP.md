@@ -798,6 +798,18 @@ A tela atual tem apenas "Limpar cache". Adicionar:
       `ReadingCard` (gold sobre fundo escuro e claro reprovando WCAG AA,
       inclusive com opacidade reduzindo ainda mais); todos corrigidos e
       verificados com `tsc --noEmit`
+- [x] **Mobile modo claro: texto preto sobre verde escuro — RESOLVIDO
+      (2026-08-22, mesmo dia do report).** Causa real: o fundo da área de
+      conteúdo da home É o `primaryColor` da estação, e os títulos de
+      seção fora dos cards ("Lectio Divina", "Ano Litúrgico B • 4
+      Estações", "Citação do dia") usavam `colors.text` — quase-preto no
+      modo claro, direto sobre o verde. Header/badges já estavam certos.
+      Solução: novo helper `getOnBrandTextColors(season)` em `theme.ts`
+      com a mesma partição dos badges — estação de marca clara (ouro
+      natalino/páscoa) pede texto escuro `#2A1810`; marca escura (verde,
+      roxo, vermelho, azul) pede creme `#F4EFE1`. Empty/Error states
+      também ganharam superfície de card (`colors.card`) pra serem
+      legíveis em qualquer fundo
 
 ---
 
@@ -1473,8 +1485,9 @@ muito mais restrito por natureza**.
         funciona offline). Gerador duplicado web/mobile de propósito
         (sem pacote compartilhado) com teste de sincronia entre os dois.
         **DADOS FINAIS CONFIRMADOS PELO AUTOR (2026-08-22)** — chave
-        `lecionario@narniano.com` cadastrada na conta pessoal, cidade
-        Recife. Config atualizada nos dois apps, sem placeholders.
+        `lecionario@narniano.com` cadastrada na conta pessoal dele e
+        **JÁ REGISTRADA NO BANCO** (confirmado pelo autor no mesmo dia —
+        o QR/copia-e-cola está apto a receber de verdade)
         **Processo de decisão do nome do recebedor** (documentado pra
         não esquecer o porquê):
         1. O nome que aparece pra quem doa NÃO vem da chave nem do QR —
@@ -1718,7 +1731,28 @@ Google" não é viável em iOS de qualquer forma.
       do dia continua só nas pílulas do header. Auditoria final: web =
       day-share + 3 cópias (leituras/oração); mobile = day-share + 4
       cópias, zero share repetido
-- [ ] **Busca e Favoritos dentro do calendário mobile** — mover para a tab bar de baixo junto de Hoje, Calendário e Config. Avaliar se as legendas de texto sob os ícones da tab bar são necessárias (ícones sozinhos podem ser suficientes).
+- [x] **Header/footer grandes comendo a área de conteúdo (mobile) —
+      RESOLVIDO (2026-08-22), opção 1 aprovada pelo autor: header
+      colapsável.** O bloco rico (logo + dia + ano + navegação de data +
+      pílulas de ação) agora ROLA junto com o conteúdo; uma barra compacta
+      fixa (~48px + status bar, mesma cor da estação + véu) surge ao
+      passar de ~100px de scroll com logo mini + nome do dia + ‹ › +
+      atalho "hoje" quando fora do dia atual. Ganho de ~330px de conteúdo
+      na leitura em telas pequenas. Implementação: Animated.Value +
+      interpolate na opacidade, `pointerEvents`/acessibilidade ligados por
+      estado ao cruzar o limiar, scroll volta ao topo ao trocar de dia
+      (sem isso a barra compacta entregava o novo dia já rolado). Handler
+      de scroll é função pura com `setValue` — o construtor
+      `Animated.event` roda em render e quebra a regra `react-hooks/refs`
+      v7 (mesmo motivo de `scrollY` ser `useMemo`, não `useRef().current`)
+- [x] **Busca e Favoritos dentro do calendário mobile — RESOLVIDO (2026-08-22)**.
+      Viraram telas próprias (`SearchScreen`, `FavoritesScreen`) e tabs
+      de verdade na barra inferior, que agora tem 5 ícones: Hoje,
+      Calendário, Busca, Favoritos, Config. Legendas removidas — só
+      ícones (decisão do autor), com `tabBarAccessibilityLabel`
+      preservando o leitor de tela. Calendário voltou a ser calendário
+      puro (tabRow interno e busca inline removidos). Deep links
+      `lecionario://busca` e `//favoritos` registrados
 - [x] **Ordem das Configurações + remover "Limpar dados temporários" —
       RESOLVIDO (2026-08-22)**. Ordem nova conforme proposta do autor:
       (1) Notificações com horário personalizado, (2) Aparência
@@ -1726,8 +1760,16 @@ Google" não é viável em iOS de qualquer forma.
       inteira removida junto com `handleClearCache`/estado/import de
       `clearCache` — o cache técnico se recalcula sozinho e o botão só
       gerava dúvida; a lib continua existindo pra uso interno
-- [ ] **Favicons da Biblioteca em formato circular** — em vez de quadrado/retangular, aplicar `border-radius: 50%` nos ícones de cada projeto na tela de Biblioteca.
-- [ ] **Seção "Sobre" no app — remover "Dados litúrgicos calculados localmente"** — informação técnica sem valor para o usuário. Simplificar a seção Sobre para o essencial (missão, versão, créditos).
+- [x] **Favicons da Biblioteca em formato circular — RESOLVIDO (2026-08-22)**.
+      Baixados os favicons reais dos 4 projetos (apple-touch-icon/Lewis.png,
+      128–192px) pra `src/assets/projects/` e renderizados como círculos
+      28px no lugar dos ícones genéricos do Material. ConfigScreen entrou
+      no override ESLint de `no-require-imports` (mapa de asset por chave,
+      mesmo padrão das logos sazonais).
+- [x] **Seção "Sobre" no app — remover "Dados litúrgicos calculados
+      localmente" — RESOLVIDO (2026-08-22)**: linha removida; Sobre ficou
+      Lecionário/versão → Ciclo Litúrgico → Apoie o projeto → Privacidade
+      → Contato.
 - [ ] **Login com OAuth Google para sincronizar favoritos** — avaliar: o que seria sincronizado? (favoritos, progresso de leitura, configurações). Seguir o padrão `meus-remedios`: OAuth Google + conta local (não só Google). Decisão de produto antes de implementar.
       ⚠️ **GATILHO DE CONFORMIDADE (2026-08-22)**: implementar login/sync
       REABRE OBRIGATORIAMENTE, antes de qualquer release com a feature:

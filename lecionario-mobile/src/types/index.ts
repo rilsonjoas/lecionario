@@ -51,5 +51,7 @@ export interface SeasonTheme {
 export type RootTabParamList = {
   Hoje: { date?: string } | undefined;
   Calendário: undefined;
+  Busca: undefined;
+  Favoritos: undefined;
   Config: undefined;
 };

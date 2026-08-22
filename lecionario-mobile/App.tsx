@@ -23,6 +23,8 @@ import { FavoritesProvider } from '@/contexts/FavoritesContext';
 import { addNotificationResponseListener } from '@/lib/notifications';
 import HomeScreen from '@/screens/HomeScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
+import SearchScreen from '@/screens/SearchScreen';
+import FavoritesScreen from '@/screens/FavoritesScreen';
 import ConfigScreen from '@/screens/ConfigScreen';
 import type { RootTabParamList } from '@/types';
 
@@ -43,6 +45,8 @@ const linking: LinkingOptions<RootTabParamList> = {
     screens: {
       Hoje: 'dia/:date',
       Calendário: 'calendario',
+      Busca: 'busca',
+      Favoritos: 'favoritos',
       Config: 'config',
     },
   },
@@ -57,26 +61,22 @@ function AppTabs() {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
+          tabBarShowLabel: false, // só ícones (apontamento do autor)
           tabBarStyle: {
             backgroundColor: colors.tabBarBg,
             borderTopColor: colors.tabBarBorder,
             borderTopWidth: 0.5,
             paddingBottom: 8,
             paddingTop: 8,
-            height: 60,
+            height: 56,
             elevation: 0,
             shadowOpacity: 0,
           },
           tabBarActiveTintColor: colors.accent,
           tabBarInactiveTintColor: colors.textMuted,
-          tabBarLabelStyle: {
-            fontSize: 10,
-            textTransform: 'uppercase',
-            letterSpacing: 1,
-            fontWeight: '600',
-          },
           tabBarItemStyle: {
-            minHeight: 48,
+            minHeight: 44,
+            justifyContent: 'center',
           },
         }}
       >
@@ -84,6 +84,7 @@ function AppTabs() {
           name="Hoje"
           component={HomeScreen}
           options={{
+            tabBarAccessibilityLabel: 'Devocional de hoje',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="book-open-variant" size={size} color={color} />
             ),
@@ -93,8 +94,29 @@ function AppTabs() {
           name="Calendário"
           component={CalendarScreen}
           options={{
+            tabBarAccessibilityLabel: 'Calendário litúrgico',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="calendar-month-outline" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Busca"
+          component={SearchScreen}
+          options={{
+            tabBarAccessibilityLabel: 'Buscar devocionais',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="magnify" size={size} color={color} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Favoritos"
+          component={FavoritesScreen}
+          options={{
+            tabBarAccessibilityLabel: 'Dias favoritados',
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons name="heart-outline" size={size} color={color} />
             ),
           }}
         />
@@ -102,6 +124,7 @@ function AppTabs() {
           name="Config"
           component={ConfigScreen}
           options={{
+            tabBarAccessibilityLabel: 'Configurações',
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="cog-outline" size={size} color={color} />
             ),
