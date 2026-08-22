@@ -2,6 +2,7 @@ import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { Calendar } from 'lucide-react';
 import { seasonBrandColors } from '@/lib/theme';
+import { ModeToggle } from '@/components/layout/ModeToggle';
 import type { LiturgicalDayInfo, LiturgicalSeason } from '@/types';
 
 interface HeaderProps {
@@ -56,6 +57,11 @@ export function Header({ liturgicalDay, season }: HeaderProps) {
 
           {/* Date and Liturgical Info */}
           <div className="md:text-right space-y-4 md:space-y-6">
+            {/* Tema claro/escuro (paridade com o mobile e com o Gerador
+                C.S. Lewis): Sol/Lua, respeita o SO por padrão */}
+            <div className="flex md:justify-end">
+              <ModeToggle />
+            </div>
             <div className="inline-flex items-center md:justify-end gap-2 md:gap-3 px-4 md:px-6 py-1.5 md:py-2 bg-preto-ébano/30 backdrop-blur-md rounded-full border border-dourado/20">
               <Calendar className="w-3 h-3 md:w-4 md:h-4 text-dourado-texto" />
               <time

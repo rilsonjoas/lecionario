@@ -16,7 +16,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
         <div className="relative z-10">
           <div className="flex items-start justify-between gap-3 mb-6">
             <div className="flex items-center gap-4">
-              <div className="p-3 bg-dourado/10 rounded-2xl shadow-sm text-vinho group-hover:bg-dourado/20 transition-colors duration-500">
+              <div className="p-3 bg-dourado/10 rounded-2xl shadow-sm text-vinho dark:text-[hsl(336,28%,78%)] group-hover:bg-dourado/20 transition-colors duration-500">
                 <Lightbulb className="w-6 h-6" />
               </div>
               <div>
@@ -34,7 +34,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
                 variant="outline"
                 className="flex items-center gap-2 border-accent/20 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-none"
               >
-                <Clock className="w-3 h-3 text-vinho" />
+                <Clock className="w-3 h-3 text-vinho dark:text-[hsl(336,28%,78%)]" />
                 <span className="text-[9px] font-bold uppercase tracking-[0.2em]">
                   {meditation.duration}
                 </span>

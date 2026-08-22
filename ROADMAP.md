@@ -1897,7 +1897,17 @@ Google" não é viável em iOS de qualquer forma.
          dark elegante — dourado-noturno mais suave, cards clássicos
          legíveis, nada de "invertido feio"
       3. Revisão visual das 7 estações × 2 temas
-      Custo estimado: uma sessão focada + revisão visual.
+
+- [~] **FASES 1–2 IMPLEMENTADAS (2026-08-22)**: next-themes (class,
+      system por padrão) via `theme-provider.tsx`; `.dark` invertendo a
+      camada SEMÂNTICA (background/card/muted/accent/border) com calor
+      da identidade — fundações de marca preservadas de propósito
+      (--vinho é fundo do card de Oração nos dois temas; usos como TEXTO
+      ganharam variantes dark pontuais em Collect/Meditation/DatePicker/
+      ReadingCard); capitular e texture-paper com overrides dedicados;
+      ModeToggle Sol/Lua no Header (guarda anti-hidratação igual ao
+      Gerador). Fase 3 (revisão visual 7 estações × 2 temas) pendente —
+      melhor com o dev server aberto.
 
 ### Pós-publicação na Play Store
 

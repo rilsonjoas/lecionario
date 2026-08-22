@@ -81,6 +81,46 @@
     --font-mono: 'JetBrains Mono', monospace;
   }
 
+  /* ============ MODO ESCURO (2026-08-22) ============
+     Referência de valores: paleta DARK do mobile (ThemeContext:
+     #1A1A1A base, #242424 cards, #F5F5F0 texto) com aquecimento leve
+     pra manter a identidade "Código & Credo". Estratégia: inverter a
+     camada SEMÂNTICA shadcn; as fundações de marca (--vinho, --canela,
+     --dourado) NÃO mudam — vinho é fundo do card de Oração em ambos os
+     temas, e inverter quebraria. Usos de vinho/canela como TEXTO ganham
+     variantes dark: pontuais nos componentes. As classes sazonais
+     (.season-*) continuam idênticas: cor litúrgica não muda com o tema
+     (mesmo princípio do véu no mobile). */
+  .dark {
+    --background: 30 6% 8%; /* ~#161411 — carvão quente */
+    --foreground: 40 22% 91%; /* pergaminho claro */
+
+    --card: 30 5% 12%;
+    --card-foreground: 40 22% 91%;
+
+    --popover: 30 5% 13%;
+    --popover-foreground: 40 22% 91%;
+
+    --primary: 24 60% 52%; /* laranja sobe um passo de luminosidade */
+    --primary-foreground: 0 0% 97%;
+
+    --secondary: 25 25% 20%; /* canela vira superfície profunda */
+    --secondary-foreground: 36 35% 84%;
+
+    --muted: 30 4% 17%;
+    --muted-foreground: 35 10% 66%;
+
+    --accent: 42 45% 58%; /* dourado clareia um passo pra brilhar */
+    --accent-foreground: 30 10% 8%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 42 38% 56%; /* dourado — usos /20 continuam suaves */
+    --input: 30 4% 18%;
+    --ring: 24 60% 54%;
+  }
+
   /* Achado 2026-08-15: --liturgical-primary-foreground/accent-foreground
      eram fixos em branco pra todas as estações — mas Natal/Páscoa
      (dourado) e Epifania/Tempo Comum (sálvia) são claras, texto branco
@@ -199,6 +239,19 @@
     );
   }
 
+  /* No escuro, o papel vira superfície profunda e a trilha de canela
+     some pra não sujar (o canela clareado brilharia em linhas finas) */
+  .dark .texture-paper {
+    background-color: hsl(30 5% 11%);
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      hsla(var(--dourado), 0.04) 2px,
+      hsla(var(--dourado), 0.04) 4px
+    );
+  }
+
   .texture-leather {
     background-color: hsl(var(--canela));
     background-image:
@@ -278,6 +331,12 @@
     float: left;
     margin: 0.05em 0.12em 0 0;
     color: hsl(var(--vinho));
+  }
+
+  /* No escuro, o vinho escuro afundaria no fundo — capitular vira um
+     vinho aberto e luminoso (mesmo papel da versão clara) */
+  .dark .capitular::first-letter {
+    color: hsl(336 28% 78%);
   }
 
   /* Mobile-specific padding utilities */

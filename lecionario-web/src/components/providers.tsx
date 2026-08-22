@@ -5,6 +5,7 @@ import { TooltipProvider } from '@/components/ui/tooltip';
 import { Toaster } from '@/components/ui/toaster';
 import { Toaster as Sonner } from '@/components/ui/sonner';
 import { FavoritesProvider } from '@/contexts/FavoritesContext';
+import { ThemeProvider } from '@/components/theme-provider';
 import { useState } from 'react';
 
 export function Providers({ children }: { children: React.ReactNode }) {
@@ -12,13 +13,15 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <FavoritesProvider>
-        <TooltipProvider>
-          {children}
-          <Toaster />
-          <Sonner />
-        </TooltipProvider>
-      </FavoritesProvider>
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <FavoritesProvider>
+          <TooltipProvider>
+            {children}
+            <Toaster />
+            <Sonner />
+          </TooltipProvider>
+        </FavoritesProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

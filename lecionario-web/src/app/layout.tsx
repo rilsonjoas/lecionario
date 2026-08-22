@@ -94,7 +94,7 @@ export default function RootLayout({
   const liturgicalClass = `season-${season}`;
 
   return (
-    <html lang="pt-BR" className={`${liturgicalClass}`}>
+    <html lang="pt-BR" suppressHydrationWarning className={`${liturgicalClass}`}>
       <body
         className={`${cormorantGaramond.variable} ${ebGaramond.variable} ${jetbrainsMono.variable} antialiased`}
       >

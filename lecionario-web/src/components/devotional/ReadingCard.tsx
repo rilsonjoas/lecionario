@@ -112,7 +112,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
                 href={reading.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[9px] uppercase tracking-[0.3em] font-bold text-canela hover:text-laranja-queimado transition-colors flex items-center gap-2 group/link"
+                className="text-[9px] uppercase tracking-[0.3em] font-bold text-canela dark:text-[hsl(25,40%,72%)] hover:text-laranja-queimado transition-colors flex items-center gap-2 group/link"
               >
                 Scriptura Integra
                 <span className="group-hover/link:translate-x-1 transition-transform">→</span>

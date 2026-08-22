@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Modo escuro completo no web** — paridade com o mobile, usando a mesma arquitetura do Gerador C.S. Lewis (next-themes + botão Sol/Lua no Header que respeita o sistema por padrão). Paleta escura quente espelhando os valores do mobile (#1A1A1A/#242424) na camada semântica; cores de marca preservadas (vinho segue sendo o card de Oração nos dois temas); capitular, textura de papel e usos de vinho/canela como texto com variantes escuras dedicadas. Cor litúrgica não muda com o tema — mesmo princípio do véu.
 - **Glossário litúrgico também no web** — paridade com o mobile: ⓘ discreto ao lado de Oração de Coleta, Lectio Divina, Oração do Dia e Perguntas para Refletir abre um Dialog com a definição em linguagem universal. Mesmos dados do mobile (`glossary.ts`).
 - **Páginas institucionais com moldura completa (web)** — `/apoiar` e `/privacidade` agora têm Header e Footer com a estação litúrgica atual (`getLiturgicalDayInfo`), antes pareciam páginas órfãs. Em `/apoiar`: código Pix cru saiu (ficava estranho em texto puro — só QR + copiar), emoji 🕯️ virou ícone Lucide `Flame` (padrão dos projetos Narniano), e o rodapé do site exibe botão **Contato** em vez do e-mail cru (mobile já estava certo).
 - **Citação de C.S. Lewis no padrão do mobile (web)** — mesma hierarquia do card mobile: título itálico "Citação do dia" + sublabel caps "C.S. LEWIS" em vez de uma linha só.
