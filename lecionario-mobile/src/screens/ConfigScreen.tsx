@@ -47,10 +47,10 @@ const TIME_OPTIONS = [
 // Favicons reais dos projetos da biblioteca (apontamento do autor,
 // 2026-08-22: círculos chamam mais atenção que ícone genérico)
 const PROJECT_LOGOS = {
-  narniano: require('../../assets/projects/narniano.png'),
-  'biblia-na-arte': require('../../assets/projects/biblia-na-arte.png'),
-  scriptorium: require('../../assets/projects/scriptorium.png'),
-  cslewis: require('../../assets/projects/cslewis.png'),
+  narniano: require('../assets/projects/narniano.png'),
+  'biblia-na-arte': require('../assets/projects/biblia-na-arte.png'),
+  scriptorium: require('../assets/projects/scriptorium.png'),
+  cslewis: require('../assets/projects/cslewis.png'),
 } as const;
 
 const BIBLIOTECA_LINKS: {

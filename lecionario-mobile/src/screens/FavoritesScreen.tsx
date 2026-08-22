@@ -77,7 +77,9 @@ export default function FavoritesScreen() {
                     <Text style={[styles.date, { color: colors.text, fontSize: scale(14) }]}>
                       {format(d, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
                     </Text>
-                    <Text style={[styles.dayName, { color: colors.textMuted, fontSize: scale(12) }]}>
+                    <Text
+                      style={[styles.dayName, { color: colors.textMuted, fontSize: scale(12) }]}
+                    >
                       {info.dayName}
                     </Text>
                   </View>

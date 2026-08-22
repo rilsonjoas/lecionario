@@ -20,10 +20,7 @@ export default function SearchScreen() {
   const { scale } = useFontScale();
   const [query, setQuery] = useState('');
 
-  const results = useMemo(
-    () => (query.length >= 2 ? searchDevotionals(query) : []),
-    [query],
-  );
+  const results = useMemo(() => (query.length >= 2 ? searchDevotionals(query) : []), [query]);
 
   return (
     <View
@@ -34,9 +31,7 @@ export default function SearchScreen() {
     >
       <View style={styles.header}>
         <MaterialCommunityIcons name="magnify" size={24} color={colors.accent} />
-        <Text style={[styles.title, { color: colors.text, fontSize: scale(20) }]}>
-          Buscar
-        </Text>
+        <Text style={[styles.title, { color: colors.text, fontSize: scale(20) }]}>Buscar</Text>
         <TouchableOpacity
           onPress={() => navigation.navigate('Hoje')}
           hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
