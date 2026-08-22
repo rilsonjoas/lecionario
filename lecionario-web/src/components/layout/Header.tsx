@@ -24,7 +24,7 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
 
   return (
     <header
-      className="relative border-b border-accent/20 shadow-2xl overflow-hidden pb-6 md:pb-10 pt-5 md:pt-8"
+      className="relative border-b border-accent/20 shadow-2xl overflow-hidden pb-6 md:pb-10 pt-16 md:pt-14"
       style={{ backgroundColor: seasonBg }}
     >
       {/* Camada escura uniforme (2026-08-21): garante WCAG AA do texto
