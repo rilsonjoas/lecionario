@@ -36,6 +36,12 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-laranja-queimado/10 rounded-full blur-3xl animate-pulse" />
 
+      {/* Tema claro/escuro — ponta superior direita SEMPRE (padrão
+          Gerador C.S. Lewis), fora do fluxo: nenhum layout o desloca */}
+      <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20">
+        <ModeToggle />
+      </div>
+
       <div className="container mx-auto px-3 md:px-4 relative z-10">
         {/* Desktop (2026-08-22, revertido a pedido do autor): volta ao
             clássico logo à esquerda + coluna de info fechando alinhada à
@@ -69,11 +75,6 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
                 </p>
               </div>
             </Link>
-          </div>
-
-          {/* Tema claro/escuro — nas duas variantes */}
-          <div className="flex justify-end order-1 md:order-none md:contents">
-            <ModeToggle />
           </div>
 
           {/* Date and Liturgical Info — some nas páginas institucionais:
