@@ -37,6 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Contato oficial `lecionario@narniano.com`** — adicionado no rodapé web (mailto sob o ©) e na seção Sobre do mobile (abre app de e-mail); regra registrada no roadmap: toda menção a contato usa esse endereço.
 - **Ações dos cards unificadas** — 1 botão de copiar por card, centrado no rodapé (web e mobile); share-sheet duplicado do card de leitura no mobile virou cópia direta; "Compartilhar este dia" permanece único na home.
 - **Configurações reorganizadas (mobile)** — nova ordem: Notificações (com horário) → Aparência → Biblioteca → Sobre; botão "Limpar dados temporários" removido (cache técnico se recalcula sozinho).
+- **Header do mobile refinado** — emenda de tom na status bar eliminada (véu cobre desde o topo) e pílulas Favoritar/Compartilhar agora sólidas com tokens neutros do tema, visíveis em qualquer estação.
 
 ## [0.1.0] - 2026-06-28
 

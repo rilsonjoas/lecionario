@@ -166,18 +166,15 @@ export default function HomeScreen() {
   };
 
   return (
-    <View
-      style={[
-        styles.container,
-        { backgroundColor: theme.primaryColor, paddingTop: insets.top + 16 },
-      ]}
-    >
+    <View style={[styles.container, { backgroundColor: theme.primaryColor }]}>
       {/* Banda superior com véu escuro (2026-08-21): mesma matemática do
           web Header/Footer (rgba(0,0,0,0.4) sobre a cor de marca) pra
           garantir WCAG AA do texto em todas as estações — ouro natalino
           era 2.05:1 sem ele. Escopo limitado ao header/nav pra não mudar
-          o fundo da área de conteúdo */}
-      <View style={styles.topTintedZone}>
+          o fundo da área de conteúdo. O padding da status bar mora AQUI
+          dentro (não no container pai) pro véu cobrir desde o topo do
+          aparelho — antes ficava uma emenda de tom na faixa do relógio */}
+      <View style={[styles.topTintedZone, { paddingTop: insets.top + 16 }]}>
         <View style={styles.headerVeil} pointerEvents="none" />
         <View style={styles.header}>
           <View style={styles.titleRow}>
@@ -246,14 +243,18 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Ações do dia (backlog 2026-08-21): favoritar + compartilhar
-            saíram da linha do título, onde empurravam "Lecionário" pra
-            esquerda — agora são pílulas centradas abaixo da navegação */}
+        {/* Ações do dia (backlog 2026-08-21, restyle 2026-08-22): saíram
+            da linha do título e hoje são pílulas SÓLIDAS com os tokens
+            do tema (colors.card/text) — neutras de estação por design,
+            visíveis sobre o véu em qualquer época do ano */}
         {devotional && (
           <View style={styles.actionsRow}>
             <TouchableOpacity
               onPress={() => toggleFavorite(currentDateStr)}
-              style={[styles.actionPill, { borderColor: headerColors.bodyMuted }]}
+              style={[
+                styles.actionPill,
+                { backgroundColor: colors.card, borderColor: colors.border },
+              ]}
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               accessibilityLabel={favorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
               accessibilityRole="button"
@@ -261,25 +262,24 @@ export default function HomeScreen() {
               <MaterialCommunityIcons
                 name={favorited ? 'heart' : 'heart-outline'}
                 size={16}
-                color={favorited ? '#CC3333' : headerColors.body}
+                color={favorited ? '#CC3333' : colors.text}
               />
-              <Text
-                style={[styles.actionPillText, { color: headerColors.body, fontSize: scale(12) }]}
-              >
+              <Text style={[styles.actionPillText, { color: colors.text, fontSize: scale(12) }]}>
                 {favorited ? 'Favoritado' : 'Favoritar'}
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={handleShareDay}
-              style={[styles.actionPill, { borderColor: headerColors.bodyMuted }]}
+              style={[
+                styles.actionPill,
+                { backgroundColor: colors.card, borderColor: colors.border },
+              ]}
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               accessibilityLabel="Compartilhar devocional do dia"
               accessibilityRole="button"
             >
-              <MaterialCommunityIcons name="share-outline" size={16} color={headerColors.body} />
-              <Text
-                style={[styles.actionPillText, { color: headerColors.body, fontSize: scale(12) }]}
-              >
+              <MaterialCommunityIcons name="share-outline" size={16} color={colors.text} />
+              <Text style={[styles.actionPillText, { color: colors.text, fontSize: scale(12) }]}>
                 Compartilhar
               </Text>
             </TouchableOpacity>
@@ -400,6 +400,7 @@ const styles = StyleSheet.create({
   },
   topTintedZone: {
     position: 'relative',
+    paddingBottom: 16,
   },
   headerVeil: {
     position: 'absolute',
@@ -427,15 +428,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     gap: 12,
-    marginTop: 10,
+    marginTop: 12,
   },
   actionPill: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     gap: 6,
-    paddingHorizontal: 14,
-    paddingVertical: 8,
-    borderRadius: 20,
+    paddingHorizontal: 18,
+    paddingVertical: 10,
+    minHeight: 40,
+    borderRadius: 22,
     borderWidth: 1,
   },
   actionPillText: {

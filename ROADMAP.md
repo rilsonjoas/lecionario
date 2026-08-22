@@ -1565,7 +1565,15 @@ Google" não é viável em iOS de qualquer forma.
       `actionPill`: ícone + rótulo "Favoritar"/"Favoritado" e
       "Compartilhar"), logo abaixo do menu `anterior | data | próximo`,
       dentro da banda com véu. Estilo `shareDayButton` removido (código
-      morto). Rótulo muda pra "Favoritado" + coração vermelho quando ativo
+      morto). Rótulo muda pra "Favoritado" + coração vermelho quando ativo.
+      **Restyle do relato de teste real (2026-08-22)**: pílulas outline
+      com borda fina sumiam sobre o véu — agora SÓLIDAS com tokens neutros
+      do tema (`colors.card` + `colors.text`, adaptativas claro/escuro),
+      deliberadamente NÃO acopladas a cor sazonal (critério do autor:
+      combinar com todas as épocas); toque ≥40px. **Emenda de tom na
+      status bar corrigida**: o `paddingTop: insets.top` migrou do
+      container pai pra dentro do bloco tingido — o véu agora cobre desde
+      o topo do aparelho, sem faixa crua acima do cabeçalho
 - [x] **Tags "Salmo" e "Segunda leitura" ilegíveis no mobile — RESOLVIDO
       (2026-08-21)**. Antes: fundo dourado translúcido fixo (`accent` a 10%)
       + cor de texto escura fixa por tipo, 9px. Agora (`ReadingCard` +
