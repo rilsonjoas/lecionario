@@ -1,6 +1,8 @@
 import { View, Text, StyleSheet, TouchableOpacity, Alert, ScrollView, Linking } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import * as Clipboard from 'expo-clipboard';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { buildPixBrCode, PIX_CONFIG } from '@/lib/pix';
 import {
   requestNotificationPermission,
   scheduleDailyNotification,
@@ -326,6 +328,30 @@ export default function ConfigScreen() {
       {/* Sobre */}
       <View style={styles.section}>
         <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Sobre</Text>
+        {/* Doação fase 1 (ROADMAP L): Pix copia e cola, sem intermediário */}
+        <TouchableOpacity
+          style={[styles.row, { borderBottomColor: colors.border }]}
+          onPress={async () => {
+            await Clipboard.setStringAsync(buildPixBrCode(PIX_CONFIG));
+            Alert.alert(
+              'Pix copiado! 🕯️',
+              'Abra o app do seu banco, escolha Pix → Copia e Cola e cole o código. Qualquer valor ajuda a manter o projeto no ar.',
+            );
+          }}
+          accessibilityLabel="Apoie o projeto com Pix — toca para copiar o código"
+          accessibilityRole="button"
+        >
+          <MaterialCommunityIcons name="heart-outline" size={22} color="#CC3333" />
+          <View style={styles.rowContent}>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Apoie o projeto
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              Doe via Pix — toca para copiar o código
+            </Text>
+          </View>
+          <MaterialCommunityIcons name="content-copy" size={18} color={colors.textMuted} />
+        </TouchableOpacity>
         <View style={[styles.row, { borderBottomColor: colors.border }]}>
           <MaterialCommunityIcons name="book-open-variant" size={22} color={colors.accent} />
           <View style={styles.rowContent}>

@@ -90,6 +90,15 @@ export function Footer({ season = 'ordinary' }: { season?: LiturgicalSeason }) {
                 ·
               </span>
               <Link
+                href="/apoiar"
+                className="transition-colors underline-offset-2 hover:text-dourado hover:underline"
+              >
+                Apoie o projeto
+              </Link>
+              <span aria-hidden="true" className="text-dourado/50">
+                ·
+              </span>
+              <Link
                 href="/privacidade"
                 className="transition-colors underline-offset-2 hover:text-dourado hover:underline"
               >
