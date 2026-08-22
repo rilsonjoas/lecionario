@@ -1,10 +1,19 @@
 name: EAS Build (Android)
 
 # Só roda quando algo que exige um binário nativo novo muda de verdade
-# (config nativo, profile de build, dependências) — não em mudanças de
-# código/dado JS, que já são cobertas por OTA em eas.yml. Rodar build
-# nativo (13min+ de CI + cota de build da Expo) pra cada push de src/
-# era desperdício (achado 2026-08-21). Também disparável manualmente.
+# (config nativo, profile de build, DEPENDÊNCIAS de runtime) — não em
+# mudanças de código/dado JS, que já são cobertas por OTA em eas.yml.
+# Rodar build nativo (13min+ de CI + cota de build da Expo) pra cada
+# push de src/ era desperdício (achado 2026-08-21).
+#
+# LIÇÃO DE 2026-08-22: editar o package.json pra adicionar config de
+# dev tooling (chave "lint-staged") disparou build nativo completo —
+# gasto de cota à toa. Desde então este workflow NÃO dispara mais por
+# package.json (só por package-lock.json) e ainda confere se o bloco
+# "dependencies" (runtime) mudou de verdade antes de construir;
+# devDependencies/scripts/config não contam. Regras operacionais no
+# DEPLOY.md. Também disparável manualmente (workflow_dispatch), que é
+# o caminho pra builds intencionais tipo release.
 
 on:
   push:
@@ -12,7 +21,6 @@ on:
     paths:
       - 'lecionario-mobile/app.config.ts'
       - 'lecionario-mobile/eas.json'
-      - 'lecionario-mobile/package.json'
       - 'lecionario-mobile/package-lock.json'
   workflow_dispatch:
 
@@ -31,6 +39,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          # precisa de histórico pra comparar package.json entre commits
+          fetch-depth: 2
 
       - uses: actions/setup-node@v4
         with:
@@ -42,7 +53,31 @@ jobs:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
 
+      # Porteiro anti-desperdício: mudou só devDependency/script/config?
+      # Pula o build. Mudou dependency de runtime (ex.: expo-clipboard,
+      # @sentry/react-native)? Constrói. Disparo manual sempre constrói.
+      - name: Verifica se dependências de runtime mudaram
+        id: deps
+        if: github.event_name == 'push'
+        working-directory: lecionario-mobile
+        run: |
+          DEPS_CHANGED=$(node -e "
+            const { execSync } = require('child_process');
+            const read = (ref) => {
+              const pkg = JSON.parse(execSync('git show ' + ref + ':package.json').toString());
+              const deps = pkg.dependencies ?? {};
+              return JSON.stringify(deps, Object.keys(deps).sort());
+            };
+            const changed = read('HEAD^') !== read('HEAD');
+            console.log(changed ? 'true' : 'false');
+          ")
+          echo "deps_changed=$DEPS_CHANGED" >> "$GITHUB_OUTPUT"
+          if [ "$DEPS_CHANGED" != "true" ]; then
+            echo "::notice::Nenhuma dependency de runtime mudou — build nativo pulado (economia de cota EAS)."
+          fi
+
       - name: Install dependencies
+        if: github.event_name == 'workflow_dispatch' || steps.deps.outputs.deps_changed == 'true'
         working-directory: lecionario-mobile
         run: npm ci --legacy-peer-deps
 
@@ -53,5 +88,6 @@ jobs:
       # que quebrou o build em 2026-08-21 (auth token do Sentry não
       # encontrado no Gradle) até serem cadastrados lá.
       - name: Build (Android preview)
+        if: github.event_name == 'workflow_dispatch' || steps.deps.outputs.deps_changed == 'true'
         working-directory: lecionario-mobile
         run: eas build --platform android --profile preview --non-interactive

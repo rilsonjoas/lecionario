@@ -1731,6 +1731,19 @@ Google" não é viável em iOS de qualquer forma.
       do dia continua só nas pílulas do header. Auditoria final: web =
       day-share + 3 cópias (leituras/oração); mobile = day-share + 4
       cópias, zero share repetido
+- [x] **Build nativo EAS disparado à toa por config de dev tooling —
+      RESOLVIDO (2026-08-22, mesmo dia).** Adicionar a chave "lint-staged"
+      ao package.json do mobile disparou um `EAS Build (Android)`
+      completo (~17min + cota) sem nenhuma necessidade: nada nativo
+      mudou. Correção em `.github/workflows/eas-build.yml`: package.json
+      saiu dos gatilhos de push (o sinal de dependência real agora é
+      package-lock.json) e um porteiro compara o bloco `dependencies`
+      entre commits antes de construir — devDependency/script/config não
+      contam. Disparo manual via workflow_dispatch segue sempre
+      construindo. Regra operacional completa ("APK ou OTA?") com tabela
+      e incidentes registrados agora vive no **DEPLOY.md**. Complemento:
+      pre-commit passou a rodar lint-staged nos DOIS apps (antes só web,
+      o que deixou passar Prettier quebrado no CI hoje de manhã).
 - [x] **Header/footer grandes comendo a área de conteúdo (mobile) —
       RESOLVIDO (2026-08-22), opção 1 aprovada pelo autor: header
       colapsável.** O bloco rico (logo + dia + ano + navegação de data +

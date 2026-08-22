@@ -12,7 +12,9 @@ on:
     paths:
       - 'lecionario-mobile/src/**'
       - 'lecionario-mobile/app.config.ts'
-      - 'lecionario-mobile/package.json'
+# package.json saiu dos gatilhos (2026-08-22): mudança de config de dev
+# tooling disparava OTA inútil; mudança de dependency de verdade altera
+# package-lock.json, que é o sinal do eas-build.yml construir nativo.
 
 concurrency:
   group: eas-update-${{ github.ref }}
