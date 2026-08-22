@@ -88,7 +88,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
                     {index + 1}
                   </Text>
                 </View>
-                <Text style={[styles.questionText, { color: colors.text, fontSize: scale(14) }]}>
+                <Text style={[styles.questionText, { color: colors.text, fontSize: scale(12.5) }]}>
                   {question}
                 </Text>
               </View>
@@ -155,6 +155,7 @@ const styles = StyleSheet.create({
   },
   body: {
     paddingHorizontal: 20,
+    paddingTop: 14,
     paddingBottom: 24,
   },
   promptContainer: {
@@ -163,6 +164,9 @@ const styles = StyleSheet.create({
   },
   capitular: {
     fontSize: 34,
+    // lineHeight explícito estabiliza a caixa da letra grande — sem ele a
+    // ascendente invadia a borda do cabeçalho (report do autor, 2026-08-22)
+    lineHeight: 36,
     fontWeight: '700',
     fontFamily: 'Lora_700Bold',
   },
@@ -209,7 +213,7 @@ const styles = StyleSheet.create({
   },
   questionText: {
     flex: 1,
-    lineHeight: 24,
+    lineHeight: 21,
     fontFamily: 'Lora_400Regular',
     paddingTop: 4,
   },

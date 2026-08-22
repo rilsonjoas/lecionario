@@ -1805,6 +1805,47 @@ Google" não é viável em iOS de qualquer forma.
 
 ---
 
+## Terminologia e tradições (2026-08-22, questionamento do autor)
+
+> "Termos como 'Questões para silenciar', 'Oração de Coleta' são realmente
+> os termos usados em português pelas comunidades que respeitam o
+> calendário litúrgico? Algumas podem gerar atrito com os evangelicais
+> mais tradicionais — não que deva ser mudado, mas talvez um plano pra
+> deixar as coisas mais claras."
+
+### Diagnóstico por termo
+
+| Termo atual | Status | Risco |
+|---|---|---|
+| Coleta / Oração da Coleta | **Autêntico** — termo consagrado (BCP em PT, missais, liturgia anglicana/luterana; "coleta" = oração que recolhe as intenções do dia) | Baixo entre litúrgicos; soa "católico" só para quem nunca viu livro de orações |
+| Lectio Divina | Autêntico e milenar (séc. III–VI); prática adotada também por evangélicos contemplativos | Médio — nome latino pode soar distante; já mitigado pelo subtítulo "Estações da Palavra" |
+| Questões para silenciar | **Invenção do app** — não é termo tradicional | Alto relativo: "silenciar" como verbo de prática espiritual soa novo/místico para o evangelicalismo tradicional; "questões" é formal demais |
+| Ano Litúrgico, Tempo Comum, Advento, Quaresma etc. | Padrão interdenominacional | Baixo |
+
+### Plano combinado (fase 1 barata → fase 2 com evidência)
+
+1. **NÃO renomear os termos centrais autênticos** (Coleta, Lectio Divina,
+   Ano Litúrgico): eles SÃO o diferencial de credibilidade do produto
+   para o público litúrgico. Renomear seria apagar a identidade.
+2. **Subtítulos descritivos em todas as seções** (padrão já existente:
+   "Meditação — Reflexão e Interiorização"): garantir um pra cada card
+   traduzindo o termo técnico pra linguagem universal. Ex.: Coleta →
+   "A oração que resume o dia"; Lectio Divina → "Leitura orante das
+   Escrituras".
+3. **Glossário inline**: termos técnicos com ícone ⓘ tocável abrindo
+   mini-explicação (reusar o padrão visual do modal Pix). Fase 1 cobre
+   5–7 termos-chave.
+4. **"Questões para silenciar" → candidato a revisão com dados**: testar
+   alternativas ("Perguntas para refletir", "Para refletir em silêncio")
+   com 3–5 usuários reais de tradições diferentes antes de trocar.
+5. **Seção "Como usar"** (Sobre ou onboarding 1x explicando a estrutura
+   do dia devocional: leituras → coleta → oração → meditação).
+
+- [ ] Fase 1: subtítulos + glossário inline (após aprovação do autor)
+- [ ] Fase 2: teste dos rótulos alternativos com usuários reais
+
+---
+
 ## Marketing e Distribuição (2026-08-22)
 
 > Monetização decidida em 2026-08-21: doação + afiliado agora, anúncios

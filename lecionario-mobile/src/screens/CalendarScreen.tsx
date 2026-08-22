@@ -226,7 +226,6 @@ const styles = StyleSheet.create({
     paddingBottom: 16,
   },
   title: {
-    fontWeight: '700',
     fontFamily: 'Lora_700Bold',
   },
   todayButton: {

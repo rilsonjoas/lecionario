@@ -98,6 +98,19 @@ export default function ConfigScreen() {
   // fechado → aberto com o código → copiado com confirmação
   const [pixModalVisible, setPixModalVisible] = useState(false);
   const [pixCopied, setPixCopied] = useState(false);
+  // Seletor de horário em dois níveis (refino do autor, 2026-08-22):
+  // muro de 24 chips era feio — mostra horários comuns e expande sob demanda
+  const TIME_PRESETS = ['05:00', '06:00', '07:00', '08:00', '09:00', '12:00', '18:00', '21:00'];
+  const [showAllTimes, setShowAllTimes] = useState(false);
+  const presetOptions = TIME_OPTIONS.filter((t) => TIME_PRESETS.includes(t.value));
+  const timeChips = showAllTimes
+    ? TIME_OPTIONS
+    : [
+        ...presetOptions,
+        ...(presetOptions.some((t) => t.value === notificationTime)
+          ? []
+          : TIME_OPTIONS.filter((t) => t.value === notificationTime)),
+      ];
   const {
     theme,
     fontSize,
@@ -201,7 +214,7 @@ export default function ConfigScreen() {
               Horário
             </Text>
             <View style={styles.timeRow}>
-              {TIME_OPTIONS.map((opt) => (
+              {timeChips.map((opt) => (
                 <TouchableOpacity
                   key={opt.value}
                   style={[
@@ -230,6 +243,25 @@ export default function ConfigScreen() {
                   </Text>
                 </TouchableOpacity>
               ))}
+              <TouchableOpacity
+                style={styles.timeExpandButton}
+                onPress={() => setShowAllTimes(!showAllTimes)}
+                accessibilityRole="button"
+                accessibilityLabel={
+                  showAllTimes ? 'Mostrar apenas horários comuns' : 'Mostrar todos os horários'
+                }
+              >
+                <MaterialCommunityIcons
+                  name={showAllTimes ? 'chevron-up' : 'chevron-down'}
+                  size={14}
+                  color={colors.accent}
+                />
+                <Text
+                  style={[styles.timeExpandText, { color: colors.accent, fontSize: scale(11) }]}
+                >
+                  {showAllTimes ? 'Menos horários' : 'Outros horários'}
+                </Text>
+              </TouchableOpacity>
             </View>
           </View>
         )}
@@ -556,7 +588,6 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: '700',
     fontFamily: 'Lora_700Bold',
   },
   section: {
@@ -656,6 +687,19 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontFamily: 'Lora_700Bold',
     marginBottom: 10,
+  },
+  timeExpandButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+    alignSelf: 'center',
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    minHeight: 36,
+  },
+  timeExpandText: {
+    fontFamily: 'Lora_600SemiBold_Italic',
   },
   timeRow: {
     flexDirection: 'row',
