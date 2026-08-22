@@ -1,34 +1,47 @@
-import { View, Text, StyleSheet, TouchableOpacity, Share } from 'react-native';
+import { useState } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import type { Reading } from '@/types';
+import * as Clipboard from 'expo-clipboard';
+import type { LiturgicalSeason, Reading } from '@/types';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
+import { getBadgeColors } from '@/lib/theme';
 
 interface ReadingCardProps {
   reading: Reading;
   index: number;
+  season: LiturgicalSeason;
 }
 
 const readingTypeConfig: Record<
   string,
-  { label: string; icon: keyof typeof MaterialCommunityIcons.glyphMap; color: string }
+  { label: string; icon: keyof typeof MaterialCommunityIcons.glyphMap }
 > = {
-  first_reading: { label: 'Primeira Leitura', icon: 'book-open-variant', color: '#8B6914' },
-  psalm: { label: 'Salmo', icon: 'music-note-outline', color: '#4A2C6D' },
-  second_reading: { label: 'Segunda Leitura', icon: 'script-text-outline', color: '#6B3A3A' },
-  gospel: { label: 'Evangelho', icon: 'cross', color: '#8F6608' },
+  first_reading: { label: 'Primeira Leitura', icon: 'book-open-variant' },
+  psalm: { label: 'Salmo', icon: 'music-note-outline' },
+  second_reading: { label: 'Segunda Leitura', icon: 'script-text-outline' },
+  gospel: { label: 'Evangelho', icon: 'cross' },
 };
 
-export function ReadingCard({ reading, index }: ReadingCardProps) {
+export function ReadingCard({ reading, index, season }: ReadingCardProps) {
   const colors = useThemeColors();
   const { scale } = useFontScale();
+  const [copied, setCopied] = useState(false);
   const config = readingTypeConfig[reading.type] || readingTypeConfig.first_reading;
+  // Tags ilegíveis em Tempo Comum (relato 2026-08-21): fundo agora é a cor
+  // primária sólida da estação com foreground adaptativo — branco/creme nas
+  // estações escuras, preto quente nas claras. Contraste WCAG AA (≥4.5:1)
+  // verificado nas 7 estações; mesmo padrão do web
+  // (--liturgical-primary-foreground).
+  const badge = getBadgeColors(season);
 
-  const handleShare = async () => {
+  const handleCopy = async () => {
     const lines = [`${config.label} — ${reading.reference}`];
     if (reading.text) lines.push('', reading.text);
     lines.push('', '— Lecionário');
-    await Share.share({ message: lines.join('\n') });
+    await Clipboard.setStringAsync(lines.join('\n'));
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
@@ -47,23 +60,9 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
             )}
           </View>
           <View style={styles.rightActions}>
-            <TouchableOpacity
-              onPress={handleShare}
-              style={styles.shareButton}
-              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-              accessibilityLabel={`Compartilhar ${config.label} ${reading.reference}`}
-              accessibilityRole="button"
-            >
-              <MaterialCommunityIcons name="share-outline" size={18} color={colors.accent} />
-            </TouchableOpacity>
-            <View
-              style={[
-                styles.badge,
-                { backgroundColor: `${colors.accent}1A`, borderColor: `${colors.accent}33` },
-              ]}
-            >
-              <MaterialCommunityIcons name={config.icon} size={12} color={config.color} />
-              <Text style={[styles.badgeText, { color: config.color, fontSize: scale(9) }]}>
+            <View style={[styles.badge, { backgroundColor: badge.bg, borderColor: badge.bg }]}>
+              <MaterialCommunityIcons name={config.icon} size={12} color={badge.fg} />
+              <Text style={[styles.badgeText, { color: badge.fg, fontSize: scale(9) }]}>
                 {config.label}
               </Text>
             </View>
@@ -77,6 +76,32 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
             </Text>
           </View>
         )}
+        {/* Ação única por card, canto inferior direito (backlog 2026-08-22:
+            reduzir shares duplicados — o share do card duplicava o da
+            actionsRow; agora é cópia direta pra área de transferência) */}
+        <TouchableOpacity
+          onPress={handleCopy}
+          style={styles.copyButton}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          accessibilityLabel={
+            copied ? 'Leitura copiada' : `Copiar ${config.label} ${reading.reference}`
+          }
+          accessibilityRole="button"
+        >
+          <MaterialCommunityIcons
+            name={copied ? 'check' : 'content-copy'}
+            size={14}
+            color={copied ? '#7ED17E' : colors.textMuted}
+          />
+          <Text
+            style={[
+              styles.copyButtonText,
+              { color: copied ? '#7ED17E' : colors.textMuted, fontSize: scale(10) },
+            ]}
+          >
+            {copied ? 'Copiado!' : 'Copiar'}
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -114,12 +139,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     gap: 8,
   },
-  shareButton: {
-    padding: 4,
-    minWidth: 32,
-    minHeight: 32,
-    justifyContent: 'center',
+  copyButton: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+    gap: 4,
+    marginTop: 8,
+    paddingVertical: 4,
+    paddingHorizontal: 6,
+  },
+  copyButtonText: {
+    fontWeight: '600',
+    fontFamily: 'Lora_600SemiBold_Italic',
   },
   reference: {
     fontWeight: '600',

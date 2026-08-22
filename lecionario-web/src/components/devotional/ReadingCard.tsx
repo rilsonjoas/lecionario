@@ -76,13 +76,6 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
             </div>
 
             <div className="flex items-center gap-2">
-              <button
-                onClick={handleCopy}
-                className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
-                aria-label={copied ? 'Copiado' : 'Copiar leitura'}
-              >
-                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
-              </button>
               <Badge className="bg-accent/10 text-accent border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2">
                 <IconComponent className="w-3 h-3" />
                 <span className="text-[9px] uppercase tracking-[0.2em] font-bold">
@@ -98,7 +91,18 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
               <p className="text-sm md:text-base lg:text-lg leading-relaxed font-scripture text-foreground/90 pl-3 md:pl-4 border-l-2 border-accent/20">
                 {reading.text}
               </p>
-              <div className="absolute bottom-0 right-0 w-8 h-px bg-accent/30" />
+              {/* Ação única por card, centrada no rodapé — mesmo padrão
+                  do card de Oração (backlog 2026-08-22: reduzir shares
+                  duplicados na home) */}
+              <div className="flex justify-center pt-2">
+                <button
+                  onClick={handleCopy}
+                  className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+                  aria-label={copied ? 'Copiado' : 'Copiar leitura'}
+                >
+                  {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                </button>
+              </div>
             </div>
           )}
 

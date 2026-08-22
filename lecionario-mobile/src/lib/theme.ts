@@ -19,7 +19,9 @@ export const seasonThemes: Record<LiturgicalSeason, SeasonTheme> = {
   },
   epiphany: {
     season: 'epiphany',
-    primaryColor: '#7A9178',
+    // Verde escurecido (2026-08-21): sálvia clara reprovava WCAG AA com
+    // texto claro no header (2.58:1); alinhado ao web (#4F6350 = 4.91:1)
+    primaryColor: '#4F6350',
     secondaryColor: '#B49A60',
     accentColor: '#6B7C5E',
   },
@@ -43,7 +45,7 @@ export const seasonThemes: Record<LiturgicalSeason, SeasonTheme> = {
   },
   ordinary: {
     season: 'ordinary',
-    primaryColor: '#7A9178',
+    primaryColor: '#4F6350',
     secondaryColor: '#B49A60',
     accentColor: '#6B7C5E',
   },
@@ -58,25 +60,40 @@ export function getThemeForSeason(season: LiturgicalSeason): SeasonTheme {
 // fundo sempre escuro. Funciona no Advento/Quaresma/Pentecostes (fundo
 // escuro), mas em Natal/Páscoa (dourado) e Epifania/Tempo Comum (sálvia)
 // o texto quase some — "Lecionário" ilegível no relato de teste real.
-// Contraste calculado e verificado: seasons claras precisam de texto
-// escuro, não branco.
-const LIGHT_SEASONS: LiturgicalSeason[] = ['christmas', 'easter', 'epiphany', 'ordinary'];
+//
+// Atualização (2026-08-21): com o véu escuro rgba(0,0,0,0.4) sobre a cor
+// de marca na banda do header/nav (mesma matemática do web), TODAS as
+// estações passam a ter fundo efetivamente escuro sob texto — pior caso
+// é o ouro natalino com 4.91:1 (bege) / 5.66:1 (título). O texto do
+// header/nav é claro sempre; esta função não precisa mais ramificar.
+export interface HeaderTextColors {
+  title: string;
+  body: string;
+  bodyMuted: string;
+}
+
+export function getHeaderTextColors(_season?: LiturgicalSeason): HeaderTextColors {
+  void _season;
+  return { title: '#F4EFE1', body: 'rgba(255,255,255,0.95)', bodyMuted: 'rgba(255,255,255,0.85)' };
+}
+
+// Estações cuja cor primária BRUTA (sem véu) é clara — hoje usado só pelo
+// getBadgeColors(): badges vivem sobre os cards, fora do véu do header,
+// então ouro natalino ainda pede foreground escuro ali.
+const LIGHT_SEASONS: LiturgicalSeason[] = ['christmas', 'easter'];
 
 export function isLightSeason(season: LiturgicalSeason): boolean {
   return LIGHT_SEASONS.includes(season);
 }
 
-export interface HeaderTextColors {
-  title: string;
-  body: string; // dayName, dateText — ~92% de opacidade equivalente
-  bodyMuted: string; // cycleText, navText — ~75-80%
+export interface BadgeColors {
+  bg: string;
+  fg: string;
 }
 
-export function getHeaderTextColors(season: LiturgicalSeason): HeaderTextColors {
-  if (isLightSeason(season)) {
-    // "Preto quente" — 5.56:1 (Natal/Páscoa) e 4.5:1 (Epifania/Comum)
-    // contra o fundo, WCAG AA em texto pequeno
-    return { title: '#2A1810', body: 'rgba(42,24,16,0.92)', bodyMuted: 'rgba(42,24,16,0.75)' };
-  }
-  return { title: '#F4EFE1', body: 'rgba(255,255,255,0.95)', bodyMuted: 'rgba(255,255,255,0.8)' };
+export function getBadgeColors(season: LiturgicalSeason): BadgeColors {
+  return {
+    bg: getThemeForSeason(season).primaryColor,
+    fg: isLightSeason(season) ? '#2A1810' : '#F4EFE1',
+  };
 }

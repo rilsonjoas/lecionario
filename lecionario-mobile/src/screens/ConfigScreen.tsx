@@ -378,6 +378,40 @@ export default function ConfigScreen() {
             </Text>
           </View>
         </View>
+        {/* Contato oficial (P8, 2026-08-22): todo lugar que fala de
+            contato aponta pra lecionario@narniano.com */}
+        <TouchableOpacity
+          style={[styles.row, { borderBottomColor: colors.border }]}
+          onPress={() => Linking.openURL('https://lecionario.narniano.com/privacidade')}
+          accessibilityLabel="Abrir Política de Privacidade no site"
+          accessibilityRole="button"
+        >
+          <MaterialCommunityIcons name="shield-lock-outline" size={22} color={colors.accent} />
+          <View style={styles.rowContent}>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Privacidade
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              Política de privacidade e LGPD
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.row, { borderBottomColor: colors.border }]}
+          onPress={() => Linking.openURL('mailto:lecionario@narniano.com')}
+          accessibilityLabel="Enviar e-mail para lecionario@narniano.com"
+          accessibilityRole="button"
+        >
+          <MaterialCommunityIcons name="email-outline" size={22} color={colors.accent} />
+          <View style={styles.rowContent}>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Contato
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              lecionario@narniano.com
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
 
       {/* Biblioteca */}

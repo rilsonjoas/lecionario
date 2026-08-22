@@ -9,11 +9,14 @@ import type { LiturgicalSeason, SeasonTheme } from '@/types';
 export const seasonBrandColors: Record<LiturgicalSeason, string> = {
   advent: '#4A6FA5',
   christmas: '#B49A60',
-  epiphany: '#7A9178',
+  // Verde escurecido (2026-08-21): o sálvia claro #7A9178 dava 2.58:1 com o
+  // texto creme do header/footer — WCAG AA reprovado. #4F6350 (mesmo hue)
+  // dá 4.91:1. Mesma correção no mobile (lib/theme.ts).
+  epiphany: '#4F6350',
   lent: '#4B2E39',
   easter: '#B49A60',
   pentecost: '#B7332B',
-  ordinary: '#7A9178',
+  ordinary: '#4F6350',
 };
 
 export const seasonThemes: Record<LiturgicalSeason, SeasonTheme> = {

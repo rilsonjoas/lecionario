@@ -40,11 +40,11 @@ REF_GOLD = (176, 128, 16)
 WEB_PALETTE = {
     "advent": ("#4A6FA5", "#B49A60"),
     "christmas": ("#B49A60", "#F4EFE1"),
-    "epiphany": ("#7A9178", "#B49A60"),
+    "epiphany": ("#4F6350", "#B49A60"),
     "lent": ("#4B2E39", "#8B9094"),
     "easter": ("#B49A60", "#F4EFE1"),
     "pentecost": ("#B7332B", "#C26430"),
-    "ordinary": ("#7A9178", "#B49A60"),
+    "ordinary": ("#4F6350", "#B49A60"),
 }
 
 MOBILE_PALETTE = dict(WEB_PALETTE)

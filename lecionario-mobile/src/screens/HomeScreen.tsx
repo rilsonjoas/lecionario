@@ -172,119 +172,143 @@ export default function HomeScreen() {
         { backgroundColor: theme.primaryColor, paddingTop: insets.top + 16 },
       ]}
     >
-      <View style={styles.header}>
-        <View style={styles.titleRow}>
-          <Image
-            source={SEASON_LOGOS[liturgicalInfo.season]}
-            style={styles.logo}
-            accessibilityLabel="Logomarca Lecionário"
-          />
-          <Text style={[styles.title, { color: headerColors.title }]}>Lecionário</Text>
-          {devotional && (
-            <>
-              <TouchableOpacity
-                onPress={() => toggleFavorite(currentDateStr)}
-                style={styles.shareDayButton}
-                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                accessibilityLabel={favorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
-                accessibilityRole="button"
-              >
-                <MaterialCommunityIcons
-                  name={favorited ? 'heart' : 'heart-outline'}
-                  size={20}
-                  color={favorited ? '#CC3333' : headerColors.title}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity
-                onPress={handleShareDay}
-                style={styles.shareDayButton}
-                hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-                accessibilityLabel="Compartilhar devocional do dia"
-                accessibilityRole="button"
-              >
-                <MaterialCommunityIcons name="share-outline" size={20} color={headerColors.title} />
-              </TouchableOpacity>
-            </>
-          )}
-        </View>
-        <Text style={[styles.dayName, { color: headerColors.body }]}>{liturgicalInfo.dayName}</Text>
-        <View style={styles.cycleRow}>
-          <Text style={[styles.cycleText, { color: headerColors.bodyMuted }]}>
-            Ano Litúrgico {liturgicalInfo.cycle}
+      {/* Banda superior com véu escuro (2026-08-21): mesma matemática do
+          web Header/Footer (rgba(0,0,0,0.4) sobre a cor de marca) pra
+          garantir WCAG AA do texto em todas as estações — ouro natalino
+          era 2.05:1 sem ele. Escopo limitado ao header/nav pra não mudar
+          o fundo da área de conteúdo */}
+      <View style={styles.topTintedZone}>
+        <View style={styles.headerVeil} pointerEvents="none" />
+        <View style={styles.header}>
+          <View style={styles.titleRow}>
+            <Image
+              source={SEASON_LOGOS[liturgicalInfo.season]}
+              style={styles.logo}
+              accessibilityLabel="Logomarca Lecionário"
+            />
+            <Text style={[styles.title, { color: headerColors.title }]}>Lecionário</Text>
+          </View>
+          <Text style={[styles.dayName, { color: headerColors.body }]}>
+            {liturgicalInfo.dayName}
           </Text>
-          <View style={[styles.colorDot, { backgroundColor: theme.secondaryColor }]} />
+          <View style={styles.cycleRow}>
+            <Text style={[styles.cycleText, { color: headerColors.bodyMuted }]}>
+              Ano Litúrgico {liturgicalInfo.cycle}
+            </Text>
+            <View style={[styles.colorDot, { backgroundColor: theme.secondaryColor }]} />
+          </View>
         </View>
-      </View>
 
-      <View style={styles.navBar}>
-        <TouchableOpacity
-          onPress={() => navigateDay(-1)}
-          style={styles.navButton}
-          hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
-          accessibilityRole="button"
-          accessibilityLabel="Dia anterior"
-        >
-          <MaterialCommunityIcons name="chevron-left" size={24} color={headerColors.bodyMuted} />
-          <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>
-            Anterior
-          </Text>
-        </TouchableOpacity>
+        <View style={styles.navBar}>
+          <TouchableOpacity
+            onPress={() => navigateDay(-1)}
+            style={styles.navButton}
+            hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+            accessibilityRole="button"
+            accessibilityLabel="Dia anterior"
+          >
+            <MaterialCommunityIcons name="chevron-left" size={24} color={headerColors.bodyMuted} />
+            <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>
+              Anterior
+            </Text>
+          </TouchableOpacity>
 
-        {/* Achado real (2026-08-16): tocar na data não fazia nada — vira
+          {/* Achado real (2026-08-16): tocar na data não fazia nada — vira
             botão que leva pro calendário, que é o comportamento esperado */}
-        <TouchableOpacity
-          style={styles.dateContainer}
-          onPress={() => navigation.navigate('Calendário')}
-          hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
-          accessibilityRole="button"
-          accessibilityLabel="Abrir calendário litúrgico"
-        >
-          <MaterialCommunityIcons
-            name="calendar-month-outline"
-            size={16}
-            color={headerColors.body}
-          />
-          <Text style={[styles.dateText, { color: headerColors.body, fontSize: scale(11) }]}>
-            {format(currentDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
-          </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.dateContainer}
+            onPress={() => navigation.navigate('Calendário')}
+            hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+            accessibilityRole="button"
+            accessibilityLabel="Abrir calendário litúrgico"
+          >
+            <MaterialCommunityIcons
+              name="calendar-month-outline"
+              size={16}
+              color={headerColors.body}
+            />
+            <Text style={[styles.dateText, { color: headerColors.body, fontSize: scale(11) }]}>
+              {format(currentDate, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}
+            </Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={() => navigateDay(1)}
-          style={styles.navButton}
-          hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
-          accessibilityRole="button"
-          accessibilityLabel="Próximo dia"
-        >
-          <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>
-            Próximo
-          </Text>
-          <MaterialCommunityIcons name="chevron-right" size={24} color={headerColors.bodyMuted} />
-        </TouchableOpacity>
-      </View>
-
-      {/* "Voltar para hoje" — só aparece quando navegando fora do dia atual */}
-      {showTodayButton && (
-        <TouchableOpacity
-          style={[styles.todayButton, { borderColor: headerColors.bodyMuted }]}
-          onPress={() => setCurrentDate(new Date())}
-          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
-          accessibilityRole="button"
-          accessibilityLabel="Voltar para hoje"
-        >
-          <MaterialCommunityIcons name="calendar-today" size={14} color={headerColors.body} />
-          <Text style={[styles.todayButtonText, { color: headerColors.body }]}>
-            Voltar para hoje
-          </Text>
-        </TouchableOpacity>
-      )}
-
-      {isOffline && (
-        <View style={styles.offlineBanner}>
-          <MaterialCommunityIcons name="wifi-off" size={14} color="#F5F5F0" />
-          <Text style={styles.offlineText}>Modo offline — dados podem estar desatualizados</Text>
+          <TouchableOpacity
+            onPress={() => navigateDay(1)}
+            style={styles.navButton}
+            hitSlop={{ top: 6, bottom: 6, left: 6, right: 6 }}
+            accessibilityRole="button"
+            accessibilityLabel="Próximo dia"
+          >
+            <Text style={[styles.navText, { color: headerColors.bodyMuted, fontSize: scale(12) }]}>
+              Próximo
+            </Text>
+            <MaterialCommunityIcons name="chevron-right" size={24} color={headerColors.bodyMuted} />
+          </TouchableOpacity>
         </View>
-      )}
+
+        {/* Ações do dia (backlog 2026-08-21): favoritar + compartilhar
+            saíram da linha do título, onde empurravam "Lecionário" pra
+            esquerda — agora são pílulas centradas abaixo da navegação */}
+        {devotional && (
+          <View style={styles.actionsRow}>
+            <TouchableOpacity
+              onPress={() => toggleFavorite(currentDateStr)}
+              style={[styles.actionPill, { borderColor: headerColors.bodyMuted }]}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              accessibilityLabel={favorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+              accessibilityRole="button"
+            >
+              <MaterialCommunityIcons
+                name={favorited ? 'heart' : 'heart-outline'}
+                size={16}
+                color={favorited ? '#CC3333' : headerColors.body}
+              />
+              <Text
+                style={[styles.actionPillText, { color: headerColors.body, fontSize: scale(12) }]}
+              >
+                {favorited ? 'Favoritado' : 'Favoritar'}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={handleShareDay}
+              style={[styles.actionPill, { borderColor: headerColors.bodyMuted }]}
+              hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+              accessibilityLabel="Compartilhar devocional do dia"
+              accessibilityRole="button"
+            >
+              <MaterialCommunityIcons name="share-outline" size={16} color={headerColors.body} />
+              <Text
+                style={[styles.actionPillText, { color: headerColors.body, fontSize: scale(12) }]}
+              >
+                Compartilhar
+              </Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
+        {/* "Voltar para hoje" — só aparece quando navegando fora do dia atual */}
+        {showTodayButton && (
+          <TouchableOpacity
+            style={[styles.todayButton, { borderColor: headerColors.bodyMuted }]}
+            onPress={() => setCurrentDate(new Date())}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            accessibilityRole="button"
+            accessibilityLabel="Voltar para hoje"
+          >
+            <MaterialCommunityIcons name="calendar-today" size={14} color={headerColors.body} />
+            <Text style={[styles.todayButtonText, { color: headerColors.body }]}>
+              Voltar para hoje
+            </Text>
+          </TouchableOpacity>
+        )}
+
+        {isOffline && (
+          <View style={styles.offlineBanner}>
+            <MaterialCommunityIcons name="wifi-off" size={14} color="#F5F5F0" />
+            <Text style={styles.offlineText}>Modo offline — dados podem estar desatualizados</Text>
+          </View>
+        )}
+      </View>
 
       <ScrollView
         contentContainerStyle={styles.scrollContent}
@@ -328,7 +352,12 @@ export default function HomeScreen() {
                 </Text>
               </View>
               {devotional.readings.map((reading, index) => (
-                <ReadingCard key={`${reading.type}-${index}`} reading={reading} index={index} />
+                <ReadingCard
+                  key={`${reading.type}-${index}`}
+                  reading={reading}
+                  index={index}
+                  season={liturgicalInfo.season}
+                />
               ))}
             </View>
 
@@ -369,6 +398,17 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  topTintedZone: {
+    position: 'relative',
+  },
+  headerVeil: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+  },
   header: {
     alignItems: 'center',
     paddingHorizontal: 20,
@@ -383,13 +423,24 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
   },
-  shareDayButton: {
-    padding: 4,
-    minWidth: 36,
-    minHeight: 36,
+  actionsRow: {
+    flexDirection: 'row',
     justifyContent: 'center',
+    gap: 12,
+    marginTop: 10,
+  },
+  actionPill: {
+    flexDirection: 'row',
     alignItems: 'center',
-    opacity: 0.8,
+    gap: 6,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    borderRadius: 20,
+    borderWidth: 1,
+  },
+  actionPillText: {
+    fontWeight: '600',
+    fontFamily: 'Lora_600SemiBold_Italic',
   },
   title: {
     fontSize: 28,

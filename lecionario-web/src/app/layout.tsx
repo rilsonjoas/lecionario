@@ -32,6 +32,10 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  // Domínio canônico real do deploy (VPS/Traefik) — antes apontava pra
+  // lecionario.app, que não é nosso (corrigido 2026-08-22 junto com o
+  // sitemap.xml)
+  metadataBase: new URL('https://lecionario.narniano.com'),
   title: 'Lecionário - Devocional Litúrgico',
   description:
     'Devocional diário imersivo baseado no calendário litúrgico. Leituras, orações e meditações seguindo o ritmo da Igreja.',
@@ -44,10 +48,14 @@ export const metadata: Metadata = {
   formatDetection: {
     telephone: false,
   },
+  // Verificação de propriedade no Google Search Console (2026-08-22)
+  verification: {
+    google: 'GZKfUeS1__5B7yeJQ0mV3q72MYtwx7mg25uIngyYVME',
+  },
   openGraph: {
     type: 'website',
     locale: 'pt_BR',
-    url: 'https://lecionario.app',
+    url: 'https://lecionario.narniano.com',
     title: 'Lecionário - Devocional Litúrgico',
     description:
       'Devocional diário imersivo baseado no calendário litúrgico. Leituras, orações e meditações seguindo o ritmo da Igreja.',

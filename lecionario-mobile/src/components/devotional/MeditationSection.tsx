@@ -42,7 +42,9 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
       <View style={styles.body}>
         <View style={styles.promptContainer}>
           <Text style={[styles.promptText, { color: colors.text, fontSize: scale(15) }]} selectable>
-            <Text style={[styles.capitular, { color: '#4B2E39' }]}>
+            <Text
+              style={[styles.capitular, { color: colors.mode === 'dark' ? '#F5F5F0' : '#4B2E39' }]}
+            >
               {meditation.prompt.charAt(0)}
             </Text>
             {meditation.prompt.slice(1)}

@@ -17,11 +17,16 @@ export function Header({ liturgicalDay, season }: HeaderProps) {
 
   return (
     <header
-      className="relative border-b border-accent/20 shadow-2xl overflow-hidden pb-8 md:pb-12 pt-6 md:pt-10"
+      className="relative border-b border-accent/20 shadow-2xl overflow-hidden pb-6 md:pb-10 pt-5 md:pt-8"
       style={{ backgroundColor: seasonBg }}
     >
+      {/* Camada escura uniforme (2026-08-21): garante WCAG AA do texto
+          creme sobre TODAS as estações — ouro natalino era 2.05:1 e azul
+          advento 3.86:1 sem ela. Mesma matemática no mobile (HomeScreen),
+          rgba(0,0,0,0.4) sobre seasonBrandColors */}
+      <div className="pointer-events-none absolute inset-0 bg-black/40" />
       {/* Decorative background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-laranja-queimado/10 rounded-full blur-3xl animate-pulse" />
 
       <div className="container mx-auto px-3 md:px-4 relative z-10">
@@ -39,7 +44,7 @@ export function Header({ liturgicalDay, season }: HeaderProps) {
                 />
               </div>
               <div className="space-y-1">
-                <h1 className="text-3xl md:text-5xl lg:text-6xl font-display text-bege-areia drop-shadow-2xl">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-display text-bege-areia drop-shadow-2xl">
                   Lecionário
                 </h1>
                 <p className="text-[8px] md:text-[9px] lg:text-xs uppercase tracking-[0.25em] md:tracking-[0.3em] lg:tracking-[0.4em] font-bold text-dourado-texto">

@@ -28,7 +28,7 @@ export function CollectSection({ collect }: CollectSectionProps) {
 
           <div className="space-y-8">
             <div className="bg-card/30 rounded-none p-8 border-l-4 border-accent/20">
-              <p className="text-xl md:text-2xl leading-relaxed font-scripture text-foreground/90 italic">
+              <p className="text-base md:text-lg lg:text-xl leading-relaxed font-scripture text-foreground/90 italic">
                 {collect}
               </p>
 

@@ -14,6 +14,8 @@ export interface ThemeColors {
   tabBarBg: string;
   tabBarBorder: string;
   statusBar: 'light' | 'dark';
+  /** Modo resolvido — componentes que precisam de cor por tema (ex.: capitular) */
+  mode: 'light' | 'dark';
 }
 
 const LIGHT: ThemeColors = {
@@ -28,6 +30,7 @@ const LIGHT: ThemeColors = {
   tabBarBg: '#FAFAF5',
   tabBarBorder: 'rgba(0,0,0,0.08)',
   statusBar: 'dark',
+  mode: 'light',
 };
 
 const DARK: ThemeColors = {
@@ -42,6 +45,7 @@ const DARK: ThemeColors = {
   tabBarBg: '#1A1A1A',
   tabBarBorder: 'rgba(184,134,11,0.2)',
   statusBar: 'light',
+  mode: 'dark',
 };
 
 const ThemeContext = createContext<ThemeColors>(DARK);

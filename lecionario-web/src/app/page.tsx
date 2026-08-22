@@ -5,7 +5,8 @@ import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { format, addDays, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { ChevronLeft, ChevronRight, Share2, Check } from 'lucide-react';
+import { CalendarCheck, ChevronLeft, ChevronRight, Heart, Share2, Check } from 'lucide-react';
+import { useFavorites } from '@/contexts/FavoritesContext';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
@@ -52,6 +53,7 @@ function HomeContent() {
 
   const [devotional, setDevotional] = useState<DailyDevotional | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const isToday = format(currentDate, 'yyyy-MM-dd') === format(new Date(), 'yyyy-MM-dd');
   useEffect(() => {
     // getSampleDevotional é síncrona (lê dados já bundlados, sem I/O) —
     // não precisa de async/await; achado ao auditar o ROADMAP contra o
@@ -91,6 +93,9 @@ function HomeContent() {
   };
 
   const [shared, setShared] = useState(false);
+  const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const dateKey = format(currentDate, 'yyyy-MM-dd');
+  const favorited = isFavorite(dateKey);
   const handleShareDay = async () => {
     if (!devotional) return;
     const d = devotional;
@@ -169,8 +174,21 @@ function HomeContent() {
               <span className="hidden sm:inline">Dia Anterior</span>
             </Button>
 
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center gap-0.5">
               <DatePicker date={currentDate} onDateChange={handleDateChange} />
+              {/* Ação de navegação vive junto da data — link discreto,
+                  sem borda (decisão UX 2026-08-21); some quando já está
+                  em hoje */}
+              {!isToday && (
+                <button
+                  onClick={() => handleDateChange(new Date())}
+                  className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] font-bold text-accent hover:text-primary transition-colors cursor-pointer"
+                  aria-label="Voltar para hoje"
+                >
+                  <CalendarCheck className="w-3 h-3" />
+                  Voltar para hoje
+                </button>
+              )}
             </div>
 
             <Button
@@ -186,14 +204,14 @@ function HomeContent() {
           </div>
         </div>
 
-        <main className="container mx-auto px-3 md:px-4 py-12 md:py-16 max-w-6xl">
-          <div className="space-y-16 md:space-y-20">
+        <main className="container mx-auto px-3 md:px-4 py-8 md:py-12 max-w-6xl">
+          <div className="space-y-10 md:space-y-14">
             {/* Welcome Section */}
             <section className="text-center space-y-4 md:space-y-6 animate-fade-in px-3 md:px-4">
               <div className="flex justify-center mb-3 md:mb-4">
                 <span className="text-accent text-xl md:text-2xl">✦ ✧ ✦</span>
               </div>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-display text-secondary tracking-tight">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-display text-secondary tracking-tight">
                 A Liturgia como Tradição
               </h2>
               <p className="text-foreground/70 max-w-3xl mx-auto text-base md:text-xl leading-relaxed italic font-body">
@@ -206,17 +224,63 @@ function HomeContent() {
                 <span className="divider-line"></span>
               </div>
 
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleShareDay}
-                className="text-muted-foreground hover:text-accent transition-colors gap-2 text-xs mx-auto"
-                aria-label={shared ? 'Dia copiado' : 'Compartilhar dia'}
-              >
-                {shared ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
-                {shared ? 'Copiado!' : 'Compartilhar este dia'}
-              </Button>
+              <div className="flex items-center justify-center gap-2">
+                {/* Favoritos no web (backlog 2026-08-21) — paridade com o
+                    mobile: coração do dia, persistido em localStorage */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => toggleFavorite(dateKey)}
+                  className="text-muted-foreground hover:text-accent transition-colors gap-2 text-xs"
+                  aria-label={favorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+                >
+                  <Heart
+                    className={favorited ? 'w-3.5 h-3.5 fill-red-600 text-red-600' : 'w-3.5 h-3.5'}
+                  />
+                  {favorited ? 'Favoritado' : 'Favoritar este dia'}
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={handleShareDay}
+                  className="text-muted-foreground hover:text-accent transition-colors gap-2 text-xs"
+                  aria-label={shared ? 'Dia copiado' : 'Compartilhar dia'}
+                >
+                  {shared ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
+                  {shared ? 'Copiado!' : 'Compartilhar este dia'}
+                </Button>
+              </div>
             </section>
+
+            {/* Dias favoritados — chips clicáveis, mais recente primeiro.
+                Só aparece quando existe pelo menos um favorito */}
+            {favorites.length > 0 && (
+              <section className="text-center space-y-3 px-4 animate-fade-in">
+                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
+                  Dias Favoritados
+                </p>
+                <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
+                  {[...favorites]
+                    .sort((a, b) => b.localeCompare(a))
+                    .map((favDate) => (
+                      <button
+                        key={favDate}
+                        onClick={() => handleDateChange(parseISO(favDate))}
+                        className={`text-xs border rounded-full px-3 py-1 transition-colors ${
+                          favDate === dateKey
+                            ? 'border-accent bg-accent/15 text-secondary'
+                            : 'border-accent/30 hover:bg-accent/10'
+                        }`}
+                        aria-label={`Ir para ${format(parseISO(favDate), "d 'de' MMMM", {
+                          locale: ptBR,
+                        })}`}
+                      >
+                        {format(parseISO(favDate), 'd MMM', { locale: ptBR })}
+                      </button>
+                    ))}
+                </div>
+              </section>
+            )}
 
             {/* Oração de Coleta */}
             {devotional.collect && (
@@ -268,7 +332,7 @@ function HomeContent() {
 
             {/* Inspiration Quote */}
             <section className="text-center py-16 animate-fade-in border-t border-accent/10">
-              <blockquote className="text-lg md:text-xl lg:text-2xl xl:text-3xl font-display italic text-secondary max-w-4xl mx-auto leading-relaxed px-4">
+              <blockquote className="text-lg md:text-xl lg:text-2xl font-display italic text-secondary max-w-4xl mx-auto leading-relaxed px-4">
                 "Toda Escritura é inspirada por Deus e útil para o ensino, para a repreensão, para a
                 correção, para a educação na justiça, a fim de que o homem de Deus seja perfeito e
                 perfeitamente habilitado para toda boa obra."
