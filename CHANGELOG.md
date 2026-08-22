@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Modal de doação temático (mobile)** — o botão "Apoie o projeto" abria um Alert nativo do sistema que destoava do visual; agora abre um card na linguagem do app (surface do tema, borda, Lora, radius 16) com explicação da causa, prévia do código Pix, botão "Copiar código Pix" e confirmação com instruções de uso no banco.
 - **Navegação mobile redesenhada — 5 tabs, só ícones** — Busca e Favoritos saíram de dentro do Calendário e viraram telas próprias (`SearchScreen`, `FavoritesScreen`) na barra inferior: Hoje · Calendário · Busca · Favoritos · Config. Legendas removidas por decisão do autor (ícones falam sozinhos; acessibilidade preservada via `tabBarAccessibilityLabel`). Deep links `lecionario://busca` e `//favoritos` registrados. O Calendário voltou a ser calendário puro.
 - **Header colapsável na home do mobile** — o bloco rico (logo + dia litúrgico + navegação de data + pílulas de ação) rola junto com o conteúdo e uma barra compacta fixa surge ao rolar (~330px devolvidos pra leitura em telas pequenas), com logo mini, nome do dia, ‹ › e atalho para hoje quando aplicável. Mesma cor da estação + véu; scroll volta ao topo ao trocar de dia.
 - **Favicons reais circulares na Biblioteca (mobile)** — os 4 projetos parceiros (Narniano, Bíblia na Arte, Scriptorium Divinum, Gerador C.S. Lewis) agora exibem seus favicons oficiais em círculos de 28px no lugar dos ícones genéricos.

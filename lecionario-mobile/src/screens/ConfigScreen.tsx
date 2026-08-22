@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   View,
   Text,
@@ -7,6 +8,7 @@ import {
   ScrollView,
   Linking,
   Image,
+  Modal,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as Clipboard from 'expo-clipboard';
@@ -89,6 +91,11 @@ export default function ConfigScreen() {
   const insets = useSafeAreaInsets();
   const colors = useThemeColors();
   const { scale } = useFontScale();
+  // Modal de doação (2026-08-22): substitui o Alert nativo do sistema,
+  // que destoava do visual do app (report do autor). Dois estados:
+  // fechado → aberto com o código → copiado com confirmação
+  const [pixModalVisible, setPixModalVisible] = useState(false);
+  const [pixCopied, setPixCopied] = useState(false);
   const {
     theme,
     fontSize,
@@ -346,15 +353,13 @@ export default function ConfigScreen() {
       {/* Sobre */}
       <View style={styles.section}>
         <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Sobre</Text>
-        {/* Doação fase 1 (ROADMAP L): Pix copia e cola, sem intermediário */}
+        {/* Doação fase 1 (ROADMAP L): abre o modal temático; a cópia em
+            si acontece lá dentro */}
         <TouchableOpacity
           style={[styles.row, { borderBottomColor: colors.border }]}
-          onPress={async () => {
-            await Clipboard.setStringAsync(buildPixBrCode(PIX_CONFIG));
-            Alert.alert(
-              'Pix copiado! 🕯️',
-              'Abra o app do seu banco, escolha Pix → Copia e Cola e cole o código. Qualquer valor ajuda a manter o projeto no ar.',
-            );
+          onPress={() => {
+            setPixCopied(false);
+            setPixModalVisible(true);
           }}
           accessibilityLabel="Apoie o projeto com Pix — toca para copiar o código"
           accessibilityRole="button"
@@ -436,6 +441,101 @@ export default function ConfigScreen() {
           Lecionário — Meditação diária na Palavra de Deus seguindo o Ano Litúrgico Cristão.
         </Text>
       </View>
+
+      {/* Modal de doação temático (2026-08-22) — substitui o Alert nativo
+          que destoava do visual do app (report do autor). Mesma linguagem
+          dos cards: surface do tema, borda, radius 16, Lora */}
+      <Modal
+        visible={pixModalVisible}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setPixModalVisible(false)}
+      >
+        <TouchableOpacity
+          style={styles.pixBackdrop}
+          activeOpacity={1}
+          onPress={() => setPixModalVisible(false)}
+          accessibilityLabel="Fechar"
+        >
+          <TouchableOpacity
+            activeOpacity={1}
+            style={[styles.pixCard, { backgroundColor: colors.card, borderColor: colors.border }]}
+          >
+            <View style={[styles.pixIconWrap, { borderColor: colors.border }]}>
+              <MaterialCommunityIcons name="heart" size={26} color="#CC3333" />
+            </View>
+            <Text style={[styles.pixTitle, { color: colors.text, fontSize: scale(18) }]}>
+              Apoie o projeto
+            </Text>
+            {!pixCopied ? (
+              <>
+                <Text style={[styles.pixBody, { color: colors.textMuted, fontSize: scale(13) }]}>
+                  O Lecionário é gratuito, sem anúncios e sem cadastro. Se ele abençoa sua rotina de
+                  oração, uma contribuição voluntária ajuda a manter tudo no ar.
+                </Text>
+                <View style={[styles.pixCodeBox, { borderColor: colors.border }]}>
+                  <Text
+                    numberOfLines={2}
+                    style={[styles.pixCodeText, { color: colors.textMuted, fontSize: scale(10) }]}
+                  >
+                    {buildPixBrCode(PIX_CONFIG)}
+                  </Text>
+                </View>
+                <TouchableOpacity
+                  style={[styles.pixPrimaryButton, { backgroundColor: colors.accent }]}
+                  onPress={async () => {
+                    await Clipboard.setStringAsync(buildPixBrCode(PIX_CONFIG));
+                    setPixCopied(true);
+                  }}
+                  accessibilityRole="button"
+                  accessibilityLabel="Copiar código Pix copia e cola"
+                >
+                  <MaterialCommunityIcons name="content-copy" size={16} color="#FFFFFF" />
+                  <Text style={[styles.pixPrimaryText, { fontSize: scale(14) }]}>
+                    Copiar código Pix
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.pixGhostButton}
+                  onPress={() => setPixModalVisible(false)}
+                  accessibilityRole="button"
+                  accessibilityLabel="Fechar"
+                >
+                  <Text
+                    style={[styles.pixGhostText, { color: colors.textMuted, fontSize: scale(13) }]}
+                  >
+                    Agora não
+                  </Text>
+                </TouchableOpacity>
+              </>
+            ) : (
+              <>
+                <MaterialCommunityIcons name="check-circle" size={40} color="#4A8B4A" />
+                <Text
+                  style={[
+                    styles.pixTitle,
+                    { color: colors.text, fontSize: scale(16), marginTop: 8 },
+                  ]}
+                >
+                  Código copiado!
+                </Text>
+                <Text style={[styles.pixBody, { color: colors.textMuted, fontSize: scale(13) }]}>
+                  Abra o app do seu banco, escolha Pix → Copia e Cola e cole o código. Qualquer
+                  valor ajuda. Deus abençoe sua generosidade! 🕯️
+                </Text>
+                <TouchableOpacity
+                  style={[styles.pixPrimaryButton, { backgroundColor: colors.accent }]}
+                  onPress={() => setPixModalVisible(false)}
+                  accessibilityRole="button"
+                  accessibilityLabel="Fechar"
+                >
+                  <Text style={[styles.pixPrimaryText, { fontSize: scale(14) }]}>Fechar</Text>
+                </TouchableOpacity>
+              </>
+            )}
+          </TouchableOpacity>
+        </TouchableOpacity>
+      </Modal>
     </ScrollView>
   );
 }
@@ -579,5 +679,69 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 16,
     fontFamily: 'Lora_400Regular_Italic',
+  },
+  pixBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    justifyContent: 'center',
+    paddingHorizontal: 24,
+  },
+  pixCard: {
+    borderRadius: 16,
+    borderWidth: 1,
+    padding: 22,
+    alignItems: 'center',
+    gap: 12,
+  },
+  pixIconWrap: {
+    width: 52,
+    height: 52,
+    borderRadius: 26,
+    borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  pixTitle: {
+    fontFamily: 'Lora_700Bold',
+    textAlign: 'center',
+  },
+  pixBody: {
+    textAlign: 'center',
+    lineHeight: 19,
+    fontFamily: 'Lora_400Regular',
+  },
+  pixCodeBox: {
+    alignSelf: 'stretch',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+  },
+  pixCodeText: {
+    fontFamily: 'Lora_400Regular',
+    textAlign: 'center',
+  },
+  pixPrimaryButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    alignSelf: 'stretch',
+    minHeight: 46,
+    borderRadius: 23,
+    marginTop: 4,
+  },
+  pixPrimaryText: {
+    color: '#FFFFFF',
+    fontWeight: '700',
+    fontFamily: 'Lora_700Bold',
+  },
+  pixGhostButton: {
+    paddingVertical: 6,
+    minHeight: 36,
+    justifyContent: 'center',
+  },
+  pixGhostText: {
+    fontFamily: 'Lora_400Regular',
   },
 });
