@@ -14,6 +14,7 @@ import { ReadingCard } from '@/components/devotional/ReadingCard';
 import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
+import { LewisQuoteSection } from '@/components/devotional/LewisQuoteSection';
 import { DatePicker } from '@/components/layout/DatePicker';
 import { getSampleDevotional } from '@/data/sample-devotional';
 import { applySeasonTheme, applySeasonBranding } from '@/lib/theme';
@@ -341,6 +342,9 @@ function HomeContent() {
                 — II Timóteo III:16-17
               </cite>
             </section>
+
+            {/* Citação diária de C.S. Lewis (paridade com o mobile) */}
+            <LewisQuoteSection date={currentDate} />
           </div>
         </main>
 
