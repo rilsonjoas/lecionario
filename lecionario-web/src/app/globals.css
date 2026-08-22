@@ -92,23 +92,27 @@
      (.season-*) continuam idênticas: cor litúrgica não muda com o tema
      (mesmo princípio do véu no mobile). */
   .dark {
-    --background: 30 6% 8%; /* ~#161411 — carvão quente */
-    --foreground: 40 22% 91%; /* pergaminho claro */
+    /* Fundo = COR DA ESTAÇÃO escurecida (color-mix com carvão), igual
+       ao mobile — onde o fundo da home é o primaryColor e só os cards
+       afundam. Muda sozinho a cada estação porque --liturgical-primary
+       é redefinido pelas classes .season-* */
+    --background: color-mix(in srgb, hsl(var(--liturgical-primary)) 22%, hsl(30 6% 7%) 78%);
+    --foreground: 40 24% 93%; /* pergaminho claro */
 
     --card: 30 5% 12%;
-    --card-foreground: 40 22% 91%;
+    --card-foreground: 40 24% 93%;
 
     --popover: 30 5% 13%;
-    --popover-foreground: 40 22% 91%;
+    --popover-foreground: 40 24% 93%;
 
     --primary: 24 60% 52%; /* laranja sobe um passo de luminosidade */
     --primary-foreground: 0 0% 97%;
 
-    --secondary: 25 25% 20%; /* canela vira superfície profunda */
-    --secondary-foreground: 36 35% 84%;
+    --secondary: 38 32% 78%; /* virou TEXTO claro: títulos/citações */
+    --secondary-foreground: 25 30% 12%;
 
     --muted: 30 4% 17%;
-    --muted-foreground: 35 10% 66%;
+    --muted-foreground: 36 12% 72%; /* subiu pra sumir a sensação de apagado */
 
     --accent: 42 45% 58%; /* dourado clareia um passo pra brilhar */
     --accent-foreground: 30 10% 8%;
