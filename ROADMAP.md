@@ -52,6 +52,27 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ---
 
+## Qualidade de Conteúdo (2026-08-22)
+
+Padrão cross-projeto: `Padrão de Qualidade de Conteúdo.md` no vault
+(princípio #7 de `Filosofia e Padrões de Engenharia.md`). Este projeto
+já teve o incidente mais sério do padrão: **o Tempo Comum inteiro, nos
+três ciclos, todo ano, mostrava a leitura errada** (2 semanas
+adiantada) — ver 1.2a abaixo para a causa raiz completa, que incluía
+"conteúdo fabricado/remendado que não corresponde a nenhum domingo real
+do RCL". Corrigido comparando domingo a domingo contra o RCL oficial da
+Vanderbilt Divinity Library — esse processo (fonte oficial nomeada +
+comparação exaustiva, não amostral) é o padrão a repetir.
+
+- [ ] **Reverificação periódica** — o RCL é cíclico (Ano A/B/C se
+      repetem a cada 3 anos); vale conferir de novo contra a Vanderbilt
+      quando o app entrar num ano novo do ciclo, não só confiar que a
+      correção de 2026-08-16 nunca vai regredir.
+- [ ] Ver "Terminologia e tradições" (2026-08-22) abaixo — mesma
+      categoria: precisão denominacional do vocabulário litúrgico.
+
+---
+
 ## Fase 1 — Pré-lançamento (v1.0)
 
 *Tudo que bloqueia uma versão usável por terceiros.*
