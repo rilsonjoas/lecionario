@@ -25,7 +25,7 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 - **Logo real + identidade sazonal** (web e mobile)
 - **Build mobile corrigido e testado em dispositivo Android físico**
 - ErrorBoundary global
-- CI com TypeScript, ESLint, Prettier e testes (GitHub Actions)
+- CI com TypeScript, ESLint, Prettier, testes e **auditoria de dependências de produção com allowlist** (`scripts/audit-allowlist.mjs`, 2026-08-21) (GitHub Actions)
 - **Notificações push** — permission, schedule, cancel, listener, time picker (2.1)
 - **Compartilhamento** — ReadingCard (copy/share), PrayerSection (copy), welcome (copy) (2.2)
 - **Config screen completa** — Tema/Fonte/Notificações/Sobre (2.3)
@@ -720,11 +720,8 @@ que era falso).*
       comentários `eslint-disable` órfãos referenciando uma regra do
       `@next/eslint-plugin-next` que este projeto não usa; `Image`/
       `SEASON_LOGOS` declarados mas nunca renderizados no mobile)
-- [ ] **Pendente de verdade**: novo build EAS pro ícone/nome valerem
-      no app instalado — o app já instalado só atualiza JS via
-      `eas update`/mesma rede de dev; ícone nativo exige rebuild
-      completo. Fica pra quando fizer sentido publicar uma nova
-      versão.
+- [x] **Pendente de verdade resolvido (2026-08-21)**: novo build EAS
+      gerado com o ícone/nome novos valendo no app instalado
 
 ---
 
@@ -968,6 +965,8 @@ Os JSONs são copiados do `lecionario-web/src/data/rcl/` para `lecionario-mobile
 
 | Item | Localização | Impacto |
 |---|---|---|
+| **Upgrade Next.js 14 → 16 (breaking)** — achado no audit de segurança (2026-08-21): o `next@14` carrega ~21 advisories high/moderate (DoS, XSS, cache poisoning, SSRF) + `postcss` embutido + `serialize-javascript` via `next-pwa`; nenhum tem patch na linha 14.x. Estão em allowlist no `scripts/audit-allowlist.mjs` (CI passa, mas o débito é real e visível). O upgrade arrasta breaking changes do App Router e possivelmente a troca do `next-pwa` (mantenedor inativo) por solução própria de Service Worker | `lecionario-web/package.json` | Alto em produção self-hosted — priorizar quando houver janela pra testar build + E2E |
+| **Upgrade do Expo SDK (54 → próxima major)** — achado no mesmo audit (2026-08-21): `image-size` (2 DoS high) e `postcss` vêm dentro da cadeia do `expo@54`/@expo/cli; só saem com upgrade de SDK. Em allowlist no script de auditoria | `lecionario-mobile/package.json` | Médio — app client-side, superfície de ataque menor que o web self-hosted |
 | `getSampleDevotional` agora síncrono mas chamado com `await` | `page.tsx` | Cosmético — funciona |
 | RCL JSONs com 2MB+ cada | `src/data/rcl/` | Pode impactar tempo de build/bundle |
 | Sem testes para a camada de dados local | `src/lib/*.ts` | Confiança menor em refactors |
@@ -1003,7 +1002,18 @@ P6 são categorias novas.
 - [x] **Headers de segurança no self-host** — CSP, X-Frame-Options,
       X-Content-Type-Options, Referrer-Policy, X-XSS-Protection
       adicionados em `next.config.mjs` (2026-08-19)
-- [ ] `npm audit` — não está no `ci.yml` atual, fácil de adicionar
+- [x] **`npm audit` no CI — feito (2026-08-21)**, mesmo padrão da Bancada/
+      biblia-na-arte mas com allowlist (padrão do scriptorium): novo step
+      `Audit dependencies` nos jobs web e mobile do `ci.yml`, rodando
+      `scripts/audit-allowlist.mjs <web|mobile>` — audita só deps de
+      produção (`--omit=dev`) e falha em advisory high/critical fora da
+      allowlist. De quebra, `npm audit fix --legacy-peer-deps` aplicado nos
+      dois apps antes (lockfiles atualizados, brace-expansion/fast-uri/
+      nanoid resolvidos sem breaking change; mobile com override de
+      `brace-expansion`; 45+59 testes e `tsc` verdes depois). O que ficou
+      em allowlist (só resolvem com upgrade breaking de framework):
+      web = next/postcss/serialize-javascript (Next.js 14→16), mobile =
+      image-size/postcss (Expo SDK futuro) — ver débito técnico
 
 ### P1 — Infra & Deploy
 
@@ -1214,12 +1224,10 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
 
 ### P5 — Monitoramento & Logs & Logs
 
-- [ ] **Uptime Kuma** — ainda não aplicável: o app não está no ar no VPS,
-      então não existe monitor pra ele ainda. Assim que o deploy (P1)
-      sair, é só adicionar o monitor — o canal de alerta (**Telegram +
-      e-mail**) já está configurado centralmente no Uptime Kuma do VPS
-      (mesmo usado por bancada, biblia-na-arte e scriptorium), não exige
-      nenhuma configuração nova, só cadastrar a URL.
+- [x] **Uptime Kuma** — implementado (confirmado 2026-08-21). Canal de
+      alerta (**Telegram + e-mail**) já configurado centralmente no
+      Uptime Kuma do VPS (mesmo usado por bancada, biblia-na-arte e
+      scriptorium)
 - [ ] **Sentry no mobile (`@sentry/react-native`) — instalado e inicializado (2026-08-14), falta terminar a configuração**: SDK instalado, `Sentry.init` em `App.tsx` (lê `EXPO_PUBLIC_SENTRY_DSN`), raiz embrulhada com `Sentry.wrap(App)`. **Pendente**: criar o DSN no sentry.io, definir `EXPO_PUBLIC_SENTRY_DSN` no build do app e configurar source maps no EAS (Fase 3.3)
 - [ ] **Sentry no web (`@sentry/nextjs`) — instalado e inicializado (2026-08-14), falta terminar a configuração**: SDK instalado, arquivos `sentry.client.config.ts`, `sentry.server.config.ts` e `sentry.edge.config.ts` criados, `next.config.mjs` embrulhado com `withSentryConfig` (typecheck passou). **Pendente**: criar o DSN no sentry.io, definir `NEXT_PUBLIC_SENTRY_DSN` no `docker-compose.yml` do deploy e validar que eventos chegam
 - DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
@@ -1382,24 +1390,92 @@ Google" não é viável em iOS de qualquer forma.
 
 > Levantamento feito pelo Rilson ao usar o produto de verdade — web e mobile.
 > Organizado por gravidade.
+>
+> **Auditoria de código (2026-08-21):** todos os itens abaixo foram checados
+> contra o código e **confirmados ainda não implementados** — exceto o
+> pre-commit hook (resolvido acima, causa raiz = erros de ESLint do logger).
+> Evidências: zero matches de favoritos no web (`grep -ri favorit src/`),
+> sem botão "Hoje" no `page.tsx`, capitular web com `--vinho` fixo e sem
+> regra `.dark` em `globals.css`, capitular mobile com `#4B2E39` hardcoded,
+> badges do `ReadingCard` mobile com cor fixa por tipo (não branco),
+> ConfigScreen na ordem antiga (Aparência → Notificações → Armazenamento →
+> Sobre → Biblioteca) com "Limpar dados temporários" ainda presente, sem
+> `sitemap.xml`, sem step de `npm audit` em nenhum workflow, sem Pix/doação,
+> DSN do Sentry só como placeholder no `.env.example`.
 
 ### 🔴 Crítico — bloqueios de uso
 
-- [ ] **pre-commit hook falhando** — `pre-commit script failed`. Diagnosticar qual hook falha e por quê. Pode ser ESLint, Prettier ou validação de tipos no staged commit.
+- [x] **pre-commit hook falhando — RESOLVIDO (2026-08-21)**. Causa raiz
+      diagnosticada: o hook roda `cd lecionario-web && npx lint-staged` e o
+      `eslint --fix` falhava nos 6 erros `@typescript-eslint/no-explicit-any`
+      de `src/lib/logger.ts` — os mesmos erros que quebravam o CI. Corrigido:
+      tipos trocados pra `unknown`/`Record<string, unknown>` com narrowing
+      `instanceof Error`. Lint limpo (0 erros), `tsc` limpo, 45 testes
+      passando, `lint-staged` reproduzido e validado com exit 0
 
 ### 🟠 Grave — UX quebrada
 
 - [ ] **"Voltar para Hoje" existe só no mobile, não no web** — adicionar botão equivalente na barra de navegação do web (entre as setas de anterior/próximo ou como CTA fixo).
 - [ ] **Favoritar existe só no mobile, não no web** — implementar `FavoritesContext` também no web, com coração nos cards. Os dados ficam em `localStorage`.
 - [ ] **Botões de favoritar e compartilhar no mobile empurram o nome do app para a esquerda** — mover os dois botões para baixo do menu `anterior | calendário | próximo` como linha separada.
-- [ ] **Tags "Salmo" e "Segunda leitura" ilegíveis no mobile em Tempo Comum** — o verde claro da estação tem contraste insuficiente. Regra: todas as tags de leitura usam texto branco independentemente da estação. Checar contraste WCAG AA (≥4.5:1) em todas as 8 estações.
+- [x] **Tags "Salmo" e "Segunda leitura" ilegíveis no mobile — RESOLVIDO
+      (2026-08-21)**. Antes: fundo dourado translúcido fixo (`accent` a 10%)
+      + cor de texto escura fixa por tipo, 9px. Agora (`ReadingCard` +
+      `getBadgeColors()` em `lib/theme.ts`): fundo sólido = cor primária da
+      estação, foreground adaptativo (creme nas escuras, preto quente nas
+      claras) — mesmo padrão do web (`--liturgical-primary-foreground`).
+      Contraste WCAG AA ≥4.5:1 verificado nas 7 estações. Nota do autor ao
+      revisar: o verde que ele via ilegível era o do HEADER/FOOTER (item
+      🟡 abaixo), não das tags — mas a regra nova das tags ficou, alinhada
+      ao que o web já fazia
 - [ ] **Primeira letra da Meditação (capitular) com cor ruim no modo escuro** — usar branco (`#fff`) no modo escuro, assim como o resto do texto da seção.
 - [ ] **Fontes grandes/pequenas demais em várias seções** — em especial a Oração do Dia no web fica tão grande que prejudica o print/compartilhamento. Criar escala tipográfica consistente (ex: `prose-sm` ou tamanho fixo para cards de conteúdo).
 
 ### 🟡 Melhoria — UX e produto
 
-- [ ] **"Conheça também" — design não conversa com o resto do site** — a seção de links para outros projetos está com estilo genérico. Integrar com o Design Narniano: usar fonte correta, paleta sazonal, espaçamento consistente com o restante do footer. (Mesmo problema no Gerador C.S. Lewis — componente compartilhado?)
-- [ ] **Verde do Tempo Comum com legibilidade baixa** — avaliar se o tom atual (`--graca-verde`) passa em WCAG AA em backgrounds claros e escuros. Se não, escurecer o tom ou ajustar só o contraste de texto sobre ele.
+- [ ] **"Conheça também" — design não conversa com o resto do site** — a seção de links para outros projetos está com estilo genérico. **Modelo aprovado (2026-08-21)**: hierarquia de 3 níveis do `ClusterFooter.tsx` do Gerador C.S. Lewis — rótulo-nicho em caps espaçadas ("CONHEÇA TAMBÉM", 10px, tom apagado) → links uniformes (mesmo tamanho/peso, 12px) separados por ✦ dourado em grupos atômicos `flex-wrap` (ornamento viaja junto do link, nunca sobra separador órfão na quebra de linha) → © discreto na base. Tudo numa família só (Lato), coluna centrada com ritmo vertical igual. Adaptar paleta pra sazonalidade do Lecionário ao aplicar.
+- [x] **Verde do Tempo Comum com legibilidade baixa — RESOLVIDO
+      (2026-08-21), header e footer**. Medição real (texto creme
+      `--bege-areia` / `--dourado-texto` sobre `seasonBrandColors`):
+      Tempo Comum/Epifania `#7A9178` = 2.58:1 ❌, Natal/Páscoa ouro
+      `#B49A60` = 2.05:1 ❌, Advento azul = 3.86:1 ❌, Pentecostes =
+      4.51 ✅, Quaresma = 9.07 ✅. Correção aplicada: verde escurecido
+      pra **`#4F6350`** (mesmo hue, 4.91:1 ✅) no web (`seasonBrandColors`)
+      e no mobile (`primaryColor`, que também vira fundo do header do
+      HomeScreen); no mobile Epifania/Tempo Comum saíram de `LIGHT_SEASONS`
+      (agora pedem texto creme como as escuras) e opacidade do texto muted
+      subiu 0.80→0.85 (~4.4→5.2:1).       **Follow-up pendente, decisão de marca:
+      ouro de Natal/Páscoa (2.05) e azul do Advento (3.86) também reprovam
+      como fundo sob texto claro no web** — escurecer os tokens muda a
+      identidade visual dessas estações; decidir entre escurecer, sobrepor
+      camada escura no Header/Footer ou trocar cor do texto por estação.
+      Análise feita com o autor (2026-08-21): trocar só a cor do texto NÃO
+      resolve as duas — branco puro no ouro dá 2.72:1 (continua reprovado;
+      só texto escuro funciona, 6.25:1) e texto escuro no azul dá 3.33:1
+      (piora; lá só branco puro passa, 5.10:1). Ou seja, exigiria uma regra
+      diferente por estação e quebraria a paleta creme.
+- [x] **Camada escura implementada nos dois lados (2026-08-21)** — decisão
+      do autor: véu `rgba(0,0,0,0.4)` sobre a cor de marca, mesma
+      matemática no web e no mobile pra garantir paridade de cores entre
+      plataformas. **Web**: `Header.tsx` (div absoluta `bg-black/40`;
+      gradiente decorativo de topo reduzido de `/40` pra `/20` pra não
+      empilhar escurecimento) e `Footer.tsx` (mesma div; container ganhou
+      `relative z-10` pra ficar acima do véu — necessário porque o
+      `.texture-leather` já usa `background-image` e um gradiente inline
+      destruiria a textura). **Mobile**: banda superior do `HomeScreen`
+      (header + navBar + "Voltar para hoje" + banner offline) embrulhada em
+      `topTintedZone` com véu absoluto — escopo deliberadamente limitado à
+      banda superior porque o fundo sazonal se estende por toda a tela
+      atrás dos cards, e escurecer tudo iria além do combinado. Com o véu,
+      TODAS as 7 estações passam AA sob texto claro (pior caso ouro
+      natalino: bege 4.91 / título 5.66; melhor caso Quaresma: 12+);
+      `getHeaderTextColors()` virou incondicional-clara (sem ramificação
+      por estação), e `LIGHT_SEASONS`/`isLightSeason` restaram só pros
+      badges (fora do véu). Intencionalmente SEM camada: theme-color do
+      browser (hue da marca puro), legenda de cores do calendário (swatches)
+      e badges. Validado com lint/tsc/testes nos dois apps (45 web, 59 mobile)
+      Pendência relacionada: regenerar ícones sazonais no
+      `generate-logos.py` (ainda usa o sálvia antigo) ou consolidar paleta
 - [ ] **"Tradição e Devoção" como lema** — avaliar se deve aparecer em outros lugares além de onde já está (splash, about?). Decisão de produto, não de engenharia.
 - [ ] **Botão de compartilhar em excesso na página inicial** — revisar quantos botões de share existem. Proposta: 1 botão de copiar por card, posicionado no canto inferior direito. Remover shares duplicados.
 - [ ] **Busca e Favoritos dentro do calendário mobile** — mover para a tab bar de baixo junto de Hoje, Calendário e Config. Avaliar se as legendas de texto sob os ícones da tab bar são necessárias (ícones sozinhos podem ser suficientes).
@@ -1411,5 +1487,7 @@ Google" não é viável em iOS de qualquer forma.
 
 ### 🔵 Padrão cruzado — ver também
 
-- [ ] **`npm audit` no CI** — não está no `ci.yml`. Adicionar como step de segurança (mesmo padrão da Bancada).
-- [ ] **"Conheça também" / Biblioteca** — mesmo componente usado no Gerador C.S. Lewis. Corrigir em um, replicar no outro.
+- [x] **`npm audit` no CI** — feito (2026-08-21), ver detalhes na seção
+      P0 Segurança acima (script `scripts/audit-allowlist.mjs` + steps no
+      `ci.yml`)
+- [ ] **"Conheça também" / Biblioteca** — replicar o modelo aprovado do Gerador C.S. Lewis (2026-08-21): rótulo caps + links uniformes com ✦ dourado + © discreto, `flex-wrap` com itens atômicos. Referência: `ClusterFooter.tsx` em `GeradorCSLewis/src/components/`. Detalhes no item de UX acima.
