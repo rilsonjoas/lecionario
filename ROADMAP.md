@@ -1230,22 +1230,28 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       alerta (**Telegram + e-mail**) já configurado centralmente no
       Uptime Kuma do VPS (mesmo usado por bancada, biblia-na-arte e
       scriptorium)
-- [~] **Sentry no mobile (`@sentry/react-native`) — projeto CRIADO no
-      sentry.io pelo autor (2026-08-22); DSN plugado nas envs EAS
-      `EXPO_PUBLIC_SENTRY_DSN` nos ambientes `preview` E `production`
-      (mesmo dia)**. SDK instalado, `Sentry.init` em `App.tsx`, raiz com
-      `Sentry.wrap(App)`, plugin de source maps no EAS (org `rilson`,
-      projeto `lecionario-mobile`). **Falta**: o próximo `eas update`
-      (disparado por push em `src/**`) embute o DSN no bundle OTA;
-      validar o primeiro evento chegando em Issues
-- [~] **Sentry no web (`@sentry/nextjs`) — projeto `javascript-nextjs`
-      existe na org do autor (2026-08-22)**. SDK instalado, arquivos
-      `sentry.client.config.ts`, `sentry.server.config.ts` e
-      `sentry.edge.config.ts` criados, `next.config.mjs` embrulhado com
-      `withSentryConfig` (typecheck passou). **Falta**: definir
-      `NEXT_PUBLIC_SENTRY_DSN` no `docker-compose.yml` do VPS (e no
-      `.env` do deploy), reiniciar o container e validar que eventos
-      chegam em Issues
+- [~] **Sentry no mobile (`@sentry/react-native`) — INTEGRAÇÃO COMPLETA
+      (2026-08-22)**. Projeto criado pelo autor; DSN plugado nas envs EAS
+      `EXPO_PUBLIC_SENTRY_DSN` (`preview` e `production`); OTA
+      republicado com o DSN embutido (update `01a02798`, canal preview,
+      2026-08-22 03:51 — verificado direto no manifest do u.expo.dev);
+      eas.yml corrigido pra passar `--environment preview` (sem isso o job
+      remoto publicava sem enxergar as env vars — achado verificado com
+      export local: a env presente no momento do build aparece no .hbc
+      compilado). Source maps no EAS ok (token org usado no build de
+      21/08). **Único restante**: validar o primeiro evento chegando em
+      Issues — abrir o app no aparelho (OTA aplica sozinho na próxima
+      abertura) e conferir o dashboard após qualquer erro real
+- [~] **Sentry no web (`@sentry/nextjs`) — INTEGRAÇÃO COMPLETA
+      (2026-08-22)**. Projeto renomeado pelo autor pra `lecionario-web`;
+      DSN commitado no `docker-compose.yml` (args de build + environment
+      de runtime — DSN é credencial pública por design) e Dockerfile com
+      `ARG/ENV NEXT_PUBLIC_SENTRY_DSN` nos stages builder e runner;
+      deploy VPS já rodou com isso (2026-08-22 03:17, smoke test verde).
+      Source maps upload no build docker segue desligado (sem
+      SENTRY_AUTH_TOKEN no runner — refinamento futuro se precisar
+      simbolizar stack traces de produção). **Único restante**: validar
+      primeiro evento em Issues após uso real do site
 - DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
   com `enabled: !!dsn` deixa tudo rodando normal sem a chave (mesmo
   padrão usado no meus-remedios)
