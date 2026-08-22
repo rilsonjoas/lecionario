@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - **Botão HOJE fantasma caçado e morto (web)** — o Header é server component e não re-renderiza na navegação cliente: depois de clicar Hoje, o botão continuava na tela. Virou componente cliente reativo (`TodayButton`) lendo a URL via `useSearchParams` dentro de Suspense — some sozinho quando o dia exibido é hoje.
+- **Botão de tema mora na BARRA FIXA (home) — posição final** — mesma altura de Dia Anterior/Próximo Dia, separado por divisor fino; acompanha o scroll. Nas páginas institucionais (sem barra fixa), fica no canto absoluto do header, onde não há colisão.
 - **Botão de tema na ponta superior direita SEM colisão** — o header ganhou respiro no topo (pt-14/12): o canto é exclusivo do toggle, a data não corre mais por baixo dele.
 - **Botão de tema fixo na ponta superior direita (padrão Gerador C.S. Lewis)** — fora do fluxo (absolute), nenhum layout o desloca mais; pill redonda discreta sobre o véu. No xs acompanha o canto do aparelho.
 - **Header realinhado nos dois breakpoints** — linha 1 dedicada: marca à esquerda, tema à direita; badges Ano A / Tempo Comum dividem a MESMA linha que o botão HOJE, acabando a pilha de elementos soltos em telas grandes. No xs o botão de tema parou de flanar sozinho sob o logo.

@@ -17,6 +17,7 @@ import { CollectSection } from '@/components/devotional/CollectSection';
 import { LewisQuoteSection } from '@/components/devotional/LewisQuoteSection';
 import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 import { DatePicker } from '@/components/layout/DatePicker';
+import { ModeToggle } from '@/components/layout/ModeToggle';
 import { getSampleDevotional } from '@/data/sample-devotional';
 import { applySeasonTheme, applySeasonBranding } from '@/lib/theme';
 import type { DailyDevotional } from '@/types';
@@ -201,6 +202,13 @@ function HomeContent() {
                 <span className="hidden sm:inline">Próximo Dia</span>
                 <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
               </Button>
+
+              {/* Tema claro/escuro na barra FIXA (refino do autor
+                  2026-08-22): mesma altura dos controles de navegação */}
+              <>
+                <span className="h-4 w-px bg-accent/30" aria-hidden="true" />
+                <ModeToggle />
+              </>
             </div>
           </div>
         </div>

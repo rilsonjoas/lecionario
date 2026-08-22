@@ -24,7 +24,7 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
 
   return (
     <header
-      className="relative border-b border-accent/20 shadow-2xl overflow-hidden pb-6 md:pb-10 pt-16 md:pt-14"
+      className="relative border-b border-accent/20 shadow-2xl overflow-hidden pb-6 md:pb-10 pt-5 md:pt-8"
       style={{ backgroundColor: seasonBg }}
     >
       {/* Camada escura uniforme (2026-08-21): garante WCAG AA do texto
@@ -36,11 +36,14 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
       <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent pointer-events-none" />
       <div className="absolute -top-24 -left-24 w-96 h-96 bg-laranja-queimado/10 rounded-full blur-3xl animate-pulse" />
 
-      {/* Tema claro/escuro — ponta superior direita SEMPRE (padrão
-          Gerador C.S. Lewis), fora do fluxo: nenhum layout o desloca */}
-      <div className="absolute top-4 right-4 md:top-6 md:right-6 z-20">
-        <ModeToggle />
-      </div>
+      {/* Tema claro/escuro — canto absoluto só nas páginas MINIMAL
+          (sem barra fixa, sem conteúdo no canto). Na home o botão mora
+          na barra fixa de navegação (page.tsx). */}
+      {isMinimal && (
+        <div className="absolute top-4 right-4 z-20">
+          <ModeToggle />
+        </div>
+      )}
 
       <div className="container mx-auto px-3 md:px-4 relative z-10">
         {/* Desktop (2026-08-22, revertido a pedido do autor): volta ao
