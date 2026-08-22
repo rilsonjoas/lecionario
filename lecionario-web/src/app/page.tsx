@@ -183,8 +183,9 @@ function HomeContent() {
               <span className="hidden sm:inline">Dia Anterior</span>
             </Button>
 
-            {/* Coluna central limpa: só identidade e data (refino do
-                autor 2026-08-22: "Voltar para hoje" poluída o miolo) */}
+            {/* Coluna central limpa: identidade e data — "Hoje" mora no
+                HEADER verde, abaixo das badges Ano/Estação (posição final
+                definida pelo autor 2026-08-22) */}
             <div className="flex flex-col items-center gap-0.5">
               <DatePicker date={currentDate} onDateChange={handleDateChange} />
             </div>
@@ -200,23 +201,6 @@ function HomeContent() {
                 <span className="hidden sm:inline">Próximo Dia</span>
                 <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
               </Button>
-              {/* "Hoje" mora no cluster direito — o miolo fica só com a
-                  data (refino 2026-08-22); some quando já está em hoje */}
-              {!isToday && (
-                <>
-                  <span className="h-3 w-px bg-accent/30" aria-hidden="true" />
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    onClick={() => handleDateChange(new Date())}
-                    className="border border-accent/40 rounded-full text-accent hover:bg-dourado/10 hover:text-primary transition-colors gap-1 md:gap-1.5 text-[10px] md:text-xs uppercase tracking-[0.15em] font-bold px-2.5 md:px-3 h-8"
-                    aria-label="Voltar para hoje"
-                  >
-                    <CalendarCheck className="w-3.5 h-3.5" />
-                    Hoje
-                  </Button>
-                </>
-              )}
             </div>
           </div>
         </div>

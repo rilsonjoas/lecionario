@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { format, parseISO } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { Calendar } from 'lucide-react';
+import { Calendar, CalendarCheck } from 'lucide-react';
 import { seasonBrandColors } from '@/lib/theme';
 import { ModeToggle } from '@/components/layout/ModeToggle';
 import type { LiturgicalDayInfo, LiturgicalSeason } from '@/types';
@@ -77,7 +77,7 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
             {/* Tema claro/escuro (paridade com o mobile e com o Gerador
                 C.S. Lewis): Sol/Lua, respeita o SO por padrão — fica nas
                 duas variantes */}
-            <div className={variant === 'minimal' ? '' : 'flex md:justify-end'}>
+            <div className="flex justify-end">
               <ModeToggle />
             </div>
             {variant === 'minimal' ? null : (
@@ -127,6 +127,20 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
                       </span>
                     </div>
                   </div>
+
+                  {/* Botão HOJE (posição final definida pelo autor
+                      2026-08-22): abaixo das badges Ano/Estação; some
+                      quando o dia exibido JÁ é hoje */}
+                  {liturgicalDay.date !== format(new Date(), 'yyyy-MM-dd') && (
+                    <Link
+                      href="/"
+                      className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full border border-dourado/40 px-3 py-1 text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold text-dourado-texto transition-colors hover:bg-dourado/15 hover:text-white"
+                      aria-label="Voltar para hoje"
+                    >
+                      <CalendarCheck className="w-3 h-3" />
+                      Hoje
+                    </Link>
+                  )}
                 </div>
               </>
             )}
