@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Crown } from 'lucide-react';
+import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 
 interface CollectSectionProps {
   collect: string;
@@ -19,8 +20,9 @@ export function CollectSection({ collect }: CollectSectionProps) {
                 <CardTitle className="text-xl md:text-2xl font-display text-secondary italic">
                   Oração de Coleta
                 </CardTitle>
-                <CardDescription className="text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground">
+                <CardDescription className="flex items-center gap-1.5 text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground">
                   Oração Tradicional da Liturgia
+                  <GlossaryTerm term="coleta" />
                 </CardDescription>
               </div>
             </div>

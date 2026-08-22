@@ -15,6 +15,7 @@ import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
 import { LewisQuoteSection } from '@/components/devotional/LewisQuoteSection';
+import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 import { DatePicker } from '@/components/layout/DatePicker';
 import { getSampleDevotional } from '@/data/sample-devotional';
 import { applySeasonTheme, applySeasonBranding } from '@/lib/theme';
@@ -302,9 +303,12 @@ function HomeContent() {
             {/* Daily Readings */}
             <section className="space-y-8 md:space-y-12 md:max-w-4xl mx-auto w-full">
               <div className="text-center space-y-3 md:space-y-4">
-                <h3 className="text-2xl md:text-3xl font-display text-secondary italic">
-                  Lectio Divina
-                </h3>
+                <div className="flex items-center justify-center gap-2">
+                  <h3 className="text-2xl md:text-3xl font-display text-secondary italic">
+                    Lectio Divina
+                  </h3>
+                  <GlossaryTerm term="lectio" />
+                </div>
                 <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] md:tracking-[0.3em] font-bold text-muted-foreground">
                   Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length}{' '}
                   Estações da Palavra

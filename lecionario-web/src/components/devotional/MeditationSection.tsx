@@ -1,5 +1,6 @@
 import { Badge } from '@/components/ui/badge';
 import { Lightbulb, Clock, HelpCircle } from 'lucide-react';
+import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 import type { MeditationResource } from '@/types';
 
 interface MeditationSectionProps {
@@ -56,7 +57,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
           {meditation.questions && meditation.questions.length > 0 && (
             <div className="space-y-6">
               <div className="flex items-center gap-3">
-                <HelpCircle className="w-4 h-4 text-accent/40" />
+                <GlossaryTerm term="perguntas" />
                 <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
                   Perguntas para Refletir
                 </h4>

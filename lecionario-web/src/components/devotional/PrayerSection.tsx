@@ -1,4 +1,5 @@
 import { Flame, Copy, Check } from 'lucide-react';
+import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 import { useState } from 'react';
 import type { DailyPrayer } from '@/types';
 
@@ -34,9 +35,12 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             <div className="w-12 h-px bg-gradient-to-l from-transparent to-dourado/40" />
           </div>
           <div className="text-center space-y-2">
-            <h2 className="text-2xl md:text-4xl font-display text-bege-areia tracking-tight">
-              Oração do Dia
-            </h2>
+            <div className="flex items-center justify-center gap-2">
+              <h2 className="text-2xl md:text-4xl font-display text-bege-areia tracking-tight">
+                Oração do Dia
+              </h2>
+              <GlossaryTerm term="oracaoDia" />
+            </div>
             <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-dourado-texto">
               {prayer.title}
             </p>

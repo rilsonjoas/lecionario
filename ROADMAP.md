@@ -1852,8 +1852,12 @@ Google" não é viável em iOS de qualquer forma.
       `glossary.ts` + `GlossaryTerm.tsx` (mobile). Subtítulos
       explicativos já existentes mantidos. Web: renomeado; glossário
       ⓘ pendente de paridade.
-- [ ] Fase 2: web ganhar o glossário ⓘ + validar rótulos com usuários
-      reais de tradições diferentes
+- [x] Web ganhou o glossário ⓘ (2026-08-22, mesma leva): Dialog shadcn
+      com os mesmos termos (`lib/glossary.ts` duplicado de propósito,
+      como todo contrato entre os apps). Nos fundos escuros (Oração do
+      Dia) o ⓘ clareia (bege-areia→dourado no hover).
+- [ ] Validar rótulos ("Perguntas para refletir") com usuários reais de
+      tradições diferentes — precisa de gente, não de código
 
 ---
 
@@ -1875,6 +1879,25 @@ Google" não é viável em iOS de qualquer forma.
 2. Instagram devocional cruzando com @artecristadiaria e @narnianoexistencialista (manuais prontos no vault) — mesma audiência de profundidade
 3. SEO cauda longa já em curso via sitemap/GSC: "lecionário hoje", "leituras do dia", "devocional advento"
 4. Rodapé "A Biblioteca" cruza tráfego entre os 4 sites — adicionar UTMs pra medir o que cada vizinho manda
+
+### Dark mode no web (PRÓXIMA SESSÃO — aprovado pelo autor 2026-08-22)
+
+- [ ] **Tema claro/escuro completo no web** — vale o investimento (app de
+      oração tem uso noturno real; paridade com o mobile). **Referência
+      de design e comportamento: o MOBILE** (paletas claras/escuras por
+      estação, padrão sistema+manual). **Referência técnica: o botão do
+      Gerador C.S. Lewis** (`ModeToggle` com next-themes,
+      attribute="class", defaultTheme="system", enableSystem, Sol/Lua
+      com crossfade e guarda anti-hidratação).
+      Plano em 3 fases:
+      1. Infra: next-themes + bloco `.dark` completo em globals.css +
+         ModeToggle adaptado à paleta Lecionário no Header
+      2. Auditoria token a token: cada cor hardcoded (`bg-bege-areia`,
+         `text-vinho`, `bg-creme`, texturas de papel...) ganha variante
+         dark elegante — dourado-noturno mais suave, cards clássicos
+         legíveis, nada de "invertido feio"
+      3. Revisão visual das 7 estações × 2 temas
+      Custo estimado: uma sessão focada + revisão visual.
 
 ### Pós-publicação na Play Store
 
