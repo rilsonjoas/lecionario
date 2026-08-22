@@ -183,33 +183,41 @@ function HomeContent() {
               <span className="hidden sm:inline">Dia Anterior</span>
             </Button>
 
+            {/* Coluna central limpa: só identidade e data (refino do
+                autor 2026-08-22: "Voltar para hoje" poluída o miolo) */}
             <div className="flex flex-col items-center gap-0.5">
               <DatePicker date={currentDate} onDateChange={handleDateChange} />
-              {/* Ação de navegação vive junto da data — link discreto,
-                  sem borda (decisão UX 2026-08-21); some quando já está
-                  em hoje */}
-              {!isToday && (
-                <button
-                  onClick={() => handleDateChange(new Date())}
-                  className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.25em] font-bold text-accent hover:text-primary transition-colors cursor-pointer"
-                  aria-label="Voltar para hoje"
-                >
-                  <CalendarCheck className="w-3 h-3" />
-                  Voltar para hoje
-                </button>
-              )}
             </div>
 
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => handleDateChange(addDays(currentDate, 1))}
-              className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
-              aria-label="Próximo dia"
-            >
-              <span className="hidden sm:inline">Próximo Dia</span>
-              <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
-            </Button>
+            <div className="flex items-center gap-2 md:gap-3">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => handleDateChange(addDays(currentDate, 1))}
+                className="text-secondary hover:text-primary transition-colors gap-1 md:gap-2 text-xs md:text-sm px-2 md:px-4"
+                aria-label="Próximo dia"
+              >
+                <span className="hidden sm:inline">Próximo Dia</span>
+                <ChevronRight className="w-3 h-3 md:w-4 md:h-4" />
+              </Button>
+              {/* "Hoje" mora no cluster direito — o miolo fica só com a
+                  data (refino 2026-08-22); some quando já está em hoje */}
+              {!isToday && (
+                <>
+                  <span className="h-3 w-px bg-accent/30" aria-hidden="true" />
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => handleDateChange(new Date())}
+                    className="text-accent hover:text-primary transition-colors gap-1 text-[10px] md:text-xs uppercase tracking-[0.15em] font-bold px-2"
+                    aria-label="Voltar para hoje"
+                  >
+                    <CalendarCheck className="w-3.5 h-3.5" />
+                    <span className="hidden xs:inline sm:inline">Hoje</span>
+                  </Button>
+                </>
+              )}
+            </div>
           </div>
         </div>
 

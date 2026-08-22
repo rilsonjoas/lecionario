@@ -19,7 +19,9 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
     if (prayer.author || prayer.source) {
       lines.push('', `— ${[prayer.author, prayer.source].filter(Boolean).join(' • ')}`);
     }
-    await Clipboard.setStringAsync(lines.join('\n'));
+    await Clipboard.setStringAsync(
+      lines.join('\n') + '\n\n\u2014 Lecion\u00e1rio \u00b7 lecionario.narniano.com',
+    );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

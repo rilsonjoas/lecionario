@@ -18,7 +18,9 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
         `— ${prayer.author ?? ''}${prayer.author && prayer.source ? ' • ' : ''}${prayer.source ?? ''}`,
       );
     }
-    await navigator.clipboard.writeText(parts.join('\n\n'));
+    await navigator.clipboard.writeText(
+      parts.join('\n\n') + '\n\n— Lecionário \u00b7 lecionario.narniano.com',
+    );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

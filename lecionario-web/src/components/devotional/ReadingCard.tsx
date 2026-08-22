@@ -52,7 +52,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    const text = `${reading.reference}\n${reading.citation}\n\n${reading.text ?? ''}`;
+    const text = `${reading.reference}\n${reading.citation}\n\n${reading.text ?? ''}\n\n— Lecionário · lecionario.narniano.com`;
     await navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

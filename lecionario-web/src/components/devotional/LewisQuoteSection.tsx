@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+import { Check, Copy } from 'lucide-react';
 import { buildAmazonUrl, getDailyQuote } from '@/lib/lewis-quotes';
 
 // Citação diária de C.S. Lewis com link de afiliado pra obra-fonte na
@@ -7,6 +9,15 @@ import { buildAmazonUrl, getDailyQuote } from '@/lib/lewis-quotes';
 export function LewisQuoteSection({ date }: { date?: Date }) {
   const quote = getDailyQuote(date ?? new Date());
   const amazonUrl = buildAmazonUrl(quote.source);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(
+      `\u201C${quote.quote}\u201D\n\n— ${quote.source}, C. S. Lewis\n\n— Lecionário · lecionario.narniano.com`,
+    );
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <section className="border-t border-accent/10 py-16 text-center animate-fade-in">
@@ -31,6 +42,19 @@ export function LewisQuoteSection({ date }: { date?: Date }) {
       >
         — {quote.source}
       </a>
+
+      {/* Cópia no padrão dos cards: canto inferior direito, só ícone */}
+      <div className="flex justify-end max-w-4xl mx-auto px-4">
+        <button
+          type="button"
+          onClick={handleCopy}
+          className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+          aria-label={copied ? 'Copiado' : 'Copiar citação'}
+          title={copied ? 'Copiado!' : 'Copiar citação'}
+        >
+          {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+        </button>
+      </div>
     </section>
   );
 }

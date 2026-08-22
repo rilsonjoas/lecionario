@@ -1882,21 +1882,17 @@ Google" não é viável em iOS de qualquer forma.
 
 ### Política de cópias e assinatura (APÓS o modo escuro — 2026-08-22)
 
-- [ ] **Expandir botões de copiar com critério** — hoje há cópia em
-      leituras, oração, meditação, coleta (mobile) e leituras+oração
-      (web). Justificativa atual: copia-se conteúdo LONGO que o usuário
-      leva pra estudo/compartilhamento; badges, citação Lewis e arte
-      ficaram de fora. **Expansão proposta**: adicionar cópia na Citação
-      do dia (é texto curto mas muito compartilhável) — e NÃO adicionar
-      em arte/badges/navegação. Critério permanente: "o usuário vai
-      colar isso em algum lugar?". Sem exagero: um botão por card,
-      sempre no mesmo lugar.
-- [ ] **Assinatura padrão em TODAS as cópias** — toda cópia termina com
-      assinatura discreta e profissional:
-      `\n— Lecionário · lecionario.narniano.com`
-      (o share do dia mobile já tem "— Lecionário App"; padronizar os
-      dois apps nessa linha única). Verificar LGPD/nada de dados além do
-      texto em si.
+- [x] **Expandir botões de copiar com critério — FEITO (2026-08-22)**:
+      Citação do dia ganhou cópia nos DOIS apps (era o texto mais
+      compartilhável sem botão). Arte/badges/navegação continuam sem —
+      critério permanente: "o usuário vai colar isso em algum lugar?".
+      Meditação/Coleta no mobile seguem sem botão por decisão anterior;
+      reabrir só com pedido real de usuários.
+- [x] **Assinatura padrão em TODAS as cópias — FEITO (2026-08-22)**:
+      toda cópia (web e mobile) termina com
+      "— Lecionário · lecionario.narniano.com"; o share do dia migrou do
+      antigo "— Lecionário App" pra essa linha. Nenhum dado extra além
+      do texto.
 
 ### Dark mode no web (PRÓXIMA SESSÃO — aprovado pelo autor 2026-08-22)
 

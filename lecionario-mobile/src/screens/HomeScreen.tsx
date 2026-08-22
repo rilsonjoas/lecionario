@@ -194,7 +194,7 @@ export default function HomeScreen() {
       lines.push('', 'Coleta:', devotional.collect);
     }
     lines.push('', `🕯 ${devotional.prayer.title}`, devotional.prayer.text);
-    lines.push('', '— Lecionário App');
+    lines.push('', '— Lecionário · lecionario.narniano.com');
     await Share.share({ message: lines.join('\n') });
   };
 

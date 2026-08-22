@@ -39,7 +39,9 @@ export function ReadingCard({ reading, index, season }: ReadingCardProps) {
     const lines = [`${config.label} — ${reading.reference}`];
     if (reading.text) lines.push('', reading.text);
     lines.push('', '— Lecionário');
-    await Clipboard.setStringAsync(lines.join('\n'));
+    await Clipboard.setStringAsync(
+      lines.join('\n') + '\n\n\u2014 Lecion\u00e1rio \u00b7 lecionario.narniano.com',
+    );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
