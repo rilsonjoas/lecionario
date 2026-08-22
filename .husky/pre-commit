@@ -1,1 +1,2 @@
 cd lecionario-web && npx lint-staged
+cd ../lecionario-mobile && npx lint-staged
