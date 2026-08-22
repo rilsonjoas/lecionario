@@ -387,6 +387,63 @@ export default function ConfigScreen() {
       {/* Sobre */}
       <View style={styles.section}>
         <Text style={[styles.sectionTitle, { color: colors.textMuted }]}>Sobre</Text>
+
+        {/* Ordem final definida pelo autor (2026-08-22): versão → contato
+            → privacidade → ciclo → doação */}
+        <View style={[styles.row, { borderBottomColor: colors.border }]}>
+          <MaterialCommunityIcons name="book-open-variant" size={22} color={colors.accent} />
+          <View style={styles.rowContent}>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Lecionário
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              Versão 1.0.0
+            </Text>
+          </View>
+        </View>
+        <TouchableOpacity
+          style={[styles.row, { borderBottomColor: colors.border }]}
+          onPress={() => Linking.openURL('mailto:lecionario@narniano.com')}
+          accessibilityLabel="Enviar e-mail para lecionario@narniano.com"
+          accessibilityRole="button"
+        >
+          <MaterialCommunityIcons name="email-outline" size={22} color={colors.accent} />
+          <View style={styles.rowContent}>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Contato
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              lecionario@narniano.com
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.row, { borderBottomColor: colors.border }]}
+          onPress={() => Linking.openURL('https://lecionario.narniano.com/privacidade')}
+          accessibilityLabel="Abrir Política de Privacidade no site"
+          accessibilityRole="button"
+        >
+          <MaterialCommunityIcons name="shield-lock-outline" size={22} color={colors.accent} />
+          <View style={styles.rowContent}>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Privacidade
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              Política de privacidade e LGPD
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <View style={[styles.row, { borderBottomColor: colors.border }]}>
+          <MaterialCommunityIcons name="calendar-text" size={22} color="#4A8B4A" />
+          <View style={styles.rowContent}>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Ciclo Litúrgico
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              Anos A, B, C — Lecionário Comum Revisado
+            </Text>
+          </View>
+        </View>
         {/* Doação fase 1 (ROADMAP L): abre o modal temático; a cópia em
             si acontece lá dentro */}
         <TouchableOpacity
@@ -408,65 +465,6 @@ export default function ConfigScreen() {
             </Text>
           </View>
           <MaterialCommunityIcons name="content-copy" size={18} color={colors.textMuted} />
-        </TouchableOpacity>
-        <View style={[styles.row, { borderBottomColor: colors.border }]}>
-          <MaterialCommunityIcons name="book-open-variant" size={22} color={colors.accent} />
-          <View style={styles.rowContent}>
-            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
-              Lecionário
-            </Text>
-            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
-              Versão 1.0.0
-            </Text>
-          </View>
-        </View>
-        <View style={[styles.row, { borderBottomColor: colors.border }]}>
-          <MaterialCommunityIcons name="calendar-text" size={22} color="#4A8B4A" />
-          <View style={styles.rowContent}>
-            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
-              Ciclo Litúrgico
-            </Text>
-            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
-              Anos A, B, C — Lecionário Comum Revisado
-            </Text>
-          </View>
-        </View>
-        {/* "Dados litúrgicos calculados localmente" removida (apontamento
-            do autor, 2026-08-22): detalhe de implementação não agrega pro
-            usuário final */}
-        {/* Contato oficial (P8, 2026-08-22): todo lugar que fala de
-            contato aponta pra lecionario@narniano.com */}
-        <TouchableOpacity
-          style={[styles.row, { borderBottomColor: colors.border }]}
-          onPress={() => Linking.openURL('https://lecionario.narniano.com/privacidade')}
-          accessibilityLabel="Abrir Política de Privacidade no site"
-          accessibilityRole="button"
-        >
-          <MaterialCommunityIcons name="shield-lock-outline" size={22} color={colors.accent} />
-          <View style={styles.rowContent}>
-            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
-              Privacidade
-            </Text>
-            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
-              Política de privacidade e LGPD
-            </Text>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.row, { borderBottomColor: colors.border }]}
-          onPress={() => Linking.openURL('mailto:lecionario@narniano.com')}
-          accessibilityLabel="Enviar e-mail para lecionario@narniano.com"
-          accessibilityRole="button"
-        >
-          <MaterialCommunityIcons name="email-outline" size={22} color={colors.accent} />
-          <View style={styles.rowContent}>
-            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
-              Contato
-            </Text>
-            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
-              lecionario@narniano.com
-            </Text>
-          </View>
         </TouchableOpacity>
       </View>
 
