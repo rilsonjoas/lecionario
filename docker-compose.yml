@@ -3,7 +3,14 @@ services:
     build:
       context: ./lecionario-web
       dockerfile: Dockerfile
+      # DSN do Sentry é credencial pública por design (vai no bundle do
+      # cliente) — pode viver commitado, padrão recomendado pela própria
+      # Sentry. Server lê em runtime via environment abaixo (P8/P5).
+      args:
+        NEXT_PUBLIC_SENTRY_DSN: https://ba06f8cda014825c950a228f02206a8a@o4508237330317312.ingest.us.sentry.io/4508237334904832
     container_name: lecionario-web
     ports:
       - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_SENTRY_DSN=https://ba06f8cda014825c950a228f02206a8a@o4508237330317312.ingest.us.sentry.io/4508237334904832
     restart: unless-stopped
