@@ -34,6 +34,7 @@ import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { QuoteCard } from '@/components/QuoteCard';
 import { ArtCard } from '@/components/ArtCard';
+import { GlossaryTerm } from '@/components/GlossaryTerm';
 import type { DailyDevotional, RootTabParamList } from '@/types';
 
 type HojeRouteProp = RouteProp<RootTabParamList, 'Hoje'>;
@@ -466,14 +467,17 @@ export default function HomeScreen() {
 
               <View style={styles.section}>
                 <View style={styles.sectionHeader}>
-                  <Text
-                    style={[
-                      styles.sectionHeaderTitle,
-                      { color: onBrand.text, fontSize: scale(22) },
-                    ]}
-                  >
-                    Lectio Divina
-                  </Text>
+                  <View style={styles.lectioTitleRow}>
+                    <Text
+                      style={[
+                        styles.sectionHeaderTitle,
+                        { color: onBrand.text, fontSize: scale(22) },
+                      ]}
+                    >
+                      Lectio Divina
+                    </Text>
+                    <GlossaryTerm term="lectio" size={15} />
+                  </View>
                   <Text
                     style={[styles.sectionHeaderSub, { color: onBrand.muted, fontSize: scale(8) }]}
                   >
@@ -714,6 +718,12 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 24,
+  },
+  lectioTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
   },
   sectionHeader: {
     alignItems: 'center',

@@ -58,7 +58,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
               <div className="flex items-center gap-3">
                 <HelpCircle className="w-4 h-4 text-accent/40" />
                 <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
-                  Questões para Silenciar
+                  Perguntas para Refletir
                 </h4>
               </div>
 

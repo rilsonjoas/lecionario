@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Glossário litúrgico inline + terminologia revisada** — plano aprovado pelo autor pra reduzir atrito sem apagar identidade: "Questões para Silenciar" → **"Perguntas para Refletir"** nos dois apps; termos técnicos (Oração de Coleta, Lectio Divina, Oração do Dia) ganharam ⓘ tocável no mobile com definição curta e calorosa em modal temático (`glossary.ts`). Diagnóstico completo termo a termo no ROADMAP. Web pendente de paridade do glossário.
 - **Lembrete diário com qualquer horário (mobile)** — a grade de horários do lembrete cobria só 6h–9h; agora oferece as 24 horas em chips compactos. Gerado em JS puro de propósito: o seletor nativo de hora exigiria APK novo, aqui basta OTA.
 - **Busca transparente sobre o limite de resultados (mobile)** — a busca sempre "começava com 50 resultados" sem explicação: substring curta casa com quase todos os ~2.190 dias do acervo (2025–2030) e o teto de performance cortava calado. Agora mostra "{total} resultados — mostrando os 50 mais recentes" quando o teto é atingido.
 - **Modal de doação temático (mobile)** — o botão "Apoie o projeto" abria um Alert nativo do sistema que destoava do visual; agora abre um card na linguagem do app (surface do tema, borda, Lora, radius 16) com explicação da causa, prévia do código Pix, botão "Copiar código Pix" e confirmação com instruções de uso no banco.

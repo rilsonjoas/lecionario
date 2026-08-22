@@ -4,6 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as Clipboard from 'expo-clipboard';
 import type { DailyPrayer } from '@/types';
 import { useFontScale } from '@/contexts/FontContext';
+import { GlossaryTerm } from '@/components/GlossaryTerm';
 
 interface PrayerSectionProps {
   prayer: DailyPrayer;
@@ -35,7 +36,10 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
           </View>
           <View style={styles.line} />
         </View>
-        <Text style={[styles.title, { fontSize: scale(26) }]}>Oração do Dia</Text>
+        <View style={styles.titleRow}>
+          <Text style={[styles.title, { fontSize: scale(26) }]}>Oração do Dia</Text>
+          <GlossaryTerm term="oracaoDia" size={16} />
+        </View>
         <Text style={[styles.subtitle, { fontSize: scale(9) }]}>{prayer.title}</Text>
       </View>
 
@@ -128,6 +132,12 @@ const styles = StyleSheet.create({
     color: '#F5F5F0',
     fontFamily: 'Lora_400Regular',
     textAlign: 'center',
+  },
+  titleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
   },
   subtitle: {
     color: '#EDDFB8',

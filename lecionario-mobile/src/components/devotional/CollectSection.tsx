@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
+import { GlossaryTerm } from '@/components/GlossaryTerm';
 
 interface CollectSectionProps {
   collect: string;
@@ -21,9 +22,12 @@ export function CollectSection({ collect }: CollectSectionProps) {
           <Text style={[styles.title, { color: colors.text, fontSize: scale(18) }]}>
             Oração de Coleta
           </Text>
-          <Text style={[styles.subtitle, { color: colors.textMuted, fontSize: scale(8) }]}>
-            Oração Tradicional da Liturgia
-          </Text>
+          <View style={styles.subtitleRow}>
+            <Text style={[styles.subtitle, { color: colors.textMuted, fontSize: scale(8) }]}>
+              Oração Tradicional da Liturgia
+            </Text>
+            <GlossaryTerm term="coleta" size={12} />
+          </View>
         </View>
       </View>
 
@@ -84,6 +88,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'Lora_400Regular_Italic',
+  },
+  subtitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
   },
   subtitle: {
     textTransform: 'uppercase',

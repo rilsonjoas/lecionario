@@ -1841,8 +1841,16 @@ Google" não é viável em iOS de qualquer forma.
 5. **Seção "Como usar"** (Sobre ou onboarding 1x explicando a estrutura
    do dia devocional: leituras → coleta → oração → meditação).
 
-- [ ] Fase 1: subtítulos + glossário inline (após aprovação do autor)
-- [ ] Fase 2: teste dos rótulos alternativos com usuários reais
+- [x] Fase 1 — FEITA (2026-08-22, aprovação do autor no mesmo dia):
+      "Questões para Silenciar" → **"Perguntas para Refletir"** (decisão
+      do autor entre as alternativas) nos dois apps; glossário inline
+      ⓘ com modal temático (reusa padrão visual do modal de doação)
+      cobrindo Coleta, Lectio Divina, Oração do Dia e Perguntas — em
+      `glossary.ts` + `GlossaryTerm.tsx` (mobile). Subtítulos
+      explicativos já existentes mantidos. Web: renomeado; glossário
+      ⓘ pendente de paridade.
+- [ ] Fase 2: web ganhar o glossário ⓘ + validar rótulos com usuários
+      reais de tradições diferentes
 
 ---
 

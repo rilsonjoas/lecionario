@@ -3,6 +3,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import type { MeditationResource } from '@/types';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
+import { GlossaryTerm } from '@/components/GlossaryTerm';
 
 interface MeditationSectionProps {
   meditation: MeditationResource;
@@ -54,11 +55,11 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
         {meditation.questions && meditation.questions.length > 0 && (
           <View style={[styles.questionsSection, { borderTopColor: `${colors.accent}1A` }]}>
             <View style={styles.questionsHeader}>
-              <MaterialCommunityIcons name="help-circle-outline" size={14} color={colors.accent} />
+              <GlossaryTerm term="perguntas" size={14} />
               <Text
                 style={[styles.questionsTitle, { color: colors.textMuted, fontSize: scale(9) }]}
               >
-                Questões para Silenciar
+                Perguntas para Refletir
               </Text>
             </View>
 
