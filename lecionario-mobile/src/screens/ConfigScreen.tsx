@@ -39,12 +39,14 @@ const FONT_OPTIONS: { value: FontSizePreference; label: string; preview: number 
   { value: 'large', label: 'Grande', preview: 18 },
 ];
 
-const TIME_OPTIONS = [
-  { value: '06:00', label: '6h' },
-  { value: '07:00', label: '7h' },
-  { value: '08:00', label: '8h' },
-  { value: '09:00', label: '9h' },
-];
+// Grade completa de horas (apontamento do autor, 2026-08-22: usuário
+// deve poder escolher QUALQUER horário do lembrete). Gerado em JS puro
+// de propósito — o seletor nativo (@react-native-community/datetimepicker)
+// é módulo nativo e exigiria APK novo; aqui basta OTA.
+const TIME_OPTIONS = Array.from({ length: 24 }, (_, h) => ({
+  value: `${String(h).padStart(2, '0')}:00`,
+  label: `${h}h`,
+}));
 
 // Favicons reais dos projetos da biblioteca (apontamento do autor,
 // 2026-08-22: círculos chamam mais atenção que ícone genérico)
@@ -167,8 +169,8 @@ export default function ConfigScreen() {
             </Text>
             <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
               {notificationsEnabled
-                ? `Ativado — às ${notificationTime.replace(':h', '')}`
-                : 'Receba a leitura do dia toda manhã'}
+                ? `Ativado — às ${notificationTime}`
+                : 'Receba a leitura do dia no horário que você escolher'}
             </Text>
           </View>
           <View
@@ -657,10 +659,12 @@ const styles = StyleSheet.create({
   },
   timeRow: {
     flexDirection: 'row',
-    gap: 8,
+    flexWrap: 'wrap',
+    gap: 6,
   },
   timeButton: {
-    flex: 1,
+    flexGrow: 1,
+    flexBasis: '18%',
     paddingVertical: 8,
     borderRadius: 8,
     borderWidth: 1,

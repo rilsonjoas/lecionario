@@ -64,9 +64,19 @@ export interface SearchResult {
   matchedOn: string;
 }
 
-export function searchDevotionals(query: string): SearchResult[] {
+export interface SearchResponse {
+  results: SearchResult[];
+  total: number;
+}
+
+// Guarda de performance pra lista renderizável; a UI mostra o total
+// real quando o teto é atingido (apontamento do autor, 2026-08-22:
+// "começa com 50" sem explicação confundia)
+export const SEARCH_MAX_RESULTS = 50;
+
+export function searchDevotionals(query: string): SearchResponse {
   const q = query.toLowerCase().trim();
-  if (q.length < 2) return [];
+  if (q.length < 2) return { results: [], total: 0 };
 
   const results: SearchResult[] = [];
   const seen = new Set<string>();
@@ -108,5 +118,6 @@ export function searchDevotionals(query: string): SearchResult[] {
     }
   }
 
-  return results.sort((a, b) => b.date.localeCompare(a.date)).slice(0, 50);
+  const sorted = results.sort((a, b) => b.date.localeCompare(a.date));
+  return { results: sorted.slice(0, SEARCH_MAX_RESULTS), total: sorted.length };
 }

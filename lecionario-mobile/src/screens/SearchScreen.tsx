@@ -20,7 +20,10 @@ export default function SearchScreen() {
   const { scale } = useFontScale();
   const [query, setQuery] = useState('');
 
-  const results = useMemo(() => (query.length >= 2 ? searchDevotionals(query) : []), [query]);
+  const { results, total } = useMemo(
+    () => (query.length >= 2 ? searchDevotionals(query) : { results: [], total: 0 }),
+    [query],
+  );
 
   return (
     <View
@@ -63,7 +66,8 @@ export default function SearchScreen() {
       <View style={styles.results}>
         {query.length >= 2 && (
           <Text style={[styles.count, { color: colors.textMuted, fontSize: scale(11) }]}>
-            {results.length} resultado{results.length !== 1 ? 's' : ''}
+            {total} resultado{total !== 1 ? 's' : ''}
+            {total > results.length ? ` — mostrando os ${results.length} mais recentes` : ''}
           </Text>
         )}
         {results.map((r) => (
