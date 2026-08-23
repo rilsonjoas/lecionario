@@ -1340,9 +1340,10 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
 - DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
   com `enabled: !!dsn` deixa tudo rodando normal sem a chave (mesmo
   padrão usado no meus-remedios)
-- [ ] Rotação de log não se aplica do mesmo jeito aqui (Next.js/Vercel-
-      style, não processo de longa duração com log em disco) — conferir
-      se o log do container no VPS tem algum limite de tamanho mesmo assim
+- [ ] Conferir se o log do container Docker no VPS tem rotação/limite de
+      tamanho configurado — já rodou pra dentro de problema real em outro
+      projeto (log crescendo sem limite), então não presumir que "é só
+      Next.js" resolve isso sozinho
 
 ### P6 — Backups & Recuperação
 
@@ -1529,8 +1530,9 @@ muito mais restrito por natureza**.
 ### O que muda no plano, então
 
 - **Publicação web**: já é PWA funcional, sem fricção de loja — a
-  distribuição real já está no ar (`lecionario.narniano.com` +
-  Vercel), sem depender de review de app store pra alcançar gente
+  distribuição real já está no ar (`lecionario.narniano.com`,
+  self-hosted no VPS), sem depender de review de app store pra alcançar
+  gente
 - **Publicação mobile**: `DEPLOY.md` já documenta o comando
   (`eas submit --platform android`), mas **não há confirmação de que já
   foi rodado de verdade** — conferir antes de assumir que está

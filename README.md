@@ -115,6 +115,6 @@ Nenhuma variável de ambiente necessária. Todos os dados são locais (bundlados
 ## Documentação
 
 - [ROADMAP.md](ROADMAP.md) — plano de maturidade até v2.0
-- [DEPLOY.md](DEPLOY.md) — deploy web (Vercel/Docker) e mobile (EAS/stores)
+- [DEPLOY.md](DEPLOY.md) — deploy web (Docker) e mobile (EAS/stores)
 - [CONTRIBUTING.md](CONTRIBUTING.md) — convenções de commit e PR
 - [CHANGELOG.md](CHANGELOG.md) — histórico de versões (Keep a Changelog)

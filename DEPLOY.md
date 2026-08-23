@@ -21,16 +21,6 @@ npm run docker:run
 docker compose up -d
 ```
 
-### Vercel
-```bash
-# Instalar CLI
-npm i -g vercel
-
-# Deploy
-cd lecionario-web
-vercel --prod
-```
-
 ### Self-hosted
 ```bash
 cd lecionario-web
