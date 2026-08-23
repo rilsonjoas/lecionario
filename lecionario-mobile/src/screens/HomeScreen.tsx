@@ -521,7 +521,7 @@ export default function HomeScreen() {
                 </View>
                 <QuoteCard date={currentDate} />
                 {!isOffline && devotional.readings.length > 0 && (
-                  <ArtCard reference={devotional.readings[0].reference} />
+                  <ArtCard references={devotional.readings.map((r) => r.reference)} />
                 )}
               </View>
             </>

@@ -1,5 +1,9 @@
 import { parseReference } from './reference-parser';
 
+// Espelha lecionario-mobile/src/lib/artwork-fetcher.ts (mesma API, mesma
+// lógica de tentativa por versículo com fallback por capítulo) — este
+// projeto não usa pacote compartilhado entre mobile e web, então a
+// duplicação é intencional, ver rcl-fetcher.ts como precedente.
 const API_BASE = 'https://api-biblianaarte.narniano.com/api/v1';
 
 export interface ArtworkReference {
@@ -80,8 +84,8 @@ export async function fetchArtworkForReference(
 
 /** Tenta cada referência do dia em ordem até achar uma pintura — a leitura
  *  do Evangelho costuma ter mais obras catalogadas que a do Antigo
- *  Testamento, então usar só a primeira leitura (como antes) deixava
- *  passar match bom nas outras. */
+ *  Testamento, então usar só a primeira leitura deixaria passar match bom
+ *  nas outras. */
 export async function fetchArtworkForReferences(
   refs: string[],
   signal?: AbortSignal,

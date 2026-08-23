@@ -15,6 +15,7 @@ import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
 import { LewisQuoteSection } from '@/components/devotional/LewisQuoteSection';
+import { ArtSection } from '@/components/devotional/ArtSection';
 import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 import { DatePicker } from '@/components/layout/DatePicker';
 import { ModeToggle } from '@/components/layout/ModeToggle';
@@ -356,6 +357,11 @@ function HomeContent() {
 
             {/* Citação diária de C.S. Lewis (paridade com o mobile) */}
             <LewisQuoteSection date={currentDate} />
+
+            {/* Pintura do dia — Bíblia na Arte (paridade com o mobile, 2026-08-23) */}
+            <ErrorBoundary name="Pintura do Dia">
+              <ArtSection references={devotional.readings.map((r) => r.reference)} />
+            </ErrorBoundary>
           </div>
         </main>
 

@@ -91,9 +91,13 @@ const nextConfig = {
               "default-src 'self'",
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://browser.sentry-cdn.com",
               "style-src 'self' 'unsafe-inline'",
-              "img-src 'self' data: blob:",
+              // Pintura do Dia (Bíblia na Arte, 2026-08-23): imagem vem do
+              // domínio do site dele (Next.js, public/images), a busca vai
+              // direto na API dele — sem isso o navegador bloqueia os dois
+              // calados (sem erro visível, só a imagem/card nunca aparece).
+              "img-src 'self' data: blob: https://biblianaarte.narniano.com",
               "font-src 'self'",
-              "connect-src 'self' https://*.ingest.sentry.io",
+              "connect-src 'self' https://*.ingest.sentry.io https://api-biblianaarte.narniano.com",
               "frame-ancestors 'none'",
             ].join('; '),
           },

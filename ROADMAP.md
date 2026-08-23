@@ -912,6 +912,47 @@ lados, não é especulação:
 - [x] Tabela de tradução nome-do-livro-em-português → `bookSlug` em inglês (2026-08-20 — `src/lib/bible-books.ts`, 66 livros + aliases)
 - [x] Card "Pintura do Dia" — thumbnail + título + artista, toque abre o Bíblia na Arte (2026-08-20 — `src/components/ArtCard.tsx`, só aparece quando online)
 
+**Achados reais do Rilson usando o app (2026-08-23) — 3 problemas corrigidos, 1 melhoria tentada:**
+- [x] **Imagem não carregava no card** — `ArtCard.tsx` prefixava o
+  caminho relativo da imagem (ex. `/images/foo.webp`) com o domínio da
+  **API** (`api-biblianaarte.narniano.com`). A imagem mora no domínio
+  do **site** do Bíblia na Arte (`biblianaarte.narniano.com`, Next.js,
+  pasta `public/images`) — a API só devolve o caminho, 404 puro do
+  outro lado. Confirmado com `curl -I` nos dois domínios antes de
+  mexer.
+- [x] **Passagens relacionadas não apareciam** — a API já devolve
+  `references[]` (livro/capítulo/versículo de cada trecho catalogado
+  pra aquela obra) desde sempre, mas o `Artwork` do lecionário nem
+  tinha esse campo tipado, então nunca era pedido nem mostrado. Card
+  agora mostra "Relacionada a Mateus 26 · Marcos 14 · Lucas 22" (ou
+  com versículo, quando a curadoria tiver).
+- [x] **Só a 1ª leitura (geralmente AT) era usada pra buscar pintura**
+  — `HomeScreen.tsx` passava só `readings[0].reference`; se o AT do
+  dia não tivesse pintura catalogada, o card nem aparecia, mesmo que o
+  Evangelho do mesmo dia tivesse. `fetchArtworkForReferences` agora
+  tenta as 4 leituras em ordem até achar uma.
+- [ ] **Tentativa de casar com o versículo exato do dia** (pedido do
+  Rilson, "não precisa necessariamente funcionar") — `parseReference`
+  agora extrai o trecho de versículo (`Mateus 24:36-44` → `36-44`) e
+  `fetchArtworkForReference` tenta a API com `verses=` antes de cair
+  pro casamento por capítulo de sempre. Checado direto na API de
+  produção (2026-08-23): **nenhuma das 1530 referências catalogadas
+  tem `verses` preenchido hoje** — a tentativa não vai achar nada até
+  a curadoria do Bíblia na Arte começar a registrar isso, mas não
+  quebra nem piora o comportamento atual (fallback sempre roda).
+  Deixado sem checkbox fechado de propósito — depende do outro lado.
+- [x] **Faltava a versão web** — o item 4.5 original nunca cobriu web,
+  só mobile (ver escopo original acima). Portado igual: `bible-books.ts`
+  + `reference-parser.ts` + `artwork-fetcher.ts` pro `lecionario-web`
+  (mesmo padrão de duplicação do `rcl-fetcher.ts`, sem pacote
+  compartilhado), `ArtSection.tsx` novo espelhando o
+  `LewisQuoteSection.tsx` (mesma hierarquia visual), plugado logo
+  depois da citação de C.S. Lewis. **CSP do `next.config.mjs` também
+  precisou de ajuste** — `img-src`/`connect-src` só liberavam `'self'`
+  (+ Sentry); sem adicionar os domínios do Bíblia na Arte nos dois, o
+  navegador bloqueia a imagem E a busca em silêncio (sem erro no
+  console óbvio pra quem não abre o Network tab).
+
 **Decisão de arquitetura, não negociável sem repensar tudo:** Lecionário
 é offline-first de propósito — o card **só aparece quando online**
 (reaproveitar o `isOffline` que o `HomeScreen` já rastreia) e fica
@@ -1078,8 +1119,7 @@ P6 são categorias novas.
 - [x] `ci.yml` já roda TypeScript, ESLint, Prettier e testes (Vitest) pro web **e** pro mobile em cada push/PR.
 - [x] Já builda e publica imagem Docker no GHCR em cada tag `v*`.
 - [x] **CI e push do Docker corrigidos (2026-08-14).** Resolvido o erro de push para o GHCR (`denied: installation not allowed to Create organization package`) ajustando as permissões do workflow e o escopo da imagem no GitHub para `github.repository_owner`.
-- [ ] CI/CD do mobile via EAS Build — já está na Fase 3.4 deste
-      roadmap, ainda não feito
+- [x] CI/CD do mobile via EAS Build — concluído em 2026-08-20 (job `eas.yml` no GitHub Actions; a nota "ainda não feito" desta linha era duplicata defasada da Fase 3.4)
 
 ### P4 — Testes
 
@@ -1974,5 +2014,5 @@ Google" não é viável em iOS de qualquer forma.
 
 ### Monetização coerente com o público litúrgico
 
-- Doação: botão discreto, tom de "sustentar o ministério" (nunca paywall) — [ ] implementar botão (decisão tomada em 21/08, ainda não vi implementação no código)
+- Doação: botão discreto, tom de "sustentar o ministério" (nunca paywall) — [x] fase 1 implementada em 2026-08-22: página `/apoiar` no web (QR Pix estático) + cópia do código Pix no app (ver item "Doação voluntária" na seção de fases)
 - Afiliado: livros devocionais/litúrgicos na Amazon reusando a tag `rilson-20` do Gerador

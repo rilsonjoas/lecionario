@@ -3,30 +3,41 @@ import { View, Text, Image, TouchableOpacity, Linking, StyleSheet } from 'react-
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
-import { fetchArtworkForReference, type Artwork } from '@/lib/artwork-fetcher';
+import { fetchArtworkForReferences, type Artwork } from '@/lib/artwork-fetcher';
 
-const BIBLE_ART_BASE = 'https://biblianaarte.narniano.com';
+// As imagens do Bíblia na Arte moram no domínio do site (Next.js, pasta
+// `public/images`), não no da API — a API só devolve o caminho relativo
+// (ex.: "/images/foo.webp"). Prefixar com o domínio da API dava 404 puro.
+const BIBLE_ART_WEB_BASE = 'https://biblianaarte.narniano.com';
 
 interface Props {
-  reference: string;
+  // Referências das leituras do dia, na ordem em que aparecem (1ª leitura,
+  // salmo, epístola, evangelho) — tenta cada uma até achar uma pintura.
+  references: string[];
 }
 
-export function ArtCard({ reference }: Props) {
+function formatReference(ref: { book: string; chapter: number; verses: string | null }): string {
+  return ref.verses ? `${ref.book} ${ref.chapter}:${ref.verses}` : `${ref.book} ${ref.chapter}`;
+}
+
+export function ArtCard({ references }: Props) {
   const colors = useThemeColors();
   const { scale } = useFontScale();
   const [artwork, setArtwork] = useState<Artwork | null>(null);
 
   useEffect(() => {
     const ctrl = new AbortController();
-    fetchArtworkForReference(reference, ctrl.signal)
+    fetchArtworkForReferences(references, ctrl.signal)
       .then(setArtwork)
       .catch(() => {});
     return () => ctrl.abort();
-  }, [reference]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- refs mudam de conteúdo, não de identidade, junto com a data
+  }, [references.join('|')]);
 
   if (!artwork) return null;
 
-  const imageUrl = artwork.imageUrl ? `${API_BASE}${artwork.imageUrl}` : null;
+  const imageUrl = artwork.imageUrl ? `${BIBLE_ART_WEB_BASE}${artwork.imageUrl}` : null;
+  const relatedPassages = artwork.references.map(formatReference).join(' · ');
 
   return (
     <View style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}>
@@ -47,9 +58,17 @@ export function ArtCard({ reference }: Props) {
       >
         {artwork.artistOrDirector}
       </Text>
+      {relatedPassages.length > 0 && (
+        <Text
+          style={[styles.related, { color: colors.textMuted, fontSize: scale(11) }]}
+          numberOfLines={2}
+        >
+          Relacionada a {relatedPassages}
+        </Text>
+      )}
       <TouchableOpacity
         style={[styles.link, { borderColor: colors.accent }]}
-        onPress={() => Linking.openURL(BIBLE_ART_BASE)}
+        onPress={() => Linking.openURL(BIBLE_ART_WEB_BASE)}
         accessibilityRole="link"
         accessibilityLabel="Ver no Bíblia na Arte"
       >
@@ -60,8 +79,6 @@ export function ArtCard({ reference }: Props) {
     </View>
   );
 }
-
-const API_BASE = 'https://api-biblianaarte.narniano.com';
 
 const styles = StyleSheet.create({
   card: {
@@ -94,6 +111,11 @@ const styles = StyleSheet.create({
   artist: {
     fontFamily: 'Lora_400Regular_Italic',
     marginBottom: 8,
+  },
+  related: {
+    fontFamily: 'Lora_400Regular',
+    marginBottom: 10,
+    fontStyle: 'italic',
   },
   link: {
     alignSelf: 'flex-start',
