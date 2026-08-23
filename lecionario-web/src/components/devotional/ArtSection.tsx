@@ -38,49 +38,47 @@ export function ArtSection({ references }: { references: string[] }) {
   const relatedPassages = artwork.references.map(formatReference).join(' · ');
 
   return (
-    <section className="border-t border-accent/10 py-16 text-center animate-fade-in">
-      <h2 className="text-2xl md:text-3xl font-display italic text-secondary mb-2">
+    <section className="border-t border-accent/10 pt-12 pb-16 text-center animate-fade-in">
+      <h2 className="text-2xl md:text-3xl font-display italic text-secondary mb-1">
         Pintura do Dia
       </h2>
       <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent mb-8">
         BÍBLIA NA ARTE
       </p>
 
-      <div className="max-w-2xl mx-auto px-4">
-        {imageUrl && (
-          <img
-            src={imageUrl}
-            alt={artwork.title}
-            className="w-full rounded-lg shadow-lg mb-6"
-            loading="lazy"
-          />
-        )}
-        <h3 className="text-lg md:text-xl font-display text-secondary">
-          {artwork.title}
-          {artwork.year ? ` (${artwork.year})` : ''}
-        </h3>
-        <p className="text-sm md:text-base italic text-muted-foreground mt-1">
-          {artwork.artistOrDirector}
-        </p>
-        {relatedPassages.length > 0 && (
-          <p className="text-xs md:text-sm italic text-muted-foreground mt-3">
-            Relacionada a {relatedPassages}
+      <div className="max-w-3xl mx-auto px-4">
+        <div className="bg-card/50 rounded-xl border border-accent/15 p-6 md:p-8 shadow-sm">
+          {imageUrl && (
+            <div className="overflow-hidden rounded-lg shadow-md mb-6 max-h-[500px] flex items-center justify-center bg-black/5">
+              <img
+                src={imageUrl}
+                alt={artwork.title}
+                className="max-h-[500px] w-auto object-contain mx-auto transition-transform duration-500 hover:scale-[1.02]"
+                loading="lazy"
+              />
+            </div>
+          )}
+          <h3 className="text-xl md:text-2xl font-display text-secondary">
+            {artwork.title}
+            {artwork.year ? ` (${artwork.year})` : ''}
+          </h3>
+          <p className="text-sm md:text-base italic text-muted-foreground mt-1">
+            {artwork.artistOrDirector}
           </p>
-        )}
-        {/* Botão com contorno (achado do Rilson, 2026-08-23) — mesmo
-            espírito visual do badge de data no header e dos chips de
-            "Dias Favoritados", com os tokens de cor do conteúdo normal
-            da página (esta seção não fica sobre o fundo colorido da
-            estação litúrgica, então não reusa a paleta dourado/ébano
-            fixa do header). */}
-        <a
-          href={artworkUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-5 py-2 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-accent transition-colors hover:border-accent/50 hover:bg-accent/15"
-        >
-          Ver obra completa ↗
-        </a>
+          {relatedPassages.length > 0 && (
+            <p className="text-xs md:text-sm italic text-muted-foreground/80 mt-3">
+              Relacionada a {relatedPassages}
+            </p>
+          )}
+          <a
+            href={artworkUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-6 py-2.5 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-accent transition-all hover:border-accent/50 hover:bg-accent/15"
+          >
+            Ver obra completa ↗
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Design da Pintura do Dia e ícones de cópia em Coleta/Meditação (web e mobile)** — Pintura do Dia movida para seção própria com cabeçalho de seção dedicado ("BÍBLIA NA ARTE") no mobile e enquadramento em card no web com margens corrigidas; adicionado ícone de cópia discreto no canto superior direito da Oração de Coleta e da Meditação nos dois apps.
 - **Botão HOJE fantasma caçado e morto (web)** — o Header é server component e não re-renderiza na navegação cliente: depois de clicar Hoje, o botão continuava na tela. Virou componente cliente reativo (`TodayButton`) lendo a URL via `useSearchParams` dentro de Suspense — some sozinho quando o dia exibido é hoje.
 - **Botão de tema mora na BARRA FIXA (home) — posição final** — mesma altura de Dia Anterior/Próximo Dia, separado por divisor fino; acompanha o scroll. Nas páginas institucionais (sem barra fixa), fica no canto absoluto do header, onde não há colisão.
 - **Botão de tema na ponta superior direita SEM colisão** — o header ganhou respiro no topo (pt-14/12): o canto é exclusivo do toggle, a data não corre mais por baixo dele.

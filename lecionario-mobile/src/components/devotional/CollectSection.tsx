@@ -1,4 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import * as Clipboard from 'expo-clipboard';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
@@ -11,6 +13,15 @@ interface CollectSectionProps {
 export function CollectSection({ collect }: CollectSectionProps) {
   const colors = useThemeColors();
   const { scale } = useFontScale();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await Clipboard.setStringAsync(
+      `Oração de Coleta\n\n${collect}\n\nPor Jesus Cristo, nosso Senhor. Amém.`,
+    );
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: colors.card }]}>
@@ -29,6 +40,19 @@ export function CollectSection({ collect }: CollectSectionProps) {
             <GlossaryTerm term="coleta" size={12} />
           </View>
         </View>
+        <TouchableOpacity
+          onPress={handleCopy}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          accessibilityLabel={copied ? 'Coleta copiada' : 'Copiar Oração de Coleta'}
+          accessibilityRole="button"
+          style={styles.copyButton}
+        >
+          <MaterialCommunityIcons
+            name={copied ? 'check' : 'content-copy'}
+            size={18}
+            color={copied ? '#4A8B4A' : colors.textMuted}
+          />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.body}>
@@ -133,5 +157,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     textAlign: 'right',
     fontFamily: 'Lora_600SemiBold_Italic',
+  },
+  copyButton: {
+    padding: 4,
+    marginLeft: 8,
   },
 });

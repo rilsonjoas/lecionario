@@ -1,5 +1,8 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Crown } from 'lucide-react';
+'use client';
+
+import { useState } from 'react';
+import { CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Crown, Copy, Check } from 'lucide-react';
 import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 
 interface CollectSectionProps {
@@ -7,11 +10,21 @@ interface CollectSectionProps {
 }
 
 export function CollectSection({ collect }: CollectSectionProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(
+      `Oração de Coleta\n\n${collect}\n\nPor Jesus Cristo, nosso Senhor. Amém.`,
+    );
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="relative animate-scale-in group overflow-hidden">
       <div className="classic-frame texture-parchment border-accent/20 shadow-lg !m-0">
         <div className="relative z-10">
-          <CardHeader className="pb-6">
+          <CardHeader className="pb-6 flex flex-row items-start justify-between gap-4">
             <div className="flex items-center gap-4">
               <div className="p-3 bg-dourado/10 rounded-2xl shadow-sm text-vinho dark:text-[hsl(336,28%,78%)] group-hover:scale-110 transition-transform duration-500">
                 <Crown className="w-8 h-8" />
@@ -26,6 +39,20 @@ export function CollectSection({ collect }: CollectSectionProps) {
                 </CardDescription>
               </div>
             </div>
+
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+              aria-label={copied ? 'Coleta copiada' : 'Copiar Oração de Coleta'}
+              title={copied ? 'Copiado!' : 'Copiar Oração de Coleta'}
+            >
+              {copied ? (
+                <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+              ) : (
+                <Copy className="w-4 h-4" />
+              )}
+            </button>
           </CardHeader>
 
           <div className="space-y-8">

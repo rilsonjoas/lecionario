@@ -1,5 +1,8 @@
+'use client';
+
+import { useState } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Lightbulb, Clock, HelpCircle } from 'lucide-react';
+import { Lightbulb, Clock, Copy, Check } from 'lucide-react';
 import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 import type { MeditationResource } from '@/types';
 
@@ -8,6 +11,20 @@ interface MeditationSectionProps {
 }
 
 export function MeditationSection({ meditation }: MeditationSectionProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    let textToCopy = `Meditação\n\n${meditation.prompt}`;
+    if (meditation.questions && meditation.questions.length > 0) {
+      textToCopy +=
+        `\n\nPerguntas para Refletir:\n` +
+        meditation.questions.map((q, i) => `${i + 1}. ${q}`).join('\n');
+    }
+    await navigator.clipboard.writeText(textToCopy);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div className="relative animate-slide-up group">
       <div className="classic-frame texture-paper border-accent/10 shadow-xl overflow-hidden">
@@ -29,17 +46,32 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
               </div>
             </div>
 
-            {meditation.duration && (
-              <Badge
-                variant="outline"
-                className="flex items-center gap-2 border-accent/20 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-none"
+            <div className="flex items-center gap-2">
+              {meditation.duration && (
+                <Badge
+                  variant="outline"
+                  className="flex items-center gap-2 border-accent/20 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-none"
+                >
+                  <Clock className="w-3 h-3 text-vinho dark:text-[hsl(336,28%,78%)]" />
+                  <span className="text-[9px] font-bold uppercase tracking-[0.2em]">
+                    {meditation.duration}
+                  </span>
+                </Badge>
+              )}
+              <button
+                type="button"
+                onClick={handleCopy}
+                className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+                aria-label={copied ? 'Meditação copiada' : 'Copiar Meditação'}
+                title={copied ? 'Copiado!' : 'Copiar Meditação'}
               >
-                <Clock className="w-3 h-3 text-vinho dark:text-[hsl(336,28%,78%)]" />
-                <span className="text-[9px] font-bold uppercase tracking-[0.2em]">
-                  {meditation.duration}
-                </span>
-              </Badge>
-            )}
+                {copied ? (
+                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                ) : (
+                  <Copy className="w-4 h-4" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 

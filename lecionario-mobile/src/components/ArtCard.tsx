@@ -44,19 +44,13 @@ export function ArtCard({ references }: Props) {
 
   return (
     <View style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-      <View style={styles.header}>
-        <MaterialCommunityIcons name="palette-outline" size={18} color={colors.accent} />
-        <Text style={[styles.label, { color: colors.textMuted, fontSize: scale(11) }]}>
-          Pintura do Dia
-        </Text>
-      </View>
       {imageUrl && <Image source={{ uri: imageUrl }} style={styles.image} resizeMode="cover" />}
-      <Text style={[styles.title, { color: colors.text, fontSize: scale(14) }]} numberOfLines={2}>
+      <Text style={[styles.title, { color: colors.text, fontSize: scale(15) }]} numberOfLines={2}>
         {artwork.title}
         {artwork.year ? ` (${artwork.year})` : ''}
       </Text>
       <Text
-        style={[styles.artist, { color: colors.textMuted, fontSize: scale(12) }]}
+        style={[styles.artist, { color: colors.textMuted, fontSize: scale(13) }]}
         numberOfLines={1}
       >
         {artwork.artistOrDirector}
@@ -69,9 +63,6 @@ export function ArtCard({ references }: Props) {
           Relacionada a {relatedPassages}
         </Text>
       )}
-      {/* Mesmo tratamento do link de fonte do QuoteCard logo acima (texto
-          + ícone, sem caixa) — achado do Rilson (2026-08-23): o botão em
-          caixa que só este card tinha destoava do resto da seção. */}
       <TouchableOpacity
         onPress={() => Linking.openURL(artworkUrl)}
         style={styles.sourceRow}
@@ -92,43 +83,31 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     borderWidth: 1,
     padding: 16,
-    marginBottom: 20,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
     gap: 6,
-    marginBottom: 10,
-  },
-  label: {
-    fontFamily: 'Lora_700Bold',
-    textTransform: 'uppercase',
-    letterSpacing: 1.5,
   },
   image: {
     width: '100%',
-    height: 180,
-    borderRadius: 10,
-    marginBottom: 10,
+    height: 200,
+    borderRadius: 8,
+    marginBottom: 8,
   },
   title: {
     fontFamily: 'Lora_700Bold',
-    marginBottom: 2,
   },
   artist: {
     fontFamily: 'Lora_400Regular_Italic',
-    marginBottom: 8,
   },
   related: {
     fontFamily: 'Lora_400Regular',
-    marginBottom: 10,
     fontStyle: 'italic',
+    marginTop: 2,
   },
   sourceRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
     alignSelf: 'flex-end',
+    marginTop: 6,
   },
   source: {
     fontFamily: 'Lora_600SemiBold_Italic',

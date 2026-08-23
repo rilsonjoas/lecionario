@@ -520,10 +520,31 @@ export default function HomeScreen() {
                   </Text>
                 </View>
                 <QuoteCard date={currentDate} />
-                {!isOffline && devotional.readings.length > 0 && (
-                  <ArtCard references={devotional.readings.map((r) => r.reference)} />
-                )}
               </View>
+
+              {!isOffline && devotional.readings.length > 0 && (
+                <View style={styles.section}>
+                  <View style={styles.quoteSectionHeader}>
+                    <Text
+                      style={[
+                        styles.sectionHeaderTitle,
+                        { color: onBrand.text, fontSize: scale(18) },
+                      ]}
+                    >
+                      Pintura do dia
+                    </Text>
+                    <Text
+                      style={[
+                        styles.sectionHeaderSub,
+                        { color: onBrand.muted, fontSize: scale(8) },
+                      ]}
+                    >
+                      BÍBLIA NA ARTE
+                    </Text>
+                  </View>
+                  <ArtCard references={devotional.readings.map((r) => r.reference)} />
+                </View>
+              )}
             </>
           )}
         </View>

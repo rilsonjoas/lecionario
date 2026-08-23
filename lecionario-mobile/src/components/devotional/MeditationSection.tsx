@@ -1,4 +1,6 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import * as Clipboard from 'expo-clipboard';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import type { MeditationResource } from '@/types';
 import { useThemeColors } from '@/contexts/ThemeContext';
@@ -12,6 +14,19 @@ interface MeditationSectionProps {
 export function MeditationSection({ meditation }: MeditationSectionProps) {
   const colors = useThemeColors();
   const { scale } = useFontScale();
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    let textToCopy = `Meditação\n\n${meditation.prompt}`;
+    if (meditation.questions && meditation.questions.length > 0) {
+      textToCopy +=
+        `\n\nPerguntas para Refletir:\n` +
+        meditation.questions.map((q, i) => `${i + 1}. ${q}`).join('\n');
+    }
+    await Clipboard.setStringAsync(textToCopy);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: colors.card }]}>
@@ -25,19 +40,34 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
             Reflexão e Interiorização
           </Text>
         </View>
-        {meditation.duration && (
-          <View
-            style={[
-              styles.durationBadge,
-              { borderColor: `${colors.accent}33`, backgroundColor: `${colors.text}0D` },
-            ]}
+        <View style={styles.headerRightControls}>
+          {meditation.duration && (
+            <View
+              style={[
+                styles.durationBadge,
+                { borderColor: `${colors.accent}33`, backgroundColor: `${colors.text}0D` },
+              ]}
+            >
+              <MaterialCommunityIcons name="clock-outline" size={12} color={colors.accent} />
+              <Text style={[styles.durationText, { color: colors.accent, fontSize: scale(9) }]}>
+                {meditation.duration}
+              </Text>
+            </View>
+          )}
+          <TouchableOpacity
+            onPress={handleCopy}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+            accessibilityLabel={copied ? 'Meditação copiada' : 'Copiar Meditação'}
+            accessibilityRole="button"
+            style={styles.copyButton}
           >
-            <MaterialCommunityIcons name="clock-outline" size={12} color={colors.accent} />
-            <Text style={[styles.durationText, { color: colors.accent, fontSize: scale(9) }]}>
-              {meditation.duration}
-            </Text>
-          </View>
-        )}
+            <MaterialCommunityIcons
+              name={copied ? 'check' : 'content-copy'}
+              size={18}
+              color={copied ? '#4A8B4A' : colors.textMuted}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
 
       <View style={styles.body}>
@@ -128,6 +158,14 @@ const styles = StyleSheet.create({
   },
   headerText: {
     flex: 1,
+  },
+  headerRightControls: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  copyButton: {
+    padding: 4,
   },
   title: {
     fontFamily: 'Lora_400Regular_Italic',
