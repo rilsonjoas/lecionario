@@ -32,6 +32,9 @@ export function ArtSection({ references }: { references: string[] }) {
   if (!artwork) return null;
 
   const imageUrl = artwork.imageUrl ? `${BIBLE_ART_WEB_BASE}${artwork.imageUrl}` : null;
+  // A obra específica, não a home — é lá que tem os detalhes (comentário,
+  // outras referências, licença), achado do Rilson (2026-08-23).
+  const artworkUrl = `${BIBLE_ART_WEB_BASE}/obra/${artwork.id}`;
   const relatedPassages = artwork.references.map(formatReference).join(' · ');
 
   return (
@@ -64,13 +67,19 @@ export function ArtSection({ references }: { references: string[] }) {
             Relacionada a {relatedPassages}
           </p>
         )}
+        {/* Botão com contorno (achado do Rilson, 2026-08-23) — mesmo
+            espírito visual do badge de data no header e dos chips de
+            "Dias Favoritados", com os tokens de cor do conteúdo normal
+            da página (esta seção não fica sobre o fundo colorido da
+            estação litúrgica, então não reusa a paleta dourado/ébano
+            fixa do header). */}
         <a
-          href={BIBLE_ART_WEB_BASE}
+          href={artworkUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-1 text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent transition-colors hover:text-primary underline-offset-4 hover:underline"
+          className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-5 py-2 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-accent transition-colors hover:border-accent/50 hover:bg-accent/15"
         >
-          Ver mais no Bíblia na Arte
+          Ver obra completa ↗
         </a>
       </div>
     </section>

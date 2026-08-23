@@ -37,6 +37,9 @@ export function ArtCard({ references }: Props) {
   if (!artwork) return null;
 
   const imageUrl = artwork.imageUrl ? `${BIBLE_ART_WEB_BASE}${artwork.imageUrl}` : null;
+  // A obra específica, não a home — é lá que tem os detalhes (comentário,
+  // outras referências, licença), achado do Rilson (2026-08-23).
+  const artworkUrl = `${BIBLE_ART_WEB_BASE}/obra/${artwork.id}`;
   const relatedPassages = artwork.references.map(formatReference).join(' · ');
 
   return (
@@ -66,15 +69,19 @@ export function ArtCard({ references }: Props) {
           Relacionada a {relatedPassages}
         </Text>
       )}
+      {/* Mesmo tratamento do link de fonte do QuoteCard logo acima (texto
+          + ícone, sem caixa) — achado do Rilson (2026-08-23): o botão em
+          caixa que só este card tinha destoava do resto da seção. */}
       <TouchableOpacity
-        style={[styles.link, { borderColor: colors.accent }]}
-        onPress={() => Linking.openURL(BIBLE_ART_WEB_BASE)}
+        onPress={() => Linking.openURL(artworkUrl)}
+        style={styles.sourceRow}
         accessibilityRole="link"
-        accessibilityLabel="Ver no Bíblia na Arte"
+        accessibilityLabel={`Ver ${artwork.title} no Bíblia na Arte`}
       >
-        <Text style={[styles.linkText, { color: colors.accent, fontSize: scale(12) }]}>
-          Ver mais no Bíblia na Arte
+        <Text style={[styles.source, { color: colors.accent, fontSize: scale(13) }]}>
+          — Ver obra
         </Text>
+        <MaterialCommunityIcons name="open-in-new" size={12} color={colors.accent} />
       </TouchableOpacity>
     </View>
   );
@@ -82,8 +89,8 @@ export function ArtCard({ references }: Props) {
 
 const styles = StyleSheet.create({
   card: {
-    borderRadius: 16,
-    borderWidth: 0.5,
+    borderRadius: 12,
+    borderWidth: 1,
     padding: 16,
     marginBottom: 20,
   },
@@ -117,14 +124,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontStyle: 'italic',
   },
-  link: {
-    alignSelf: 'flex-start',
-    borderWidth: 1,
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+  sourceRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    alignSelf: 'flex-end',
   },
-  linkText: {
-    fontFamily: 'Lora_600SemiBold',
+  source: {
+    fontFamily: 'Lora_600SemiBold_Italic',
   },
 });
