@@ -24,11 +24,27 @@ export function ArtCard({ references }: Props) {
   const colors = useThemeColors();
   const { scale } = useFontScale();
   const [artwork, setArtwork] = useState<Artwork | null>(null);
+  const [aspectRatio, setAspectRatio] = useState<number | null>(null);
 
   useEffect(() => {
     const ctrl = new AbortController();
     fetchArtworkForReferences(references, ctrl.signal)
-      .then(setArtwork)
+      .then((art) => {
+        setArtwork(art);
+        if (art?.imageUrl) {
+          Image.getSize(
+            `${BIBLE_ART_WEB_BASE}${art.imageUrl}`,
+            (w, h) => {
+              if (!ctrl.signal.aborted && w > 0 && h > 0) {
+                setAspectRatio(w / h);
+              }
+            },
+            () => {},
+          );
+        } else {
+          setAspectRatio(null);
+        }
+      })
       .catch(() => {});
     return () => ctrl.abort();
     // eslint-disable-next-line react-hooks/exhaustive-deps -- refs mudam de conteúdo, não de identidade, junto com a data
@@ -37,6 +53,7 @@ export function ArtCard({ references }: Props) {
   if (!artwork) return null;
 
   const imageUrl = artwork.imageUrl ? `${BIBLE_ART_WEB_BASE}${artwork.imageUrl}` : null;
+
   // A obra específica, não a home — é lá que tem os detalhes (comentário,
   // outras referências, licença), achado do Rilson (2026-08-23).
   const artworkUrl = `${BIBLE_ART_WEB_BASE}/obra/${artwork.id}`;
@@ -44,7 +61,23 @@ export function ArtCard({ references }: Props) {
 
   return (
     <View style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}>
-      {imageUrl && <Image source={{ uri: imageUrl }} style={styles.image} resizeMode="cover" />}
+      {imageUrl && (
+        <View
+          style={[
+            styles.imageContainer,
+            {
+              backgroundColor:
+                colors.mode === 'dark' ? 'rgba(0, 0, 0, 0.25)' : 'rgba(0, 0, 0, 0.04)',
+            },
+          ]}
+        >
+          <Image
+            source={{ uri: imageUrl }}
+            style={[styles.image, aspectRatio ? { aspectRatio } : { height: 220 }]}
+            resizeMode="contain"
+          />
+        </View>
+      )}
       <Text style={[styles.title, { color: colors.text, fontSize: scale(15) }]} numberOfLines={2}>
         {artwork.title}
         {artwork.year ? ` (${artwork.year})` : ''}
@@ -85,11 +118,17 @@ const styles = StyleSheet.create({
     padding: 16,
     gap: 6,
   },
+  imageContainer: {
+    width: '100%',
+    borderRadius: 8,
+    overflow: 'hidden',
+    marginBottom: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   image: {
     width: '100%',
-    height: 200,
     borderRadius: 8,
-    marginBottom: 8,
   },
   title: {
     fontFamily: 'Lora_700Bold',
