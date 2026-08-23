@@ -952,6 +952,18 @@ lados, não é especulação:
   (+ Sentry); sem adicionar os domínios do Bíblia na Arte nos dois, o
   navegador bloqueia a imagem E a busca em silêncio (sem erro no
   console óbvio pra quem não abre o Network tab).
+- [x] **Card ainda não aparecia mesmo depois do fix de CSP** — a
+  segunda ponta do mesmo problema, do lado de lá: a API do Bíblia na
+  Arte só liberava CORS pra `biblianaarte.narniano.com` (origem única).
+  O CSP do Lecionário deixava a requisição sair do navegador, mas a
+  resposta vinha sem `Access-Control-Allow-Origin` pra
+  `lecionario.narniano.com` — o navegador bloqueava a leitura e o
+  `fetch()` caía no catch silencioso. Corrigido no repo do
+  `biblia-na-arte` (`CORS_ORIGIN` aceita lista separada por vírgula
+  agora) + `.env` de produção atualizado + container recriado
+  (2026-08-23). Confirmado com `curl -H "Origin: ..."` nos dois
+  domínios depois do fix, e checado que uma origem não autorizada
+  continua bloqueada.
 
 **Decisão de arquitetura, não negociável sem repensar tudo:** Lecionário
 é offline-first de propósito — o card **só aparece quando online**
