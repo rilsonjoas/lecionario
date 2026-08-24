@@ -33,7 +33,7 @@ export function LewisQuoteSection({ date }: { date?: Date }) {
         &ldquo;{quote.quote}&rdquo;
       </blockquote>
       {/* rel="sponsored": boa prática p/ links de afiliado (Google) */}
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+      <div className="mt-8 flex flex-col items-center gap-3">
         <a
           href={amazonUrl}
           target="_blank"
@@ -50,7 +50,7 @@ export function LewisQuoteSection({ date }: { date?: Date }) {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-accent transition-all hover:border-accent/50 hover:bg-accent/15"
           >
-            Ler no Scriptorium ↗
+            Ler livro completo ↗
           </a>
         )}
       </div>

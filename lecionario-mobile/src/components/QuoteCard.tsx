@@ -91,10 +91,10 @@ export function QuoteCard({ date }: QuoteCardProps) {
               { backgroundColor: colors.card, borderColor: colors.border },
             ]}
             accessibilityRole="link"
-            accessibilityLabel={`Ler ${quote.source} no Scriptorium`}
+            accessibilityLabel={`Ler ${quote.source} completo`}
           >
             <Text style={[styles.scriptoriumText, { color: colors.accent, fontSize: scale(11) }]}>
-              Ler no Scriptorium
+              Ler livro completo
             </Text>
             <MaterialCommunityIcons name="open-in-new" size={11} color={colors.accent} />
           </TouchableOpacity>
@@ -121,10 +121,8 @@ const styles = StyleSheet.create({
     lineHeight: 22,
   },
   actionsRow: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    flexWrap: 'wrap',
     gap: 8,
     marginTop: 4,
   },
