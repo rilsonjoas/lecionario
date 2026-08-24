@@ -8,12 +8,12 @@ import { buildAmazonUrl, getDailyQuote } from '@/lib/lewis-quotes';
 // Amazon (mesmo padrão do mobile; tag reusada do Gerador C.S. Lewis).
 export function LewisQuoteSection({ date }: { date?: Date }) {
   const quote = getDailyQuote(date ?? new Date());
-  const amazonUrl = buildAmazonUrl(quote.source);
+  const amazonUrl = buildAmazonUrl(quote.source, quote.author);
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(
-      `\u201C${quote.quote}\u201D\n\n— ${quote.source}, C. S. Lewis\n\n— Lecionário · lecionario.narniano.com`,
+      `\u201C${quote.quote}\u201D\n\n— ${quote.source}, ${quote.author}\n\n— Lecionário · lecionario.narniano.com`,
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -27,21 +27,33 @@ export function LewisQuoteSection({ date }: { date?: Date }) {
         Citação do dia
       </h2>
       <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent mb-8">
-        C. S. LEWIS
+        {quote.author.toUpperCase()}
       </p>
       <blockquote className="text-lg md:text-xl lg:text-2xl font-display italic text-secondary max-w-4xl mx-auto leading-relaxed px-4">
         &ldquo;{quote.quote}&rdquo;
       </blockquote>
       {/* rel="sponsored": boa prática p/ links de afiliado (Google) */}
-      <a
-        href={amazonUrl}
-        target="_blank"
-        rel="sponsored noopener noreferrer"
-        className="mt-8 inline-flex items-center gap-1 text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent transition-colors hover:text-primary underline-offset-4 hover:underline"
-        aria-label={`Abrir ${quote.source} na Amazon`}
-      >
-        — {quote.source}
-      </a>
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href={amazonUrl}
+          target="_blank"
+          rel="sponsored noopener noreferrer"
+          className="inline-flex items-center gap-1 text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent transition-colors hover:text-primary underline-offset-4 hover:underline"
+          aria-label={`Abrir ${quote.source} na Amazon`}
+        >
+          — {quote.source} ↗
+        </a>
+        {quote.scriptoriumUrl && (
+          <a
+            href={quote.scriptoriumUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-accent transition-all hover:border-accent/50 hover:bg-accent/15"
+          >
+            Ler no Scriptorium ↗
+          </a>
+        )}
+      </div>
 
       {/* Cópia no padrão dos cards: canto inferior direito, só ícone */}
       <div className="flex justify-end max-w-4xl mx-auto px-4">

@@ -32,7 +32,7 @@ import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
-import { QuoteCard } from '@/components/QuoteCard';
+import { QuoteCard, getDailyQuote } from '@/components/QuoteCard';
 import { ArtCard } from '@/components/ArtCard';
 import { GlossaryTerm } from '@/components/GlossaryTerm';
 import type { DailyDevotional, RootTabParamList } from '@/types';
@@ -98,6 +98,7 @@ export default function HomeScreen() {
   const onBrand = getOnBrandTextColors(liturgicalInfo.season);
   const showTodayButton = !isDateToday(currentDate);
   const currentDateStr = format(currentDate, 'yyyy-MM-dd');
+  const dailyQuote = useMemo(() => getDailyQuote(currentDate), [currentDate]);
   const favorited = isFavorite(currentDateStr);
 
   const loadDevotional = useCallback(async (date: Date, forceNetwork = false) => {
@@ -516,7 +517,7 @@ export default function HomeScreen() {
                   <Text
                     style={[styles.sectionHeaderSub, { color: onBrand.muted, fontSize: scale(8) }]}
                   >
-                    C. S. LEWIS
+                    {dailyQuote.author.toUpperCase()}
                   </Text>
                 </View>
                 <QuoteCard date={currentDate} />

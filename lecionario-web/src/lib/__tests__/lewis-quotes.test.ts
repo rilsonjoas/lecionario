@@ -9,7 +9,7 @@ describe('getDailyQuote', () => {
   it('seleciona pelo seed yyyyMMdd % tamanho do acervo (fórmula do mobile)', () => {
     const date = new Date(2026, 7, 22);
     const seed = parseInt(format(date, 'yyyyMMdd'), 10);
-    expect(getDailyQuote(date)).toBe(quotes[seed % quotes.length]);
+    expect(getDailyQuote(date).quote).toBe(quotes[seed % quotes.length].quote);
   });
 
   it('é determinístico: mesmo dia, mesma citação', () => {
@@ -17,31 +17,32 @@ describe('getDailyQuote', () => {
     expect(getDailyQuote(date)).toEqual(getDailyQuote(new Date(2024, 0, 15)));
   });
 
-  it('todo índice gerado cai dentro do acervo com quote e source', () => {
+  it('todo índice gerado cai dentro do acervo com quote, source e author', () => {
     for (let d = 0; d < 400; d++) {
       const q = getDailyQuote(new Date(2026, 0, 1 + d));
       expect(q.quote).toBeTruthy();
       expect(q.source).toBeTruthy();
+      expect(q.author).toBeTruthy();
     }
   });
 
   it('cobre o acervo inteiro ao longo de um ano', () => {
-    // yyyyMMdd não é linear nos viradas de mês (31/jan → 1/fev pula o
-    // inteiro), então 165 dias corridos NÃO bastam; um ano cobre tudo
     const vistos = new Set<number>();
     for (let d = 0; d < 365; d++) {
       const dia = new Date(2026, 0, 1 + d);
-      vistos.add(quotes.indexOf(getDailyQuote(dia)));
+      const q = getDailyQuote(dia);
+      const idx = quotes.findIndex((item) => item.quote === q.quote);
+      vistos.add(idx);
     }
     expect(vistos.size).toBe(quotes.length);
   });
 });
 
 describe('buildAmazonUrl', () => {
-  it('monta URL de busca com a tag de afiliado', () => {
-    const url = buildAmazonUrl('Cristianismo Puro e Simples');
+  it('monta URL de busca com a tag de afiliado e autor opcional', () => {
+    const url = buildAmazonUrl('Cristianismo Puro e Simples', 'C. S. Lewis');
     expect(url).toBe(
-      `https://www.amazon.com.br/s?k=${encodeURIComponent('Cristianismo Puro e Simples')}&tag=${AFFILIATE_TAG}`,
+      `https://www.amazon.com.br/s?k=${encodeURIComponent('Cristianismo Puro e Simples C. S. Lewis')}&tag=${AFFILIATE_TAG}`,
     );
     expect(url).toContain('tag=rilson-20');
   });

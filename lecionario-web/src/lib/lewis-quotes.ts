@@ -7,11 +7,25 @@ import quotes from '@/data/lewis-quotes.json';
 // propósito: os apps não compartilham pacote.
 export const AFFILIATE_TAG = 'rilson-20';
 
-export function getDailyQuote(date: Date): { quote: string; source: string } {
-  const seed = parseInt(format(date, 'yyyyMMdd'), 10);
-  return quotes[seed % quotes.length];
+export interface DailyQuote {
+  quote: string;
+  source: string;
+  author: string;
+  scriptoriumUrl?: string | null;
 }
 
-export function buildAmazonUrl(source: string): string {
-  return `https://www.amazon.com.br/s?k=${encodeURIComponent(source)}&tag=${AFFILIATE_TAG}`;
+export function getDailyQuote(date: Date): DailyQuote {
+  const seed = parseInt(format(date, 'yyyyMMdd'), 10);
+  const raw = quotes[seed % quotes.length] as Partial<DailyQuote>;
+  return {
+    quote: raw.quote || '',
+    source: raw.source || '',
+    author: raw.author || 'C. S. Lewis',
+    scriptoriumUrl: raw.scriptoriumUrl || null,
+  };
+}
+
+export function buildAmazonUrl(source: string, author?: string): string {
+  const query = author ? `${source} ${author}` : source;
+  return `https://www.amazon.com.br/s?k=${encodeURIComponent(query)}&tag=${AFFILIATE_TAG}`;
 }

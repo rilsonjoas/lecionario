@@ -9,9 +9,22 @@ import quotes from '@/data/lewis-quotes.json';
 
 const AFFILIATE_TAG = 'rilson-20';
 
-function getDailyQuoteIndex(date: Date): number {
+export interface DailyQuote {
+  quote: string;
+  source: string;
+  author: string;
+  scriptoriumUrl?: string | null;
+}
+
+export function getDailyQuote(date: Date): DailyQuote {
   const seed = parseInt(format(date, 'yyyyMMdd'), 10);
-  return seed % quotes.length;
+  const raw = quotes[seed % quotes.length] as Partial<DailyQuote>;
+  return {
+    quote: raw.quote || '',
+    source: raw.source || '',
+    author: raw.author || 'C. S. Lewis',
+    scriptoriumUrl: raw.scriptoriumUrl || null,
+  };
 }
 
 interface QuoteCardProps {
@@ -24,21 +37,18 @@ export function QuoteCard({ date }: QuoteCardProps) {
   const [copied, setCopied] = useState(false);
 
   const quote = useMemo(() => {
-    const idx = getDailyQuoteIndex(date ?? new Date());
-    return quotes[idx];
+    return getDailyQuote(date ?? new Date());
   }, [date]);
 
-  // Expansao de copias com criterio (ROADMAP 2026-08-22): citacao e o
-  // texto que mais circula em redes — merece botao como os demais cards
   const handleCopy = async () => {
     await Clipboard.setStringAsync(
-      `"${quote.quote}"\n\n— ${quote.source}, C. S. Lewis\n\n— Lecionário · lecionario.narniano.com`,
+      `"${quote.quote}"\n\n— ${quote.source}, ${quote.author}\n\n— Lecionário · lecionario.narniano.com`,
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const amazonUrl = `https://www.amazon.com.br/s?k=${encodeURIComponent(quote.source)}&tag=${AFFILIATE_TAG}`;
+  const amazonUrl = `https://www.amazon.com.br/s?k=${encodeURIComponent(`${quote.source} ${quote.author}`)}&tag=${AFFILIATE_TAG}`;
 
   return (
     <View style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}>
@@ -57,18 +67,39 @@ export function QuoteCard({ date }: QuoteCardProps) {
           />
         </TouchableOpacity>
       </View>
+
       <Text style={[styles.quote, { color: colors.text, fontSize: scale(15) }]}>{quote.quote}</Text>
-      <TouchableOpacity
-        onPress={() => Linking.openURL(amazonUrl)}
-        style={styles.sourceRow}
-        accessibilityRole="link"
-        accessibilityLabel={`Abrir ${quote.source} na Amazon`}
-      >
-        <Text style={[styles.source, { color: colors.accent, fontSize: scale(13) }]}>
-          — {quote.source}
-        </Text>
-        <MaterialCommunityIcons name="open-in-new" size={12} color={colors.accent} />
-      </TouchableOpacity>
+
+      <View style={styles.actionsRow}>
+        <TouchableOpacity
+          onPress={() => Linking.openURL(amazonUrl)}
+          style={styles.sourceRow}
+          accessibilityRole="link"
+          accessibilityLabel={`Abrir ${quote.source} na Amazon`}
+        >
+          <Text style={[styles.source, { color: colors.accent, fontSize: scale(13) }]}>
+            — {quote.source}
+          </Text>
+          <MaterialCommunityIcons name="open-in-new" size={12} color={colors.accent} />
+        </TouchableOpacity>
+
+        {quote.scriptoriumUrl && (
+          <TouchableOpacity
+            onPress={() => Linking.openURL(quote.scriptoriumUrl!)}
+            style={[
+              styles.scriptoriumPill,
+              { backgroundColor: colors.card, borderColor: colors.border },
+            ]}
+            accessibilityRole="link"
+            accessibilityLabel={`Ler ${quote.source} no Scriptorium`}
+          >
+            <Text style={[styles.scriptoriumText, { color: colors.accent, fontSize: scale(11) }]}>
+              Ler no Scriptorium
+            </Text>
+            <MaterialCommunityIcons name="open-in-new" size={11} color={colors.accent} />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 }
@@ -89,13 +120,32 @@ const styles = StyleSheet.create({
     fontFamily: 'Lora_400Regular_Italic',
     lineHeight: 22,
   },
+  actionsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 4,
+  },
   sourceRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 4,
-    alignSelf: 'flex-end',
   },
   source: {
+    fontFamily: 'Lora_600SemiBold_Italic',
+  },
+  scriptoriumPill: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+    borderWidth: 1,
+  },
+  scriptoriumText: {
     fontFamily: 'Lora_600SemiBold_Italic',
   },
 });
