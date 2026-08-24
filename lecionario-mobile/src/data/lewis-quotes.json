@@ -18,22 +18,28 @@
     "scriptoriumUrl": null
   },
   {
-    "quote": "Ao descobrir em mim um desejo que nenhuma experiência deste mundo poderia satisfazer, a explicação mais provável é que eu tenha sido feito para outro mundo.",
-    "source": "Cristianismo Puro e Simples",
-    "author": "C. S. Lewis",
-    "scriptoriumUrl": null
-  },
-  {
     "quote": "Tarde te amei, ó Beleza tão antiga e tão nova, tarde te amei! Eis que habitavas dentro de mim e eu te procurava do lado de fora.",
     "source": "Confissões",
     "author": "Santo Agostinho",
     "scriptoriumUrl": "https://scriptorium.narniano.com/livros/confissoes"
   },
   {
+    "quote": "Ao descobrir em mim um desejo que nenhuma experiência deste mundo poderia satisfazer, a explicação mais provável é que eu tenha sido feito para outro mundo.",
+    "source": "Cristianismo Puro e Simples",
+    "author": "C. S. Lewis",
+    "scriptoriumUrl": null
+  },
+  {
     "quote": "O orgulho não tem prazer em ter algo, mas apenas em ter mais que o próximo.",
     "source": "Cristianismo Puro e Simples",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "A oração é o encontro da sede de Deus com a sede do homem.",
+    "source": "Confissões",
+    "author": "Santo Agostinho",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/confissoes"
   },
   {
     "quote": "Não perca tempo se preocupando se você 'ama' o seu vizinho: aja como se o amasse.",
@@ -48,10 +54,10 @@
     "scriptoriumUrl": null
   },
   {
-    "quote": "A medida do amor é amar sem medida.",
-    "source": "A Cidade de Deus",
+    "quote": "Dá-me o que me pedes, e pede-me o que quiseres.",
+    "source": "Confissões",
     "author": "Santo Agostinho",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/a-cidade-de-deus"
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/confissoes"
   },
   {
     "quote": "Amar é ser vulnerável. Ame qualquer coisa e seu coração irá certamente ser espremido e possivelmente partido.",
@@ -66,22 +72,28 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Não vá para fora de ti; volta para dentro de ti mesmo. É no homem interior que habita a verdade.",
+    "source": "Confissões",
+    "author": "Santo Agostinho",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/confissoes"
+  },
+  {
     "quote": "Se você ler a história, descobrirá que os cristãos que mais fizeram por este mundo foram exatamente os que mais pensaram no outro.",
     "source": "Cristianismo Puro e Simples",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
   },
   {
-    "quote": "Não tenhas em grande conta quem é por ti ou contra ti; mas atenta e cuida somente que Deus seja contigo em tudo o que fizeres.",
-    "source": "Imitação de Cristo",
-    "author": "Tomás de Kempis",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/imitacao-de-cristo"
-  },
-  {
     "quote": "O sofrimento, porém, insiste em receber atenção. Deus sussurra em nossos prazeres, fala em nossa consciência, mas grita em nossos sofrimentos: esse é seu megafone para despertar um mundo surdo.",
     "source": "O Problema do Sofrimento",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "A fé consiste em crer no que não vês; a recompensa da fé é ver o que crês.",
+    "source": "Confissões",
+    "author": "Santo Agostinho",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/confissoes"
   },
   {
     "quote": "Somos criaturas medíocres, brincando com bebida, sexo e ambição, quando a alegria infinita nos é oferecida.",
@@ -96,10 +108,10 @@
     "scriptoriumUrl": null
   },
   {
-    "quote": "Muito ganha quem muito ama. Muito ganha quem bem faz o que faz.",
-    "source": "Imitação de Cristo",
-    "author": "Tomás de Kempis",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/imitacao-de-cristo"
+    "quote": "A medida do amor é amar sem medida.",
+    "source": "A Cidade de Deus",
+    "author": "Santo Agostinho",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/a-cidade-de-deus"
   },
   {
     "quote": "Creio no cristianismo assim como creio que o Sol nasceu, não apenas porque o vejo, mas porque por meio dele eu vejo tudo mais.",
@@ -114,22 +126,28 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Dois amores construíram duas cidades: o amor de si até ao desprezo de Deus construiu a cidade terrena; o amor de Deus até ao desprezo de si, a cidade celestial.",
+    "source": "A Cidade de Deus",
+    "author": "Santo Agostinho",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/a-cidade-de-deus"
+  },
+  {
     "quote": "Só há duas espécies de pessoas no final: os que dizem a Deus, 'seja feita a Sua vontade', e aqueles a quem Deus diz: 'a tua vontade seja feita'.",
     "source": "O Grande Abismo",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
   },
   {
-    "quote": "Na oração, é melhor ter um coração sem palavras do que palavras sem um coração.",
-    "source": "O Peregrino",
-    "author": "John Bunyan",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/o-peregrino"
-  },
-  {
     "quote": "A alegria é um assunto levado a sério no Céu.",
     "source": "Oração: Cartas a Malcolm",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "Na ausência de justiça, o que é a soberania senão uma grande ladroeira?",
+    "source": "A Cidade de Deus",
+    "author": "Santo Agostinho",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/a-cidade-de-deus"
   },
   {
     "quote": "Se Deus tivesse atendido a todas as orações tolas que já fiz na vida, onde eu estaria agora?",
@@ -144,10 +162,10 @@
     "scriptoriumUrl": null
   },
   {
-    "quote": "Quem está caído não precisa temer a queda; quem é humilde não terá orgulho.",
-    "source": "O Peregrino",
-    "author": "John Bunyan",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/o-peregrino"
+    "quote": "A paz de todas as coisas é a tranquilidade da ordem.",
+    "source": "A Cidade de Deus",
+    "author": "Santo Agostinho",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/a-cidade-de-deus"
   },
   {
     "quote": "A educação sem valores, por mais útil que seja, parece apenas fazer do homem um demônio mais esperto.",
@@ -162,22 +180,28 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Não tenhas em grande conta quem é por ti ou contra ti; mas atenta e cuida somente que Deus seja contigo em tudo o que fizeres.",
+    "source": "Imitação de Cristo",
+    "author": "Tomás de Kempis",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/imitacao-de-cristo"
+  },
+  {
     "quote": "O cristianismo, se for falso, não tem valor; se for verdadeiro, tem valor infinito. A única coisa que lhe é impossível é ser 'mais ou menos' importante.",
     "source": "Cristianismo Puro e Simples",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
   },
   {
-    "quote": "O coração tem razões que a própria razão desconhece.",
-    "source": "Pensamentos",
-    "author": "Blaise Pascal",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/pensamentos"
-  },
-  {
     "quote": "A tarefa do educador moderno não é derrubar florestas, mas irrigar desertos.",
     "source": "A Abolição do Homem",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "Muito ganha quem muito ama. Muito ganha quem bem faz o que faz.",
+    "source": "Imitação de Cristo",
+    "author": "Tomás de Kempis",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/imitacao-de-cristo"
   },
   {
     "quote": "O que você vê e o que você ouve depende muito de onde você está.",
@@ -192,10 +216,10 @@
     "scriptoriumUrl": null
   },
   {
-    "quote": "A sabedoria humana consiste quase inteiramente em duas partes: o conhecimento de Deus e o de nós mesmos.",
-    "source": "As Institutas da Religião Cristã",
-    "author": "João Calvino",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/institutas-da-religiao-crista"
+    "quote": "Sem a via, não há caminhada; sem a verdade, não há conhecimento; sem a vida, não há viver.",
+    "source": "Imitação de Cristo",
+    "author": "Tomás de Kempis",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/imitacao-de-cristo"
   },
   {
     "quote": "Deus não pode dar-nos paz e felicidade à parte dele, pois não existe tal coisa.",
@@ -210,22 +234,28 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Senhor, concede-me saber o que devo saber, amar o que devo amar, e louvar o que mais te agrada.",
+    "source": "Imitação de Cristo",
+    "author": "Tomás de Kempis",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/imitacao-de-cristo"
+  },
+  {
     "quote": "Aslam não é um leão domesticado.",
     "source": "O Leão, a Feiticeira e o Guarda-Roupa",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
   },
   {
-    "quote": "Três coisas são necessárias para a salvação do homem: saber o que deve crer, saber o que deve desejar e saber o que deve fazer.",
-    "source": "Compêndio de Teologia",
-    "author": "São Tomás de Aquino",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/compendio-da-suma-teologica"
-  },
-  {
     "quote": "Todos dizem que o perdão é uma ideia maravilhosa até que tenham algo a perdoar.",
     "source": "Cristianismo Puro e Simples",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "É grande sabedoria não ser precipitado nas ações, nem defender obstinadamente a própria opinião.",
+    "source": "Imitação de Cristo",
+    "author": "Tomás de Kempis",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/imitacao-de-cristo"
   },
   {
     "quote": "Uma coisa boa de ler livros velhos é que as modas não os afetam.",
@@ -240,10 +270,10 @@
     "scriptoriumUrl": null
   },
   {
-    "quote": "Para falar ao vento bastam palavras; para falar ao coração são necessárias obras.",
-    "source": "Sermão da Sexagésima",
-    "author": "Padre Antônio Vieira",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/sermao-da-sexagesima"
+    "quote": "Pouco dura a paz dos maus; a verdadeira paz do coração encontra-se nos humildes.",
+    "source": "Imitação de Cristo",
+    "author": "Tomás de Kempis",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/imitacao-de-cristo"
   },
   {
     "quote": "A obediência é o remédio para a cegueira espiritual.",
@@ -258,22 +288,28 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Vanidade das vanidades, tudo é vanidade, exceto amar a Deus e a ele só servir.",
+    "source": "Imitação de Cristo",
+    "author": "Tomás de Kempis",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/imitacao-de-cristo"
+  },
+  {
     "quote": "Não há obra de literatura que eu poderia escrever, por mais longa que seja a vida que me é concedida, que expressaria para vocês um milésimo das coisas que estão dentro de mim.",
     "source": "O Cavalo e seu Menino",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
   },
   {
-    "quote": "Fiz uma aliança com Deus: que Ele não me mande visões, nem sonhos, nem mesmo anjos. Estou satisfeito com o presente da Escritura Sagrada.",
-    "source": "As 95 Teses & Obras Escolhidas",
-    "author": "Martinho Lutero",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/as-95-teses"
-  },
-  {
     "quote": "Desde que me tornei cristão, penso que o melhor serviço que posso fazer seja explicar e defender a fé comum a praticamente todos os cristãos em todos os tempos.",
     "source": "Cristianismo Puro e Simples",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "Este mundo é apenas uma passagem para a Cidade Celestial; mantém os teus olhos na promessa.",
+    "source": "O Peregrino",
+    "author": "John Bunyan",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/o-peregrino"
   },
   {
     "quote": "Quando uma palavra deixa de ter valor descritivo e passa a ser um mero elogio, ela não nos esclarece sobre o objeto, só denota o conceito que o falante tem dele.",
@@ -288,10 +324,10 @@
     "scriptoriumUrl": null
   },
   {
-    "quote": "Não procuro compreender para crer, mas creio para compreender.",
-    "source": "Por que Deus se fez Homem?",
-    "author": "Santo Anselmo",
-    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/por-que-deus-se-fez-homem"
+    "quote": "Um homem de oração é um homem de poder; quando o fardo cai no pé da cruz, a alma descansa.",
+    "source": "O Peregrino",
+    "author": "John Bunyan",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/o-peregrino"
   },
   {
     "quote": "Deus designou a máquina humana para funcionar à base dele mesmo. Ele mesmo é o combustível que nossos espíritos foram designados para queimar.",
@@ -306,6 +342,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Quem é humilde não precisa temer a queda; quem se rebaixa terá a Deus por seu exaltador.",
+    "source": "O Peregrino",
+    "author": "John Bunyan",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/o-peregrino"
+  },
+  {
     "quote": "Não convém exigir uma religião simples. Afinal, as coisas no mundo real são complexas. Parecem simples, mas não são.",
     "source": "Cristianismo Puro e Simples",
     "author": "C. S. Lewis",
@@ -316,6 +358,12 @@
     "source": "Cristianismo Puro e Simples",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "A esperança é o anel que liga o coração do peregrino ao trono da graça.",
+    "source": "O Peregrino",
+    "author": "John Bunyan",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/o-peregrino"
   },
   {
     "quote": "Se o Cristianismo significa apenas mais um bom conselho, então o Cristianismo não tem importância alguma. Não tem faltado bons conselhos nos últimos quatro mil anos.",
@@ -330,6 +378,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Vi então no meu sonho que o homem começou a correr; não olhou para trás, mas gritava: Vida! Vida! Vida eterna!",
+    "source": "O Peregrino",
+    "author": "John Bunyan",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/o-peregrino"
+  },
+  {
     "quote": "Quão monotonamente iguais têm sido todos os grandes tiranos e conquistadores; quão gloriosamente diferentes todos os santos.",
     "source": "Cristianismo Puro e Simples",
     "author": "C. S. Lewis",
@@ -340,6 +394,12 @@
     "source": "Cristianismo Puro e Simples",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "O coração tem razões que a própria razão desconhece.",
+    "source": "Pensamentos",
+    "author": "Blaise Pascal",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/pensamentos"
   },
   {
     "quote": "Entendi bem por que os deuses não falam conosco abertamente. Como eles podem nos encontrar face a face, se não tivermos rostos?",
@@ -354,6 +414,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Há um vácuo no coração do homem do tamanho de Deus que nada criado pode preencher.",
+    "source": "Pensamentos",
+    "author": "Blaise Pascal",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/pensamentos"
+  },
+  {
     "quote": "Em cada um dos meus amigos há algo que somente outro amigo pode revelar. Sozinho, não sou grande o suficiente para externar em atividade o homem que sou por inteiro.",
     "source": "Os Quatro Amores",
     "author": "C. S. Lewis",
@@ -364,6 +430,12 @@
     "source": "O Peso da Glória",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "Toda a infelicidade dos homens vem de uma só coisa: não saberem ficar em repouso num quarto.",
+    "source": "Pensamentos",
+    "author": "Blaise Pascal",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/pensamentos"
   },
   {
     "quote": "Os livros ou a música onde pensamos estar a beleza nos trairão, se confiarmos neles. Pois eles não são a coisa em si; são somente a fragrância de uma flor que ainda não encontramos.",
@@ -378,6 +450,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "A justiça sem a força é impotente; a força sem a justiça é tirânica.",
+    "source": "Pensamentos",
+    "author": "Blaise Pascal",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/pensamentos"
+  },
+  {
     "quote": "Não foi por sociedades e estados que Cristo morreu, mas pelas pessoas.",
     "source": "O Peso da Glória",
     "author": "C. S. Lewis",
@@ -388,6 +466,12 @@
     "source": "O Peso da Glória",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "O homem é apenas um caniço, o mais fraco da natureza; mas é um caniço pensante.",
+    "source": "Pensamentos",
+    "author": "Blaise Pascal",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/pensamentos"
   },
   {
     "quote": "O Céu, uma vez alcançado, terá efeito retroativo e transformará em glória até mesmo essa agonia.",
@@ -402,6 +486,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Conhecemos a verdade não apenas pela razão, mas também pelo coração.",
+    "source": "Pensamentos",
+    "author": "Blaise Pascal",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/pensamentos"
+  },
+  {
     "quote": "Muitas vezes, creio eu, oro pelos outros quando deveria estar fazendo coisas por eles. É muito mais fácil orar por um chato do que visitá-lo.",
     "source": "Oração: Cartas a Malcolm",
     "author": "C. S. Lewis",
@@ -412,6 +502,12 @@
     "source": "Sobre Histórias",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "Quase toda a sabedoria que possuímos consiste em duas partes: o conhecimento de Deus e o de nós mesmos.",
+    "source": "As Institutas da Religião Cristã",
+    "author": "João Calvino",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/institutas-da-religiao-crista"
   },
   {
     "quote": "Quando um homem melhora, torna-se cada vez mais capaz de perceber o mal que ainda existe dentro de si. Quando um homem piora, torna-se cada vez menos capaz de captar a própria maldade.",
@@ -426,6 +522,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "A mente humana é uma fábrica perpétua de ídolos.",
+    "source": "As Institutas da Religião Cristã",
+    "author": "João Calvino",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/institutas-da-religiao-crista"
+  },
+  {
     "quote": "Tenho de manter viva a chama do desejo pela minha verdadeira terra natal, a qual só encontrarei depois da morte.",
     "source": "O Problema do Sofrimento",
     "author": "C. S. Lewis",
@@ -436,6 +538,12 @@
     "source": "As crônicas de Nárnia: Príncipe Caspian",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "A verdadeira oração não consiste em palavras elegantes, mas em um afeto fervoroso do coração voltado a Deus.",
+    "source": "As Institutas da Religião Cristã",
+    "author": "João Calvino",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/institutas-da-religiao-crista"
   },
   {
     "quote": "Lembre-se de que todos os mundos chegam ao fim. E uma morte nobre é um tesouro que ninguém é pobre demais para comprar.",
@@ -450,6 +558,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "O coração do homem não se tranquiliza verdadeiramente senão quando descansa na paternal firmeza da graça de Deus.",
+    "source": "As Institutas da Religião Cristã",
+    "author": "João Calvino",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/institutas-da-religiao-crista"
+  },
+  {
     "quote": "A paixão é o que nos leva a prometer. O amor é o que nos leva a cumprir as promessas.",
     "source": "C. S. Lewis",
     "author": "C. S. Lewis",
@@ -460,6 +574,12 @@
     "source": "C. S. Lewis",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "Para aquele que tem fé, nenhuma explicação é necessária. Para aquele sem fé, nenhuma explicação é possível.",
+    "source": "Compêndio de Teologia",
+    "author": "São Tomás de Aquino",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/compendio-da-suma-teologica"
   },
   {
     "quote": "O menor ato de bondade hoje é a captura de um ponto estratégico a partir do qual se poderá ser capaz de seguir para vitórias que você nunca sonhou.",
@@ -474,6 +594,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "A graça não destrói a natureza, mas a aperfeiçoa.",
+    "source": "Compêndio de Teologia",
+    "author": "São Tomás de Aquino",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/compendio-da-suma-teologica"
+  },
+  {
     "quote": "A vida com Deus não é imune às dificuldades, mas é paz nas dificuldades.",
     "source": "C. S. Lewis",
     "author": "C. S. Lewis",
@@ -484,6 +610,12 @@
     "source": "C. S. Lewis",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "A caridade é a forma de todas as virtudes; onde há amor, aí está a presença divina.",
+    "source": "Compêndio de Teologia",
+    "author": "São Tomás de Aquino",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/compendio-da-suma-teologica"
   },
   {
     "quote": "Fé é a arte de se apegar às coisas que sua razão já aceitou, apesar das mudanças de humor.",
@@ -498,6 +630,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "O cristão é um senhor livre de todas as coisas e não está sujeito a ninguém; o cristão é um servo prestativo em todas as coisas e sujeito a todos.",
+    "source": "As 95 Teses & Obras Escolhidas",
+    "author": "Martinho Lutero",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/as-95-teses"
+  },
+  {
     "quote": "Ele nos amou, não porque somos amáveis, mas porque Ele é o amor.",
     "source": "C. S. Lewis",
     "author": "C. S. Lewis",
@@ -508,6 +646,12 @@
     "source": "C. S. Lewis",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "A fé é uma confiança viva e inabalável na graça de Deus.",
+    "source": "As 95 Teses & Obras Escolhidas",
+    "author": "Martinho Lutero",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/as-95-teses"
   },
   {
     "quote": "Não podemos confiar em nós mesmos nem em nossos melhores momentos. A única atitude fatal é se dar por satisfeito com qualquer coisa que não a perfeição.",
@@ -522,6 +666,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Castelo forte é o nosso Deus, espada e escudo valioso! Sacode a dor dos servos seus e os livra do tirano furioso.",
+    "source": "Castelo Forte é o Nosso Deus",
+    "author": "Martinho Lutero",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/castelo-forte-e-o-nosso-deus"
+  },
+  {
     "quote": "Ao ler a grande literatura, eu me torno mil homens e, mesmo assim, continuo a ser eu mesmo.",
     "source": "Um Experimento em Crítica Literária",
     "author": "C. S. Lewis",
@@ -532,6 +682,12 @@
     "source": "A Anatomia de uma Dor",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "Saber falar é saber ouvir; a palavra de Deus não se ouve com os ouvidos, ouve-se com o coração.",
+    "source": "Sermão da Sexagésima",
+    "author": "Padre Antônio Vieira",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/sermao-da-sexagesima"
   },
   {
     "quote": "Onde está Deus?... Vá para Ele quando sua necessidade é desesperadora, quando o outro socorro é inútil, e o que encontra? Uma porta batendo na sua cara, e um barulho de trancos por dentro. Depois disso, silêncio.",
@@ -546,6 +702,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Para falar ao vento, bastam palavras; para falar ao coração, são necessárias ações.",
+    "source": "Sermão de Santo Antônio aos Peixes",
+    "author": "Padre Antônio Vieira",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/sermao-de-santo-antonio-aos-peixes"
+  },
+  {
     "quote": "Toda realidade é iconoclasta. Aquela que amamos nesta terra triunfa incessantemente sobre a simples ideia que formulamos dela.",
     "source": "A Anatomia de uma Dor",
     "author": "C. S. Lewis",
@@ -558,6 +720,12 @@
     "scriptoriumUrl": null
   },
   {
+    "quote": "Não procuro compreender para crer, mas creio para compreender.",
+    "source": "Por que Deus se fez Homem?",
+    "author": "Santo Anselmo",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/por-que-deus-se-fez-homem"
+  },
+  {
     "quote": "É esta a terra pela qual tenho aspirado a vida inteira, embora até agora não a conhecesse. A razão por que amávamos a antiga Nárnia é que ela, às vezes, se parecia um pouquinho com isto aqui.",
     "source": "A Última Batalha",
     "author": "C. S. Lewis",
@@ -568,6 +736,12 @@
     "source": "A Última Batalha",
     "author": "C. S. Lewis",
     "scriptoriumUrl": null
+  },
+  {
+    "quote": "Senhor meu Deus, ensina o meu coração onde e como procurar-te, onde e como encontrar-te.",
+    "source": "Por que Deus se fez Homem?",
+    "author": "Santo Anselmo",
+    "scriptoriumUrl": "https://scriptorium.narniano.com/livros/por-que-deus-se-fez-homem"
   },
   {
     "quote": "Oração no sentido de petição, de pedir coisas, é uma pequena parte disso; confissão e penitência são seu princípio; a adoração, seu santuário; a presença e a visão e o deleite de Deus, seu pão e vinho.",
