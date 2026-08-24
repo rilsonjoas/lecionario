@@ -133,4 +133,26 @@ describe('fetchArtworkForReferences', () => {
 
     expect(result).toBeNull();
   });
+
+  it('rotaciona obra de forma determinística quando diferentes datas são passadas', async () => {
+    const art1 = makeArtwork({ id: '1', title: 'Obra 1' });
+    const art2 = makeArtwork({ id: '2', title: 'Obra 2' });
+    const art3 = makeArtwork({ id: '3', title: 'Obra 3' });
+
+    vi.stubGlobal(
+      'fetch',
+      vi.fn().mockResolvedValue({ ok: true, json: async () => ({ items: [art1, art2, art3] }) }),
+    );
+
+    const resDay1 = await fetchArtworkForReferences(['Salmo 122'], undefined, '2026-08-24');
+    const resDay2 = await fetchArtworkForReferences(['Salmo 122'], undefined, '2026-08-25');
+    const resSameDay1 = await fetchArtworkForReferences(['Salmo 122'], undefined, '2026-08-24');
+
+    expect(resDay1?.id).toBeDefined();
+    expect(resDay2?.id).toBeDefined();
+    // Re-consultar o mesmo dia garante a mesma obra
+    expect(resDay1?.id).toBe(resSameDay1?.id);
+    // Dias consecutivos retornam obras diferentes quando há múltiplas disponíveis
+    expect(resDay1?.id).not.toBe(resDay2?.id);
+  });
 });

@@ -42,10 +42,42 @@ async function queryArtworks(params: URLSearchParams, signal?: AbortSignal): Pro
   return data.items;
 }
 
+function getDateSeed(date?: Date | string): number {
+  if (!date) return 0;
+  let dateStr = '';
+  if (typeof date === 'string') {
+    dateStr = date.split('T')[0];
+  } else if (date instanceof Date && !isNaN(date.getTime())) {
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    dateStr = `${y}-${m}-${d}`;
+  }
+  if (!dateStr) return 0;
+
+  let hash = 0;
+  for (let i = 0; i < dateStr.length; i++) {
+    hash = (hash << 5) - hash + dateStr.charCodeAt(i);
+    hash |= 0;
+  }
+  return Math.abs(hash);
+}
+
 export async function fetchArtworkForReference(
   ref: string,
-  signal?: AbortSignal,
+  arg2?: AbortSignal | Date | string,
+  arg3?: Date | string,
 ): Promise<Artwork | null> {
+  let signal: AbortSignal | undefined;
+  let date: Date | string | undefined;
+
+  if (arg2 instanceof AbortSignal) {
+    signal = arg2;
+    date = arg3;
+  } else {
+    date = arg2 ?? arg3;
+  }
+
   const parsed = parseReference(ref);
   if (!parsed) return null;
 
@@ -60,19 +92,24 @@ export async function fetchArtworkForReference(
         bookSlug: parsed.bookSlug,
         chapter: String(parsed.chapter),
         verses: parsed.verses,
-        limit: '1',
       });
-      const [exact] = await queryArtworks(withVerses, signal);
-      if (exact) return { ...exact, artistOrDirector: normalizeArtist(exact.artistOrDirector) };
+      const exactItems = await queryArtworks(withVerses, signal);
+      if (exactItems.length > 0) {
+        const seed = getDateSeed(date);
+        const exact = exactItems[seed % exactItems.length];
+        return { ...exact, artistOrDirector: normalizeArtist(exact.artistOrDirector) };
+      }
     }
 
     const byChapter = new URLSearchParams({
       bookSlug: parsed.bookSlug,
       chapter: String(parsed.chapter),
-      limit: '1',
     });
-    const [byChapterMatch] = await queryArtworks(byChapter, signal);
-    if (!byChapterMatch) return null;
+    const chapterItems = await queryArtworks(byChapter, signal);
+    if (chapterItems.length === 0) return null;
+
+    const seed = getDateSeed(date);
+    const byChapterMatch = chapterItems[seed % chapterItems.length];
     return {
       ...byChapterMatch,
       artistOrDirector: normalizeArtist(byChapterMatch.artistOrDirector),
@@ -88,10 +125,21 @@ export async function fetchArtworkForReference(
  *  nas outras. */
 export async function fetchArtworkForReferences(
   refs: string[],
-  signal?: AbortSignal,
+  arg2?: AbortSignal | Date | string,
+  arg3?: Date | string,
 ): Promise<Artwork | null> {
+  let signal: AbortSignal | undefined;
+  let date: Date | string | undefined;
+
+  if (arg2 instanceof AbortSignal) {
+    signal = arg2;
+    date = arg3;
+  } else {
+    date = arg2 ?? arg3;
+  }
+
   for (const ref of refs) {
-    const artwork = await fetchArtworkForReference(ref, signal);
+    const artwork = await fetchArtworkForReference(ref, signal, date);
     if (artwork) return artwork;
   }
   return null;

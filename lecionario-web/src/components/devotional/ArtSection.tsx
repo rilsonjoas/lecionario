@@ -17,17 +17,30 @@ function formatReference(ref: ArtworkReference): string {
   return ref.verses ? `${ref.book} ${ref.chapter}:${ref.verses}` : `${ref.book} ${ref.chapter}`;
 }
 
-export function ArtSection({ references }: { references: string[] }) {
+export function ArtSection({ references, date }: { references: string[]; date?: Date | string }) {
   const [artwork, setArtwork] = useState<Artwork | null>(null);
+
+  const dateStr = date
+    ? typeof date === 'string'
+      ? date.split('T')[0]
+      : `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(
+          date.getDate(),
+        ).padStart(2, '0')}`
+    : '';
 
   useEffect(() => {
     const ctrl = new AbortController();
-    fetchArtworkForReferences(references, ctrl.signal)
-      .then(setArtwork)
+    setArtwork(null);
+    fetchArtworkForReferences(references, ctrl.signal, date)
+      .then((art) => {
+        if (!ctrl.signal.aborted) {
+          setArtwork(art);
+        }
+      })
       .catch(() => {});
     return () => ctrl.abort();
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- refs mudam de conteúdo, não de identidade, junto com a data
-  }, [references.join('|')]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- refs e data controlados por dependências explícitas
+  }, [references.join('|'), dateStr]);
 
   if (!artwork) return null;
 

@@ -14,41 +14,55 @@ interface Props {
   // Referências das leituras do dia, na ordem em que aparecem (1ª leitura,
   // salmo, epístola, evangelho) — tenta cada uma até achar uma pintura.
   references: string[];
+  date?: Date | string;
 }
 
 function formatReference(ref: { book: string; chapter: number; verses: string | null }): string {
   return ref.verses ? `${ref.book} ${ref.chapter}:${ref.verses}` : `${ref.book} ${ref.chapter}`;
 }
 
-export function ArtCard({ references }: Props) {
+export function ArtCard({ references, date }: Props) {
   const colors = useThemeColors();
   const { scale } = useFontScale();
   const [artwork, setArtwork] = useState<Artwork | null>(null);
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
 
+  const dateStr = date
+    ? typeof date === 'string'
+      ? date.split('T')[0]
+      : `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(
+          date.getDate(),
+        ).padStart(2, '0')}`
+    : '';
+
   useEffect(() => {
     const ctrl = new AbortController();
-    fetchArtworkForReferences(references, ctrl.signal)
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- limpa pintura anterior ao trocar de data/referências
+    setArtwork(null);
+    setAspectRatio(null);
+    fetchArtworkForReferences(references, ctrl.signal, date)
       .then((art) => {
-        setArtwork(art);
-        if (art?.imageUrl) {
-          Image.getSize(
-            `${BIBLE_ART_WEB_BASE}${art.imageUrl}`,
-            (w, h) => {
-              if (!ctrl.signal.aborted && w > 0 && h > 0) {
-                setAspectRatio(w / h);
-              }
-            },
-            () => {},
-          );
-        } else {
-          setAspectRatio(null);
+        if (!ctrl.signal.aborted) {
+          setArtwork(art);
+          if (art?.imageUrl) {
+            Image.getSize(
+              `${BIBLE_ART_WEB_BASE}${art.imageUrl}`,
+              (w, h) => {
+                if (!ctrl.signal.aborted && w > 0 && h > 0) {
+                  setAspectRatio(w / h);
+                }
+              },
+              () => {},
+            );
+          } else {
+            setAspectRatio(null);
+          }
         }
       })
       .catch(() => {});
     return () => ctrl.abort();
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- refs mudam de conteúdo, não de identidade, junto com a data
-  }, [references.join('|')]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- refs e data controlados por dependências explícitas
+  }, [references.join('|'), dateStr]);
 
   if (!artwork) return null;
 
