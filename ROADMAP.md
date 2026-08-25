@@ -759,6 +759,10 @@ que era falso).*
 - [x] Adicionar toggle nas Configurações: ativar/desativar notificações (2026-08-20)
 - [x] Adicionar seletor de horário (6h/7h/8h/9h) — integrado ao toggle (2026-08-20)
 - [x] Solicitar permissão de notificação no primeiro uso, com explicação clara (2026-08-20)
+- [ ] **Bugfix — Notificação repetindo título estático em dias subsequentes (Achado 2026-08-24)**:
+  * **Sintoma**: Notificação de segunda-feira exibiu o texto de domingo ("Domingo...").
+  * **Causa Raiz**: `scheduleDailyNotification` em `src/lib/notifications.ts` calculava o título/corpo para a data atual `next` (ex.: Domingo) e passava um payload estático para o trigger `DAILY` do `expo-notifications`. O sistema operacional re-exibia o payload estático de domingo todos os dias.
+  * **Solução**: Agendar notificações individuais dinâmicas para os próximos 7 dias em janela rolante (`addDays(now, i)`), renovadas ao abrir o app ou em background handler.
 
 **Exemplo da notificação:**
 ```
