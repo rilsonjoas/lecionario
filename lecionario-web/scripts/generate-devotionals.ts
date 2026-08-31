@@ -15,7 +15,7 @@
  */
 import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'fs';
 import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import cycleAData from '../src/data/rcl/cycle-A.json';
 import cycleBData from '../src/data/rcl/cycle-B.json';
 import cycleCData from '../src/data/rcl/cycle-C.json';
@@ -85,6 +85,56 @@ interface MeditationResource {
 interface DevotionalEntry {
   prayer: DailyPrayer;
   meditation: MeditationResource;
+}
+
+// ─── Rotação por ocorrência do ciclo (Camada 2, mecânica 5.4) ────────
+//
+// Todo slot de conteúdo (o item de um `DevotionalEntry[]`, uma entrada
+// `christmasByCycle`, etc.) pode ser:
+//
+//   - um `DevotionalEntry` comum — comportamento atual, sem variação;
+//   - um `RotatableEntry` — o mesmo slot com `default` + variações
+//     opcionais por ocorrência. `resolveSlot` devolve `default` se a
+//     variação daquela ocorrência não existir, então um slot que ainda
+//     não foi escrito continua entregando o conteúdo único atual.
+//
+// O índice de ocorrências (que ocorrência é uma dada data?) vive em
+// `getCycleOccurrence` (conteúdo por ciclo: 1ª/2ª vez no triênio) e
+// `getYearOccurrence` (conteúdo fixo que repete todo ano — Natal,
+// Epifania, Tríduo etc.). A escolha é deterministicamente derivada do
+// ano litúrgico, sem estado e sem aleatoriedade (mesmo espírito do
+// date-seeded do QuoteCard: previsível e reprodutível).
+interface RotatableEntry {
+  default: DevotionalEntry;
+  occurrences?: Record<number, DevotionalEntry>;
+}
+
+export type DevotionalSlot = DevotionalEntry | RotatableEntry;
+
+// Primeiro ano litúrgico em que cada ciclo aparece no período publicado
+// (2025-2030). C=2025 (lit. 2025), A=2026, B=2027; depois repetem a
+// cada 3 anos (A: 2026/2029, B: 2027/2030, C: 2025/2028).
+const firstYearOfCycle: Record<'A' | 'B' | 'C', number> = {
+  A: 2026,
+  B: 2027,
+  C: 2025,
+};
+
+// 1ª ocorrência = primeiro ano do ciclo, 2ª = três anos depois, etc.
+export function getCycleOccurrence(cycle: 'A' | 'B' | 'C', liturgicalYear: number): number {
+  return Math.floor((liturgicalYear - firstYearOfCycle[cycle]) / 3) + 1;
+}
+
+// Conteúdo fixo repete uma vez por ano civil dentro do período (1..6).
+export function getYearOccurrence(liturgicalYear: number): number {
+  return liturgicalYear - 2025 + 1;
+}
+
+export function resolveSlot(slot: DevotionalSlot, occurrence: number): DevotionalEntry {
+  if ('default' in slot) {
+    return slot.occurrences?.[occurrence] ?? slot.default;
+  }
+  return slot;
 }
 
 // ─── Utilitários Litúrgicos ──────────────────────────────────────────
@@ -311,13 +361,13 @@ function getWeekOfSeason(date: Date, season: string, liturgicalYear: number, eas
 // muda. Array de 7 entradas por semana, índice = date.getDay()
 // (0 = domingo … 6 = sábado). Cobertura de cada ciclo documentada no
 // topo do respectivo módulo em scripts/grounded-content/.
-const groundedOrdinary: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+const groundedOrdinary: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalSlot[]>>> = {
   A: ordinaryA,
   B: ordinaryB,
   C: ordinaryC,
 };
 
-const trinityWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry[]>> = {
+const trinityWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalSlot[]>> = {
   A: trinityWeekA,
   B: trinityWeekB,
   C: trinityWeekC,
@@ -329,7 +379,7 @@ const trinityWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry[]>> = 
 // então `getWeekOfSeason` já produz 1-4 de forma estável, sem
 // precisar de um "domingo regente" calculado por data como no Tempo
 // Comum. Ver scripts/grounded-content/advent-*.ts.
-const groundedAdvent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+const groundedAdvent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalSlot[]>>> = {
   A: adventA,
   B: adventB,
   C: adventC,
@@ -341,13 +391,13 @@ const groundedAdvent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalE
 // número de semana, porque ele pode ocupar qualquer weekOfSeason de 6
 // a 10 dependendo do ano (ver ROADMAP.md 1.2f). Ver
 // scripts/grounded-content/epiphany-*.ts.
-const groundedEpiphany: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+const groundedEpiphany: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalSlot[]>>> = {
   A: epiphanyA,
   B: epiphanyB,
   C: epiphanyC,
 };
 
-const transfigurationWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry[]>> = {
+const transfigurationWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalSlot[]>> = {
   A: transfigA,
   B: transfigB,
   C: transfigC,
@@ -359,7 +409,7 @@ const transfigurationWeekByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntr
 // sobrescritos por `triduumContent`; só segunda/terça/quarta dessa
 // semana usam `holyWeekEarly` (ver generateForDate). Ver
 // scripts/grounded-content/lent-*.ts.
-const groundedLent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+const groundedLent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalSlot[]>>> = {
   A: lentA,
   B: lentB,
   C: lentC,
@@ -369,7 +419,7 @@ const groundedLent: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEnt
 // fixas (Domingo da Ressurreição ao 7º Domingo da Páscoa), sem
 // necessidade de adaptação de data — Páscoa é sempre domingo, como o
 // próprio Advento. Ver scripts/grounded-content/easter-*.ts.
-const groundedEaster: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalEntry[]>>> = {
+const groundedEaster: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalSlot[]>>> = {
   A: easterA,
   B: easterB,
   C: easterC,
@@ -378,13 +428,13 @@ const groundedEaster: Partial<Record<'A' | 'B' | 'C', Record<number, DevotionalE
 // Pentecostes + Trindade — ver scripts/grounded-content/pentecost.ts:
 // os 8 dias fixos entre o Domingo de Pentecostes e o Domingo da
 // Trindade (inclusive), tratados por data exata em generateForDate.
-const pentecostSundayByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry>> = {
+const pentecostSundayByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalSlot>> = {
   A: pentecostSundayA,
   B: pentecostSundayB,
   C: pentecostSundayC,
 };
 
-const trinitySundayByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry>> = {
+const trinitySundayByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalSlot>> = {
   A: trinitySundayA,
   B: trinitySundayB,
   C: trinitySundayC,
@@ -400,7 +450,7 @@ const trinitySundayByCycle: Partial<Record<'A' | 'B' | 'C', DevotionalEntry>> = 
 
 const triduumContent: Record<
   'palmSunday' | 'holyThursday' | 'goodFriday' | 'holySaturday',
-  DevotionalEntry
+  DevotionalSlot
 > = {
   palmSunday: {
     prayer: {
@@ -544,13 +594,22 @@ function getNextSunday(date: Date): Date {
 // dinamicamente, igual à mesma lógica em generate-rcl-data.ts), ou um
 // dia de semana comum — nesse caso, conta quantos dias de semana já
 // se passaram desde 26/dez pra escolher uma entrada sem repetir.
-function getGroundedChristmasContent(date: Date, cycle: 'A' | 'B' | 'C'): DevotionalEntry | null {
+// O slot do Dia de Natal e do 1º Domingo são escolhidos por ciclo
+// (christmasByCycle[cycle].day/.sunday1) — então rotacionam no triênio
+// (ocorrência 1/2, ver UMA.md seção 1). O 2º Domingo e os dias de
+// semana (christmasSunday2, christmasWeekdays) são slots únicos que
+// repetem todo ano — rotacionam por ano (ocorrência 1-6). `byCycle`
+// diz ao chamador qual índice usar.
+type ChristmasSlot =
+  { slot: DevotionalSlot; byCycle: true } | { slot: DevotionalSlot; byCycle: false };
+
+function getGroundedChristmasContent(date: Date, cycle: 'A' | 'B' | 'C'): ChristmasSlot | null {
   const year = date.getMonth() < 6 ? date.getFullYear() - 1 : date.getFullYear();
   const christmasDay = new Date(year, 11, 25);
   const epiphany = new Date(year + 1, 0, 6);
 
   if (formatDate(date) === formatDate(christmasDay)) {
-    return christmasByCycle[cycle].day;
+    return { slot: christmasByCycle[cycle].day, byCycle: true };
   }
 
   const sunday1 = getNextSunday(addDays(christmasDay, 1));
@@ -558,10 +617,10 @@ function getGroundedChristmasContent(date: Date, cycle: 'A' | 'B' | 'C'): Devoti
   const sunday2 = sunday2Candidate < epiphany ? sunday2Candidate : null;
 
   if (formatDate(date) === formatDate(sunday1)) {
-    return christmasByCycle[cycle].sunday1;
+    return { slot: christmasByCycle[cycle].sunday1, byCycle: true };
   }
   if (sunday2 && formatDate(date) === formatDate(sunday2)) {
-    return christmasSunday2;
+    return { slot: christmasSunday2, byCycle: false };
   }
 
   let weekdayCount = 0;
@@ -571,7 +630,7 @@ function getGroundedChristmasContent(date: Date, cycle: 'A' | 'B' | 'C'): Devoti
     if (!isSunday1 && !isSunday2) weekdayCount++;
   }
   if (weekdayCount === 0) return null;
-  return christmasWeekdays[(weekdayCount - 1) % christmasWeekdays.length];
+  return { slot: christmasWeekdays[(weekdayCount - 1) % christmasWeekdays.length], byCycle: false };
 }
 
 function generateForDate(
@@ -579,6 +638,7 @@ function generateForDate(
   season: string,
   week: number,
   cycle: 'A' | 'B' | 'C',
+  liturgicalYear: number,
 ): DevotionalEntry | null {
   // Tempo Comum: tenta primeiro o conteúdo ancorado no domingo real do
   // RCL (ver groundedOrdinary). `weekOfSeason` aqui é o número real do
@@ -597,14 +657,14 @@ function generateForDate(
     // mesma ordem.
     const trinityWeek = trinityWeekByCycle[cycle];
     if (!governingSunday && trinityWeek && date.getDay() >= 1 && date.getDay() <= 6) {
-      return trinityWeek[date.getDay() - 1];
+      return resolveSlot(trinityWeek[date.getDay() - 1], getCycleOccurrence(cycle, liturgicalYear));
     }
 
     const groundedWeek = governingSunday
       ? groundedOrdinary[cycle]?.[governingSunday.weekOfSeason]
       : undefined;
     if (groundedWeek) {
-      return groundedWeek[date.getDay()];
+      return resolveSlot(groundedWeek[date.getDay()], getCycleOccurrence(cycle, liturgicalYear));
     }
   }
 
@@ -615,7 +675,7 @@ function generateForDate(
   if (season === 'advent') {
     const groundedWeek = groundedAdvent[cycle]?.[week];
     if (groundedWeek) {
-      return groundedWeek[date.getDay()];
+      return resolveSlot(groundedWeek[date.getDay()], getCycleOccurrence(cycle, liturgicalYear));
     }
   }
 
@@ -623,7 +683,12 @@ function generateForDate(
   // 25/dez não cai sempre no mesmo dia da semana.
   if (season === 'christmas') {
     const grounded = getGroundedChristmasContent(date, cycle);
-    if (grounded) return grounded;
+    if (grounded) {
+      const occurrence = grounded.byCycle
+        ? getCycleOccurrence(cycle, liturgicalYear)
+        : getYearOccurrence(liturgicalYear);
+      return resolveSlot(grounded.slot, occurrence);
+    }
   }
 
   // Epifania: do Batismo do Senhor à Transfiguração usa o mesmo
@@ -633,20 +698,21 @@ function generateForDate(
   // scripts/grounded-content/epiphany-shared.ts.
   if (season === 'epiphany') {
     if (formatDate(date) === formatDate(new Date(date.getFullYear(), 0, 6))) {
-      return epiphanyDay;
+      return resolveSlot(epiphanyDay, getYearOccurrence(liturgicalYear));
     }
     const governingSunday = findGoverningEpiphanySunday(cycle, date);
     if (!governingSunday && date.getDay() >= 1 && date.getDay() <= 6) {
-      return epiphanyGapWeek[date.getDay() - 1];
+      return resolveSlot(epiphanyGapWeek[date.getDay() - 1], getYearOccurrence(liturgicalYear));
     }
     if (governingSunday?.dayName === 'Domingo da Transfiguração') {
-      return transfigurationWeekByCycle[cycle]?.[date.getDay()] ?? null;
+      const transfig = transfigurationWeekByCycle[cycle]?.[date.getDay()];
+      return transfig ? resolveSlot(transfig, getCycleOccurrence(cycle, liturgicalYear)) : null;
     }
     const groundedWeek = governingSunday
       ? groundedEpiphany[cycle]?.[governingSunday.weekOfSeason]
       : undefined;
     if (groundedWeek) {
-      return groundedWeek[date.getDay()];
+      return resolveSlot(groundedWeek[date.getDay()], getCycleOccurrence(cycle, liturgicalYear));
     }
   }
 
@@ -664,21 +730,21 @@ function generateForDate(
     const easter = calculateEaster(date.getFullYear());
     const ashWed = addDays(easter, -46);
     if (formatDate(date) === formatDate(ashWed)) {
-      return ashWednesday;
+      return resolveSlot(ashWednesday, getYearOccurrence(liturgicalYear));
     }
     const daysSinceAsh = Math.round((date.getTime() - ashWed.getTime()) / 86400000);
     if (daysSinceAsh > 0 && daysSinceAsh < 4) {
-      return ashWednesdayGap[daysSinceAsh - 1];
+      return resolveSlot(ashWednesdayGap[daysSinceAsh - 1], getYearOccurrence(liturgicalYear));
     }
     if (week === 6) {
       if (date.getDay() >= 1 && date.getDay() <= 3) {
-        return holyWeekEarly[date.getDay() - 1];
+        return resolveSlot(holyWeekEarly[date.getDay() - 1], getYearOccurrence(liturgicalYear));
       }
       return null;
     }
     const groundedWeek = groundedLent[cycle]?.[week];
     if (groundedWeek) {
-      return groundedWeek[date.getDay()];
+      return resolveSlot(groundedWeek[date.getDay()], getCycleOccurrence(cycle, liturgicalYear));
     }
   }
 
@@ -688,7 +754,7 @@ function generateForDate(
   if (season === 'easter') {
     const groundedWeek = groundedEaster[cycle]?.[week];
     if (groundedWeek) {
-      return groundedWeek[date.getDay()];
+      return resolveSlot(groundedWeek[date.getDay()], getCycleOccurrence(cycle, liturgicalYear));
     }
   }
 
@@ -703,21 +769,26 @@ function generateForDate(
     const pentecostDay = addDays(easter, 49);
     const trinityDay = addDays(pentecostDay, 7);
     if (formatDate(date) === formatDate(pentecostDay)) {
-      return pentecostSundayByCycle[cycle] ?? null;
+      const entry = pentecostSundayByCycle[cycle];
+      return entry ? resolveSlot(entry, getCycleOccurrence(cycle, liturgicalYear)) : null;
     }
     if (formatDate(date) === formatDate(trinityDay)) {
-      return trinitySundayByCycle[cycle] ?? null;
+      const entry = trinitySundayByCycle[cycle];
+      return entry ? resolveSlot(entry, getCycleOccurrence(cycle, liturgicalYear)) : null;
     }
     const daysSincePentecost = Math.round((date.getTime() - pentecostDay.getTime()) / 86400000);
     if (daysSincePentecost > 0 && daysSincePentecost < 7) {
-      return pentecostGapWeek[daysSincePentecost - 1] ?? null;
+      return resolveSlot(
+        pentecostGapWeek[daysSincePentecost - 1],
+        getYearOccurrence(liturgicalYear),
+      );
     }
   }
 
   return null;
 }
 
-function generateYear(year: number): Record<string, DevotionalEntry> {
+export function generateYear(year: number): Record<string, DevotionalEntry> {
   const entries: Record<string, DevotionalEntry> = {};
   const easter = calculateEaster(year);
   const cycle = getLiturgicalCycle(year);
@@ -757,14 +828,26 @@ function generateYear(year: number): Record<string, DevotionalEntry> {
       // exata com o fim de novembro do ARQUIVO SEGUINTE (achado
       // validando devotionals-2029.json/2030.json contra as datas
       // reais de Cristo Rei/Advento, não contra o módulo isolado).
+      const adventNextYear = current >= adventThisYear;
+      const tailPrevYear = current < adventPrevYear;
       const effectiveCycle =
-        season === 'advent' && current >= adventThisYear
-          ? nextCycle
-          : current < adventPrevYear
-            ? prevCycle
-            : cycle;
+        season === 'advent' && adventNextYear ? nextCycle : tailPrevYear ? prevCycle : cycle;
 
-      const devotional = generateForDate(current, season, week, effectiveCycle);
+      // Mesmo desvio do `effectiveCycle`, aplicado ao ano litúrgico: o
+      // índice de ocorrências (getCycleOccurrence/getYearOccurrence)
+      // precisa do ano certo do conteúdo, não do ano do bloco — senão o
+      // Advento que abre o próximo ano litúrgico (fim de novembro)
+      // calcularia ocorrência de um ciclo com o ano errado.
+      const effectiveLiturgicalYear =
+        season === 'advent' && adventNextYear ? year + 1 : tailPrevYear ? year - 1 : year;
+
+      const devotional = generateForDate(
+        current,
+        season,
+        week,
+        effectiveCycle,
+        effectiveLiturgicalYear,
+      );
       if (devotional) {
         entries[dateStr] = devotional;
       }
@@ -775,12 +858,17 @@ function generateYear(year: number): Record<string, DevotionalEntry> {
 
   // Sobrescreve os quatro dias do Tríduo Pascal com conteúdo dedicado.
   // Feito após o loop para garantir que qualquer conteúdo genérico
-  // gerado para esses dias seja substituído.
+  // gerado para esses dias seja substituído. Rotação por ano
+  // (getYearOccurrence): o Tríduo é conteúdo fixo, repete todo ano.
   const msPerDay = 86400000;
-  entries[formatDate(new Date(easter.getTime() - 7 * msPerDay))] = triduumContent.palmSunday;
-  entries[formatDate(new Date(easter.getTime() - 3 * msPerDay))] = triduumContent.holyThursday;
-  entries[formatDate(new Date(easter.getTime() - 2 * msPerDay))] = triduumContent.goodFriday;
-  entries[formatDate(new Date(easter.getTime() - 1 * msPerDay))] = triduumContent.holySaturday;
+  const palmSunday = resolveSlot(triduumContent.palmSunday, getYearOccurrence(year));
+  entries[formatDate(new Date(easter.getTime() - 7 * msPerDay))] = palmSunday;
+  const holyThursday = resolveSlot(triduumContent.holyThursday, getYearOccurrence(year));
+  entries[formatDate(new Date(easter.getTime() - 3 * msPerDay))] = holyThursday;
+  const goodFriday = resolveSlot(triduumContent.goodFriday, getYearOccurrence(year));
+  entries[formatDate(new Date(easter.getTime() - 2 * msPerDay))] = goodFriday;
+  const holySaturday = resolveSlot(triduumContent.holySaturday, getYearOccurrence(year));
+  entries[formatDate(new Date(easter.getTime() - 1 * msPerDay))] = holySaturday;
 
   return entries;
 }
@@ -823,4 +911,10 @@ function main() {
   console.log(`  Total: ${total} devocionais gerados`);
 }
 
-main();
+// Guarda de execução direta: quando importado por teste (ex. o teste de
+// regressão da mecânica 5.4), não dispara a geração — só roda quando
+// executado como script (`npx tsx scripts/generate-devotionals.ts`).
+const isDirectRun = process.argv[1] && fileURLToPath(import.meta.url) === resolve(process.argv[1]);
+if (isDirectRun) {
+  main();
+}

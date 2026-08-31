@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { AppState } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import type { LinkingOptions } from '@react-navigation/native';
 import type { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
@@ -20,7 +21,7 @@ import { SettingsProvider } from '@/contexts/SettingsContext';
 import { ThemeProvider, useThemeColors } from '@/contexts/ThemeContext';
 import { FontProvider } from '@/contexts/FontContext';
 import { FavoritesProvider } from '@/contexts/FavoritesContext';
-import { addNotificationResponseListener } from '@/lib/notifications';
+import { addNotificationResponseListener, renewNotificationsWindow } from '@/lib/notifications';
 import HomeScreen from '@/screens/HomeScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 import SearchScreen from '@/screens/SearchScreen';
@@ -142,7 +143,19 @@ function NotificationHandler() {
     const sub = addNotificationResponseListener((date) => {
       navigation.navigate('Hoje', { date });
     });
-    return () => sub.remove();
+
+    // Renova a janela rolante de notificações: ao abrir o app e sempre
+    // que voltar ao primeiro plano. Trigger `DAILY` re-exibia payload
+    // estático; notificações por data precisam de re-agendamento.
+    renewNotificationsWindow();
+    const appStateSub = AppState.addEventListener('change', (state) => {
+      if (state === 'active') renewNotificationsWindow();
+    });
+
+    return () => {
+      sub.remove();
+      appStateSub.remove();
+    };
   }, [navigation]);
 
   return null;

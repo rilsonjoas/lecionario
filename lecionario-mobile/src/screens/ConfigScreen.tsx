@@ -16,7 +16,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { buildPixBrCode, PIX_CONFIG } from '@/lib/pix';
 import {
   requestNotificationPermission,
-  scheduleDailyNotification,
+  scheduleDailyNotifications,
   cancelAllNotifications,
 } from '@/lib/notifications';
 import {
@@ -131,7 +131,7 @@ export default function ConfigScreen() {
         );
         return;
       }
-      await scheduleDailyNotification(notificationTime);
+      await scheduleDailyNotifications(notificationTime);
       setNotificationsEnabled(true);
     } else {
       await cancelAllNotifications();
@@ -142,7 +142,7 @@ export default function ConfigScreen() {
   const handleChangeTime = async (time: string) => {
     setNotificationTime(time);
     if (notificationsEnabled) {
-      await scheduleDailyNotification(time);
+      await scheduleDailyNotifications(time);
     }
   };
 

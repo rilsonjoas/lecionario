@@ -45,6 +45,10 @@ jobs:
         working-directory: lecionario-web
         run: npm run test
 
+      - name: Validate content (repetição, lacunas, cobertura ARC — Fase 5.1)
+        working-directory: lecionario-web
+        run: npm run validate:content
+
       - name: Audit dependencies (production, com allowlist)
         run: node scripts/audit-allowlist.mjs web
 

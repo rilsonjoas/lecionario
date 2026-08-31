@@ -460,13 +460,17 @@ export default function HomeScreen() {
             </View>
           ) : (
             <>
-              {devotional.collect && (
-                <View style={styles.section}>
-                  <CollectSection collect={devotional.collect} />
-                </View>
-              )}
-
+              {/* 5.3 (2026-08-30): "o ofício do dia" — Coleta abre o
+                  bloco, seguida das leituras na ordem litúrgica. A Coleta
+                  é a oração que abre a liturgia, não parte da Lectio
+                  Divina; juntas formam a mesma unidade do web. */}
               <View style={styles.section}>
+                {devotional.collect && (
+                  <View style={styles.collectBlock}>
+                    <CollectSection collect={devotional.collect} />
+                  </View>
+                )}
+
                 <View style={styles.sectionHeader}>
                   <View style={styles.lectioTitleRow}>
                     <Text
@@ -743,6 +747,9 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 24,
+  },
+  collectBlock: {
+    marginBottom: 20,
   },
   lectioTitleRow: {
     flexDirection: 'row',

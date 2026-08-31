@@ -1,0 +1,1480 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Snapshot baseline — componentes do ofício do dia (mobile) > CollectSection — Oração de Coleta 1`] = `
+<>
+  <div
+    data-component="View"
+    data-testid="View"
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "elevation": 3,
+          "overflow": "hidden",
+          "shadowColor": "#000",
+          "shadowOffset": {
+            "height": 2,
+            "width": 0,
+          },
+          "shadowOpacity": 0.1,
+          "shadowRadius": 6,
+        },
+        {
+          "backgroundColor": "#FFFFFF",
+        },
+      ]
+    }
+  >
+    <div
+      data-component="View"
+      data-testid="View"
+      style={
+        {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "gap": 14,
+          "padding": 20,
+          "paddingBottom": 12,
+        }
+      }
+    >
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "borderRadius": 18,
+              "height": 52,
+              "justifyContent": "center",
+              "width": 52,
+            },
+            {
+              "backgroundColor": "#B8860B1A",
+            },
+          ]
+        }
+      >
+        <div
+          color="#B8860B"
+          data-component="Icon"
+          data-testid="Icon"
+          name="crown"
+          size={28}
+        />
+      </div>
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        <text
+          data-component="Text"
+          data-testid="Text"
+          style={
+            [
+              {
+                "fontFamily": "Lora_400Regular_Italic",
+              },
+              {
+                "color": "#1A1A1A",
+                "fontSize": 18,
+              },
+            ]
+          }
+        >
+          Oração de Coleta
+        </text>
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "gap": 6,
+              "justifyContent": "flex-start",
+            }
+          }
+        >
+          <text
+            data-component="Text"
+            data-testid="Text"
+            style={
+              [
+                {
+                  "fontFamily": "Lora_600SemiBold_Italic",
+                  "fontWeight": "700",
+                  "letterSpacing": 2,
+                  "marginTop": 2,
+                  "textTransform": "uppercase",
+                },
+                {
+                  "color": "rgba(0,0,0,0.5)",
+                  "fontSize": 8,
+                },
+              ]
+            }
+          >
+            Oração Tradicional da Liturgia
+          </text>
+          <div
+            accessibilityRole="button"
+            aria-label="O que significa Oração de Coleta?"
+            data-component="TouchableOpacity"
+            data-testid="TouchableOpacity"
+            hitSlop={
+              {
+                "bottom": 8,
+                "left": 8,
+                "right": 8,
+                "top": 8,
+              }
+            }
+            onPress={[Function]}
+          >
+            <div
+              color="rgba(0,0,0,0.5)"
+              data-component="Icon"
+              data-testid="Icon"
+              name="help-circle-outline"
+              size={12}
+            />
+          </div>
+          <div
+            animationType="fade"
+            data-component="Modal"
+            data-testid="Modal"
+            onRequestClose={[Function]}
+            transparent={true}
+            visible={false}
+          >
+            <div
+              activeOpacity={1}
+              aria-label="Fechar"
+              data-component="TouchableOpacity"
+              data-testid="TouchableOpacity"
+              onPress={[Function]}
+              style={
+                {
+                  "backgroundColor": "rgba(0,0,0,0.6)",
+                  "flex": 1,
+                  "justifyContent": "center",
+                  "paddingHorizontal": 24,
+                }
+              }
+            >
+              <div
+                activeOpacity={1}
+                data-component="TouchableOpacity"
+                data-testid="TouchableOpacity"
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderRadius": 16,
+                      "borderWidth": 1,
+                      "gap": 12,
+                      "padding": 22,
+                    },
+                    {
+                      "backgroundColor": "#FFFFFF",
+                      "borderColor": "rgba(0,0,0,0.08)",
+                    },
+                  ]
+                }
+              >
+                <div
+                  color="#B8860B"
+                  data-component="Icon"
+                  data-testid="Icon"
+                  name="book-open-variant"
+                  size={22}
+                />
+                <text
+                  data-component="Text"
+                  data-testid="Text"
+                  style={
+                    [
+                      {
+                        "fontFamily": "Lora_700Bold",
+                        "textAlign": "center",
+                      },
+                      {
+                        "color": "#1A1A1A",
+                        "fontSize": 16,
+                      },
+                    ]
+                  }
+                >
+                  Oração de Coleta
+                </text>
+                <text
+                  data-component="Text"
+                  data-testid="Text"
+                  style={
+                    [
+                      {
+                        "fontFamily": "Lora_400Regular",
+                        "lineHeight": 19,
+                        "textAlign": "center",
+                      },
+                      {
+                        "color": "rgba(0,0,0,0.5)",
+                        "fontSize": 13,
+                      },
+                    ]
+                  }
+                >
+                  A oração que "recolhe" e resume as intenções de todo o dia. Tradição milenar presente no Livro de Oração Comum e nos missais antigos.
+                </text>
+                <div
+                  accessibilityRole="button"
+                  aria-label="Fechar"
+                  data-component="TouchableOpacity"
+                  data-testid="TouchableOpacity"
+                  onPress={[Function]}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "alignSelf": "stretch",
+                        "borderRadius": 22,
+                        "justifyContent": "center",
+                        "marginTop": 4,
+                        "minHeight": 44,
+                      },
+                      {
+                        "backgroundColor": "#B8860B",
+                      },
+                    ]
+                  }
+                >
+                  <text
+                    data-component="Text"
+                    data-testid="Text"
+                    style={
+                      {
+                        "color": "#FFFFFF",
+                        "fontFamily": "Lora_700Bold",
+                        "fontSize": 14,
+                        "fontWeight": "700",
+                      }
+                    }
+                  >
+                    Entendi
+                  </text>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        accessibilityRole="button"
+        aria-label="Copiar Oração de Coleta"
+        data-component="TouchableOpacity"
+        data-testid="TouchableOpacity"
+        hitSlop={
+          {
+            "bottom": 8,
+            "left": 8,
+            "right": 8,
+            "top": 8,
+          }
+        }
+        onPress={[Function]}
+        style={
+          {
+            "marginLeft": 8,
+            "padding": 4,
+          }
+        }
+      >
+        <div
+          color="rgba(0,0,0,0.5)"
+          data-component="Icon"
+          data-testid="Icon"
+          name="content-copy"
+          size={18}
+        />
+      </div>
+    </div>
+    <div
+      data-component="View"
+      data-testid="View"
+      style={
+        {
+          "paddingBottom": 20,
+          "paddingHorizontal": 20,
+        }
+      }
+    >
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          [
+            {
+              "borderLeftWidth": 4,
+              "padding": 20,
+            },
+            {
+              "backgroundColor": "#1A1A1A08",
+              "borderLeftColor": "#B8860B33",
+            },
+          ]
+        }
+      >
+        <text
+          data-component="Text"
+          data-testid="Text"
+          selectable={true}
+          style={
+            [
+              {
+                "fontFamily": "Lora_400Regular_Italic",
+                "lineHeight": 26,
+              },
+              {
+                "color": "#1A1A1A",
+                "fontSize": 15,
+              },
+            ]
+          }
+        >
+          Deus misericordioso, que enviaste os teus mensageiros, os profetas, para pregar o arrependimento.
+        </text>
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            [
+              {
+                "borderTopWidth": 1,
+                "marginTop": 24,
+                "paddingTop": 16,
+              },
+              {
+                "borderTopColor": "#B8860B1A",
+              },
+            ]
+          }
+        >
+          <div
+            data-component="View"
+            data-testid="View"
+            style={
+              [
+                {
+                  "height": 1,
+                  "position": "absolute",
+                  "right": 0,
+                  "top": 0,
+                  "width": 60,
+                },
+                {
+                  "backgroundColor": "#B8860B33",
+                },
+              ]
+            }
+          />
+          <text
+            data-component="Text"
+            data-testid="Text"
+            style={
+              [
+                {
+                  "color": "#8F6608",
+                  "fontFamily": "Lora_600SemiBold_Italic",
+                  "fontWeight": "700",
+                  "letterSpacing": 3,
+                  "textAlign": "right",
+                  "textTransform": "uppercase",
+                },
+                {
+                  "fontSize": 9,
+                },
+              ]
+            }
+          >
+            Por Jesus Cristo, nosso Senhor. Amém.
+          </text>
+        </div>
+      </div>
+    </div>
+  </div>
+</>
+`;
+
+exports[`Snapshot baseline — componentes do ofício do dia (mobile) > PrayerSection — Oração do Dia 1`] = `
+<>
+  <div
+    data-component="View"
+    data-testid="View"
+    style={
+      {
+        "backgroundColor": "#6B3A3A",
+        "borderRadius": 8,
+        "elevation": 5,
+        "overflow": "hidden",
+        "shadowColor": "#000",
+        "shadowOffset": {
+          "height": 4,
+          "width": 0,
+        },
+        "shadowOpacity": 0.15,
+        "shadowRadius": 8,
+      }
+    }
+  >
+    <div
+      data-component="View"
+      data-testid="View"
+      style={
+        {
+          "alignItems": "center",
+          "borderBottomColor": "rgba(184,134,11,0.2)",
+          "borderBottomWidth": 1,
+          "paddingBottom": 24,
+          "paddingHorizontal": 20,
+          "paddingTop": 20,
+        }
+      }
+    >
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 12,
+            "justifyContent": "center",
+            "marginBottom": 12,
+          }
+        }
+      >
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "backgroundColor": "rgba(184,134,11,0.3)",
+              "height": 1,
+              "width": 40,
+            }
+          }
+        />
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "alignItems": "center",
+              "backgroundColor": "rgba(212,160,23,0.25)",
+              "borderRadius": 38,
+              "height": 76,
+              "justifyContent": "center",
+              "width": 76,
+            }
+          }
+        >
+          <div
+            data-component="View"
+            data-testid="View"
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "#8B4513",
+                "borderRadius": 28,
+                "height": 56,
+                "justifyContent": "center",
+                "width": 56,
+              }
+            }
+          >
+            <div
+              color="#F5F5F0"
+              data-component="Icon"
+              data-testid="Icon"
+              name="candle"
+              size={28}
+            />
+          </div>
+        </div>
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "backgroundColor": "rgba(184,134,11,0.3)",
+              "height": 1,
+              "width": 40,
+            }
+          }
+        />
+      </div>
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 8,
+            "justifyContent": "center",
+          }
+        }
+      >
+        <text
+          data-component="Text"
+          data-testid="Text"
+          style={
+            [
+              {
+                "color": "#F5F5F0",
+                "fontFamily": "Lora_400Regular",
+                "textAlign": "center",
+              },
+              {
+                "fontSize": 26,
+              },
+            ]
+          }
+        >
+          Oração do Dia
+        </text>
+        <div
+          accessibilityRole="button"
+          aria-label="O que significa Oração do Dia?"
+          data-component="TouchableOpacity"
+          data-testid="TouchableOpacity"
+          hitSlop={
+            {
+              "bottom": 8,
+              "left": 8,
+              "right": 8,
+              "top": 8,
+            }
+          }
+          onPress={[Function]}
+        >
+          <div
+            color="rgba(0,0,0,0.5)"
+            data-component="Icon"
+            data-testid="Icon"
+            name="help-circle-outline"
+            size={16}
+          />
+        </div>
+        <div
+          animationType="fade"
+          data-component="Modal"
+          data-testid="Modal"
+          onRequestClose={[Function]}
+          transparent={true}
+          visible={false}
+        >
+          <div
+            activeOpacity={1}
+            aria-label="Fechar"
+            data-component="TouchableOpacity"
+            data-testid="TouchableOpacity"
+            onPress={[Function]}
+            style={
+              {
+                "backgroundColor": "rgba(0,0,0,0.6)",
+                "flex": 1,
+                "justifyContent": "center",
+                "paddingHorizontal": 24,
+              }
+            }
+          >
+            <div
+              activeOpacity={1}
+              data-component="TouchableOpacity"
+              data-testid="TouchableOpacity"
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 16,
+                    "borderWidth": 1,
+                    "gap": 12,
+                    "padding": 22,
+                  },
+                  {
+                    "backgroundColor": "#FFFFFF",
+                    "borderColor": "rgba(0,0,0,0.08)",
+                  },
+                ]
+              }
+            >
+              <div
+                color="#B8860B"
+                data-component="Icon"
+                data-testid="Icon"
+                name="book-open-variant"
+                size={22}
+              />
+              <text
+                data-component="Text"
+                data-testid="Text"
+                style={
+                  [
+                    {
+                      "fontFamily": "Lora_700Bold",
+                      "textAlign": "center",
+                    },
+                    {
+                      "color": "#1A1A1A",
+                      "fontSize": 16,
+                    },
+                  ]
+                }
+              >
+                Oração do Dia
+              </text>
+              <text
+                data-component="Text"
+                data-testid="Text"
+                style={
+                  [
+                    {
+                      "fontFamily": "Lora_400Regular",
+                      "lineHeight": 19,
+                      "textAlign": "center",
+                    },
+                    {
+                      "color": "rgba(0,0,0,0.5)",
+                      "fontSize": 13,
+                    },
+                  ]
+                }
+              >
+                Orações fixas que moldam a rotina de oração da igreja há séculos, inspiradas na Liturgia das Horas.
+              </text>
+              <div
+                accessibilityRole="button"
+                aria-label="Fechar"
+                data-component="TouchableOpacity"
+                data-testid="TouchableOpacity"
+                onPress={[Function]}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "stretch",
+                      "borderRadius": 22,
+                      "justifyContent": "center",
+                      "marginTop": 4,
+                      "minHeight": 44,
+                    },
+                    {
+                      "backgroundColor": "#B8860B",
+                    },
+                  ]
+                }
+              >
+                <text
+                  data-component="Text"
+                  data-testid="Text"
+                  style={
+                    {
+                      "color": "#FFFFFF",
+                      "fontFamily": "Lora_700Bold",
+                      "fontSize": 14,
+                      "fontWeight": "700",
+                    }
+                  }
+                >
+                  Entendi
+                </text>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <text
+        data-component="Text"
+        data-testid="Text"
+        style={
+          [
+            {
+              "color": "#EDDFB8",
+              "fontFamily": "Lora_600SemiBold_Italic",
+              "fontWeight": "700",
+              "letterSpacing": 3,
+              "marginTop": 8,
+              "textTransform": "uppercase",
+            },
+            {
+              "fontSize": 9,
+            },
+          ]
+        }
+      >
+        Oração do Segundo Domingo do Advento
+      </text>
+    </div>
+    <div
+      data-component="View"
+      data-testid="View"
+      style={
+        {
+          "padding": 20,
+          "paddingTop": 28,
+        }
+      }
+    >
+      <text
+        data-component="Text"
+        data-testid="Text"
+        selectable={true}
+        style={
+          [
+            {
+              "color": "#F5F5F0",
+              "fontFamily": "Lora_400Regular_Italic",
+              "lineHeight": 26,
+              "paddingHorizontal": 8,
+              "textAlign": "center",
+            },
+            {
+              "fontSize": 15,
+            },
+          ]
+        }
+      >
+        Deus Todo-Poderoso, concede que possamos lançar fora as obras das trevas.
+      </text>
+      <div
+        accessibilityRole="button"
+        aria-label="Copiar oração"
+        data-component="TouchableOpacity"
+        data-testid="TouchableOpacity"
+        hitSlop={
+          {
+            "bottom": 8,
+            "left": 12,
+            "right": 12,
+            "top": 8,
+          }
+        }
+        onPress={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 6,
+            "justifyContent": "center",
+            "marginTop": 20,
+            "minHeight": 36,
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <div
+          color="#EDDFB8"
+          data-component="Icon"
+          data-testid="Icon"
+          name="content-copy"
+          size={16}
+        />
+        <text
+          data-component="Text"
+          data-testid="Text"
+          style={
+            [
+              {
+                "color": "#EDDFB8",
+                "fontFamily": "Lora_600SemiBold_Italic",
+                "fontWeight": "600",
+                "letterSpacing": 2,
+                "textTransform": "uppercase",
+              },
+              false,
+              {
+                "fontSize": 10,
+              },
+            ]
+          }
+        >
+          Copiar
+        </text>
+      </div>
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 12,
+            "justifyContent": "center",
+            "marginTop": 28,
+          }
+        }
+      >
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "backgroundColor": "rgba(184,134,11,0.2)",
+              "height": 1,
+              "width": 30,
+            }
+          }
+        />
+        <text
+          data-component="Text"
+          data-testid="Text"
+          style={
+            [
+              {
+                "color": "#EDDFB8",
+                "fontFamily": "Lora_600SemiBold_Italic",
+                "fontWeight": "700",
+                "letterSpacing": 3,
+                "textTransform": "uppercase",
+              },
+              {
+                "fontSize": 8,
+              },
+            ]
+          }
+        >
+          Livro de Oração Comum
+           • 
+          Tradição Anglicana
+        </text>
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "backgroundColor": "rgba(184,134,11,0.2)",
+              "height": 1,
+              "width": 30,
+            }
+          }
+        />
+      </div>
+    </div>
+  </div>
+</>
+`;
+
+exports[`Snapshot baseline — componentes do ofício do dia (mobile) > ReadingCard — Evangelho (card de leitura comum) 1`] = `
+<>
+  <div
+    data-component="View"
+    data-testid="View"
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "elevation": 3,
+          "overflow": "hidden",
+          "shadowColor": "#000",
+          "shadowOffset": {
+            "height": 2,
+            "width": 0,
+          },
+          "shadowOpacity": 0.1,
+          "shadowRadius": 6,
+        },
+        {
+          "backgroundColor": "#FFFFFF",
+          "marginTop": 16,
+        },
+      ]
+    }
+  >
+    <div
+      data-component="View"
+      data-testid="View"
+      style={
+        [
+          {
+            "height": 3,
+            "opacity": 0.6,
+          },
+          {
+            "backgroundColor": "#B8860B",
+          },
+        ]
+      }
+    />
+    <div
+      data-component="View"
+      data-testid="View"
+      style={
+        {
+          "padding": 20,
+        }
+      }
+    >
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          {
+            "alignItems": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginBottom": 16,
+          }
+        }
+      >
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "flex": 1,
+              "marginRight": 12,
+            }
+          }
+        >
+          <text
+            data-component="Text"
+            data-testid="Text"
+            style={
+              [
+                {
+                  "fontFamily": "Lora_600SemiBold_Italic",
+                  "fontWeight": "600",
+                },
+                {
+                  "color": "#1A1A1A",
+                  "fontSize": 18,
+                },
+              ]
+            }
+          >
+            Marcos 1:1-8
+          </text>
+          <text
+            data-component="Text"
+            data-testid="Text"
+            style={
+              [
+                {
+                  "fontFamily": "Lora_600SemiBold_Italic",
+                  "letterSpacing": 2,
+                  "marginTop": 4,
+                  "textTransform": "uppercase",
+                },
+                {
+                  "color": "rgba(0,0,0,0.5)",
+                  "fontSize": 9,
+                },
+              ]
+            }
+          >
+            Marcos 1:1-8
+          </text>
+        </div>
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "gap": 8,
+            }
+          }
+        >
+          <div
+            data-component="View"
+            data-testid="View"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "borderRadius": 4,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "gap": 6,
+                  "paddingHorizontal": 10,
+                  "paddingVertical": 6,
+                },
+                {
+                  "backgroundColor": "#4F6350",
+                  "borderColor": "#4F6350",
+                },
+              ]
+            }
+          >
+            <div
+              color="#F4EFE1"
+              data-component="Icon"
+              data-testid="Icon"
+              name="cross"
+              size={12}
+            />
+            <text
+              data-component="Text"
+              data-testid="Text"
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                    "letterSpacing": 2,
+                    "textTransform": "uppercase",
+                  },
+                  {
+                    "color": "#F4EFE1",
+                    "fontSize": 9,
+                  },
+                ]
+              }
+            >
+              Evangelho
+            </text>
+          </div>
+        </div>
+      </div>
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          {
+            "flexDirection": "row",
+            "paddingTop": 12,
+          }
+        }
+      >
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            [
+              {
+                "borderRadius": 1,
+                "marginRight": 14,
+                "width": 2,
+              },
+              {
+                "backgroundColor": "#B8860B33",
+              },
+            ]
+          }
+        />
+        <text
+          data-component="Text"
+          data-testid="Text"
+          selectable={true}
+          style={
+            [
+              {
+                "flex": 1,
+                "fontFamily": "Lora_400Regular",
+                "lineHeight": 24,
+                "paddingLeft": 2,
+              },
+              {
+                "color": "#1A1A1A",
+                "fontSize": 14,
+              },
+            ]
+          }
+        >
+          Princípio do evangelho de Jesus Cristo, Filho de Deus.
+        </text>
+      </div>
+      <div
+        accessibilityRole="button"
+        aria-label="Copiar Evangelho Marcos 1:1-8"
+        data-component="TouchableOpacity"
+        data-testid="TouchableOpacity"
+        hitSlop={
+          {
+            "bottom": 8,
+            "left": 8,
+            "right": 8,
+            "top": 8,
+          }
+        }
+        onPress={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 4,
+            "justifyContent": "center",
+            "marginTop": 8,
+            "paddingHorizontal": 6,
+            "paddingVertical": 4,
+          }
+        }
+      >
+        <div
+          color="rgba(0,0,0,0.5)"
+          data-component="Icon"
+          data-testid="Icon"
+          name="content-copy"
+          size={14}
+        />
+        <text
+          data-component="Text"
+          data-testid="Text"
+          style={
+            [
+              {
+                "fontFamily": "Lora_600SemiBold_Italic",
+                "fontWeight": "600",
+              },
+              {
+                "color": "rgba(0,0,0,0.5)",
+                "fontSize": 10,
+              },
+            ]
+          }
+        >
+          Copiar
+        </text>
+      </div>
+    </div>
+  </div>
+</>
+`;
+
+exports[`Snapshot baseline — componentes do ofício do dia (mobile) > ReadingCard — Salmo Responsorial com ornamento de resposta 1`] = `
+<>
+  <div
+    data-component="View"
+    data-testid="View"
+    style={
+      [
+        {
+          "borderRadius": 8,
+          "elevation": 3,
+          "overflow": "hidden",
+          "shadowColor": "#000",
+          "shadowOffset": {
+            "height": 2,
+            "width": 0,
+          },
+          "shadowOpacity": 0.1,
+          "shadowRadius": 6,
+        },
+        {
+          "backgroundColor": "#FFFFFF",
+          "marginTop": 0,
+        },
+      ]
+    }
+  >
+    <div
+      data-component="View"
+      data-testid="View"
+      style={
+        [
+          {
+            "height": 3,
+            "opacity": 0.6,
+          },
+          {
+            "backgroundColor": "#B8860B",
+          },
+        ]
+      }
+    />
+    <div
+      data-component="View"
+      data-testid="View"
+      style={
+        {
+          "padding": 20,
+        }
+      }
+    >
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          {
+            "alignItems": "flex-start",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginBottom": 16,
+          }
+        }
+      >
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "flex": 1,
+              "marginRight": 12,
+            }
+          }
+        >
+          <text
+            data-component="Text"
+            data-testid="Text"
+            style={
+              [
+                {
+                  "fontFamily": "Lora_600SemiBold_Italic",
+                  "fontWeight": "600",
+                },
+                {
+                  "color": "#1A1A1A",
+                  "fontSize": 18,
+                },
+              ]
+            }
+          >
+            Salmo 85:1-2, 8-13
+          </text>
+          <text
+            data-component="Text"
+            data-testid="Text"
+            style={
+              [
+                {
+                  "fontFamily": "Lora_600SemiBold_Italic",
+                  "letterSpacing": 2,
+                  "marginTop": 4,
+                  "textTransform": "uppercase",
+                },
+                {
+                  "color": "rgba(0,0,0,0.5)",
+                  "fontSize": 9,
+                },
+              ]
+            }
+          >
+            Salmo 85
+          </text>
+        </div>
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "gap": 8,
+            }
+          }
+        >
+          <div
+            data-component="View"
+            data-testid="View"
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "borderRadius": 4,
+                  "borderWidth": 1,
+                  "flexDirection": "row",
+                  "gap": 6,
+                  "paddingHorizontal": 10,
+                  "paddingVertical": 6,
+                },
+                {
+                  "backgroundColor": "#4A6FA5",
+                  "borderColor": "#4A6FA5",
+                },
+              ]
+            }
+          >
+            <div
+              color="#F4EFE1"
+              data-component="Icon"
+              data-testid="Icon"
+              name="music-note-outline"
+              size={12}
+            />
+            <text
+              data-component="Text"
+              data-testid="Text"
+              style={
+                [
+                  {
+                    "fontWeight": "700",
+                    "letterSpacing": 2,
+                    "textTransform": "uppercase",
+                  },
+                  {
+                    "color": "#F4EFE1",
+                    "fontSize": 9,
+                  },
+                ]
+              }
+            >
+              Salmo Responsorial
+            </text>
+          </div>
+        </div>
+      </div>
+      <div
+        data-component="View"
+        data-testid="View"
+        importantForAccessibility="no-hide-descendants"
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 10,
+            "justifyContent": "center",
+            "marginBottom": 10,
+            "marginTop": 2,
+          }
+        }
+      >
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            [
+              {
+                "height": 1,
+                "width": 36,
+              },
+              {
+                "backgroundColor": "#B8860B33",
+              },
+            ]
+          }
+        />
+        <div
+          color="#B8860BAA"
+          data-component="Icon"
+          data-testid="Icon"
+          name="music-note"
+          size={14}
+        />
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            [
+              {
+                "height": 1,
+                "width": 36,
+              },
+              {
+                "backgroundColor": "#B8860B33",
+              },
+            ]
+          }
+        />
+      </div>
+      <div
+        data-component="View"
+        data-testid="View"
+        style={
+          {
+            "flexDirection": "row",
+            "paddingTop": 12,
+          }
+        }
+      >
+        <div
+          data-component="View"
+          data-testid="View"
+          style={
+            [
+              {
+                "borderRadius": 1,
+                "marginRight": 14,
+                "width": 2,
+              },
+              {
+                "backgroundColor": "#B8860B33",
+              },
+            ]
+          }
+        />
+        <text
+          data-component="Text"
+          data-testid="Text"
+          selectable={true}
+          style={
+            [
+              {
+                "flex": 1,
+                "fontFamily": "Lora_400Regular",
+                "lineHeight": 24,
+                "paddingLeft": 2,
+              },
+              {
+                "color": "#1A1A1A",
+                "fontSize": 14,
+              },
+            ]
+          }
+        >
+          Senhor, foste propício à tua terra; fizeste voltar o cativeiro de Jacó.
+        </text>
+      </div>
+      <div
+        accessibilityRole="button"
+        aria-label="Copiar Salmo Responsorial Salmo 85:1-2, 8-13"
+        data-component="TouchableOpacity"
+        data-testid="TouchableOpacity"
+        hitSlop={
+          {
+            "bottom": 8,
+            "left": 8,
+            "right": 8,
+            "top": 8,
+          }
+        }
+        onPress={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "gap": 4,
+            "justifyContent": "center",
+            "marginTop": 8,
+            "paddingHorizontal": 6,
+            "paddingVertical": 4,
+          }
+        }
+      >
+        <div
+          color="rgba(0,0,0,0.5)"
+          data-component="Icon"
+          data-testid="Icon"
+          name="content-copy"
+          size={14}
+        />
+        <text
+          data-component="Text"
+          data-testid="Text"
+          style={
+            [
+              {
+                "fontFamily": "Lora_600SemiBold_Italic",
+                "fontWeight": "600",
+              },
+              {
+                "color": "rgba(0,0,0,0.5)",
+                "fontSize": 10,
+              },
+            ]
+          }
+        >
+          Copiar
+        </text>
+      </div>
+    </div>
+  </div>
+</>
+`;

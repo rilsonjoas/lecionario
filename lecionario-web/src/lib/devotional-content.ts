@@ -27,7 +27,10 @@ const devotionalsFiles: Record<number, DevotionalsData> = {
 
 export function getDevotionalContent(date: Date): DevotionalEntry | null {
   const year = date.getFullYear();
-  const file = devotionalsFiles[year];
+  // Os arquivos cobrem o ano litúrgico (2026 = 2025-12-01..2026-11-30),
+  // então dezembro pertence ao arquivo do ano seguinte.
+  const fileYear = date.getMonth() === 11 ? year + 1 : year;
+  const file = devotionalsFiles[fileYear];
   if (!file) return null;
 
   const y = date.getFullYear();

@@ -105,6 +105,15 @@ export function Footer({ season = 'ordinary' }: { season?: LiturgicalSeason }) {
               >
                 Política de Privacidade
               </Link>
+              <span aria-hidden="true" className="text-dourado/50">
+                ·
+              </span>
+              <Link
+                href="/metodo"
+                className="transition-colors underline-offset-2 hover:text-dourado hover:underline"
+              >
+                Método e fontes
+              </Link>
             </div>
           </div>
         </div>

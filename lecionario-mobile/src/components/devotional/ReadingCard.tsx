@@ -13,12 +13,16 @@ interface ReadingCardProps {
   season: LiturgicalSeason;
 }
 
+// 5.3 (2026-08-30): na liturgia o Salmo é a resposta da congregação à
+// primeira leitura — rótulo "Salmo Responsorial" alinhado ao web (e aos
+// "Estações da Palavra" / "Oração de Coleta"), mais ornamento de resposta
+// abaixo.
 const readingTypeConfig: Record<
   string,
   { label: string; icon: keyof typeof MaterialCommunityIcons.glyphMap }
 > = {
   first_reading: { label: 'Primeira Leitura', icon: 'book-open-variant' },
-  psalm: { label: 'Salmo', icon: 'music-note-outline' },
+  psalm: { label: 'Salmo Responsorial', icon: 'music-note-outline' },
   second_reading: { label: 'Segunda Leitura', icon: 'script-text-outline' },
   gospel: { label: 'Evangelho', icon: 'cross' },
 };
@@ -34,6 +38,10 @@ export function ReadingCard({ reading, index, season }: ReadingCardProps) {
   // verificado nas 7 estações; mesmo padrão do web
   // (--liturgical-primary-foreground).
   const badge = getBadgeColors(season);
+
+  // 5.3 (2026-08-30): o Salmo é a resposta da congregação à primeira
+  // leitura — tratamento próprio, idêntico ao web.
+  const isPsalmResponse = reading.type === 'psalm';
 
   const handleCopy = async () => {
     const lines = [`${config.label} — ${reading.reference}`];
@@ -70,6 +78,13 @@ export function ReadingCard({ reading, index, season }: ReadingCardProps) {
             </View>
           </View>
         </View>
+        {isPsalmResponse && reading.text && (
+          <View style={styles.psalmOrnament} importantForAccessibility="no-hide-descendants">
+            <View style={[styles.psalmRule, { backgroundColor: `${colors.accent}33` }]} />
+            <MaterialCommunityIcons name="music-note" size={14} color={`${colors.accent}AA`} />
+            <View style={[styles.psalmRule, { backgroundColor: `${colors.accent}33` }]} />
+          </View>
+        )}
         {reading.text && (
           <View style={styles.textContainer}>
             <View style={[styles.textBorder, { backgroundColor: `${colors.accent}33` }]} />
@@ -181,6 +196,18 @@ const styles = StyleSheet.create({
   textContainer: {
     flexDirection: 'row',
     paddingTop: 12,
+  },
+  psalmOrnament: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    marginTop: 2,
+    marginBottom: 10,
+  },
+  psalmRule: {
+    width: 36,
+    height: 1,
   },
   textBorder: {
     width: 2,

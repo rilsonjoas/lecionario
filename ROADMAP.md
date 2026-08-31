@@ -75,7 +75,7 @@ comparação exaustiva, não amostral) é o padrão a repetir.
 
 ## Fase 1 — Pré-lançamento (v1.0)
 
-*Tudo que bloqueia uma versão usável por terceiros.*
+_Tudo que bloqueia uma versão usável por terceiros._
 
 ### 1.1 Conteúdo Semana Santa
 
@@ -148,8 +148,7 @@ ano.
 - [x] **Ciclo B estendido e validado (2026-08-17).** `ordinary-B.ts`
       escrito do zero (26 semanas, Próprios 4-29 — o Ciclo B nunca
       precisa do Próprio 3 entre 2015-2045) mais `trinityWeekB`, todo
-      ancorado nas leituras reais (1 Samuel, 2 Samuel, 1 Reis, Jó, Rute
-      + 2 Coríntios, Efésios, Tiago, Hebreus + Evangelho de Marcos).
+      ancorado nas leituras reais (1 Samuel, 2 Samuel, 1 Reis, Jó, Rute + 2 Coríntios, Efésios, Tiago, Hebreus + Evangelho de Marcos).
       182 orações + 182 meditações originais. `tsc` limpo, validado sem
       repetição e sem lacuna em 2027 e 2030 (as duas ocorrências reais
       do Ciclo B no período gerado)
@@ -189,6 +188,7 @@ baixei os calendários oficiais de 2025-2026 (Ano A), 2026-2027 (Ano
 B) e 2027-2028 (Ano C) e comparei domingo a domingo.
 
 **Duas causas raiz combinadas** em `generate-rcl-data.ts`:
+
 1. O Domingo da Trindade nunca existia como entrada própria — a
    primeira leitura do "Tempo Comum" era mostrada na própria data da
    Trindade, uma semana adiantada.
@@ -213,6 +213,7 @@ dependendo do ano. Não tinha como isso um dia coincidir certo, exceto
 por acaso.
 
 **O conserto:**
+
 - [x] Nova função `getProperNumberForDate()` — calcula o Próprio real
       a partir da data (ancorado em 20 de novembro = início da janela
       do Próprio 29), não mais por contagem sequencial
@@ -221,21 +222,18 @@ por acaso.
       ficava órfã, nunca usada — só faltava ligar)
 - [x] Tabela de leituras do Tempo Comum **reconstruída do zero para
       os três ciclos**, chaveada por Próprio real (`proper3` a
-      `proper29`), toda verificada contra a fonte oficial:
-      - **Ciclo A**: completo, Próprios 3-29 (Próprios 3-4 via
-        [crivoice.org](https://www.crivoice.org/lectionary/), Próprios
-        5-29 confirmados linha a linha contra o PDF oficial da
-        Vanderbilt)
-      - **Ciclo B**: completo, Próprios 4-29 (confirmado contra o PDF
-        oficial da Vanderbilt 2026-2027). Próprio 3 nunca é necessário
-        entre 2015-2045 (calculado, não suposto)
-      - **Ciclo C**: completo, Próprios 4-29 (Próprios 6-29 confirmados
-        contra o PDF oficial da Vanderbilt 2027-2028; **Próprios 4-5
-        via crivoice.org sem segunda confirmação cruzada** — sinalizado
-        porque não achei uma segunda fonte pra checar, mas na prática
-        quase não importa: nenhum ano entre 2015-2045 chega a precisar
-        do Próprio 4 do Ciclo C, e o Próprio 3 nunca é necessário nesse
-        intervalo)
+      `proper29`), toda verificada contra a fonte oficial: - **Ciclo A**: completo, Próprios 3-29 (Próprios 3-4 via
+      [crivoice.org](https://www.crivoice.org/lectionary/), Próprios
+      5-29 confirmados linha a linha contra o PDF oficial da
+      Vanderbilt) - **Ciclo B**: completo, Próprios 4-29 (confirmado contra o PDF
+      oficial da Vanderbilt 2026-2027). Próprio 3 nunca é necessário
+      entre 2015-2045 (calculado, não suposto) - **Ciclo C**: completo, Próprios 4-29 (Próprios 6-29 confirmados
+      contra o PDF oficial da Vanderbilt 2027-2028; **Próprios 4-5
+      via crivoice.org sem segunda confirmação cruzada** — sinalizado
+      porque não achei uma segunda fonte pra checar, mas na prática
+      quase não importa: nenhum ano entre 2015-2045 chega a precisar
+      do Próprio 4 do Ciclo C, e o Próprio 3 nunca é necessário nesse
+      intervalo)
 - [x] `weekOfSeason` das entradas do Tempo Comum agora É o número do
       Próprio (3-29) — estável e com o mesmo significado todo ano, ao
       invés de uma posição sequencial que significava coisas
@@ -308,11 +306,9 @@ oficial da Vanderbilt Divinity Library, todos em `generate-rcl-data.ts`:
    Trindade (1.2a): não conteúdo errado, ausência total.
 
 **O conserto:**
+
 - [x] Leituras da Transfiguração adicionadas por ciclo (`transfiguration:1`
-      em A/B/C), confirmadas contra o RCL oficial da Vanderbilt:
-      - **Ciclo A**: Êxodo 24:12-18 · Salmo 2 · 2 Pedro 1:16-21 · Mateus 17:1-9
-      - **Ciclo B**: 2 Reis 2:1-12 · Salmo 50:1-6 · 2 Coríntios 4:3-6 · Marcos 9:2-9
-      - **Ciclo C**: Êxodo 34:29-35 · Salmo 99 · 2 Coríntios 3:12-4:2 · Lucas 9:28-36, (37-43)
+      em A/B/C), confirmadas contra o RCL oficial da Vanderbilt: - **Ciclo A**: Êxodo 24:12-18 · Salmo 2 · 2 Pedro 1:16-21 · Mateus 17:1-9 - **Ciclo B**: 2 Reis 2:1-12 · Salmo 50:1-6 · 2 Coríntios 4:3-6 · Marcos 9:2-9 - **Ciclo C**: Êxodo 34:29-35 · Salmo 99 · 2 Coríntios 3:12-4:2 · Lucas 9:28-36, (37-43)
 - [x] Loop da Epifania agora detecta o último domingo antes da
       Quarta-feira de Cinzas (comparando se o próximo domingo já cairia
       nela ou depois) e troca pela leitura fixa da Transfiguração, ano a
@@ -352,6 +348,7 @@ mesmo tratamento ancorado no RCL que o Tempo Comum já tem.
 ---
 
 ### 1.2c Achado crítico: Ciclos B e C do Tempo Comum nunca estavam
+
 sendo usados de verdade (achado e corrigido em 2026-08-18)
 
 **Isto precisa ser dito com todas as letras: as validações "zero
@@ -381,6 +378,7 @@ dia de semana (segunda a sábado) e não achar nenhum domingo "regente"
 pros domingos em si.
 
 **O conserto:**
+
 - [x] `cycle-B.json` e `cycle-C.json` importados e ligados em
       `rclDataByCycle` (antes só tinha `A: cycleAData`)
 - [x] Regenerei `devotionals-2025.json` a `devotionals-2030.json` e
@@ -423,17 +421,15 @@ ainda pendentes).
       Malaquias-Sofonias-Miquéias/Filipenses-Hebreus/Lucas no Ciclo C)
 - [x] `groundedAdvent` ligado em `generate-devotionals.ts`, mesmo
       padrão de `groundedOrdinary`
-- [x] **Dois bugs de infraestrutura achados e corrigidos no caminho:**
-      1. A fronteira 25/dez era tratada como "mês inteiro de dezembro
-         = Advento", então o Natal e a semana seguinte nunca
-         apareciam como estação "christmas" — sempre caíam no
-         Advento. Trocado por comparação de data exata.
-      2. Nos anos em que o Advento seguinte começa em novembro
-         (27-30/nov, antes de 1/dez), esses últimos dias de novembro
-         usavam o ciclo litúrgico do ano ATUAL em vez do PRÓXIMO —
-         mostrando conteúdo de Advento do ciclo errado (ex: Ciclo C
-         em vez de A). Corrigido calculando o ciclo efetivo por data,
-         não só por ano.
+- [x] **Dois bugs de infraestrutura achados e corrigidos no caminho:** 1. A fronteira 25/dez era tratada como "mês inteiro de dezembro
+      = Advento", então o Natal e a semana seguinte nunca
+      apareciam como estação "christmas" — sempre caíam no
+      Advento. Trocado por comparação de data exata. 2. Nos anos em que o Advento seguinte começa em novembro
+      (27-30/nov, antes de 1/dez), esses últimos dias de novembro
+      usavam o ciclo litúrgico do ano ATUAL em vez do PRÓXIMO —
+      mostrando conteúdo de Advento do ciclo errado (ex: Ciclo C
+      em vez de A). Corrigido calculando o ciclo efetivo por data,
+      não só por ano.
 - [x] Validado programaticamente nos 6 anos gerados (2025-2030): zero
       repetição, zero lacuna no Advento inteiro de cada ciclo, e
       confirmado que o ciclo certo aparece em cada domingo (checado
@@ -593,6 +589,7 @@ estação genérica restante.
 ---
 
 ### 1.2i Páscoa e Pentecostes ancorados no RCL, 3 ciclos — todas as
+
 estações litúrgicas agora ancoradas no RCL real (2026-08-18)
 
 Sexto e último bloco de conteúdo devocional ancorado no RCL. Com este
@@ -719,10 +716,10 @@ mas isso não foi feito nesta rodada por não ter sido pedido.
 
 ### 1.7 Logo sazonal e assets (web + mobile) — 2026-08-14/15
 
-*Registrado como pendência às 2026-08-14, mas na verdade já estava
+_Registrado como pendência às 2026-08-14, mas na verdade já estava
 majoritariamente feito e só não commitado — corrigido em 2026-08-15
 após conferir `git status` (a nota anterior dizia "não iniciado", o
-que era falso).*
+que era falso)._
 
 - [x] Script `scripts/generate-logos.py` gerando os assets a partir de
       `Logo.png`: recoloração por estação (corpo+chama, paleta web e
@@ -750,7 +747,7 @@ que era falso).*
 
 ## Fase 2 — Features essenciais (v1.1)
 
-*O que transforma o app de utilitário em produto.*
+_O que transforma o app de utilitário em produto._
 
 ### 2.1 Notificações push diárias
 
@@ -759,12 +756,14 @@ que era falso).*
 - [x] Adicionar toggle nas Configurações: ativar/desativar notificações (2026-08-20)
 - [x] Adicionar seletor de horário (6h/7h/8h/9h) — integrado ao toggle (2026-08-20)
 - [x] Solicitar permissão de notificação no primeiro uso, com explicação clara (2026-08-20)
-- [ ] **Bugfix — Notificação repetindo título estático em dias subsequentes (Achado 2026-08-24)**:
-  * **Sintoma**: Notificação de segunda-feira exibiu o texto de domingo ("Domingo...").
-  * **Causa Raiz**: `scheduleDailyNotification` em `src/lib/notifications.ts` calculava o título/corpo para a data atual `next` (ex.: Domingo) e passava um payload estático para o trigger `DAILY` do `expo-notifications`. O sistema operacional re-exibia o payload estático de domingo todos os dias.
-  * **Solução**: Agendar notificações individuais dinâmicas para os próximos 7 dias em janela rolante (`addDays(now, i)`), renovadas ao abrir o app ou em background handler.
+- [x] **Bugfix — Notificação repetindo título estático em dias subsequentes (RESOLVIDO 2026-08-24)**:
+  - **Sintoma**: Notificação de segunda-feira exibiu o texto de domingo ("Domingo...").
+  - **Causa Raiz**: `scheduleDailyNotification` em `src/lib/notifications.ts` calculava o título/corpo para a data atual `next` (ex.: Domingo) e passava um payload estático para o trigger `DAILY` do `expo-notifications`. O sistema operacional re-exibia o payload estático de domingo todos os dias.
+  - **Solução**: Agendar notificações individuais dinâmicas para os próximos 7 dias em janela rolante (`addDays(now, i)`), renovadas ao abrir o app ou em background handler.
+  - **[x] Implementação (2026-08-24)**: `scheduleDailyNotifications` agora agenda uma notificação `DATE` por dia com o payload real de cada data (`buildNotificationWindow`, extraído pra `src/lib/notification-window.ts` — puro e unit-testável, 6 testes novos em `notifications.test.ts`), id único por notificação persistido como array (`@lecionario:notification-ids`, com leitura retroativa do id legado em string). `renewNotificationsWindow()` ressalva a janela quando restam < 3 dias agendados, chamado no mount do app (`App.tsx`) e em todo `AppState` → `active`. `ConfigScreen` usa a função nova nos dois pontos (toggle e troca de horário).
 
 **Exemplo da notificação:**
+
 ```
 Título: Quinta após o Pentecostes
 Corpo: 20 de agosto — Rm 8,14-17 · Jo 8,31-47
@@ -801,7 +800,16 @@ A tela atual tem apenas "Limpar cache". Adicionar:
 
 ## Fase 3 — Qualidade e polimento (v1.2)
 
-*O que separa um app de v1 de um app que as pessoas recomendam.*
+### 3.1 UX/UI, Micro-interações e Satisfação de Uso
+
+- [ ] **Navegação por Gestos & Gestos Nativos (Mobile)**:
+  - [ ] Suporte a deslize lateral (_swipe left / swipe right_) na tela principal (`HomeScreen`) para alternar facilmente para o dia anterior/próximo dia.
+  - [ ] Resposta tátil com feedback de vibração (_haptics_) ao curtir/favoritar um devocional ou copiar um trecho das leituras.
+- [ ] **Polimento Estético & Temas Litúrgicos**:
+  - [ ] Transições de cor mais suaves e graduais ao alternar entre estações litúrgicas (ex.: Quaresma para Páscoa).
+  - [ ] Animações sutis no aparecimento dos cards de leitura e citações de C. S. Lewis.
+
+_O que separa um app de v1 de um app que as pessoas recomendam._
 
 ### 3.1 Acessibilidade
 
@@ -843,8 +851,8 @@ A tela atual tem apenas "Limpar cache". Adicionar:
 - [x] Testes para `rcl-fetcher.ts` — busca por data, ciclo, texto bíblico (2026-08-20, 7 testes)
 - [x] Testes para `cache.ts` — TTL expirado, cache miss, clear (2026-08-20, 7 testes)
 - [x] Testes para `devotional-content.ts` — lookup por data, ano sem dados (2026-08-20, 4 testes)
-- [ ] Testes para `getSampleDevotional` — fallback chain
-- [ ] Testes de snapshot para `ReadingCard`, `PrayerSection`, `CollectSection`
+- [x] Testes para `getSampleDevotional` — fallback chain (2026-08-30, 6 testes; expôs e corrigiu bug de janela de dezembro, ver Débito técnico)
+- [x] Testes de snapshot para `ReadingCard`, `PrayerSection`, `CollectSection` — **movido para a Camada 2 (5.4, 2026-08-30)**, junto da mecânica de rotação, para servir de baseline de UI antes da escrita por estação
 - [x] Meta: 70%+ de cobertura no `src/lib/` (2026-08-20 — 81% stmts, 100% funcs)
 
 ---
@@ -912,62 +920,64 @@ lados, não é especulação:
   10:25-37")
 
 **O que falta construir:**
+
 - [x] Parser de referência → extrair livro + capítulo do texto livre (2026-08-20 — `src/lib/reference-parser.ts`, regex `^(.+?)\s+(\d+)`)
 - [x] Tabela de tradução nome-do-livro-em-português → `bookSlug` em inglês (2026-08-20 — `src/lib/bible-books.ts`, 66 livros + aliases)
 - [x] Card "Pintura do Dia" — thumbnail + título + artista, toque abre o Bíblia na Arte (2026-08-20 — `src/components/ArtCard.tsx`, só aparece quando online)
 
 **Achados reais do Rilson usando o app (2026-08-23) — 3 problemas corrigidos, 1 melhoria tentada:**
+
 - [x] **Imagem não carregava no card** — `ArtCard.tsx` prefixava o
-  caminho relativo da imagem (ex. `/images/foo.webp`) com o domínio da
-  **API** (`api-biblianaarte.narniano.com`). A imagem mora no domínio
-  do **site** do Bíblia na Arte (`biblianaarte.narniano.com`, Next.js,
-  pasta `public/images`) — a API só devolve o caminho, 404 puro do
-  outro lado. Confirmado com `curl -I` nos dois domínios antes de
-  mexer.
+      caminho relativo da imagem (ex. `/images/foo.webp`) com o domínio da
+      **API** (`api-biblianaarte.narniano.com`). A imagem mora no domínio
+      do **site** do Bíblia na Arte (`biblianaarte.narniano.com`, Next.js,
+      pasta `public/images`) — a API só devolve o caminho, 404 puro do
+      outro lado. Confirmado com `curl -I` nos dois domínios antes de
+      mexer.
 - [x] **Passagens relacionadas não apareciam** — a API já devolve
-  `references[]` (livro/capítulo/versículo de cada trecho catalogado
-  pra aquela obra) desde sempre, mas o `Artwork` do lecionário nem
-  tinha esse campo tipado, então nunca era pedido nem mostrado. Card
-  agora mostra "Relacionada a Mateus 26 · Marcos 14 · Lucas 22" (ou
-  com versículo, quando a curadoria tiver).
+      `references[]` (livro/capítulo/versículo de cada trecho catalogado
+      pra aquela obra) desde sempre, mas o `Artwork` do lecionário nem
+      tinha esse campo tipado, então nunca era pedido nem mostrado. Card
+      agora mostra "Relacionada a Mateus 26 · Marcos 14 · Lucas 22" (ou
+      com versículo, quando a curadoria tiver).
 - [x] **Só a 1ª leitura (geralmente AT) era usada pra buscar pintura**
-  — `HomeScreen.tsx` passava só `readings[0].reference`; se o AT do
-  dia não tivesse pintura catalogada, o card nem aparecia, mesmo que o
-  Evangelho do mesmo dia tivesse. `fetchArtworkForReferences` agora
-  tenta as 4 leituras em ordem até achar uma.
+      — `HomeScreen.tsx` passava só `readings[0].reference`; se o AT do
+      dia não tivesse pintura catalogada, o card nem aparecia, mesmo que o
+      Evangelho do mesmo dia tivesse. `fetchArtworkForReferences` agora
+      tenta as 4 leituras em ordem até achar uma.
 - [ ] **Tentativa de casar com o versículo exato do dia** (pedido do
-  Rilson, "não precisa necessariamente funcionar") — `parseReference`
-  agora extrai o trecho de versículo (`Mateus 24:36-44` → `36-44`) e
-  `fetchArtworkForReference` tenta a API com `verses=` antes de cair
-  pro casamento por capítulo de sempre. Checado direto na API de
-  produção (2026-08-23): **nenhuma das 1530 referências catalogadas
-  tem `verses` preenchido hoje** — a tentativa não vai achar nada até
-  a curadoria do Bíblia na Arte começar a registrar isso, mas não
-  quebra nem piora o comportamento atual (fallback sempre roda).
-  Deixado sem checkbox fechado de propósito — depende do outro lado.
+      Rilson, "não precisa necessariamente funcionar") — `parseReference`
+      agora extrai o trecho de versículo (`Mateus 24:36-44` → `36-44`) e
+      `fetchArtworkForReference` tenta a API com `verses=` antes de cair
+      pro casamento por capítulo de sempre. Checado direto na API de
+      produção (2026-08-23): **nenhuma das 1530 referências catalogadas
+      tem `verses` preenchido hoje** — a tentativa não vai achar nada até
+      a curadoria do Bíblia na Arte começar a registrar isso, mas não
+      quebra nem piora o comportamento atual (fallback sempre roda).
+      Deixado sem checkbox fechado de propósito — depende do outro lado.
 - [x] **Faltava a versão web** — o item 4.5 original nunca cobriu web,
-  só mobile (ver escopo original acima). Portado igual: `bible-books.ts`
-  + `reference-parser.ts` + `artwork-fetcher.ts` pro `lecionario-web`
-  (mesmo padrão de duplicação do `rcl-fetcher.ts`, sem pacote
-  compartilhado), `ArtSection.tsx` novo espelhando o
-  `LewisQuoteSection.tsx` (mesma hierarquia visual), plugado logo
-  depois da citação de C.S. Lewis. **CSP do `next.config.mjs` também
-  precisou de ajuste** — `img-src`/`connect-src` só liberavam `'self'`
-  (+ Sentry); sem adicionar os domínios do Bíblia na Arte nos dois, o
-  navegador bloqueia a imagem E a busca em silêncio (sem erro no
-  console óbvio pra quem não abre o Network tab).
+      só mobile (ver escopo original acima). Portado igual: `bible-books.ts`
+  - `reference-parser.ts` + `artwork-fetcher.ts` pro `lecionario-web`
+    (mesmo padrão de duplicação do `rcl-fetcher.ts`, sem pacote
+    compartilhado), `ArtSection.tsx` novo espelhando o
+    `LewisQuoteSection.tsx` (mesma hierarquia visual), plugado logo
+    depois da citação de C.S. Lewis. **CSP do `next.config.mjs` também
+    precisou de ajuste** — `img-src`/`connect-src` só liberavam `'self'`
+    (+ Sentry); sem adicionar os domínios do Bíblia na Arte nos dois, o
+    navegador bloqueia a imagem E a busca em silêncio (sem erro no
+    console óbvio pra quem não abre o Network tab).
 - [x] **Card ainda não aparecia mesmo depois do fix de CSP** — a
-  segunda ponta do mesmo problema, do lado de lá: a API do Bíblia na
-  Arte só liberava CORS pra `biblianaarte.narniano.com` (origem única).
-  O CSP do Lecionário deixava a requisição sair do navegador, mas a
-  resposta vinha sem `Access-Control-Allow-Origin` pra
-  `lecionario.narniano.com` — o navegador bloqueava a leitura e o
-  `fetch()` caía no catch silencioso. Corrigido no repo do
-  `biblia-na-arte` (`CORS_ORIGIN` aceita lista separada por vírgula
-  agora) + `.env` de produção atualizado + container recriado
-  (2026-08-23). Confirmado com `curl -H "Origin: ..."` nos dois
-  domínios depois do fix, e checado que uma origem não autorizada
-  continua bloqueada.
+      segunda ponta do mesmo problema, do lado de lá: a API do Bíblia na
+      Arte só liberava CORS pra `biblianaarte.narniano.com` (origem única).
+      O CSP do Lecionário deixava a requisição sair do navegador, mas a
+      resposta vinha sem `Access-Control-Allow-Origin` pra
+      `lecionario.narniano.com` — o navegador bloqueava a leitura e o
+      `fetch()` caía no catch silencioso. Corrigido no repo do
+      `biblia-na-arte` (`CORS_ORIGIN` aceita lista separada por vírgula
+      agora) + `.env` de produção atualizado + container recriado
+      (2026-08-23). Confirmado com `curl -H "Origin: ..."` nos dois
+      domínios depois do fix, e checado que uma origem não autorizada
+      continua bloqueada.
 
 **Decisão de arquitetura, não negociável sem repensar tudo:** Lecionário
 é offline-first de propósito — o card **só aparece quando online**
@@ -1030,6 +1040,328 @@ link estático. Mesmo item registrado nos outros 3.
 
 ---
 
+## Fase 5 — Alto padrão (2026-08-30)
+
+_Definição prática de "alto padrão" para este nicho: consistência
+editorial, fidelidade litúrgica e confiança. Não é "qualidade de
+escrita" — o conteúdo já supera os pares PT-BR. É resolver o único
+defeito real (repetição trienal) e subir o padrão percebido do produto
+(tela do dia, áudio, confiança documentada)._
+
+**Ordem estratégica (do mais fácil pro mais difícil, em camadas):**
+primeiro os guarda-corpos (protetores de tudo o que vier depois),
+depois o conteúdo com regressão controlada, e só no fim as apostas que
+brigam com a preferência OTA do projeto (módulos nativos exigem APK).
+
+**Camadas (nomenclatura contígua, renumerada 2026-08-30):**
+
+1. **Camada 1 — guarda-corpos e confiança** (5.1–5.3, concluída): o
+   validador que protege todo conteúdo futuro, a transparência pública e
+   a tela do dia
+2. **Camada 2 — conteúdo com regressão controlada** (5.4–5.5, a AMA):
+   mecânica de rotação por ciclo + escrita por estação
+3. **Camada 3 — dado canônico novo** (5.6): leituras diárias feriais do
+   RCL
+4. **Camada 4 — nativo, exige APK** (5.7–5.8): áudio/TTS e widget
+5. **Camada 5 — ofício diário completo offline, o "final boss"** (5.9):
+   a peça mais difícil e ambiciosa da fase
+
+**Análise de conteúdo que motivou esta fase (2026-08-30, empírica, nos
+JSONs publicados):** dentro do ano, zero repetição e 364/365 estruturas
+de pergunta únicas. Cruzando os 6 anos: 890 títulos repetem exatamente
+2x (mecanismo do RCL — Ciclo A em 2026 e 2029, B em 2027 e 2030, C em
+2025 e 2028) e 34 repetem 4x, 31 repetem 6x (festas de data fixa:
+Natal, Epifania, Cinzas etc. — liturgicamente justificado, mas é onde
+o "deja vu" do usuário fiel aparece). Todo conteúdo é ancorado na
+Escritura; cobertura ARC 4613/4620 (os 7 faltantes são o dual-psalm
+"Salmo 42, 43" da Vigília Pascal, allowlist conhecido).
+
+**Curadores ficam fora desta fase por decisão do autor (2026-08-30)**
+— não há condição de ter curadores agora. Substituição realista por:
+voz autoral única por estação, rotação determinística por ciclo e
+revisão editoral do próprio autor ao longo do tempo.
+
+### 5.1 Validador de conteúdo reutilizável (Camada 1 — mecânico)
+
+Formaliza num único módulo reutilizável as checagens que hoje vivem em
+testes pontuais/`rcl-bible-text.test.ts` e scripts descartáveis de
+sessões passadas. Sem ele, qualquer rotação futura é escrita às cegas.
+
+- [x] `src/lib/content-validation.ts` (puro, injetável) + suíte
+      `content-validation.test.ts`:
+  - [x] (a) repetição intra-ano: zero título/oração/meditação repetido
+        dentro de cada `devotionals-YYYY.json`. **Ajuste de especificação
+        no caminho (2026-08-30):** o salmo NÃO é checado — confirmado
+        empiricamente que repetir salmo dentro do ano é legítimo
+        (4-5x/ano, o mesmo salmo serve a mais de uma semana). Exigir
+        zero seria um falso positivo constante.
+  - [x] (b) lacunas: janela exata do ano litúrgico
+        (`{ano-1}-12-01` → `{ano}-11-30`, 365/366 dias) com contagem de
+        dias, checagem de orla e continuidade dia-a-dia
+  - [x] (c) colisão de título entre estações do mesmo ano — coberta por
+        (a): checa o JSON final de um ano inteiro, não estação isolada
+        (a lição de 1.2i)
+  - [x] (d) cobertura de texto ARC: absorve a lógica de
+        `rcl-bible-text.test.ts` (keep allowlist "Salmo 42, 43")
+  - [x] (e) repetição trienal: distribuição de quantos anos cada título
+        aparece (reportada no relatório) + **regra dura**: teto de
+        repetição = nº de anos. Acima do teto é bug estrutural (a classe
+        do fallback 1.2c repetia um título 25x). **Ajuste de
+        especificação no caminho:** "exatamente 2x/6x" seria frágil —
+        títulos mudam legitimamente conforme a estação (ex.: o mesmo
+        salmo serve a mais de uma semana) e a rotação de 5.5 vai alterar
+        essas contagens de propósito. O teto pega a anomalia sem
+        falsos positivos.
+- [x] Roda no CI (step novo `Validate content` no job `web` do `ci.yml`)
+      com falha em divergência — executa `<30s`
+- [x] Suíte Vitest própria (8 testes) incluindo 5 testes de "o validador
+      falha": injeta título/oração duplicados, lacuna, janela errada,
+      texto bíblico sumido e título acima do teto de propósito
+- [x] `npm run validate:content` (package.json) — atalho pro CLI dev
+
+**Feito quando:** `npm run validate:content` roda em <30s, CI quebra em
+qualquer anomalia, e as checagens das sessões 1.2/1.2a/1.2c deixam de ser
+pontuais. — Cumprido (2026-08-30).
+
+### 5.2 Higiene litúrgica pública (Camada 1)
+
+Constrói confiança documentando o que o app **já prova** — transparência
+que nenhum concorrente PT-BR oferece.
+
+- [x] Página web `/metodo` (estilo `classic-frame` de `/apoiar`):
+      fonte e validação (Vanderbilt Divinity Library, domingo a
+      domingo), pipeline de dados (gerador → JSON → bundle), allowlist
+      do dual-psalm, cobertura ARC 4613/4620, kanji de zero repetição
+      intra-ano
+- [x] Link no rodapé (junto de Privacidade) + metadata própria pra SEO
+- [x] Equal no sitemap
+
+**Feito quando:** um usuário ou liturgista curioso encontra, na página
+pública, o processo por trás dos dados e o que é validado. — Cumprido
+(2026-08-30).
+
+### 5.3 Tela do dia litúrgica — Coleta + Salmo + leituras (Camada 1)
+
+O dado **já existe**: `collect` presente em 100% das entradas dos
+`cycle-{A,B,C}.json` (confirmado 2026-08-30) e o Salmo já é uma das 4
+`readings`. É só agrupar numa unidade visual de "horário de oração" —
+não é mais um card solto, é o dia como ofício diário completo.
+
+- [x] Web (`page.tsx`): seção única que abre com Coleta, segue com
+      Salmo designado (destacado como elemento próprio de resposta da
+      congregação, não mais um `ReadingCard` comum) e as demais leituras
+- [x] Mobile (`HomeScreen`): paridade de layout
+- [x] Manter acessibilidade WCAG AA (peso do salmo = novo elemento,
+      mesmo padrão dos badges atuais)
+
+**Feito quando:** em qualquer dia, Coleta + Salmo + leituras formam um
+bloco coerente ("o ofício do dia") nos dois apps, sem quebrar contraste.
+— Cumprido (2026-08-30): web e mobile abrem a seção com a Coleta; o Salmo
+agora é "Salmo Responsorial" com ornamento de resposta (nota musical entre
+traços) em ambos; contraste mantido (mesmas cores dos badges de estação).
+
+**Interseção resolvida (2026-08-30):** os componentes alterados aqui —
+`ReadingCard`, `CollectSection`, `PrayerSection` — estavam na lista antiga
+de snapshot tests da Seção 3.2 ("Testes de snapshot para `ReadingCard`,
+`PrayerSection`, `CollectSection`"). Por decisão do autor, o item foi
+movido para a **Camada 2 (5.4)**, junto da mecânica de rotação: o snapshot
+vira baseline de UI antes da escrita por estação (5.5), garantindo que a
+mecânica e a escrita nunca regridam a aparência atual. Na Seção 3.2 ficou
+apenas o registro do movimento.
+
+### 5.4 Rotação por ciclo — Snapshot baseline + mecânica (Camada 2, mecânica primeiro)
+
+**Este item é a AMA: a partir daqui todo conteúdo novo é escrito por
+estação/por Próprio, aos poucos, com absoluto cuidado. A mecânica vai
+na frente — ela nunca piora o conteúdo atual (só habilita a melhoria).**
+
+**Ordem interna deste item:** primeiro o snapshot baseline de UI (movi do
+3.2 pra cá em 2026-08-30), porque a mecânica de rotação vai mexer no
+formato das entradas e a escrita (5.5) vai tocar o conteúdo — ambos
+precisam da garantia de que a aparência dos cards não regride.
+
+- [x] Snapshot baseline web: testes de snapshot renderizando `ReadingCard`,
+      `PrayerSection`, `CollectSection` — **cumprido 2026-08-31**
+      (`reading-card.snapshot.test.tsx`, 4 snapshots: Salmo com ornamento
+      de resposta, Evangelho, Coleta e Oração; config: `@testing-library/react` + `@testing-library/dom` + `@vitejs/plugin-react`, ambiente `jsdom`
+      só nesses arquivos via comentário, `*.test.tsx` adicionado ao
+      `include` — os testes de lib continuam em `node`). Snapshots são os
+      bloqueadores: se a escrita/rotação mudar o visual sem querer, quebra.
+- [x] Snapshot baseline mobile: os equivalentes mobile dos 3 cards —
+      **cumprido 2026-08-31** (`cards.snapshot.test.tsx`, 4 snapshots com o
+      mesmo intervalo do web). Trilha da config: o RNTL v14 roda CJS e
+      `require()`ia o `react-native` real (Flow), que nem Vite nem Node
+      transformam — então usamos o renderer universal `test-renderer`
+      (`createRoot` + `act`; é o que o RNTL usa por baixo) com um stub de
+      `react-native` (`src/test/rn-native-stub.tsx`, alias apontando
+      `react-native` -> stub no vitest.config: `View`/etc viram `<div>`,
+      `Text` vira `<text>`; só o que os cards usam). Contexts e
+      `@expo/vector-icons`/`expo-clipboard` stubados em `src/test/setup.ts`.
+      Prova de que é guarda real: corromper o rótulo do Salmo falha o
+      snapshot; reverter passa.
+
+A causa do problema está em `generate-devotionals.ts`: o mapa de conteúdo
+ancorado é chaveado por ciclo (`groundedOrdinary`, `trinityWeekByCycle`,
+`advent-{A,B,C}` etc.), então a mesma entrada de `ordinary-A.ts` vale
+pro Ano A de 2026 **e** 2029 — idêntico.
+
+- [ ] Estender o modelo de conteúdo: cada entrada passa a ter opções por
+      "ocorrência do ciclo" (1ª e 2ª vez) ou por ano, com fallback — se
+      a variação do ano não existir, usa a atual. Rotação determinística
+      (mesmo mecanismo date-seeded do QuoteCard, garantindo previsibilidade
+      e reprodutibilidade) — **cumprido 2026-08-31**: `DevotionalSlot`
+      (`default` + `occurrences?`) + `resolveSlot` com fallback; slot
+      comum continua sendo usado inalterado; escolha derivada do ano
+      litúrgico, sem estado e sem aleatoriedade (guarda no `main()`
+      permite importar o gerador em teste sem disparar a geração)
+- [ ] Índice de ocorrências: o gerador sabe em qual das 2 ocorrências do
+      ciclo (ou dos 6 anos pras festas fixas) está e escolhe o ângulo —
+      **cumprido 2026-08-31**: `getCycleOccurrence` (1ª/2ª do triênio,
+      A=2026/2029, B=2027/2030, C=2025/2028) e `getYearOccurrence`
+      (1..6 pra conteúdo fixo: Natal, Epifania, Tríduo etc.), aplicados
+      nos pontos de resolução do `generateForDate` + Tríduo em
+      `generateYear`
+- [ ] Teste de regressão: com variações vazias (estado atual), o output
+      é idêntico ao de hoje — prova de que a mecânica não piora nada —
+      **cumprido 2026-08-31**: `generate-devotionals.test.ts` (13 testes)
+      compara `generateYear(2025..2030)` contra os 6 JSONs publicados
+      (oráculos), além de cobrir o índice e o fallback
+- [ ] Regenerar e revalidar com 5.1 — **cumprido 2026-08-31 por prova
+      indireta**: com variações vazias o output já é idêntico ao
+      publicado (regressão verde), então nenhum JSON muda; revalidar de
+      verdade passa a ser obrigatório quando a escrita (5.5) introduzir
+      a primeira variação
+
+**Feito quando:** o gerador aceita variações por ocorrência sem alterar
+o comportamento atual quando elas não existem, e um teste cobre isso.
+— Cumprido (2026-08-31): o teste de regressão prova output idêntico, e o
+POC manual mostrou o mesmo slot com variação só na 2ª ocorrência
+(2026 fica intacto, 2029 ganha o novo ângulo).
+
+### 5.5 Rotação por ciclo — escrita (Camada 2, em andamento lento)
+
+A prática do **"voz autoral"**: como não há curadores, é o próprio autor
+escrevendo um segundo ângulo por entrada, ao longo do tempo, por estação.
+Escrita e publicada incrementalmente (o app continua perfeito a cada
+passo — a variação nova só entra no ano cuja ocorrência passou a ter).
+
+- [x] Receita de escrita/documentada — **cumprido 2026-08-31** (`UMA.md`
+      na raiz do repo): o que é um "ângulo" diferente (mesmo texto-base,
+      título/oração/pergunta próprios da 2ª ocorrência — jamais repetir
+      o versículo-central igualzinho), o modelo `default`+`occurrences` no
+      formato real dos arquivos, os índices de ocorrência (1/2 do ciclo,
+      1..6 do ano fixo) com a tabela por ciclo, onde mora o conteúdo, como
+      achar a ocorrência de uma data, workflow completo de publicação
+      (regenerar → `validate:content` → `npm test` → ver o diff por
+      propósito), ritmo sem prazos duros e exemplo comentado completo da
+      2ª ocorrência (Advento A, semana 1, domingo) ancorado na leitura
+      real (Isaías 2:1-5)
+- [ ] Prioridade de escrita: primeiro as 31 festas de data fixa (6x —
+      maior percepção de repetição, menor volume), depois os 890 do
+      Tempo Comum por Próprio (separar em semanas, ex: 3 Próprios por
+      sessão), e os feriados do ciclo (Ascensão, Pentecostes etc.) —
+      prioridade registrada na seção 3 da `UMA.md`; falta o autor
+      começar a escrever
+- [ ] Estimativa: dado o ritmo atual do autor, uma faixa de semanas por
+      estação — o roadmap registra a prioridade, não prazos duros
+      (~ritmo sugerido na seção 7 da `UMA.md`)
+- [ ] Revalidar com 5.1 a cada publicação (`devotionals-*.json`) —
+      roteiro no `UMA.md` seção 6
+
+**Feito quando:** a 2ª ocorrência de cada data tem conteúdo distinto da
+1ª, sem que a validação de repetição/lacuna levante nada.
+
+### 5.6 Leituras diárias feriais do RCL (Camada 3 — dado canônico novo)
+
+Hoje os dias de semana (Seg-Sáb) do devocional são ancorados no domingo
+regente. O padrão oficial do _Revised Common Lectionary Daily Readings_
+é: Seg-Qua espelham o domingo, Qui-Sáb preparam o próximo — e é isso
+que dá "mais lecionário de verdade" pra um usuário acostumado com apps
+litúrgicos.
+
+- [ ] Mapear a estrutura diária (algumas fontes públicas curadas por
+      ano litúrgico; RCL consultado contra a Vanderbilt)
+- [ ] Adicionar tabela opcional por ciclo/dia (fora da regra dos
+      domingos — acrescenta `dailyReadings` onde existir, com fallback
+      pro atual)
+- [ ] Conteúdo: novo após existir dado — a escrita devocional diária
+      por dia útil já cobre a parte meditativa
+- [ ] Revalidar com 5.1
+
+**Feito quando:** dias úteis mostram as leituras diárias canônicas do
+RCL quando existem, com fallback limpo pro comportamento atual.
+
+### 5.7 Áudio/TTS (Camada 4 — nativo, só na próxima APK)
+
+Retenção nº 1 do mercado (iBreviary/Hallow/YouVersion — todos com
+áudio). `expo-speech` é módulo nativo: exige **APK** (contraria a
+preferência OTA-only). Fica na ordem baixa de propósito — não vale uma
+APK só pra isso.
+
+- [ ] Instalar `expo-speech`; botão "Ouvir" na leitura do dia
+- [ ] Paridade web (fallback via `speechSynthesis` nativo, sem pacote)
+- [ ] Testar junto da próxima APK (Android/iOS)
+
+**Feito quando:** áudio das leituras do dia em web e mobile, com estado
+de carregamento/erro gracioso.
+
+### 5.8 Widget (Camada 4 — nativo, só quando houver APK)
+
+Re-ativação do item adiado em 4.3, agora com entendimento de que é a
+frente "abrir o app é fricção" — no nicho, o widget de leitura do dia é
+o que transforma o app em hábito.
+
+- [ ] `eas-build.yml` (APK) com expo-widgets/subspec do Android; iOS via
+      Equipa nativa (Swift/WidgetKit) — mais pesado que Android
+- [ ] Leitura + estação + data no widget, atualização diária automática
+- [ ] Ajustes de paleta/contraste herdados do tema (reuso de tokens)
+
+**Feito quando:** widget Android e iOS mostrando a leitura do dia sem
+abrir o app.
+
+### 5.9 Ofício Diário completo offline, o "final boss" (Camada 5)
+
+**Reintroduzido 2026-08-30**: este item estava na proposta original da
+Fase 5, mas sumiu do ROADMAP quando ela foi escrita — só sobrou
+a frase aspiracional no 5.3 ("o dia como ofício diário completo").
+Por ser a mais difícil, virou a Camada 5 (o "final boss"): é a peça mais
+ambiciosa da fase — transformar o dia de "devocional
+com as leituras" num **Ofício Diário completo** (manhã/tarde, salmos do
+ofício + leituras + orações fixas) 100% offline, sem depender de API.
+
+**Descoberta no caminho (2026-08-30):** há um protótipo antigo e órfão
+`lecionario-web/src/lib/lectserve-api.ts` (leituras de Daily Office via
+`https://lectserve.com/date/...`, ACNA lectionary) com cache registrado
+no `runtimeCaching` do `next.config.mjs` (SW) e um script de teste
+`scripts/test-lectserve-api.ts` — **não importado por nenhuma UI**. Ele
+aponta o caminho errado pra este item (dependência de API remota
+contraria a preferência OTA/offline do projeto), então:
+
+- é a referência de formato (sanduíche `psalms.morning/evening`,
+  `lessons.first/second/gospel`) que já validou o conceito
+- deve ser **arquivado/removido** (junto do cache do SW e do script)
+  quando a fonte de dados offline canônica for definida, ou
+  desacoplado — nunca integrado como fonte primária
+
+- [ ] Definir a regra do ofício (tradição BCP/Comunhão Anglicana para
+      PT-BR): salmos do dia + leituras 1a/2a/gospel do RCL (já temos) +
+      orações fixas (Senhor, tendo misericórdia de nós; Coleta; Credo;
+      Pai-Nosso) — decidir profundidade (manhã+só, manhã+tarde, ou
+      completo)
+- [ ] Obter dados canônicos offline dos salmos do ofício (ciclo de 7
+      semanas do saltério BCP ou rotação equivalente) — nova fonte de
+      dados local, como em 5.6
+- [ ] Tela própria (web + mobile): alternador manhã/tarde, se o escopo
+      pedir; fallback gracioso quando a data não tiver entrada
+- [ ] Remover/arquivar `lectserve-api.ts`, `test-lectserve-api.ts` e o
+      cache LectServe do `next.config.mjs`
+- [ ] Revalidar com 5.1
+
+**Feito quando:** o usuário abre o app sem rede e encontra o Ofício
+Diário completo do dia (não só o devocional), com dados 100% locais.
+
+---
+
 ## Pipeline de dados (referência)
 
 ```
@@ -1044,28 +1376,29 @@ Os JSONs são copiados do `lecionario-web/src/data/rcl/` para `lecionario-mobile
 
 ## Dependências a instalar (resumo)
 
-| Pacote | Finalidade | Fase |
-|---|---|---|
-| `expo-notifications` | Notificações locais diárias | 2.1 |
-| `expo-sharing` | Compartilhamento nativo | 2.2 |
-| `expo-clipboard` | Copiar texto | 2.2 |
-| `@sentry/react-native` | Crash reporting | 3.3 |
+| Pacote                 | Finalidade                  | Fase |
+| ---------------------- | --------------------------- | ---- |
+| `expo-notifications`   | Notificações locais diárias | 2.1  |
+| `expo-sharing`         | Compartilhamento nativo     | 2.2  |
+| `expo-clipboard`       | Copiar texto                | 2.2  |
+| `@sentry/react-native` | Crash reporting             | 3.3  |
 
 ---
 
 ## Débito técnico conhecido
 
-| Item | Localização | Impacto |
-|---|---|---|
-| **Upgrade Next.js 14 → 16 (breaking)** — achado no audit de segurança (2026-08-21): o `next@14` carrega ~21 advisories high/moderate (DoS, XSS, cache poisoning, SSRF) + `postcss` embutido + `serialize-javascript` via `next-pwa`; nenhum tem patch na linha 14.x. Estão em allowlist no `scripts/audit-allowlist.mjs` (CI passa, mas o débito é real e visível). O upgrade arrasta breaking changes do App Router e possivelmente a troca do `next-pwa` (mantenedor inativo) por solução própria de Service Worker | `lecionario-web/package.json` | Alto em produção self-hosted — priorizar quando houver janela pra testar build + E2E |
-| **Upgrade do Expo SDK (54 → próxima major)** — achado no mesmo audit (2026-08-21): `image-size` (2 DoS high) e `postcss` vêm dentro da cadeia do `expo@54`/@expo/cli; só saem com upgrade de SDK. Em allowlist no script de auditoria | `lecionario-mobile/package.json` | Médio — app client-side, superfície de ataque menor que o web self-hosted |
-| `getSampleDevotional` agora síncrono mas chamado com `await` | `page.tsx` | Cosmético — funciona |
-| RCL JSONs com 2MB+ cada | `src/data/rcl/` | Pode impactar tempo de build/bundle |
-| Sem testes para a camada de dados local | `src/lib/*.ts` | Confiança menor em refactors |
-| ~~Textos ARC perdidos silenciosamente ao regenerar~~ **resolvido 2026-08-21**: `generate-rcl-data.ts` fazia sobrescrita cega dos `cycle-*.json`, sem preservar `text` já populado por `lookup-bible-text.ts` — foi assim que o commit `817ed23` apagou tudo sem ninguém notar. Consertado com merge-preserve (só reaproveita `text` se `date+type+ref` não mudou) + XML fonte movido de `/tmp` (efêmero) pra `scripts/data/por-almeida.usfx.xml` (no repo) + teste `rcl-bible-text.test.ts` (web e mobile) que quebra o CI se a cobertura de texto cair | `generate-rcl-data.ts`, `lookup-bible-text.ts` | Resolvido — 4613 textos restaurados |
-| `getReferenceText()` não resolve refs com dois salmos separados por vírgula (ex. "Salmo 42, 43") | `lookup-bible-text.ts` | 7 leituras (1x/ano, Vigília Pascal do Ciclo C) sem texto — allowlisted no teste de cobertura, não bloqueia CI |
-| ~~`eas.yml` rodava build de APK nativo (13min+) em toda mudança de JS/dado~~ **resolvido 2026-08-21**: split em `eas.yml` (só OTA, dispara em qualquer push de `src/**`) e `eas-build.yml` (só APK nativo, dispara só quando `app.config.ts`/`eas.json`/`package.json` mudam, ou manualmente) | `.github/workflows/eas.yml`, `eas-build.yml` | Resolvido — economiza tempo de CI e cota de build da Expo |
-| Variáveis `SENTRY_ORG`/`SENTRY_PROJECT`/`SENTRY_AUTH_TOKEN` passadas como env do job do GitHub Actions não chegam no container remoto onde o Gradle roda de fato — precisam ser [EAS Environment Variables](https://docs.expo.dev/eas/environment-variables/) cadastradas via `eas env:create <environment> --name X --value Y` (feito pro ambiente `preview` em 2026-08-21, causa de um build falhar) | `eas-build.yml` | Resolvido pro `preview`; replicar pro `production` quando esse profile for usado de verdade |
+| Item                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Localização                                    | Impacto                                                                                                       |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Upgrade Next.js 14 → 16 (breaking)** — achado no audit de segurança (2026-08-21): o `next@14` carrega ~21 advisories high/moderate (DoS, XSS, cache poisoning, SSRF) + `postcss` embutido + `serialize-javascript` via `next-pwa`; nenhum tem patch na linha 14.x. Estão em allowlist no `scripts/audit-allowlist.mjs` (CI passa, mas o débito é real e visível). O upgrade arrasta breaking changes do App Router e possivelmente a troca do `next-pwa` (mantenedor inativo) por solução própria de Service Worker                                                                                                                                                                  | `lecionario-web/package.json`                  | Alto em produção self-hosted — priorizar quando houver janela pra testar build + E2E                          |
+| **Upgrade do Expo SDK (54 → próxima major)** — achado no mesmo audit (2026-08-21): `image-size` (2 DoS high) e `postcss` vêm dentro da cadeia do `expo@54`/@expo/cli; só saem com upgrade de SDK. Em allowlist no script de auditoria                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `lecionario-mobile/package.json`               | Médio — app client-side, superfície de ataque menor que o web self-hosted                                     |
+| `getSampleDevotional` agora síncrono mas chamado com `await`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | `page.tsx`                                     | Cosmético — funciona                                                                                          |
+| ~~Todo mês de dezembro caía no conteúdo sample~~ **corrigido 2026-08-30**: `getDevotionalContent` usava o ano civil da data, mas os JSONs cobrem o ano litúrgico (`devotionals-2026` = `2025-12-01..2026-11-30`) — então `2025-12-25`, `2026-12-01`, etc., nunca achavam entrada e o app exibia oração/meditação de amostra (o RCL das leituras até caía no cycle certo, mas o devocional não). Descoberto pelo novo teste `sample-devotional.test.ts` (fallback chain). Corrigido em `devotional-content.ts` (web + mobile): dezembro usa o arquivo do ano seguinte. Testes travando a regressão: `sample-devotional.test.ts` (web, 6 testes) e `devotional-content.test.ts` (mobile) | `devotional-content.ts` (web + mobile)         | Resolvido — Natal/Advento mostravam amostra em vez do conteúdo real                                           |
+| RCL JSONs com 2MB+ cada                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `src/data/rcl/`                                | Pode impactar tempo de build/bundle                                                                           |
+| Sem testes para a camada de dados local                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `src/lib/*.ts`                                 | Confiança menor em refactors                                                                                  |
+| ~~Textos ARC perdidos silenciosamente ao regenerar~~ **resolvido 2026-08-21**: `generate-rcl-data.ts` fazia sobrescrita cega dos `cycle-*.json`, sem preservar `text` já populado por `lookup-bible-text.ts` — foi assim que o commit `817ed23` apagou tudo sem ninguém notar. Consertado com merge-preserve (só reaproveita `text` se `date+type+ref` não mudou) + XML fonte movido de `/tmp` (efêmero) pra `scripts/data/por-almeida.usfx.xml` (no repo) + teste `rcl-bible-text.test.ts` (web e mobile) que quebra o CI se a cobertura de texto cair                                                                                                                                | `generate-rcl-data.ts`, `lookup-bible-text.ts` | Resolvido — 4613 textos restaurados                                                                           |
+| `getReferenceText()` não resolve refs com dois salmos separados por vírgula (ex. "Salmo 42, 43")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | `lookup-bible-text.ts`                         | 7 leituras (1x/ano, Vigília Pascal do Ciclo C) sem texto — allowlisted no teste de cobertura, não bloqueia CI |
+| ~~`eas.yml` rodava build de APK nativo (13min+) em toda mudança de JS/dado~~ **resolvido 2026-08-21**: split em `eas.yml` (só OTA, dispara em qualquer push de `src/**`) e `eas-build.yml` (só APK nativo, dispara só quando `app.config.ts`/`eas.json`/`package.json` mudam, ou manualmente)                                                                                                                                                                                                                                                                                                                                                                                          | `.github/workflows/eas.yml`, `eas-build.yml`   | Resolvido — economiza tempo de CI e cota de build da Expo                                                     |
+| Variáveis `SENTRY_ORG`/`SENTRY_PROJECT`/`SENTRY_AUTH_TOKEN` passadas como env do job do GitHub Actions não chegam no container remoto onde o Gradle roda de fato — precisam ser [EAS Environment Variables](https://docs.expo.dev/eas/environment-variables/) cadastradas via `eas env:create <environment> --name X --value Y` (feito pro ambiente `preview` em 2026-08-21, causa de um build falhar)                                                                                                                                                                                                                                                                                 | `eas-build.yml`                                | Resolvido pro `preview`; replicar pro `production` quando esse profile for usado de verdade                   |
 
 ---
 
@@ -1127,8 +1460,8 @@ P6 são categorias novas.
 - [x] **Prefetch de datas adjacentes (2026-08-21)** — `router.prefetch`
       para ±3 dias no `useEffect`, navegação offline sem flash de loading
 - [~] Comportamento de SIGTERM/restart do container — Next.js não tem
-      health check no mesmo sentido de uma API tradicional, não é
-      prioridade
+  health check no mesmo sentido de uma API tradicional, não é
+  prioridade
 
 ### P3 — CI/CD
 
@@ -1150,7 +1483,7 @@ P6 são categorias novas.
 ### Identidade aplicada aqui (2026-08-15, revisado)
 
 > Fonte: `Identidade visual geral.md` e `Identidade Visual - Guia Técnico
-> (Código).md` no vault. **Achado ao conferir o ícone real (2026-08-15):**
+(Código).md` no vault. **Achado ao conferir o ícone real (2026-08-15):**
 > o símbolo (livro + chama irradiando, `Logo.png`) já tem essa cara —
 > livro cobre A Biblioteca, chama com raios já gesticula pra Os Céus. E
 > `scripts/generate-logos.py` já implementa "um grammar, registros
@@ -1181,12 +1514,12 @@ P6 são categorias novas.
       em `tailwind.config.ts`, aplicado nos 3 pontos que mudam de cor por
       estação (`ReadingCard`, `Header`)
 - [~] **Easing — mobile: não aplicável, decisão consciente (2026-08-15)**:
-      `HomeScreen.tsx` só lê `getThemeForSeason()` uma vez no render, sem
-      observador nem transição ao vivo — não existe o momento de troca
-      que isso animaria. App também não tem nenhuma lib de animação
-      instalada; adicionar uma agora só pra isso seria dependência nativa
-      nova sem ganho real, bem na véspera de gerar o APK. Reavaliar só se
-      o app ganhar essa transição ao vivo no futuro
+  `HomeScreen.tsx` só lê `getThemeForSeason()` uma vez no render, sem
+  observador nem transição ao vivo — não existe o momento de troca
+  que isso animaria. App também não tem nenhuma lib de animação
+  instalada; adicionar uma agora só pra isso seria dependência nativa
+  nova sem ganho real, bem na véspera de gerar o APK. Reavaliar só se
+  o app ganhar essa transição ao vivo no futuro
 
 **Achado crítico, primeiro build EAS real (2026-08-15):** primeiro APK
 gerado crashava na abertura, sempre — "Lecionário apresenta falhas
@@ -1210,7 +1543,7 @@ não sabe calcular.
 todos investigados no código antes de responder:
 
 - [x] **EAS Update configurado**: `expo-updates` instalado + `eas
-      update:configure` rodado — `runtimeVersion` por `appVersion`,
+update:configure` rodado — `runtimeVersion` por `appVersion`,
       canais `development`/`preview`/`production` em `eas.json`. A
       partir deste build, ajustes só-JS não precisam mais de build
       nativo completo — `eas update` publica em segundos
@@ -1252,6 +1585,7 @@ todos investigados no código antes de responder:
 
 **Segunda rodada, adiantado antes do próximo build (2026-08-16, foco
 Android — iOS não tocado):**
+
 - [x] **Cores de estação consolidadas**: `CalendarScreen` (mobile) e
       `LiturgicalCalendar` (web) agora **importam** de `lib/theme.ts` em
       vez de manter cópia própria — elimina a causa raiz do bug do
@@ -1280,6 +1614,7 @@ Android — iOS não tocado):**
 
 **Ainda pendente, fica pra depois do build (retomar via `eas update`,
 mais rápido agora):**
+
 - [ ] Consolidar `generate-logos.py` (Python) com a fonte JS de cor —
       baixo risco, não urgente, documentado acima
 - [ ] Densidade de leitura no **web** — não auditado nesta rodada
@@ -1301,6 +1636,7 @@ Meditation/Collect/ReadingCard, com cores hardcoded próprias, nem
 compartilhadas com o web). Incluindo os badges de leitura por estação
 (`ReadingCard`), onde texto branco fixo sobre Natal/Páscoa (dourado) e
 Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
+
 - [x] Web: token novo `--dourado-texto` (fundo escuro) + reuso de
       `--vinho` (fundo claro) nas 12 ocorrências + foreground adaptativo
       por estação nos badges (antes fixo em branco)
@@ -1320,27 +1656,27 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       Uptime Kuma do VPS (mesmo usado por bancada, biblia-na-arte e
       scriptorium)
 - [~] **Sentry no mobile (`@sentry/react-native`) — INTEGRAÇÃO COMPLETA
-      (2026-08-22)**. Projeto criado pelo autor; DSN plugado nas envs EAS
-      `EXPO_PUBLIC_SENTRY_DSN` (`preview` e `production`); OTA
-      republicado com o DSN embutido (update `01a02798`, canal preview,
-      2026-08-22 03:51 — verificado direto no manifest do u.expo.dev);
-      eas.yml corrigido pra passar `--environment preview` (sem isso o job
-      remoto publicava sem enxergar as env vars — achado verificado com
-      export local: a env presente no momento do build aparece no .hbc
-      compilado). Source maps no EAS ok (token org usado no build de
-      21/08). **Único restante**: validar o primeiro evento chegando em
-      Issues — abrir o app no aparelho (OTA aplica sozinho na próxima
-      abertura) e conferir o dashboard após qualquer erro real
+  (2026-08-22)**. Projeto criado pelo autor; DSN plugado nas envs EAS
+  `EXPO_PUBLIC_SENTRY_DSN` (`preview` e `production`); OTA
+  republicado com o DSN embutido (update `01a02798`, canal preview,
+  2026-08-22 03:51 — verificado direto no manifest do u.expo.dev);
+  eas.yml corrigido pra passar `--environment preview` (sem isso o job
+  remoto publicava sem enxergar as env vars — achado verificado com
+  export local: a env presente no momento do build aparece no .hbc
+  compilado). Source maps no EAS ok (token org usado no build de
+  21/08). **Único restante**: validar o primeiro evento chegando em
+  Issues — abrir o app no aparelho (OTA aplica sozinho na próxima
+  abertura) e conferir o dashboard após qualquer erro real
 - [~] **Sentry no web (`@sentry/nextjs`) — INTEGRAÇÃO COMPLETA
-      (2026-08-22)**. Projeto renomeado pelo autor pra `lecionario-web`;
-      DSN commitado no `docker-compose.yml` (args de build + environment
-      de runtime — DSN é credencial pública por design) e Dockerfile com
-      `ARG/ENV NEXT_PUBLIC_SENTRY_DSN` nos stages builder e runner;
-      deploy VPS já rodou com isso (2026-08-22 03:17, smoke test verde).
-      Source maps upload no build docker segue desligado (sem
-      SENTRY_AUTH_TOKEN no runner — refinamento futuro se precisar
-      simbolizar stack traces de produção). **Único restante**: validar
-      primeiro evento em Issues após uso real do site
+  (2026-08-22)**. Projeto renomeado pelo autor pra `lecionario-web`;
+  DSN commitado no `docker-compose.yml` (args de build + environment
+  de runtime — DSN é credencial pública por design) e Dockerfile com
+  `ARG/ENV NEXT_PUBLIC_SENTRY_DSN` nos stages builder e runner;
+  deploy VPS já rodou com isso (2026-08-22 03:17, smoke test verde).
+  Source maps upload no build docker segue desligado (sem
+  SENTRY_AUTH_TOKEN no runner — refinamento futuro se precisar
+  simbolizar stack traces de produção). **Único restante**: validar
+  primeiro evento em Issues após uso real do site
 - DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
   com `enabled: !!dsn` deixa tudo rodando normal sem a chave (mesmo
   padrão usado no meus-remedios)
@@ -1358,24 +1694,24 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
 ### P7 — UI/UX, acessibilidade e SEO
 
 - [~] **Internacionalização (i18n) — decisão consciente de adiar
-      (2026-08-16)**: hoje zero infra (`grep` confirma: sem `i18next`,
-      sem `expo-localization`, nenhum arquivo de locale, tudo string PT
-      direto no JSX). Comparado ao Meus Remédios (i18n real, pt/en/es
-      completo) porque a natureza dos dois projetos é diferente: Meus
-      Remédios é interface neutra, tradução é troca de string. Lecionário
-      é **100% conteúdo** — Bíblia em Almeida ARC, 2191 devocionais
-      gerados em português. Traduzir só a UI sem traduzir o conteúdo
-      bíblico/devocional seria teatro, não internacionalização de
-      verdade — exigiria trocar a tradução bíblica de base (ESV/KJV em
-      inglês, RVR em espanhol) **e regenerar todo o conteúdo devocional**
-      por idioma, ordem de grandeza maior que instalar uma lib. Público
-      definido (cristão litúrgico brasileiro) já é pequeno de propósito;
-      expandir idioma sem expandir conteúdo não resolve nada. **Não
-      prioridade agora.** Se um dia fizer sentido, inglês é candidato
-      mais natural que espanhol (a tradição RCL/BCP 1979 que o app
-      segue é mais comum no mundo anglicano de língua inglesa que no
-      Brasil) — mas isso é decisão de expansão estratégica, não
-      pendência técnica esquecida
+  (2026-08-16)**: hoje zero infra (`grep` confirma: sem `i18next`,
+  sem `expo-localization`, nenhum arquivo de locale, tudo string PT
+  direto no JSX). Comparado ao Meus Remédios (i18n real, pt/en/es
+  completo) porque a natureza dos dois projetos é diferente: Meus
+  Remédios é interface neutra, tradução é troca de string. Lecionário
+  é **100% conteúdo** — Bíblia em Almeida ARC, 2191 devocionais
+  gerados em português. Traduzir só a UI sem traduzir o conteúdo
+  bíblico/devocional seria teatro, não internacionalização de
+  verdade — exigiria trocar a tradução bíblica de base (ESV/KJV em
+  inglês, RVR em espanhol) **e regenerar todo o conteúdo devocional**
+  por idioma, ordem de grandeza maior que instalar uma lib. Público
+  definido (cristão litúrgico brasileiro) já é pequeno de propósito;
+  expandir idioma sem expandir conteúdo não resolve nada. **Não
+  prioridade agora.** Se um dia fizer sentido, inglês é candidato
+  mais natural que espanhol (a tradição RCL/BCP 1979 que o app
+  segue é mais comum no mundo anglicano de língua inglesa que no
+  Brasil) — mas isso é decisão de expansão estratégica, não
+  pendência técnica esquecida
 - [x] **SEO do web já implementado**: `lecionario-web/src/app/layout.tsx`
       exporta `metadata` (Next.js App Router) com `openGraph` — mais
       maduro que o padrão estático de index.html, gerado por página.
@@ -1447,19 +1783,13 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       reabrir esse item
 - [ ] **Formulário de Segurança de Dados (Data Safety) da Play —
       pré-preenchido (2026-08-22), copiar na hora do cadastro**. Com a
-      arquitetura atual do app, as respostas são:
-      - O app coleta dados? **Sim** — apenas: *App info and performance →
-        Crash logs* e *Diagnostics* (via Sentry: modelo do aparelho,
-        versão do SO, stack traces, IP)
-      - Os dados são compartilhados com terceiros? **Não**
-      - Transmissão segura? **Sim** (HTTPS/TLS)
-      - Usuário pode pedir exclusão? **Sim** — via
-        `lecionario@narniano.com` (na prática, dados pessoais não saem
-        do aparelho dele)
-      - **Todos os demais tipos: "Não coletado"** — sem localização,
-        financeiro, contatos, fotos, mensagens, histórico, identificadores
-        publicitários, nada
-      - Apple privacy labels idem, quando houver iOS
+      arquitetura atual do app, as respostas são: - O app coleta dados? **Sim** — apenas: _App info and performance →
+      Crash logs_ e _Diagnostics_ (via Sentry: modelo do aparelho,
+      versão do SO, stack traces, IP) - Os dados são compartilhados com terceiros? **Não** - Transmissão segura? **Sim** (HTTPS/TLS) - Usuário pode pedir exclusão? **Sim** — via
+      `lecionario@narniano.com` (na prática, dados pessoais não saem
+      do aparelho dele) - **Todos os demais tipos: "Não coletado"** — sem localização,
+      financeiro, contatos, fotos, mensagens, histórico, identificadores
+      publicitários, nada - Apple privacy labels idem, quando houver iOS
 - [ ] **Portabilidade de dados (LGPD art. 18, §V) — resolvida por design
       (2026-08-22)**: nenhum dado pessoal é processado em servidor; tudo
       que é do usuário (favoritos, preferências) vive no APARELHO dele,
@@ -1468,32 +1798,24 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       sincronização ou login
 - [ ] **Auditoria de conformidade Play Store — pré-publicação
       (2026-08-22)**. Checklist contra as Políticas do Google Play, na
-      ordem que o Console cobra:
-      1. Política de Privacidade com URL pública ✓ (temos
-         `/privacidade` — requisito duro do Play pra TODO app)
-      2. Formulário **Segurança de Dados**: declarar coleta de
-         "Registros de diagnóstico" (Sentry = crash logs, IDs de
-         dispositivo, IP) e nada mais — sem dados pessoais, financeiros
-         ou de localização; criptografia em trânsito sim (HTTPS);
-         opção de exclusão não se aplica (não há conta)
-      3. **Classificação de conteúdo (IARC)**: questionário da Play —
-         devocional religioso sem violência/aposta/UCG → expectativa
-         "Livre"
-      4. **Público-alvo e conteúdo**: marcar 13+ (religião não é
-         categoria sensível a menores); NÃO marcar "direcionado a
-         crianças"
-      5. **Permissões**: revisar manifest — notificações (justificada no
-         fluxo de opt-in), sem localização/câmera/contatos/storage
-         sensível; permissões de mídia do Expo checar se são só de
-         biblioteca para eventual compartilhamento
-      6. **Metadados honestos**: título/descrição/screenshots batendo com
-         a função real (revisor humano do Play testa o app)
-      7. **Faixa de teste** antes da produção: internal/closed testing
-         com alguns usuários reais por alguns dias — reduz risco de
-         rejection e pega crash via Sentry com DSN já plugado
-      8. LGPD sob ótica de controlador: registro das operações é este
-         roadmap mesmo; base legal documentada acima; DPO não exigível
-         (operação pequena, sem monitoramento sistemático em larga escala)
+      ordem que o Console cobra: 1. Política de Privacidade com URL pública ✓ (temos
+      `/privacidade` — requisito duro do Play pra TODO app) 2. Formulário **Segurança de Dados**: declarar coleta de
+      "Registros de diagnóstico" (Sentry = crash logs, IDs de
+      dispositivo, IP) e nada mais — sem dados pessoais, financeiros
+      ou de localização; criptografia em trânsito sim (HTTPS);
+      opção de exclusão não se aplica (não há conta) 3. **Classificação de conteúdo (IARC)**: questionário da Play —
+      devocional religioso sem violência/aposta/UCG → expectativa
+      "Livre" 4. **Público-alvo e conteúdo**: marcar 13+ (religião não é
+      categoria sensível a menores); NÃO marcar "direcionado a
+      crianças" 5. **Permissões**: revisar manifest — notificações (justificada no
+      fluxo de opt-in), sem localização/câmera/contatos/storage
+      sensível; permissões de mídia do Expo checar se são só de
+      biblioteca para eventual compartilhamento 6. **Metadados honestos**: título/descrição/screenshots batendo com
+      a função real (revisor humano do Play testa o app) 7. **Faixa de teste** antes da produção: internal/closed testing
+      com alguns usuários reais por alguns dias — reduz risco de
+      rejection e pega crash via Sentry com DSN já plugado 8. LGPD sob ótica de controlador: registro das operações é este
+      roadmap mesmo; base legal documentada acima; DPO não exigível
+      (operação pequena, sem monitoramento sistemático em larga escala)
 - [ ] **Termos de uso simples** — opcional nesta fase; pode nascer como
       seção dentro da página de Privacidade. O Play NÃO exige Termos pra
       esta categoria (exige só Política de Privacidade, que já temos)
@@ -1552,44 +1874,40 @@ muito mais restrito por natureza**.
   documentada acima (não amarrado ao conteúdo litúrgico/devocional em
   si, se algum dia acontecer).
   - [~] **Doação voluntária (Pix/link) — FASE 1 IMPLEMENTADA (2026-08-22)**.
-        Continua o caminho mais coerente com o propósito e a audiência
-        (comunidade religiosa, não consumidor de app comum) — "quem usa
-        sustenta o projeto", sem paywall no conteúdo em si.
-        **Implementado**: página `/apoiar` no web (QR Pix estático gerado
-        localmente pelo padrão EMV/BR Code do Bacen com CRC16-CCITT
-        testado, 6 testes; botão copia-e-cola; estilo classic-frame) +
-        link "Apoie o projeto" no rodapé + entrada no sitemap. Mobile:
-        linha "Apoie o projeto" na seção Sobre do ConfigScreen que copia
-        o código Pix direto pra área de transferência (expo-clipboard,
-        funciona offline). Gerador duplicado web/mobile de propósito
-        (sem pacote compartilhado) com teste de sincronia entre os dois.
-        **DADOS FINAIS CONFIRMADOS PELO AUTOR (2026-08-22)** — chave
-        `lecionario@narniano.com` cadastrada na conta pessoal dele e
-        **JÁ REGISTRADA NO BANCO** (confirmado pelo autor no mesmo dia —
-        o QR/copia-e-cola está apto a receber de verdade)
-        **Processo de decisão do nome do recebedor** (documentado pra
-        não esquecer o porquê):
-        1. O nome que aparece pra quem doa NÃO vem da chave nem do QR —
-           vem do titular da CONTA registrado no DICT do Bacen. Chave
-           nova ≠ identidade nova; não existe "chave no nome Lecionário"
-           numa conta pessoa física.
-        2. Pra exibir "Lecionário" como recebedor seria preciso CNPJ
-           (caminho acessível: MEI + conta PJ) e migrar as chaves pra
-           essa conta. Decisão: COMEÇAR NA PESSOA FÍSICA mesmo — custo
-           zero, dinheiro chega igual, e pra audiência religiosa/
-           comunitária "apoie o mantenedor" é normal e humaniza. A UI já
-           é transparente: a página mostra "Recebedor: Rilson Joás".
-           Se um dia o volume justificar, abre o MEI e troca só a chave
-           no `PIX_CONFIG` dos dois apps + republica.
-        3. Detalhe técnico: o campo 59 do BR Code (nosso `receiverName`)
-           é cosmético — o banco ignora na confirmação e exibe o titular
-           real. Escrever "Lecionário" lá seria enganoso sem efeito.
-        4. O padrão EMV limita o campo 59 a 25 caracteres: o nome civil
-           completo ("Rilson Joás Guedes Bezerra dos Santos", 37) não
-           cabe e truncaria feio no meio ("...Guedes Bezerr"). Decisão:
-           forma curta "Rilson Joás Guedes" (18 chars) no payload.
-        Fase 2 futura se escalar: Stripe/Mercado Pago pra recorrência +
-        recibos
+    Continua o caminho mais coerente com o propósito e a audiência
+    (comunidade religiosa, não consumidor de app comum) — "quem usa
+    sustenta o projeto", sem paywall no conteúdo em si.
+    **Implementado**: página `/apoiar` no web (QR Pix estático gerado
+    localmente pelo padrão EMV/BR Code do Bacen com CRC16-CCITT
+    testado, 6 testes; botão copia-e-cola; estilo classic-frame) +
+    link "Apoie o projeto" no rodapé + entrada no sitemap. Mobile:
+    linha "Apoie o projeto" na seção Sobre do ConfigScreen que copia
+    o código Pix direto pra área de transferência (expo-clipboard,
+    funciona offline). Gerador duplicado web/mobile de propósito
+    (sem pacote compartilhado) com teste de sincronia entre os dois.
+    **DADOS FINAIS CONFIRMADOS PELO AUTOR (2026-08-22)** — chave
+    `lecionario@narniano.com` cadastrada na conta pessoal dele e
+    **JÁ REGISTRADA NO BANCO** (confirmado pelo autor no mesmo dia —
+    o QR/copia-e-cola está apto a receber de verdade)
+    **Processo de decisão do nome do recebedor** (documentado pra
+    não esquecer o porquê): 1. O nome que aparece pra quem doa NÃO vem da chave nem do QR —
+    vem do titular da CONTA registrado no DICT do Bacen. Chave
+    nova ≠ identidade nova; não existe "chave no nome Lecionário"
+    numa conta pessoa física. 2. Pra exibir "Lecionário" como recebedor seria preciso CNPJ
+    (caminho acessível: MEI + conta PJ) e migrar as chaves pra
+    essa conta. Decisão: COMEÇAR NA PESSOA FÍSICA mesmo — custo
+    zero, dinheiro chega igual, e pra audiência religiosa/
+    comunitária "apoie o mantenedor" é normal e humaniza. A UI já
+    é transparente: a página mostra "Recebedor: Rilson Joás".
+    Se um dia o volume justificar, abre o MEI e troca só a chave
+    no `PIX_CONFIG` dos dois apps + republica. 3. Detalhe técnico: o campo 59 do BR Code (nosso `receiverName`)
+    é cosmético — o banco ignora na confirmação e exibe o titular
+    real. Escrever "Lecionário" lá seria enganoso sem efeito. 4. O padrão EMV limita o campo 59 a 25 caracteres: o nome civil
+    completo ("Rilson Joás Guedes Bezerra dos Santos", 37) não
+    cabe e truncaria feio no meio ("...Guedes Bezerr"). Decisão:
+    forma curta "Rilson Joás Guedes" (18 chars) no payload.
+    Fase 2 futura se escalar: Stripe/Mercado Pago pra recorrência +
+    recibos
   - [x] **Afiliado (Amazon) — CONCLUÍDO (2026-08-22), forma decidida pelo
         autor: pelas citações de C.S. Lewis.** O QuoteCard diário linka a
         obra-fonte da citação pra busca da Amazon com a tag `rilson-20`
@@ -1620,7 +1938,7 @@ ar, já é PWA) — é achar e servir bem essa comunidade específica.
 ### O que reaproveitar de biblia-na-arte/meus-remedios
 
 - O padrão de `docker-compose.yml` + Traefik + `make deploy
-  service=<nome>` do `hetzner-infra/` é genérico — só adicionar
+service=<nome>` do `hetzner-infra/` é genérico — só adicionar
   entrada nova, não inventar de novo
 - Como não tem banco, não precisa do passo de criar role/usuário
   Postgres que os outros dois exigiram
@@ -1709,8 +2027,7 @@ Google" não é viável em iOS de qualquer forma.
       container pai pra dentro do bloco tingido — o véu agora cobre desde
       o topo do aparelho, sem faixa crua acima do cabeçalho
 - [x] **Tags "Salmo" e "Segunda leitura" ilegíveis no mobile — RESOLVIDO
-      (2026-08-21)**. Antes: fundo dourado translúcido fixo (`accent` a 10%)
-      + cor de texto escura fixa por tipo, 9px. Agora (`ReadingCard` +
+      (2026-08-21)**. Antes: fundo dourado translúcido fixo (`accent` a 10%) + cor de texto escura fixa por tipo, 9px. Agora (`ReadingCard` +
       `getBadgeColors()` em `lib/theme.ts`): fundo sólido = cor primária da
       estação, foreground adaptativo (creme nas escuras, preto quente nas
       claras) — mesmo padrão do web (`--liturgical-primary-foreground`).
@@ -1755,7 +2072,7 @@ Google" não é viável em iOS de qualquer forma.
       e no mobile (`primaryColor`, que também vira fundo do header do
       HomeScreen); no mobile Epifania/Tempo Comum saíram de `LIGHT_SEASONS`
       (agora pedem texto creme como as escuras) e opacidade do texto muted
-      subiu 0.80→0.85 (~4.4→5.2:1).       **Follow-up pendente, decisão de marca:
+      subiu 0.80→0.85 (~4.4→5.2:1). **Follow-up pendente, decisão de marca:
       ouro de Natal/Páscoa (2.05) e azul do Advento (3.86) também reprovam
       como fundo sob texto claro no web** — escurecer os tokens muda a
       identidade visual dessas estações; decidir entre escurecer, sobrepor
@@ -1782,7 +2099,7 @@ Google" não é viável em iOS de qualquer forma.
       natalino: bege 4.91 / título 5.66; melhor caso Quaresma: 12+);
       `getHeaderTextColors()` virou incondicional-clara (sem ramificação
       por estação), e `LIGHT_SEASONS`/`isLightSeason` restaram só pros
-      badges (fora do véu).       Intencionalmente SEM camada: theme-color do
+      badges (fora do véu). Intencionalmente SEM camada: theme-color do
       browser (hue da marca puro), legenda de cores do calendário (swatches)
       e badges. Validado com lint/tsc/testes nos dois apps (45 web, 59 mobile)
 - [x] **Ícones/logos sazonais sincronizados com o verde novo (2026-08-21,
@@ -1897,12 +2214,12 @@ Google" não é viável em iOS de qualquer forma.
 
 ### Diagnóstico por termo
 
-| Termo atual | Status | Risco |
-|---|---|---|
-| Coleta / Oração da Coleta | **Autêntico** — termo consagrado (BCP em PT, missais, liturgia anglicana/luterana; "coleta" = oração que recolhe as intenções do dia) | Baixo entre litúrgicos; soa "católico" só para quem nunca viu livro de orações |
-| Lectio Divina | Autêntico e milenar (séc. III–VI); prática adotada também por evangélicos contemplativos | Médio — nome latino pode soar distante; já mitigado pelo subtítulo "Estações da Palavra" |
-| Questões para silenciar | **Invenção do app** — não é termo tradicional | Alto relativo: "silenciar" como verbo de prática espiritual soa novo/místico para o evangelicalismo tradicional; "questões" é formal demais |
-| Ano Litúrgico, Tempo Comum, Advento, Quaresma etc. | Padrão interdenominacional | Baixo |
+| Termo atual                                        | Status                                                                                                                                | Risco                                                                                                                                       |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Coleta / Oração da Coleta                          | **Autêntico** — termo consagrado (BCP em PT, missais, liturgia anglicana/luterana; "coleta" = oração que recolhe as intenções do dia) | Baixo entre litúrgicos; soa "católico" só para quem nunca viu livro de orações                                                              |
+| Lectio Divina                                      | Autêntico e milenar (séc. III–VI); prática adotada também por evangélicos contemplativos                                              | Médio — nome latino pode soar distante; já mitigado pelo subtítulo "Estações da Palavra"                                                    |
+| Questões para silenciar                            | **Invenção do app** — não é termo tradicional                                                                                         | Alto relativo: "silenciar" como verbo de prática espiritual soa novo/místico para o evangelicalismo tradicional; "questões" é formal demais |
+| Ano Litúrgico, Tempo Comum, Advento, Quaresma etc. | Padrão interdenominacional                                                                                                            | Baixo                                                                                                                                       |
 
 ### Plano combinado (fase 1 barata → fase 2 com evidência)
 
@@ -1995,14 +2312,11 @@ Google" não é viável em iOS de qualquer forma.
       Gerador C.S. Lewis** (`ModeToggle` com next-themes,
       attribute="class", defaultTheme="system", enableSystem, Sol/Lua
       com crossfade e guarda anti-hidratação).
-      Plano em 3 fases:
-      1. Infra: next-themes + bloco `.dark` completo em globals.css +
-         ModeToggle adaptado à paleta Lecionário no Header
-      2. Auditoria token a token: cada cor hardcoded (`bg-bege-areia`,
-         `text-vinho`, `bg-creme`, texturas de papel...) ganha variante
-         dark elegante — dourado-noturno mais suave, cards clássicos
-         legíveis, nada de "invertido feio"
-      3. Revisão visual das 7 estações × 2 temas
+      Plano em 3 fases: 1. Infra: next-themes + bloco `.dark` completo em globals.css +
+      ModeToggle adaptado à paleta Lecionário no Header 2. Auditoria token a token: cada cor hardcoded (`bg-bege-areia`,
+      `text-vinho`, `bg-creme`, texturas de papel...) ganha variante
+      dark elegante — dourado-noturno mais suave, cards clássicos
+      legíveis, nada de "invertido feio" 3. Revisão visual das 7 estações × 2 temas
 
 - [x] **FASE 3 FECHADA PELO AUTOR (2026-08-22)** — navegou no modo
       escuro, aprovou o que viu e os achados finais entraram como
@@ -2012,15 +2326,15 @@ Google" não é viável em iOS de qualquer forma.
       problemas de contraste são bugs pontuais, não fase.
 
 - [~] **FASES 1–2 IMPLEMENTADAS (2026-08-22)**: next-themes (class,
-      system por padrão) via `theme-provider.tsx`; `.dark` invertendo a
-      camada SEMÂNTICA (background/card/muted/accent/border) com calor
-      da identidade — fundações de marca preservadas de propósito
-      (--vinho é fundo do card de Oração nos dois temas; usos como TEXTO
-      ganharam variantes dark pontuais em Collect/Meditation/DatePicker/
-      ReadingCard); capitular e texture-paper com overrides dedicados;
-      ModeToggle Sol/Lua no Header (guarda anti-hidratação igual ao
-      Gerador). Fase 3 (revisão visual 7 estações × 2 temas) pendente —
-      melhor com o dev server aberto.
+  system por padrão) via `theme-provider.tsx`; `.dark` invertendo a
+  camada SEMÂNTICA (background/card/muted/accent/border) com calor
+  da identidade — fundações de marca preservadas de propósito
+  (--vinho é fundo do card de Oração nos dois temas; usos como TEXTO
+  ganharam variantes dark pontuais em Collect/Meditation/DatePicker/
+  ReadingCard); capitular e texture-paper com overrides dedicados;
+  ModeToggle Sol/Lua no Header (guarda anti-hidratação igual ao
+  Gerador). Fase 3 (revisão visual 7 estações × 2 temas) pendente —
+  melhor com o dev server aberto.
 
 ### Pós-publicação na Play Store
 

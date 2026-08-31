@@ -46,6 +46,17 @@ export interface DevotionalEntry {
   meditation: MeditationResource;
 }
 
+// Idêntico à mecânica do gerador (ver RotatableEntry em
+// generate-devotionals.ts): um slot pode variar por ocorrência (2ª vez
+// do ciclo = triênio 2029/2030/2028, UMA.md seção 1). `default` é SEMPRE
+// o conteúdo publicado hoje — as ocorrências só somam onde existirem.
+export type DevotionalSlot =
+  | DevotionalEntry
+  | {
+      default: DevotionalEntry;
+      occurrences?: Record<number, DevotionalEntry>;
+    };
+
 function t(text: string): string {
   return text.replace(/\s+/g, ' ').trim();
 }
@@ -425,13 +436,11 @@ export const christmasWeekdays: DevotionalEntry[] = [
   },
 ];
 
-const christmasByCycle: Record<
-  'A' | 'B' | 'C',
-  { day: DevotionalEntry; sunday1: DevotionalEntry }
-> = {
-  A: { day: christmasDayA, sunday1: christmasSunday1A },
-  B: { day: christmasDayB, sunday1: christmasSunday1B },
-  C: { day: christmasDayC, sunday1: christmasSunday1C },
-};
+const christmasByCycle: Record<'A' | 'B' | 'C', { day: DevotionalSlot; sunday1: DevotionalSlot }> =
+  {
+    A: { day: christmasDayA, sunday1: christmasSunday1A },
+    B: { day: christmasDayB, sunday1: christmasSunday1B },
+    C: { day: christmasDayC, sunday1: christmasSunday1C },
+  };
 
 export default christmasByCycle;

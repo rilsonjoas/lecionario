@@ -292,17 +292,20 @@ function HomeContent() {
               </section>
             )}
 
-            {/* Oração de Coleta */}
-            {devotional.collect && (
-              <section className="animate-fade-in md:max-w-4xl mx-auto w-full">
-                <ErrorBoundary name="Coleta">
-                  <CollectSection collect={devotional.collect} />
-                </ErrorBoundary>
-              </section>
-            )}
-
-            {/* Daily Readings */}
+            {/* O ofício do dia — Coleta abre o bloco, seguida das
+                leituras na ordem litúrgica (5.3, 2026-08-30): a Coleta é
+                a oração que abre a liturgia, não parte da Lectio Divina;
+                juntas formam a unidade "o ofício do dia". O Salmo ganhou
+                destaque próprio de resposta da congregação. */}
             <section className="space-y-8 md:space-y-12 md:max-w-4xl mx-auto w-full">
+              {devotional.collect && (
+                <div className="animate-fade-in">
+                  <ErrorBoundary name="Coleta">
+                    <CollectSection collect={devotional.collect} />
+                  </ErrorBoundary>
+                </div>
+              )}
+
               <div className="text-center space-y-3 md:space-y-4">
                 <div className="flex items-center justify-center gap-2">
                   <h3 className="text-2xl md:text-3xl font-display text-secondary italic">

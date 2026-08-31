@@ -23,8 +23,13 @@ const readingTypeConfig = {
   // Achado real (2026-08-16): coração pra Salmo e estrela pra Evangelho
   // não comunicavam nada específico — trocado por música (Salmos eram
   // cantados) e cruz (o centro do Evangelho)
+  //
+  // 5.3 (2026-08-30): na liturgia o Salmo é a resposta da congregação à
+  // primeira leitura — por isso o rótulo litúrgico "Salmo Responsorial"
+  // (coerente com "Estações da Palavra" e "Oração de Coleta"), reforçado
+  // pelo ornamento de resposta tratado abaixo no componente.
   psalm: {
-    label: 'Salmo',
+    label: 'Salmo Responsorial',
     icon: Music,
     color:
       'bg-liturgical-accent text-liturgical-accent-foreground hover:bg-liturgical-accent/90 transition-colors duration-700 ease-liturgico',
@@ -50,6 +55,10 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
   const config = readingTypeConfig[reading.type];
   const IconComponent = config.icon;
   const [copied, setCopied] = useState(false);
+
+  // 5.3 (2026-08-30): o Salmo é a resposta da congregação à primeira
+  // leitura — tratamento próprio de "resposta", distinto dos demais cards.
+  const isPsalmResponse = reading.type === 'psalm';
 
   const handleCopy = async () => {
     const text = `${reading.reference}\n${reading.citation}\n\n${reading.text ?? ''}\n\n— Lecionário · lecionario.narniano.com`;
@@ -88,6 +97,13 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
           {reading.text && (
             <div className="relative py-3 md:py-4">
               <div className="absolute top-0 left-0 w-8 h-px bg-accent/30" />
+              {isPsalmResponse && (
+                <div className="flex items-center justify-center gap-3 mb-4" aria-hidden="true">
+                  <span className="w-16 h-px bg-accent/30" />
+                  <Music className="w-4 h-4 text-accent/70" />
+                  <span className="w-16 h-px bg-accent/30" />
+                </div>
+              )}
               <p className="text-sm md:text-base lg:text-lg leading-relaxed font-scripture text-foreground/90 pl-3 md:pl-4 border-l-2 border-accent/20">
                 {reading.text}
               </p>

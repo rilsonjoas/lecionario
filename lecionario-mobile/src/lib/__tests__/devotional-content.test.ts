@@ -19,6 +19,18 @@ describe('getDevotionalContent', () => {
     expect(result).toBeNull();
   });
 
+  it('cobre dezembro pelo arquivo do ano seguinte (janela do ano litúrgico)', () => {
+    // Regressão: o arquivo devotionals-2026 cobre 2025-12-01..2026-11-30,
+    // mas o lookup usava o ano civil — todo dezembro caía no sample.
+    const natal = getDevotionalContent(new Date(2025, 11, 25));
+    expect(natal).not.toBeNull();
+    expect(natal!.prayer.title).toBeTruthy();
+
+    const advento = getDevotionalContent(new Date(2024, 11, 1));
+    expect(advento).not.toBeNull();
+    expect(advento!.prayer.title).toBe('Cumprirei a Boa Palavra');
+  });
+
   it('returns null for date with no devotional entry', () => {
     // Feb 30 doesn't exist, but JS creates March 2
     const date = new Date(2026, 1, 30);
