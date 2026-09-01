@@ -1,10 +1,79 @@
-import { describe, it, expect } from 'vitest';
-import { buildNotificationWindow } from '../notification-window';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 
-// Regression do bug de 2026-08-24: trigger `DAILY` re-exibia o payload do
-// primeiro dia pra sempre. buildNotificationWindow monta um payload
-// próprio por dia (DATE trigger), então dois dias nunca podem ter o
-// mesmo título+corpo, e a janela avança com `now`.
+const store: Record<string, string> = {};
+
+vi.mock('@react-native-async-storage/async-storage', () => ({
+  default: {
+    getItem: vi.fn(async (key: string) => store[key] ?? null),
+    setItem: vi.fn(async (key: string, value: string) => {
+      store[key] = value;
+    }),
+    removeItem: vi.fn(async (key: string) => {
+      delete store[key];
+    }),
+    getAllKeys: vi.fn(async () => Object.keys(store)),
+    multiRemove: vi.fn(async (keys: string[]) => {
+      keys.forEach((k) => delete store[k]);
+    }),
+  },
+}));
+
+vi.mock('expo-notifications', () => {
+  const scheduledIds: string[] = [];
+  return {
+    setNotificationHandler: vi.fn(),
+    getPermissionsAsync: vi.fn(async () => ({ status: 'granted' })),
+    requestPermissionsAsync: vi.fn(async () => ({ status: 'granted' })),
+    scheduleNotificationAsync: vi.fn(async () => {
+      const id = `n-${scheduledIds.length + 1}`;
+      scheduledIds.push(id);
+      return id;
+    }),
+    cancelScheduledNotificationAsync: vi.fn(async () => {}),
+    cancelAllScheduledNotificationsAsync: vi.fn(async () => {}),
+    getAllScheduledNotificationsAsync: vi.fn(async () => []),
+    addNotificationResponseReceivedListener: vi.fn(() => ({ remove: vi.fn() })),
+    SchedulableTriggerInputTypes: { DATE: 'date', DAILY: 'daily' },
+  };
+});
+
+import { buildNotificationWindow } from '../notification-window';
+import { migrateLegacyNotifications } from '../notifications';
+
+beforeEach(() => {
+  Object.keys(store).forEach((k) => delete store[k]);
+  vi.clearAllMocks();
+});
+
+describe('migrateLegacyNotifications', () => {
+  it('cancela a notificação legada salva na chave singular e remove as chaves antigas', async () => {
+    const NotificationsMock = await import('expo-notifications');
+    // simula o app antigo: notificação DAILY salva na chave SINGULAR
+    store['@lecionario:notification-id'] = 'legacy-daily-id';
+
+    await migrateLegacyNotifications();
+
+    expect(NotificationsMock.cancelScheduledNotificationAsync).toHaveBeenCalledWith(
+      'legacy-daily-id',
+    );
+    expect(NotificationsMock.cancelAllScheduledNotificationsAsync).toHaveBeenCalled();
+    expect(store['@lecionario:notification-id']).toBeUndefined();
+    expect(store['@lecionario:notification-ids']).toBeUndefined();
+    expect(store['@lecionario:notifications-migrated-v2']).toBe('1');
+  });
+
+  it('roda apenas uma vez (flag de migração) e não reprocessa', async () => {
+    const NotificationsMock = await import('expo-notifications');
+    store['@lecionario:notifications-migrated-v2'] = '1';
+    store['@lecionario:notification-id'] = 'legacy-daily-id';
+
+    await migrateLegacyNotifications();
+
+    expect(NotificationsMock.cancelScheduledNotificationAsync).not.toHaveBeenCalled();
+    expect(NotificationsMock.cancelAllScheduledNotificationsAsync).not.toHaveBeenCalled();
+  });
+});
+
 describe('buildNotificationWindow', () => {
   it('agenda a janela de 7 dias a partir de hoje', () => {
     const now = new Date(2026, 7, 24, 5, 0, 0); // 05:00 — 06:00 ainda lá frente

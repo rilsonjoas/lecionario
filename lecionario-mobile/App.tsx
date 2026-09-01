@@ -21,7 +21,11 @@ import { SettingsProvider } from '@/contexts/SettingsContext';
 import { ThemeProvider, useThemeColors } from '@/contexts/ThemeContext';
 import { FontProvider } from '@/contexts/FontContext';
 import { FavoritesProvider } from '@/contexts/FavoritesContext';
-import { addNotificationResponseListener, renewNotificationsWindow } from '@/lib/notifications';
+import {
+  addNotificationResponseListener,
+  migrateLegacyNotifications,
+  renewNotificationsWindow,
+} from '@/lib/notifications';
 import HomeScreen from '@/screens/HomeScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
 import SearchScreen from '@/screens/SearchScreen';
@@ -147,7 +151,7 @@ function NotificationHandler() {
     // Renova a janela rolante de notificações: ao abrir o app e sempre
     // que voltar ao primeiro plano. Trigger `DAILY` re-exibia payload
     // estático; notificações por data precisam de re-agendamento.
-    renewNotificationsWindow();
+    migrateLegacyNotifications().then(() => renewNotificationsWindow());
     const appStateSub = AppState.addEventListener('change', (state) => {
       if (state === 'active') renewNotificationsWindow();
     });

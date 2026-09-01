@@ -5,6 +5,8 @@ import { buildNotificationWindow, type NotificationDayPayload } from '@/lib/noti
 
 const SETTINGS_STORAGE_KEY = '@lecionario:settings';
 const STORAGE_KEY = '@lecionario:notification-ids';
+const LEGACY_STORAGE_KEY = '@lecionario:notification-id';
+const MIGRATION_KEY = '@lecionario:notifications-migrated-v2';
 const RENEW_AT_REMAINING = 3;
 
 export type { NotificationDayPayload };
@@ -84,6 +86,44 @@ export async function cancelAllNotifications(): Promise<void> {
     await Notifications.cancelScheduledNotificationAsync(id);
   }
   await AsyncStorage.removeItem(STORAGE_KEY);
+}
+
+// Migração única: limpa notificações órfãs deixadas por versões antigas.
+// Antes da refatoração de 2026-08-24 o app agendava UM trigger `DAILY` e
+// salvar o ID na chave SINGULAR `@lecionario:notification-id`. A refatoração
+// passou a usar triggers `DATE` e a chave PLURAL `@lecionario:notification-ids`,
+// mas nunca cancelou a `DAILY` antiga (chave singular nunca era lida). Resultado:
+// o SO repetia o payload estático da época (ex.: "Domingo") junto com a
+// notificação nova (ex.: "Terça-feira") — 2 notificações na mesma hora.
+// Como hardening, cancela também qualquer outra órfã remanescente.
+export async function migrateLegacyNotifications(): Promise<void> {
+  try {
+    if (await AsyncStorage.getItem(MIGRATION_KEY)) return;
+
+    // 1) Cancela a notificação `DAILY` legada pelo ID salvo na chave singular.
+    const legacyId = await AsyncStorage.getItem(LEGACY_STORAGE_KEY);
+    if (legacyId) {
+      try {
+        await Notifications.cancelScheduledNotificationAsync(legacyId);
+      } catch {
+        // id inexistente/expiração: ignora
+      }
+    }
+
+    // 2) Hardening: cancela qualquer órfã (DAILY legada ou de race-condition).
+    try {
+      await Notifications.cancelAllScheduledNotificationsAsync();
+    } catch {
+      // fallback silencioso
+    }
+
+    // 3) Limpa chaves legadas e marca migração como feita.
+    await AsyncStorage.removeItem(LEGACY_STORAGE_KEY);
+    await AsyncStorage.removeItem(STORAGE_KEY);
+    await AsyncStorage.setItem(MIGRATION_KEY, '1');
+  } catch {
+    // migração é best-effort; nunca deve bloquear o app
+  }
 }
 
 // Renova a janela rolante se ela estiver perto de acabar. Chamar ao
