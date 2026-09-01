@@ -1,0 +1,6193 @@
+{
+  "cycle": "A",
+  "seasons": {
+    "ordinary": [
+      {
+        "date": "2025-11-27",
+        "season": "ordinary",
+        "weekOfSeason": 29,
+        "dayName": "Quinta-feira da 29ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 122"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Daniel 9:15-19"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tiago 4:1-10"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-28",
+        "season": "ordinary",
+        "weekOfSeason": 29,
+        "dayName": "Sexta-feira da 29ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 122"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 6:1-10"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 11:1-7"
+          }
+        ]
+      },
+      {
+        "date": "2025-11-29",
+        "season": "ordinary",
+        "weekOfSeason": 29,
+        "dayName": "Sábado da 29ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 122"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 6:11-22"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 24:1-22"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-08",
+        "season": "ordinary",
+        "weekOfSeason": 5,
+        "dayName": "Segunda-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:41-48"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 16:1-15"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 6:14-7:2"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-09",
+        "season": "ordinary",
+        "weekOfSeason": 5,
+        "dayName": "Terça-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:41-48"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 17:1-27"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 13:1-16"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-10",
+        "season": "ordinary",
+        "weekOfSeason": 5,
+        "dayName": "Quarta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:41-48"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 18:16-33"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 12:1-8"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-11",
+        "season": "ordinary",
+        "weekOfSeason": 5,
+        "dayName": "Quinta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 116:1-2, 12-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 21:1-7"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 3:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-12",
+        "season": "ordinary",
+        "weekOfSeason": 5,
+        "dayName": "Sexta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 116:1-2, 12-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 24:1-9"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 7:35-43"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-13",
+        "season": "ordinary",
+        "weekOfSeason": 5,
+        "dayName": "Sábado da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 116:1-2, 12-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 24:10-52"
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 7:1-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-15",
+        "season": "ordinary",
+        "weekOfSeason": 6,
+        "dayName": "Segunda-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 126"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 23:1-19"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Tessalonicenses 3:1-5"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-16",
+        "season": "ordinary",
+        "weekOfSeason": 6,
+        "dayName": "Terça-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 126"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 25:7-11"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Tessalonicenses 2:13-3:5"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-17",
+        "season": "ordinary",
+        "weekOfSeason": 6,
+        "dayName": "Quarta-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 126"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Neemias 9:1-8"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 6:12-19"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-18",
+        "season": "ordinary",
+        "weekOfSeason": 6,
+        "dayName": "Quinta-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 86:1-10"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 12:43-49"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 2:5-9"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-19",
+        "season": "ordinary",
+        "weekOfSeason": 6,
+        "dayName": "Sexta-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 86:1-10"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 35:1-4"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 5:17-26"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-20",
+        "season": "ordinary",
+        "weekOfSeason": 6,
+        "dayName": "Sábado da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 86:1-10"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 29:3-7"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 11:53-12:3"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-22",
+        "season": "ordinary",
+        "weekOfSeason": 7,
+        "dayName": "Segunda-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 86:11-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 16:1-15"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 2:1-7"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-23",
+        "season": "ordinary",
+        "weekOfSeason": 7,
+        "dayName": "Terça-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 86:11-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 25:12-18"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 2:8-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-24",
+        "season": "ordinary",
+        "weekOfSeason": 7,
+        "dayName": "Quarta-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 86:11-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 42:18-22"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 10:5-23"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-25",
+        "season": "ordinary",
+        "weekOfSeason": 7,
+        "dayName": "Quinta-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 13"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Miquéias 7:18-20"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 5:2-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-26",
+        "season": "ordinary",
+        "weekOfSeason": 7,
+        "dayName": "Sexta-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 13"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Crônicas 20:5-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 5:7-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-27",
+        "season": "ordinary",
+        "weekOfSeason": 7,
+        "dayName": "Sábado da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 13"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 26:23-25"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 17:1-4"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-29",
+        "season": "ordinary",
+        "weekOfSeason": 8,
+        "dayName": "Segunda-feira da 8ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 47"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 22:15-18"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Tessalonicenses 4:9-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-30",
+        "season": "ordinary",
+        "weekOfSeason": 8,
+        "dayName": "Terça-feira da 8ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 47"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Reis 18:36-39"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 João 4:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-01",
+        "season": "ordinary",
+        "weekOfSeason": 8,
+        "dayName": "Quarta-feira da 8ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 47"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 51:1-3"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 11:20-24"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-02",
+        "season": "ordinary",
+        "weekOfSeason": 8,
+        "dayName": "Quinta-feira da 8ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 45:10-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 25:19-27"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 7:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-03",
+        "season": "ordinary",
+        "weekOfSeason": 8,
+        "dayName": "Sexta-feira da 8ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 45:10-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 27:1-17"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 7:7-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-04",
+        "season": "ordinary",
+        "weekOfSeason": 8,
+        "dayName": "Sábado da 8ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 45:10-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 27:18-29"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 10:21-24"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-09",
+        "season": "ordinary",
+        "weekOfSeason": 9,
+        "dayName": "Quinta-feira da 9ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:105-112"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 3:1-6"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 2:12-16"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-10",
+        "season": "ordinary",
+        "weekOfSeason": 9,
+        "dayName": "Sexta-feira da 9ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:105-112"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 32:1-10"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 15:14-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-11",
+        "season": "ordinary",
+        "weekOfSeason": 9,
+        "dayName": "Sábado da 9ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:105-112"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 2:1-4"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 12:44-50"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-13",
+        "season": "ordinary",
+        "weekOfSeason": 10,
+        "dayName": "Segunda-feira da 10ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 142"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Miquéias 1:1-5"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Tessalonicenses 4:1-8"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-14",
+        "season": "ordinary",
+        "weekOfSeason": 10,
+        "dayName": "Terça-feira da 10ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 142"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 49:7-11"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 4:17-5:2"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-15",
+        "season": "ordinary",
+        "weekOfSeason": 10,
+        "dayName": "Quarta-feira da 10ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 142"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Obadias 15-21"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 13:10-17"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-16",
+        "season": "ordinary",
+        "weekOfSeason": 10,
+        "dayName": "Quinta-feira da 10ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 139:1-12, 23-24"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 44:1-5"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 2:1-9"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-17",
+        "season": "ordinary",
+        "weekOfSeason": 10,
+        "dayName": "Sexta-feira da 10ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 139:1-12, 23-24"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 39:21-29"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 6:13-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-18",
+        "season": "ordinary",
+        "weekOfSeason": 10,
+        "dayName": "Sábado da 10ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 139:1-12, 23-24"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 14:9-25"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 7:15-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-20",
+        "season": "ordinary",
+        "weekOfSeason": 11,
+        "dayName": "Segunda-feira da 11ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 139:13-18"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 32:3-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 14:12-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-21",
+        "season": "ordinary",
+        "weekOfSeason": 11,
+        "dayName": "Terça-feira da 11ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 139:13-18"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 33:1-17"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 4:21-5:1"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-22",
+        "season": "ordinary",
+        "weekOfSeason": 11,
+        "dayName": "Quarta-feira da 11ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 139:13-18"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 35:16-29"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 12:15-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-23",
+        "season": "ordinary",
+        "weekOfSeason": 11,
+        "dayName": "Quinta-feira da 11ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-11, 45b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 29:1-8"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Coríntios 4:14-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-24",
+        "season": "ordinary",
+        "weekOfSeason": 11,
+        "dayName": "Sexta-feira da 11ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-11, 45b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 29:9-14"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 7:44-53"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-25",
+        "season": "ordinary",
+        "weekOfSeason": 11,
+        "dayName": "Sábado da 11ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-11, 45b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 29:31-30:24"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 12:38-42"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-27",
+        "season": "ordinary",
+        "weekOfSeason": 12,
+        "dayName": "Segunda-feira da 12ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 65:8-13"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 30:25-36"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tiago 3:13-18"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-28",
+        "season": "ordinary",
+        "weekOfSeason": 12,
+        "dayName": "Terça-feira da 12ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 65:8-13"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 30:37-43"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 6:10-18"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-29",
+        "season": "ordinary",
+        "weekOfSeason": 12,
+        "dayName": "Quarta-feira da 12ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 65:8-13"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 46:2-47:12"
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 4:30-34"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-30",
+        "season": "ordinary",
+        "weekOfSeason": 12,
+        "dayName": "Quinta-feira da 12ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 17:1-7, 15"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 14:1-2"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Filipenses 4:10-15"
+          }
+        ]
+      },
+      {
+        "date": "2026-07-31",
+        "season": "ordinary",
+        "weekOfSeason": 12,
+        "dayName": "Sexta-feira da 12ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 17:1-7, 15"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 41:8-10"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 9:6-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-01",
+        "season": "ordinary",
+        "weekOfSeason": 12,
+        "dayName": "Sábado da 12ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 17:1-7, 15"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 31:1-21"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 7:7-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-03",
+        "season": "ordinary",
+        "weekOfSeason": 13,
+        "dayName": "Segunda-feira da 13ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 17:1-7, 15"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 31:22-42"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 1:8-15"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-04",
+        "season": "ordinary",
+        "weekOfSeason": 13,
+        "dayName": "Terça-feira da 13ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 17:1-7, 15"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 32:3-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 2:37-47"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-05",
+        "season": "ordinary",
+        "weekOfSeason": 13,
+        "dayName": "Quarta-feira da 13ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 17:1-7, 15"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 43:1-7"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 15:32-39"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-06",
+        "season": "ordinary",
+        "weekOfSeason": 13,
+        "dayName": "Quinta-feira da 13ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-6, 16-22, 45b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 35:22b-29"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 17:10-15"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-07",
+        "season": "ordinary",
+        "weekOfSeason": 13,
+        "dayName": "Sexta-feira da 13ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-6, 16-22, 45b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 36:1-8"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 18:24-28"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-08",
+        "season": "ordinary",
+        "weekOfSeason": 13,
+        "dayName": "Sábado da 13ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-6, 16-22, 45b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 37:5-11"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 16:1-4"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-10",
+        "season": "ordinary",
+        "weekOfSeason": 14,
+        "dayName": "Segunda-feira da 14ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 28"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 37:29-36"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Pedro 2:4-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-11",
+        "season": "ordinary",
+        "weekOfSeason": 14,
+        "dayName": "Terça-feira da 14ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 28"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 39:1-23"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 9:14-29"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-12",
+        "season": "ordinary",
+        "weekOfSeason": 14,
+        "dayName": "Quarta-feira da 14ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 28"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 40:1-23"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 8:23-27"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-13",
+        "season": "ordinary",
+        "weekOfSeason": 14,
+        "dayName": "Quinta-feira da 14ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 133"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 41:14-36"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 15:1-4"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-14",
+        "season": "ordinary",
+        "weekOfSeason": 14,
+        "dayName": "Sexta-feira da 14ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 133"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 41:37-57"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 14:19-28"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-15",
+        "season": "ordinary",
+        "weekOfSeason": 14,
+        "dayName": "Sábado da 14ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 133"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 42:1-28"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 14:34-36"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-17",
+        "season": "ordinary",
+        "weekOfSeason": 15,
+        "dayName": "Segunda-feira da 15ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 130"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 43:1-34"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 15:1-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-18",
+        "season": "ordinary",
+        "weekOfSeason": 15,
+        "dayName": "Terça-feira da 15ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 130"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 44:1-34"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 11:13-29"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-19",
+        "season": "ordinary",
+        "weekOfSeason": 15,
+        "dayName": "Quarta-feira da 15ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 130"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 45:16-28"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 8:1-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-20",
+        "season": "ordinary",
+        "weekOfSeason": 15,
+        "dayName": "Quinta-feira da 15ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 124"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 49:1-33"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Coríntios 6:1-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-21",
+        "season": "ordinary",
+        "weekOfSeason": 15,
+        "dayName": "Sexta-feira da 15ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 124"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 49:29-50:14"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 10:12-18"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-22",
+        "season": "ordinary",
+        "weekOfSeason": 15,
+        "dayName": "Sábado da 15ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 124"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 50:15-26"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 16:5-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-24",
+        "season": "ordinary",
+        "weekOfSeason": 16,
+        "dayName": "Segunda-feira da 16ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 8"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 1:1-7"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 2:1-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-25",
+        "season": "ordinary",
+        "weekOfSeason": 16,
+        "dayName": "Terça-feira da 16ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 8"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 2:11-15a"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 11:33-36"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-26",
+        "season": "ordinary",
+        "weekOfSeason": 16,
+        "dayName": "Quarta-feira da 16ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 8"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 2:15b-22"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 26:6-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-27",
+        "season": "ordinary",
+        "weekOfSeason": 16,
+        "dayName": "Quinta-feira da 16ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-6, 23-26, 45b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 2:23-24"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 5:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-28",
+        "season": "ordinary",
+        "weekOfSeason": 16,
+        "dayName": "Sexta-feira da 16ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-6, 23-26, 45b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 3:16-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Tessalonicenses 2:7-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-29",
+        "season": "ordinary",
+        "weekOfSeason": 16,
+        "dayName": "Sábado da 16ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-6, 23-26, 45b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 4:1-9"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 8:14-17"
+          }
+        ]
+      },
+      {
+        "date": "2026-08-31",
+        "season": "ordinary",
+        "weekOfSeason": 17,
+        "dayName": "Segunda-feira da 17ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 83:1-4, 13-18"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 4:10-31"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 3:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-01",
+        "season": "ordinary",
+        "weekOfSeason": 17,
+        "dayName": "Terça-feira da 17ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 83:1-4, 13-18"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 5:1-6:13"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 3:7-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-02",
+        "season": "ordinary",
+        "weekOfSeason": 17,
+        "dayName": "Quarta-feira da 17ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 83:1-4, 13-18"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 7:14-25"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 12:22-32"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-03",
+        "season": "ordinary",
+        "weekOfSeason": 17,
+        "dayName": "Quinta-feira da 17ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 149"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 9:1-7"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 12:11-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-04",
+        "season": "ordinary",
+        "weekOfSeason": 17,
+        "dayName": "Sexta-feira da 17ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 149"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 10:21-29"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 10:15b-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-05",
+        "season": "ordinary",
+        "weekOfSeason": 17,
+        "dayName": "Sábado da 17ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 149"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 11:1-10"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 23:29-36"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-07",
+        "season": "ordinary",
+        "weekOfSeason": 18,
+        "dayName": "Segunda-feira da 18ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 121"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 12:14-28"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 2:11-17"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-08",
+        "season": "ordinary",
+        "weekOfSeason": 18,
+        "dayName": "Terça-feira da 18ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 121"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 12:29-42"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 13:1-7"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-09",
+        "season": "ordinary",
+        "weekOfSeason": 18,
+        "dayName": "Quarta-feira da 18ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 121"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 13:1-10"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 21:18-22"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-10",
+        "season": "ordinary",
+        "weekOfSeason": 18,
+        "dayName": "Quinta-feira da 18ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 114"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 13:17-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 João 3:11-16"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-11",
+        "season": "ordinary",
+        "weekOfSeason": 18,
+        "dayName": "Sexta-feira da 18ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 114"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 14:1-18"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 7:9-16"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-12",
+        "season": "ordinary",
+        "weekOfSeason": 18,
+        "dayName": "Sábado da 18ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 114"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 15:19-21"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 6:7-15"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-14",
+        "season": "ordinary",
+        "weekOfSeason": 19,
+        "dayName": "Segunda-feira da 19ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 77"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 3:1-17"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 11:23-29"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-15",
+        "season": "ordinary",
+        "weekOfSeason": 19,
+        "dayName": "Terça-feira da 19ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 77"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Neemias 9:9-15"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 14:13-15:2"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-16",
+        "season": "ordinary",
+        "weekOfSeason": 19,
+        "dayName": "Quarta-feira da 19ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 77"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 2:1-18"
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 11:20-25"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-17",
+        "season": "ordinary",
+        "weekOfSeason": 19,
+        "dayName": "Quinta-feira da 19ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-6, 37-45"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 15:22-27"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 13:1-4"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-18",
+        "season": "ordinary",
+        "weekOfSeason": 19,
+        "dayName": "Sexta-feira da 19ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-6, 37-45"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 16:1-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 13:5-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-19",
+        "season": "ordinary",
+        "weekOfSeason": 19,
+        "dayName": "Sábado da 19ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 105:1-6, 37-45"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 16:22-30"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 19:23-30"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-21",
+        "season": "ordinary",
+        "weekOfSeason": 20,
+        "dayName": "Segunda-feira da 20ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:97-104"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 16:31-35"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 16:1-16"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-22",
+        "season": "ordinary",
+        "weekOfSeason": 20,
+        "dayName": "Terça-feira da 20ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:97-104"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 11:1-9"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 16:17-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-23",
+        "season": "ordinary",
+        "weekOfSeason": 20,
+        "dayName": "Quarta-feira da 20ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:97-104"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 11:18-23, 31-32"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 18:1-5"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-24",
+        "season": "ordinary",
+        "weekOfSeason": 20,
+        "dayName": "Quinta-feira da 20ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78:1-4, 12-16"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 48:17-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tiago 4:11-16"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-25",
+        "season": "ordinary",
+        "weekOfSeason": 20,
+        "dayName": "Sexta-feira da 20ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78:1-4, 12-16"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 20:1-13"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 13:32-41"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-26",
+        "season": "ordinary",
+        "weekOfSeason": 20,
+        "dayName": "Sábado da 20ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78:1-4, 12-16"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 27:12-14"
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 11:27-33"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-28",
+        "season": "ordinary",
+        "weekOfSeason": 21,
+        "dayName": "Segunda-feira da 21ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 42"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 18:1-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Filipenses 1:3-14"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-29",
+        "season": "ordinary",
+        "weekOfSeason": 21,
+        "dayName": "Terça-feira da 21ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 42"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 18:13-27"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Filipenses 1:15-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-09-30",
+        "season": "ordinary",
+        "weekOfSeason": 21,
+        "dayName": "Quarta-feira da 21ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 42"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 19:9b-25"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 9:2-8"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-01",
+        "season": "ordinary",
+        "weekOfSeason": 21,
+        "dayName": "Quinta-feira da 21ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 23:1-9"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Colossenses 2:16-23"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-02",
+        "season": "ordinary",
+        "weekOfSeason": 21,
+        "dayName": "Sexta-feira da 21ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 23:14-19"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Filipenses 2:14-18; 3:1-4a"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-03",
+        "season": "ordinary",
+        "weekOfSeason": 21,
+        "dayName": "Sábado da 21ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 23:10-13"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 7:40-52"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-05",
+        "season": "ordinary",
+        "weekOfSeason": 22,
+        "dayName": "Segunda-feira da 22ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:49-56"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 5:1-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 2:4-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-06",
+        "season": "ordinary",
+        "weekOfSeason": 22,
+        "dayName": "Terça-feira da 22ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:49-56"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 5:22-6:3"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 5:17-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-07",
+        "season": "ordinary",
+        "weekOfSeason": 22,
+        "dayName": "Quarta-feira da 22ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:49-56"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 6:10-25"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 11:45-57"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-08",
+        "season": "ordinary",
+        "weekOfSeason": 22,
+        "dayName": "Quinta-feira da 22ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 106:1-6, 19-23"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 24:1-8"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 5:1-5, 12-14"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-09",
+        "season": "ordinary",
+        "weekOfSeason": 22,
+        "dayName": "Sexta-feira da 22ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 106:1-6, 19-23"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 24:9-11"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tiago 4:4-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-10",
+        "season": "ordinary",
+        "weekOfSeason": 22,
+        "dayName": "Sábado da 22ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 106:1-6, 19-23"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 24:12-18"
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 2:18-22"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-12",
+        "season": "ordinary",
+        "weekOfSeason": 23,
+        "dayName": "Segunda-feira da 23ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 97"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 32:15-35"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Judas 17-25"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-13",
+        "season": "ordinary",
+        "weekOfSeason": 23,
+        "dayName": "Terça-feira da 23ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 97"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 33:1-6"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Filipenses 3:13-4:1"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-14",
+        "season": "ordinary",
+        "weekOfSeason": 23,
+        "dayName": "Quarta-feira da 23ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 97"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 17:7-20"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 6:25-35"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-15",
+        "season": "ordinary",
+        "weekOfSeason": 23,
+        "dayName": "Quinta-feira da 23ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 99"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 33:7-11"
+          },
+          {
+            "type": "second_reading",
+            "ref": "3 João 9-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-16",
+        "season": "ordinary",
+        "weekOfSeason": 23,
+        "dayName": "Sexta-feira da 23ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 99"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 31:1-11"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 5:1-5"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-17",
+        "season": "ordinary",
+        "weekOfSeason": 23,
+        "dayName": "Sábado da 23ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 99"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 39:32-43"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 14:1-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-19",
+        "season": "ordinary",
+        "weekOfSeason": 24,
+        "dayName": "Segunda-feira da 24ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 63:1-8"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 40:34-38"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 18:1-10, 19-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-20",
+        "season": "ordinary",
+        "weekOfSeason": 24,
+        "dayName": "Terça-feira da 24ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 63:1-8"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 12:1-9"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 18:21-24"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-21",
+        "season": "ordinary",
+        "weekOfSeason": 24,
+        "dayName": "Quarta-feira da 24ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 63:1-8"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 13:1-2, 17-14:9"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 17:22-27"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-22",
+        "season": "ordinary",
+        "weekOfSeason": 24,
+        "dayName": "Quinta-feira da 24ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 90:1-6, 13-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 31:14-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tito 1:5-16"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-23",
+        "season": "ordinary",
+        "weekOfSeason": 24,
+        "dayName": "Sexta-feira da 24ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 90:1-6, 13-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 32:1-14, 18"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tito 2:7-8, 11-15"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-24",
+        "season": "ordinary",
+        "weekOfSeason": 24,
+        "dayName": "Sábado da 24ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 90:1-6, 13-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 32:44-47"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 5:39-47"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-26",
+        "season": "ordinary",
+        "weekOfSeason": 25,
+        "dayName": "Segunda-feira da 25ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:41-48"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 33:38-39"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tiago 2:8-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-27",
+        "season": "ordinary",
+        "weekOfSeason": 25,
+        "dayName": "Terça-feira da 25ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:41-48"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 34:29-35"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tiago 2:14-26"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-28",
+        "season": "ordinary",
+        "weekOfSeason": 25,
+        "dayName": "Quarta-feira da 25ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:41-48"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 26:16-27:7"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 19:16-22"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-29",
+        "season": "ordinary",
+        "weekOfSeason": 25,
+        "dayName": "Quinta-feira da 25ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 107:1-7, 33-37"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 1:1-11"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 2:17-29"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-30",
+        "season": "ordinary",
+        "weekOfSeason": 25,
+        "dayName": "Sexta-feira da 25ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 107:1-7, 33-37"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 2:1-14"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Pedro 2:1-3"
+          }
+        ]
+      },
+      {
+        "date": "2026-10-31",
+        "season": "ordinary",
+        "weekOfSeason": 25,
+        "dayName": "Sábado da 25ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 107:1-7, 33-37"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 2:15-24"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 23:13-28"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-02",
+        "season": "ordinary",
+        "weekOfSeason": 26,
+        "dayName": "Segunda-feira da 26ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 128"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 4:1-24"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Tessalonicenses 2:13-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-03",
+        "season": "ordinary",
+        "weekOfSeason": 26,
+        "dayName": "Terça-feira da 26ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 128"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 6:1-16, 20"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 13:1-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-04",
+        "season": "ordinary",
+        "weekOfSeason": 26,
+        "dayName": "Quarta-feira da 26ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 128"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 10:12-14"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 15:1-9"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-05",
+        "season": "ordinary",
+        "weekOfSeason": 26,
+        "dayName": "Quinta-feira da 26ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78:1-7"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 5:10-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 8:6-9:12"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-06",
+        "season": "ordinary",
+        "weekOfSeason": 26,
+        "dayName": "Sexta-feira da 26ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78:1-7"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 8:30-35"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 9:13-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-07",
+        "season": "ordinary",
+        "weekOfSeason": 26,
+        "dayName": "Sábado da 26ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78:1-7"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 20:1-9"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 24:1-14"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-09",
+        "season": "ordinary",
+        "weekOfSeason": 27,
+        "dayName": "Segunda-feira da 27ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 24:25-33"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Coríntios 14:20-25"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-10",
+        "season": "ordinary",
+        "weekOfSeason": 27,
+        "dayName": "Terça-feira da 27ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Neemias 8:1-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Tessalonicenses 3:6-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-11",
+        "season": "ordinary",
+        "weekOfSeason": 27,
+        "dayName": "Quarta-feira da 27ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 31:31-34"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 24:29-35"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-12",
+        "season": "ordinary",
+        "weekOfSeason": 27,
+        "dayName": "Quinta-feira da 27ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 123"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Juízes 2:6-15"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 16:1-7"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-13",
+        "season": "ordinary",
+        "weekOfSeason": 27,
+        "dayName": "Sexta-feira da 27ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 123"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Juízes 2:16-23"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 16:8-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-14",
+        "season": "ordinary",
+        "weekOfSeason": 27,
+        "dayName": "Sábado da 27ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 123"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Juízes 5:1-12"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 12:43-45"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-16",
+        "season": "ordinary",
+        "weekOfSeason": 28,
+        "dayName": "Segunda-feira da 28ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 83:1-4, 9-10, 17-18"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Juízes 4:8-24"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 2:1-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-17",
+        "season": "ordinary",
+        "weekOfSeason": 28,
+        "dayName": "Terça-feira da 28ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 83:1-4, 9-10, 17-18"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 2:1-10"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Tessalonicenses 5:12-18"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-18",
+        "season": "ordinary",
+        "weekOfSeason": 28,
+        "dayName": "Quarta-feira da 28ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 83:1-4, 9-10, 17-18"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ester 7:1-10"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 24:45-51"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-19",
+        "season": "ordinary",
+        "weekOfSeason": 28,
+        "dayName": "Quinta-feira da 28ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 100"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 48:15-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 14:1-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-20",
+        "season": "ordinary",
+        "weekOfSeason": 28,
+        "dayName": "Sexta-feira da 28ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 100"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 40:1-11"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 22:1-9"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-21",
+        "season": "ordinary",
+        "weekOfSeason": 28,
+        "dayName": "Sábado da 28ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 100"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 34:25-31"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 12:46-50"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-23",
+        "season": "ordinary",
+        "weekOfSeason": 29,
+        "dayName": "Segunda-feira da 29ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 28"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 27:15-23"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Timóteo 2:8-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-24",
+        "season": "ordinary",
+        "weekOfSeason": 29,
+        "dayName": "Terça-feira da 29ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 28"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Zacarias 11:4-17"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 19:1-9"
+          }
+        ]
+      },
+      {
+        "date": "2026-11-25",
+        "season": "ordinary",
+        "weekOfSeason": 29,
+        "dayName": "Quarta-feira da 29ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 28"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 31:10-14"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 5:19-40"
+          }
+        ]
+      }
+    ],
+    "advent": [
+      {
+        "date": "2025-12-01",
+        "season": "advent",
+        "weekOfSeason": 1,
+        "dayName": "Segunda-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 124"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 8:1-19"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 6:1-11"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-02",
+        "season": "advent",
+        "weekOfSeason": 1,
+        "dayName": "Terça-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 124"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 9:1-17"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 11:32-40"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-03",
+        "season": "advent",
+        "weekOfSeason": 1,
+        "dayName": "Quarta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 124"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 54:1-10"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 24:23-35"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-04",
+        "season": "advent",
+        "weekOfSeason": 1,
+        "dayName": "Quinta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 18-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 4:2-6"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 1:12-17, 21-26"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-05",
+        "season": "advent",
+        "weekOfSeason": 1,
+        "dayName": "Sexta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 18-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 30:19-26"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 13:16-25"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-06",
+        "season": "advent",
+        "weekOfSeason": 1,
+        "dayName": "Sábado da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 72:1-7, 18-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 40:1-11"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 1:19-28"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-08",
+        "season": "advent",
+        "weekOfSeason": 2,
+        "dayName": "Segunda-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 21"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 24:1-16a"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Tessalonicenses 4:1-12"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-09",
+        "season": "advent",
+        "weekOfSeason": 2,
+        "dayName": "Terça-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 21"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 41:14-20"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 15:14-21"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-10",
+        "season": "advent",
+        "weekOfSeason": 2,
+        "dayName": "Quarta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 21"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 15:1-18"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 12:33-37"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-11",
+        "season": "advent",
+        "weekOfSeason": 2,
+        "dayName": "Quinta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 146:5-10"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Rute 1:6-18"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Pedro 3:1-10"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-12",
+        "season": "advent",
+        "weekOfSeason": 2,
+        "dayName": "Sexta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 146:5-10"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Rute 4:13-17"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Pedro 3:11-18"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-13",
+        "season": "advent",
+        "weekOfSeason": 2,
+        "dayName": "Sábado da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 146:5-10"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 2:1-8"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 3:1-18"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-15",
+        "season": "advent",
+        "weekOfSeason": 3,
+        "dayName": "Segunda-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 42"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 29:17-24"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 5:12-16"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-16",
+        "season": "advent",
+        "weekOfSeason": 3,
+        "dayName": "Terça-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 42"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 47:1-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Judas 1:17-25"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-17",
+        "season": "advent",
+        "weekOfSeason": 3,
+        "dayName": "Quarta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 42"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Zacarias 8:1-17"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 8:14-17, 28-34"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-18",
+        "season": "advent",
+        "weekOfSeason": 3,
+        "dayName": "Quinta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 80:1-7, 17-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Samuel 7:1-17"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 3:23-29"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-19",
+        "season": "advent",
+        "weekOfSeason": 3,
+        "dayName": "Sexta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 80:1-7, 17-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Samuel 7:18-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 4:1-7"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-20",
+        "season": "advent",
+        "weekOfSeason": 3,
+        "dayName": "Sábado da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 80:1-7, 17-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Samuel 7:23-29"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 3:31-36"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-22",
+        "season": "advent",
+        "weekOfSeason": 4,
+        "dayName": "Segunda-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Lucas 1:46b-55"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 33:17-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 22:6-7, 18-20"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-23",
+        "season": "advent",
+        "weekOfSeason": 4,
+        "dayName": "Terça-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Lucas 1:46b-55"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Samuel 7:18, 23-29"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 3:6-14"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-26",
+        "season": "advent",
+        "weekOfSeason": 4,
+        "dayName": "Sexta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 148"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Sabedoria 4:7-15"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 7:59-8:8"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-27",
+        "season": "advent",
+        "weekOfSeason": 4,
+        "dayName": "Sábado da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 148"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Provérbios 8:22-31"
+          },
+          {
+            "type": "gospel",
+            "ref": "1 João 5:1-12"
+          }
+        ]
+      }
+    ],
+    "christmas": [
+      {
+        "date": "2025-12-29",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "Segunda-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 20"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 31:15-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Lucas 19:41-44"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-30",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "Terça-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 20"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 26:1-9"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 4:16-18"
+          }
+        ]
+      },
+      {
+        "date": "2025-12-31",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "Quarta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 20"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Reis 3:5-14"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 8:12-19"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-02",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "Sexta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 20"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 12:1-7"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 11:1-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-03",
+        "season": "christmas",
+        "weekOfSeason": 2,
+        "dayName": "Sábado da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 72"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 28:10-22"
+          },
+          {
+            "type": "gospel",
+            "ref": "Hebreus 11:13-22"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-05",
+        "season": "christmas",
+        "weekOfSeason": 3,
+        "dayName": "Segunda-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 72"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 1:1-9"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 11:32-12:2"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-07",
+        "season": "christmas",
+        "weekOfSeason": 3,
+        "dayName": "Quarta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 72"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Reis 10:1-13"
+          },
+          {
+            "type": "gospel",
+            "ref": "Efésios 3:14-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-08",
+        "season": "christmas",
+        "weekOfSeason": 3,
+        "dayName": "Quinta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 29"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 3:1-9"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 9:1-9"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-09",
+        "season": "christmas",
+        "weekOfSeason": 3,
+        "dayName": "Sexta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 29"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 3:10-4:1a"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 9:10-19a"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-10",
+        "season": "christmas",
+        "weekOfSeason": 3,
+        "dayName": "Sábado da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 29"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 7:3-17"
+          },
+          {
+            "type": "gospel",
+            "ref": "Atos 9:19b-31"
+          }
+        ]
+      }
+    ],
+    "epiphany": [
+      {
+        "date": "2026-01-12",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Segunda-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 89:5-37"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 35:1-15"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 10:44-48"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-13",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Terça-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 89:5-37"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 1:4-10"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 8:4-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-14",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Quarta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 89:5-37"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 51:1-16"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 12:15-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-15",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Quinta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 40:1-11"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 22:15-25"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 1:6-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-16",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Sexta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 40:1-11"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 27:30-38"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 1:1-5"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-17",
+        "season": "epiphany",
+        "weekOfSeason": 2,
+        "dayName": "Sábado da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 40:1-11"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Reis 19:19-21"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 5:1-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-19",
+        "season": "epiphany",
+        "weekOfSeason": 3,
+        "dayName": "Segunda-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 40:6-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 12:1-13, 21-28"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 8:26-40"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-20",
+        "season": "epiphany",
+        "weekOfSeason": 3,
+        "dayName": "Terça-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 40:6-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 53:1-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 10:1-4"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-21",
+        "season": "epiphany",
+        "weekOfSeason": 3,
+        "dayName": "Quarta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 40:6-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 48:12-21"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 9:14-17"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-22",
+        "season": "epiphany",
+        "weekOfSeason": 3,
+        "dayName": "Quinta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 27:1-6"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 1:1-20"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 1:11-24"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-23",
+        "season": "epiphany",
+        "weekOfSeason": 3,
+        "dayName": "Sexta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 27:1-6"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 9:27-10:8"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Gálatas 2:1-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-24",
+        "season": "epiphany",
+        "weekOfSeason": 3,
+        "dayName": "Sábado da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 27:1-6"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 15:34-16:13"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 5:27-32"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-26",
+        "season": "epiphany",
+        "weekOfSeason": 4,
+        "dayName": "Segunda-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 27:7-14"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Juízes 6:11-24"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 5:6-14"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-27",
+        "season": "epiphany",
+        "weekOfSeason": 4,
+        "dayName": "Terça-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 27:7-14"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Juízes 7:12-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Filipenses 2:12-18"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-28",
+        "season": "epiphany",
+        "weekOfSeason": 4,
+        "dayName": "Quarta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 27:7-14"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 49:1-2, 8-13, 21-26"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 1:67-79"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-29",
+        "season": "epiphany",
+        "weekOfSeason": 4,
+        "dayName": "Quinta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 15"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 16:18-20"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 3:8-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-30",
+        "season": "epiphany",
+        "weekOfSeason": 4,
+        "dayName": "Sexta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 15"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 24:17-25:4"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Timóteo 5:17-24"
+          }
+        ]
+      },
+      {
+        "date": "2026-01-31",
+        "season": "epiphany",
+        "weekOfSeason": 4,
+        "dayName": "Sábado da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 15"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Miquéias 3:1-4"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 13:31-35"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-02",
+        "season": "epiphany",
+        "weekOfSeason": 5,
+        "dayName": "Segunda-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 37:1-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Rute 1:1-18"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Filemom 1-25"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-03",
+        "season": "epiphany",
+        "weekOfSeason": 5,
+        "dayName": "Terça-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 37:1-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Rute 2:1-16"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tiago 5:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-04",
+        "season": "epiphany",
+        "weekOfSeason": 5,
+        "dayName": "Quarta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 37:1-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Rute 3:1-13; 4:13-22"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 6:17-26"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-05",
+        "season": "epiphany",
+        "weekOfSeason": 5,
+        "dayName": "Quinta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 112:1-9"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 4:1-14"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 João 5:1-5"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-06",
+        "season": "epiphany",
+        "weekOfSeason": 5,
+        "dayName": "Sexta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 112:1-9"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 29:1-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Tiago 3:13-18"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-07",
+        "season": "epiphany",
+        "weekOfSeason": 5,
+        "dayName": "Sábado da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 112:1-9"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 29:13-16"
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 7:1-8"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-09",
+        "season": "epiphany",
+        "weekOfSeason": 6,
+        "dayName": "Segunda-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:105-112"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 22:3-20"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 11:2-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-10",
+        "season": "epiphany",
+        "weekOfSeason": 6,
+        "dayName": "Terça-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:105-112"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 23:1-8, 21-25"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Coríntios 4:1-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-11",
+        "season": "epiphany",
+        "weekOfSeason": 6,
+        "dayName": "Quarta-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 119:105-112"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Provérbios 6:6-23"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 8:12-30"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-12",
+        "season": "epiphany",
+        "weekOfSeason": 6,
+        "dayName": "Quinta-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 2"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 6:2-9"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 8:1-7"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-13",
+        "season": "epiphany",
+        "weekOfSeason": 6,
+        "dayName": "Sexta-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 2"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 19:9b-25"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 11:23-28"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-14",
+        "season": "epiphany",
+        "weekOfSeason": 6,
+        "dayName": "Sábado da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 2"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Reis 21:20-29"
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 9:9-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-16",
+        "season": "epiphany",
+        "weekOfSeason": 7,
+        "dayName": "Segunda-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78:17-20, 52-55"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 33:7-23"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 7:30-34"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-17",
+        "season": "epiphany",
+        "weekOfSeason": 7,
+        "dayName": "Terça-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 78:17-20, 52-55"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Reis 19:9-18"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 11:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-19",
+        "season": "epiphany",
+        "weekOfSeason": 7,
+        "dayName": "Quinta-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 51"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jonas 3:1-10"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 1:1-7"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-20",
+        "season": "epiphany",
+        "weekOfSeason": 7,
+        "dayName": "Sexta-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 51"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jonas 4:1-11"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 1:8-17"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-21",
+        "season": "epiphany",
+        "weekOfSeason": 7,
+        "dayName": "Sábado da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 51"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 58:1-12"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 18:1-7"
+          }
+        ]
+      }
+    ],
+    "lent": [
+      {
+        "date": "2026-02-23",
+        "season": "lent",
+        "weekOfSeason": 1,
+        "dayName": "Segunda-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 32"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Reis 19:1-8"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 2:10-18"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-24",
+        "season": "lent",
+        "weekOfSeason": 1,
+        "dayName": "Terça-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 32"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 4:1-16"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 4:14-5:10"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-25",
+        "season": "lent",
+        "weekOfSeason": 1,
+        "dayName": "Quarta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 32"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 34:1-9, 27-28"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 18:10-14"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-26",
+        "season": "lent",
+        "weekOfSeason": 1,
+        "dayName": "Quinta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 121"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 51:1-3"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Timóteo 1:3-7"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-27",
+        "season": "lent",
+        "weekOfSeason": 1,
+        "dayName": "Sexta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 121"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Miquéias 7:18-20"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 3:21-31"
+          }
+        ]
+      },
+      {
+        "date": "2026-02-28",
+        "season": "lent",
+        "weekOfSeason": 1,
+        "dayName": "Sábado da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 121"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 51:4-8"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 7:1-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-02",
+        "season": "lent",
+        "weekOfSeason": 2,
+        "dayName": "Segunda-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 128"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 21:4-9"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 3:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-03",
+        "season": "lent",
+        "weekOfSeason": 2,
+        "dayName": "Terça-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 128"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 65:17-25"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 4:6-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-04",
+        "season": "lent",
+        "weekOfSeason": 2,
+        "dayName": "Quarta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 128"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 36:22-32"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 7:53-8:11"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-05",
+        "season": "lent",
+        "weekOfSeason": 2,
+        "dayName": "Quinta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 95"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 16:1-8"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Colossenses 1:15-23"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-06",
+        "season": "lent",
+        "weekOfSeason": 2,
+        "dayName": "Sexta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 95"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 16:9-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 2:11-22"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-07",
+        "season": "lent",
+        "weekOfSeason": 2,
+        "dayName": "Sábado da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 95"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 16:27-35"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 4:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-09",
+        "season": "lent",
+        "weekOfSeason": 3,
+        "dayName": "Segunda-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 81"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 24:1-27"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 João 1:1-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-10",
+        "season": "lent",
+        "weekOfSeason": 3,
+        "dayName": "Terça-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 81"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 29:1-14"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Coríntios 10:1-4"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-11",
+        "season": "lent",
+        "weekOfSeason": 3,
+        "dayName": "Quarta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 81"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 2:4-13"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 7:14-31, 37-39"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-12",
+        "season": "lent",
+        "weekOfSeason": 3,
+        "dayName": "Quinta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 23"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 15:10-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 4:25-32"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-13",
+        "season": "lent",
+        "weekOfSeason": 3,
+        "dayName": "Sexta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 23"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 15:22-31"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 5:1-9"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-14",
+        "season": "lent",
+        "weekOfSeason": 3,
+        "dayName": "Sábado da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 23"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 15:32-34"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 1:1-9"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-16",
+        "season": "lent",
+        "weekOfSeason": 4,
+        "dayName": "Segunda-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 146"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 59:9-19"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 9:1-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-17",
+        "season": "lent",
+        "weekOfSeason": 4,
+        "dayName": "Terça-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 146"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 42:14-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Colossenses 1:9-14"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-18",
+        "season": "lent",
+        "weekOfSeason": 4,
+        "dayName": "Quarta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 146"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 60:17-22"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 9:27-34"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-19",
+        "season": "lent",
+        "weekOfSeason": 4,
+        "dayName": "Quinta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 130"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 1:1-3, 2:8-3:3"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 10:1-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-20",
+        "season": "lent",
+        "weekOfSeason": 4,
+        "dayName": "Sexta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 130"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 33:10-16"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Apocalipse 11:15-19"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-21",
+        "season": "lent",
+        "weekOfSeason": 4,
+        "dayName": "Sábado da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 130"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 36:8-15"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 24:44-53"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-23",
+        "season": "lent",
+        "weekOfSeason": 5,
+        "dayName": "Segunda-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 143"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Reis 17:17-24"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 20:7-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-24",
+        "season": "lent",
+        "weekOfSeason": 5,
+        "dayName": "Terça-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 143"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 4:18-37"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 2:1-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-25",
+        "season": "lent",
+        "weekOfSeason": 5,
+        "dayName": "Quarta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 143"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 32:1-9, 36-41"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 22:23-33"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-26",
+        "season": "lent",
+        "weekOfSeason": 5,
+        "dayName": "Quinta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 31:9-16"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Samuel 16:11-13"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Filipenses 1:1-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-27",
+        "season": "lent",
+        "weekOfSeason": 5,
+        "dayName": "Sexta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 31:9-16"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jó 13:13-19"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Filipenses 1:21-30"
+          }
+        ]
+      },
+      {
+        "date": "2026-03-28",
+        "season": "lent",
+        "weekOfSeason": 5,
+        "dayName": "Sábado da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 31:9-16"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Lamentações 3:55-66"
+          },
+          {
+            "type": "gospel",
+            "ref": "Marcos 10:32-34"
+          }
+        ]
+      }
+    ],
+    "easter": [
+      {
+        "date": "2026-04-06",
+        "season": "easter",
+        "weekOfSeason": 1,
+        "dayName": "Segunda-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 118:1-2, 14-24"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 14:10-31; 15:20-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Colossenses 3:5-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-07",
+        "season": "easter",
+        "weekOfSeason": 1,
+        "dayName": "Terça-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 118:1-2, 14-24"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 15:1-18"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Colossenses 3:12-17"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-08",
+        "season": "easter",
+        "weekOfSeason": 1,
+        "dayName": "Quarta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 118:1-2, 14-24"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Josué 3:1-17"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 28:1-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-13",
+        "season": "easter",
+        "weekOfSeason": 2,
+        "dayName": "Segunda-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 114"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Juízes 6:36-40"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Coríntios 15:12-20"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-14",
+        "season": "easter",
+        "weekOfSeason": 2,
+        "dayName": "Terça-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 114"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jonas 1:1-17"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Coríntios 15:19-28"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-15",
+        "season": "easter",
+        "weekOfSeason": 2,
+        "dayName": "Quarta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 114"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jonas 2:1-10"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 12:38-42"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-16",
+        "season": "easter",
+        "weekOfSeason": 2,
+        "dayName": "Quinta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 116:1-4, 12-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 25:1-5"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 1:8b-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-17",
+        "season": "easter",
+        "weekOfSeason": 2,
+        "dayName": "Sexta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 116:1-4, 12-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 26:1-4"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 1:13-16"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-18",
+        "season": "easter",
+        "weekOfSeason": 2,
+        "dayName": "Sábado da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 116:1-4, 12-19"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Isaías 25:6-9"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 14:12-14"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-20",
+        "season": "easter",
+        "weekOfSeason": 3,
+        "dayName": "Segunda-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 134"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 18:1-14"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 1:23-25"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-21",
+        "season": "easter",
+        "weekOfSeason": 3,
+        "dayName": "Terça-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 134"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Provérbios 8:32-9:6"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 2:1-3"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-22",
+        "season": "easter",
+        "weekOfSeason": 3,
+        "dayName": "Quarta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 134"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 24:1-11"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 21:1-14"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-23",
+        "season": "easter",
+        "weekOfSeason": 3,
+        "dayName": "Quinta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 23"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 2:15b-25"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 2:9-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-24",
+        "season": "easter",
+        "weekOfSeason": 3,
+        "dayName": "Sexta-feira da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 23"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 3:16-22, 4:18-20"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 2:13-17"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-25",
+        "season": "easter",
+        "weekOfSeason": 3,
+        "dayName": "Sábado da 3ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 23"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 34:1-16"
+          },
+          {
+            "type": "gospel",
+            "ref": "Lucas 15:1-7"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-27",
+        "season": "easter",
+        "weekOfSeason": 4,
+        "dayName": "Segunda-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 100"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 34:17-23"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 5:1-5"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-28",
+        "season": "easter",
+        "weekOfSeason": 4,
+        "dayName": "Terça-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 100"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 34:23-31"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Hebreus 13:20-21"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-29",
+        "season": "easter",
+        "weekOfSeason": 4,
+        "dayName": "Quarta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 100"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 23:1-8"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 20:17-28"
+          }
+        ]
+      },
+      {
+        "date": "2026-04-30",
+        "season": "easter",
+        "weekOfSeason": 4,
+        "dayName": "Quinta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 31:1-5, 15-16"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 12:1-3"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 6:8-15"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-01",
+        "season": "easter",
+        "weekOfSeason": 4,
+        "dayName": "Sexta-feira da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 31:1-5, 15-16"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 3:1-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 7:1-16"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-02",
+        "season": "easter",
+        "weekOfSeason": 4,
+        "dayName": "Sábado da 4ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 31:1-5, 15-16"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jeremias 26:20-24"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 8:48-59"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-04",
+        "season": "easter",
+        "weekOfSeason": 5,
+        "dayName": "Segunda-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 102:1-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 13:17-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 7:17-40"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-05",
+        "season": "easter",
+        "weekOfSeason": 5,
+        "dayName": "Terça-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 102:1-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Provérbios 3:5-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 7:44-56"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-06",
+        "season": "easter",
+        "weekOfSeason": 5,
+        "dayName": "Quarta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 102:1-17"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Provérbios 3:13-18"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 8:31-38"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-07",
+        "season": "easter",
+        "weekOfSeason": 5,
+        "dayName": "Quinta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 66:8-20"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 6:5-22"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 27:1-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-08",
+        "season": "easter",
+        "weekOfSeason": 5,
+        "dayName": "Sexta-feira da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 66:8-20"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 7:1-24"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 27:13-38"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-09",
+        "season": "easter",
+        "weekOfSeason": 5,
+        "dayName": "Sábado da 5ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 66:8-20"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 8:13-19"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 14:27-29"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-11",
+        "season": "easter",
+        "weekOfSeason": 6,
+        "dayName": "Segunda-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 93"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 9:8-17"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 27:39-44"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-12",
+        "season": "easter",
+        "weekOfSeason": 6,
+        "dayName": "Terça-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 93"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 5:22-33"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 3:8-12"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-13",
+        "season": "easter",
+        "weekOfSeason": 6,
+        "dayName": "Quarta-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 93"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Deuteronômio 31:1-13"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 16:16-24"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-15",
+        "season": "easter",
+        "weekOfSeason": 6,
+        "dayName": "Sexta-feira da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 93"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 2:1-12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Efésios 2:1-7"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-16",
+        "season": "easter",
+        "weekOfSeason": 6,
+        "dayName": "Sábado da 6ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 93"
+          },
+          {
+            "type": "first_reading",
+            "ref": "2 Reis 2:13-15"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 8:21-30"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-18",
+        "season": "easter",
+        "weekOfSeason": 7,
+        "dayName": "Segunda-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 99"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Levítico 9:1-11, 22-24"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 4:1-6"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-19",
+        "season": "easter",
+        "weekOfSeason": 7,
+        "dayName": "Terça-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 99"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 16:41-50"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Pedro 4:7-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-20",
+        "season": "easter",
+        "weekOfSeason": 7,
+        "dayName": "Quarta-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 99"
+          },
+          {
+            "type": "first_reading",
+            "ref": "1 Reis 8:54-65"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 3:31-36"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-21",
+        "season": "easter",
+        "weekOfSeason": 7,
+        "dayName": "Quinta-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 33:12-22"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 19:1-9a"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 2:1-11"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-22",
+        "season": "easter",
+        "weekOfSeason": 7,
+        "dayName": "Sexta-feira da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 33:12-22"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 19:16-25"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 8:14-17"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-23",
+        "season": "easter",
+        "weekOfSeason": 7,
+        "dayName": "Sábado da 7ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 33:12-22"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Êxodo 20:1-21"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 5:1-12"
+          }
+        ]
+      }
+    ],
+    "pentecost": [
+      {
+        "date": "2026-05-25",
+        "season": "pentecost",
+        "weekOfSeason": 1,
+        "dayName": "Segunda-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 104:24-34, 35b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Joel 2:18-29"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 8:18-24"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-26",
+        "season": "pentecost",
+        "weekOfSeason": 1,
+        "dayName": "Terça-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 104:24-34, 35b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Ezequiel 39:7-8, 21-29"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Romanos 8:26-27"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-27",
+        "season": "pentecost",
+        "weekOfSeason": 1,
+        "dayName": "Quarta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 104:24-34, 35b"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Números 11:24-30"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 7:37-39"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-28",
+        "season": "pentecost",
+        "weekOfSeason": 1,
+        "dayName": "Quinta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 8"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jó 38:1-11"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Timóteo 1:8-12a"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-29",
+        "season": "pentecost",
+        "weekOfSeason": 1,
+        "dayName": "Sexta-feira da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 8"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jó 38:12-21"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Timóteo 1:12b-14"
+          }
+        ]
+      },
+      {
+        "date": "2026-05-30",
+        "season": "pentecost",
+        "weekOfSeason": 1,
+        "dayName": "Sábado da 1ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 8"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jó 38:22-38"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 14:15-17"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-01",
+        "season": "pentecost",
+        "weekOfSeason": 2,
+        "dayName": "Segunda-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 29"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jó 38:39-39:12"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Coríntios 12:1-3"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-02",
+        "season": "pentecost",
+        "weekOfSeason": 2,
+        "dayName": "Terça-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 29"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jó 39:13-25"
+          },
+          {
+            "type": "second_reading",
+            "ref": "1 Coríntios 12:4-13"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-03",
+        "season": "pentecost",
+        "weekOfSeason": 2,
+        "dayName": "Quarta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 29"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Jó 39:26-40:5"
+          },
+          {
+            "type": "gospel",
+            "ref": "João 14:25-26"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-04",
+        "season": "pentecost",
+        "weekOfSeason": 2,
+        "dayName": "Quinta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 33:1-12"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 13:1-18"
+          },
+          {
+            "type": "second_reading",
+            "ref": "2 Pedro 2:17-22"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-05",
+        "season": "pentecost",
+        "weekOfSeason": 2,
+        "dayName": "Sexta-feira da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 33:1-12"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 14:17-24"
+          },
+          {
+            "type": "second_reading",
+            "ref": "Atos 28:1-10"
+          }
+        ]
+      },
+      {
+        "date": "2026-06-06",
+        "season": "pentecost",
+        "weekOfSeason": 2,
+        "dayName": "Sábado da 2ª Semana",
+        "holyDay": false,
+        "readings": [
+          {
+            "type": "psalm",
+            "ref": "Salmo 33:1-12"
+          },
+          {
+            "type": "first_reading",
+            "ref": "Gênesis 15:1-20"
+          },
+          {
+            "type": "gospel",
+            "ref": "Mateus 9:27-34"
+          }
+        ]
+      }
+    ]
+  }
+}

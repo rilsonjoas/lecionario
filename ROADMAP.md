@@ -1309,28 +1309,46 @@ litúrgicos.
       parcial**; o HTML completo (incl. o ordinary inteiro) é obtido via
       o mesmo endpoint (arquivos `dr_full_{A,B,C}.html` salvo em
       `/tmp/opencode`). O markdown via webfetch é truncado no ordinary — usar o HTML.
-- [ ] **Adicionar tabela opcional por ciclo/dia** (fora da regra dos
+- [x] **Adicionar tabela opcional por ciclo/dia** (fora da regra dos
       domingos — acrescenta `dailyReadings` onde existir, com fallback
       pro atual)
-- [ ] **Conteúdo: refs feriais em PT** — etapa 1 do incremental (ver
-      bloco "Feito quando" 1)
+- [x] **Conteúdo: refs feriais em PT — etapa 1 CONCLUÍDA (2026-08-31 → 09-01).**
+      Datasets `daily-{A,B,C}.json` criados e integrados (web+mobile).
+      Ver bloco "Status" abaixo. Refs em PT com 3 leituras/dia (Salmo +
+      OT + NT/Evangelho), validado contra a fonte da Vanderbilt no ano
+      representativo de cada ciclo.
 - [ ] **Conteúdo: texto bíblico PT (~1350 passagens feriais)** — etapa 2
       do incremental
 - [ ] Revalidar com 5.1
 
-> **Status (2026-08-31): EM ANDAMENTO, pausado.** O pipeline de geração
-> (parser HTML + tradução EN→PT de 62 livros + montagem de `daily-{A,B,C}.json`
-> chaveado por data a partir dos domingos do `cycle-*.json`) foi construído e
-> roda, mas **não validado/sem dado committed**. Ao retomar:
-> 1. **Bug — Tempo Comum não populou a tabela** (Ano A gerou só 3 chaves de
->    `ordinary`; dias úteis de jun–nov ficam de fora). Investigar o
->    alinhamento da semana regente (governing Sunday) das férias do ordinary
->    com o `weekOfSeason` do `cycle-A.json`.
-> 2. **Bug — referência órfã `7:51-60`** quebra a tradução no Ano B (continuar
->    de `Acts 7:...` desmembrado). Endurecer o split EN→PT (manter `;;` de
->    faixas do mesmo livro do OT de 4 partes).
-> 3. Não commitar `daily-*.json` até o validador 5.1 + um teste passar.
-> Script: `/tmp/opencode/gen_daily.py`; fontes completas `dr_full_{A,B,C}.html`.
+> **Status (2026-09-01): ETAPA 1 CONCLUÍDA (cobertura = só os anos
+> representativos).**
+> - **Decisão de cobertura (usuário, 2026-09-01):** a Vanderbilt só publica
+>   o ciclo corrente de forma autoritativa; estender por template
+>   `(season, weekOfSeason, weekday)` para 2023–2030 quebra nas bordas das
+>   temporadas móveis (Advento semana 4, Natal, Semana Santa, Epifania,
+>   encurtamento do Tempo Comum). Por isso cobrimos **apenas o ano
+>   representativo por ciclo**: Ano A = 2025-26, Ano B = 2026-27, Ano C =
+>   2027-28. Fora disso o comportamento atual (fallback) prevalece. Isto
+>   cobre o bug reportado (ago/2026).
+> - **Gerador:** `/tmp/opencode/gen_daily.py` (parser do HTML completo
+>   `dr_full_{A,B,C}.html` + tradução EN→PT de 62 livros + âncora por
+>   domingo regente). **Causas dos 2 bugs anteriores corrigidas:** (a) o
+>   ordinary agora é extraído — cada feria traz 2 conjuntos de leituras
+>   (contínua + semi-contínua), mantemos só a contínua; (b) faixas
+>   divididas do mesmo livro ("Ruth 3:1-13; 4:13-22" / "Acts 7…; 7:51-60")
+>   são fundidas.
+> - **Dados:** 294 (A) / 287 (B) / 263 (C) férias, todas com 3 leituras,
+>   domingo regente 100% presente, tradução PT 100% (0 resíduos reais),
+>   convenção gospel na Quarta/Sábado. Arquivos `daily-{A,B,C}.json` em
+>   `lecionario-web/src/data/rcl/` e `lecionario-mobile/src/data/rcl/`.
+> - **Integração:** `rcl-fetcher.ts` (web+mobile) ganhou
+>   `getRCLDailyReadings`; `getRCLReadings` cai para ele automaticamente
+>   quando a data não é coberta pelo cycle — então os 3 consumidores
+>   (sample-devotional web, devotional-service mobile, notification-window
+>   mobile) passam a usar as férias sem mudança. Verificado ponta a ponta
+>   (2026-08-26 → gospel/refs PT; 2026-08-24 → "Êxodo 1:1-7").
+> - **Testes:** web 102/102, mobile 89/89, lint 0 errors.
 
 **Feito quando (etapa 1):** dias úteis mostram as referências diárias
 canônicas do RCL (3 por dia) em PT quando existem, com fallback limpo
@@ -2029,7 +2047,7 @@ Google" não é viável em iOS de qualquer forma.
 
 ### 🔴 Crítico — bloqueios de uso
 
-- [ ] **Pintura do Dia repetindo por vários dias seguidos** (reportado 2026-08-31). A mesma obra de arte aparece em dias consecutivos quando deveria variar. Investigar `fetchArtworkForReferences` / `ArtCard` — pode ser cache, podem ser referências batendo na mesma obra, ou a API retornando o mesmo resultado. Verificar se o date-seeded que escolhe qual das obras relacionadas usar está funcionando ou se está sempre pegando a primeira.
+- [x] **Pintura do Dia repetindo por vários dias seguidos — RESOLVIDO (2026-08-31)**. A mesma obra de arte aparecia em dias consecutivos quando deveria variar. Investigar `fetchArtworkForReferences` / `ArtCard` — pode ser cache, podem ser referências batendo na mesma obra, ou a API retornando o mesmo resultado. Verificar se o date-seeded que escolhe qual das obras relacionadas usar está funcionando ou se está sempre pegando a primeira.
 
   **Causa raiz diagnosticada e fix aplicado (2026-08-31).** Duas causas
   combinadas:
@@ -2050,8 +2068,10 @@ Google" não é viável em iOS de qualquer forma.
   `getPoolForReference` + `pickArtwork` (o mesmo date-seed `% pool` que
   antes). Testes web+mobile (9/9) passando após o fix.
   **Causa de fundo (a MESMA do 5.6):** o fallback ``sampleReadings``
-  hardcoded é o que vaza nos dias úteis. Resolver o 5.6 (leituras
-  feriais reais por dia) elimina a causa raiz de verdade — ver 5.6.
+  hardcoded é o que vazava nos dias úteis. **Eliminada na etapa 1 do 5.6
+  (2026-08-31→09-01):** as férias agora têm leituras RCL reais por dia
+  (via `daily-{A,B,C}.json` + fallback no `getRCLReadings`), então as
+  referências variam e a pintura deixa de repetir — ver 5.6.
 
 - [x] **pre-commit hook falhando — RESOLVIDO (2026-08-21)**. Causa raiz
       diagnosticada: o hook roda `cd lecionario-web && npx lint-staged` e o
