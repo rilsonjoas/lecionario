@@ -2073,6 +2073,21 @@ Google" não é viável em iOS de qualquer forma.
   (via `daily-{A,B,C}.json` + fallback no `getRCLReadings`), então as
   referências variam e a pintura deixa de repetir — ver 5.6.
 
+- [x] **Duas notificações na mesma hora, dias diferentes — RESOLVIDO
+      (2026-09-01)**. Usuário recebeu às 06:00 uma notificação "Domingo" e
+      outra "Terça-feira" (a correta). Causa raiz: antes da refatoração
+      (2026-08-24) o app agendava UM trigger `DAILY` e salvava o ID na
+      chave SINGULAR `@lecionario:notification-id`; a refatoração passou a
+      usar triggers `DATE` e a chave PLURAL `@lecionario:notification-ids`,
+      mas a `DAILY` antiga nunca foi cancelada (chave singular nunca era
+      lida) e o SO repetia o payload estático da época junto com a nova.
+      Fix: `migrateLegacyNotifications()` (`notifications.ts`) roda UMA
+      vez na inicialização — cancela a legada por ID, hardening com
+      `cancelAllScheduledNotificationsAsync`, remove chaves antigas e marca
+      `@lecionario:notifications-migrated-v2`; `App.tsx` chama a migração
+      antes de `renewNotificationsWindow()`. Testes: 2 regressões novas;
+      mobile 91/91.
+
 - [x] **pre-commit hook falhando — RESOLVIDO (2026-08-21)**. Causa raiz
       diagnosticada: o hook roda `cd lecionario-web && npx lint-staged` e o
       `eslint --fix` falhava nos 6 erros `@typescript-eslint/no-explicit-any`
