@@ -945,6 +945,14 @@ lados, não é especulação:
       dia não tivesse pintura catalogada, o card nem aparecia, mesmo que o
       Evangelho do mesmo dia tivesse. `fetchArtworkForReferences` agora
       tenta as 4 leituras em ordem até achar uma.
+- [x] **Pintura do Dia repetia em dias seguidos — CORRIGIDO (2026-08-31)**
+      — `fetchArtworkForReferences` parava na 1ª referência com QUALQUER
+      obra; em dias úteis o fallback hardcoded (ver 5.6) fazia isso
+      achar sempre a única obra de 2 Pedro 3, nunca chegando a Marcos 1
+      (as 13 que o date-seed rotaciona). Agora consulta o pool de **cada**
+      referência e fica com o **maior pool** (`getPoolForReference` +
+      `pickArtwork`, early-break em `pool.length >= 3`). Web+mobile.
+      Detalhes na seção 🔴 Crítico.
 - [ ] **Tentativa de casar com o versículo exato do dia** (pedido do
       Rilson, "não precisa necessariamente funcionar") — `parseReference`
       agora extrai o trecho de versículo (`Mateus 24:36-44` → `36-44`) e
@@ -1279,17 +1287,58 @@ regente. O padrão oficial do _Revised Common Lectionary Daily Readings_
 que dá "mais lecionário de verdade" pra um usuário acostumado com apps
 litúrgicos.
 
-- [ ] Mapear a estrutura diária (algumas fontes públicas curadas por
-      ano litúrgico; RCL consultado contra a Vanderbilt)
-- [ ] Adicionar tabela opcional por ciclo/dia (fora da regra dos
+> **Estratégia de entrega (decidida 2026-08-31):** implementação
+> **incremental** — primeiro as **referências feriais em PT** (integradas
+> nas APIs web+mobile, eliminando a causa raiz da "Pintura do Dia
+> repetida"), e depois o **preenchimento do texto bíblico PT** (~1350
+> passagens feriais) como etapa posterior. Isso resolve o bug crítico já
+> na 1ª etapa com baixo risco de acurácia.
+
+- [x] **Mapear a estrutura diária** (2026-08-31). Fonte autoritativa
+      confirmada: `https://lectionary.library.vanderbilt.edu/daily-readings/?y=...`
+      — cada dia útil tem **3 leituras** (Salmo + OT + NT; Evangelho na
+      Quarta e no Sábado), agrupadas por estação (Advent/Christmas/
+      Epiphany/Lent/Holy Week/Easter/Season after Pentecost). Padrão
+      validado contra dados reais da página: Seg-Qua-espelham-domingo e
+      Qui-Sáb-preparam-próximo confirmados. Códigos `y=` por ciclo:
+      Ano A `17134` (2025-26), Ano B `18921` (2026-27), Ano C `19342`
+      (2027-28). Nota: a página inclui feriados **cívicos dos EUA**
+      (Thanksgiving Day, Independence Day) → **excluir** no dado PT; e
+      **nomes de livro em inglês** → traduzir pro PT via `bible-books`.
+      ⚠️ A página única (`?y=`) só mostra o **Tempo Comum de forma
+      parcial**; o HTML completo (incl. o ordinary inteiro) é obtido via
+      o mesmo endpoint (arquivos `dr_full_{A,B,C}.html` salvo em
+      `/tmp/opencode`). O markdown via webfetch é truncado no ordinary — usar o HTML.
+- [ ] **Adicionar tabela opcional por ciclo/dia** (fora da regra dos
       domingos — acrescenta `dailyReadings` onde existir, com fallback
       pro atual)
-- [ ] Conteúdo: novo após existir dado — a escrita devocional diária
-      por dia útil já cobre a parte meditativa
+- [ ] **Conteúdo: refs feriais em PT** — etapa 1 do incremental (ver
+      bloco "Feito quando" 1)
+- [ ] **Conteúdo: texto bíblico PT (~1350 passagens feriais)** — etapa 2
+      do incremental
 - [ ] Revalidar com 5.1
 
-**Feito quando:** dias úteis mostram as leituras diárias canônicas do
-RCL quando existem, com fallback limpo pro comportamento atual.
+> **Status (2026-08-31): EM ANDAMENTO, pausado.** O pipeline de geração
+> (parser HTML + tradução EN→PT de 62 livros + montagem de `daily-{A,B,C}.json`
+> chaveado por data a partir dos domingos do `cycle-*.json`) foi construído e
+> roda, mas **não validado/sem dado committed**. Ao retomar:
+> 1. **Bug — Tempo Comum não populou a tabela** (Ano A gerou só 3 chaves de
+>    `ordinary`; dias úteis de jun–nov ficam de fora). Investigar o
+>    alinhamento da semana regente (governing Sunday) das férias do ordinary
+>    com o `weekOfSeason` do `cycle-A.json`.
+> 2. **Bug — referência órfã `7:51-60`** quebra a tradução no Ano B (continuar
+>    de `Acts 7:...` desmembrado). Endurecer o split EN→PT (manter `;;` de
+>    faixas do mesmo livro do OT de 4 partes).
+> 3. Não commitar `daily-*.json` até o validador 5.1 + um teste passar.
+> Script: `/tmp/opencode/gen_daily.py`; fontes completas `dr_full_{A,B,C}.html`.
+
+**Feito quando (etapa 1):** dias úteis mostram as referências diárias
+canônicas do RCL (3 por dia) em PT quando existem, com fallback limpo
+pro comportamento atual — e a "Pintura do Dia" deixa de repetir (causa
+raiz do bug 🔴 eliminada, ver seção Crítico).
+
+**Feito quando (etapa 2):** além das refs, os textos bíblicos PT são
+preenchidos/validados com 5.1.
 
 ### 5.7 Áudio/TTS (Camada 4 — nativo, só na próxima APK)
 
@@ -1979,6 +2028,30 @@ Google" não é viável em iOS de qualquer forma.
 > DSN do Sentry só como placeholder no `.env.example`.
 
 ### 🔴 Crítico — bloqueios de uso
+
+- [ ] **Pintura do Dia repetindo por vários dias seguidos** (reportado 2026-08-31). A mesma obra de arte aparece em dias consecutivos quando deveria variar. Investigar `fetchArtworkForReferences` / `ArtCard` — pode ser cache, podem ser referências batendo na mesma obra, ou a API retornando o mesmo resultado. Verificar se o date-seeded que escolhe qual das obras relacionadas usar está funcionando ou se está sempre pegando a primeira.
+
+  **Causa raiz diagnosticada e fix aplicado (2026-08-31).** Duas causas
+  combinadas:
+  1. **Em dias úteis (Seg–Sáb) o `fetchArtworkForReferences` parava na
+     1ª referência que tivesse QUALQUER obra.** Nos dias úteis o
+     devocional cai no `sampleReadings` hardcoded (Advento 2º Domingo:
+     Isaías 40/Salmo 85/2 Pedro 3/Marcos 1 — ver 5.6/causa de fundo
+     abaixo). Checando a API real (`api-biblianaarte.narniano.com`):
+     Isaías 40 = 0 obras, Salmo 85 = 0, 2 Pedro 3 = 1 obra, Marcos 1 =
+     13 obras. Como parava na 1ª com qualquer obra, sempre pegava a
+     única de 2 Pedro 3 — nunca chegava a Marcos 1 (as 13 que o
+     date-seed faz variar).
+  2. Por isso a obra repetia: o fallback hardcoded + o early-stop na 1ª
+     referência achatavam a variação diária.
+  **Fix (web e mobile):** `fetchArtworkForReferences` (`artwork-fetcher.ts`)
+  agora consulta o pool de obras de **cada** referência e fica com o
+  **maior pool** (early-break quando `pool.length >= 3`), via helper
+  `getPoolForReference` + `pickArtwork` (o mesmo date-seed `% pool` que
+  antes). Testes web+mobile (9/9) passando após o fix.
+  **Causa de fundo (a MESMA do 5.6):** o fallback ``sampleReadings``
+  hardcoded é o que vaza nos dias úteis. Resolver o 5.6 (leituras
+  feriais reais por dia) elimina a causa raiz de verdade — ver 5.6.
 
 - [x] **pre-commit hook falhando — RESOLVIDO (2026-08-21)**. Causa raiz
       diagnosticada: o hook roda `cd lecionario-web && npx lint-staged` e o

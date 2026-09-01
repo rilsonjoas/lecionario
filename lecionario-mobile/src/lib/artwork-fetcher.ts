@@ -59,6 +59,46 @@ function getDateSeed(date?: Date | string): number {
   return Math.abs(hash);
 }
 
+/** Consulta o "pool" de obras que casam com uma referência — tenta primeiro
+ *  o versículo exato (curadoria do Bíblia na Arte quase nunca registra, mas
+ *  quando registra é o melhor match), senão cai pro capítulo. */
+async function getPoolForReference(ref: string, signal?: AbortSignal): Promise<Artwork[]> {
+  const parsed = parseReference(ref);
+  if (!parsed) return [];
+
+  try {
+    // Curadoria do Bíblia na Arte quase nunca registra versículo exato
+    // (ver ROADMAP) — tenta mesmo assim, sem depender disso: se não achar
+    // nada nesse nível de detalhe, cai pro casamento por capítulo de
+    // sempre. Fica melhor conforme mais obras forem catalogadas com
+    // versículo, sem quebrar o que já funciona hoje.
+    if (parsed.verses) {
+      const withVerses = new URLSearchParams({
+        bookSlug: parsed.bookSlug,
+        chapter: String(parsed.chapter),
+        verses: parsed.verses,
+      });
+      const exactItems = await queryArtworks(withVerses, signal);
+      if (exactItems.length > 0) return exactItems;
+    }
+
+    const byChapter = new URLSearchParams({
+      bookSlug: parsed.bookSlug,
+      chapter: String(parsed.chapter),
+    });
+    return await queryArtworks(byChapter, signal);
+  } catch {
+    return [];
+  }
+}
+
+function pickArtwork(pool: Artwork[], date?: Date | string): Artwork | null {
+  if (pool.length === 0) return null;
+  const seed = getDateSeed(date);
+  const pick = pool[seed % pool.length];
+  return { ...pick, artistOrDirector: normalizeArtist(pick.artistOrDirector) };
+}
+
 export async function fetchArtworkForReference(
   ref: string,
   arg2?: AbortSignal | Date | string,
@@ -74,51 +114,17 @@ export async function fetchArtworkForReference(
     date = arg2 ?? arg3;
   }
 
-  const parsed = parseReference(ref);
-  if (!parsed) return null;
-
-  try {
-    // Curadoria do Bíblia na Arte quase nunca registra versículo exato
-    // (ver ROADMAP) — tenta mesmo assim, sem depender disso: se não achar
-    // nada nesse nível de detalhe, cai pro casamento por capítulo de
-    // sempre. Fica melhor conforme mais obras forem catalogadas com
-    // versículo, sem quebrar o que já funciona hoje.
-    if (parsed.verses) {
-      const withVerses = new URLSearchParams({
-        bookSlug: parsed.bookSlug,
-        chapter: String(parsed.chapter),
-        verses: parsed.verses,
-      });
-      const exactItems = await queryArtworks(withVerses, signal);
-      if (exactItems.length > 0) {
-        const seed = getDateSeed(date);
-        const exact = exactItems[seed % exactItems.length];
-        return { ...exact, artistOrDirector: normalizeArtist(exact.artistOrDirector) };
-      }
-    }
-
-    const byChapter = new URLSearchParams({
-      bookSlug: parsed.bookSlug,
-      chapter: String(parsed.chapter),
-    });
-    const chapterItems = await queryArtworks(byChapter, signal);
-    if (chapterItems.length === 0) return null;
-
-    const seed = getDateSeed(date);
-    const byChapterMatch = chapterItems[seed % chapterItems.length];
-    return {
-      ...byChapterMatch,
-      artistOrDirector: normalizeArtist(byChapterMatch.artistOrDirector),
-    };
-  } catch {
-    return null;
-  }
+  return pickArtwork(await getPoolForReference(ref, signal), date);
 }
 
-/** Tenta cada referência do dia em ordem até achar uma pintura — a leitura
- *  do Evangelho costuma ter mais obras catalogadas que a do Antigo
- *  Testamento, então usar só a primeira leitura (como antes) deixava
- *  passar match bom nas outras. */
+/** Tenta cada referência do dia e fica com a que tem o MAIOR número de
+ *  obras catalogadas — é a única que consegue variar dia após dia.
+ *
+ *  Antes, o loop parava na PRIMEIRA referência com qualquer obra: numa
+ *  semana útil, se a 1ª leitura tivesse 1 obra e o Evangelho tivesse 13, a
+ *  mesma pintura aparecia a semana inteira (o date-seed `% 1` sempre cai no
+ *  mesmo). Preferir o pool maior faz o Evangelho de Marcos (13 obras) vencer
+ *  sobre 2 Pedro 3 (1 obra), devolvendo a rotação diária. */
 export async function fetchArtworkForReferences(
   refs: string[],
   arg2?: AbortSignal | Date | string,
@@ -134,9 +140,12 @@ export async function fetchArtworkForReferences(
     date = arg2 ?? arg3;
   }
 
+  let bestPool: Artwork[] = [];
   for (const ref of refs) {
-    const artwork = await fetchArtworkForReference(ref, signal, date);
-    if (artwork) return artwork;
+    const pool = await getPoolForReference(ref, signal);
+    if (pool.length > bestPool.length) bestPool = pool;
+    if (bestPool.length >= 3) break; // já garante rotação diária; evita chamadas desnecessárias
   }
-  return null;
+
+  return pickArtwork(bestPool, date);
 }
