@@ -2593,3 +2593,31 @@ recalculando em paralelo esperando bater.
 
 Ver também: `biblia-na-arte/docs/ROADMAP.md`, seção "Pintura do Dia
 ligada à leitura litúrgica" (lado recíproco).
+
+## Afinidade litúrgica + publicação automática (2026-09-03)
+
+Pergunta do Rilson depois do item acima: "como você garante que
+realmente estamos seguindo o calendário litúrgico?" — verificado com
+fonte externa (Páscoa e ciclo A/B/C batem com fontes publicadas
+independentes, ver detalhe em `biblia-na-arte/docs/ROADMAP.md`). Isso
+expôs um problema real de afinidade (casamento por capítulo inteiro
+mistura pericopes sem relação, ex.: João 1 no Natal trazendo Paixão
+junto com Natividade) — corrigido **do lado do Bíblia na Arte**
+(interseção com tema da estação + alargamento pra estação inteira em
+dias de pool pequeno), ver a seção "Afinidade litúrgica da Pintura do
+Dia" lá.
+
+- [x] `scripts/export-daily-refs.ts` estendido: cada data agora exporta
+      `{season, refs[]}`, não só `refs[]` — a estação (calculada por
+      `getLiturgicalSeason`, já existente e testado aqui) é o que o
+      Bíblia na Arte usa pra decidir qual tema interseccionar e o que
+      juntar ao alargar o pool.
+
+**Motivo real por trás de querer isso bem afinado**: o Rilson quer
+reativar [@artecristadiaria](https://www.instagram.com/artecristadiaria/)
+(Instagram/Facebook) publicando automaticamente, todo dia, a MESMA
+Pintura do Dia que aparece aqui e no Bíblia na Arte — arquitetura e
+viabilidade (grátis, sem App Review pra uso próprio, GitHub Actions
+agendado) documentadas em `biblia-na-arte/docs/ROADMAP.md`, seção
+"Publicação automática — Arte Cristã Diária". Não implementado ainda —
+depende de passos que só o Rilson pode fazer no Meta for Developers.
