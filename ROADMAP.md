@@ -2631,3 +2631,45 @@ piorava a afinidade em Tempo Comum — os dois corrigidos, ver
 `biblia-na-arte/docs/ROADMAP.md`, seção "Pintura do Dia mostrando
 obras sem relação nenhuma entre os dois projetos". Nada mudou deste
 lado — o Lecionário já usava hora local corretamente.
+
+## Notificação "Domingo" fixa chegando todo dia, junto com a de hoje (2026-09-03)
+
+Achado do Rilson usando o app de verdade: mesmo com o fix de
+notificação duplicada de 01/09 (`migrateLegacyNotifications`, já
+conectada no `App.tsx`), continuava chegando uma notificação fixa
+"Domingo" todo dia, junto com a de hoje. Investigado: o código do fix
+anterior estava certo em intenção, mas tinha uma fragilidade real — a
+migração só cancelava notificações órfãs **uma vez** (guardada por
+flag em AsyncStorage); se essa única tentativa falhasse
+silenciosamente por qualquer motivo (try/catch "best-effort", timing
+de OTA, etc.), nada mais tentava de novo depois, e a órfã ficava presa
+pra sempre.
+
+- [x] **Cancelamento sempre total, não mais seletivo por ID.**
+      `scheduleDailyNotifications` (que já roda toda vez que a janela é
+      renovada) trocou o cancelamento "só os IDs que o próprio app
+      lembra de ter criado" por `cancelAllScheduledNotificationsAsync()`
+      — alcança qualquer notificação órfã, de qualquer origem, sem
+      depender de bookkeeping próprio. Seguro aqui: confirmado que este
+      app só agenda UM tipo de notificação (a leitura diária), nenhuma
+      outra categoria pra proteger de um cancelamento total.
+- [x] **`migrateLegacyNotifications` removida** — virou redundante:
+      como todo (re)agendamento agora já cancela tudo primeiro, não
+      precisa mais de uma migração pontual em separado. Substituída por
+      `syncNotificationsOnLaunch()`, chamada uma vez por cold start
+      (não fica esperando a janela "quase acabar" pra agir, ao
+      contrário do `renewNotificationsWindow` que continua rodando só
+      no retorno ao primeiro plano, mais barato pra rodar com
+      frequência maior).
+- [x] Testes: `scheduleDailyNotifications` confirmando cancelamento
+      total (não seletivo); `syncNotificationsOnLaunch` com
+      habilitado/desabilitado/settings corrompidos. 82 testes verdes
+      (suíte inteira), typecheck/lint limpos.
+- [ ] **Não confirmado se resolve 100% pro Rilson especificamente** —
+      o fix de 01/09 já estava no ar há 2 dias sem resolver, então a
+      causa pode ser mais sutil que só "a migração falhou uma vez"
+      (ex.: OTA não tinha aplicado de verdade no aparelho dele ainda).
+      A blindagem agora é auto-curativa a cada abertura do app
+      (independente de qualquer migração ter funcionado no passado),
+      então deve resolver de qualquer forma — mas vale confirmar depois
+      do próximo OTA chegar.

@@ -4,9 +4,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { buildNotificationWindow, type NotificationDayPayload } from '@/lib/notification-window';
 
 const SETTINGS_STORAGE_KEY = '@lecionario:settings';
-const STORAGE_KEY = '@lecionario:notification-ids';
-const LEGACY_STORAGE_KEY = '@lecionario:notification-id';
-const MIGRATION_KEY = '@lecionario:notifications-migrated-v2';
 const RENEW_AT_REMAINING = 3;
 
 export type { NotificationDayPayload };
@@ -21,16 +18,16 @@ Notifications.setNotificationHandler({
   }),
 });
 
-async function readStoredIds(): Promise<string[]> {
-  const raw = await AsyncStorage.getItem(STORAGE_KEY);
-  if (!raw) return [];
+async function readSettings(): Promise<{
+  notificationsEnabled?: boolean;
+  notificationTime?: string;
+} | null> {
   try {
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed)) return parsed.filter((x): x is string => typeof x === 'string');
+    const raw = await AsyncStorage.getItem(SETTINGS_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
   } catch {
-    // valor legado: id salvo como string pura (build pré-2026-08-24)
+    return null;
   }
-  return [raw];
 }
 
 async function scheduledDaysRemaining(): Promise<number> {
@@ -54,14 +51,25 @@ export async function requestNotificationPermission(): Promise<boolean> {
   return status === 'granted';
 }
 
+// Achado do Rilson (2026-09-03): mesmo com a migração pontual de versões
+// anteriores já escrita e conectada no App.tsx, uma notificação "Domingo"
+// fixa continuava chegando todo dia junto com a de hoje. Causa: a
+// migração cancelava órfãs UMA vez só (guardada por flag); se falhasse
+// silenciosamente nessa única vez (try/catch "best-effort"), nada mais
+// tentava de novo depois. Fix: cancelamento passa a ser sempre TOTAL
+// (`cancelAllScheduledNotificationsAsync`, não uma lista de IDs que o
+// próprio app lembra de ter criado) e roda toda vez que a janela é
+// (re)agendada — auto-curativo a cada ciclo, não depende de uma
+// migração ter funcionado perfeitamente uma vez só. Sem risco de
+// cancelar notificação de outra categoria por engano: este app só
+// agenda um tipo (a leitura diária).
 export async function scheduleDailyNotifications(time: string): Promise<void> {
-  await cancelAllNotifications();
+  await Notifications.cancelAllScheduledNotificationsAsync();
 
   const payloads = buildNotificationWindow(time, new Date());
 
-  const ids: string[] = [];
   for (const p of payloads) {
-    const id = await Notifications.scheduleNotificationAsync({
+    await Notifications.scheduleNotificationAsync({
       content: {
         title: p.title,
         body: p.body,
@@ -72,72 +80,33 @@ export async function scheduleDailyNotifications(time: string): Promise<void> {
         date: p.fireAt,
       },
     });
-    ids.push(id);
-  }
-
-  if (ids.length > 0) {
-    await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(ids));
   }
 }
 
 export async function cancelAllNotifications(): Promise<void> {
-  const ids = await readStoredIds();
-  for (const id of ids) {
-    await Notifications.cancelScheduledNotificationAsync(id);
-  }
-  await AsyncStorage.removeItem(STORAGE_KEY);
+  await Notifications.cancelAllScheduledNotificationsAsync();
 }
 
-// Migração única: limpa notificações órfãs deixadas por versões antigas.
-// Antes da refatoração de 2026-08-24 o app agendava UM trigger `DAILY` e
-// salvar o ID na chave SINGULAR `@lecionario:notification-id`. A refatoração
-// passou a usar triggers `DATE` e a chave PLURAL `@lecionario:notification-ids`,
-// mas nunca cancelou a `DAILY` antiga (chave singular nunca era lida). Resultado:
-// o SO repetia o payload estático da época (ex.: "Domingo") junto com a
-// notificação nova (ex.: "Terça-feira") — 2 notificações na mesma hora.
-// Como hardening, cancela também qualquer outra órfã remanescente.
-export async function migrateLegacyNotifications(): Promise<void> {
-  try {
-    if (await AsyncStorage.getItem(MIGRATION_KEY)) return;
-
-    // 1) Cancela a notificação `DAILY` legada pelo ID salvo na chave singular.
-    const legacyId = await AsyncStorage.getItem(LEGACY_STORAGE_KEY);
-    if (legacyId) {
-      try {
-        await Notifications.cancelScheduledNotificationAsync(legacyId);
-      } catch {
-        // id inexistente/expiração: ignora
-      }
-    }
-
-    // 2) Hardening: cancela qualquer órfã (DAILY legada ou de race-condition).
-    try {
-      await Notifications.cancelAllScheduledNotificationsAsync();
-    } catch {
-      // fallback silencioso
-    }
-
-    // 3) Limpa chaves legadas e marca migração como feita.
-    await AsyncStorage.removeItem(LEGACY_STORAGE_KEY);
-    await AsyncStorage.removeItem(STORAGE_KEY);
-    await AsyncStorage.setItem(MIGRATION_KEY, '1');
-  } catch {
-    // migração é best-effort; nunca deve bloquear o app
+// Chamar UMA VEZ, ao abrir o app (cold start) — garante que o estado de
+// notificações bate com a configuração salva, sem depender de nenhuma
+// migração pontual ter rodado certo no passado: se tiver ficado
+// qualquer coisa órfã agendada (de qualquer versão anterior do app),
+// esta chamada sempre limpa tudo e reagenda do zero quando habilitado.
+export async function syncNotificationsOnLaunch(): Promise<void> {
+  const settings = await readSettings();
+  if (settings?.notificationsEnabled) {
+    await scheduleDailyNotifications(settings.notificationTime ?? '06:00');
+  } else {
+    await cancelAllNotifications();
   }
 }
 
 // Renova a janela rolante se ela estiver perto de acabar. Chamar ao
-// abrir o app e ao voltar ao primeiro plano — sem isso a 8ª+ notificação
-// não teria quem re-agendasse (limitação do OTA-only: não dá pra
-// garantir renovação em background sem módulo nativo novo).
+// voltar ao primeiro plano — mais barato que `syncNotificationsOnLaunch`
+// (só reagenda quando a janela está realmente acabando), adequado pra
+// rodar com frequência (toda vez que o usuário volta pro app).
 export async function renewNotificationsWindow(): Promise<void> {
-  let settings: { notificationsEnabled?: boolean; notificationTime?: string } | null = null;
-  try {
-    const raw = await AsyncStorage.getItem(SETTINGS_STORAGE_KEY);
-    if (raw) settings = JSON.parse(raw);
-  } catch {
-    // settings corrompidos: trata como desabilitado, nada a renovar
-  }
+  const settings = await readSettings();
   if (!settings?.notificationsEnabled) return;
 
   const remaining = await scheduledDaysRemaining();

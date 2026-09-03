@@ -11,10 +11,6 @@ vi.mock('@react-native-async-storage/async-storage', () => ({
     removeItem: vi.fn(async (key: string) => {
       delete store[key];
     }),
-    getAllKeys: vi.fn(async () => Object.keys(store)),
-    multiRemove: vi.fn(async (keys: string[]) => {
-      keys.forEach((k) => delete store[k]);
-    }),
   },
 }));
 
@@ -29,7 +25,6 @@ vi.mock('expo-notifications', () => {
       scheduledIds.push(id);
       return id;
     }),
-    cancelScheduledNotificationAsync: vi.fn(async () => {}),
     cancelAllScheduledNotificationsAsync: vi.fn(async () => {}),
     getAllScheduledNotificationsAsync: vi.fn(async () => []),
     addNotificationResponseReceivedListener: vi.fn(() => ({ remove: vi.fn() })),
@@ -38,39 +33,53 @@ vi.mock('expo-notifications', () => {
 });
 
 import { buildNotificationWindow } from '../notification-window';
-import { migrateLegacyNotifications } from '../notifications';
+import { scheduleDailyNotifications, syncNotificationsOnLaunch } from '../notifications';
 
 beforeEach(() => {
   Object.keys(store).forEach((k) => delete store[k]);
   vi.clearAllMocks();
 });
 
-describe('migrateLegacyNotifications', () => {
-  it('cancela a notificação legada salva na chave singular e remove as chaves antigas', async () => {
+describe('scheduleDailyNotifications', () => {
+  it('cancela TUDO que o SO tem agendado antes de reagendar (não só IDs que o app lembra)', async () => {
+    // Achado 2026-09-03: uma notificação órfã de versão anterior (sem
+    // nenhum ID rastreado pelo app) continuava chegando todo dia porque
+    // o cancelamento antigo só olhava pra lista de IDs próprios. Agora
+    // é sempre um cancelamento total do SO, que alcança qualquer órfã.
     const NotificationsMock = await import('expo-notifications');
-    // simula o app antigo: notificação DAILY salva na chave SINGULAR
-    store['@lecionario:notification-id'] = 'legacy-daily-id';
-
-    await migrateLegacyNotifications();
-
-    expect(NotificationsMock.cancelScheduledNotificationAsync).toHaveBeenCalledWith(
-      'legacy-daily-id',
-    );
+    await scheduleDailyNotifications('06:00');
     expect(NotificationsMock.cancelAllScheduledNotificationsAsync).toHaveBeenCalled();
-    expect(store['@lecionario:notification-id']).toBeUndefined();
-    expect(store['@lecionario:notification-ids']).toBeUndefined();
-    expect(store['@lecionario:notifications-migrated-v2']).toBe('1');
+  });
+});
+
+describe('syncNotificationsOnLaunch', () => {
+  it('reagenda a janela quando notificações estão habilitadas', async () => {
+    const NotificationsMock = await import('expo-notifications');
+    store['@lecionario:settings'] = JSON.stringify({
+      notificationsEnabled: true,
+      notificationTime: '07:00',
+    });
+
+    await syncNotificationsOnLaunch();
+
+    expect(NotificationsMock.cancelAllScheduledNotificationsAsync).toHaveBeenCalled();
+    expect(NotificationsMock.scheduleNotificationAsync).toHaveBeenCalled();
   });
 
-  it('roda apenas uma vez (flag de migração) e não reprocessa', async () => {
+  it('só cancela (não reagenda) quando notificações estão desabilitadas', async () => {
     const NotificationsMock = await import('expo-notifications');
-    store['@lecionario:notifications-migrated-v2'] = '1';
-    store['@lecionario:notification-id'] = 'legacy-daily-id';
+    store['@lecionario:settings'] = JSON.stringify({ notificationsEnabled: false });
 
-    await migrateLegacyNotifications();
+    await syncNotificationsOnLaunch();
 
-    expect(NotificationsMock.cancelScheduledNotificationAsync).not.toHaveBeenCalled();
-    expect(NotificationsMock.cancelAllScheduledNotificationsAsync).not.toHaveBeenCalled();
+    expect(NotificationsMock.cancelAllScheduledNotificationsAsync).toHaveBeenCalled();
+    expect(NotificationsMock.scheduleNotificationAsync).not.toHaveBeenCalled();
+  });
+
+  it('trata settings ausentes/corrompidos como desabilitado, sem quebrar', async () => {
+    store['@lecionario:settings'] = 'não é json válido{{{';
+
+    await expect(syncNotificationsOnLaunch()).resolves.not.toThrow();
   });
 });
 

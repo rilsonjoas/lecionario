@@ -23,8 +23,8 @@ import { FontProvider } from '@/contexts/FontContext';
 import { FavoritesProvider } from '@/contexts/FavoritesContext';
 import {
   addNotificationResponseListener,
-  migrateLegacyNotifications,
   renewNotificationsWindow,
+  syncNotificationsOnLaunch,
 } from '@/lib/notifications';
 import HomeScreen from '@/screens/HomeScreen';
 import CalendarScreen from '@/screens/CalendarScreen';
@@ -148,10 +148,12 @@ function NotificationHandler() {
       navigation.navigate('Hoje', { date });
     });
 
-    // Renova a janela rolante de notificações: ao abrir o app e sempre
-    // que voltar ao primeiro plano. Trigger `DAILY` re-exibia payload
-    // estático; notificações por data precisam de re-agendamento.
-    migrateLegacyNotifications().then(() => renewNotificationsWindow());
+    // Cold start: sincroniza tudo do zero (cancela+reagenda, ou cancela
+    // se desabilitado) — garante que nenhuma notificação órfã de versão
+    // anterior sobreviva, sem depender de migração pontual (achado
+    // 2026-09-03, ver notifications.ts). Foreground: só renova a janela
+    // se estiver acabando — mais barato, roda com frequência maior.
+    syncNotificationsOnLaunch();
     const appStateSub = AppState.addEventListener('change', (state) => {
       if (state === 'active') renewNotificationsWindow();
     });
