@@ -2621,3 +2621,13 @@ viabilidade (grátis, sem App Review pra uso próprio, GitHub Actions
 agendado) documentadas em `biblia-na-arte/docs/ROADMAP.md`, seção
 "Publicação automática — Arte Cristã Diária". Não implementado ainda —
 depende de passos que só o Rilson pode fazer no Meta for Developers.
+
+**Atualização (mesmo dia)**: o Rilson pegou as duas pontas mostrando
+obras completamente sem relação (Bíblia na Arte com pragas do Egito,
+aqui com Jonas) horas depois do deploy acima. Causa raiz era do lado
+do Bíblia na Arte (calculava "hoje" em UTC, não no fuso de São Paulo
+que o dispositivo local já usa aqui) + um alargamento de pool que
+piorava a afinidade em Tempo Comum — os dois corrigidos, ver
+`biblia-na-arte/docs/ROADMAP.md`, seção "Pintura do Dia mostrando
+obras sem relação nenhuma entre os dois projetos". Nada mudou deste
+lado — o Lecionário já usava hora local corretamente.
