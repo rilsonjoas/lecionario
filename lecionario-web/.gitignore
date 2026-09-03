@@ -19,6 +19,10 @@ public/sw.js.map
 public/workbox-*.js
 public/workbox-*.js.map
 
+# Saída de scripts/export-daily-refs.ts — gerado, copiar manualmente pro
+# biblia-na-arte quando precisar ressincronizar, não faz sentido versionar.
+scripts/output/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

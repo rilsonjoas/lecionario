@@ -125,6 +125,10 @@ const deuterocanonical = new Set([
   'baruque',
 ]);
 
+// Books with a single chapter (normalized names). For these, a colon-less
+// reference like "Obadias 15-21" means verses 15-21 of chapter 1.
+const singleChapterBooks = new Set(['obadias', 'filemom', 'judas', '2joao', '3joao']);
+
 // ─── Bible XML Parser ────────────────────────────────────────────────
 
 interface BibleData {
@@ -220,6 +224,27 @@ function normalizeBookName(raw: string): string {
 function parseReference(ref: string): ParsedRef[] {
   const results: ParsedRef[] = [];
 
+  function expandVerses(spec: string): number[] {
+    const verses: number[] = [];
+    const parts = spec.split(',');
+    for (const vp of parts) {
+      const vpTrimmed = vp.trim();
+      const cleanRange = vpTrimmed.replace(/(\d+)[a-zA-Z]/g, '$1');
+      if (cleanRange.includes('-')) {
+        const rangeParts = cleanRange.split('-');
+        const start = parseInt(rangeParts[0], 10);
+        const end = parseInt(rangeParts[1], 10);
+        for (let v = start; v <= end; v++) {
+          if (!verses.includes(v)) verses.push(v);
+        }
+      } else {
+        const v = parseInt(cleanRange, 10);
+        if (!isNaN(v) && !verses.includes(v)) verses.push(v);
+      }
+    }
+    return verses;
+  }
+
   // Handle multiple references separated by semicolon
   const parts = ref.split(';');
   for (const part of parts) {
@@ -245,6 +270,13 @@ function parseReference(ref: string): ParsedRef[] {
         const normalized = normalizeBookName(rawBook);
         const bookId = bookMap[normalized];
         if (bookId) {
+          // Dual-psalm: "Salmo 42 and 43" (two whole chapters of the same book)
+          const dual = /^(.+?)\s+(\d+)\s+and\s+(\d+)$/i.exec(trimmed);
+          if (!versesPart && dual) {
+            results.push({ bookId, chapter, verses: [] });
+            results.push({ bookId, chapter: parseInt(dual[3], 10), verses: [] });
+            continue;
+          }
           if (!versesPart) {
             // Whole chapter: "Salmo 122"
             results.push({ bookId, chapter, verses: [] });
@@ -442,56 +474,69 @@ function main() {
   let totalDeut = 0;
 
   for (const cycle of cycles) {
-    const filePath = resolve(rclDir, `cycle-${cycle}.json`);
+    const cycleStats = processFile(bible, resolve(rclDir, `cycle-${cycle}.json`), cycle);
+    totalFound += cycleStats.found;
+    totalMissing += cycleStats.missing;
+    totalDeut += cycleStats.deut;
 
-    // Read the RCL data (the file format from generate-rcl-data.ts is a different
-    // structure with cycle/seasons, not the RCLYearData format)
-    const raw = JSON.parse(readFileSync(filePath, 'utf-8'));
-
-    // The generated files have format: { cycle, seasons: { advent: [...], ... } }
-    const seasons = raw.seasons as Record<string, RCLDayEntry[]>;
-    let found = 0;
-    let missing = 0;
-    let deut = 0;
-
-    for (const season of Object.keys(seasons)) {
-      const entries = seasons[season];
-      for (const entry of entries) {
-        for (const reading of entry.readings) {
-          if (reading.text) continue;
-
-          const ref = reading.ref;
-          const firstWord = normalizeBookName(ref.split(/\s+/)[0] || '');
-          if (deuterocanonical.has(firstWord)) {
-            deut++;
-            reading.text = ''; // Mark as empty but not missing
-            continue;
-          }
-
-          const text = getReferenceText(bible, ref);
-          if (text) {
-            reading.text = text;
-            found++;
-          } else {
-            missing++;
-          }
-        }
-      }
-    }
-
-    writeFileSync(filePath, JSON.stringify(raw, null, 2));
-    console.log(
-      `   Ano ${cycle}: ${found} encontrados, ${missing} não encontrados, ${deut} deuterocanônicos`,
-    );
-    totalFound += found;
-    totalMissing += missing;
-    totalDeut += deut;
+    const dailyStats = processFile(bible, resolve(rclDir, `daily-${cycle}.json`), cycle);
+    totalFound += dailyStats.found;
+    totalMissing += dailyStats.missing;
+    totalDeut += dailyStats.deut;
   }
 
   console.log(`\n📊 Resumo:`);
   console.log(`   ${totalFound} textos bíblicos inseridos`);
   console.log(`   ${totalMissing} referências não encontradas`);
   console.log(`   ${totalDeut} deuterocanônicas (ignoradas)`);
+}
+
+function processFile(
+  bible: BibleData,
+  filePath: string,
+  cycle: string,
+): { found: number; missing: number; deut: number } {
+  if (!existsSync(filePath)) {
+    console.log(`   ⚠️ ${filePath.split('/').pop()} não encontrado — pulando`);
+    return { found: 0, missing: 0, deut: 0 };
+  }
+
+  const raw = JSON.parse(readFileSync(filePath, 'utf-8'));
+  const seasons = raw.seasons as Record<string, RCLDayEntry[]>;
+  let found = 0;
+  let missing = 0;
+  let deut = 0;
+
+  for (const season of Object.keys(seasons)) {
+    const entries = seasons[season];
+    for (const entry of entries) {
+      for (const reading of entry.readings) {
+        if (reading.text) continue;
+
+        const ref = reading.ref;
+        const firstWord = normalizeBookName(ref.split(/\s+/)[0] || '');
+        if (deuterocanonical.has(firstWord)) {
+          deut++;
+          reading.text = ''; // Mark as empty but not missing
+          continue;
+        }
+
+        const text = getReferenceText(bible, ref);
+        if (text) {
+          reading.text = text;
+          found++;
+        } else {
+          missing++;
+        }
+      }
+    }
+  }
+
+  writeFileSync(filePath, JSON.stringify(raw, null, 2));
+  console.log(
+    `   ${filePath.split('/').pop()} (${cycle}): ${found} encontrados, ${missing} não encontrados, ${deut} deuterocanônicos`,
+  );
+  return { found, missing, deut };
 }
 
 main();

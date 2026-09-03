@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, Linking, StyleSheet } from 'react-
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
-import { fetchArtworkForReferences, type Artwork } from '@/lib/artwork-fetcher';
+import { fetchDailyArtwork, type Artwork } from '@/lib/artwork-fetcher';
 
 // As imagens do Bíblia na Arte moram no domínio do site (Next.js, pasta
 // `public/images`), não no da API — a API só devolve o caminho relativo
@@ -11,9 +11,6 @@ import { fetchArtworkForReferences, type Artwork } from '@/lib/artwork-fetcher';
 const BIBLE_ART_WEB_BASE = 'https://biblianaarte.narniano.com';
 
 interface Props {
-  // Referências das leituras do dia, na ordem em que aparecem (1ª leitura,
-  // salmo, epístola, evangelho) — tenta cada uma até achar uma pintura.
-  references: string[];
   date?: Date | string;
 }
 
@@ -21,11 +18,18 @@ function formatReference(ref: { book: string; chapter: number; verses: string | 
   return ref.verses ? `${ref.book} ${ref.chapter}:${ref.verses}` : `${ref.book} ${ref.chapter}`;
 }
 
-export function ArtCard({ references, date }: Props) {
+export function ArtCard({ date }: Props) {
   const colors = useThemeColors();
   const { scale } = useFontScale();
   const [artwork, setArtwork] = useState<Artwork | null>(null);
   const [aspectRatio, setAspectRatio] = useState<number | null>(null);
+  // Achado do Rilson (ROADMAP 2026-09-02): imagem sumia em alguns dias
+  // sem motivo de dado (obra e imageUrl vinham certos da API) — sem
+  // callback de erro no `Image`, uma falha transitória de rede deixava
+  // o card sem imagem pra sempre. `imageFailed` guarda esse estado só
+  // depois de 1 retry.
+  const [imageFailed, setImageFailed] = useState(false);
+  const [imageAttempt, setImageAttempt] = useState(0);
 
   const dateStr = date
     ? typeof date === 'string'
@@ -37,36 +41,36 @@ export function ArtCard({ references, date }: Props) {
 
   useEffect(() => {
     const ctrl = new AbortController();
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- limpa pintura anterior ao trocar de data/referências
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- limpa pintura anterior ao trocar de data
     setArtwork(null);
     setAspectRatio(null);
-    fetchArtworkForReferences(references, ctrl.signal, date)
-      .then((art) => {
-        if (!ctrl.signal.aborted) {
-          setArtwork(art);
-          if (art?.imageUrl) {
-            Image.getSize(
-              `${BIBLE_ART_WEB_BASE}${art.imageUrl}`,
-              (w, h) => {
-                if (!ctrl.signal.aborted && w > 0 && h > 0) {
-                  setAspectRatio(w / h);
-                }
-              },
-              () => {},
-            );
-          } else {
-            setAspectRatio(null);
-          }
-        }
-      })
-      .catch(() => {});
+    setImageFailed(false);
+    setImageAttempt(0);
+    fetchDailyArtwork(date, ctrl.signal).then((art) => {
+      if (ctrl.signal.aborted) return;
+      setArtwork(art);
+      if (art?.imageUrl) {
+        Image.getSize(
+          `${BIBLE_ART_WEB_BASE}${art.imageUrl}`,
+          (w, h) => {
+            if (!ctrl.signal.aborted && w > 0 && h > 0) {
+              setAspectRatio(w / h);
+            }
+          },
+          () => {},
+        );
+      } else {
+        setAspectRatio(null);
+      }
+    });
     return () => ctrl.abort();
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- refs e data controlados por dependências explícitas
-  }, [references.join('|'), dateStr]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- data controlada pela dependência explícita
+  }, [dateStr]);
 
   if (!artwork) return null;
 
-  const imageUrl = artwork.imageUrl ? `${BIBLE_ART_WEB_BASE}${artwork.imageUrl}` : null;
+  const imageUrl =
+    artwork.imageUrl && !imageFailed ? `${BIBLE_ART_WEB_BASE}${artwork.imageUrl}` : null;
 
   // A obra específica, não a home — é lá que tem os detalhes (comentário,
   // outras referências, licença), achado do Rilson (2026-08-23).
@@ -86,9 +90,17 @@ export function ArtCard({ references, date }: Props) {
           ]}
         >
           <Image
+            key={imageAttempt}
             source={{ uri: imageUrl }}
             style={[styles.image, aspectRatio ? { aspectRatio } : { height: 220 }]}
             resizeMode="contain"
+            onError={() => {
+              // 1 retry (rede instável costuma ser transitória); se
+              // falhar de novo, some com a mesma graça de sempre em vez
+              // de deixar o card sem imagem pra sempre.
+              if (imageAttempt === 0) setImageAttempt(1);
+              else setImageFailed(true);
+            }}
           />
         </View>
       )}

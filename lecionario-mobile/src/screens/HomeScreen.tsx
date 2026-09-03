@@ -547,10 +547,7 @@ export default function HomeScreen() {
                       BÍBLIA NA ARTE
                     </Text>
                   </View>
-                  <ArtCard
-                    references={devotional.readings.map((r) => r.reference)}
-                    date={currentDate}
-                  />
+                  <ArtCard date={currentDate} />
                 </View>
               )}
             </>

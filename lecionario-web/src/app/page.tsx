@@ -363,10 +363,7 @@ function HomeContent() {
 
             {/* Pintura do dia — Bíblia na Arte (paridade com o mobile, 2026-08-23) */}
             <ErrorBoundary name="Pintura do Dia">
-              <ArtSection
-                references={devotional.readings.map((r) => r.reference)}
-                date={currentDate}
-              />
+              <ArtSection date={currentDate} />
             </ErrorBoundary>
           </div>
         </main>

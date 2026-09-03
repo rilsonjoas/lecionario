@@ -13,6 +13,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "validate:content": "vitest run src/lib/__tests__/content-validation.test.ts",
+    "export:daily-refs": "npx tsx scripts/export-daily-refs.ts",
     "docker:build": "docker build -t lecionario-web .",
     "docker:run": "docker run -p 3000:3000 lecionario-web",
     "prepare": "husky"

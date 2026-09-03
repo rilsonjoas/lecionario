@@ -1,158 +1,59 @@
-import { describe, it, expect, vi, afterEach } from 'vitest';
-import {
-  fetchArtworkForReference,
-  fetchArtworkForReferences,
-  type Artwork,
-} from '../artwork-fetcher';
+import { describe, expect, it, vi, afterEach } from 'vitest';
+import { fetchDailyArtwork } from '../artwork-fetcher';
 
-function makeArtwork(overrides: Partial<Artwork> = {}): Artwork {
-  return {
-    id: '1',
-    title: 'Cristo no Getsêmani',
-    subtitle: null,
-    artistOrDirector: 'Wikimedia Commons / Hermann Clementz',
-    year: '1900',
-    imageUrl: '/images/hermann-clementz.webp',
-    description: 'desc',
-    sourceUrl: null,
-    references: [{ book: 'Mateus', chapter: 26, verses: null }],
-    ...overrides,
-  };
-}
+const mockArtwork = {
+  id: 'abc123',
+  title: 'O bom samaritano',
+  subtitle: null,
+  artistOrDirector: 'Museu / Aimé Morot',
+  year: '1880',
+  imageUrl: '/images/aime-morot-o-bom-samaritano.webp',
+  description: '',
+  sourceUrl: null,
+  references: [{ book: 'Lucas', chapter: 10, verses: '34' }],
+};
 
-function mockFetchOnce(response: { items: Artwork[] }, ok = true) {
-  return vi.fn().mockResolvedValueOnce({
-    ok,
-    json: async () => response,
-  });
-}
-
-describe('fetchArtworkForReference', () => {
-  afterEach(() => {
-    vi.unstubAllGlobals();
-  });
-
-  it('retorna null pra referência que não casa com nenhum livro conhecido', async () => {
-    const result = await fetchArtworkForReference('Livro Fantasia 1:1');
-    expect(result).toBeNull();
-  });
-
-  it('tenta o match por versículo primeiro; usa se achar', async () => {
-    const artwork = makeArtwork();
-    const fetchMock = mockFetchOnce({ items: [artwork] });
-    vi.stubGlobal('fetch', fetchMock);
-
-    const result = await fetchArtworkForReference('Mateus 26:39');
-
-    expect(result?.id).toBe('1');
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(fetchMock.mock.calls[0][0]).toContain('verses=39');
-  });
-
-  it('sem match por versículo, cai pro match por capítulo (sem quebrar)', async () => {
-    const artwork = makeArtwork();
-    const fetchMock = vi
-      .fn()
-      .mockResolvedValueOnce({ ok: true, json: async () => ({ items: [] }) }) // tentativa com verses
-      .mockResolvedValueOnce({ ok: true, json: async () => ({ items: [artwork] }) }); // fallback por capítulo
-    vi.stubGlobal('fetch', fetchMock);
-
-    const result = await fetchArtworkForReference('Mateus 26:39');
-
-    expect(result?.id).toBe('1');
-    expect(fetchMock).toHaveBeenCalledTimes(2);
-    expect(fetchMock.mock.calls[0][0]).toContain('verses=39');
-    expect(fetchMock.mock.calls[1][0]).not.toContain('verses=');
-  });
-
-  it('referência sem versículo (ex.: Salmo) só consulta por capítulo', async () => {
-    const artwork = makeArtwork({ references: [{ book: 'Salmos', chapter: 122, verses: null }] });
-    const fetchMock = mockFetchOnce({ items: [artwork] });
-    vi.stubGlobal('fetch', fetchMock);
-
-    const result = await fetchArtworkForReference('Salmo 122');
-
-    expect(result?.id).toBe('1');
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(fetchMock.mock.calls[0][0]).not.toContain('verses=');
-  });
-
-  it('normaliza o nome do artista removendo prefixo "fonte / "', async () => {
-    const artwork = makeArtwork({ artistOrDirector: 'Wikimedia Commons / Hermann Clementz' });
-    vi.stubGlobal('fetch', mockFetchOnce({ items: [artwork] }));
-
-    const result = await fetchArtworkForReference('Salmo 122');
-
-    expect(result?.artistOrDirector).toBe('Hermann Clementz');
-  });
-
-  it('retorna null quando a API responde com erro', async () => {
-    vi.stubGlobal('fetch', vi.fn().mockResolvedValueOnce({ ok: false, json: async () => ({}) }));
-
-    const result = await fetchArtworkForReference('Salmo 122');
-
-    expect(result).toBeNull();
-  });
+afterEach(() => {
+  vi.restoreAllMocks();
 });
 
-describe('fetchArtworkForReferences', () => {
-  afterEach(() => {
-    vi.unstubAllGlobals();
-  });
-
-  it('tenta cada referência em ordem até achar uma pintura', async () => {
-    const artwork = makeArtwork({ references: [{ book: 'Mateus', chapter: 26, verses: null }] });
-    const fetchMock = vi
-      .fn()
-      // "Isaías 2:1-5" (1ª leitura): sem versículo, sem capítulo — 1 chamada
-      .mockResolvedValueOnce({ ok: true, json: async () => ({ items: [] }) })
-      // "Salmo 122": sem versículo — 1 chamada
-      .mockResolvedValueOnce({ ok: true, json: async () => ({ items: [] }) })
-      // "Mateus 24:36-44" (evangelho): tenta versículo (vazio), cai pro capítulo (acha)
-      .mockResolvedValueOnce({ ok: true, json: async () => ({ items: [] }) })
-      .mockResolvedValueOnce({ ok: true, json: async () => ({ items: [artwork] }) });
+describe('fetchDailyArtwork', () => {
+  it('busca a pintura do dia no endpoint /artworks/daily do Bíblia na Arte', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => mockArtwork });
     vi.stubGlobal('fetch', fetchMock);
 
-    const result = await fetchArtworkForReferences([
-      'Isaías 2:1-5',
-      'Salmo 122',
-      'Mateus 24:36-44',
-    ]);
+    const result = await fetchDailyArtwork('2025-07-13');
 
-    expect(result?.id).toBe('1');
-    expect(fetchMock).toHaveBeenCalledTimes(4);
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringContaining('/artworks/daily?date=2025-07-13'),
+      expect.anything(),
+    );
+    // "Museu / Aimé Morot" -> só o que vem depois da "/" (mesma
+    // normalização de sempre, ver `normalizeArtist`).
+    expect(result?.artistOrDirector).toBe('Aimé Morot');
+    expect(result?.title).toBe('O bom samaritano');
   });
 
-  it('retorna null se nenhuma das referências achar pintura', async () => {
-    vi.stubGlobal(
-      'fetch',
-      vi.fn().mockResolvedValue({ ok: true, json: async () => ({ items: [] }) }),
-    );
-
-    const result = await fetchArtworkForReferences(['Isaías 2:1-5', 'Salmo 122']);
-
-    expect(result).toBeNull();
+  it('devolve null quando a API responde erro', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false }));
+    expect(await fetchDailyArtwork('2026-01-01')).toBeNull();
   });
 
-  it('rotaciona obra de forma determinística quando diferentes datas são passadas', async () => {
-    const art1 = makeArtwork({ id: '1', title: 'Obra 1' });
-    const art2 = makeArtwork({ id: '2', title: 'Obra 2' });
-    const art3 = makeArtwork({ id: '3', title: 'Obra 3' });
+  it('devolve null quando o fetch lança (rede fora, offline)', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('offline')));
+    expect(await fetchDailyArtwork('2026-01-01')).toBeNull();
+  });
 
-    vi.stubGlobal(
-      'fetch',
-      vi.fn().mockResolvedValue({ ok: true, json: async () => ({ items: [art1, art2, art3] }) }),
+  it('usa a data de hoje quando nenhuma é passada', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => mockArtwork });
+    vi.stubGlobal('fetch', fetchMock);
+
+    await fetchDailyArtwork();
+
+    const todayISO = new Date().toISOString().split('T')[0];
+    expect(fetchMock).toHaveBeenCalledWith(
+      expect.stringContaining(`/artworks/daily?date=${todayISO}`),
+      expect.anything(),
     );
-
-    const resDay1 = await fetchArtworkForReferences(['Salmo 122'], undefined, '2026-08-24');
-    const resDay2 = await fetchArtworkForReferences(['Salmo 122'], undefined, '2026-08-25');
-    const resSameDay1 = await fetchArtworkForReferences(['Salmo 122'], undefined, '2026-08-24');
-
-    expect(resDay1?.id).toBeDefined();
-    expect(resDay2?.id).toBeDefined();
-    // Re-consultar o mesmo dia garante a mesma obra
-    expect(resDay1?.id).toBe(resSameDay1?.id);
-    // Dias consecutivos retornam obras diferentes quando há múltiplas disponíveis
-    expect(resDay1?.id).not.toBe(resDay2?.id);
   });
 });

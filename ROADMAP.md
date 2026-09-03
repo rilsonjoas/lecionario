@@ -1319,6 +1319,25 @@ litúrgicos.
       representativo de cada ciclo.
 - [ ] **Conteúdo: texto bíblico PT (~1350 passagens feriais)** — etapa 2
       do incremental
+      > **Status (2026-09-01): EM ANDAMENTO — parado num ponto
+      > intermediário.** `lookup-bible-text.ts` estendido: `main()` agora
+      > processa `cycle-` e `daily-{A,B,C}.json` (helper `processFile`).
+      > 1ª rodada preencheu **2525 textos** (A:878, B:861, C:786). Restam
+      > **gaps reais de parsing** para resolver:
+      > 1. Dual-psalm `Salmo 42 and 43` (3x no Ano C, semana 6) — o branch
+      >    atual captura "Salmo 42 and" como nome do livro.
+      > 2. Livros de capítulo único: `Obadias 15-21` (2026-07-15),
+      >    `Judas 17-25` (2026-10-12), `3 João 9-12` (2026-10-15) —
+      >    interpretados como capítulo inexistente.
+      > 3. `Sabedoria 4:7-15` (2025-12-26) — deuterocanônico, texto vazio
+      >    intencional (não está na ARC). OK manter.
+      > **Estado do arquivo:** `expandVerses` e `singleChapterBooks`
+      > (obadias/filemom/judas/2joao/3joao) JÁ adicionados; falta **um único
+      > edit** no branch sem dois-pontos do `parseReference` (mover detecção
+      > do dual-psalm p/ antes do match + usar `singleChapterBooks`/
+      > `expandVerses`). Depois: rodar script, revisar diff, sincronizar
+      > web→mobile, testar/lint, fechar este item e revalidar 5.1.
+      > Sem commits novos desta etapa (arquivos prev. commitados = backup).
 - [ ] Revalidar com 5.1
 
 > **Status (2026-09-01): ETAPA 1 CONCLUÍDA (cobertura = só os anos
@@ -2301,7 +2320,9 @@ Google" não é viável em iOS de qualquer forma.
       servidor); (5) nota na tela Sobre do mobile. A política atual é
       verdadeira pra realidade atual — o gatilho garante que não fique
       mentira quando a realidade mudar
-- [ ] **Biblioteca: favicons circulares** — estilo mais premium, consistente com o Design Narniano.
+- [x] ~~**Biblioteca: favicons circulares**~~ — duplicata do item acima
+      ("Favicons da Biblioteca em formato circular", RESOLVIDO 2026-08-22).
+      Encerrada aqui p/ não gerar estado conflitante.
 
 ### 🔵 Padrão cruzado — ver também
 
@@ -2456,3 +2477,119 @@ Google" não é viável em iOS de qualquer forma.
 
 - Doação: botão discreto, tom de "sustentar o ministério" (nunca paywall) — [x] fase 1 implementada em 2026-08-22: página `/apoiar` no web (QR Pix estático) + cópia do código Pix no app (ver item "Doação voluntária" na seção de fases)
 - Afiliado: livros devocionais/litúrgicos na Amazon reusando a tag `rilson-20` do Gerador
+
+---
+
+## Pintura do Dia sumindo em alguns dias + sincronizar com Bíblia na Arte (2026-09-02)
+
+Achado do Rilson usando o app: em alguns dias a imagem da Pintura do Dia
+não aparece, mas título/artista continuam (`ArtSection.tsx` web e
+`ArtCard.tsx` mobile só escondem a IMAGEM se `artwork.imageUrl` for
+falsy — o resto do card é incondicional). Pedido junto: no futuro,
+sincronizar a Pintura do Dia com o Bíblia na Arte, usando a lógica do
+Lecionário (ligada à leitura do dia) como a "certa" pras duas pontas —
+com implementação sólida, não gambiarra.
+
+### Diagnóstico da imagem sumindo (investigado antes de propor fix)
+
+Testado direto contra a API de produção do Bíblia na Arte antes de
+supor qualquer coisa:
+
+- Extraí as **2142 referências** de leitura de `cycle-A/B/C.json` +
+  `daily-A/B/C.json`, reduzi a **830 pares únicos livro+capítulo** (via
+  `bible-books.ts` real, não uma tabela inventada) e bati CADA um contra
+  `GET /artworks?bookSlug=...&chapter=...` — **zero** obras retornadas
+  com `imageUrl` nulo/vazio. Também conferi uma amostra de 100 obras do
+  catálogo geral com `HEAD` request pro arquivo `.webp` real — **zero**
+  404. Ou seja: hoje, com o reseed desta sessão, não existe o caso
+  "banco diz que tem imagem mas o arquivo não existe" nem "obra sem
+  campo imageUrl" pras referências que o lecionário usa.
+- **Causa mais provável, então: não é dado, é resiliência do
+  cliente.** Nem `ArtSection.tsx` nem `ArtCard.tsx` têm `onError` na
+  imagem — se o carregamento falhar por qualquer motivo transitório
+  (rede instável no mobile, cold start do domínio de imagens, timeout),
+  o `<img>`/`<Image>` fica em branco pra sempre, sem retry e sem
+  indicar que algo falhou, enquanto o resto do card (que já veio
+  resolvido no state `artwork`) segue mostrando normal. Bate exatamente
+  com o sintoma relatado.
+- **Achado incidental no caminho**: `bible-books.ts` (`BOOK_MAP`) não
+  tem entrada para livros deuterocanônicos — `Sabedoria 4:7-15` (usado
+  em alguma leitura feria do lecionário) não resolve, `parseReference`
+  devolve `null`, e essa leitura específica contribui pool zero pro
+  sorteio do dia (não quebra nada sozinho porque outras leituras do
+  mesmo dia cobrem, mas reduz a "melhor obra do dia" disponível sempre
+  que a leitura principal for de um livro fora do cânone protestante).
+
+### Fix da imagem sumindo — IMPLEMENTADO (2026-09-02)
+
+- [x] `onError` em `ArtSection.tsx` (web) e `ArtCard.tsx` (mobile): 1
+      retry automático (troca a `key` do `<img>`/`<Image>` pra forçar
+      recarregar a mesma URL) e, se falhar de novo, `imageFailed` some
+      com a mesma elegância de hoje — sem quebrar layout, sem ícone de
+      imagem quebrada.
+- [x] ~~Completar `BOOK_MAP` com os livros deuterocanônicos~~ —
+      **superado pela mudança de arquitetura abaixo**: `bible-books.ts`
+      foi removido dos dois apps (a resolução livro→slug agora vive só
+      no Bíblia na Arte). E mesmo lá, não vale completar: o catálogo é
+      cânon protestante de 66 livros, `Sabedoria`/deuterocanônicos nunca
+      teriam pool de obras de qualquer forma — confirmado antes de
+      "corrigir" algo que não mudaria nenhum resultado.
+
+### Sincronizar Pintura do Dia entre os dois projetos — IMPLEMENTADO (2026-09-02)
+
+Hoje as duas pontas escolhem a obra do dia por **sorteios
+independentes** — decisão documentada e deliberada até agora
+(`biblia-na-arte/server/src/db/queries.ts`, comentário em
+`getDailyArtwork`: *"sorteio independente sobre o acervo inteiro, mesmo
+algoritmo, resultado diferente por design"*). O Rilson quer inverter
+essa decisão: as duas pontas devem mostrar a **mesma** obra no mesmo
+dia, e a lógica que deve vencer é a do Lecionário — ligada à leitura
+litúrgica do dia, não um sorteio cego sobre o catálogo inteiro.
+
+**Por que dois sorteios independentes NUNCA vão coincidir por acaso:**
+mesmo rodando o mesmo hash de data, um sorteia sobre "todo o acervo" e o
+outro sobre "o pool da leitura do dia" — universos diferentes, `seed %
+count` diferente. Sincronizar de verdade exige que só **um lugar**
+calcule a escolha e o outro **consuma** esse resultado — não as duas
+recalculando em paralelo esperando bater.
+
+**Implementado (mais sólido que a duplicação client-side de antes):**
+
+- [x] Algoritmo de escolha (pool por referência + `getDateSeed` + pick)
+      movido pra dentro do **Bíblia na Arte** — a galeria decide qual é
+      "a obra do dia", já que é dona do dado
+      (`server/src/db/queries.ts`, `getBestPoolForReferences` +
+      `getArtworkPoolForReference`, reaproveitando o `getDateSeed` que
+      já existia lá).
+- [x] Tabela `{date: refs[]}` gerada com a lógica REAL de calendário
+      litúrgico deste repo (não reimplementada do outro lado — Páscoa
+      móvel e ciclo A/B/C são contas não-triviais demais pra duplicar
+      por acaso) via `scripts/export-daily-refs.ts`
+      (`pnpm export:daily-refs`), copiada pra
+      `biblia-na-arte/server/src/data/daily-readings-refs.json`. Cobre
+      domingos/festas até 2030-11-24 e dias de semana até 2028-11-29 —
+      fora disso, degrada pro sorteio de sempre. Resync é manual
+      (rodar o script de novo + copiar), documentado no cabeçalho do
+      script — o calendário é fixo, não justifica pipeline automático.
+- [x] `getDailyArtwork(dateStr)` estendido: se a data tiver leitura
+      mapeada E algum pool não-vazio entre as referências do dia, usa
+      isso; senão cai pro sorteio de sempre sobre o acervo inteiro
+      (nunca quebra). Pool já filtra `imageUrl IS NOT NULL` — nunca
+      escolhe uma obra sem imagem pra mostrar.
+- [x] Lecionário simplificado: `artwork-fetcher.ts` (web e mobile) agora
+      só chama `GET /artworks/daily?date=` — `reference-parser.ts` e
+      `bible-books.ts` **removidos dos dois apps** (a resolução
+      livro→slug só existe mais no Bíblia na Arte). `ArtSection`/
+      `ArtCard` não recebem mais `references` como prop, só `date`.
+- [x] Efeito colateral: a Pintura do Dia do PRÓPRIO Bíblia na Arte
+      deixou de ser sorteio aleatório sem sentido — reflete a leitura
+      litúrgica real quando a data está coberta.
+- [x] Validado: `parseLectionaryRef`/`getReferencesForDate` com testes
+      unitários novos + integration test end-to-end
+      (`2025-07-13` → Lucas 10:25-37 → "O bom samaritano", prova que o
+      caminho por referência está de fato escolhendo, não caindo pro
+      fallback). Suítes completas dos três projetos (lint/typecheck/
+      test/test:integration/build) verdes depois da mudança.
+
+Ver também: `biblia-na-arte/docs/ROADMAP.md`, seção "Pintura do Dia
+ligada à leitura litúrgica" (lado recíproco).
