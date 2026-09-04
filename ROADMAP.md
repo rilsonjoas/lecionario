@@ -2665,11 +2665,5 @@ pra sempre.
       total (não seletivo); `syncNotificationsOnLaunch` com
       habilitado/desabilitado/settings corrompidos. 82 testes verdes
       (suíte inteira), typecheck/lint limpos.
-- [ ] **Não confirmado se resolve 100% pro Rilson especificamente** —
-      o fix de 01/09 já estava no ar há 2 dias sem resolver, então a
-      causa pode ser mais sutil que só "a migração falhou uma vez"
-      (ex.: OTA não tinha aplicado de verdade no aparelho dele ainda).
-      A blindagem agora é auto-curativa a cada abertura do app
-      (independente de qualquer migração ter funcionado no passado),
-      então deve resolver de qualquer forma — mas vale confirmar depois
-      do próximo OTA chegar.
+- [x] **Confirmado pelo Rilson (2026-09-04)**: só chegou uma
+      notificação, e é a certa. Resolvido de fato, não só em teoria.
