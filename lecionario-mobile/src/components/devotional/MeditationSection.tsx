@@ -6,6 +6,7 @@ import type { MeditationResource } from '@/types';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
 import { GlossaryTerm } from '@/components/GlossaryTerm';
+import { triggerHaptic } from '@/lib/haptics';
 
 interface MeditationSectionProps {
   meditation: MeditationResource;
@@ -17,6 +18,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
+    triggerHaptic('light');
     let textToCopy = `Meditação\n\n${meditation.prompt}`;
     if (meditation.questions && meditation.questions.length > 0) {
       textToCopy +=

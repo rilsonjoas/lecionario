@@ -6,6 +6,7 @@ import type { LiturgicalSeason, Reading } from '@/types';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
 import { getBadgeColors } from '@/lib/theme';
+import { triggerHaptic } from '@/lib/haptics';
 
 interface ReadingCardProps {
   reading: Reading;
@@ -44,6 +45,7 @@ export function ReadingCard({ reading, index, season }: ReadingCardProps) {
   const isPsalmResponse = reading.type === 'psalm';
 
   const handleCopy = async () => {
+    triggerHaptic('light');
     const lines = [`${config.label} — ${reading.reference}`];
     if (reading.text) lines.push('', reading.text);
     lines.push('', '— Lecionário');

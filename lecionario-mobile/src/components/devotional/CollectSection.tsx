@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
 import { GlossaryTerm } from '@/components/GlossaryTerm';
+import { triggerHaptic } from '@/lib/haptics';
 
 interface CollectSectionProps {
   collect: string;
@@ -16,6 +17,7 @@ export function CollectSection({ collect }: CollectSectionProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
+    triggerHaptic('light');
     await Clipboard.setStringAsync(
       `Oração de Coleta\n\n${collect}\n\nPor Jesus Cristo, nosso Senhor. Amém.`,
     );

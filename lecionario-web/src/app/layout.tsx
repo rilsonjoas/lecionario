@@ -36,9 +36,28 @@ export const metadata: Metadata = {
   // lecionario.app, que não é nosso (corrigido 2026-08-22 junto com o
   // sitemap.xml)
   metadataBase: new URL('https://lecionario.narniano.com'),
-  title: 'Lecionário - Devocional Litúrgico',
+  title: {
+    default: 'Lecionário — Devocional Litúrgico Diário',
+    template: '%s — Lecionário',
+  },
   description:
-    'Devocional diário imersivo baseado no calendário litúrgico. Leituras, orações e meditações seguindo o ritmo da Igreja.',
+    'Devocional diário imersivo baseado no calendário litúrgico cristão e no Lecionário Comum Revisado (RCL). Leituras bíblicas, coletas, orações e meditações.',
+  keywords: [
+    'lecionário',
+    'lecionário comum revisado',
+    'RCL',
+    'devocional litúrgico',
+    'calendário litúrgico',
+    'leituras do dia',
+    'oração diária',
+    'ofício diário',
+    'lectio divina',
+    'coleta litúrgica',
+  ],
+  authors: [{ name: 'Lecionário', url: 'https://lecionario.narniano.com' }],
+  creator: 'Narniano',
+  publisher: 'Narniano',
+  category: 'Religion & Spirituality',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -56,15 +75,25 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'pt_BR',
     url: 'https://lecionario.narniano.com',
-    title: 'Lecionário - Devocional Litúrgico',
+    title: 'Lecionário — Devocional Litúrgico Diário',
     description:
-      'Devocional diário imersivo baseado no calendário litúrgico. Leituras, orações e meditações seguindo o ritmo da Igreja.',
+      'Devocional diário imersivo baseado no calendário litúrgico cristão e no Lecionário Comum Revisado (RCL). Leituras bíblicas, coletas, orações e meditações.',
     siteName: 'Lecionário',
+    images: [
+      {
+        url: '/icons/icon-512x512.png',
+        width: 512,
+        height: 512,
+        alt: 'Logomarca do Lecionário',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Lecionário - Devocional Litúrgico',
-    description: 'Devocional diário imersivo baseado no calendário litúrgico.',
+    title: 'Lecionário — Devocional Litúrgico Diário',
+    description:
+      'Devocional diário imersivo baseado no calendário litúrgico cristão e no Lecionário Comum Revisado (RCL).',
+    images: ['/icons/icon-512x512.png'],
   },
   icons: {
     icon: [
@@ -84,6 +113,23 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Lecionário',
+  url: 'https://lecionario.narniano.com',
+  description:
+    'Devocional diário imersivo baseado no calendário litúrgico cristão e no Lecionário Comum Revisado (RCL).',
+  applicationCategory: 'LifestyleApplication',
+  operatingSystem: 'All',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'BRL',
+  },
+  inLanguage: 'pt-BR',
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -95,6 +141,12 @@ export default function RootLayout({
 
   return (
     <html lang="pt-BR" suppressHydrationWarning className={`${liturgicalClass}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${cormorantGaramond.variable} ${ebGaramond.variable} ${jetbrainsMono.variable} antialiased`}
       >

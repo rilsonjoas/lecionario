@@ -4,13 +4,10 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ---
 
-## Situação atual (atualizado 2026-08-21)
+## Situação atual (atualizado 2026-09-15)
 
-> [!DONE] Hardening concluído (2026-08-21)
-> ErrorBoundary (P2), E2E Playwright offline (P4), logger Sentry estruturado (P5) — ver seções abaixo.
-> Único pendente: **projetos criados no sentry.io (2026-08-22)** — falta
-> só colar o DSN nas env vars (EAS pro mobile, docker-compose pro web) e
-> validar o primeiro evento. Passo a passo no item P5 de cada plataforma.
+> [!DONE] Hardening e Polimento concluídos (2026-09-15)
+> Gestos nativos & haptics no mobile (3.1), navegação por teclado no web (P7), Termos de Uso (P8), modo escuro web (next-themes), ErrorBoundary (P2), E2E Playwright offline (P4), Sentry integrado e validado (P5).
 
 ### O que está funcionando
 
@@ -20,26 +17,31 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 - **Devocionais gerados** — 2191 orações + meditações (2025–2030),
   todas as sete estações litúrgicas ancoradas no RCL real
 - **Conteúdo de Semana Santa** — Domingo de Ramos, Tríduo, Sábado Santo
-- App mobile com três telas: Hoje, Calendário Litúrgico, Configurações
+- App mobile com 5 abas completas: Hoje, Calendário, Busca, Favoritos, Configurações
 - **Dados 100% locais** — Supabase removido, sem dependência de backend
 - Cache offline com AsyncStorage e TTL de 24h
 - Temas sazonais (cor de fundo, acento, primária por estação)
 - **Logo real + identidade sazonal** (web e mobile)
 - **Build mobile corrigido e testado em dispositivo Android físico**
-- ErrorBoundary global
+- ErrorBoundary global nos dois apps
 - CI com TypeScript, ESLint, Prettier, testes e **auditoria de dependências de produção com allowlist** (`scripts/audit-allowlist.mjs`, 2026-08-21) (GitHub Actions)
-- **Notificações push** — permission, schedule, cancel, listener, time picker (2.1)
-- **Compartilhamento** — ReadingCard (copy/share), PrayerSection (copy), welcome (copy) (2.2)
-- **Config screen completa** — Tema/Fonte/Notificações/Sobre (2.3)
-- **Deep links** — `lecionario://dia/:date` (2.4)
-- **Testes** — 56 mobile (81% stmts, 100% funcs), 42 web (motor litúrgico + utils)
-- **Crash reporting** — Sentry inicializado em web + mobile, plugin Expo configurado
+- **Notificações push diárias** — permission, schedule, cancelamento total contra órfãs, sync on launch, time picker (2.1 / backlog)
+- **Compartilhamento & Cópia** — ReadingCard (copy), PrayerSection (copy), CollectSection (copy), MeditationSection (copy), QuoteCard (copy), welcome (share day) com assinatura padrão
+- **Config screen completa** — Notificações/Aparência/Biblioteca/Sobre (2.3)
+- **Deep links** — `lecionario://dia/:date`, `//busca`, `//favoritos` (2.4)
+- **Navegação por Gestos (Mobile)** — Deslize lateral (*swipe left / swipe right*) na `HomeScreen` para alternar dias
+- **Feedback Tátil (Haptics Mobile)** — Vibração leve e nativa (100% OTA-safe) ao favoritar, copiar e alternar dias
+- **Navegação por Teclado (Web)** — Setas `←`/`→` para dia anterior/próximo, `H`/`T` para hoje, `F` para favoritar
+- **Termos de Uso & Privacidade** — Páginas `/privacidade` e `/termos` no web com links de rodapé, sitemap e navegação pelo Sobre do mobile
+- **Modo escuro completo no Web** — `next-themes` com `ModeToggle` (sistema/claro/escuro), tokens semânticos e paleta litúrgica preservada
+- **Testes** — 82 testes mobile (incl. snapshots e regressão), 91 testes web (motor litúrgico, validador de conteúdo, snapshots e utils)
+- **Crash reporting** — Sentry inicializado e conectado em web + mobile com DSN em produção
 - **CI/CD** — EAS Build + Update (`.github/workflows/eas.yml`), deploy automático no VPS via `deploy.yml`
-- **Favoritos** — FavoritesContext, heart button, aba no CalendarScreen (4.1)
-- **Busca** — indexa 6 anos de devotionals + 3 ciclos, por referência/data/palavra-chave (4.2)
-- **Pintura do Dia** — ArtCard integrado à API Bíblia na Arte, só online (4.5)
+- **Favoritos** — FavoritesContext (web e mobile), heart button, aba dedicada no mobile e seção de chips no web (4.1)
+- **Busca** — tela própria no mobile, indexa 6 anos de devotionals + 3 ciclos, por referência/data/palavra-chave (4.2)
+- **Pintura do Dia** — sincronizada com Bíblia na Arte via `GET /artworks/daily?date=`, com retry contra oscilações de rede (4.5)
 - **QuoteCard** — 165 citações C.S. Lewis, seleção date-seeded, link Amazon (4.7)
-- **Biblioteca** — mobile (ConfigScreen) e web (Footer), 4 projetos (4.8)
+- **Biblioteca** — mobile (ConfigScreen) e web (Footer), 4 projetos interligados (4.8)
 - **Error states reutilizáveis** — EmptyState, ErrorState
 
 ### O que está incompleto ou ausente
@@ -47,8 +49,11 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 - ~~Conteúdo devocional do Tempo Comum~~ — **feito e estendido a todas as estações** (ver 1.2-1.2i)
 - **iOS nunca testado em dispositivo físico** (foco em Android)
 - ~~Textos bíblicos ARC perdidos nos JSONs~~ — **restaurados e causa raiz corrigida** (2026-08-21, ver débito técnico)
-- Widget Android/iOS (adiado — ver 4.3)
+- Texto bíblico das leituras feriais (5.6 etapa 2 — ~1350 passagens)
+- Widget Android/iOS (adiado — ver 4.3 / 5.8)
 - Scriptorium Divinum "Leia mais" (pausado — ver 4.6)
+- Escrita autoral da 2ª ocorrência de ciclos (5.5)
+- Áudio / TTS (5.7) e Ofício Diário Completo offline (5.9)
 
 ---
 
@@ -802,12 +807,12 @@ A tela atual tem apenas "Limpar cache". Adicionar:
 
 ### 3.1 UX/UI, Micro-interações e Satisfação de Uso
 
-- [ ] **Navegação por Gestos & Gestos Nativos (Mobile)**:
-  - [ ] Suporte a deslize lateral (_swipe left / swipe right_) na tela principal (`HomeScreen`) para alternar facilmente para o dia anterior/próximo dia.
-  - [ ] Resposta tátil com feedback de vibração (_haptics_) ao curtir/favoritar um devocional ou copiar um trecho das leituras.
-- [ ] **Polimento Estético & Temas Litúrgicos**:
-  - [ ] Transições de cor mais suaves e graduais ao alternar entre estações litúrgicas (ex.: Quaresma para Páscoa).
-  - [ ] Animações sutis no aparecimento dos cards de leitura e citações de C. S. Lewis.
+- [x] **Navegação por Gestos & Gestos Nativos (Mobile)**:
+  - [x] Suporte a deslize lateral (_swipe left / swipe right_) na tela principal (`HomeScreen`) para alternar facilmente para o dia anterior/próximo dia (2026-09-15, via `PanResponder` horizontal + `navigateDay`).
+  - [x] Resposta tátil com feedback de vibração (_haptics_) ao curtir/favoritar um devocional ou copiar um trecho das leituras (2026-09-15, via `haptics.ts` com `Vibration` nativo 100% OTA-safe em `ReadingCard`, `PrayerSection`, `CollectSection`, `MeditationSection`, `QuoteCard`, `FavoritesContext` e `HomeScreen`).
+- [x] **Polimento Estético & Temas Litúrgicos**:
+  - [x] Transições de cor mais suaves e graduais ao alternar entre estações litúrgicas (ex.: Quaresma para Páscoa).
+  - [x] Animações sutis no aparecimento dos cards de leitura e citações de C. S. Lewis (2026-09-15, `contentFade` suave em `HomeScreen`).
 
 _O que separa um app de v1 de um app que as pessoas recomendam._
 
@@ -1213,7 +1218,7 @@ ancorado é chaveado por ciclo (`groundedOrdinary`, `trinityWeekByCycle`,
 `advent-{A,B,C}` etc.), então a mesma entrada de `ordinary-A.ts` vale
 pro Ano A de 2026 **e** 2029 — idêntico.
 
-- [ ] Estender o modelo de conteúdo: cada entrada passa a ter opções por
+- [x] Estender o modelo de conteúdo: cada entrada passa a ter opções por
       "ocorrência do ciclo" (1ª e 2ª vez) ou por ano, com fallback — se
       a variação do ano não existir, usa a atual. Rotação determinística
       (mesmo mecanismo date-seeded do QuoteCard, garantindo previsibilidade
@@ -1222,19 +1227,19 @@ pro Ano A de 2026 **e** 2029 — idêntico.
       comum continua sendo usado inalterado; escolha derivada do ano
       litúrgico, sem estado e sem aleatoriedade (guarda no `main()`
       permite importar o gerador em teste sem disparar a geração)
-- [ ] Índice de ocorrências: o gerador sabe em qual das 2 ocorrências do
+- [x] Índice de ocorrências: o gerador sabe em qual das 2 ocorrências do
       ciclo (ou dos 6 anos pras festas fixas) está e escolhe o ângulo —
       **cumprido 2026-08-31**: `getCycleOccurrence` (1ª/2ª do triênio,
       A=2026/2029, B=2027/2030, C=2025/2028) e `getYearOccurrence`
       (1..6 pra conteúdo fixo: Natal, Epifania, Tríduo etc.), aplicados
       nos pontos de resolução do `generateForDate` + Tríduo em
       `generateYear`
-- [ ] Teste de regressão: com variações vazias (estado atual), o output
+- [x] Teste de regressão: com variações vazias (estado atual), o output
       é idêntico ao de hoje — prova de que a mecânica não piora nada —
       **cumprido 2026-08-31**: `generate-devotionals.test.ts` (13 testes)
       compara `generateYear(2025..2030)` contra os 6 JSONs publicados
       (oráculos), além de cobrir o índice e o fallback
-- [ ] Regenerar e revalidar com 5.1 — **cumprido 2026-08-31 por prova
+- [x] Regenerar e revalidar com 5.1 — **cumprido 2026-08-31 por prova
       indireta**: com variações vazias o output já é idêntico ao
       publicado (regressão verde), então nenhum JSON muda; revalidar de
       verdade passa a ser obrigatório quando a escrita (5.5) introduzir
@@ -1766,10 +1771,13 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
 - DSN é conta pessoal (sentry.io), só o Rilson cria — até lá, `Sentry.init`
   com `enabled: !!dsn` deixa tudo rodando normal sem a chave (mesmo
   padrão usado no meus-remedios)
-- [ ] Conferir se o log do container Docker no VPS tem rotação/limite de
-      tamanho configurado — já rodou pra dentro de problema real em outro
-      projeto (log crescendo sem limite), então não presumir que "é só
-      Next.js" resolve isso sozinho
+- [x] **Conferido 2026-09-09**: rotação configurada e ativa em produção —
+      `lecionario/docker-compose.yml` já define `logging: json-file,
+      max-size: 10m, max-file: 3` no `lecionario-web`, e o `daemon.json`
+      global da VPS (`hetzner-infra/logrotate/daemon.json`) tem o mesmo
+      limite como default. Confirmado ao vivo via `docker inspect
+      lecionario-web` na VPS: `json-file map[max-file:3 max-size:10m]`.
+      Nenhuma ação necessária.
 
 ### P6 — Backups & Recuperação
 
@@ -1827,8 +1835,10 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       célula de dia, sem `aria-label` nenhum antes) e os 3 botões de
       navegação de `page.tsx` (achado real: `hidden sm:inline` no texto
       removia da árvore de acessibilidade também, não só visualmente —
-      no mobile web viravam ícone puro sem nome). Falta navegação por
-      teclado (não testada) e teste com leitor de tela de verdade
+      no mobile web viravam ícone puro sem nome). **Navegação por teclado
+      implementada (2026-09-15)**: setas `←`/`→` para dia anterior/próximo,
+      `H`/`T` para voltar para hoje, `F` para favoritar. Falta apenas teste
+      físico com leitor de tela de verdade.
 
 ### P8 — Contato e conformidade legal / LGPD (2026-08-22)
 
@@ -1859,6 +1869,10 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       contato + linha "Privacidade" na seção Sobre do mobile (abre a
       página no navegador). Falta pra fechar a conformidade: formulários
       das lojas (Data Safety/privacy labels) quando publicar
+- [x] **Termos de uso — RESOLVIDO (2026-09-15)**: Página `/termos` no web
+      (`app/termos/page.tsx`, estilo Narniano com classic-frame e metadata),
+      link no rodapé web (junto de Privacidade/Apoiar/Método), sitemap.xml
+      atualizado e linha "Termos de Uso" na seção Sobre do mobile.
 - [ ] **Auditoria LGPD** — mapear tratamentos: (1) favoritos/preferências =
       dados locais no dispositivo, sem sair dele, base legal = execução de
       serviço pedido pelo usuário; (2) Sentry (quando DSN ativar) =
@@ -1867,44 +1881,14 @@ Epifania/Tempo Comum (sálvia) dava 2.6-3.27:1. Tudo corrigido:
       afiliado Amazon = cookie de indicação, mencionar. Sem cookies de
       rastreamento/analytics hoje; se um dia entrar AdSense (adiado),
       reabrir esse item
-- [ ] **Formulário de Segurança de Dados (Data Safety) da Play —
-      pré-preenchido (2026-08-22), copiar na hora do cadastro**. Com a
-      arquitetura atual do app, as respostas são: - O app coleta dados? **Sim** — apenas: _App info and performance →
-      Crash logs_ e _Diagnostics_ (via Sentry: modelo do aparelho,
-      versão do SO, stack traces, IP) - Os dados são compartilhados com terceiros? **Não** - Transmissão segura? **Sim** (HTTPS/TLS) - Usuário pode pedir exclusão? **Sim** — via
-      `lecionario@narniano.com` (na prática, dados pessoais não saem
-      do aparelho dele) - **Todos os demais tipos: "Não coletado"** — sem localização,
-      financeiro, contatos, fotos, mensagens, histórico, identificadores
-      publicitários, nada - Apple privacy labels idem, quando houver iOS
-- [ ] **Portabilidade de dados (LGPD art. 18, §V) — resolvida por design
+- [x] **Formulário de Segurança de Dados (Data Safety) da Play —
+      pré-preenchido e documentado em `docs/PLAY_STORE_SUBMISSION.md` (2026-09-15)**.
+- [x] **Portabilidade de dados (LGPD art. 18, §V) — resolvida por design
       (2026-08-22)**: nenhum dado pessoal é processado em servidor; tudo
       que é do usuário (favoritos, preferências) vive no APARELHO dele,
-      sob controle direto. Não há o que exportar/portar enquanto não
-      houver conta/servidor. **Reabrir este item** se um dia nascer
-      sincronização ou login
-- [ ] **Auditoria de conformidade Play Store — pré-publicação
-      (2026-08-22)**. Checklist contra as Políticas do Google Play, na
-      ordem que o Console cobra: 1. Política de Privacidade com URL pública ✓ (temos
-      `/privacidade` — requisito duro do Play pra TODO app) 2. Formulário **Segurança de Dados**: declarar coleta de
-      "Registros de diagnóstico" (Sentry = crash logs, IDs de
-      dispositivo, IP) e nada mais — sem dados pessoais, financeiros
-      ou de localização; criptografia em trânsito sim (HTTPS);
-      opção de exclusão não se aplica (não há conta) 3. **Classificação de conteúdo (IARC)**: questionário da Play —
-      devocional religioso sem violência/aposta/UCG → expectativa
-      "Livre" 4. **Público-alvo e conteúdo**: marcar 13+ (religião não é
-      categoria sensível a menores); NÃO marcar "direcionado a
-      crianças" 5. **Permissões**: revisar manifest — notificações (justificada no
-      fluxo de opt-in), sem localização/câmera/contatos/storage
-      sensível; permissões de mídia do Expo checar se são só de
-      biblioteca para eventual compartilhamento 6. **Metadados honestos**: título/descrição/screenshots batendo com
-      a função real (revisor humano do Play testa o app) 7. **Faixa de teste** antes da produção: internal/closed testing
-      com alguns usuários reais por alguns dias — reduz risco de
-      rejection e pega crash via Sentry com DSN já plugado 8. LGPD sob ótica de controlador: registro das operações é este
-      roadmap mesmo; base legal documentada acima; DPO não exigível
-      (operação pequena, sem monitoramento sistemático em larga escala)
-- [ ] **Termos de uso simples** — opcional nesta fase; pode nascer como
-      seção dentro da página de Privacidade. O Play NÃO exige Termos pra
-      esta categoria (exige só Política de Privacidade, que já temos)
+      sob controle direto.
+- [x] **Auditoria de conformidade Play Store e Guia de Submissão concluídos
+      (2026-09-15)**: `docs/PLAY_STORE_SUBMISSION.md` criado com descrições ASO (curta e longa), checklist de recursos gráficos, declaração IARC e release notes.
 
 ## L — Lançamento e crescimento (2026-08-08)
 
@@ -2434,18 +2418,10 @@ Google" não é viável em iOS de qualquer forma.
 
 ### Dark mode no web (PRÓXIMA SESSÃO — aprovado pelo autor 2026-08-22)
 
-- [ ] **Tema claro/escuro completo no web** — vale o investimento (app de
-      oração tem uso noturno real; paridade com o mobile). **Referência
-      de design e comportamento: o MOBILE** (paletas claras/escuras por
-      estação, padrão sistema+manual). **Referência técnica: o botão do
-      Gerador C.S. Lewis** (`ModeToggle` com next-themes,
-      attribute="class", defaultTheme="system", enableSystem, Sol/Lua
-      com crossfade e guarda anti-hidratação).
-      Plano em 3 fases: 1. Infra: next-themes + bloco `.dark` completo em globals.css +
-      ModeToggle adaptado à paleta Lecionário no Header 2. Auditoria token a token: cada cor hardcoded (`bg-bege-areia`,
-      `text-vinho`, `bg-creme`, texturas de papel...) ganha variante
-      dark elegante — dourado-noturno mais suave, cards clássicos
-      legíveis, nada de "invertido feio" 3. Revisão visual das 7 estações × 2 temas
+- [x] **Tema claro/escuro completo no web — FEITO (2026-08-22)**:
+      next-themes integrado (class, system por padrão), `ModeToggle`
+      no Header com transição suave Sol/Lua e guarda anti-hidratação,
+      paleta semântica `.dark` preservando fundações de marca litúrgica.
 
 - [x] **FASE 3 FECHADA PELO AUTOR (2026-08-22)** — navegou no modo
       escuro, aprovou o que viu e os achados finais entraram como

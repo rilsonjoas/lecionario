@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { triggerHaptic } from '@/lib/haptics';
 
 const FAVORITES_KEY = '@lecionario:favorites';
 
@@ -21,6 +22,7 @@ export function FavoritesProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleFavorite = useCallback((dateStr: string) => {
+    triggerHaptic('selection');
     setFavorites((prev) => {
       const next = prev.includes(dateStr) ? prev.filter((d) => d !== dateStr) : [...prev, dateStr];
       AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(next));

@@ -107,6 +107,42 @@ function HomeContent() {
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
   const dateKey = format(currentDate, 'yyyy-MM-dd');
   const favorited = isFavorite(dateKey);
+
+  // Navegação por teclado global (Acessibilidade e usabilidade desktop)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Ignora atalhos se o foco estiver em campos de texto interativos
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          target.isContentEditable ||
+          target.closest('[role="dialog"]'))
+      ) {
+        return;
+      }
+
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        handleDateChange(addDays(currentDate, -1));
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        handleDateChange(addDays(currentDate, 1));
+      } else if (e.key === 'h' || e.key === 'H' || e.key === 't' || e.key === 'T') {
+        if (!isToday) {
+          e.preventDefault();
+          handleDateChange(new Date());
+        }
+      } else if (e.key === 'f' || e.key === 'F') {
+        e.preventDefault();
+        toggleFavorite(dateKey);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentDate, isToday, dateKey, toggleFavorite, handleDateChange]);
   const handleShareDay = async () => {
     if (!devotional) return;
     const d = devotional;

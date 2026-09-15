@@ -5,6 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { format } from 'date-fns';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
+import { triggerHaptic } from '@/lib/haptics';
 import quotes from '@/data/lewis-quotes.json';
 
 const AFFILIATE_TAG = 'rilson-20';
@@ -41,6 +42,7 @@ export function QuoteCard({ date }: QuoteCardProps) {
   }, [date]);
 
   const handleCopy = async () => {
+    triggerHaptic('light');
     await Clipboard.setStringAsync(
       `"${quote.quote}"\n\n— ${quote.source}, ${quote.author}\n\n— Lecionário · lecionario.narniano.com`,
     );

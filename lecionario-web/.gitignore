@@ -34,3 +34,6 @@ scripts/output/
 *.sln
 *.sw?
 
+
+# Storybook build output
+storybook-static/

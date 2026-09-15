@@ -5,6 +5,7 @@ import * as Clipboard from 'expo-clipboard';
 import type { DailyPrayer } from '@/types';
 import { useFontScale } from '@/contexts/FontContext';
 import { GlossaryTerm } from '@/components/GlossaryTerm';
+import { triggerHaptic } from '@/lib/haptics';
 
 interface PrayerSectionProps {
   prayer: DailyPrayer;
@@ -15,6 +16,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
   const { scale } = useFontScale();
 
   const handleCopy = async () => {
+    triggerHaptic('light');
     const lines = [`${prayer.title}`, '', prayer.text];
     if (prayer.author || prayer.source) {
       lines.push('', `— ${[prayer.author, prayer.source].filter(Boolean).join(' • ')}`);

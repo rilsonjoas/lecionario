@@ -11,6 +11,7 @@ import {
   Platform,
   Image,
   Animated,
+  PanResponder,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -23,6 +24,7 @@ import { getLiturgicalDayInfo } from '@/lib/liturgical-calendar';
 import { getThemeForSeason, getHeaderTextColors, getOnBrandTextColors } from '@/lib/theme';
 import { fetchDevotionalFromNetwork } from '@/lib/devotional-service';
 import { getCached, setCached, cacheKey } from '@/lib/cache';
+import { triggerHaptic } from '@/lib/haptics';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
 import { useFavorites } from '@/contexts/FavoritesContext';
@@ -170,16 +172,62 @@ export default function HomeScreen() {
     }, [route.params]),
   );
 
-  const navigateDay = (delta: number) => {
+  // Transição suave de conteúdo ao alternar entre datas
+  const contentFade = useMemo(() => new Animated.Value(1), []);
+
+  const navigateDay = useCallback((delta: number) => {
+    triggerHaptic('light');
     setLoading(true);
     setIsOffline(false);
     setCurrentDate((prev) => addDays(prev, delta));
-  };
+  }, []);
+
+  const handleGoToToday = useCallback(() => {
+    triggerHaptic('light');
+    setLoading(true);
+    setIsOffline(false);
+    setCurrentDate(new Date());
+  }, []);
+
+  // Gestos de navegação lateral (swipe left / swipe right para alternar dias)
+  const panResponder = useMemo(
+    () =>
+      PanResponder.create({
+        onMoveShouldSetPanResponder: (_evt, gestureState) => {
+          const { dx, dy } = gestureState;
+          // Captura apenas se for um gesto predominantemente horizontal
+          return Math.abs(dx) > 24 && Math.abs(dx) > Math.abs(dy) * 1.8;
+        },
+        onPanResponderRelease: (_evt, gestureState) => {
+          const { dx, vx } = gestureState;
+          const SWIPE_THRESHOLD = 50;
+          const VELOCITY_THRESHOLD = 0.25;
+
+          if (dx < -SWIPE_THRESHOLD || (dx < -20 && vx < -VELOCITY_THRESHOLD)) {
+            navigateDay(1);
+          } else if (dx > SWIPE_THRESHOLD || (dx > 20 && vx > VELOCITY_THRESHOLD)) {
+            navigateDay(-1);
+          }
+        },
+      }),
+    [navigateDay],
+  );
 
   const onRefresh = () => {
     setRefreshing(true);
     loadDevotional(currentDate, true);
   };
+
+  useEffect(() => {
+    if (!loading) {
+      contentFade.setValue(0.7);
+      Animated.timing(contentFade, {
+        toValue: 1,
+        duration: 200,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [loading, contentFade]);
 
   const handleShareDay = async () => {
     if (!devotional) return;
@@ -214,7 +262,10 @@ export default function HomeScreen() {
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.primaryColor }]}>
+    <View
+      style={[styles.container, { backgroundColor: theme.primaryColor }]}
+      {...panResponder.panHandlers}
+    >
       {/* Barra compacta fixa (2026-08-22): mesma cor da estação + véu,
           surge quando o header grande rola pra fora. Devolve ~330px de
           conteúdo na leitura sem perder identidade nem navegação */}
@@ -253,7 +304,7 @@ export default function HomeScreen() {
           </TouchableOpacity>
           {showTodayButton && (
             <TouchableOpacity
-              onPress={() => setCurrentDate(new Date())}
+              onPress={handleGoToToday}
               style={styles.compactButton}
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               accessibilityRole="button"
@@ -416,7 +467,7 @@ export default function HomeScreen() {
           {showTodayButton && (
             <TouchableOpacity
               style={[styles.todayButton, { borderColor: headerColors.bodyMuted }]}
-              onPress={() => setCurrentDate(new Date())}
+              onPress={handleGoToToday}
               hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
               accessibilityRole="button"
               accessibilityLabel="Voltar para hoje"
@@ -438,7 +489,7 @@ export default function HomeScreen() {
           )}
         </View>
 
-        <View style={styles.scrollContent}>
+        <Animated.View style={[styles.scrollContent, { opacity: contentFade }]}>
           {loading ? (
             <View style={styles.loadingContainer}>
               <ActivityIndicator size="large" color="rgba(255,255,255,0.6)" />
@@ -552,7 +603,7 @@ export default function HomeScreen() {
               )}
             </>
           )}
-        </View>
+        </Animated.View>
       </ScrollView>
     </View>
   );

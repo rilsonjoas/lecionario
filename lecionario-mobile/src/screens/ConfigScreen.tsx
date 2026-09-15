@@ -433,6 +433,22 @@ export default function ConfigScreen() {
             </Text>
           </View>
         </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.row, { borderBottomColor: colors.border }]}
+          onPress={() => Linking.openURL('https://lecionario.narniano.com/termos')}
+          accessibilityLabel="Abrir Termos de Uso no site"
+          accessibilityRole="button"
+        >
+          <MaterialCommunityIcons name="file-document-outline" size={22} color={colors.accent} />
+          <View style={styles.rowContent}>
+            <Text style={[styles.rowLabel, { color: colors.text, fontSize: scale(15) }]}>
+              Termos de Uso
+            </Text>
+            <Text style={[styles.rowHint, { color: colors.textMuted, fontSize: scale(12) }]}>
+              Termos e diretrizes do serviço
+            </Text>
+          </View>
+        </TouchableOpacity>
         <View style={[styles.row, { borderBottomColor: colors.border }]}>
           <MaterialCommunityIcons name="calendar-text" size={22} color="#4A8B4A" />
           <View style={styles.rowContent}>

@@ -1,0 +1,30 @@
+{
+  "advent": {
+    "primary": "#4A6FA5",
+    "flame": "#B49A60"
+  },
+  "christmas": {
+    "primary": "#B49A60",
+    "flame": "#F4EFE1"
+  },
+  "epiphany": {
+    "primary": "#4F6350",
+    "flame": "#B49A60"
+  },
+  "lent": {
+    "primary": "#4B2E39",
+    "flame": "#8B9094"
+  },
+  "easter": {
+    "primary": "#B49A60",
+    "flame": "#F4EFE1"
+  },
+  "pentecost": {
+    "primary": "#B7332B",
+    "flame": "#C26430"
+  },
+  "ordinary": {
+    "primary": "#4F6350",
+    "flame": "#B49A60"
+  }
+}

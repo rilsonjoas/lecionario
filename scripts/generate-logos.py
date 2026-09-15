@@ -27,28 +27,29 @@ ANDROID_RES = ROOT / "lecionario-mobile" / "android" / "app" / "src" / "main" / 
 CREME = (245, 241, 232)  # --creme / #F5F1E8
 BEIGE = (234, 224, 213)  # --bege-areia / #EAE0D5
 
+PALETTE_FILE = ROOT / "lecionario-web" / "src" / "data" / "season-palette.json"
+
 # Camadas de referência da logo original (violeta do corpo e dourado da chama)
 REF_VIOLET = (64, 16, 144)
 REF_GOLD = (176, 128, 16)
 
-# Paleta unificada (2026-08-15) — alinhada aos tokens do Design Narniano
-# e às cores litúrgicas reais (Advento = azul Sarum, não roxo/rosa).
-# (corpo, chama) — chama fica dourada/clara na maioria das estações de
-# propósito (a Palavra continua acesa); só muda de sentido na Quaresma
-# (cinza, quase se apagando) e no Pentecostes (fogo — Atos 2). Web e
-# mobile usam os mesmos valores agora; antes divergiam (ex. Quaresma).
-WEB_PALETTE = {
-    "advent": ("#4A6FA5", "#B49A60"),
-    "christmas": ("#B49A60", "#F4EFE1"),
-    "epiphany": ("#4F6350", "#B49A60"),
-    "lent": ("#4B2E39", "#8B9094"),
-    "easter": ("#B49A60", "#F4EFE1"),
-    "pentecost": ("#B7332B", "#C26430"),
-    "ordinary": ("#4F6350", "#B49A60"),
-}
+# Carrega a paleta canônica compartilhada (JSON único entre web, mobile e scripts)
+if PALETTE_FILE.exists():
+    with open(PALETTE_FILE, "r", encoding="utf-8") as f:
+        raw_palette = json.load(f)
+    WEB_PALETTE = {k: (v["primary"], v["flame"]) for k, v in raw_palette.items()}
+else:
+    WEB_PALETTE = {
+        "advent": ("#4A6FA5", "#B49A60"),
+        "christmas": ("#B49A60", "#F4EFE1"),
+        "epiphany": ("#4F6350", "#B49A60"),
+        "lent": ("#4B2E39", "#8B9094"),
+        "easter": ("#B49A60", "#F4EFE1"),
+        "pentecost": ("#B7332B", "#C26430"),
+        "ordinary": ("#4F6350", "#B49A60"),
+    }
 
 MOBILE_PALETTE = dict(WEB_PALETTE)
-
 SEASONS = list(WEB_PALETTE)
 
 # Densidades Android (ic_launcher): 48/72/96/144/192 px
