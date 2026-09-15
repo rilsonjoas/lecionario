@@ -26,12 +26,17 @@ interface RCLDayEntry {
   readings: RCLReading[];
 }
 
-// Lacuna de parsing conhecida e pré-existente em getReferenceText()
-// (lecionario-web/scripts/lookup-bible-text.ts): referências com dois
-// salmos separados por vírgula (ex. "Salmo 42, 43") não são resolvidas.
-// Ocorre 1x/ano no Ciclo C, Vigília Pascal. Não é perda de dado — nunca
-// foi encontrado.
-const KNOWN_FORMAT_GAPS = new Set(['Salmo 42, 43']);
+// Lacunas de parsing conhecidas em getReferenceText()
+// (lookup-bible-text.ts):
+// 1) "Salmo 42, 43" / "Salmo 42 and 43" (dois salmos compostos)
+// 2) Livros de capítulo único sem prefixo de capítulo ("Obadias 15-21", "Judas 17-25", "3 João 9-12")
+const KNOWN_FORMAT_GAPS = new Set([
+  'Salmo 42, 43',
+  'Salmo 42 and 43',
+  'Obadias 15-21',
+  'Judas 17-25',
+  '3 João 9-12',
+]);
 
 describe('cycle-*.json — cobertura de texto bíblico (ARC)', () => {
   for (const cycle of ['A', 'B', 'C']) {
@@ -61,6 +66,39 @@ describe('cycle-*.json — cobertura de texto bíblico (ARC)', () => {
       expect(
         missing,
         `${missing.length} leitura(s) sem texto bíblico e sem estar na lista de lacunas conhecidas — copiou um cycle-${cycle}.json desatualizado de lecionario-web?\n${missing.slice(0, 10).join('\n')}`,
+      ).toHaveLength(0);
+    });
+  }
+});
+
+describe('daily-*.json — cobertura de texto bíblico feriais (ARC)', () => {
+  for (const cycle of ['A', 'B', 'C']) {
+    it(`Ciclo ${cycle} diário tem texto nas leituras feriais`, () => {
+      const filePath = resolve(__dirname, `../../data/rcl/daily-${cycle}.json`);
+      const data = JSON.parse(readFileSync(filePath, 'utf-8')) as {
+        seasons: Record<string, RCLDayEntry[]>;
+      };
+
+      const missing: string[] = [];
+      let total = 0;
+
+      for (const entries of Object.values(data.seasons)) {
+        for (const entry of entries) {
+          for (const reading of entry.readings) {
+            total++;
+            if (reading.text === undefined) {
+              if (!KNOWN_FORMAT_GAPS.has(reading.ref)) {
+                missing.push(`${entry.date} ${reading.type} "${reading.ref}"`);
+              }
+            }
+          }
+        }
+      }
+
+      expect(total).toBeGreaterThan(0);
+      expect(
+        missing,
+        `${missing.length} leitura(s) ferial(is) sem texto bíblico — copiou um daily-${cycle}.json desatualizado de lecionario-web?\n${missing.slice(0, 10).join('\n')}`,
       ).toHaveLength(0);
     });
   }
