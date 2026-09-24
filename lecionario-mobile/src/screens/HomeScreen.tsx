@@ -559,7 +559,7 @@ export default function HomeScreen() {
                         <Text
                           style={[
                             styles.sectionHeaderBadgeText,
-                            { color: onBrand.muted, fontSize: scale(8) },
+                            { color: onBrand.muted, fontSize: scale(7) },
                           ]}
                           numberOfLines={1}
                         >
@@ -861,12 +861,12 @@ const styles = StyleSheet.create({
   sectionHeaderBadge: {
     borderWidth: 1,
     borderRadius: 999,
-    paddingHorizontal: 12,
-    paddingVertical: 5,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
   },
   sectionHeaderBadgeText: {
     textTransform: 'uppercase',
-    letterSpacing: 2,
+    letterSpacing: 1.5,
     fontWeight: '700',
   },
   quoteSectionHeader: {

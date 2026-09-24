@@ -349,14 +349,14 @@ function HomeContent() {
                   </h3>
                   <GlossaryTerm term="lectio" />
                 </div>
-                <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.25em] font-bold text-muted-foreground">
-                  <span className="rounded-full border border-accent/20 bg-accent/5 px-3 py-1">
+                <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 text-[8px] md:text-[9px] uppercase tracking-[0.15em] md:tracking-[0.2em] font-bold text-muted-foreground">
+                  <span className="rounded-full border border-accent/20 bg-accent/5 px-2.5 py-0.5">
                     Ano Litúrgico {devotional.liturgicalInfo.cycle}
                   </span>
-                  <span className="rounded-full border border-accent/20 bg-accent/5 px-3 py-1">
+                  <span className="rounded-full border border-accent/20 bg-accent/5 px-2.5 py-0.5">
                     {devotional.readings.length} Estações da Palavra
                   </span>
-                  <span className="rounded-full border border-accent/20 bg-accent/5 px-3 py-1">
+                  <span className="rounded-full border border-accent/20 bg-accent/5 px-2.5 py-0.5">
                     Textos em Almeida Revista e Corrigida
                   </span>
                 </p>
