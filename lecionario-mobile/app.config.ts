@@ -22,6 +22,7 @@ const config: ExpoConfig = {
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#F5F1E8',
+      monochromeImage: './assets/monochrome-icon.png',
     },
     edgeToEdgeEnabled: true,
     predictiveBackGestureEnabled: false,

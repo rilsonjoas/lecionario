@@ -21,7 +21,7 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 - **Dados 100% locais** — Supabase removido, sem dependência de backend
 - Cache offline com AsyncStorage e TTL de 24h
 - Temas sazonais (cor de fundo, acento, primária por estação)
-- **Logo real + identidade sazonal** (web e mobile)
+- **Logo real + identidade sazonal** (web e mobile; suporte a Ícone Temático/Monocromático no Android 13+ preparado)
 - **Build mobile corrigido e testado em dispositivo Android físico**
 - ErrorBoundary global nos dois apps
 - CI com TypeScript, ESLint, Prettier, testes e **auditoria de dependências de produção com allowlist** (`scripts/audit-allowlist.mjs`, 2026-08-21) (GitHub Actions)
@@ -755,6 +755,11 @@ que era falso)._
       `SEASON_LOGOS` declarados mas nunca renderizados no mobile)
 - [x] **Pendente de verdade resolvido (2026-08-21)**: novo build EAS
       gerado com o ícone/nome novos valendo no app instalado
+- [x] **Ícone Temático Android 13+ (Themed / Monochrome Icon — 2026-09-24)**:
+      Criado `assets/monochrome-icon.png` (máscara monocromática 1024×1024
+      com canal alfa do logo original) e configurado `monochromeImage` em
+      `lecionario-mobile/app.config.ts`. Pronto para entrar em vigor no
+      próximo build binário nativo.
 
 ---
 
