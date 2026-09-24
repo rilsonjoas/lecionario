@@ -97,7 +97,11 @@ const nextConfig = {
               // calados (sem erro visível, só a imagem/card nunca aparece).
               "img-src 'self' data: blob: https://biblianaarte.narniano.com",
               "font-src 'self'",
-              "connect-src 'self' https://*.ingest.sentry.io https://api-biblianaarte.narniano.com",
+              // Citação do dia (Scriptorium, 2026-09-24): a busca vai na API
+              // do Scriptorium (ADR 001) — sem isso o navegador bloqueia o
+              // fetch calado e o card da citação nunca aparece (mesmo bug da
+              // pintura em 2026-08-23).
+              "connect-src 'self' https://*.ingest.sentry.io https://api-biblianaarte.narniano.com https://api-scriptorium.narniano.com",
               "frame-ancestors 'none'",
             ].join('; '),
           },
