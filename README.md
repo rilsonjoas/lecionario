@@ -4,6 +4,10 @@ Aplicação de meditação diária na Palavra de Deus seguindo o Ano Litúrgico 
 
 Monorepo com aplicativo web (Next.js PWA) e mobile (Expo / React Native), compartilhando um motor litúrgico comum. **Sem dependência de backend — todos os dados são locais.**
 
+<p align="center">
+  <img src="docs/screenshots/preview.png" alt="Lecionário Preview" width="800" />
+</p>
+
 ---
 
 ## Por que isto existe

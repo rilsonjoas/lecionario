@@ -69,10 +69,18 @@ do RCL". Corrigido comparando domingo a domingo contra o RCL oficial da
 Vanderbilt Divinity Library — esse processo (fonte oficial nomeada +
 comparação exaustiva, não amostral) é o padrão a repetir.
 
-- [ ] **Reverificação periódica** — o RCL é cíclico (Ano A/B/C se
-      repetem a cada 3 anos); vale conferir de novo contra a Vanderbilt
-      quando o app entrar num ano novo do ciclo, não só confiar que a
-      correção de 2026-08-16 nunca vai regredir.
+- [ ] **Humanizer nas orações/meditações (adiado, possível no futuro)** —
+      as orações originais (~1.122) têm "cara de IA": fórmula retconto →
+      insight → Confesso/reconheço → Ensina-me/Ajuda-me → Amém, travessões
+      duplos, padrão not-X-but-Y e abertos repetidos entre domingos. Como
+      reescrever: editar a fonte em `lecionario-web/scripts/grounded-content/*.ts`,
+      regenerar com `npx tsx scripts/generate-devotionals.ts`, rodar
+      `npx prettier --write` nos `devotionals-*.json` (web e mobile; os
+      formatos dos dois projetos diferem na quebra final — usar a saída do
+      web) e copiar para `lecionario-mobile/src/data/rcl/`. **Piloto
+      concluído**: `pentecost.ts` (12 orações) reescrito e publicado nos
+      6 JSONs (2025-2030); usar como referência de tom. Meditações ainda
+      não revisadas.
 - [ ] Ver "Terminologia e tradições" (2026-08-22) abaixo — mesma
       categoria: precisão denominacional do vocabulário litúrgico.
 
@@ -2028,6 +2036,41 @@ conta local não tem (achado real: `meus-remedios/README.md`, seção
 "Decisão: Google OAuth + conta local"); (3) App Store exige "Entrar
 com Apple" se você oferece "Entrar com Google" (Guideline 4.8) — "só
 Google" não é viável em iOS de qualquer forma.
+
+---
+
+## Expansão Futura: Modo 2 — Planos de Leitura Bíblica (Navigators 4x25)
+
+> [!NOTE] Planejamento Arquitetural (absorve o projeto [[Planos Bíblicos]])
+> O dataset completo dos 12 meses (300 dias = 12 meses × 25 dias) foi extraído do `navigators-bible-reading-plan.pdf` e está estruturado e salvo em `docs/navigators-bible-reading-plan.json`. Não dependemos mais do arquivo PDF externo.
+
+### 1. Visão Geral do Método dos Navegadores
+- **4 Trilhas Diárias Simultâneas:**
+  1. *Evangelhos (Gospels):* Mateus a João
+  2. *Epístolas e Atos (Epistles & Acts):* Atos a Apocalipse
+  3. *Sabedoria e Poesia (Wisdom & Poetry):* Salmos, Provérbios, Eclesiastes, Cantares e Jó
+  4. *Antigo Testamento (OT History & Prophets):* Gênesis a Malaquias
+- **A Regra dos 25 Dias por Mês:** Cada mês possui exatamente 25 blocos numerados. Os 5 a 6 dias restantes do mês são dias livres de descanso/catch-up para reposição de leituras atrasadas, memorização e reflexão sem sentimento de culpa.
+
+### 2. Escopo Mês a Mês (Dataset Canônico em `docs/navigators-bible-reading-plan.json`)
+- **Mês 1:** Mateus 1–10 · Atos 1–15 · Salmos 1–23 · Gênesis 1–50
+- **Mês 2:** Mateus 10–21 · Atos 15–28 · Salmos 24–47 · Êxodo 1–40 / Levítico 1–27
+- **Mês 3:** Mateus 21–28 · Romanos 1–16 · Salmos 48–71 · Números 1–36 / Deuteronômio 1–34
+- **Mês 4:** Marcos 1–9 · 1 Coríntios 1–16 · Salmos 72–94 · Josué 1–24 / Juízes 1–21 / Rute 1–4
+- **Mês 5:** Marcos 9–16 · 2 Coríntios 1–13 / Gálatas 1–6 · Salmos 95–118 · 1 Samuel 1–31 / 2 Samuel 1–24
+- **Mês 6:** Lucas 1–7 · Efésios 1–6 / Filipenses 1–4 · Salmo 119 · 1 Reis 1–22 / 2 Reis 1–25
+- **Mês 7:** Lucas 7–13 · Colossenses 1–4 / 1-2 Tessalonicenses · Salmos 120–150 · 1 Crônicas 1–29 / 2 Crônicas 1–36
+- **Mês 8:** Lucas 13–20 · 1-2 Timóteo / Tito / Filemom · Provérbios 1–17 · Esdras 1–10 / Neemias 1–13 / Ester 1–10
+- **Mês 9:** Lucas 20–24 · Hebreus 1–13 · Provérbios 18–31 · Isaías 1–66
+- **Mês 10:** João 1–6 · Tiago 1–5 / 1-2 Pedro · Eclesiastes 1–12 · Jeremias 1–52 / Lamentações 1–5
+- **Mês 11:** João 7–12 · 1-3 João / Judas · Jó 1–22 · Ezequiel 1–48 / Daniel 1–12
+- **Mês 12:** João 13–21 · Apocalipse 1–22 · Jó 23–42 · Profetas Menores (Oséias a Malaquias)
+
+### 3. Diretrizes Técnicas de Implementação (Futuro)
+- **Zero Backend / 100% Offline-First:** Progresso armazenado em `localStorage` (Web) e `AsyncStorage` (Mobile).
+- **Interface Desacoplada:** Acessível via aba "Planos" no menu ou toggle em Configurações, preservando a tela inicial focada no Ano Litúrgico (RCL).
+- **Checklist 4x25:** 4 caixas interativas por dia com feedback tátil (Haptics) e barra de progresso do mês.
+- **Reuso de Conteúdo:** O texto bíblico consumido é a tradução Almeida Revista e Corrigida (ARC) já presente no repositório (`scripts/data/bible-arc.xml`).
 
 ---
 

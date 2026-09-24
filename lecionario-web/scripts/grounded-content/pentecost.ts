@@ -50,12 +50,11 @@ function t(text: string): string {
 export const pentecostSundayA: DevotionalEntry = {
   prayer: {
     title: 'Repartindo Dons, o Mesmo Espírito',
-    text: t(`Espírito Santo, hoje celebramos tua chegada visível sobre
-      a igreja — línguas de fogo, vento impetuoso, e línguas
-      compreendidas por gente de toda nação. Paulo escreve que "há
+    text: t(`Espírito Santo, o que celebramos hoje é tua chegada visível
+      sobre a igreja: línguas de fogo, vento impetuoso, homens de toda
+      nação compreendendo o que ouviam. Paulo escreve que "há
       diversidade de dons, mas o Espírito é o mesmo." Que eu reconheça
-      hoje meu próprio dom, recebido do mesmo Espírito que uniu tantas
-      línguas naquele dia. Amém.`),
+      hoje o dom que recebi desse mesmo Espírito. Amém.`),
   },
   meditation: {
     prompt: t(`Pentecostes inverte Babel: em vez de confusão que
@@ -74,13 +73,12 @@ export const pentecostSundayA: DevotionalEntry = {
 export const pentecostSundayB: DevotionalEntry = {
   prayer: {
     title: 'O Espírito Ajuda na Nossa Fraqueza',
-    text: t(`Espírito Santo, hoje celebramos tua chegada sobre a
-      igreja, mas Paulo lembra que tua obra não termina no
-      espetáculo daquele dia: "o Espírito nos ajuda na fraqueza;
-      porque não sabemos o que havemos de pedir como convém, mas o
-      Espírito mesmo intercede por nós com gemidos inexprimíveis."
-      Intercede hoje por mim, onde minhas próprias palavras não
-      alcançam. Amém.`),
+    text: t(`Espírito Santo, naquele dia o fogo caiu sobre a igreja,
+      mas Paulo lembra que tua obra não terminou no espetáculo: "o
+      Espírito nos ajuda na fraqueza; porque não sabemos o que havemos
+      de pedir como convém, mas o Espírito mesmo intercede por nós com
+      gemidos inexprimíveis." Intercede hoje por mim, onde minhas
+      palavras não alcançam. Amém.`),
   },
   meditation: {
     prompt: t(`Paulo descreve uma obra do Espírito muito mais
@@ -126,7 +124,7 @@ export const pentecostGapWeek: DevotionalEntry[] = [
     prayer: {
       title: 'Depois do Vento e do Fogo',
       text: t(`Espírito Santo, ontem celebramos teu batismo de fogo e
-        vento sobre a igreja — hoje a vida comum retoma seu ritmo.
+        vento sobre a igreja. Hoje a vida comum retoma o ritmo.
         Que eu não confunda ausência de espetáculo com ausência de
         tua presença. Continua a agir hoje, mesmo sem línguas de fogo
         visíveis. Amém.`),
@@ -167,11 +165,11 @@ export const pentecostGapWeek: DevotionalEntry[] = [
   {
     prayer: {
       title: 'Estão Cheios de Mosto',
-      text: t(`Espírito Santo, quando a igreja recebeu teu poder,
-        alguns zombaram: "estão cheios de mosto." A obra genuína de
-        Deus nem sempre é reconhecida por quem observa de fora —
-        às vezes é confundida com algo menor. Ajuda-me a não desistir
-        diante de zombaria semelhante. Amém.`),
+      text: t(`Espírito Santo, quando a igreja recebeu teu poder, alguns
+        zombaram: "estão cheios de mosto." A obra genuína de Deus nem
+        sempre é reconhecida por quem observa de fora; às vezes é
+        confundida com algo menor. Ajuda-me a não desistir diante de
+        zombaria semelhante. Amém.`),
     },
     meditation: {
       prompt: t(`A zombaria de alguns espectadores no primeiro
@@ -191,7 +189,7 @@ export const pentecostGapWeek: DevotionalEntry[] = [
       text: t(`Espírito Santo, através de Joel, prometeste: "os
         vossos filhos e as vossas filhas profetizarão, os vossos
         mancebos terão visões, os vossos anciãos terão sonhos." Um
-        derramamento que não escolhe apenas líderes estabelecidos.
+        derramamento que não favorece apenas os líderes estabelecidos.
         Que eu reconheça hoje essa mesma amplitude ao meu redor. Amém.`),
     },
     meditation: {
@@ -231,11 +229,10 @@ export const pentecostGapWeek: DevotionalEntry[] = [
     prayer: {
       title: 'Véspera da Trindade',
       text: t(`Deus Uno e Trino, amanhã celebramos o mistério da tua
-        própria natureza — Pai, Filho e Espírito Santo, um só Deus.
+        própria natureza: Pai, Filho e Espírito Santo, um só Deus.
         Esta semana inteira, desde o Pentecostes, tem sido sobre a
         obra visível do teu Espírito. Prepara meu coração para
-        contemplar amanhã o mistério mais profundo de quem tu és.
-        Amém.`),
+        contemplar amanhã o mistério de quem tu és. Amém.`),
     },
     meditation: {
       prompt: t(`O calendário litúrgico encerra deliberadamente esta
@@ -257,7 +254,7 @@ export const trinitySundayA: DevotionalEntry = {
     title: 'Façamos o Homem à Nossa Imagem',
     text: t(`Deus Uno e Trino, no relato da criação já ecoa o
       mistério que celebramos hoje: "façamos o homem à nossa imagem,
-      conforme a nossa semelhança" — uma pluralidade dentro da
+      conforme a nossa semelhança." Há uma pluralidade dentro da
       própria fala de Deus, presente desde antes de qualquer coisa
       existir. Que eu viva hoje consciente de ter sido formado à
       imagem de um Deus que, em si mesmo, já é comunhão. Amém.`),
@@ -283,8 +280,8 @@ export const trinitySundayB: DevotionalEntry = {
       clamavam: "Santo, santo, santo é o Senhor dos exércitos; a terra
       toda está cheia da sua glória." Uma tripla repetição que a
       tradição cristã ouviria depois com novos ouvidos, reconhecendo
-      nela um eco do próprio mistério trinitário. Que eu me una hoje
-      a esse louvor antigo e sempre novo. Amém.`),
+      nela um eco do próprio mistério trinitário. Que eu me una hoje a
+      esse louvor. Amém.`),
   },
   meditation: {
     prompt: t(`A tripla aclamação "santo, santo, santo" — lida hoje,

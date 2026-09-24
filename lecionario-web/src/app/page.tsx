@@ -351,7 +351,7 @@ function HomeContent() {
                 </div>
                 <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] md:tracking-[0.3em] font-bold text-muted-foreground">
                   Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length}{' '}
-                  Estações da Palavra
+                  Estações da Palavra • Textos em Almeida Revista e Corrigida
                 </p>
               </div>
 
@@ -394,8 +394,8 @@ function HomeContent() {
               </cite>
             </section>
 
-            {/* Citação diária de C.S. Lewis (paridade com o mobile) */}
-            <LewisQuoteSection date={currentDate} />
+            {/* Citação do dia — API do Scriptorium (fonte única, ADR 001) */}
+            <LewisQuoteSection />
 
             {/* Pintura do dia — Bíblia na Arte (paridade com o mobile, 2026-08-23) */}
             <ErrorBoundary name="Pintura do Dia">

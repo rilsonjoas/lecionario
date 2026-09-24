@@ -34,8 +34,9 @@ import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
 import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
-import { QuoteCard, getDailyQuote } from '@/components/QuoteCard';
+import { QuoteCard } from '@/components/QuoteCard';
 import { ArtCard } from '@/components/ArtCard';
+import { fetchDailyQuote, type DailyQuote } from '@/lib/quote-fetcher';
 import { GlossaryTerm } from '@/components/GlossaryTerm';
 import type { DailyDevotional, RootTabParamList } from '@/types';
 
@@ -100,7 +101,7 @@ export default function HomeScreen() {
   const onBrand = getOnBrandTextColors(liturgicalInfo.season);
   const showTodayButton = !isDateToday(currentDate);
   const currentDateStr = format(currentDate, 'yyyy-MM-dd');
-  const dailyQuote = useMemo(() => getDailyQuote(currentDate), [currentDate]);
+  const [dailyQuote, setDailyQuote] = useState<DailyQuote | null>(null);
   const favorited = isFavorite(currentDateStr);
 
   const loadDevotional = useCallback(async (date: Date, forceNetwork = false) => {
@@ -141,6 +142,17 @@ export default function HomeScreen() {
         setRefreshing(false);
       }
     }
+  }, []);
+
+  useEffect(() => {
+    // Citação do dia — fonte única no Scriptorium (ADR 001): a API resolve
+    // a data em America/Sao_Paulo (o app não passa ?date). Falha → null,
+    // o card some com graça (mesmo contrato do ArtCard).
+    const ctrl = new AbortController();
+    fetchDailyQuote(ctrl.signal).then((quote) => {
+      if (!ctrl.signal.aborted) setDailyQuote(quote);
+    });
+    return () => ctrl.abort();
   }, []);
 
   useEffect(() => {
@@ -538,7 +550,7 @@ export default function HomeScreen() {
                     style={[styles.sectionHeaderSub, { color: onBrand.muted, fontSize: scale(8) }]}
                   >
                     Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length}{' '}
-                    Estações da Palavra
+                    Estações da Palavra • Textos em Almeida Revista e Corrigida
                   </Text>
                 </View>
                 {devotional.readings.map((reading, index) => (
@@ -572,10 +584,10 @@ export default function HomeScreen() {
                   <Text
                     style={[styles.sectionHeaderSub, { color: onBrand.muted, fontSize: scale(8) }]}
                   >
-                    {dailyQuote.author.toUpperCase()}
+                    {dailyQuote ? dailyQuote.author.toUpperCase() : ''}
                   </Text>
                 </View>
-                <QuoteCard date={currentDate} />
+                <QuoteCard quote={dailyQuote} />
               </View>
 
               {!isOffline && devotional.readings.length > 0 && (

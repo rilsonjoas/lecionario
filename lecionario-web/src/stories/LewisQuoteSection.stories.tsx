@@ -9,14 +9,8 @@ const meta: Meta<typeof LewisQuoteSection> = {
     docs: {
       description: {
         component:
-          'LewisQuoteSection exibe a citação diária de C.S. Lewis com base na data fornecida.',
+          'LewisQuoteSection exibe a citação do dia do cluster "A Biblioteca" (ADR 001) — a API do Scriptorium resolve a data de hoje em America/Sao_Paulo (não recebe data por prop).',
       },
-    },
-  },
-  argTypes: {
-    date: {
-      control: 'date',
-      description: 'Data para determinar qual citação exibir',
     },
   },
 };
@@ -26,21 +20,4 @@ type Story = StoryObj<typeof LewisQuoteSection>;
 
 export const Default: Story = {
   name: 'Citação padrão',
-  args: {
-    date: new Date('2026-12-01'),
-  },
-};
-
-export const OutraCitacao: Story = {
-  name: 'Outra citação (Páscoa)',
-  args: {
-    date: new Date('2026-04-05'),
-  },
-};
-
-export const TerceiraCitacao: Story = {
-  name: 'Terceira citação (Quaresma)',
-  args: {
-    date: new Date('2026-03-01'),
-  },
 };

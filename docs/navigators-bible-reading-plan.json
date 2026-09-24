@@ -1,0 +1,166 @@
+{
+  "name": "Navigators Bible Reading Plan",
+  "namePt": "Plano de Leitura Bíblica dos Navegadores",
+  "subtitle": "4 Trilhas Diárias em 25 Dias por Mês (Leitura Anual sem Culpa)",
+  "description": "Plano bíblico anual estruturado pela The Navigators. Lê todo o Novo Testamento, Salmos/Provérbios e Antigo Testamento em 1 ano, mantendo 4 fontes diárias simultâneas e 25 dias por mês para garantir dias livres de reflexão, memorização e reposição de atrasos.",
+  "architecture": {
+    "durationMonths": 12,
+    "daysPerMonth": 25,
+    "totalDays": 300,
+    "freeDaysPerMonth": "5 a 6 dias livres todo mês",
+    "tracks": [
+      {
+        "id": "gospels",
+        "name": "Evangelhos",
+        "nameEn": "Gospels",
+        "books": [
+          "Mateus",
+          "Marcos",
+          "Lucas",
+          "João"
+        ],
+        "focus": "Vida, ensinamentos e obra de Jesus Cristo"
+      },
+      {
+        "id": "epistles_acts",
+        "name": "Epístolas e Atos",
+        "nameEn": "Epistles & Acts",
+        "books": [
+          "Atos",
+          "Romanos",
+          "1 Coríntios",
+          "2 Coríntios",
+          "Gálatas",
+          "Efésios",
+          "Filipenses",
+          "Colossenses",
+          "1 Tessalonicenses",
+          "2 Tessalonicenses",
+          "1 Timóteo",
+          "2 Timóteo",
+          "Tito",
+          "Filemom",
+          "Hebreus",
+          "Tiago",
+          "1 Pedro",
+          "2 Pedro",
+          "1 João",
+          "2 João",
+          "3 João",
+          "Judas",
+          "Apocalipse"
+        ],
+        "focus": "História da Igreja Primitiva e doutrina cristã"
+      },
+      {
+        "id": "wisdom",
+        "name": "Sabedoria e Poesia",
+        "nameEn": "Wisdom & Poetry",
+        "books": [
+          "Salmos",
+          "Provérbios",
+          "Eclesiastes",
+          "Cantares",
+          "Jó"
+        ],
+        "focus": "Oração, adoração, sabedoria prática e meditação"
+      },
+      {
+        "id": "ot_history_prophets",
+        "name": "Antigo Testamento",
+        "nameEn": "OT History & Prophets",
+        "books": [
+          "Gênesis a Malaquias"
+        ],
+        "focus": "História da Aliança, criação, reis e profetas"
+      }
+    ]
+  },
+  "monthlyScope": {
+    "1": {
+      "gospels": "Mateus 1:1 - 10:20",
+      "epistles": "Atos 1:1 - 15:21",
+      "wisdom": "Salmos 1 - 23",
+      "ot": "Gênesis 1 - 50"
+    },
+    "2": {
+      "gospels": "Mateus 10:21 - 21:22",
+      "epistles": "Atos 15:22 - 28:31",
+      "wisdom": "Salmos 24 - 47",
+      "ot": "Êxodo 1 - 40 / Levítico 1 - 27"
+    },
+    "3": {
+      "gospels": "Mateus 21:23 - 28:20",
+      "epistles": "Romanos 1 - 16",
+      "wisdom": "Salmos 48 - 71",
+      "ot": "Números 1 - 36 / Deuteronômio 1 - 34"
+    },
+    "4": {
+      "gospels": "Marcos 1:1 - 9:32",
+      "epistles": "1 Coríntios 1 - 16",
+      "wisdom": "Salmos 72 - 94",
+      "ot": "Josué 1 - 24 / Juízes 1 - 21 / Rute 1 - 4"
+    },
+    "5": {
+      "gospels": "Marcos 9:33 - 16:20",
+      "epistles": "2 Coríntios 1 - 13 / Gálatas 1 - 6",
+      "wisdom": "Salmos 95 - 118",
+      "ot": "1 Samuel 1 - 31 / 2 Samuel 1 - 24"
+    },
+    "6": {
+      "gospels": "Lucas 1:1 - 7:10",
+      "epistles": "Efésios 1 - 6 / Filipenses 1 - 4",
+      "wisdom": "Salmos 119",
+      "ot": "1 Reis 1 - 22 / 2 Reis 1 - 25"
+    },
+    "7": {
+      "gospels": "Lucas 7:11 - 12:59",
+      "epistles": "Colossenses 1 - 4 / 1-2 Tessalonicenses",
+      "wisdom": "Salmos 120 - 150",
+      "ot": "1 Crônicas 1 - 29 / 2 Crônicas 1 - 36"
+    },
+    "8": {
+      "gospels": "Lucas 13:1 - 20:26",
+      "epistles": "1-2 Timóteo / Tito / Filemom",
+      "wisdom": "Provérbios 1 - 17",
+      "ot": "Esdras 1 - 10 / Neemias 1 - 13 / Ester 1 - 10"
+    },
+    "9": {
+      "gospels": "Lucas 20:27 - 24:53",
+      "epistles": "Hebreus 1 - 13",
+      "wisdom": "Provérbios 18 - 31",
+      "ot": "Isaías 1 - 66"
+    },
+    "10": {
+      "gospels": "João 1:1 - 6:71",
+      "epistles": "Tiago 1 - 5 / 1-2 Pedro",
+      "wisdom": "Eclesiastes 1 - 12",
+      "ot": "Jeremias 1 - 52 / Lamentações 1 - 5"
+    },
+    "11": {
+      "gospels": "João 7:1 - 12:50",
+      "epistles": "1-3 João / Judas",
+      "wisdom": "Jó 1 - 22",
+      "ot": "Ezequiel 1 - 48 / Daniel 1 - 12"
+    },
+    "12": {
+      "gospels": "João 13:1 - 21:25",
+      "epistles": "Apocalipse 1 - 22",
+      "wisdom": "Jó 23 - 42",
+      "ot": "Profetas Menores (Oséias a Malaquias)"
+    }
+  },
+  "technicalSpec": {
+    "engine": "PWA / React Client-Side + LocalStorage / AsyncStorage",
+    "zeroBackend": true,
+    "offlineFirst": true,
+    "features": [
+      "Modo opcional no menu do Lecionário (não polui a home litúrgica)",
+      "4 checkboxes por dia para tracking de cada trilha",
+      "Progresso de 25 dias por mês com contagem regressiva de dias livres",
+      "Cálculo de streak contínuo e histórico mensal",
+      "Integração com textos bíblicos da tradução Almeida ARC já bundlados no app",
+      "Possibilidade de conexão futura com a 'Pintura do Dia' do Bíblia na Arte para passagens correspondentes"
+    ]
+  }
+}

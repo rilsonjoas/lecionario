@@ -1,56 +1,38 @@
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { format } from 'date-fns';
 import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
 import { triggerHaptic } from '@/lib/haptics';
-import quotes from '@/data/lewis-quotes.json';
+import type { DailyQuote } from '@/lib/quote-fetcher';
 
-const AFFILIATE_TAG = 'rilson-20';
-
-export interface DailyQuote {
-  quote: string;
-  source: string;
-  author: string;
-  scriptoriumUrl?: string | null;
-}
-
-export function getDailyQuote(date: Date): DailyQuote {
-  const seed = parseInt(format(date, 'yyyyMMdd'), 10);
-  const raw = quotes[seed % quotes.length] as Partial<DailyQuote>;
-  return {
-    quote: raw.quote || '',
-    source: raw.source || '',
-    author: raw.author || 'C. S. Lewis',
-    scriptoriumUrl: raw.scriptoriumUrl || null,
-  };
-}
-
+// Citação do dia do cluster "A Biblioteca" (ADR 001) — a fonte ÚNICA é a
+// API do Scriptorium (ver lib/quote-fetcher.ts): o link de afiliado vem
+// PRONTO da resposta (`affiliateUrl`), o card não monta URL Amazon. Sem
+// quote (API fora/sem citação) o card some com graça, igual ao ArtCard.
 interface QuoteCardProps {
-  date?: Date;
+  quote: DailyQuote | null;
 }
 
-export function QuoteCard({ date }: QuoteCardProps) {
+export function QuoteCard({ quote }: QuoteCardProps) {
   const colors = useThemeColors();
   const { scale } = useFontScale();
   const [copied, setCopied] = useState(false);
 
-  const quote = useMemo(() => {
-    return getDailyQuote(date ?? new Date());
-  }, [date]);
-
   const handleCopy = async () => {
+    if (!quote) return;
     triggerHaptic('light');
     await Clipboard.setStringAsync(
-      `"${quote.quote}"\n\n— ${quote.source}, ${quote.author}\n\n— Lecionário · lecionario.narniano.com`,
+      `"${quote.quote}"\n\n— ${quote.source ?? ''}, ${quote.author}\n\n— Lecionário · lecionario.narniano.com`,
     );
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const amazonUrl = `https://www.amazon.com.br/s?k=${encodeURIComponent(`${quote.source} ${quote.author}`)}&tag=${AFFILIATE_TAG}`;
+  if (!quote) return null;
+
+  const amazonUrl = quote.dominioPublico ? null : quote.affiliateUrl;
 
   return (
     <View style={[styles.card, { backgroundColor: colors.surface, borderColor: colors.border }]}>
@@ -73,17 +55,19 @@ export function QuoteCard({ date }: QuoteCardProps) {
       <Text style={[styles.quote, { color: colors.text, fontSize: scale(15) }]}>{quote.quote}</Text>
 
       <View style={styles.actionsRow}>
-        <TouchableOpacity
-          onPress={() => Linking.openURL(amazonUrl)}
-          style={styles.sourceRow}
-          accessibilityRole="link"
-          accessibilityLabel={`Abrir ${quote.source} na Amazon`}
-        >
-          <Text style={[styles.source, { color: colors.accent, fontSize: scale(13) }]}>
-            — {quote.source}
-          </Text>
-          <MaterialCommunityIcons name="open-in-new" size={12} color={colors.accent} />
-        </TouchableOpacity>
+        {amazonUrl && quote.source && (
+          <TouchableOpacity
+            onPress={() => Linking.openURL(amazonUrl)}
+            style={styles.sourceRow}
+            accessibilityRole="link"
+            accessibilityLabel={`Abrir ${quote.source} na Amazon`}
+          >
+            <Text style={[styles.source, { color: colors.accent, fontSize: scale(13) }]}>
+              — {quote.source}
+            </Text>
+            <MaterialCommunityIcons name="open-in-new" size={12} color={colors.accent} />
+          </TouchableOpacity>
+        )}
 
         {quote.scriptoriumUrl && (
           <TouchableOpacity
