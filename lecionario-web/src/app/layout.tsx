@@ -142,6 +142,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning className={`${liturgicalClass}`}>
       <head>
+        {/* Umami Analytics — cookieless, self-hosted */}
+        <script
+          defer
+          src="https://umami.narniano.com/script.js"
+          data-website-id="67a850b8-81af-4927-a4af-f55396c35855"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
