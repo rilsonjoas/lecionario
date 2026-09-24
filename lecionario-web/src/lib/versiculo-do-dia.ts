@@ -18,8 +18,7 @@ import { getRCLReadings } from '@/lib/rcl-fetcher';
  *    aí o Salmo — o "versículo responsorial" — assume.)
  * 4. Datas fora da cobertura do RCL caem num pool fixo determinístico
  *    (FALLBACK_VERSICLES), marcado com `fallback: true`, para o endpoint nunca
- *    responder vazio. O pool não repete referências nem colide com a citação
- *    fixa de II Timóteo 3:16-17 do rodapé da home do Lecionário.
+ *    responder vazio. O pool não repete referências.
  * 5. Guarda anti-repetição (decisão do autor, 22/09): se o versículo exibido
  *    ontem for igual ao de hoje, sobe pra 1ª leitura do dia; senão 2ª. A
  *    intenção é nunca exibir o mesmo versículo em dias consecutivos (a
@@ -86,13 +85,17 @@ function pickVerse(readings: Reading[]): VerseOfTheDay | null {
 /**
  * Pool fixo de versículos ARC para datas sem cobertura RCL. Escolhidos por
  * serem clássicos e de texto público (Almeida Revista e Corrigida); nenhuma
- * referência se repete no pool, e II Timóteo 3:16-17 fica de fora de propósito
- * (é a citação estática do rodapé da home do Lecionário — não pode virar o
- * "versículo do dia" por baixo dos panos). O teste versiculo-do-dia.test.ts
- * trava as duas garantias.
+ * referência se repete no pool. II Timóteo 3:16-17 entrou (2026-09-24)
+ * depois que a citação estática do rodapé da home foi removida — antes ela
+ * ficava de fora de propósito, pra nunca ser o "versículo do dia" por baixo
+ * dos panos. O teste versiculo-do-dia.test.ts trava a não-repetição.
  */
 export const FALLBACK_VERSICLES: Array<{ reference: string; text: string }> = [
   { reference: 'Salmo 23:1', text: 'O Senhor é o meu pastor; nada me faltará.' },
+  {
+    reference: 'II Timóteo 3:16-17',
+    text: 'Toda Escritura é inspirada por Deus e útil para o ensino, para a repreensão, para a correção, para a educação na justiça, a fim de que o homem de Deus seja perfeito e perfeitamente habilitado para toda boa obra.',
+  },
   {
     reference: 'João 3:16',
     text: 'Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito, para que todo aquele que nele crê não pereça, mas tenha a vida eterna.',

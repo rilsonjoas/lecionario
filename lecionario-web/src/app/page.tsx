@@ -349,9 +349,16 @@ function HomeContent() {
                   </h3>
                   <GlossaryTerm term="lectio" />
                 </div>
-                <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] md:tracking-[0.3em] font-bold text-muted-foreground">
-                  Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length}{' '}
-                  Estações da Palavra • Textos em Almeida Revista e Corrigida
+                <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 text-[10px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.25em] font-bold text-muted-foreground">
+                  <span className="rounded-full border border-accent/20 bg-accent/5 px-3 py-1">
+                    Ano Litúrgico {devotional.liturgicalInfo.cycle}
+                  </span>
+                  <span className="rounded-full border border-accent/20 bg-accent/5 px-3 py-1">
+                    {devotional.readings.length} Estações da Palavra
+                  </span>
+                  <span className="rounded-full border border-accent/20 bg-accent/5 px-3 py-1">
+                    Textos em Almeida Revista e Corrigida
+                  </span>
                 </p>
               </div>
 
@@ -380,18 +387,6 @@ function HomeContent() {
               <ErrorBoundary name="Meditação">
                 <MeditationSection meditation={devotional.meditation} />
               </ErrorBoundary>
-            </section>
-
-            {/* Inspiration Quote */}
-            <section className="text-center py-16 animate-fade-in border-t border-accent/10">
-              <blockquote className="text-lg md:text-xl lg:text-2xl font-display italic text-secondary max-w-4xl mx-auto leading-relaxed px-4">
-                "Toda Escritura é inspirada por Deus e útil para o ensino, para a repreensão, para a
-                correção, para a educação na justiça, a fim de que o homem de Deus seja perfeito e
-                perfeitamente habilitado para toda boa obra."
-              </blockquote>
-              <cite className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent mt-8 block">
-                — II Timóteo III:16-17
-              </cite>
             </section>
 
             {/* Citação do dia — API do Scriptorium (fonte única, ADR 001) */}

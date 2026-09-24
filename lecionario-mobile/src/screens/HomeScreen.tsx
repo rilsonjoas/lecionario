@@ -546,12 +546,28 @@ export default function HomeScreen() {
                     </Text>
                     <GlossaryTerm term="lectio" size={15} />
                   </View>
-                  <Text
-                    style={[styles.sectionHeaderSub, { color: onBrand.muted, fontSize: scale(8) }]}
-                  >
-                    Ano Litúrgico {devotional.liturgicalInfo.cycle} • {devotional.readings.length}{' '}
-                    Estações da Palavra • Textos em Almeida Revista e Corrigida
-                  </Text>
+                  <View style={styles.sectionHeaderBadges}>
+                    {[
+                      `Ano Litúrgico ${devotional.liturgicalInfo.cycle}`,
+                      `${devotional.readings.length} Estações da Palavra`,
+                      'Textos em Almeida Revista e Corrigida',
+                    ].map((label) => (
+                      <View
+                        key={label}
+                        style={[styles.sectionHeaderBadge, { borderColor: `${onBrand.muted}40` }]}
+                      >
+                        <Text
+                          style={[
+                            styles.sectionHeaderBadgeText,
+                            { color: onBrand.muted, fontSize: scale(8) },
+                          ]}
+                          numberOfLines={1}
+                        >
+                          {label}
+                        </Text>
+                      </View>
+                    ))}
+                  </View>
                 </View>
                 {devotional.readings.map((reading, index) => (
                   <ReadingCard
@@ -833,6 +849,25 @@ const styles = StyleSheet.create({
     letterSpacing: 3,
     fontWeight: '700',
     marginTop: 8,
+  },
+  sectionHeaderBadges: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 6,
+    marginTop: 10,
+    paddingHorizontal: 8,
+  },
+  sectionHeaderBadge: {
+    borderWidth: 1,
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+  },
+  sectionHeaderBadgeText: {
+    textTransform: 'uppercase',
+    letterSpacing: 2,
+    fontWeight: '700',
   },
   quoteSectionHeader: {
     alignItems: 'center',

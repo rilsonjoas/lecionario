@@ -10,8 +10,9 @@ import {
 /**
  * Trava o contrato do versículo do dia (Fase 0, plano de interconexão):
  * determinístico por data, prioridade litúrgica Evangelho > Salmo > 1ª > 2ª,
- * pool fixo marcado `fallback: true` fora da cobertura do RCL — e nenhuma
- * repetição com a citação fixa do rodapé do Lecionário (II Timóteo 3:16-17).
+ * pool fixo marcado `fallback: true` fora da cobertura do RCL — com o pool
+ * livre de repetições (II Timóteo 3:16-17 entrou no pool em 2026-09-24,
+ * quando a citação estática do rodapé da home foi removida).
  */
 
 describe('getVerseOfTheDay — leituras do dia', () => {
@@ -127,14 +128,11 @@ describe('getVerseOfTheDay — fallback fora da cobertura RCL', () => {
     );
   });
 
-  it('pool não repete referências e não colide com II Timóteo 3:16-17 (rodapé fixo do Lecionário)', () => {
+  it('pool não repete referências e inclui II Timóteo 3:16-17 (citação do ex-rodapé)', () => {
     const refs = FALLBACK_VERSICLES.map((v) => v.reference.trim());
 
     expect(new Set(refs).size).toBe(refs.length);
-    for (const ref of refs) {
-      expect(ref).not.toMatch(/II Tim[óo]teo 3:1[67]/);
-      expect(ref).not.toMatch(/2 Tim[óo]teo 3:1[67]/);
-    }
+    expect(refs).toContain('II Timóteo 3:16-17');
   });
 });
 
