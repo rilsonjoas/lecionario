@@ -10,6 +10,7 @@ import { useFavorites } from '@/contexts/FavoritesContext';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { AdUnit } from '@/components/layout/AdUnit';
 import { ReadingCard } from '@/components/devotional/ReadingCard';
 import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
@@ -396,6 +397,9 @@ function HomeContent() {
             <ErrorBoundary name="Pintura do Dia">
               <ArtSection date={currentDate} />
             </ErrorBoundary>
+
+            {/* Anúncio discreto e responsivo antes do rodapé */}
+            <AdUnit className="my-8 md:max-w-4xl mx-auto w-full flex justify-center overflow-hidden" />
           </div>
         </main>
 
