@@ -172,7 +172,7 @@ function HomeContent() {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
         <div className="text-center space-y-6 max-w-md">
-          <div className="text-accent text-6xl">⛪</div>
+          <div className="text-accent-texto text-6xl">⛪</div>
           <h1 className="text-3xl font-display text-secondary">Não foi possível carregar</h1>
           <p className="text-foreground/70 font-body leading-relaxed text-sm">{error}</p>
           <Button variant="outline" onClick={() => window.location.reload()}>
@@ -256,7 +256,7 @@ function HomeContent() {
             {/* Welcome Section */}
             <section className="text-center space-y-4 md:space-y-6 animate-fade-in px-3 md:px-4">
               <div className="flex justify-center mb-3 md:mb-4">
-                <span className="text-accent text-xl md:text-2xl">✦ ✧ ✦</span>
+                <span className="text-accent-texto text-xl md:text-2xl">✦ ✧ ✦</span>
               </div>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-display text-secondary tracking-tight">
                 A Liturgia como Tradição
@@ -267,7 +267,7 @@ function HomeContent() {
               </p>
               <div className="divider-ornate">
                 <span className="divider-line"></span>
-                <span className="text-accent">❖</span>
+                <span className="text-accent-texto">❖</span>
                 <span className="divider-line"></span>
               </div>
 
@@ -278,7 +278,7 @@ function HomeContent() {
                   variant="ghost"
                   size="sm"
                   onClick={() => toggleFavorite(dateKey)}
-                  className="text-muted-foreground hover:text-accent transition-colors gap-2 text-xs"
+                  className="text-muted-foreground hover:text-accent-texto transition-colors gap-2 text-xs"
                   aria-label={favorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
                 >
                   <Heart
@@ -290,7 +290,7 @@ function HomeContent() {
                   variant="ghost"
                   size="sm"
                   onClick={handleShareDay}
-                  className="text-muted-foreground hover:text-accent transition-colors gap-2 text-xs"
+                  className="text-muted-foreground hover:text-accent-texto transition-colors gap-2 text-xs"
                   aria-label={shared ? 'Dia copiado' : 'Compartilhar dia'}
                 >
                   {shared ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
@@ -303,7 +303,7 @@ function HomeContent() {
                 Só aparece quando existe pelo menos um favorito */}
             {favorites.length > 0 && (
               <section className="text-center space-y-3 px-4 animate-fade-in">
-                <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
+                <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
                   Dias Favoritados
                 </p>
                 <div className="flex flex-wrap justify-center gap-2 max-w-2xl mx-auto">
@@ -350,7 +350,7 @@ function HomeContent() {
                   </h3>
                   <GlossaryTerm term="lectio" />
                 </div>
-                <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 text-[8px] md:text-[9px] uppercase tracking-[0.15em] md:tracking-[0.2em] font-bold text-muted-foreground">
+                <p className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1.5 text-[11px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] font-bold text-muted-foreground">
                   <span className="rounded-full border border-accent/20 bg-accent/5 px-2.5 py-0.5">
                     Ano Litúrgico {devotional.liturgicalInfo.cycle}
                   </span>

@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { useCopyFeedback } from '@/hooks/use-copy-feedback';
+import { CopyLiveRegion } from '@/components/devotional/CopyLiveRegion';
 import { Badge } from '@/components/ui/badge';
 import { Lightbulb, Clock, Copy, Check } from 'lucide-react';
 import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
@@ -11,7 +13,7 @@ interface MeditationSectionProps {
 }
 
 export function MeditationSection({ meditation }: MeditationSectionProps) {
-  const [copied, setCopied] = useState(false);
+  const { copied, message, copy } = useCopyFeedback();
 
   const handleCopy = async () => {
     let textToCopy = `Meditação\n\n${meditation.prompt}`;
@@ -20,9 +22,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
         `\n\nPerguntas para Refletir:\n` +
         meditation.questions.map((q, i) => `${i + 1}. ${q}`).join('\n');
     }
-    await navigator.clipboard.writeText(textToCopy);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    await copy(textToCopy, 'Meditação');
   };
 
   return (
@@ -40,7 +40,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
                 <h3 className="text-2xl md:text-3xl font-display text-secondary italic">
                   Meditação
                 </h3>
-                <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-muted-foreground mt-1">
+                <p className="text-[11px] md:text-xs uppercase tracking-[0.2em] font-bold text-muted-foreground mt-1">
                   Reflexão e Interiorização
                 </p>
               </div>
@@ -53,7 +53,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
                   className="flex items-center gap-2 border-accent/20 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-none"
                 >
                   <Clock className="w-3 h-3 text-vinho dark:text-[hsl(336,28%,78%)]" />
-                  <span className="text-[9px] font-bold uppercase tracking-[0.2em]">
+                  <span className="text-[11px] font-bold uppercase tracking-[0.2em]">
                     {meditation.duration}
                   </span>
                 </Badge>
@@ -61,8 +61,8 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
               <button
                 type="button"
                 onClick={handleCopy}
-                className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
-                aria-label={copied ? 'Meditação copiada' : 'Copiar Meditação'}
+                className="p-2 rounded-md text-muted-foreground hover:text-accent-texto hover:bg-accent/10 transition-colors"
+                aria-label="Copiar Meditação"
                 title={copied ? 'Copiado!' : 'Copiar Meditação'}
               >
                 {copied ? (
@@ -71,6 +71,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
                   <Copy className="w-4 h-4" />
                 )}
               </button>
+              <CopyLiveRegion message={message} />
             </div>
           </div>
         </div>
@@ -90,7 +91,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
             <div className="space-y-6">
               <div className="flex items-center gap-3">
                 <GlossaryTerm term="perguntas" />
-                <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
+                <h4 className="text-[11px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
                   Perguntas para Refletir
                 </h4>
               </div>
@@ -116,7 +117,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
           {/* Audio Player (if available) */}
           {meditation.audioUrl && (
             <div className="p-8 bg-preto-ébano/5 rounded-none border border-accent/10">
-              <h5 className="text-[9px] uppercase tracking-[0.4em] font-bold text-secondary mb-6 text-center">
+              <h5 className="text-[11px] uppercase tracking-[0.4em] font-bold text-secondary mb-6 text-center">
                 Meditação Guiada
               </h5>
               <audio controls className="w-full h-10 filter sepia-[.3]" preload="metadata">
@@ -126,7 +127,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
           )}
 
           <div className="text-center pt-8 border-t border-accent/10">
-            <p className="text-[10px] uppercase tracking-[0.4em] text-muted-foreground/60 font-bold italic">
+            <p className="text-[11px] uppercase tracking-[0.4em] text-muted-foreground/60 font-bold italic">
               "Aquietai-vos e sabei que eu sou Deus"
             </p>
           </div>

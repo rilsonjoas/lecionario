@@ -5,6 +5,19 @@ import { useThemeColors } from '@/contexts/ThemeContext';
 import { useFontScale } from '@/contexts/FontContext';
 import { fetchDailyArtwork, type Artwork } from '@/lib/artwork-fetcher';
 
+/** Rótulo da imagem a partir da descrição da obra. Espelha o
+ *  `buildAlt` do ArtSection na web — mesma regra, mesma fonte. */
+function buildArtAlt(artwork: Artwork): string {
+  const clean = (artwork.description ?? '')
+    .replace(/\*\*/g, '')
+    .replace(/\*/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const first = clean.match(/^[^.!?]+[.!?]/)?.[0] ?? clean;
+  const short = first.length > 220 ? `${first.slice(0, 217)}…` : first;
+  return `${short} (${artwork.artistOrDirector}${artwork.title ? `, ${artwork.title}` : ''})`;
+}
+
 // As imagens do Bíblia na Arte moram no domínio do site (Next.js, pasta
 // `public/images`), não no da API — a API só devolve o caminho relativo
 // (ex.: "/images/foo.webp"). Prefixar com o domínio da API dava 404 puro.
@@ -92,6 +105,13 @@ export function ArtCard({ date }: Props) {
           <Image
             key={imageAttempt}
             source={{ uri: imageUrl }}
+            // A imagem não tinha rótulo nenhum: o leitor de tela
+            // anunciava só "imagem" (achado 2026-09-25, 1.1.1 A). A API
+            // já manda a `description` da obra preenchida — 1090 de 1090
+            // no acervo — e ela é o que descreve a cena. Alt curto: a
+            // primeira frase, com o markdown limpo. O campo `altText`
+            // dedicado está no roadmap do Bíblia na Arte.
+            accessibilityLabel={buildArtAlt(artwork)}
             style={[styles.image, aspectRatio ? { aspectRatio } : { height: 220 }]}
             resizeMode="contain"
             onError={() => {

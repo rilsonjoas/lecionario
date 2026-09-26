@@ -13,8 +13,13 @@ const buttonVariants = cva(
         destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
         outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'hover:bg-accent/10 hover:text-accent',
-        link: 'text-primary underline-offset-4 hover:underline',
+        ghost: 'hover:bg-accent/10 hover:text-accent-texto',
+        /* Era `text-primary underline-offset-4 hover:underline`:
+           o laranja queimado dava 3.14:1 no bege (reprovado em texto
+           normal) e o sublinhado vinha só no hover (1.4.1). Agora usa o
+           papel de texto que existe para isso e sublinha sempre —
+           `hover:underline` ficava só com underline-offset. */
+        link: 'text-accent-texto underline decoration-1 underline-offset-4 hover:decoration-2 transition-colors',
       },
       size: {
         default: 'h-10 px-4 py-2',

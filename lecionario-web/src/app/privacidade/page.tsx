@@ -23,7 +23,7 @@ export default function PrivacidadePage() {
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-display text-secondary tracking-tight">
               Política de Privacidade
             </h1>
-            <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
+            <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
               Última atualização: 22 de agosto de 2026
             </p>
           </header>
@@ -110,7 +110,7 @@ export default function PrivacidadePage() {
               <p>
                 <a
                   href="mailto:lecionario@narniano.com"
-                  className="text-accent hover:underline underline-offset-2"
+                  className="text-accent-texto hover:underline underline-offset-2"
                 >
                   lecionario@narniano.com
                 </a>
@@ -128,7 +128,7 @@ export default function PrivacidadePage() {
           <p className="text-center">
             <Link
               href="/"
-              className="text-xs uppercase tracking-[0.25em] font-bold text-accent hover:text-primary transition-colors underline-offset-4 hover:underline"
+              className="text-xs uppercase tracking-[0.25em] font-bold text-accent-texto hover:text-primary transition-colors underline-offset-4 hover:underline"
             >
               ← Voltar ao Lecionário
             </Link>

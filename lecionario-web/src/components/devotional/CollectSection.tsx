@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import { useCopyFeedback } from '@/hooks/use-copy-feedback';
+import { CopyLiveRegion } from '@/components/devotional/CopyLiveRegion';
 import { CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Crown, Copy, Check } from 'lucide-react';
 import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
@@ -10,14 +12,10 @@ interface CollectSectionProps {
 }
 
 export function CollectSection({ collect }: CollectSectionProps) {
-  const [copied, setCopied] = useState(false);
+  const { copied, message, copy } = useCopyFeedback();
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(
-      `Oração de Coleta\n\n${collect}\n\nPor Jesus Cristo, nosso Senhor. Amém.`,
-    );
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    await copy(`Oração de Coleta\n\n${collect}\n\nPor Jesus Cristo, nosso Senhor. Amém.`, 'Coleta');
   };
 
   return (
@@ -33,7 +31,7 @@ export function CollectSection({ collect }: CollectSectionProps) {
                 <CardTitle className="text-xl md:text-2xl font-display text-secondary italic">
                   Oração de Coleta
                 </CardTitle>
-                <CardDescription className="flex items-center gap-1.5 text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground">
+                <CardDescription className="flex items-center gap-1.5 text-[11px] md:text-xs uppercase tracking-[0.2em] font-bold text-muted-foreground">
                   Oração Tradicional da Liturgia
                   <GlossaryTerm term="coleta" />
                 </CardDescription>
@@ -43,8 +41,8 @@ export function CollectSection({ collect }: CollectSectionProps) {
             <button
               type="button"
               onClick={handleCopy}
-              className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
-              aria-label={copied ? 'Coleta copiada' : 'Copiar Oração de Coleta'}
+              className="p-2 rounded-md text-muted-foreground hover:text-accent-texto hover:bg-accent/10 transition-colors"
+              aria-label="Copiar Oração de Coleta"
               title={copied ? 'Copiado!' : 'Copiar Oração de Coleta'}
             >
               {copied ? (
@@ -53,6 +51,7 @@ export function CollectSection({ collect }: CollectSectionProps) {
                 <Copy className="w-4 h-4" />
               )}
             </button>
+            <CopyLiveRegion message={message} />
           </CardHeader>
 
           <div className="space-y-8">
@@ -62,7 +61,10 @@ export function CollectSection({ collect }: CollectSectionProps) {
               </p>
 
               <div className="mt-8 pt-6 border-t border-accent/10">
-                <p className="text-right text-[10px] uppercase tracking-[0.3em] font-bold text-accent/60 italic">
+                {/* Sem opacidade: era /60 e dava 2.4:1 de contraste nesta linha de
+                    10px. A hierarquia vem do itálico e do tracking, não de
+                    transparenciar a cor. */}
+                <p className="text-right text-[11px] uppercase tracking-[0.3em] font-bold text-accent-texto italic">
                   Por Jesus Cristo, nosso Senhor. Amém.
                 </p>
               </div>

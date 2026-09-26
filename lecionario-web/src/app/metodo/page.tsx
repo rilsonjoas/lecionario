@@ -35,7 +35,7 @@ export default function MetodoPage() {
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-display text-secondary tracking-tight">
               Método e procedência dos dados
             </h1>
-            <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
+            <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
               Como cada dia é construído e verificado
             </p>
           </header>
@@ -43,7 +43,7 @@ export default function MetodoPage() {
           <div className="classic-frame texture-paper border-accent/10 shadow-xl p-6 md:p-10 space-y-8 text-sm md:text-base leading-relaxed text-foreground/85">
             <section className="space-y-3">
               <h2 className="text-lg md:text-xl font-display text-secondary italic flex items-center gap-2">
-                <ShieldCheck className="h-5 w-5 text-accent" aria-hidden="true" />
+                <ShieldCheck className="h-5 w-5 text-accent-texto" aria-hidden="true" />
                 Em uma frase
               </h2>
               <p>
@@ -56,7 +56,8 @@ export default function MetodoPage() {
 
             <section className="space-y-3">
               <h2 className="text-lg md:text-xl font-display text-secondary italic flex items-center gap-2">
-                <BookOpen className="h-5 w-5 text-accent" aria-hidden="true" />A fonte das leituras
+                <BookOpen className="h-5 w-5 text-accent-texto" aria-hidden="true" />A fonte das
+                leituras
               </h2>
               <p>
                 As quatro leituras de cada dia (Primeira Leitura, Salmo, Segunda Leitura e
@@ -65,7 +66,7 @@ export default function MetodoPage() {
                   href="https://lectionary.library.vanderbilt.edu/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent hover:underline underline-offset-2"
+                  className="text-accent-texto hover:underline underline-offset-2"
                 >
                   Revised Common Lectionary da Vanderbilt Divinity Library
                 </a>
@@ -83,7 +84,7 @@ export default function MetodoPage() {
 
             <section className="space-y-3">
               <h2 className="text-lg md:text-xl font-display text-secondary italic flex items-center gap-2">
-                <ScrollText className="h-5 w-5 text-accent" aria-hidden="true" />
+                <ScrollText className="h-5 w-5 text-accent-texto" aria-hidden="true" />
                 Como o conteúdo devocional é criado
               </h2>
               <p>
@@ -106,8 +107,8 @@ export default function MetodoPage() {
 
             <section className="space-y-3">
               <h2 className="text-lg md:text-xl font-display text-secondary italic flex items-center gap-2">
-                <Database className="h-5 w-5 text-accent" aria-hidden="true" />A Bíblia (ARC) dentro
-                do app
+                <Database className="h-5 w-5 text-accent-texto" aria-hidden="true" />A Bíblia (ARC)
+                dentro do app
               </h2>
               <p>
                 Os textos dos versículos vêm da <strong>Almeida Revista e Corrigida</strong>, em
@@ -172,7 +173,7 @@ export default function MetodoPage() {
                 Dúvidas ou achados:{' '}
                 <Link
                   href="/privacidade"
-                  className="text-accent hover:underline underline-offset-2"
+                  className="text-accent-texto hover:underline underline-offset-2"
                 >
                   fale conosco
                 </Link>
@@ -184,7 +185,7 @@ export default function MetodoPage() {
           <p className="text-center">
             <Link
               href="/"
-              className="text-xs uppercase tracking-[0.25em] font-bold text-accent hover:text-primary transition-colors underline-offset-4 hover:underline"
+              className="text-xs uppercase tracking-[0.25em] font-bold text-accent-texto hover:text-primary transition-colors underline-offset-4 hover:underline"
             >
               ← Voltar ao Lecionário
             </Link>

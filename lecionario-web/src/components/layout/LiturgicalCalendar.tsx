@@ -60,7 +60,7 @@ export function LiturgicalCalendar({ currentDate, onDateChange }: LiturgicalCale
           variant="ghost"
           size="icon"
           onClick={() => setViewMonth((p: Date) => subMonths(p, 1))}
-          className="text-accent hover:text-primary hover:bg-accent/10"
+          className="text-accent-texto hover:text-primary hover:bg-accent/10"
           aria-label="Mês anterior"
         >
           <ChevronLeft className="w-4 h-4" />
@@ -72,7 +72,7 @@ export function LiturgicalCalendar({ currentDate, onDateChange }: LiturgicalCale
           variant="ghost"
           size="icon"
           onClick={() => setViewMonth((p: Date) => addMonths(p, 1))}
-          className="text-accent hover:text-primary hover:bg-accent/10"
+          className="text-accent-texto hover:text-primary hover:bg-accent/10"
           aria-label="Próximo mês"
         >
           <ChevronRight className="w-4 h-4" />
@@ -82,7 +82,7 @@ export function LiturgicalCalendar({ currentDate, onDateChange }: LiturgicalCale
       <div className="grid grid-cols-7 gap-0 mb-1">
         {WEEKDAYS.map((wd) => (
           <div key={wd} className="text-center py-1">
-            <span className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground">
+            <span className="text-[11px] uppercase tracking-wider font-bold text-muted-foreground">
               {wd}
             </span>
           </div>
@@ -121,7 +121,7 @@ export function LiturgicalCalendar({ currentDate, onDateChange }: LiturgicalCale
       </div>
 
       <div className="mt-4 pt-3 border-t border-accent/10">
-        <span className="text-[10px] uppercase tracking-wider font-bold text-muted-foreground block mb-2">
+        <span className="text-[11px] uppercase tracking-wider font-bold text-muted-foreground block mb-2">
           Cores Litúrgicas
         </span>
         <div className="flex flex-wrap gap-2">

@@ -69,6 +69,11 @@ export default {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
+        // Papel de TEXTO do dourado. Separate de `accent` de propósito:
+        // `accent` pinta fundo (e o accent-foreground é quase preto), o
+        // dourado puro reprova como texto em fundo claro. Ver
+        // `--accent-texto` em globals.css.
+        'accent-texto': 'hsl(var(--accent-texto))',
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',

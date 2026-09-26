@@ -49,12 +49,12 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > CollectSect
                 Oração de Coleta
               </h3>
               <p
-                class="flex items-center gap-1.5 text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground"
+                class="flex items-center gap-1.5 text-[11px] md:text-xs uppercase tracking-[0.2em] font-bold text-muted-foreground"
               >
                 Oração Tradicional da Liturgia
                 <button
                   aria-label="O que significa Oração de Coleta?"
-                  class="text-muted-foreground/70 transition-colors hover:text-accent"
+                  class="-m-1 inline-flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent/10 hover:text-accent-texto"
                   type="button"
                 >
                   <svg
@@ -87,7 +87,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > CollectSect
           </div>
           <button
             aria-label="Copiar Oração de Coleta"
-            class="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+            class="p-2 rounded-md text-muted-foreground hover:text-accent-texto hover:bg-accent/10 transition-colors"
             title="Copiar Oração de Coleta"
             type="button"
           >
@@ -116,6 +116,11 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > CollectSect
               />
             </svg>
           </button>
+          <span
+            aria-live="polite"
+            class="sr-only"
+            role="status"
+          />
         </div>
         <div
           class="space-y-8"
@@ -132,7 +137,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > CollectSect
               class="mt-8 pt-6 border-t border-accent/10"
             >
               <p
-                class="text-right text-[10px] uppercase tracking-[0.3em] font-bold text-accent/60 italic"
+                class="text-right text-[11px] uppercase tracking-[0.3em] font-bold text-accent-texto italic"
               >
                 Por Jesus Cristo, nosso Senhor. Amém.
               </p>
@@ -202,7 +207,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > PrayerSecti
             </h2>
             <button
               aria-label="O que significa Oração do Dia?"
-              class="text-muted-foreground/70 transition-colors hover:text-accent"
+              class="-m-1 inline-flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent/10 hover:text-accent-texto"
               type="button"
             >
               <svg
@@ -232,7 +237,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > PrayerSecti
             </button>
           </div>
           <p
-            class="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-dourado-texto"
+            class="text-[11px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-dourado-texto"
           >
             Oração do Segundo Domingo do Advento
           </p>
@@ -250,7 +255,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > PrayerSecti
             Deus Todo-Poderoso, concede que possamos lançar fora as obras das trevas e nos revestir da armadura da luz.
           </blockquote>
           <div
-            class="flex items-center justify-center gap-4 mt-12 text-[10px] font-bold uppercase tracking-[0.3em] text-dourado-texto"
+            class="flex items-center justify-center gap-4 mt-12 text-[11px] font-bold uppercase tracking-[0.3em] text-dourado-texto"
           >
             <span
               class="w-10 h-px bg-dourado/20"
@@ -269,7 +274,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > PrayerSecti
           class="pt-10 text-center border-t border-dourado/10 space-y-4"
         >
           <p
-            class="text-[10px] uppercase tracking-[0.5em] text-dourado-texto font-bold"
+            class="text-[11px] uppercase tracking-[0.5em] text-dourado-texto font-bold"
           >
             "SURSUM CORDA — CORAÇÕES AO ALTO"
           </p>
@@ -306,6 +311,11 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > PrayerSecti
                 />
               </svg>
             </button>
+            <span
+              aria-live="polite"
+              class="sr-only"
+              role="status"
+            />
           </div>
         </div>
       </div>
@@ -344,7 +354,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
               Marcos 1:1-8
             </h3>
             <p
-              class="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground mt-1"
+              class="text-[11px] uppercase tracking-[0.2em] font-bold text-muted-foreground mt-1"
             >
               Marcos 1:1-8
             </p>
@@ -353,7 +363,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
             class="flex items-center gap-2"
           >
             <div
-              class="text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-accent/10 text-accent border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2"
+              class="text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-accent/10 text-accent-texto border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2"
             >
               <svg
                 class="lucide lucide-cross w-3 h-3"
@@ -372,7 +382,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
                 />
               </svg>
               <span
-                class="text-[9px] uppercase tracking-[0.2em] font-bold"
+                class="text-[11px] uppercase tracking-[0.2em] font-bold"
               >
                 Evangelho
               </span>
@@ -395,7 +405,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
           >
             <button
               aria-label="Copiar leitura"
-              class="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+              class="p-2 rounded-md text-muted-foreground hover:text-accent-texto hover:bg-accent/10 transition-colors"
             >
               <svg
                 class="lucide lucide-copy w-4 h-4"
@@ -422,6 +432,11 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
                 />
               </svg>
             </button>
+            <span
+              aria-live="polite"
+              class="sr-only"
+              role="status"
+            />
           </div>
         </div>
       </div>
@@ -460,7 +475,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
               Salmo 85:1-2, 8-13
             </h3>
             <p
-              class="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground mt-1"
+              class="text-[11px] uppercase tracking-[0.2em] font-bold text-muted-foreground mt-1"
             >
               Salmo 85
             </p>
@@ -469,7 +484,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
             class="flex items-center gap-2"
           >
             <div
-              class="text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-accent/10 text-accent border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2"
+              class="text-xs font-semibold focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 bg-accent/10 text-accent-texto border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2"
             >
               <svg
                 class="lucide lucide-music w-3 h-3"
@@ -498,7 +513,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
                 />
               </svg>
               <span
-                class="text-[9px] uppercase tracking-[0.2em] font-bold"
+                class="text-[11px] uppercase tracking-[0.2em] font-bold"
               >
                 Salmo Responsorial
               </span>
@@ -519,7 +534,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
               class="w-16 h-px bg-accent/30"
             />
             <svg
-              class="lucide lucide-music w-4 h-4 text-accent/70"
+              class="lucide lucide-music w-4 h-4 text-accent-texto"
               fill="none"
               height="24"
               stroke="currentColor"
@@ -558,7 +573,7 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
           >
             <button
               aria-label="Copiar leitura"
-              class="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
+              class="p-2 rounded-md text-muted-foreground hover:text-accent-texto hover:bg-accent/10 transition-colors"
             >
               <svg
                 class="lucide lucide-copy w-4 h-4"
@@ -585,6 +600,11 @@ exports[`Snapshot baseline — componentes do ofício do dia (web) > ReadingCard
                 />
               </svg>
             </button>
+            <span
+              aria-live="polite"
+              class="sr-only"
+              role="status"
+            />
           </div>
         </div>
       </div>

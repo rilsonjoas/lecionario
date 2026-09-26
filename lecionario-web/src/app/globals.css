@@ -28,6 +28,17 @@
        usar --vinho como texto, não este token. */
     --dourado-texto: 44 60% 83%; /* #EDDFB8 */
 
+    /* O par que faltava (achado 2026-09-25, ao medir token a token):
+       --dourado-texto é dourado-claro-para-texto-SOBRE-fundo-escuro. Não
+       havia o simétrico, dourado-escuro-para-texto-SOBRE-fundo-claro — e
+       o buraco aparecia como --accent, que é o dourado puro (#B49A60):
+       2.05:1 no bege-areia. Reprovado em texto, e era o que 36 usos
+       pintavam (rótulos de 9-10px, badges, links, hover de botão).
+       Este é o mesmo ouro da identidade, escurecido até passar:
+       5.06:1 no bege-areia, 5.98:1 no creme. Não é marrom novo — é o
+       dourado com contraste. */
+    --dourado-texto-claro: 30 44% 33%; /* #79542F */
+
     /* Código & Credo - Fundos Alternativos */
     --cinza-pedra: 207 4% 56%; /* #8B9094 */
     --preto-ébano: 0 0% 4%; /* #0A0A0A */
@@ -50,16 +61,27 @@
     --secondary-foreground: var(--bege-areia);
 
     --muted: 33 15% 82%;
-    --muted-foreground: 25 15% 40%;
+    /* 4.28:1 no bege-areia — reprovava AA (4.5) e é o token de texto
+       mais usado do projeto (datas, citações, labels, legendas).
+       Escurecido para 4.81:1 no bege e 5.69:1 no creme. */
+    --muted-foreground: 25 15% 37%;
 
     --accent: var(--dourado);
     --accent-foreground: var(--preto-ébano);
+    /* Papel separado de --accent: --accent pinta FUNDO (chip selecionado,
+       day_today, tint de badge) e precisa continuar sendo o ouro claro,
+       porque --accent-foreground é quase preto. --accent-texto pinta
+       TEXTO sobre fundo claro, e para isso o ouro puro não serve. */
+    --accent-texto: var(--dourado-texto-claro);
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
     --border: var(--dourado);
-    --input: var(--bege-areia);
+    /* Era `var(--bege-areia)` — ou seja, exatamente a cor do fundo, e a
+       borda do Button variant="outline" dava 1.00:1: invisível (1.4.11).
+       Agora 3.52:1 no bege, 4.16:1 no creme. */
+    --input: 25 20% 45%;
     --ring: var(--laranja-queimado);
 
     --radius: 0.25rem;
@@ -116,6 +138,11 @@
 
     --accent: 42 45% 58%; /* dourado clareia um passo pra brilhar */
     --accent-foreground: 30 10% 8%;
+    /* Inverte o papel: no escuro o texto sobre fundo escuro é o dourado
+       claro (o mesmo --dourado-texto que já valia 12.56:1 no card).
+       É o token simétrico ao --accent-texto do :root — o mesmo par dos
+       dois lados, sem nenhuma classe precisando saber em que tema está. */
+    --accent-texto: var(--dourado-texto);
 
     --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 98%;
@@ -281,27 +308,27 @@
 
   .classic-frame::before {
     content: '✦';
-    @apply absolute -top-3 -left-3 text-accent text-xl leading-none bg-background px-1;
+    @apply absolute -top-3 -left-3 text-accent-texto text-xl leading-none bg-background px-1;
   }
 
   .classic-frame::after {
     content: '✦';
-    @apply absolute -top-3 -right-3 text-accent text-xl leading-none bg-background px-1;
+    @apply absolute -top-3 -right-3 text-accent-texto text-xl leading-none bg-background px-1;
   }
 
   .classic-frame-footer::before {
     content: '✦';
-    @apply absolute -bottom-3 -left-3 text-accent text-xl leading-none bg-background px-1;
+    @apply absolute -bottom-3 -left-3 text-accent-texto text-xl leading-none bg-background px-1;
   }
 
   .classic-frame-footer::after {
     content: '✦';
-    @apply absolute -bottom-3 -right-3 text-accent text-xl leading-none bg-background px-1;
+    @apply absolute -bottom-3 -right-3 text-accent-texto text-xl leading-none bg-background px-1;
   }
 
   /* Divider Clássico */
   .divider-ornate {
-    @apply flex items-center justify-center gap-4 my-8 text-accent;
+    @apply flex items-center justify-center gap-4 my-8 text-accent-texto;
   }
 
   .divider-line {

@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useCopyFeedback } from '@/hooks/use-copy-feedback';
+import { CopyLiveRegion } from '@/components/devotional/CopyLiveRegion';
 import { Check, Copy } from 'lucide-react';
 import { fetchDailyQuote, type DailyQuote } from '@/lib/quote-fetcher';
 
@@ -11,7 +13,7 @@ import { fetchDailyQuote, type DailyQuote } from '@/lib/quote-fetcher';
 // scriptoriumUrl. Falha de rede/API faz o card sumir com graça.
 export function LewisQuoteSection() {
   const [quote, setQuote] = useState<DailyQuote | null>(null);
-  const [copied, setCopied] = useState(false);
+  const { copied, message, copy } = useCopyFeedback();
 
   useEffect(() => {
     const ctrl = new AbortController();
@@ -23,11 +25,10 @@ export function LewisQuoteSection() {
 
   const handleCopy = async () => {
     if (!quote) return;
-    await navigator.clipboard.writeText(
+    await copy(
       `\u201C${quote.text}\u201D\n\n— ${quote.source ?? ''}, ${quote.author}\n\n— Lecionário · lecionario.narniano.com`,
+      'Citação',
     );
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
   };
 
   if (!quote) return null;
@@ -42,7 +43,7 @@ export function LewisQuoteSection() {
       <h2 className="text-2xl md:text-3xl font-display italic text-secondary mb-2">
         Citação do dia
       </h2>
-      <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent mb-8">
+      <p className="text-[11px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent-texto mb-8">
         {quote.author.toUpperCase()}
       </p>
       <blockquote className="text-lg md:text-xl lg:text-2xl font-display italic text-secondary max-w-4xl mx-auto leading-relaxed px-4">
@@ -55,7 +56,7 @@ export function LewisQuoteSection() {
             href={amazonUrl}
             target="_blank"
             rel="sponsored noopener noreferrer"
-            className="inline-flex items-center gap-1 text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent transition-colors hover:text-primary underline-offset-4 hover:underline"
+            className="inline-flex items-center gap-1 text-[11px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent-texto transition-colors hover:text-primary underline-offset-4 hover:underline"
             aria-label={`Abrir ${quote.source} na Amazon`}
           >
             — {quote.source} ↗
@@ -66,7 +67,7 @@ export function LewisQuoteSection() {
             href={bookUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-accent transition-all hover:border-accent/50 hover:bg-accent/15"
+            className="inline-flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/5 px-4 py-1.5 text-[11px] md:text-xs uppercase tracking-[0.2em] font-bold text-accent-texto transition-all hover:border-accent/50 hover:bg-accent/15"
           >
             Ler livro completo ↗
           </a>
@@ -78,12 +79,13 @@ export function LewisQuoteSection() {
         <button
           type="button"
           onClick={handleCopy}
-          className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
-          aria-label={copied ? 'Copiado' : 'Copiar citação'}
+          className="p-2 rounded-md text-muted-foreground hover:text-accent-texto hover:bg-accent/10 transition-colors"
+          aria-label="Copiar citação"
           title={copied ? 'Copiado!' : 'Copiar citação'}
         >
           {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
         </button>
+        <CopyLiveRegion message={message} />
       </div>
     </section>
   );

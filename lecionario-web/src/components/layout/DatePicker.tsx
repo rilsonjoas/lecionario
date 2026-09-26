@@ -26,7 +26,7 @@ export function DatePicker({ date, onDateChange }: DatePickerProps) {
             !date && 'text-muted-foreground',
           )}
         >
-          <div className="flex items-center gap-1.5 md:gap-2 text-vinho dark:text-[hsl(336,28%,78%)] font-bold text-[8px] md:text-[10px] uppercase tracking-wider md:tracking-widest group-hover:text-accent transition-colors">
+          <div className="flex items-center gap-1.5 md:gap-2 text-vinho dark:text-[hsl(336,28%,78%)] font-bold text-[11px] md:text-xs uppercase tracking-wider md:tracking-widest group-hover:text-accent-texto transition-colors">
             <CalendarIcon className="w-2.5 h-2.5 md:w-3 md:h-3" />
             <span>Devocional Diário</span>
           </div>
@@ -50,7 +50,13 @@ export function DatePicker({ date, onDateChange }: DatePickerProps) {
           classNames={{
             day_selected:
               'bg-accent text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
-            day_today: 'bg-accent/20 text-accent-foreground',
+            // Era `text-accent-foreground` sobre `bg-accent/20`. No escuro
+            // o --accent-foreground é quase preto (30 10% 8%) e o /20
+            // deixava o card em ~#3A352C: 1.62:1 — o dia de hoje ficava
+            // ilegível justamente no tema escuro. `text-foreground`
+            // acompanha o tema (grafite no claro, pergaminho no escuro)
+            // e o tom do /20 continua marcando qual dia é hoje.
+            day_today: 'bg-accent/20 text-foreground font-semibold',
           }}
         />
       </PopoverContent>

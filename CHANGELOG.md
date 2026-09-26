@@ -9,6 +9,68 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- **Auditoria de Acessibilidade WCAG 2.2 AA, web e mobile (2026-09-26)** — 21
+  achados medidos token a token, 21 corrigidos. Três que mudam o produto:
+  - **O zoom de pinça estava bloqueado** (`maximumScale: 1` e
+    `userScalable: false` no `viewport` do `layout.tsx`) num app de leitura,
+    que ainda tinha `text-[8px]` em três lugares. 1.4.4 (AA). O mobile nunca
+    bloqueou, então o web era menos acessível que o mobile no mesmo produto.
+    O `themeColor` também era `#7C3BED` (roxo fora da paleta) e passou a ser a
+    cor da estação
+  - **Oito falhas de contraste tinham uma raiz só, e ela era o token**:
+    `--accent` era o dourado puro a 2.05:1 no fundo de papel, em 36 lugares —
+    inclusive o badge da leitura a 1.08:1 e o hover do botão ghost a 1.00:1. O
+    `--dourado-texto` existia para fundo escuro desde 2026-08-15 e nunca ganhou
+    o par do claro. Nasceu o `--accent-texto`, separado de `--accent` (que
+    precisa continuar ouro porque o `accent-foreground` dele é quase preto) e
+    inverte sozinho no modo escuro. `--muted-foreground` foi de 4.28 para
+    4.81:1, `--input` (a borda do `Button variant="outline"`, que era da mesma
+    cor do fundo) de 1.00 para 3.52:1, e todas as opacidades `/60 /70 /80` em
+    texto pequeno saíram. No mobile, `accent` era `#B8860B` a 2.89:1 no claro e
+    passou a ter valor por tema
+  - **Cinco botões de copiar não anunciavam nada** e a falha da clipboard ia só
+    para o console — 4.1.3 (AA). Viraram `useCopyFeedback()` + `CopyLiveRegion`,
+    com sucesso **e** erro, e com o `aria-label` fixo na ação (antes virava
+    "Copiado" e trocava o nome acessível do botão embaixo da mão de quem usa
+    comando de voz)
+- **Badge do Evangelho era um gradiente com um foreground só** — e o `accent` é
+  a chama, dourada em 4 das 7 estações, então a ponta clara dava 2.62:1 em
+  advento, 3.12:1 em quaresma e 3.99:1 em pentecostes. Ficou sólido, como os
+  outros três. Com o foreground escolhido por estação, nenhum gradiente
+  resolve: só é seguro entre duas cores de peso igual
+- **O dia de hoje ficava ilegível no calendário do modo escuro** — `day_today`
+  usava `text-accent-foreground` sobre `bg-accent/20`, quase preto sobre quase
+  preto: 1.62:1. Passou a acompanhar o tema
+- **Pintura do Dia: o `alt` era o título, e o título também é o `<h3>` logo
+  abaixo** — o leitor de tela ouvia a mesma frase duas vezes e nenhuma
+  descrição. Agora o `alt` é a primeira frase da descrição da obra (com o
+  markdown limpo, mais autor e título) **e a descrição longa passou a ser
+  visível** — ela vinha da API preenchida em 1090 das 1090 obras e não era
+  usada em lugar nenhum
+- **`ArtCard` do mobile montava a `<Image>` sem `accessibilityLabel`** — quem usa
+  leitor de tela ouvia só "imagem"
+- **Alvos de toque**: o botão do glossário era 14×14 px (só o ícone, sem
+  padding) e agora é 44×44 com a margem negativa devolvendo o espaço ao layout;
+  o `ModeToggle` foi de 36 para 44
+- **`aria-hidden="true"` removido do `AdUnit`** — o AdSense injeta `<iframe>`
+  ali dentro, e foco num elemento que a tecnologia assistiva não vê é
+  `aria-hidden-focus`. O risco era latente porque o slot não é passado, mas
+  voltava junto se o slot voltasse
+- **Link sublinhado só no `hover`** (1.4.1) no rodapé, no link da fonte da
+  leitura, no link de e-mail e no CTA da citação — sublinhado permanente agora.
+  E o `hover:text-dourado` saiu onde a troca de cor piorava o contraste
+- **2.5.3 Label in Name (A)**: o link do logo se chamava "Ir para a página
+  inicial" e o texto visível é "Lecionário". O nome acessível passou a conter o
+  texto visível, e o `alt` do logo esvaziou (é decorativo dentro de um link já
+  nomeado)
+- **33 rótulos de 8px, 9px e 10px foram para 11px.** WCAG não tem tamanho
+  mínimo de fonte, mas 8px num projeto que bloqueava o zoom era um beco sem
+  saída
+- **`Button variant="link"`** usava `text-primary` a 3.14:1 e sublinhava só no
+  hover
+- **Bordas do mobile** (`border` a 0.08 de alfa, 1.20:1) subiram para 3.16:1 — o
+  `TextInput` da busca e o track do switch desligado usavam essa mesma cor, e
+  nesses dois casos a borda é o que identifica o componente
 - **Design da Pintura do Dia e ícones de cópia em Coleta/Meditação (web e mobile)** — Pintura do Dia movida para seção própria com cabeçalho de seção dedicado ("BÍBLIA NA ARTE") no mobile e enquadramento em card no web com margens corrigidas; adicionado ícone de cópia discreto no canto superior direito da Oração de Coleta e da Meditação nos dois apps.
 - **Botão HOJE fantasma caçado e morto (web)** — o Header é server component e não re-renderiza na navegação cliente: depois de clicar Hoje, o botão continuava na tela. Virou componente cliente reativo (`TodayButton`) lendo a URL via `useSearchParams` dentro de Suspense — some sozinho quando o dia exibido é hoje.
 - **Botão de tema mora na BARRA FIXA (home) — posição final** — mesma altura de Dia Anterior/Próximo Dia, separado por divisor fino; acompanha o scroll. Nas páginas institucionais (sem barra fixa), fica no canto absoluto do header, onde não há colisão.

@@ -22,7 +22,7 @@ export default function TermosPage() {
             <h1 className="text-2xl md:text-3xl lg:text-4xl font-display text-secondary tracking-tight">
               Termos de Uso
             </h1>
-            <p className="text-[10px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
+            <p className="text-[11px] uppercase tracking-[0.3em] font-bold text-muted-foreground">
               Última atualização: 15 de setembro de 2026
             </p>
           </header>
@@ -120,7 +120,7 @@ export default function TermosPage() {
           <div className="text-center pt-4">
             <Link
               href="/"
-              className="text-xs uppercase tracking-[0.2em] font-bold text-accent hover:text-secondary transition-colors inline-flex items-center gap-2"
+              className="text-xs uppercase tracking-[0.2em] font-bold text-accent-texto hover:text-secondary transition-colors inline-flex items-center gap-2"
             >
               ← Voltar para o Lecionário
             </Link>

@@ -26,9 +26,17 @@ const jetbrainsMono = localFont({
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
-  themeColor: '#7C3BED',
+  // 1.4.4 Resize Text (AA) — `userScalable: false` + `maximumScale: 1`
+  // bloqueavam o zoom de pinça, num app cujo propósito é LER TEXTO.
+  // Achado 2026-09-25: o mesmo projeto tem 8px e 9px em badges e
+  // rótulos (text-[8px] na home, no logo e no DatePicker), então sem
+  // zoom não há caminho nenhum para enlarger esse texto. O app mobile
+  // nunca bloqueou (não usa allowFontScaling={false} e o scale() já
+  // multiplica pelo fator do sistema) — agora o web também não.
+  // themeColor era #7C3BED (roxo), que não existe na paleta: quem tem
+  // a aba de navegador pinada viava uma cor que não é do Design
+  // Narniano. A cor por estação é aplicada em applySeasonBranding().
+  themeColor: '#4F6350',
 };
 
 export const metadata: Metadata = {

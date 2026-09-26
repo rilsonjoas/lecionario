@@ -28,7 +28,12 @@ export function GlossaryTerm({ term }: GlossaryTermProps) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`O que significa ${entry.term}?`}
-        className="text-muted-foreground/70 transition-colors hover:text-accent"
+        // Era um botão com SÓ o ícone de 14px, sem padding: alvo de 14×14
+        // px. O AA (2.5.8) pede 24×24 e a NBR 17060 5.1.2.13 pede 44×44
+        // (medido 2026-09-25). A caixa vai a 44×44 e a margem negativa
+        // devolve os 8px ao layout, para a fileira não andar: o alvo
+        // cresce, o desenho não.
+        className="-m-1 inline-flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-accent/10 hover:text-accent-texto"
       >
         <HelpCircle className="h-3.5 w-3.5" />
       </button>

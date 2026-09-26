@@ -58,12 +58,21 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
             <Link
               href="/"
               className="flex items-center gap-4 md:gap-6 group"
-              aria-label="Ir para a página inicial"
+              // 2.5.3 Label in Name (A): o nome acessível precisa conter o
+              // texto visível. O rótulo era só "Ir para a página inicial",
+              // e o que está escrito na tela é "Lecionário" — quem fala
+              // "clicar em Lecionário" não encontrava. Agora o nome
+              // começa pelo texto visível e explica para onde vai.
+              aria-label="Lecionário — ir para a página inicial"
             >
+              {/* Logo dentro de link com nome próprio: o alt repetiria o
+                  mesmo nome duas vezes na leitura. Vai vazio, que é o
+                  que 1.1.1 pede pra imagem decorativa. */}
               <div className="p-2 md:p-2.5 bg-creme rounded-2xl shadow-xl group-hover:scale-105 transition-transform duration-700">
                 <img
                   src={`/icons/logo/season-${liturgicalDay.season}.png`}
-                  alt="Logomarca Lecionário"
+                  alt=""
+                  aria-hidden="true"
                   width={64}
                   height={64}
                   className="w-10 h-10 md:w-14 md:h-14"
@@ -73,7 +82,7 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-display text-bege-areia drop-shadow-2xl">
                   Lecionário
                 </h1>
-                <p className="text-[8px] md:text-[9px] lg:text-xs uppercase tracking-[0.25em] md:tracking-[0.3em] lg:tracking-[0.4em] font-bold text-dourado-texto">
+                <p className="text-[11px] md:text-xs lg:text-xs uppercase tracking-[0.25em] md:tracking-[0.3em] lg:tracking-[0.4em] font-bold text-dourado-texto">
                   Tradição e Devoção
                 </p>
               </div>
@@ -88,7 +97,7 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
                 <Calendar className="w-3 h-3 md:w-4 md:h-4 text-dourado-texto" />
                 <time
                   dateTime={liturgicalDay.date}
-                  className="text-[9px] md:text-[10px] uppercase tracking-[0.15em] md:tracking-[0.2em] font-bold text-bege-areia/90"
+                  className="text-[11px] md:text-xs uppercase tracking-[0.15em] md:tracking-[0.2em] font-bold text-bege-areia/90"
                 >
                   {format(currentDate, "EEEE, d 'de' MMMM", { locale: ptBR })}
                 </time>
@@ -101,7 +110,7 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
 
                 {/* Badges e HOJE na mesma linha (refino do autor):
                     hierarquia limpa nos dois breakpoints */}
-                <div className="mt-2 md:mt-3 flex flex-wrap items-center justify-start md:justify-end gap-x-4 md:gap-x-6 gap-y-3 text-[9px] md:text-[10px] uppercase font-bold tracking-[0.25em] md:tracking-[0.3em] text-dourado-texto">
+                <div className="mt-2 md:mt-3 flex flex-wrap items-center justify-start md:justify-end gap-x-4 md:gap-x-6 gap-y-3 text-[11px] md:text-xs uppercase font-bold tracking-[0.25em] md:tracking-[0.3em] text-dourado-texto">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 bg-liturgical-primary rounded-full shadow-[0_0_8px_hsl(var(--liturgical-primary))] transition-colors duration-700 ease-liturgico" />
                     <span>Ano {liturgicalDay.cycle}</span>

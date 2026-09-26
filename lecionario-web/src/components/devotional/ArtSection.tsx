@@ -13,6 +13,36 @@ function formatReference(ref: ArtworkReference): string {
   return ref.verses ? `${ref.book} ${ref.chapter}:${ref.verses}` : `${ref.book} ${ref.chapter}`;
 }
 
+/** A descrição vem do catálogo com marcação markdown (`**negrito**`).
+ *  Renderizada como texto puro, os asteriscos apareceriam na tela. */
+function stripMarkdown(text: string): string {
+  return text.replace(/\*\*/g, '').replace(/\*/g, '').replace(/\s+/g, ' ').trim();
+}
+
+/**
+ * Alt curto a partir da descrição da obra.
+ *
+ * O campo `description` já vinha da API (1090 de 1090 obras preenchidas)
+ * e nunca era usado: o `alt` era `artwork.title`, que também é o <h3>
+ * logo abaixo — o leitor de tela ouvia o título duas vezes e não recebia
+ * nenhuma descrição da pintura. 1.1.1 (A).
+ *
+ * A descrição longa (mediana 1496 caracteres, com `**markdown**` e número
+ * de inventário do museu) não serve como `alt`: alt é conciso. Então aqui
+ * vai a PRIMEIRA FRASE, com o markdown limpo — que é justamente onde o
+ * texto descreve a cena ("A composição retrata o episódio de..."). O
+ * campo `altText` dedicado está no roadmap do Bíblia na Arte, que é onde
+ * essa decisão editorial pertence; até lá, primeira frase é o honesto.
+ */
+function buildAlt(artwork: Artwork): string {
+  const clean = stripMarkdown(artwork.description ?? '');
+  const firstSentence = clean.match(/^[^.!?]+[.!?]/)?.[0] ?? clean;
+  const short = firstSentence.length > 220 ? `${firstSentence.slice(0, 217)}…` : firstSentence;
+  // A cena, com o autor e o título no fim — que é o que identifica a obra
+  // para quem não está vendo a página.
+  return `${short} (${artwork.artistOrDirector}${artwork.title ? `, ${artwork.title}` : ''})`;
+}
+
 export function ArtSection({ date }: { date?: Date | string }) {
   const [artwork, setArtwork] = useState<Artwork | null>(null);
   // Achado do Rilson (ROADMAP 2026-09-02): imagem sumia em alguns dias
@@ -56,7 +86,7 @@ export function ArtSection({ date }: { date?: Date | string }) {
       <h2 className="text-2xl md:text-3xl font-display italic text-secondary mb-1">
         Pintura do Dia
       </h2>
-      <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent mb-8">
+      <p className="text-[11px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-accent-texto mb-8">
         BÍBLIA NA ARTE
       </p>
 
@@ -67,7 +97,7 @@ export function ArtSection({ date }: { date?: Date | string }) {
               <img
                 key={imageAttempt}
                 src={imageUrl}
-                alt={artwork.title}
+                alt={buildAlt(artwork)}
                 className="max-h-[500px] w-auto object-contain mx-auto transition-transform duration-500 hover:scale-[1.02]"
                 loading="lazy"
                 onError={() => {
@@ -88,15 +118,27 @@ export function ArtSection({ date }: { date?: Date | string }) {
             {artwork.artistOrDirector}
           </p>
           {relatedPassages.length > 0 && (
-            <p className="text-xs md:text-sm italic text-muted-foreground/80 mt-3">
+            <p className="text-xs md:text-sm italic text-muted-foreground mt-3">
               Relacionada a {relatedPassages}
+            </p>
+          )}
+          {/* A descrição da obra, finally visível (2026-09-25). O texto
+              vinha da API preenchido em 1090 das 1090 obras e não era
+              usado em lugar nenhum: o `alt` era o título e o resto do
+              texto morria no payload. É a descrição que o catálogo do
+              Bíblia na Arte escreveu mesmo para ser lida — quem enxerga
+              ganha o que já pagou para ser escrito, e quem não enxerga
+              ouve a mesma coisa pelo alt curto acima. */}
+          {artwork.description && (
+            <p className="text-sm md:text-base leading-relaxed text-foreground/90 mt-4 text-pretty">
+              {stripMarkdown(artwork.description)}
             </p>
           )}
           <a
             href={artworkUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-6 py-2.5 text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold text-accent transition-all hover:border-accent/50 hover:bg-accent/15"
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-6 py-2.5 text-[11px] md:text-xs uppercase tracking-[0.2em] font-bold text-accent-texto transition-all hover:border-accent/50 hover:bg-accent/15"
           >
             Ver obra completa ↗
           </a>

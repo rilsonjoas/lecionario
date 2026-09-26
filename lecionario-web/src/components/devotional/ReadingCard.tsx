@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useCopyFeedback } from '@/hooks/use-copy-feedback';
+import { CopyLiveRegion } from '@/components/devotional/CopyLiveRegion';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ScrollText, BookOpen, Music, Cross, Copy, Check } from 'lucide-react';
@@ -43,18 +45,31 @@ const readingTypeConfig = {
   gospel: {
     label: 'Evangelho',
     icon: Cross,
-    // Achado real (2026-08-16): `text-white` fixo aqui tinha o mesmo bug
-    // de contraste já corrigido nos outros badges — Natal/Páscoa (dourado)
-    // reprovava. Trocado pro foreground adaptativo por estação.
+    // Achado 2026-08-16 trocou `text-white` fixo pelo foreground adaptativo
+    // por estação. A troca estava incompleta: o fundo é um GRADIENTE
+    // primary→accent, e o accent é a chama — que é dourado em 4 das 7
+    // estações. Com um único foreground, a ponta clara reprovava:
+    // Advento 2.62:1, Quaresma 3.12:1, Pentecostes 3.99:1 (medido 2026-09-25).
+    //
+    // Corrigido ficando SÓLIDO, como os outros três badges. Não é
+    // qualquer gradiente que resolva: o foreground é escolhido por
+    // estação (preto nas estações claras, branco nas escuras), então
+    // qualquer segunda cor de peso diferente vai reprovar em alguma
+    // estação. Gradiente com texto por cima só é seguro entre duas
+    // cores de peso igual — e primary e accent nunca são.
+    //
+    // O gradiente volta, se voltar, com camada escura por cima, que é a
+    // mesma solução que o Header e o Footer já usam (bg-black/40). O
+    // "centro da liturgia" segue sinalizado pelo ícone de Cruz.
     color:
-      'bg-gradient-to-r from-liturgical-primary to-liturgical-accent text-liturgical-primary-foreground hover:from-liturgical-primary/90 hover:to-liturgical-accent/90 transition-all duration-700 ease-liturgico',
+      'bg-liturgical-primary text-liturgical-primary-foreground hover:bg-liturgical-primary/90 transition-colors duration-700 ease-liturgico',
   },
 };
 
 export function ReadingCard({ reading, index }: ReadingCardProps) {
   const config = readingTypeConfig[reading.type];
   const IconComponent = config.icon;
-  const [copied, setCopied] = useState(false);
+  const { copied, message, copy } = useCopyFeedback();
 
   // 5.3 (2026-08-30): o Salmo é a resposta da congregação à primeira
   // leitura — tratamento próprio de "resposta", distinto dos demais cards.
@@ -62,9 +77,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
 
   const handleCopy = async () => {
     const text = `${reading.reference}\n${reading.citation}\n\n${reading.text ?? ''}\n\n— Lecionário · lecionario.narniano.com`;
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    await copy(text, 'Leitura');
   };
 
   return (
@@ -79,15 +92,15 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
               <h3 className="text-xl md:text-2xl font-display text-secondary group-hover:text-primary transition-colors italic">
                 {reading.reference}
               </h3>
-              <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-muted-foreground mt-1">
+              <p className="text-[11px] uppercase tracking-[0.2em] font-bold text-muted-foreground mt-1">
                 {reading.citation}
               </p>
             </div>
 
             <div className="flex items-center gap-2">
-              <Badge className="bg-accent/10 text-accent border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2">
+              <Badge className="bg-accent/10 text-accent-texto border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-colors shadow-none px-3 py-1 rounded-none flex items-center gap-2">
                 <IconComponent className="w-3 h-3" />
-                <span className="text-[9px] uppercase tracking-[0.2em] font-bold">
+                <span className="text-[11px] uppercase tracking-[0.2em] font-bold">
                   {config.label}
                 </span>
               </Badge>
@@ -100,7 +113,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
               {isPsalmResponse && (
                 <div className="flex items-center justify-center gap-3 mb-4" aria-hidden="true">
                   <span className="w-16 h-px bg-accent/30" />
-                  <Music className="w-4 h-4 text-accent/70" />
+                  <Music className="w-4 h-4 text-accent-texto" />
                   <span className="w-16 h-px bg-accent/30" />
                 </div>
               )}
@@ -113,11 +126,12 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
               <div className="flex justify-end pt-2">
                 <button
                   onClick={handleCopy}
-                  className="p-2 rounded-md text-muted-foreground hover:text-accent hover:bg-accent/10 transition-colors"
-                  aria-label={copied ? 'Copiado' : 'Copiar leitura'}
+                  className="p-2 rounded-md text-muted-foreground hover:text-accent-texto hover:bg-accent/10 transition-colors"
+                  aria-label="Copiar leitura"
                 >
                   {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                 </button>
+                <CopyLiveRegion message={message} />
               </div>
             </div>
           )}
@@ -128,7 +142,7 @@ export function ReadingCard({ reading, index }: ReadingCardProps) {
                 href={reading.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[9px] uppercase tracking-[0.3em] font-bold text-canela dark:text-[hsl(25,40%,72%)] hover:text-laranja-queimado transition-colors flex items-center gap-2 group/link"
+                className="text-[11px] uppercase tracking-[0.3em] font-bold text-canela dark:text-[hsl(25,40%,72%)] hover:text-laranja-queimado transition-colors flex items-center gap-2 group/link"
               >
                 Scriptura Integra
                 <span className="group-hover/link:translate-x-1 transition-transform">→</span>

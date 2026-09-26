@@ -27,10 +27,10 @@ export default function ApoiarPage() {
         <div className="space-y-8 md:space-y-10">
           <header className="space-y-3 text-center">
             <div className="flex justify-center mb-2">
-              <span className="text-accent text-xl md:text-2xl">✦ ✧ ✦</span>
+              <span className="text-accent-texto text-xl md:text-2xl">✦ ✧ ✦</span>
             </div>
             <h1 className="flex items-center justify-center gap-3 text-2xl font-display tracking-tight text-secondary md:text-3xl lg:text-4xl">
-              <Heart className="h-6 w-6 fill-current text-accent md:h-7 md:w-7" />
+              <Heart className="h-6 w-6 fill-current text-accent-texto md:h-7 md:w-7" />
               Apoie o projeto
             </h1>
           </header>
@@ -58,7 +58,7 @@ export default function ApoiarPage() {
               </p>
               <p className="flex items-center justify-center gap-1.5">
                 Qualquer valor é bem-vindo. Deus abençoe a sua generosidade.
-                <Flame className="h-4 w-4 text-accent" aria-hidden="true" />
+                <Flame className="h-4 w-4 text-accent-texto" aria-hidden="true" />
               </p>
             </section>
           </div>
@@ -66,7 +66,7 @@ export default function ApoiarPage() {
           <p className="text-center">
             <Link
               href="/"
-              className="text-xs font-bold uppercase tracking-[0.25em] text-accent underline-offset-4 transition-colors hover:text-primary hover:underline"
+              className="text-xs font-bold uppercase tracking-[0.25em] text-accent-texto underline-offset-4 transition-colors hover:text-primary hover:underline"
             >
               ← Voltar ao Lecionário
             </Link>

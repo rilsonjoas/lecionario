@@ -20,7 +20,7 @@ export function TodayButton({ todayStr }: { todayStr: string }) {
   return (
     <a
       href="/"
-      className="inline-flex w-fit items-center gap-1.5 rounded-full border border-dourado/40 px-3 py-1 text-[9px] md:text-[10px] uppercase tracking-[0.2em] font-bold text-dourado-texto transition-colors hover:bg-dourado/15 hover:text-white"
+      className="inline-flex w-fit items-center gap-1.5 rounded-full border border-dourado/40 px-3 py-1 text-[11px] md:text-xs uppercase tracking-[0.2em] font-bold text-dourado-texto transition-colors hover:bg-dourado/15 hover:text-white"
       aria-label="Voltar para hoje"
     >
       <CalendarCheck className="w-3 h-3" />

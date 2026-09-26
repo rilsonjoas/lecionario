@@ -1,6 +1,8 @@
 import { Flame, Copy, Check } from 'lucide-react';
 import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 import { useState } from 'react';
+import { useCopyFeedback } from '@/hooks/use-copy-feedback';
+import { CopyLiveRegion } from '@/components/devotional/CopyLiveRegion';
 import type { DailyPrayer } from '@/types';
 
 interface PrayerSectionProps {
@@ -9,7 +11,7 @@ interface PrayerSectionProps {
 
 export function PrayerSection({ prayer }: PrayerSectionProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const { copied, message, copy } = useCopyFeedback();
 
   const handleCopy = async () => {
     const parts = [prayer.title, prayer.text];
@@ -18,11 +20,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
         `— ${prayer.author ?? ''}${prayer.author && prayer.source ? ' • ' : ''}${prayer.source ?? ''}`,
       );
     }
-    await navigator.clipboard.writeText(
-      parts.join('\n\n') + '\n\n— Lecionário \u00b7 lecionario.narniano.com',
-    );
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    await copy(parts.join('\n\n') + '\n\n— Lecionário \u00b7 lecionario.narniano.com', 'Oração');
   };
 
   return (
@@ -43,7 +41,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
               </h2>
               <GlossaryTerm term="oracaoDia" />
             </div>
-            <p className="text-[10px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-dourado-texto">
+            <p className="text-[11px] md:text-xs uppercase tracking-[0.3em] md:tracking-[0.4em] font-bold text-dourado-texto">
               {prayer.title}
             </p>
           </div>
@@ -56,7 +54,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
             </blockquote>
 
             {(prayer.author || prayer.source) && (
-              <div className="flex items-center justify-center gap-4 mt-12 text-[10px] font-bold uppercase tracking-[0.3em] text-dourado-texto">
+              <div className="flex items-center justify-center gap-4 mt-12 text-[11px] font-bold uppercase tracking-[0.3em] text-dourado-texto">
                 <span className="w-10 h-px bg-dourado/20" />
                 <span>
                   {prayer.author}
@@ -73,7 +71,7 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
                 projeto, só na nota de identidade do vault) — removida.
                 Cor trocada pra dourado-texto (achado 2026-08-15: dourado/40
                 sobre vinho dava 2.79:1, reprovado). */}
-            <p className="text-[10px] uppercase tracking-[0.5em] text-dourado-texto font-bold">
+            <p className="text-[11px] uppercase tracking-[0.5em] text-dourado-texto font-bold">
               "SURSUM CORDA — CORAÇÕES AO ALTO"
             </p>
             {/* Ação única por card, centrada no rodapé — mesmo padrão dos
@@ -85,11 +83,12 @@ export function PrayerSection({ prayer }: PrayerSectionProps) {
               <button
                 onClick={handleCopy}
                 className="p-2 rounded-md text-dourado-texto border border-dourado/20 hover:bg-dourado/10 transition-colors"
-                aria-label={copied ? 'Copiado' : 'Copiar oração'}
+                aria-label="Copiar oração"
                 title={copied ? 'Copiado!' : 'Copiar oração'}
               >
                 {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
               </button>
+              <CopyLiveRegion message={message} />
             </div>
           </div>
         </div>

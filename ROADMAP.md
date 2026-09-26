@@ -831,6 +831,36 @@ _O que separa um app de v1 de um app que as pessoas recomendam._
 
 ### 3.1 Acessibilidade
 
+- [x] **Auditoria completa WCAG 2.2 AA, web e mobile (2026-09-26)** — 21 achados
+      medidos token a token, 21 corrigidos. Detalhe completo na nota do
+      projeto no vault (cofre → 8 - Carreira e Aprendizagem → Projetos →
+      Lecionário). Os três que mais importam:
+  - **O zoom de pinça estava bloqueado** (`maximumScale: 1` +
+        `userScalable: false` no `viewport` do `layout.tsx`) num app de
+        leitura, que ainda tinha `text-[8px]` em três lugares — 1.4.4 (AA).
+        O mobile nunca bloqueou: mais acessível que o web no mesmo produto
+  - **A raiz de oito falhas de contraste era o token, não o componente**:
+        `--accent` era o dourado puro a 2.05:1 no fundo de papel, em 36
+        lugares. O `--dourado-texto` existia para fundo escuro desde
+        2026-08-15 e nunca ganhou o par do claro. Nasceu `--accent-texto`,
+        separado de `--accent` (que precisa continuar ouro porque o
+        `accent-foreground` dele é quase preto) — e inverte sozinho no
+        escuro. No mobile, `accent` era `#B8860B` a 2.89:1 no claro e
+        passou a ter valor por tema
+  - **Cinco botões de copiar não anunciavam nada** e o erro da clipboard
+        ia só para o console — 4.1.3. Viraram `useCopyFeedback()` +
+        `CopyLiveRegion`, com sucesso **e** falha, e com o `aria-label`
+        fixo na ação (antes virava "Copiado" e trocava o nome acessível do
+        botão)
+- [ ] **axe-core nas rotas** — o `e2e/` tem só `offline.spec.ts`; o
+      axe-core do Storybook cobre componente, não página. É o que falta
+      para o claim de auditoria deixar de ser promessa
+- [ ] Testar com TalkBack (Android) e VoiceOver (iOS)
+- [ ] Conferir o zoom a 200% e o reflow com olho humano
+- [x] **`season-palette.json` não é importado por nada** e duplica as
+      cores das estações do CSS (achado 2026-09-26). Não é
+      acessibilidade, é risco de divergência — fica para quando a paleta
+      mexer, junto com a decisão de apagar ou virar fonte única
 - [x] **Auditoria de `accessibilityLabel`/`accessibilityRole` — feita (2026-08-15)**:
       todos os `TouchableOpacity` interativos dos 6 arquivos que tinham
       (Prayer/Reading/Home/Calendar/Config/ErrorBoundary) agora têm os
