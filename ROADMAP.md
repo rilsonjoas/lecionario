@@ -852,6 +852,21 @@ _O que separa um app de v1 de um app que as pessoas recomendam._
         `CopyLiveRegion`, com sucesso **e** falha, e com o `aria-label`
         fixo na ação (antes virava "Copiado" e trocava o nome acessível do
         botão)
+- [x] **Correção pontual: descrição da Pintura do Dia estava visível além
+      do `alt` — RESOLVIDO (2026-09-26, achado do Rilson usando o app).**
+      A auditoria acima resolveu 1.1.1 (A) certo (`alt` = primeira frase
+      da descrição, em vez do título duplicado), mas na mesma mudança
+      também tornou a descrição completa (mediana 1496 caracteres)
+      **visível** no card da web (`ArtSection.tsx`) — isso nunca foi
+      requisito de acessibilidade, e reduzia o motivo de clicar em "Ver
+      obra completa" (menos tráfego pro Bíblia na Arte). Também vazava
+      markdown de heading cru ("### Contexto Histórico") na tela, porque
+      `stripMarkdown` só limpa negrito/itálico. O mobile nunca teve essa
+      descrição visível, só o `accessibilityLabel` — a versão web foi a
+      única com o parágrafo extra. Removido só o parágrafo; `alt`/
+      `buildAlt()` intactos. Confirmado ao vivo em produção (mesma obra
+      do print do Rilson): `alt` completo presente, "Contexto Histórico"
+      não aparece mais em lugar nenhum da seção
 - [ ] **axe-core nas rotas** — o `e2e/` tem só `offline.spec.ts`; o
       axe-core do Storybook cobre componente, não página. É o que falta
       para o claim de auditoria deixar de ser promessa
