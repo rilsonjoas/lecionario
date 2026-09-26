@@ -44,9 +44,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Pintura do Dia: o `alt` era o título, e o título também é o `<h3>` logo
   abaixo** — o leitor de tela ouvia a mesma frase duas vezes e nenhuma
   descrição. Agora o `alt` é a primeira frase da descrição da obra (com o
-  markdown limpo, mais autor e título) **e a descrição longa passou a ser
-  visível** — ela vinha da API preenchida em 1090 das 1090 obras e não era
-  usada em lugar nenhum
+  markdown limpo, mais autor e título). 1.1.1 (A) resolvido só por isso — a
+  correção original também tinha tornado a descrição longa visível no card
+  (`ArtSection.tsx` na web only, o mobile nunca teve isso), o que não é
+  requisito de acessibilidade nenhum e reduzia o motivo de clicar em "Ver obra
+  completa": revertido em 26/09/2026 a pedido do Rilson, mantendo só o `alt`
 - **`ArtCard` do mobile montava a `<Image>` sem `accessibilityLabel`** — quem usa
   leitor de tela ouvia só "imagem"
 - **Alvos de toque**: o botão do glossário era 14×14 px (só o ícone, sem

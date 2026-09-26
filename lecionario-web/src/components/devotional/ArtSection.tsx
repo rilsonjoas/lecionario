@@ -122,18 +122,6 @@ export function ArtSection({ date }: { date?: Date | string }) {
               Relacionada a {relatedPassages}
             </p>
           )}
-          {/* A descrição da obra, finally visível (2026-09-25). O texto
-              vinha da API preenchido em 1090 das 1090 obras e não era
-              usado em lugar nenhum: o `alt` era o título e o resto do
-              texto morria no payload. É a descrição que o catálogo do
-              Bíblia na Arte escreveu mesmo para ser lida — quem enxerga
-              ganha o que já pagou para ser escrito, e quem não enxerga
-              ouve a mesma coisa pelo alt curto acima. */}
-          {artwork.description && (
-            <p className="text-sm md:text-base leading-relaxed text-foreground/90 mt-4 text-pretty">
-              {stripMarkdown(artwork.description)}
-            </p>
-          )}
           <a
             href={artworkUrl}
             target="_blank"
