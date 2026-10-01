@@ -77,7 +77,13 @@ export function QuoteCard({ quote }: QuoteCardProps) {
               { backgroundColor: colors.card, borderColor: colors.border },
             ]}
             accessibilityRole="link"
-            accessibilityLabel={`Ler ${quote.source} completo`}
+            // Label ESTÁTICO de propósito: interpolar `quote.source` aqui
+            // produzia "Ler null completo" para o leitor de tela sempre que a
+            // API devolvesse `source: null` com `scriptoriumUrl` preenchido —
+            // exatamente o caso que o gate de CTA do Scriptorium passou a
+            // produzir (fonte zerada em obra protegida). O texto visível já é
+            // "Ler livro completo", então o label só precisa repetir isso.
+            accessibilityLabel="Ler livro completo"
           >
             <Text style={[styles.scriptoriumText, { color: colors.accent, fontSize: scale(11) }]}>
               Ler livro completo

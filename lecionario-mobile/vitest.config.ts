@@ -19,6 +19,16 @@ export default defineConfig({
     globals: true,
     environment: 'node',
     include: ['src/**/*.test.{ts,tsx}'],
+    // Fixa `NODE_ENV=test` no worker, antes de qualquer import: sem isto a
+    // suíte herda o ambiente do shell. Se `NODE_ENV=production` estiver
+    // exportado (shell de Docker, build EAS, passo de CI), o React resolve
+    // o build de produção — onde `act()` não existe — e a suíte de
+    // componentes morre com um erro que não aponta o ambiente como causa.
+    //
+    // Precisa ser `test.env` e não um pin dentro de setupFiles: o
+    // `import { ... } from 'react'` do setup.ts é hoisted e carrega o React
+    // antes da atribuição (o pin chega tarde e não funciona).
+    env: { NODE_ENV: 'test' },
     // Mocks de módulos só pra ambiente de teste: vector-icons e contexts.
     setupFiles: ['src/test/setup.ts'],
     server: {

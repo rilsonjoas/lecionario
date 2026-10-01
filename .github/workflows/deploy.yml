@@ -11,7 +11,71 @@ permissions:
   contents: read
 
 jobs:
+  # Gate: nada vai pra produção sem passar por aqui. Até 2026-10-01 o
+  # `deploy` era disparado direto pelo push e fazia `git pull` + rebuild na
+  # VPS — o `ci.yml` rodava em PARALELO, sem ninguém esperar. Commit
+  # quebrado ia pra produção e o CI só avisava depois, sem impedir nada.
+  verify:
+    name: Verify (TypeCheck, Lint, Tests)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v5
+
+      # Dois `setup-node` porque o monorepo não tem lockfile na raiz: o cache
+      # do setup-node procura um só e falharia. Mesma razão do `ci.yml`.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: lecionario-web/package-lock.json
+
+      # Web
+      - name: Install (web)
+        working-directory: lecionario-web
+        run: npm ci --legacy-peer-deps
+      - name: TypeCheck (web)
+        working-directory: lecionario-web
+        run: npx tsc --noEmit
+      - name: Lint (web)
+        working-directory: lecionario-web
+        run: npm run lint
+      - name: Tests (web)
+        working-directory: lecionario-web
+        run: npm run test
+      # Ambiente hostil: o mesmo teste que o `ci.yml` faz. Fica aqui porque
+      # este é o gate real — se o pin de `NODE_ENV` sumir, o deploy para.
+      - name: Tests com ambiente hostil (web)
+        working-directory: lecionario-web
+        env:
+          NODE_ENV: production
+          PUBLIC_ORIGIN: https://hostil.invalido
+          DATABASE_URL: postgresql://invalido://x@hostil:9999/db
+        run: npm run test
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: lecionario-mobile/package-lock.json
+
+      # Mobile
+      - name: Install (mobile)
+        working-directory: lecionario-mobile
+        run: npm ci --legacy-peer-deps
+      - name: TypeCheck (mobile)
+        working-directory: lecionario-mobile
+        run: npx tsc --noEmit
+      - name: Lint (mobile)
+        working-directory: lecionario-mobile
+        run: npm run lint
+      - name: Tests (mobile)
+        working-directory: lecionario-mobile
+        run: npm run test
+
   deploy:
+    needs: verify
     runs-on: ubuntu-latest
     timeout-minutes: 20
     concurrency:
@@ -20,6 +84,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+
+      # Falha fechada. A VPS faz `git pull --ff-only origin main`, que pega
+      # a HEAD do branch — não o commit que os testes acabaram de verificar.
+      # Se alguém subiu outro commit durante o `verify`, este passo aborta em
+      # vez de publicar código não testado. O push seguinte traz o deploy de
+      # volta (fail-closed: aborta, nunca publica errado).
+      - name: Falha se a main avançou durante a verificação
+        run: |
+          HEAD_SHA=$(git ls-remote origin refs/heads/main | cut -f1)
+          if [ "$HEAD_SHA" != "$GITHUB_SHA" ]; then
+            echo "❌ main avançou durante a verificação (testado $GITHUB_SHA, branch $HEAD_SHA)."
+            echo "   Deploy abortado para não publicar commit não verificado."
+            exit 1
+          fi
+          echo "✅ HEAD da main == commit verificado (${GITHUB_SHA:0:7})"
 
       - name: Deploy no VPS (git pull + rebuild)
         uses: appleboy/ssh-action@v1
