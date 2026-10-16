@@ -66,7 +66,7 @@ export default function MetodoPage() {
                   href="https://lectionary.library.vanderbilt.edu/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-texto hover:underline underline-offset-2"
+                  className="text-accent-texto underline decoration-1 underline-offset-2 hover:decoration-2 transition-colors"
                 >
                   Revised Common Lectionary da Vanderbilt Divinity Library
                 </a>
@@ -173,7 +173,7 @@ export default function MetodoPage() {
                 Dúvidas ou achados:{' '}
                 <Link
                   href="/privacidade"
-                  className="text-accent-texto hover:underline underline-offset-2"
+                  className="text-accent-texto underline decoration-1 underline-offset-2 hover:decoration-2 transition-colors"
                 >
                   fale conosco
                 </Link>

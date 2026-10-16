@@ -50,7 +50,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
               {meditation.duration && (
                 <Badge
                   variant="outline"
-                  className="flex items-center gap-2 border-accent/20 bg-background/50 backdrop-blur-sm px-3 py-1 rounded-none"
+                  className="flex items-center gap-2 border-accent/20 bg-[color-mix(in_srgb,var(--background)_50%,transparent)] backdrop-blur-sm px-3 py-1 rounded-none"
                 >
                   <Clock className="w-3 h-3 text-vinho dark:text-[hsl(336,28%,78%)]" />
                   <span className="text-[11px] font-bold uppercase tracking-[0.2em]">
@@ -127,7 +127,7 @@ export function MeditationSection({ meditation }: MeditationSectionProps) {
           )}
 
           <div className="text-center pt-8 border-t border-accent/10">
-            <p className="text-[11px] uppercase tracking-[0.4em] text-muted-foreground/60 font-bold italic">
+            <p className="text-[11px] uppercase tracking-[0.4em] text-muted-foreground font-bold italic">
               "Aquietai-vos e sabei que eu sou Deus"
             </p>
           </div>

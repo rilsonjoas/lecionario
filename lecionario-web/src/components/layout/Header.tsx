@@ -58,12 +58,14 @@ export function Header({ liturgicalDay, season, variant = 'full' }: HeaderProps)
             <Link
               href="/"
               className="flex items-center gap-4 md:gap-6 group"
-              // 2.5.3 Label in Name (A): o nome acessível precisa conter o
-              // texto visível. O rótulo era só "Ir para a página inicial",
-              // e o que está escrito na tela é "Lecionário" — quem fala
-              // "clicar em Lecionário" não encontrava. Agora o nome
-              // começa pelo texto visível e explica para onde vai.
-              aria-label="Lecionário — ir para a página inicial"
+              // 2.5.3 Label in Name (A) — reaberto 2026-10-15 pelo spec de
+              // a11y (e2e/a11y.spec.ts). O nome acessível tem de conter o
+              // texto visível, e o visível aqui é "Lecionário" MAIS
+              // "Tradição e Devoção", que concatenam sem separador
+              // ("LecionárioTradição e Devoção"). Nenhum aria-label com
+              // pontuação contém essa string — testado com o axe no DOM
+              // real. O conteúdo já é o nome acessível, então o rótulo sai;
+              // quem usa leitor de tela ouve exatamente o que está na tela.
             >
               {/* Logo dentro de link com nome próprio: o alt repetiria o
                   mesmo nome duas vezes na leitura. Vai vazio, que é o

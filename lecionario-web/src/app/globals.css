@@ -45,7 +45,7 @@
     --creme: 41 33% 94%; /* #F5F1E8 */
 
     /* Mapping to Shadcn/UI scale */
-    --background: var(--bege-areia);
+    --background: hsl(var(--bege-areia));
     --foreground: var(--grafite);
 
     --card: var(--creme);
@@ -55,7 +55,11 @@
     --popover-foreground: var(--grafite);
 
     --primary: var(--laranja-queimado);
-    --primary-foreground: var(--bege-areia);
+    /* Bege-areia sobre o laranja queimado dava 3.15:1 — reprovado em AA.
+       Achado pelo spec de a11y (e2e/a11y.spec.ts, 2026-10-15), no botão
+       Pix. Preto-ébano sobre o mesmo laranja passa folgado, e é o mesmo
+       papel que o --accent-foreground já cumpre sobre o dourado. */
+    --primary-foreground: var(--preto-ébano);
 
     --secondary: var(--canela);
     --secondary-foreground: var(--bege-areia);
@@ -128,7 +132,11 @@
     --popover-foreground: 40 24% 93%;
 
     --primary: 24 60% 52%; /* laranja sobe um passo de luminosidade */
-    --primary-foreground: 0 0% 97%;
+    /* Mesmo defeito do tema claro (texto quase branco dava 3.16:1);
+       corrigido junto em 2026-10-15, pelo mesmo motivo. Preto quente
+       sobre o laranja claro dá 5.54:1 — e é o papel que o
+       --accent-foreground já cumpre aqui no escuro. */
+    --primary-foreground: 30 10% 8%;
 
     --secondary: 38 32% 78%; /* virou TEXTO claro: títulos/citações */
     --secondary-foreground: 25 30% 12%;

@@ -18,7 +18,7 @@ jobs:
   verify:
     name: Verify (TypeCheck, Lint, Tests)
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - uses: actions/checkout@v5
@@ -53,6 +53,19 @@ jobs:
           PUBLIC_ORIGIN: https://hostil.invalido
           DATABASE_URL: postgresql://invalido://x@hostil:9999/db
         run: npm run test
+
+      # Mesmo gate de acessibilidade do ci.yml — fica aqui porque ESTE é o
+      # portão real da produção (ver comentário do job lá em cima). O build
+      # standalone é o que o webServer do playwright.config.ts sobe.
+      - name: Install Playwright (Chromium)
+        working-directory: lecionario-web
+        run: npx playwright install --with-deps chromium
+      - name: Build (standalone)
+        working-directory: lecionario-web
+        run: npm run build
+      - name: E2E — acessibilidade (axe-core, WCAG 2.1 A/AA)
+        working-directory: lecionario-web
+        run: npx playwright test e2e/a11y.spec.ts
 
       - uses: actions/setup-node@v4
         with:

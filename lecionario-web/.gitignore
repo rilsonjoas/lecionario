@@ -37,3 +37,9 @@ scripts/output/
 
 # Storybook build output
 storybook-static/
+
+# Playwright — artefatos de execução (relatório, cache, perfil de navegador
+# do offline.spec.ts), não versionar
+test-results/
+playwright-report/
+.playwright-user-data/

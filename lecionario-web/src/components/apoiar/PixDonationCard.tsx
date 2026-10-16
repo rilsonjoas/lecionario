@@ -27,14 +27,14 @@ export function PixDonationCard() {
 
       <div className="bg-white rounded-lg p-4 w-fit mx-auto shadow-md border border-accent/10">
         {/* QR estático EMV (BR Code do Bacen), sem valor fixado */}
-        <QRCodeSVG value={brCode} size={180} level="M" />
+        <QRCodeSVG value={brCode} size={180} level="M" title="QR Code Pix (BR Code)" />
       </div>
       <p className="text-center text-xs text-muted-foreground -mt-2">
         Escaneie com o app do seu banco — ou copie o código abaixo
       </p>
 
       <div className="space-y-3 max-w-xl mx-auto">
-        <div className="flex items-center gap-2 bg-bege-areia/40 border border-accent/20 rounded-md px-3 py-2">
+        <div className="flex items-center gap-2 bg-muted border border-accent/20 rounded-md px-3 py-2">
           <code className="text-xs break-all flex-1 text-foreground/70 select-all">{brCode}</code>
         </div>
         <Button

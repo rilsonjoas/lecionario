@@ -204,7 +204,7 @@ function HomeContent() {
         />
 
         {/* Navigation Controls */}
-        <div className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-accent/10 py-3 md:py-4 shadow-sm">
+        <div className="sticky top-0 z-50 bg-[color-mix(in_srgb,var(--background)_80%,transparent)] backdrop-blur-md border-b border-accent/10 py-3 md:py-4 shadow-sm">
           <div className="container mx-auto px-3 md:px-4 flex items-center justify-between max-w-4xl">
             {/* Achado 2026-08-15: `hidden sm:inline` remove o texto da
                 árvore de acessibilidade também, não só visualmente — no
@@ -279,7 +279,7 @@ function HomeContent() {
                   size="sm"
                   onClick={() => toggleFavorite(dateKey)}
                   className="text-muted-foreground hover:text-accent-texto transition-colors gap-2 text-xs"
-                  aria-label={favorited ? 'Remover dos favoritos' : 'Adicionar aos favoritos'}
+                  aria-pressed={favorited}
                 >
                   <Heart
                     className={favorited ? 'w-3.5 h-3.5 fill-red-600 text-red-600' : 'w-3.5 h-3.5'}
@@ -291,7 +291,6 @@ function HomeContent() {
                   size="sm"
                   onClick={handleShareDay}
                   className="text-muted-foreground hover:text-accent-texto transition-colors gap-2 text-xs"
-                  aria-label={shared ? 'Dia copiado' : 'Compartilhar dia'}
                 >
                   {shared ? <Check className="w-3.5 h-3.5" /> : <Share2 className="w-3.5 h-3.5" />}
                   {shared ? 'Copiado!' : 'Compartilhar este dia'}

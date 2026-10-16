@@ -47,7 +47,14 @@ export default {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
+        // `background` é o ÚNICO token que guarda uma COR CHEIA, não
+        // componentes HSL: no escuro ele é um `color-mix()` da estação, que
+        // não cabe dentro de `hsl(...)`. Com `hsl(var(--background))` o
+        // valor virava `hsl(color-mix(...))` — inválido, declaração
+        // descartada, e o `bg-background` ficava transparente (fundo branco
+        // com texto claro no escuro). Por isso `var()` direto aqui, e
+        // `--background` já com o `hsl()` embutido nos dois temas.
+        background: 'var(--background)',
         foreground: 'hsl(var(--foreground))',
         primary: {
           DEFAULT: 'hsl(var(--primary))',
