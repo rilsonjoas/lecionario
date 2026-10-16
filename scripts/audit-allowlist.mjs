@@ -18,10 +18,22 @@ const ALLOWLIST = {
   // Resolvidos todos pelo upgrade Next.js 14 -> 16 (breaking):
   // next (21 advisories DoS/XSS/SSRF/cache poisoning), postcss embutido
   // no next, serialize-javascript via next-pwa.
-  web: ['next', 'postcss', 'serialize-javascript'],
+  //
+  // braces (GHSA-vfj7-8cjw-p6xm, 2026-10-16): afeta <=3.0.3, que é a ÚLTIMA
+  // versão publicada — não existe versão corrigida, `npm audit fix` não tem
+  // o que subir. Entra via tailwindcss -> chokidar (ferramenta de build).
+  // Reavaliar quando sair braces > 3.0.3.
+  web: ['next', 'postcss', 'serialize-javascript', 'braces'],
   // Resolvidos pelo upgrade do Expo SDK (54 -> futuro):
   // image-size e postcss são dependências internas do expo/@expo/cli.
-  mobile: ['image-size', 'postcss'],
+  //
+  // Sem versão corrigida publicada (2026-10-16), reavaliar a cada auditoria:
+  // - braces (GHSA-vfj7-8cjw-p6xm): afeta <=3.0.3 (a última). Entra via
+  //   jest-haste-map -> micromatch (ferramenta de teste).
+  // - node-forge (GHSA-86w9-cpqp-85rv): afeta <=1.4.0 (a última). Entra via
+  //   @expo/code-signing-certificates (expo-updates e @expo/cli). Não foi
+  //   verificado se chega ao bundle do app; a correção virá do Expo.
+  mobile: ['image-size', 'postcss', 'braces', 'node-forge'],
 };
 
 const app = process.argv[2];

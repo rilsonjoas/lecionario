@@ -7,8 +7,51 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Security
+
+- **Auditoria de dependências voltou a passar (2026-10-16)** — o CI estava
+  vermelho desde o push das 04:52 por advisories novos high/critical, sem
+  relação com o código. `npm audit fix --legacy-peer-deps` nos lockfiles dos
+  dois apps resolveu `brace-expansion`, `source-map-js`, `undici`,
+  `compression` e `shell-quote` (crítica). `braces` (web e mobile) e
+  `node-forge` (mobile) afetam a **última versão publicada** — não há o que
+  subir — e entraram na allowlist de `scripts/audit-allowlist.mjs` com
+  justificativa e gatilho de reavaliação. No mobile, o `npm audit fix` também
+  subiu `@react-navigation/core` 7.21.13 → 7.24.0 (minor, runtime); coberto
+  pelos testes do CI, não testado em aparelho
+
+### Changed
+
+- **Deploy na VPS agora é bloqueado pela verificação (2026-10-01)** — antes o
+  push em `main` disparava o CI e o deploy ao mesmo tempo, e um commit quebrado
+  ia para produção sem nada impedir. `deploy` passou a depender de `verify`
+  (typecheck, lint, testes e e2e dos dois apps), com um drift guard que aborta
+  se outro push subir durante a verificação
+- **`set -e` no script remoto do deploy (2026-10-16)** — sem ele, um
+  `docker build` que falhava na VPS deixava o passo terminar `success`
+  ("Deploy ok") com o container na imagem antiga; visto no Gerador, no mesmo
+  dia. A limpeza final (`docker builder prune`) é tolerante a falha
+  (`|| true`) para não reprovar um deploy que funcionou
+- **O gate de acessibilidade agora roda no navegador (2026-10-16)** —
+  `e2e/a11y.spec.ts` (axe-core, WCAG 2.1 A/AA) percorre as 5 rotas nos temas
+  claro **e** escuro (10 testes, com checagem de que o tema aplicou), no job
+  `Web (E2E + Acessibilidade)` do `ci.yml` e no `verify` do `deploy.yml`.
+  `offline.spec.ts` segue fora do gate (bug real de navegação offline desde
+  21/08)
+
 ### Fixed
 
+- **Tema escuro com fundo transparente, bug de ~2 meses (2026-10-16)** —
+  `tailwind.config.ts` usava `hsl(var(--background))`, mas no escuro
+  `--background` é um `color-mix()` (cor cheia), então `hsl(color-mix(...))`
+  era inválido: fundo transparente e texto claro sobre branco. Agora
+  `--background` guarda cor cheia nos dois temas e o Tailwind usa
+  `var(--background)` direto; os usos com opacidade (`bg-background/80|50`)
+  viraram `color-mix` explícito. Medido com axe: escuro ~24 → 0 violações nas
+  5 rotas, claro 5/5. No claro, `--primary-foreground` foi para o preto-ébano
+  (3.16:1 → 5.54:1), e o logo do Header, o favoritar, o compartilhar, a
+  epígrafe, os links de `/metodo` e o QR do Pix ganharam os ajustes de
+  nome/contraste que o axe apontou
 - **Auditoria de Acessibilidade WCAG 2.2 AA, web e mobile (2026-09-26)** — 21
   achados medidos token a token, 21 corrigidos. Três que mudam o produto:
   - **O zoom de pinça estava bloqueado** (`maximumScale: 1` e

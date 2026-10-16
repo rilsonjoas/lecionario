@@ -113,12 +113,49 @@ entre commits — só devDep/config não constrói. Disparo manual
    acima + porteiro de `dependencies`.
 
 ## CI/CD
-O GitHub Actions roda automaticamente em push para `main`:
+O GitHub Actions roda automaticamente em push para `main` e em pull request (`ci.yml`):
 - TypeScript check
 - ESLint
 - Prettier
 - Testes (Vitest)
+- Validação de conteúdo (repetição, lacunas, cobertura ARC)
+- Auditoria de dependências de produção com allowlist (`scripts/audit-allowlist.mjs`)
+- E2E de acessibilidade (Playwright + axe-core, 5 rotas, tema claro e escuro)
 - Docker build
+
+## Deploy do web na VPS (Hetzner)
+
+O push em `main` dispara `deploy.yml`, que publica em `lecionario.narniano.com`.
+Só a `main` faz deploy; pull request roda o CI mas nunca publica.
+
+1. **`verify`**: typecheck, lint, testes dos dois apps (inclusive com
+   `NODE_ENV=production` herdado, de propósito) e e2e. Se falhar, nada vai
+   para a VPS.
+2. **`deploy`**, só depois do `verify`:
+   - aborta se a `main` avançou durante a verificação (publicaria código que
+     não foi testado);
+   - entra na VPS por SSH com **`set -e`**: qualquer comando que falhe aborta
+     o deploy. Os `prune` finais são a exceção (`|| true`);
+   - guarda de disco (aborta com a raiz em 90% ou mais), `git pull
+     --ff-only` e `make deploy service=lecionario` no `~/hetzner-infra`.
+3. **Smoke test** em `https://lecionario.narniano.com/`.
+
+### Cuidados (incidente de 2026-10-16)
+
+- **O build roda dentro da VPS, que tem 4 GB de RAM.** O build do Lecionário é
+  o mais pesado: em 16/10 deixou só **315 MB livres**. Dois builds juntos
+  travaram a máquina inteira. Por isso o `make deploy` usa uma **trava global
+  (`flock`)**: um deploy espera o outro, mesmo de repos diferentes. Registro
+  completo em `INCIDENTES.md` do `hetzner-infra`.
+- **Workflow verde não prova deploy.** Antes do `set -e`, um build que falhava
+  deixava o passo terminar `success`. Para ter certeza de que subiu código
+  novo, confira a data do container:
+  `ssh <vps> "docker inspect lecionario-web -f '{{.Created}}'"`.
+- **Evite empurrar para a `main` com a VPS ocupada** (outro deploy em
+  andamento ou `free -m` com menos de ~1 GB disponível).
+- **Merge de PR na `main` é um deploy**, a não ser que só mude `*.md` ou
+  `docs/**` (o `deploy.yml` ignora esses caminhos). Mudar lockfile, workflow
+  ou código rebuilda a imagem.
 
 ## Estrutura de Portas
 | Serviço | Porta |
