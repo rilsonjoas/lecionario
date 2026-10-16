@@ -153,8 +153,9 @@ Só a `main` faz deploy; pull request roda o CI mas nunca publica.
   `ssh <vps> "docker inspect lecionario-web -f '{{.Created}}'"`.
 - **Evite empurrar para a `main` com a VPS ocupada** (outro deploy em
   andamento ou `free -m` com menos de ~1 GB disponível).
-- **Merge de PR na `main` é um deploy.** Mudança só de documentação também
-  rebuilda a imagem.
+- **Merge de PR na `main` é um deploy**, a não ser que só mude `*.md` ou
+  `docs/**` (o `deploy.yml` ignora esses caminhos). Mudar lockfile, workflow
+  ou código rebuilda a imagem.
 
 ## Estrutura de Portas
 | Serviço | Porta |
