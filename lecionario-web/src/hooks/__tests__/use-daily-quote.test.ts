@@ -1,35 +1,72 @@
-import { describe, expect, it } from 'vitest';
-import { deveAtualizarCitacao, diaLocal, QUOTE_REFRESH_MS } from '../use-daily-quote';
+// @vitest-environment jsdom
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { renderHook, waitFor } from '@testing-library/react';
+import { useDailyQuote } from '../use-daily-quote';
 
-const manha = new Date(2026, 9, 17, 9, 0, 0);
-
-describe('diaLocal', () => {
-  it('formata o dia local com zeros à esquerda', () => {
-    expect(diaLocal(new Date(2026, 0, 5, 23, 59))).toBe('2026-01-05');
-  });
+const quoteDe = (dia: string, texto: string) => ({
+  id: dia,
+  date: dia,
+  author: 'C. S. Lewis',
+  text: texto,
+  source: null,
+  dominioPublico: false,
+  scriptoriumUrl: null,
+  theme: null,
+  affiliateUrl: null,
 });
 
-describe('deveAtualizarCitacao', () => {
-  it('busca quando ainda não houve busca bem-sucedida', () => {
-    expect(deveAtualizarCitacao(null, manha)).toBe(true);
+afterEach(() => {
+  vi.unstubAllGlobals();
+});
+
+describe('useDailyQuote', () => {
+  it('troca a citação quando a data muda (o caso reportado)', async () => {
+    const fetchMock = vi.fn().mockImplementation(async (url: string) => {
+      const dia = new URL(url).searchParams.get('date') ?? 'hoje';
+      return { ok: true, json: async () => quoteDe(dia, `frase de ${dia}`) };
+    });
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { result, rerender } = renderHook(({ date }) => useDailyQuote(date), {
+      initialProps: { date: '2026-10-12' },
+    });
+    await waitFor(() => expect(result.current?.text).toBe('frase de 2026-10-12'));
+
+    rerender({ date: '2026-10-13' });
+    await waitFor(() => expect(result.current?.text).toBe('frase de 2026-10-13'));
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
-  it('não busca de novo logo ao voltar no mesmo dia', () => {
-    expect(deveAtualizarCitacao({ em: manha.getTime() - 60_000, dia: '2026-10-17' }, manha)).toBe(
-      false,
-    );
+
+  it('não busca de novo quando a data é a mesma, mesmo com um Date novo a cada render', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValue({ ok: true, json: async () => quoteDe('2026-10-12', 'x') });
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { rerender } = renderHook(({ date }) => useDailyQuote(date), {
+      initialProps: { date: new Date(2026, 9, 12) },
+    });
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
+    rerender({ date: new Date(2026, 9, 12) });
+    rerender({ date: new Date(2026, 9, 12, 18) });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
-  it('busca quando passou o intervalo mínimo', () => {
-    expect(
-      deveAtualizarCitacao({ em: manha.getTime() - QUOTE_REFRESH_MS, dia: '2026-10-17' }, manha),
-    ).toBe(true);
-  });
-  it('busca quando o dia mudou, mesmo com poucos minutos de diferença', () => {
-    const ultima = { em: new Date(2026, 9, 16, 23, 58).getTime(), dia: '2026-10-16' };
-    expect(deveAtualizarCitacao(ultima, new Date(2026, 9, 17, 0, 3))).toBe(true);
-  });
-  it('aba ou PWA deixado aberto por dias (o caso do bug): atualiza', () => {
-    expect(
-      deveAtualizarCitacao({ em: new Date(2026, 9, 12, 8, 0).getTime(), dia: '2026-10-12' }, manha),
-    ).toBe(true);
+
+  it('se a busca do novo dia falhar, o card some em vez de manter a frase de outro dia', async () => {
+    const fetchMock = vi
+      .fn()
+      .mockResolvedValueOnce({
+        ok: true,
+        json: async () => quoteDe('2026-10-12', 'frase do dia 12'),
+      })
+      .mockResolvedValueOnce({ ok: false, status: 500, json: async () => ({}) });
+    vi.stubGlobal('fetch', fetchMock);
+
+    const { result, rerender } = renderHook(({ date }) => useDailyQuote(date), {
+      initialProps: { date: '2026-10-12' },
+    });
+    await waitFor(() => expect(result.current?.text).toBe('frase do dia 12'));
+    rerender({ date: '2026-10-13' });
+    await waitFor(() => expect(result.current).toBeNull());
   });
 });

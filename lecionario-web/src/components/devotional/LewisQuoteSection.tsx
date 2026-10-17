@@ -10,10 +10,10 @@ import { useDailyQuote } from '@/hooks/use-daily-quote';
 // apenas para obras não-públicas) com rel="sponsored" (boas práticas do
 // Google); para domínio público o CTA é "Ler livro completo" apontando pro
 // scriptoriumUrl. Falha de rede/API faz o card sumir com graça.
-export function LewisQuoteSection() {
-  // Busca ao montar e de novo quando a aba/PWA volta a ficar visível em outro dia
-  // (ver hooks/use-daily-quote.ts); antes ficava presa na frase do primeiro dia.
-  const quote = useDailyQuote();
+export function LewisQuoteSection({ date }: { date?: Date | string }) {
+  // Citação da data escolhida (como a pintura): ao navegar por dias a frase
+  // acompanha (ver hooks/use-daily-quote.ts). Antes pedia sempre "hoje".
+  const quote = useDailyQuote(date);
   const { copied, message, copy } = useCopyFeedback();
 
   const handleCopy = async () => {

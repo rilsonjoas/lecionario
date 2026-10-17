@@ -101,9 +101,9 @@ export default function HomeScreen() {
   const onBrand = getOnBrandTextColors(liturgicalInfo.season);
   const showTodayButton = !isDateToday(currentDate);
   const currentDateStr = format(currentDate, 'yyyy-MM-dd');
-  // Citação do dia: busca ao montar e de novo quando o app volta ao primeiro plano
-  // em outro dia (ver lib/use-daily-quote.ts). Antes ficava presa na do primeiro dia.
-  const dailyQuote = useDailyQuote();
+  // Citação do dia da data escolhida (como a pintura): ao trocar de dia a frase
+  // acompanha. Antes pedia sempre "hoje" e a mesma frase ficava na tela.
+  const dailyQuote = useDailyQuote(currentDate);
   const favorited = isFavorite(currentDateStr);
 
   const loadDevotional = useCallback(async (date: Date, forceNetwork = false) => {
