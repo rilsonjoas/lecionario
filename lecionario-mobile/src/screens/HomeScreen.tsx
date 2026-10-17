@@ -37,6 +37,7 @@ import { ErrorState } from '@/components/ErrorState';
 import { QuoteCard } from '@/components/QuoteCard';
 import { ArtCard } from '@/components/ArtCard';
 import { useDailyQuote } from '@/lib/use-daily-quote';
+import { useSeguirHoje } from '@/lib/use-seguir-hoje';
 import { GlossaryTerm } from '@/components/GlossaryTerm';
 import type { DailyDevotional, RootTabParamList } from '@/types';
 
@@ -184,6 +185,18 @@ export default function HomeScreen() {
     setIsOffline(false);
     setCurrentDate((prev) => addDays(prev, delta));
   }, []);
+
+  // App deixado aberto atravessa a meia-noite: se a tela estava no "hoje" anterior,
+  // pula para o novo hoje ao voltar ao app (ou à meia-noite). Quem navegou para outra
+  // data não é puxado de volta (ver lib/seguir-hoje.ts).
+  useSeguirHoje(
+    currentDate,
+    useCallback(() => {
+      setLoading(true);
+      setIsOffline(false);
+      setCurrentDate(new Date());
+    }, []),
+  );
 
   const handleGoToToday = useCallback(() => {
     triggerHaptic('light');
