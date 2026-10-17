@@ -67,8 +67,13 @@
     --muted: 33 15% 82%;
     /* 4.28:1 no bege-areia — reprovava AA (4.5) e é o token de texto
        mais usado do projeto (datas, citações, labels, legendas).
-       Escurecido para 4.81:1 no bege e 5.69:1 no creme. */
-    --muted-foreground: 25 15% 37%;
+       Escurecido para 4.81:1 no bege e 5.69:1 no creme. Em 2026-10-17 subiu de novo
+       (25 15% 37% -> 25 17% 31%): no bege medido (#e5dfd7) foi de 4.81 para 6.11.
+       Com 4.81 a margem sobre o mínimo de 4.5 era de só 0.31 e o texto pequeno deste
+       token reprovava (4.25:1) se o fundo saísse um pouco mais escuro (#d9d2c8); agora
+       esse caso dá 5.40. Motivo: falha intermitente do E2E de acessibilidade na home,
+       que acusou "Favoritar/Compartilhar este dia". */
+    --muted-foreground: 25 17% 31%;
 
     --accent: var(--dourado);
     --accent-foreground: var(--preto-ébano);
