@@ -1,10 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import { useCopyFeedback } from '@/hooks/use-copy-feedback';
 import { CopyLiveRegion } from '@/components/devotional/CopyLiveRegion';
 import { Check, Copy } from 'lucide-react';
-import { fetchDailyQuote, type DailyQuote } from '@/lib/quote-fetcher';
+import { useDailyQuote } from '@/hooks/use-daily-quote';
 
 // Citação diária do cluster "A Biblioteca" (ADR 001) — fonte única na API
 // do Scriptorium. O link de afiliado vem PRONTO da API (`affiliateUrl`,
@@ -12,16 +11,10 @@ import { fetchDailyQuote, type DailyQuote } from '@/lib/quote-fetcher';
 // Google); para domínio público o CTA é "Ler livro completo" apontando pro
 // scriptoriumUrl. Falha de rede/API faz o card sumir com graça.
 export function LewisQuoteSection() {
-  const [quote, setQuote] = useState<DailyQuote | null>(null);
+  // Busca ao montar e de novo quando a aba/PWA volta a ficar visível em outro dia
+  // (ver hooks/use-daily-quote.ts); antes ficava presa na frase do primeiro dia.
+  const quote = useDailyQuote();
   const { copied, message, copy } = useCopyFeedback();
-
-  useEffect(() => {
-    const ctrl = new AbortController();
-    fetchDailyQuote(ctrl.signal).then((result) => {
-      if (!ctrl.signal.aborted) setQuote(result);
-    });
-    return () => ctrl.abort();
-  }, []);
 
   const handleCopy = async () => {
     if (!quote) return;
