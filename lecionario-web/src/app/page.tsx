@@ -16,6 +16,7 @@ import { PrayerSection } from '@/components/devotional/PrayerSection';
 import { MeditationSection } from '@/components/devotional/MeditationSection';
 import { CollectSection } from '@/components/devotional/CollectSection';
 import { LewisQuoteSection } from '@/components/devotional/LewisQuoteSection';
+import { useSeguirHoje } from '@/hooks/use-seguir-hoje';
 import { ArtSection } from '@/components/devotional/ArtSection';
 import { GlossaryTerm } from '@/components/devotional/GlossaryTerm';
 import { DatePicker } from '@/components/layout/DatePicker';
@@ -96,6 +97,15 @@ function HomeContent() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentDate]);
+
+  // Aba/PWA deixados abertos atravessam a meia-noite: se a página estava no "hoje"
+  // anterior, pula para o novo hoje ao voltar à aba (ou à meia-noite). Quem navegou
+  // para outra data não é puxado de volta (ver lib/seguir-hoje.ts). `replace` para
+  // não encher o histórico, e '/' sem ?date= porque é o "hoje".
+  useSeguirHoje(currentDate, () => {
+    setCurrentDate(new Date());
+    router.replace('/', { scroll: false });
+  });
 
   // Sync state with URL when date changes
   const handleDateChange = (newDate: Date) => {
