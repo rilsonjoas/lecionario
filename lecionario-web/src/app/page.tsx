@@ -390,7 +390,7 @@ function HomeContent() {
             </section>
 
             {/* Citação do dia — API do Scriptorium (fonte única, ADR 001) */}
-            <LewisQuoteSection />
+            <LewisQuoteSection date={currentDate} />
 
             {/* Pintura do dia — Bíblia na Arte (paridade com o mobile, 2026-08-23) */}
             <ErrorBoundary name="Pintura do Dia">

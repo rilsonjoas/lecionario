@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { fetchDailyQuote } from '../quote-fetcher';
+import { diaParaApi, fetchDailyQuote } from '../quote-fetcher';
 
 const sample = {
   id: '11111111-1111-4111-8111-111111111111',
@@ -41,5 +41,48 @@ describe('fetchDailyQuote', () => {
   it('erro de rede → null, some com graça', async () => {
     vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('falha de rede')));
     expect(await fetchDailyQuote()).toBeNull();
+  });
+});
+
+describe('fetchDailyQuote: segue a data escolhida', () => {
+  it('sem data pede "hoje" (a API resolve em America/Sao_Paulo)', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => sample });
+    vi.stubGlobal('fetch', fetchMock);
+    await fetchDailyQuote();
+    expect(fetchMock.mock.calls[0]![0]).toBe(
+      'https://api-scriptorium.narniano.com/api/v1/quotes/daily',
+    );
+  });
+
+  it('com data em texto manda ?date= (o bug: antes a frase de hoje ficava ao trocar de dia)', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => sample });
+    vi.stubGlobal('fetch', fetchMock);
+    await fetchDailyQuote('2026-10-12');
+    expect(fetchMock.mock.calls[0]![0]).toBe(
+      'https://api-scriptorium.narniano.com/api/v1/quotes/daily?date=2026-10-12',
+    );
+  });
+
+  it('com Date usa o dia local do usuário e ignora a hora', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => sample });
+    vi.stubGlobal('fetch', fetchMock);
+    await fetchDailyQuote(new Date(2026, 9, 5, 23, 59));
+    expect(fetchMock.mock.calls[0]![0]).toContain('?date=2026-10-05');
+  });
+
+  it('dias diferentes geram pedidos diferentes', async () => {
+    const fetchMock = vi.fn().mockResolvedValue({ ok: true, json: async () => sample });
+    vi.stubGlobal('fetch', fetchMock);
+    await fetchDailyQuote('2026-10-12');
+    await fetchDailyQuote('2026-10-13');
+    expect(fetchMock.mock.calls[0]![0]).not.toBe(fetchMock.mock.calls[1]![0]);
+  });
+});
+
+describe('diaParaApi', () => {
+  it('formata e normaliza', () => {
+    expect(diaParaApi()).toBeNull();
+    expect(diaParaApi('2026-10-12T15:00:00Z')).toBe('2026-10-12');
+    expect(diaParaApi(new Date(2026, 0, 5))).toBe('2026-01-05');
   });
 });

@@ -6,6 +6,10 @@ on:
     paths-ignore:
       - "*.md"
       - "docs/**"
+      # O app mobile não faz parte da imagem web da VPS (build pesado, chegou a
+      # deixar 294 MB livres). Mudança só no mobile sai por OTA (eas.yml) e é
+      # verificada pelo ci.yml; não precisa rebuildar o site.
+      - "lecionario-mobile/**"
 
 permissions:
   contents: read

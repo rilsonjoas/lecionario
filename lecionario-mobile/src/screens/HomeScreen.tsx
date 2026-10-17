@@ -36,7 +36,7 @@ import { EmptyState } from '@/components/EmptyState';
 import { ErrorState } from '@/components/ErrorState';
 import { QuoteCard } from '@/components/QuoteCard';
 import { ArtCard } from '@/components/ArtCard';
-import { fetchDailyQuote, type DailyQuote } from '@/lib/quote-fetcher';
+import { useDailyQuote } from '@/lib/use-daily-quote';
 import { GlossaryTerm } from '@/components/GlossaryTerm';
 import type { DailyDevotional, RootTabParamList } from '@/types';
 
@@ -101,7 +101,9 @@ export default function HomeScreen() {
   const onBrand = getOnBrandTextColors(liturgicalInfo.season);
   const showTodayButton = !isDateToday(currentDate);
   const currentDateStr = format(currentDate, 'yyyy-MM-dd');
-  const [dailyQuote, setDailyQuote] = useState<DailyQuote | null>(null);
+  // Citação do dia da data escolhida (como a pintura): ao trocar de dia a frase
+  // acompanha. Antes pedia sempre "hoje" e a mesma frase ficava na tela.
+  const dailyQuote = useDailyQuote(currentDate);
   const favorited = isFavorite(currentDateStr);
 
   const loadDevotional = useCallback(async (date: Date, forceNetwork = false) => {
@@ -142,17 +144,6 @@ export default function HomeScreen() {
         setRefreshing(false);
       }
     }
-  }, []);
-
-  useEffect(() => {
-    // Citação do dia — fonte única no Scriptorium (ADR 001): a API resolve
-    // a data em America/Sao_Paulo (o app não passa ?date). Falha → null,
-    // o card some com graça (mesmo contrato do ArtCard).
-    const ctrl = new AbortController();
-    fetchDailyQuote(ctrl.signal).then((quote) => {
-      if (!ctrl.signal.aborted) setDailyQuote(quote);
-    });
-    return () => ctrl.abort();
   }, []);
 
   useEffect(() => {
