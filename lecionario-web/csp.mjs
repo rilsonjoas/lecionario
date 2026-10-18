@@ -42,8 +42,15 @@ export const CSP_DIRECTIVES = {
   // Pintura do Dia (Bíblia na Arte, 2026-08-23): imagem vem do domínio do site dele
   // (Next.js, public/images), a busca vai direto na API dele: sem isso o navegador
   // bloqueia os dois calados (sem erro visível, só a imagem/card nunca aparece).
-  // O AdSense carrega um pixel de verificação de tráfego (adtrafficquality).
-  'img-src': ["'self'", 'data:', 'blob:', ORIGENS.biblianaarteSite, ORIGENS.adsenseQualidade],
+  // O AdSense carrega pixels de verificação de tráfego (adtrafficquality) e de estatística (gen_204).
+  'img-src': [
+    "'self'",
+    'data:',
+    'blob:',
+    ORIGENS.biblianaarteSite,
+    ORIGENS.adsense,
+    ORIGENS.adsenseQualidade,
+  ],
   'font-src': ["'self'"],
   // Citação do dia (Scriptorium, 2026-09-24): a busca vai na API do Scriptorium
   // (ADR 001): sem isso o navegador bloqueia o fetch calado e o card da citação nunca
