@@ -48,6 +48,33 @@ de memória do deploy estão em `INCIDENTES.md` do repositório de infraestrutur
 
 ---
 
+## Resiliência: o que fazer quando as APIs do cluster falham (2026-10-17)
+
+**Política do cluster para quando uma API de que este projeto depende falha** (mapa completo em `CONTRATOS-ENTRE-PROJETOS.md`, seção 10, no repositório de infraestrutura, que é privado):
+1. **Card "do dia": some inteiro** (sem título solto, sem espaço reservado, sem erro de JavaScript) e **nunca** mostra conteúdo substituto, porque o "do dia" tem de ser o mesmo item em todo o cluster. Permitido reaproveitar o último valor bom **da mesma data**.
+2. **Sorteio ou lista: fallback permitido** (qualquer item do acervo serve): é o caso do Gerador, com uma cópia embutida vigiada pelo canário.
+3. **Falha de API nunca vira 404** numa página que existe: 500 ou 503, que o crawler repete.
+4. **Toda chamada tem limite de tempo**: uma API lenta é pior que uma fora do ar.
+5. **Esconder em silêncio exige um vigia**: o canário do cluster confere o formato das rotas de hora em hora.
+
+**Estado deste projeto.** Os dois cards que dependem de API **somem inteiros** quando ela falha: a Citação do dia (Scriptorium) e a Pintura do dia
+(Bíblia na Arte), na web e no mobile. **Verificado em produção** (navegador real, as duas APIs bloqueadas): 0 blocos vazios e 0 erros de JavaScript
+causados pela falha. No mobile, pelo código (`QuoteCard` e `ArtCard` retornam `null`); por desenho offline-first o card só aparece online. Não há fallback,
+de propósito (política 1). O Lecionário também **expõe** `/api/versiculo-do-dia` (consumida pelo Scriptorium web e pelo Narniano).
+
+**Itens abertos:**
+- [ ] **R1 (média): a CSP do Lecionário bloqueia o Umami e o AdSense (defeito em produção).** `script-src` em `next.config.mjs` é `'self' 'unsafe-inline'
+  'unsafe-eval' https://browser.sentry-cdn.com`; o HTML carrega `umami.narniano.com/script.js` e `pagead2.googlesyndication.com/.../adsbygoogle.js`, e o navegador
+  bloqueia os dois (medido com pedidos reais em 17/10/2026; o Gerador, sem essa restrição, envia dados ao Umami). O Umami do Lecionário vem do commit `3d95f63`
+  (24/09/2026): desde então a analítica dele provavelmente não mede nada. Corrigir incluindo os domínios em `script-src` e `connect-src` (e o que o AdSense
+  exigir em `img-src` e `frame-src`) e **provar com navegador real** que os pedidos passam e que o console não acusa violação.
+- [ ] **R2 (baixa): reaproveitar o último valor bom da mesma data.** Hoje uma oscilação curta da API esconde um card que o usuário já tinha visto.
+- [ ] **R3 (baixa): a chamada do navegador não tem limite de tempo próprio** (`quote-fetcher.ts` e `artwork-fetcher.ts`: só o sinal de cancelamento ao desmontar). Com API
+  lenta o card aparece tarde, deslocando o layout, ou nunca. Pôr limite de 3 a 5 s.
+- [ ] **R5 (média): teste automatizado "API fora, o card some, sem bloco vazio e sem erro de JS".** Web: E2E com as rotas bloqueadas, num spec **separado e fora do
+  portão do deploy** (o E2E de acessibilidade é intermitente; ver o risco aberto no topo). Mobile: teste de componente.
+- [ ] **R8 (baixa): verificar em aparelho** o card de citação offline e com API lenta.
+
 ## Situação atual (atualizado 2026-09-15)
 
 > [!DONE] Hardening e Polimento concluídos (2026-09-15)
