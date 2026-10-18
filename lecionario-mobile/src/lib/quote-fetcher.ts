@@ -8,6 +8,8 @@
 // America/Sao_Paulo. Para "hoje" o consumidor não passa ?date (o endpoint é o
 // relógio); ao navegar por dias passa a data escolhida. Não monta link de
 // afiliado: vem pronto na resposta (`affiliateUrl`, só para obras não-públicas).
+import { fetchComLimite } from './fetch-com-limite';
+
 const API_BASE = 'https://api-scriptorium.narniano.com/api/v1';
 
 export interface DailyQuote {
@@ -52,7 +54,9 @@ export async function fetchDailyQuote(
     // pintura. Sem data é "hoje", resolvido pela API. Antes o app nunca passava a
     // data e a mesma frase de hoje ficava na tela ao trocar de dia.
     const dia = diaParaApi(date);
-    const res = await fetch(`${API_BASE}/quotes/daily${dia ? `?date=${dia}` : ''}`, { signal });
+    const res = await fetchComLimite(`${API_BASE}/quotes/daily${dia ? `?date=${dia}` : ''}`, {
+      signal,
+    });
     if (!res.ok) return null;
     const data = (await res.json()) as DailyQuoteApi;
     return { ...data, quote: data.text };

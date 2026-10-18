@@ -57,3 +57,28 @@ describe('fetchDailyArtwork', () => {
     );
   });
 });
+
+describe('fetchDailyArtwork com a API lenta (política do cluster: toda chamada tem limite)', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
+
+  it('API que não responde vira null depois do limite de tempo, e o card some', async () => {
+    vi.useFakeTimers();
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        (_url: string, init?: RequestInit) =>
+          new Promise<Response>((_resolve, reject) => {
+            init?.signal?.addEventListener('abort', () =>
+              reject(new DOMException('abortado', 'AbortError')),
+            );
+          }),
+      ),
+    );
+    const resultado = fetchDailyArtwork('2026-01-01');
+    await vi.advanceTimersByTimeAsync(5001);
+    expect(await resultado).toBeNull();
+  });
+});
