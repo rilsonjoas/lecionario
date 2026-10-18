@@ -12,6 +12,8 @@
 // duas pontas mostrem a MESMA obra no mesmo dia, e elimina toda a
 // duplicação de reference-parser.ts/bible-books.ts que existia só pra
 // isso.
+import { fetchComLimite } from './fetch-com-limite';
+
 const API_BASE = 'https://api-biblianaarte.narniano.com/api/v1';
 
 export interface ArtworkReference {
@@ -57,7 +59,9 @@ export async function fetchDailyArtwork(
   signal?: AbortSignal,
 ): Promise<Artwork | null> {
   try {
-    const res = await fetch(`${API_BASE}/artworks/daily?date=${toDateStr(date)}`, { signal });
+    const res = await fetchComLimite(`${API_BASE}/artworks/daily?date=${toDateStr(date)}`, {
+      signal,
+    });
     if (!res.ok) return null;
     const artwork: Artwork = await res.json();
     return { ...artwork, artistOrDirector: normalizeArtist(artwork.artistOrDirector) };

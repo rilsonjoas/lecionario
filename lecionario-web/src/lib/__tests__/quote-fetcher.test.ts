@@ -25,7 +25,7 @@ describe('fetchDailyQuote', () => {
     );
     const quote = await fetchDailyQuote();
     expect(fetch).toHaveBeenCalledWith('https://api-scriptorium.narniano.com/api/v1/quotes/daily', {
-      signal: undefined,
+      signal: expect.any(AbortSignal),
     });
     expect(quote).toEqual(sample);
   });
@@ -84,5 +84,30 @@ describe('diaParaApi', () => {
     expect(diaParaApi()).toBeNull();
     expect(diaParaApi('2026-10-12T15:00:00Z')).toBe('2026-10-12');
     expect(diaParaApi(new Date(2026, 0, 5))).toBe('2026-01-05');
+  });
+});
+
+describe('fetchDailyQuote com a API lenta (política do cluster: toda chamada tem limite)', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.restoreAllMocks();
+  });
+
+  it('API que não responde vira null depois do limite de tempo, e o card some', async () => {
+    vi.useFakeTimers();
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        (_url: string, init?: RequestInit) =>
+          new Promise<Response>((_resolve, reject) => {
+            init?.signal?.addEventListener('abort', () =>
+              reject(new DOMException('abortado', 'AbortError')),
+            );
+          }),
+      ),
+    );
+    const resultado = fetchDailyQuote();
+    await vi.advanceTimersByTimeAsync(5001);
+    expect(await resultado).toBeNull();
   });
 });
