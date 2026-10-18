@@ -116,6 +116,28 @@ Nenhuma variável de ambiente necessária. Todos os dados são locais (bundlados
 
 ---
 
+## Integrações com outros projetos
+
+O Lecionário **consome** duas APIs e **expõe** uma, além de alimentar o Bíblia na Arte com um arquivo.
+
+| Direção | Projeto | Rota | Para quê |
+|---|---|---|---|
+| consome | Scriptorium (`api-scriptorium.narniano.com`) | `GET /api/v1/quotes/daily?date=` | Citação do dia (web e mobile) |
+| consome | Bíblia na Arte (`api-biblianaarte.narniano.com`) | `GET /api/v1/artworks/daily?date=` | Pintura do Dia (web e mobile) |
+| expõe | usado pelo Scriptorium | `GET /api/versiculo-do-dia` | Versículo do dia (`date`, `verse`, `liturgicalDay`, `fallback`, `shifted`) |
+| fornece arquivo | Bíblia na Arte | `lecionario-web/data/daily-readings-refs.json` | Liga a Pintura do Dia à leitura e à estação |
+
+**O arquivo de leituras** é gerado pelo calendário litúrgico real deste projeto (`npx tsx scripts/export-daily-refs.ts` em `lecionario-web`) e copiado à mão para `biblia-na-arte/server/src/data/`. Dois testes fecham a corrente: `src/lib/__tests__/daily-refs-table.test.ts` aqui falha se o calendário mudar sem regerar o arquivo, e o Bíblia na Arte compara a cópia dele com este arquivo. Se mexer no calendário ou estender as tabelas do RCL: regere, commite, copie, e faça o merge deste repositório primeiro.
+
+Os clientes (`quote-fetcher.ts` e `artwork-fetcher.ts`, em `lecionario-web/src/lib` e `lecionario-mobile/src/lib`) devolvem `null` na falha, e a tela esconde o card. É correto para o usuário, mas por isso uma API quebrada **não aparece como erro**: o canário é quem avisa.
+
+**Regras que valem para as três APIs** (o resto do cluster depende delas):
+1. O "hoje" do cluster é `America/Sao_Paulo`. Nunca monte datas com `toISOString()` (é UTC e vira o dia 3 h antes).
+2. Quem mostra um dia **manda a data que a tela mostra** (`?date=AAAA-MM-DD`). Sem isso, navegar entre dias repete o mesmo conteúdo (foi o bug da Citação do dia em 17/10/2026).
+3. Data que não existe no calendário (`2026-13-45`) responde **400** nas três APIs.
+4. Mudança de contrato é **aditiva**: campo novo e rota nova podem; remover, renomear ou trocar tipo só depois de migrar os consumidores.
+5. Um canário em produção confere o formato dessas rotas de hora em hora e avisa o Uptime Kuma. O mapa completo (todas as rotas, formatos, situações limite, runbook) fica em `CONTRATOS-ENTRE-PROJETOS.md` no repositório de infraestrutura, que é privado.
+
 ## Documentação
 
 - [ROADMAP.md](ROADMAP.md) — plano de maturidade até v2.0
