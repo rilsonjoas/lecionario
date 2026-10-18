@@ -81,7 +81,7 @@ de propósito (política 1). O Lecionário também **expõe** `/api/versiculo-do
 - [ ] **R2 (baixa): reaproveitar o último valor bom da mesma data.** Hoje uma oscilação curta da API esconde um card que o usuário já tinha visto.
 - [x] **R3 FEITO em 18/10/2026 (`fetchComLimite`, 5 s, web e mobile; testes com relógio falso, mutação verificada; entrega mobile por OTA no merge):** a chamada do navegador não tinha limite de tempo próprio (`quote-fetcher.ts` e `artwork-fetcher.ts`: só o sinal de cancelamento ao desmontar). Com API
   lenta o card aparece tarde, deslocando o layout, ou nunca. Pôr limite de 3 a 5 s.
-- [ ] **R5 (média): teste automatizado "API fora, o card some, sem bloco vazio e sem erro de JS".** Web: E2E com as rotas bloqueadas, num spec **separado e fora do
+- [~] **R5 (média) — WEB FEITO em 18/10/2026 (`lecionario-web/e2e/api-fora.spec.ts`, 4 cenários: controle com as APIs simuladas, conexão recusada, 503, API que responde só depois do limite de tempo; roda no `ci.yml`, fora do `deploy.yml`; mutação verificada no JS compilado: sem o limite de 5 s o teste de API lenta falha). FALTA o teste de componente do mobile.** Texto original: teste automatizado "API fora, o card some, sem bloco vazio e sem erro de JS". Web: E2E com as rotas bloqueadas, num spec **separado e fora do
   portão do deploy** (o E2E de acessibilidade é intermitente; ver o risco aberto no topo). Mobile: teste de componente.
 - [ ] **R8 (baixa): verificar em aparelho** o card de citação offline e com API lenta.
 

@@ -89,6 +89,12 @@ jobs:
         working-directory: lecionario-web
         run: npx playwright test e2e/a11y.spec.ts
 
+      # R5 (hetzner-infra/ROADMAP-CLUSTER.md): política "API fora, o card some". Roda aqui no CI, mas NÃO
+      # no deploy.yml: é teste de política e não deve barrar um deploy. As APIs são simuladas.
+      - name: E2E — API fora, o card some (política do cluster)
+        working-directory: lecionario-web
+        run: npx playwright test e2e/api-fora.spec.ts
+
       - name: Upload do relatório Playwright (em falha)
         if: failure()
         uses: actions/upload-artifact@v4
