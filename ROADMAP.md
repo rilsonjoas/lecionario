@@ -48,6 +48,11 @@ de memória do deploy estão em `INCIDENTES.md` do repositório de infraestrutur
 
 ---
 
+## Contrato tipado das APIs (Fase 3 do cluster, 2026-10-18)
+- [x] **Web:** `contract/` + `scripts/contract-update.mjs` + teste de tipos `contract.types.ts` no `tsc` do CI. Pegou na primeira execução a deriva prevista: `DailyQuote` e `Artwork` tipavam como sempre presentes campos que as APIs declaram opcionais (`source`, `scriptoriumUrl`, `theme`, `affiliateUrl`, `subtitle`, `year`, `imageUrl`, `sourceUrl`, `verses`). Corrigido. Mutação verificada (campo inventado no tipo do app faz o `tsc` falhar).
+- [ ] **Mobile:** mesmo desenho em `lecionario-mobile` (mesmos dois fetchers).
+- [ ] Declarar as respostas `400` nas rotas `daily` das especificações (Scriptorium e Bíblia na Arte), para o cliente gerado conhecer o erro de validação.
+
 ## Resiliência: o que fazer quando as APIs do cluster falham (2026-10-17)
 
 **Política do cluster para quando uma API de que este projeto depende falha** (mapa completo em `CONTRATOS-ENTRE-PROJETOS.md`, seção 10, no repositório de infraestrutura, que é privado):
