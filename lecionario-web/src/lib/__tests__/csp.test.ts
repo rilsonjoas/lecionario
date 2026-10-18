@@ -17,8 +17,9 @@ describe('CSP do Lecionário', () => {
     expect(diretiva('frame-src')).toContain(ORIGENS.adsenseQuadroConteudo);
   });
 
-  it('permite o pixel de qualidade do AdSense em img-src', () => {
+  it('permite os pixels do AdSense em img-src', () => {
     expect(diretiva('img-src')).toContain(ORIGENS.adsenseQualidade);
+    expect(diretiva('img-src')).toContain(ORIGENS.adsense);
   });
 
   it('permite a mensagem de consentimento do Google (Funding Choices)', () => {
