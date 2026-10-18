@@ -21,6 +21,12 @@ describe('CSP do Lecionário', () => {
     expect(diretiva('img-src')).toContain(ORIGENS.adsenseQualidade);
   });
 
+  it('permite a mensagem de consentimento do Google (Funding Choices)', () => {
+    for (const nome of ['script-src', 'connect-src', 'frame-src']) {
+      expect(diretiva(nome)).toContain(ORIGENS.consentimento);
+    }
+  });
+
   it('permite as APIs do cluster em connect-src', () => {
     expect(diretiva('connect-src')).toContain(ORIGENS.biblianaarteApi);
     expect(diretiva('connect-src')).toContain(ORIGENS.scriptoriumApi);
