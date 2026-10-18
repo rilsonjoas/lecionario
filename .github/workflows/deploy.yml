@@ -71,6 +71,18 @@ jobs:
         working-directory: lecionario-web
         run: npx playwright test e2e/a11y.spec.ts
 
+      # O E2E de acessibilidade é intermitente (INCIDENTES.md, 17/10/2026): quando falha aqui, barra o deploy,
+      # e sem o relatório não há como saber se foi o app ou o runner. O ci.yml já guardava; este portão não.
+      - name: Upload do relatório Playwright (em falha)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report-verify
+          path: |
+            lecionario-web/test-results/
+            lecionario-web/playwright-report/
+          retention-days: 7
+
       - uses: actions/setup-node@v4
         with:
           node-version: 22

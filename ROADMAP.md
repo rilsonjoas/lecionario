@@ -32,7 +32,7 @@ botões de dia) e, na mesma execução, falha nas 3 tentativas do Playwright. A 
   o que combinaria com serem justamente textos com opacidade; (2) diferença entre runners do GitHub. Uma espera por animações foi tentada e
   **descartada por não haver prova** de que resolvia. O app **não** trata `prefers-reduced-motion` (nenhuma ocorrência em `src/`), então emular
   movimento reduzido no teste não pararia essas animações sem antes mudar o CSS.
-- O `verify` do `deploy.yml` **não guarda o relatório do Playwright**; só o `ci.yml` o guarda. Por isso a falha do deploy não deixou trace.
+- **FEITO em 18/10/2026:** o `verify` do `deploy.yml` agora guarda o relatório do Playwright em falha (`playwright-report-verify`, 7 dias). (Antes: o `verify` do `deploy.yml` **não guardava o relatório do Playwright**; só o `ci.yml` o guardava.) Por isso a falha do deploy não deixou trace.
 
 **O que fazer, em ordem:**
 1. [ ] Fazer o `verify` do `deploy.yml` enviar o `playwright-report` (e os traces) como artefato quando falhar. Mexer no `deploy.yml` dispara um
