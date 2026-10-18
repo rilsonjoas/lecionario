@@ -7,3 +7,6 @@ build
 .env.local
 .env.*.local
 *.tsbuildinfo
+
+# Resíduo do Playwright (já foi parar na main por engano)
+test-results/
