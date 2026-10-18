@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
@@ -152,23 +153,38 @@ export default function RootLayout({
       <head>
         {/* Google AdSense */}
         <meta name="google-adsense-account" content="ca-pub-5482566824255473" />
-        <script
+        <Script
+          id="adsense-loader"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5482566824255473"
           crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
-        {/* Opt-out de anúncios automáticos invasivos no nível da página */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(window.adsbygoogle = window.adsbygoogle || []).push({
+        {/* Opt-out de anúncios automáticos invasivos no nível da página.
+
+            CORREÇÃO 2026-10-18 (mesmo erro e mesma solução do Gerador, commit 7f99adc de
+            2026-10-16): um `<script dangerouslySetInnerHTML>` dentro do `<head>` faz o React
+            acusar descasamento de hidratação (#418/#423: "Prop `dangerouslySetInnerHTML` did
+            not match. Server: \"\"") e remontar a árvore inteira no cliente. Isso NÃO aparecia
+            antes porque a CSP bloqueava o AdSense e o Umami em silêncio; ao liberar os dois,
+            o erro surgiu (medido: some quando o AdSense é bloqueado, continua se só o Umami é).
+            `next/script` é a forma canônica de carregar script de terceiros no App Router.
+
+            Os três scripts (loader do AdSense, este opt-out e o Umami) usam `afterInteractive`:
+            medido em navegador real, `beforeInteractive` ainda deslocava o descasamento para o
+            JSON-LD, porque o loader do AdSense insere nós no `<head>` antes da hidratação.
+            Carregados depois dela, não há descasamento. A ordem loader → push é preservada
+            (o push cria a fila `window.adsbygoogle`, que o loader consome ao iniciar). */}
+        <Script id="adsense-page-level" strategy="afterInteractive">
+          {`(window.adsbygoogle = window.adsbygoogle || []).push({
               google_ad_client: "ca-pub-5482566824255473",
               enable_page_level_ads: false,
-            });`,
-          }}
-        />
+            });`}
+        </Script>
         {/* Umami Analytics — cookieless, self-hosted */}
-        <script
-          defer
+        <Script
+          id="umami"
+          strategy="afterInteractive"
           src="https://umami.narniano.com/script.js"
           data-website-id="67a850b8-81af-4927-a4af-f55396c35855"
         />

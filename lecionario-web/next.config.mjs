@@ -1,5 +1,6 @@
 import withPWAInit from 'next-pwa';
 import { withSentryConfig } from '@sentry/nextjs';
+import { buildCsp } from './csp.mjs';
 
 const withPWA = withPWAInit({
   dest: 'public',
@@ -85,26 +86,7 @@ const nextConfig = {
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
           { key: 'X-XSS-Protection', value: '1; mode=block' },
-          {
-            key: 'Content-Security-Policy',
-            value: [
-              "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://browser.sentry-cdn.com",
-              "style-src 'self' 'unsafe-inline'",
-              // Pintura do Dia (Bíblia na Arte, 2026-08-23): imagem vem do
-              // domínio do site dele (Next.js, public/images), a busca vai
-              // direto na API dele — sem isso o navegador bloqueia os dois
-              // calados (sem erro visível, só a imagem/card nunca aparece).
-              "img-src 'self' data: blob: https://biblianaarte.narniano.com",
-              "font-src 'self'",
-              // Citação do dia (Scriptorium, 2026-09-24): a busca vai na API
-              // do Scriptorium (ADR 001) — sem isso o navegador bloqueia o
-              // fetch calado e o card da citação nunca aparece (mesmo bug da
-              // pintura em 2026-08-23).
-              "connect-src 'self' https://*.ingest.sentry.io https://api-biblianaarte.narniano.com https://api-scriptorium.narniano.com",
-              "frame-ancestors 'none'",
-            ].join('; '),
-          },
+          { key: 'Content-Security-Policy', value: buildCsp() },
         ],
       },
     ];
