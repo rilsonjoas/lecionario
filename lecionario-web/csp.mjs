@@ -18,6 +18,7 @@ export const ORIGENS = {
   adsenseQuadroConteudo: 'https://tpc.googlesyndication.com', // quadro de conteúdo do anúncio
   adsenseQualidade: 'https://*.adtrafficquality.google', // verificação de qualidade de tráfego do AdSense (script e conexão)
   adsenseMedicao: 'https://csi.gstatic.com', // medições de desempenho do AdSense (conexão)
+  consentimento: 'https://fundingchoicesmessages.google.com', // mensagem de consentimento (LGPD) do Google, ligada na conta do AdSense
   google: 'https://www.google.com', // quadro de verificação que o AdSense cria dentro da página
   biblianaarteApi: 'https://api-biblianaarte.narniano.com', // Pintura do dia (API)
   biblianaarteSite: 'https://biblianaarte.narniano.com', // imagem da Pintura do dia
@@ -35,6 +36,7 @@ export const CSP_DIRECTIVES = {
     ORIGENS.umami,
     ORIGENS.adsense,
     ORIGENS.adsenseQualidade,
+    ORIGENS.consentimento,
   ],
   'style-src': ["'self'", "'unsafe-inline'"],
   // Pintura do Dia (Bíblia na Arte, 2026-08-23): imagem vem do domínio do site dele
@@ -55,6 +57,7 @@ export const CSP_DIRECTIVES = {
     ORIGENS.adsense,
     ORIGENS.adsenseQualidade,
     ORIGENS.adsenseMedicao,
+    ORIGENS.consentimento,
   ],
   // Quadros (iframes) que o AdSense cria dentro da página. Sem `frame-src` o navegador usa o
   // `default-src 'self'` e bloqueia o anúncio calado, como as outras vezes.
@@ -63,6 +66,7 @@ export const CSP_DIRECTIVES = {
     ORIGENS.adsenseQuadroConteudo,
     ORIGENS.adsenseQualidade,
     ORIGENS.google,
+    ORIGENS.consentimento,
   ],
   'frame-ancestors': ["'none'"],
 };

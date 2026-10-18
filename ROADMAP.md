@@ -63,11 +63,15 @@ causados pela falha. No mobile, pelo código (`QuoteCard` e `ArtCard` retornam `
 de propósito (política 1). O Lecionário também **expõe** `/api/versiculo-do-dia` (consumida pelo Scriptorium web e pelo Narniano).
 
 **Itens abertos:**
-- [ ] **R1 (média): a CSP do Lecionário bloqueia o Umami e o AdSense (defeito em produção).** `script-src` em `next.config.mjs` é `'self' 'unsafe-inline'
+- [x] **R1 (média, feito em 18/10/2026, PR #14 e seguinte): a CSP do Lecionário bloqueava o Umami e o AdSense (defeito em produção).** `script-src` em `next.config.mjs` é `'self' 'unsafe-inline'
   'unsafe-eval' https://browser.sentry-cdn.com`; o HTML carrega `umami.narniano.com/script.js` e `pagead2.googlesyndication.com/.../adsbygoogle.js`, e o navegador
   bloqueia os dois (medido com pedidos reais em 17/10/2026; o Gerador, sem essa restrição, envia dados ao Umami). O Umami do Lecionário vem do commit `3d95f63`
   (24/09/2026): desde então a analítica dele provavelmente não mede nada. Corrigir incluindo os domínios em `script-src` e `connect-src` (e o que o AdSense
   exigir em `img-src` e `frame-src`) e **provar com navegador real** que os pedidos passam e que o console não acusa violação.
+  **Feito:** a lista vive em `lecionario-web/csp.mjs` (testada em `csp.test.ts`); Umami e AdSense carregam por `next/script` `afterInteractive` (evita o erro de
+  hidratação #418/#423 que a liberação dos scripts revelou). O teste local não mostrou a mensagem de consentimento do Google (`fundingchoicesmessages.google.com`),
+  que só aparece com a conta real do AdSense: só a produção acusou. **Lição:** conferir a CSP também em produção, com navegador real, depois do deploy. O canário
+  (`hetzner-infra`) confere os scripts que o HTML anuncia contra o `script-src`; não vê o que o JavaScript injeta nem o `connect-src`.
 - [ ] **R2 (baixa): reaproveitar o último valor bom da mesma data.** Hoje uma oscilação curta da API esconde um card que o usuário já tinha visto.
 - [ ] **R3 (baixa): a chamada do navegador não tem limite de tempo próprio** (`quote-fetcher.ts` e `artwork-fetcher.ts`: só o sinal de cancelamento ao desmontar). Com API
   lenta o card aparece tarde, deslocando o layout, ou nunca. Pôr limite de 3 a 5 s.
