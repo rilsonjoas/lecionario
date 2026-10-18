@@ -131,6 +131,12 @@ O Lecionário **consome** duas APIs e **expõe** uma, além de alimentar o Bíbl
 
 Os clientes (`quote-fetcher.ts` e `artwork-fetcher.ts`, em `lecionario-web/src/lib` e `lecionario-mobile/src/lib`) devolvem `null` na falha, e a tela esconde o card. É correto para o usuário, mas por isso uma API quebrada **não aparece como erro**: o canário é quem avisa.
 
+**Contrato tipado (web, desde 18/10/2026).** `lecionario-web/contract/` guarda o recorte da especificação OpenAPI de produção só com as rotas que o app usa (`*.openapi.json`) e os tipos gerados (`*.d.ts`). O teste de tipos `src/lib/__tests__/contract.types.ts` roda no `tsc` do CI e **falha se um tipo escrito à mão em `quote-fetcher.ts` ou `artwork-fetcher.ts` deixar de aceitar o que a API pode responder** (campo que virou opcional, sumiu ou mudou de tipo; ou campo que o app passou a exigir e a API não declara). Em `lecionario-web`:
+- `npm run contract:check` compara com a produção e sai com 1 se o contrato mudou (não precisa de rede no CI; é para rodar à mão ou antes de mexer num fetcher);
+- `npm run contract:update` baixa, recorta e regera; revise o diff, rode o `tsc` e commite;
+- para o app passar a usar outra rota, acrescente-a em `CONTRATOS` em `scripts/contract-update.mjs`.
+O mobile ainda não tem esse teste (próximo passo da Fase 3 em `hetzner-infra/ROADMAP-CLUSTER.md`). A especificação não declara as respostas 400 das rotas `daily` (anotado no estudo, CONTRATOS seção 7).
+
 **Regras que valem para as três APIs** (o resto do cluster depende delas):
 1. O "hoje" do cluster é `America/Sao_Paulo`. Nunca monte datas com `toISOString()` (é UTC e vira o dia 3 h antes).
 2. Quem mostra um dia **manda a data que a tela mostra** (`?date=AAAA-MM-DD`). Sem isso, navegar entre dias repete o mesmo conteúdo (foi o bug da Citação do dia em 17/10/2026).
