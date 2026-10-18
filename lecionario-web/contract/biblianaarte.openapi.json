@@ -31,20 +31,36 @@
                       "type": "string"
                     },
                     "attributionText": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "category": {
-                      "enum": ["painting", "music", "film"],
+                      "enum": [
+                        "painting",
+                        "music",
+                        "film"
+                      ],
                       "type": "string"
                     },
                     "classicCommentary": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "classicCommentaryAuthor": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "country": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "createdAt": {
                       "anyOf": [
@@ -68,29 +84,47 @@
                       "type": "string"
                     },
                     "dimensionsOrDuration": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "embedUrl": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "id": {
                       "format": "uuid",
                       "type": "string"
                     },
                     "imageUrl": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "licenseType": {
                       "type": "string"
                     },
                     "location": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "mediumOrGenre": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "period": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "references": {
                       "items": {
@@ -133,34 +167,61 @@
                             "type": "string"
                           },
                           "passageText": {
-                            "type": ["null", "string"]
+                            "type": [
+                              "null",
+                              "string"
+                            ]
                           },
                           "verses": {
-                            "type": ["null", "string"]
+                            "type": [
+                              "null",
+                              "string"
+                            ]
                           }
                         },
-                        "required": ["id", "artworkId", "book", "bookSlug", "chapter"],
+                        "required": [
+                          "id",
+                          "artworkId",
+                          "book",
+                          "bookSlug",
+                          "chapter"
+                        ],
                         "type": "object"
                       },
                       "type": "array"
                     },
                     "slug": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "sourceUrl": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "subtitle": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "technique": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "title": {
                       "type": "string"
                     },
                     "tradition": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     },
                     "updatedAt": {
                       "anyOf": [
@@ -181,7 +242,10 @@
                       ]
                     },
                     "year": {
-                      "type": ["null", "string"]
+                      "type": [
+                        "null",
+                        "string"
+                      ]
                     }
                   },
                   "required": [
@@ -216,7 +280,10 @@
                       "type": "string"
                     }
                   },
-                  "required": ["error", "message"],
+                  "required": [
+                    "error",
+                    "message"
+                  ],
                   "type": "object"
                 }
               }
@@ -225,7 +292,9 @@
           }
         },
         "summary": "\"Pintura do Dia\" — mesma obra pra todo mundo, muda à meia-noite em São Paulo",
-        "tags": ["obras"]
+        "tags": [
+          "obras"
+        ]
       }
     }
   }

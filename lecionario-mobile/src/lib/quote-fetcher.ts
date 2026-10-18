@@ -16,13 +16,18 @@ export interface DailyQuote {
   date: string;
   author: string;
   quote: string;
-  source: string | null;
+  // Os campos opcionais abaixo são `?: string | null` porque o contrato da API (contract/scriptorium.d.ts)
+  // os declara opcionais: podem faltar ou vir null. O teste de tipos contract.types.ts confere isso.
+  source?: string | null;
   dominioPublico: boolean;
-  scriptoriumUrl: string | null;
-  theme: string | null;
+  scriptoriumUrl?: string | null;
+  theme?: string | null;
   /** CTA Amazon — presente só para citações não-públicas (hoje, Lewis). */
-  affiliateUrl: string | null;
+  affiliateUrl?: string | null;
 }
+
+/** O que a API devolve: igual a `DailyQuote`, mas com `text` no lugar de `quote`. */
+export type DailyQuoteApi = Omit<DailyQuote, 'quote'> & { text: string };
 
 /** Converte a data escolhida em 'yyyy-MM-dd' (dia local do usuário). Sem data,
  *  devolve null: a API resolve "hoje" em America/Sao_Paulo. */
@@ -49,7 +54,7 @@ export async function fetchDailyQuote(
     const dia = diaParaApi(date);
     const res = await fetch(`${API_BASE}/quotes/daily${dia ? `?date=${dia}` : ''}`, { signal });
     if (!res.ok) return null;
-    const data = (await res.json()) as Omit<DailyQuote, 'quote'> & { text: string };
+    const data = (await res.json()) as DailyQuoteApi;
     return { ...data, quote: data.text };
   } catch {
     return null;

@@ -1,2 +1,5 @@
 # Gerado por scripts/export-daily-refs.ts e comparado byte a byte com a cópia do Bíblia na Arte: não reformatar
 data/
+
+# Gerado por scripts/contract-update.mjs e comparado byte a byte com o recorte da produção (contract:check): não reformatar
+contract/

@@ -27,7 +27,7 @@ interface Props {
   date?: Date | string;
 }
 
-function formatReference(ref: { book: string; chapter: number; verses: string | null }): string {
+function formatReference(ref: { book: string; chapter: number; verses?: string | null }): string {
   return ref.verses ? `${ref.book} ${ref.chapter}:${ref.verses}` : `${ref.book} ${ref.chapter}`;
 }
 

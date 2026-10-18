@@ -50,7 +50,8 @@ de memória do deploy estão em `INCIDENTES.md` do repositório de infraestrutur
 
 ## Contrato tipado das APIs (Fase 3 do cluster, 2026-10-18)
 - [x] **Web:** `contract/` + `scripts/contract-update.mjs` + teste de tipos `contract.types.ts` no `tsc` do CI. Pegou na primeira execução a deriva prevista: `DailyQuote` e `Artwork` tipavam como sempre presentes campos que as APIs declaram opcionais (`source`, `scriptoriumUrl`, `theme`, `affiliateUrl`, `subtitle`, `year`, `imageUrl`, `sourceUrl`, `verses`). Corrigido. Mutação verificada (campo inventado no tipo do app faz o `tsc` falhar).
-- [ ] **Mobile:** mesmo desenho em `lecionario-mobile` (mesmos dois fetchers).
+- [x] **Mobile:** mesmo desenho em `lecionario-mobile` (18/10/2026). O teste achou um consumidor real que assumia `verses` sempre presente (`ArtCard.formatReference`); corrigido. Recortes idênticos aos do web. Só tipos: não exige `eas update`.
+- [x] Achado: o hook de commit (Prettier) reformatava `contract/*.json` e o `contract:check` acusava mudança falsa; `contract/` foi para o `.prettierignore` (web e mobile).
 - [ ] Declarar as respostas `400` nas rotas `daily` das especificações (Scriptorium e Bíblia na Arte), para o cliente gerado conhecer o erro de validação.
 
 ## Resiliência: o que fazer quando as APIs do cluster falham (2026-10-17)
