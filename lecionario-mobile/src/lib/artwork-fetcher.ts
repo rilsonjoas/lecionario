@@ -17,18 +17,18 @@ const API_BASE = 'https://api-biblianaarte.narniano.com/api/v1';
 export interface ArtworkReference {
   book: string;
   chapter: number;
-  verses: string | null;
+  verses?: string | null;
 }
 
 export interface Artwork {
   id: string;
   title: string;
-  subtitle: string | null;
+  subtitle?: string | null;
   artistOrDirector: string;
-  year: string | null;
-  imageUrl: string | null;
+  year?: string | null;
+  imageUrl?: string | null;
   description: string;
-  sourceUrl: string | null;
+  sourceUrl?: string | null;
   references: ArtworkReference[];
 }
 
