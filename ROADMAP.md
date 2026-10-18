@@ -35,7 +35,7 @@ botões de dia) e, na mesma execução, falha nas 3 tentativas do Playwright. A 
 - **FEITO em 18/10/2026:** o `verify` do `deploy.yml` agora guarda o relatório do Playwright em falha (`playwright-report-verify`, 7 dias). (Antes: o `verify` do `deploy.yml` **não guardava o relatório do Playwright**; só o `ci.yml` o guardava.) Por isso a falha do deploy não deixou trace.
 
 **O que fazer, em ordem:**
-1. [ ] Fazer o `verify` do `deploy.yml` enviar o `playwright-report` (e os traces) como artefato quando falhar. Mexer no `deploy.yml` dispara um
+1. [x] (FEITO 18/10/2026, PR #23) Fazer o `verify` do `deploy.yml` enviar o `playwright-report` (e os traces) como artefato quando falhar. Mexer no `deploy.yml` dispara um
    deploy, então entra junto com a próxima mudança do site.
 2. [ ] Na próxima falha, abrir o trace do instante do erro (screenshot, estilos calculados do nó acusado, `document.getAnimations()`) e **provar** a causa antes de mudar o teste.
 3. [ ] Se a causa for animação: fazer o teste esperar `document.getAnimations()` finitas terminarem **e/ou** respeitar `prefers-reduced-motion` no app
