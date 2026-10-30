@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import { readFileSync } from 'node:fs';
+import path from 'node:path';
 import {
   getVerseOfTheDay,
   parseDateKey,
@@ -133,6 +135,16 @@ describe('getVerseOfTheDay — fallback fora da cobertura RCL', () => {
 
     expect(new Set(refs).size).toBe(refs.length);
     expect(refs).toContain('II Timóteo 3:16-17');
+  });
+});
+
+const vetores = JSON.parse(
+  readFileSync(path.join(__dirname, 'hoje-sao-paulo.vetores.json'), 'utf-8'),
+) as { casos: { utc: string; esperado: string; nota: string }[] };
+
+describe('dateKeyInTimeZone — vetores do cluster (hetzner-infra/vetores/hoje-sao-paulo.json)', () => {
+  it.each(vetores.casos)('$utc → $esperado ($nota)', ({ utc, esperado }) => {
+    expect(dateKeyInTimeZone(new Date(utc), TODAY_TIME_ZONE)).toBe(esperado);
   });
 });
 
