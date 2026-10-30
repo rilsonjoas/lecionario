@@ -37,6 +37,7 @@ botões de dia) e, na mesma execução, falha nas 3 tentativas do Playwright. A 
 **O que fazer, em ordem:**
 1. [x] (FEITO 18/10/2026, PR #23) Fazer o `verify` do `deploy.yml` enviar o `playwright-report` (e os traces) como artefato quando falhar. Mexer no `deploy.yml` dispara um
    deploy, então entra junto com a próxima mudança do site.
+- **FEITO em 30/10/2026 (parte do passo 3):** o app agora respeita `prefers-reduced-motion` (`globals.css`: animações e transições ficam instantâneas; o app não tratava isso em lugar nenhum, 38 usos de `animate-*`), com 3 testes (sem preferência há animação; com movimento reduzido nenhuma passa de 0,001 s; transições idem). O E2E de acessibilidade emula movimento reduzido e espera `document.getAnimations()` terminarem antes do axe (o contraste é medido no estado final). **A causa continua NÃO provada** e o item continua aberto: 3 execuções locais seguidas 13/13, e desde a última falha (17/10) o `verify` do deploy passou ~12 vezes na `main` (o critério pede 20).
 2. [ ] Na próxima falha, abrir o trace do instante do erro (screenshot, estilos calculados do nó acusado, `document.getAnimations()`) e **provar** a causa antes de mudar o teste.
 3. [ ] Se a causa for animação: fazer o teste esperar `document.getAnimations()` finitas terminarem **e/ou** respeitar `prefers-reduced-motion` no app
    (ganho de acessibilidade real, não só de teste) e então emular movimento reduzido no teste.
