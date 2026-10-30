@@ -4,48 +4,33 @@ Este documento descreve o que falta para o app se tornar maduro, profissional e 
 
 ---
 
-## ⚠️ Risco aberto: o E2E de acessibilidade é intermitente e pode barrar deploys (2026-10-17)
+## Risco fechado em 30/10/2026: o E2E de acessibilidade intermitente (causa provada e corrigida)
 
-> [!WARNING] Causa **desconhecida**. Não há impacto em produção (o portão falha fechado), mas um deploy pode
-> ser barrado por uma falha que não tem relação com a mudança. **Não desligue o portão e não acrescente
-> tentativas às cegas**: o teste é o que impede um problema real de WCAG de chegar ao ar.
+> [!NOTE] **Causa provada:** o axe media o contraste **no meio da animação de entrada** (`animate-fade-in`, textos com opacidade parcial), e o app
+> não respeitava `prefers-reduced-motion`. **Corrigido** no PR #27 (o app respeita movimento reduzido; o E2E emula movimento reduzido e espera
+> `document.getAnimations()` terminarem antes do axe). O portão do deploy **continua ligado**, como deve.
 
-**O que acontece.** O teste `e2e/a11y.spec.ts` ("Home (/) [light] sem violações WCAG 2.1 AA", às vezes o `[dark]`) falha com
-`color-contrast` em cerca de 10 nós do conteúdo devocional (título, texto com opacidade `text-foreground/70` e `/80`, capitular,
-botões de dia) e, na mesma execução, falha nas 3 tentativas do Playwright. A execução seguinte, **no mesmo commit**, passa.
+**O que acontecia (17/10/2026).** O teste `e2e/a11y.spec.ts` ("Home (/) [light]", às vezes o `[dark]`) falhava com `color-contrast` em cerca de 10 nós do
+conteúdo devocional (título, texto com `text-foreground/70` e `/80`, capitular, botões de dia). A execução seguinte, no mesmo commit, passava.
 
-**Evidência (tudo em 17/10/2026, UTC):**
+**A prova (30/10/2026, experimento A/B no GitHub).** O `a11y.spec.ts` rodou **20 vezes seguidas, sem retentativa**, em runner do GitHub, em duas versões do
+código (fluxo temporário numa branch de experimento, run `41118227774`):
 
-| Hora | Execução | Resultado |
+| Versão | Passaram | Falharam |
 | --- | --- | --- |
-| 21:40 | CI na `main` (merge do PR #9) | E2E **falhou** (Home light; rerun também falhou) |
-| 21:40 | Verify do Deploy VPS, mesmo commit | E2E **passou**, deploy ok |
-| 23:45 | CI do PR #10 (antes do merge, uma execução) | E2E passou |
-| 23:48 | CI na `main` (merge do PR #10) | E2E passou |
-| 23:48 | Verify do Deploy VPS, **mesmo commit** | E2E **falhou** (Home light, 3 tentativas; dark intermitente) |
-| 23:52 | Reexecução só do job que falhou | passou; deploy ok |
+| `71d9e3f`, antes do PR #27 | 160 | **40**: a Home, no claro e no escuro, em todas as 20 repetições (`color-contrast`, 7 a 10 nós, a mesma assinatura do incidente) |
+| `fea6ab3`, depois do PR #27 | **260** | **0** |
 
-- **Não reproduz localmente**, nem com CPU 8× mais lenta e 5 execuções seguidas com e sem espera de animações.
-- **Não é determinístico por commit nem por tipo de execução.** Uma conclusão anterior ("falha em todas as execuções da `main`") estava errada.
-- O token `--muted-foreground` foi escurecido (4,81:1 para 6,11:1 no bege) porque a margem era de só 0,31; **isso não explica a falha**, que continuou depois.
-- Hipóteses **não provadas**: (1) elementos com animação de entrada (`animate-fade-in`) ainda com opacidade parcial quando o axe mede o contraste,
-  o que combinaria com serem justamente textos com opacidade; (2) diferença entre runners do GitHub. Uma espera por animações foi tentada e
-  **descartada por não haver prova** de que resolvia. O app **não** trata `prefers-reduced-motion` (nenhuma ocorrência em `src/`), então emular
-  movimento reduzido no teste não pararia essas animações sem antes mudar o CSS.
-- **FEITO em 18/10/2026:** o `verify` do `deploy.yml` agora guarda o relatório do Playwright em falha (`playwright-report-verify`, 7 dias). (Antes: o `verify` do `deploy.yml` **não guardava o relatório do Playwright**; só o `ci.yml` o guardava.) Por isso a falha do deploy não deixou trace.
+Só a Home falha porque é a página com as animações de entrada do conteúdo devocional; as outras 8 rotas auditadas passaram nas duas versões. O que
+parecia "intermitente" era, num runner mais lento, uma corrida entre a animação e a medição: no CI da época passava só quando a animação terminava antes.
 
-**O que fazer, em ordem:**
-1. [x] (FEITO 18/10/2026, PR #23) Fazer o `verify` do `deploy.yml` enviar o `playwright-report` (e os traces) como artefato quando falhar. Mexer no `deploy.yml` dispara um
-   deploy, então entra junto com a próxima mudança do site.
-- **FEITO em 30/10/2026 (parte do passo 3):** o app agora respeita `prefers-reduced-motion` (`globals.css`: animações e transições ficam instantâneas; o app não tratava isso em lugar nenhum, 38 usos de `animate-*`), com 3 testes (sem preferência há animação; com movimento reduzido nenhuma passa de 0,001 s; transições idem). O E2E de acessibilidade emula movimento reduzido e espera `document.getAnimations()` terminarem antes do axe (o contraste é medido no estado final). **A causa continua NÃO provada** e o item continua aberto: 3 execuções locais seguidas 13/13, e desde a última falha (17/10) o `verify` do deploy passou ~12 vezes na `main` (o critério pede 20).
-2. [ ] Na próxima falha, abrir o trace do instante do erro (screenshot, estilos calculados do nó acusado, `document.getAnimations()`) e **provar** a causa antes de mudar o teste.
-3. [ ] Se a causa for animação: fazer o teste esperar `document.getAnimations()` finitas terminarem **e/ou** respeitar `prefers-reduced-motion` no app
-   (ganho de acessibilidade real, não só de teste) e então emular movimento reduzido no teste.
-4. [ ] Critério para fechar este item: causa provada e corrigida, **ou** 20 execuções seguidas do `verify` na `main` sem falha.
+**Hipóteses descartadas:** o token `--muted-foreground` (escurecido em 17/10) não era a causa; diferença entre runners do GitHub não era a causa
+(a versão corrigida passou 260 de 260 no mesmo tipo de runner).
 
-**Enquanto isso:** se o `verify` de um deploy falhar só no E2E de acessibilidade, confira no log que são os mesmos nós de contraste e rode
-`gh run rerun <id> --failed`. Se falhar duas vezes seguidas, trate como regressão real e investigue antes de seguir. O dia a dia de 17/10 e os dados
-de memória do deploy estão em `INCIDENTES.md` do repositório de infraestrutura (privado).
+**Lições para quem mexer nisto:**
+1. Não acrescente tentativas (`retries`) para esconder a falha: ela era real e determinística num runner lento.
+2. A medição de contraste tem de acontecer no **estado final**. Se uma rota nova ganhar animação de entrada, o `getAnimations()` do teste cobre; o `prefers-reduced-motion` do app também.
+3. Para reproduzir um teste que "só falha no CI": rode-o `--repeat-each=20 --retries=0` no próprio GitHub, em duas versões do código, antes de teorizar.
 
 ---
 
