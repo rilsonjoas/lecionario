@@ -419,3 +419,22 @@ div:has(> ins.adsbygoogle[data-ad-status='unfilled']) {
   margin: 0 !important;
   padding: 0 !important;
 }
+
+/*
+ * Movimento reduzido (WCAG 2.3.3): quem pede menos movimento ao sistema operacional não vê as animações de entrada nem as
+ * transições. As animações e transições ficam instantâneas (não `none`, para o estado final ainda ser aplicado e os
+ * eventos `animationend`/`transitionend` continuarem disparando). Antes de 30/10/2026 o app não tratava isto em lugar nenhum.
+ * Também é o passo 3 do risco aberto do E2E de acessibilidade (ROADMAP): o axe media o contraste no meio da animação.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+}
