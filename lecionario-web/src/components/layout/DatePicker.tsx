@@ -44,11 +44,11 @@ export function DatePicker({ date, onDateChange }: DatePickerProps) {
           mode="single"
           selected={date}
           onSelect={(day) => day && onDateChange(day)}
-          initialFocus
+          autoFocus
           locale={ptBR}
           className="rounded-md border bg-card text-card-foreground shadow-sm"
           classNames={{
-            day_selected:
+            selected:
               'bg-accent text-accent-foreground hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
             // Era `text-accent-foreground` sobre `bg-accent/20`. No escuro
             // o --accent-foreground é quase preto (30 10% 8%) e o /20
@@ -56,7 +56,11 @@ export function DatePicker({ date, onDateChange }: DatePickerProps) {
             // ilegível justamente no tema escuro. `text-foreground`
             // acompanha o tema (grafite no claro, pergaminho no escuro)
             // e o tom do /20 continua marcando qual dia é hoje.
-            day_today: 'bg-accent/20 text-foreground font-semibold',
+            // Quando o dia de hoje também é o selecionado (o estado padrão ao abrir),
+            // a seleção tem de ganhar: no react-day-picker 9 as duas classes vão na
+            // mesma <td>, então o aria-selected (mais específico) restaura o dourado cheio.
+            today:
+              'bg-accent/20 text-foreground font-semibold aria-selected:bg-accent aria-selected:text-accent-foreground',
           }}
         />
       </PopoverContent>
