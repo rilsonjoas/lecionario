@@ -7,8 +7,43 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Lecionário web migrado para Next.js 15.5.29 e React 19 (2026-11-21)** — o Next
+  14 não tinha versão corrigida na própria major e a auditoria apontava 1
+  vulnerabilidade crítica e 6 altas; agora são 0 críticas. Mudaram
+  `package.json`, o lockfile, `next-env.d.ts`, `DatePicker.tsx` e `calendar.tsx`
+  (react-day-picker 9). O mobile não foi tocado. Restam 5 altas e 5 moderadas só de
+  build (`next-pwa`/`serialize-javascript` e `glob`/`minimatch` do Sentry), sem
+  correção na mesma major. Lição: o job Web roda `prettier --check` antes dos
+  testes; se reprovar, testes e auditoria ficam "skipped"
+- **Citação e Pintura do dia respeitam a política de falha do cluster (2026-10-18)** —
+  limite de tempo de 5 s nos fetchers (web e mobile); com a API fora, o card some
+  inteiro, sem bloco vazio e sem erro de JavaScript. Testes: E2E `api-fora.spec.ts`
+  (web) e `api-fora.test.tsx` (mobile)
+- **Contrato tipado das APIs (2026-10-18)** — recortes OpenAPI em `contract/`
+  (web e mobile) e teste de tipos no `tsc` do CI, que falha se um tipo escrito à
+  mão deixar de aceitar o que a API pode responder
+- **Calendário e citação seguem o dia (2026-10-17)** — a tela acompanha a virada do
+  dia com o app aberto; a citação segue a data escolhida e atualiza ao voltar ao app
+
+### Fixed
+
+- **Teste de acessibilidade intermitente, causa provada e corrigida (2026-10-30)** —
+  o axe media o contraste no meio da animação de entrada. O app agora respeita
+  `prefers-reduced-motion` e o E2E espera as animações terminarem; 260 de 260
+  execuções passaram, contra 160 de 200 antes
+- **CSP bloqueava Umami e AdSense (2026-10-18)** — `script-src`, `img-src` e o
+  consentimento do Google (Funding Choices) liberados; os scripts carregam depois
+  da hidratação, o que evitou os erros #418/#423
+- **13 links de citação apontavam para páginas do Scriptorium que nunca existiram
+  (404) (2026-10-16)**
+- **`--muted-foreground` escurecido (4,81 para 6,11:1 no bege) (2026-10-17)**
+
 ### Security
 
+- **`@sentry/nextjs` 10.78 e `zod` não usado removido (2026-10-30)** — correções da
+  auditoria de 30/10/2026
 - **Auditoria de dependências voltou a passar (2026-10-16)** — o CI estava
   vermelho desde o push das 04:52 por advisories novos high/critical, sem
   relação com o código. `npm audit fix --legacy-peer-deps` nos lockfiles dos

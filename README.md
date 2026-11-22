@@ -16,14 +16,14 @@ Não existe em português um app devocional que siga o calendário litúrgico co
 
 Este é o projeto mais diretamente ligado à minha própria disciplina espiritual: leitura e meditação bíblica diária, Coram Deo, viver conscientemente na presença de Deus. Eu não venho de tradição litúrgica — uso o Lecionário Comum Revisado por escolha de prática devocional, não por filiação — mas construí a ferramenta que eu mesmo uso todo dia, e por isso ela é sem fricção de propósito: sem conta, sem paywall no conteúdo litúrgico, dados locais.
 
-Hoje o motor litúrgico está completo e testado (cálculo de Páscoa, ciclos A/B/C, cores e estações, ~4300 textos bíblicos, 2152 devocionais gerados) — falta só o último passo, subir pro VPS. A visão de futuro não é escala grande — é ser o companheiro diário confiável de um público menor mas fiel: notificação no horário certo, modo de leitura mais robusto, talvez memorização de versículo. Sucesso aqui é ser usado todo dia por quem usa, não ser instalado por muita gente uma vez.
+Hoje o motor litúrgico está completo e testado (cálculo de Páscoa, ciclos A/B/C, cores e estações, 7.152 leituras com texto bíblico em Almeida, 2.191 devocionais para 2025–2030), a versão web está no ar em [lecionario.narniano.com](https://lecionario.narniano.com) com deploy automático e o app mobile recebe atualizações pelo ar (EAS Update). O app ainda não está nas lojas. A visão de futuro não é escala grande — é ser o companheiro diário confiável de um público menor mas fiel: modo de leitura mais robusto, conteúdo autoral que não repete de um ano para outro e, talvez, memorização de versículo. Sucesso aqui é ser usado todo dia por quem usa, não ser instalado por muita gente uma vez.
 
 ## Estrutura do monorepo
 
 ```
 lecionario/
-├── lecionario-web/      # PWA Next.js
-├── lecionario-mobile/   # App Expo/React Native — iOS e Android
+├── lecionario-web/      # PWA Next.js 15 (React 19)
+├── lecionario-mobile/   # App Expo 54 / React Native 0.81 — foco em Android; iOS nunca testado em aparelho
 ├── ROADMAP.md           # O que falta para v1.0 e além
 ├── DEPLOY.md            # Instruções de deploy
 ├── CHANGELOG.md         # Histórico de versões
@@ -37,12 +37,14 @@ lecionario/
 | Área | Estado |
 |---|---|
 | Motor litúrgico (cálculo de estações, Páscoa, ciclos A/B/C) | Completo, testado |
-| Dados RCL — 3 ciclos com leituras completas + textos bíblicos (ARC) | Gerados (~4300 textos, 0 referências faltando canônicas) |
-| Devocionais — orações + meditações diárias (2025–2030) | Gerados (2152 entradas com templates sazonais) |
-| App mobile — telas Home, Calendário, Configurações | Funcional |
-| App web — PWA devocional | Funcional |
-| Cache offline (AsyncStorage + TTL 24h) | Implementado |
-| Notificações push | Pendente |
+| Dados RCL — 3 ciclos com leituras dominicais e feriais + textos bíblicos (ARC) | 4.613 de 4.620 dominicais e 2.525 de 2.532 feriais com texto. Sem texto: Salmo 42–43 (salmo duplo, 10 ocorrências), Sabedoria 4:7-15 (deuterocanônico), Obadias 15-21, Judas 17-25 e 3 João 9-12 |
+| Devocionais — orações + meditações diárias (2025–2030) | 2.191 entradas; a 2ª ocorrência (texto distinto na volta do ciclo) está escrita para parte das estações, ver o ROADMAP |
+| App web — PWA devocional | No ar em lecionario.narniano.com, com deploy automático pelo `main` depois da verificação |
+| App mobile (Expo) — Hoje, Calendário, Busca, Favoritos e Configurações | Funcional, atualizações pelo ar (EAS Update); fora das lojas |
+| Cache offline | Service Worker no web; AsyncStorage com TTL de 24 h no mobile |
+| Notificações diárias (mobile) | Implementadas, com horário configurável |
+| Acessibilidade | Auditoria WCAG 2.2 AA e gate axe-core nos temas claro e escuro, no CI |
+| Observabilidade | Sentry no web e no mobile |
 
 Veja [ROADMAP.md](ROADMAP.md) para o plano completo até v1.0 e além.
 
@@ -66,7 +68,7 @@ Os JSONs gerados são consumidos diretamente pelo web e mobile — sem backend, 
 
 ### Pré-requisitos
 
-- Node.js 22+
+- Node.js 22+ (a versão que o CI usa)
 - npm
 
 ### Web

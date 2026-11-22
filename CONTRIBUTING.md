@@ -54,7 +54,7 @@ npm run format:check
 ## Estrutura do Projeto
 
 ```
-lecionario-web/        # Web app (Next.js 14 PWA)
+lecionario-web/        # Web app (Next.js 15 PWA, React 19)
   src/
     app/               # Páginas e rotas
     components/        # Componentes React
